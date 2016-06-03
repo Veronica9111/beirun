@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
-	<display-name>RRS Web Application</display-name>
+	<display-name>BeiRun Web Application</display-name>
 
 	<session-config>
 		<session-timeout>3600</session-timeout>
