@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人设置</title>
+
+
+<link rel="stylesheet" type="text/css" href="/css/webcss/global.css"/>
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery.dataTables.min.css">
+<link rel="stylesheet" href="/css/webcss/bootstrap.css" />
+<link rel="stylesheet" href="/css/webcss/bootstrap-theme.css" />
+<script src="/js/webjs/jquery-1.11.3.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery-ui.css" />
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css"/>
+<script src="/js/webjs/jquery-ui.js"></script>
+<script src="/js/webjs/navigator.js"></script>
+<script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
+
+<style>
+	#left-menu{
+		width: 25vw;
+		position: fixed;
+	}
+	
+	#container{
+		margin-left: 30vw;
+		margin-top: 15vh;
+		width: 40vw;
+		height: 40vh;
+		border: 1px solid grey;
+	}
+
+	#history-table{
+		width: 40vw;
+		height: 40vh;
+	}
+	
+	#history-table_wrapper{
+		width: 70vw;
+		float:right;
+		margin-right:3vw;
+	}
+</style>
+</head>
+
+<body>
+<div class="nav">
+  <div class="container"> <a href="http://localhost:8080/views/webviews/user/setting.html"><img src="/img/webimg/logo-white1.png"></a>
+    <ul  id="navigator" class="nav-header">
+    </ul>
+  </div>
+</div>
+
+<!-- Left menu -->
+<div id="left-menu"></div>
+
+<!-- Container -->
+
+	<table id="history-table" class="display" ></table>
+
+
+
+<div class="mask"></div>
+<div class="footer">
+  <div class="container">
+    <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
+  </div>
+</div>
+
+
+<script src="/js/webjs/bootstrap-treeview.min.js"></script>
+<script src="/js/webjs/tree-menu.js"></script>
+<script>
+
+$.post("/project/getAllProjectsForUser", {}, function(data){
+	 dataSet  = $.parseJSON(data.data);
+	$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
+    	data: dataSet,	
+    	"order": [[ 0, "desc" ]],
+    	"oLanguage": {
+    	    "sSearch": "查找 ",
+    	    oPaginate: {
+    	    	'sPrevious': "上一页",
+    	    	'sNext': "下一页",
+    	    }
+    	  },
+    	  pageLength:10,
+	    columns: [
+	        { title: "记录编号" },
+	        { title: "概述" },
+	        { title: "提交人" },
+	        { title: "更新时间" },
+	        { title: "状态" },
+	        { title: "" }
+	    ]
+	} );
+});
+
+
+</script>
+</body>
+
+
+</html>

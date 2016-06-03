@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人设置</title>
+
+
+<link rel="stylesheet" type="text/css" href="/css/webcss/global.css"/>
+<link rel="stylesheet" href="/css/webcss/bootstrap.css" />
+<link rel="stylesheet" href="/css/webcss/bootstrap-theme.css" />
+<script src="/js/webjs/jquery-1.11.3.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery-ui.css" />
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css"/>
+<script src="/js/webjs/jquery-ui.js"></script>
+<script src="/js/webjs/navigator.js"></script>
+
+<style>
+	#left-menu{
+		width: 25vw;
+		position: fixed;
+	}
+	
+	#container{
+		margin-left: 30vw;
+		margin-top: 15vh;
+		width: 40vw;
+		height: 40vh;
+		border: 1px solid grey;
+	}
+
+</style>
+</head>
+
+<body>
+<div class="nav">
+  <div class="container"> <a href="http://localhost:8080/views/webviews/user/setting.html"><img src="/img/webimg/logo-white1.png"></a>
+    <ul  id="navigator" class="nav-header">
+    </ul>
+  </div>
+</div>
+
+<!-- Left menu -->
+<div id="left-menu"></div>
+
+<!-- Container -->
+<div id="container">
+	<input id="description" type="textfield" placeholder="描述"/>
+	<input id="create_time" type="textfield" placeholder="时间"/>
+	<input id="a3" type="textfield" placeholder="内容3"/>
+	<input id="submit" type="button" value="提交"/>
+</div>
+
+<!-- Dialog -->
+<div id="dialog">
+	new dialog
+</div>
+
+<div class="mask"></div>
+<div class="footer">
+  <div class="container">
+    <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
+  </div>
+</div>
+
+
+<script src="/js/webjs/bootstrap-treeview.min.js"></script>
+<script src="/js/webjs/tree-menu.js"></script>
+<script>
+
+	/*
+		Get project id
+	*/
+
+
+	var id = window.location.search.substring(window.location.search.indexOf("=")+1);
+	console.log(id);
+	
+	/*
+		Create dialog
+	
+	*/
+	dialog = $( "#dialog" ).dialog({
+	      autoOpen: false,
+	      height: 300,
+	      width: 350,
+	      modal: true,
+	      buttons: {
+	        "Create an account": function(){
+	        	dialog.dialog("close");
+	        },
+	        Cancel: function() {
+	          dialog.dialog( "close" );
+	        }
+	      },
+	      close: function() {
+	        form[ 0 ].reset();
+	        allFields.removeClass( "ui-state-error" );
+	      }
+	    });
+	 
+	    form = dialog.find( "form" ).on( "submit", function( event ) {
+	      event.preventDefault();
+	      addUser();
+	    });
+	 
+	    $( "#button" ).button().on( "click", function() {
+	      dialog.dialog( "open" );
+	    });
+	
+	    
+	    /*
+	    	Pop up dialog
+	    */
+	    
+	    $("#a3").on("click", function(){
+	    	dialog.dialog( "open" );
+	    });
+	    
+	    
+	    /*
+	    	Submit results
+	    */
+	    $("#submit").on("click", function(){
+	    	var dataSet = {
+	    			"description": "描述",
+	    			"create_time": "2016-06-01"
+	    			
+	    	};
+	    	$.post("/project/addProject", dataSet, function(data){
+	    		
+	    		console.log(data);
+	    	});
+	    	
+	    });
+
+</script>
+</body>
+
+
+</html>

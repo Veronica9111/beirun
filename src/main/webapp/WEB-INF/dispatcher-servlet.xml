@@ -190,6 +190,22 @@
   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 </bean>
 
+<bean id="finalJinXiangMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="com.wisdom.common.mapper.FinalJinXiangMapper" />
+  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+
+<bean id="finalShenBaoBiaoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="com.wisdom.common.mapper.FinalShenBaoBiaoMapper" />
+  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+
+<bean id="finalXiaoXiangMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="com.wisdom.common.mapper.FinalXiaoXiangMapper" />
+  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+
+
 	<bean id="userController" class="com.wisdom.web.api.controller.UserController">
   		<property name="testMapper" ref="testMapper" />
 
@@ -227,38 +243,7 @@
 </bean>
 
 
-  <bean id="srpConnectionFactory" class="org.springframework.data.redis.connection.srp.SrpConnectionFactory" p:host-name="139.196.40.99" p:port="6379" p:password="T4729VT95%XsIvM"/>
-  
-  <bean id="messageListener" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
-  <constructor-arg>
-    <bean class="com.wisdom.common.queue.DefaultMessageDelegate"/>
-  </constructor-arg>
-</bean>
-
-  <bean id="messageListener2" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
-  <constructor-arg>
-    <bean class="com.wisdom.common.queue.DeleteMessageDelegate"/>
-  </constructor-arg>
-</bean>
-
-<bean id="redisContainer" class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
-  <property name="connectionFactory" ref="srpConnectionFactory"/>
-  <property name="messageListeners">
-    <map>
-      <entry key-ref="messageListener">
-        <bean class="org.springframework.data.redis.listener.ChannelTopic">
-          <constructor-arg value="UNRECOGNIZED_INVOICE"></constructor-arg>
-        </bean>
-      </entry>
-      <entry key-ref="messageListener2">
-        <bean class="org.springframework.data.redis.listener.ChannelTopic">
-          <constructor-arg value="DELETE_INVOICE"></constructor-arg>
-        </bean>
-      </entry>
-    </map>
-  </property>
-</bean>
-
+ 
 
 
 	

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.JinXiangMapper">
+<cache />
+<resultMap type="com.wisdom.common.model.FinalJinXiang" id="FinalJinXiang">  
+<result property="id" column="id"/>
+<result property="project_id" column="project_id"/>
+<result property="shendikou_shuikong_fenshu" column="shendikou_shuikong_fenshu"/>
+<result property="shendikou_shuikong_jine" column="shendikou_shuikong_jine"/>
+<result property="shendikou_shuikong_shuie" column="shendikou_shuikong_shuie"/>
+<result property="shendikou_benqirenzheng_fenshu" column="shendikou_benqirenzheng_fenshu"/>
+<result property="shendikou_benqirenzheng_jine" column="shendikou_benqirenzheng_jine"/>
+<result property="shendikou_benqirenzheng_shuie" column="shendikou_benqirenzheng_shuie"/>
+<result property="shendikou_qianqirenzheng_fenshu" column="shendikou_qianqirenzheng_fenshu"/>
+<result property="shendikou_qianqirenzheng_jine" column="shendikou_qianqirenzheng_jine"/>
+<result property="shendikou_qianqirenzheng_shuie" column="shendikou_qianqirenzheng_shuie"/>
+<result property="shendikou_koushui_fenshu" column="shendikou_koushui_fenshu"/>
+<result property="shendikou_koushui_jine" column="shendikou_koushui_jine"/>
+<result property="shendikou_koushui_shuie" column="shendikou_koushui_shuie"/>
+<result property="shendikou_haiguan_fenshu" column="shendikou_haiguan_fenshu"/>
+<result property="shendikou_haiguan_jine" column="shendikou_haiguan_jine"/>
+<result property="shendikou_haiguan_shuie" column="shendikou_haiguan_shuie"/>
+<result property="shendikou_nongchanpin_fenshu" column="shendikou_nongchanpin_fenshu"/>
+<result property="shendikou_nongchanpin_jine" column="shendikou_nongchanpin_jine"/>
+<result property="shendikou_nongchanpin_shuie" column="shendikou_nongchanpin_shuie"/>
+<result property="shendikou_daikou_fenshu" column="shendikou_daikou_fenshu"/>
+<result property="shendikou_daikou_jine" column="shendikou_daikou_jine"/>
+<result property="shendikou_daikou_shuie" column="shendikou_daikou_shuie"/>
+<result property="shendikou_qita_fenshu" column="shendikou_qita_fenshu"/>
+<result property="shendikou_qita_jine" column="shendikou_qita_jine"/>
+<result property="shendikou_qita_shuie" column="shendikou_qita_shuie"/>
+<result property="shendikou_pingzheng_fenshu" column="shendikou_pingzheng_fenshu"/>
+<result property="shendikou_pingzheng_jine" column="shendikou_pingzheng_jine"/>
+<result property="shendikou_pingzheng_shuie" column="shendikou_pingzheng_shuie"/>
+<result property="shendikou_jinxiang_fenshu" column="shendikou_jinxiang_fenshu"/>
+<result property="shendikou_jinxiang_jine" column="shendikou_jinxiang_jine"/>
+<result property="shendikou_jinxiang_shuie" column="shendikou_jinxiang_shuie"/>
+<result property="shendikou_dikouheji_fenshu" column="shendikou_dikouheji_fenshu"/>
+<result property="shendikou_dikouheji_jine" column="shendikou_dikouheji_jine"/>
+<result property="shendikou_dikouheji_shuie" column="shendikou_dikouheji_shuie"/>
+<result property="zhuanchu_mianshui_shuie" column="zhuanchu_mianshui_shuie"/>
+<result property="zhuanchu_fulixiaofei_shuie" column="zhuanchu_fulixiaofei_shuie"/>
+<result property="zhuanchu_feisunshi_shuie" column="zhuanchu_feisunshi_shuie"/>
+<result property="zhuanchu_jianyijishui_shuie" column="zhuanchu_jianyijishui_shuie"/>
+<result property="zhuanchu_mianditui_shuie" column="zhuanchu_mianditui_shuie"/>
+<result property="zhuanchu_nashuijiancha_shuie" column="zhuanchu_nashuijiancha_shuie"/>
+<result property="zhuanchu_hongzizhuanyong_shuie" column="zhuanchu_hongzizhuanyong_shuie"/>
+<result property="zhuanchu_dijianqianshui_shuie" column="zhuanchu_dijianqianshui_shuie"/>
+<result property="zhuanchu_tuishui_shuie" column="zhuanchu_tuishui_shuie"/>
+<result property="zhuanchu_zhuchuqingxing_shuie" column="zhuanchu_zhuchuqingxing_shuie"/>
+<result property="daidikou_shuikong_fenshu" column="daidikou_shuikong_fenshu"/>
+<result property="daidikou_shuikong_jine" column="daidikou_shuikong_jine"/>
+<result property="daidikou_shuikong_shuie" column="daidikou_shuikong_shuie"/>
+<result property="daidikou_qichuweishenbao_fenshu" column="daidikou_qichuweishenbao_fenshu"/>
+<result property="daidikou_qichuweishenbao_jine" column="daidikou_qichuweishenbao_jine"/>
+<result property="daidikou_qichuweishenbao_shuie" column="daidikou_qichuweishenbao_shuie"/>
+<result property="daidikou_benqiweishenbao_fenshu" column="daidikou_benqiweishenbao_fenshu"/>
+<result property="daidikou_benqiweishenbao_jine" column="daidikou_benqiweishenbao_jine"/>
+<result property="daidikou_benqiweishenbao_shuie" column="daidikou_benqiweishenbao_shuie"/>
+<result property="daidikou_qimoweishenbao_fenshu" column="daidikou_qimoweishenbao_fenshu"/>
+<result property="daidikou_qimoweishenbao_jine" column="daidikou_qimoweishenbao_jine"/>
+<result property="daidikou_qimoweishenbao_shuie" column="daidikou_qimoweishenbao_shuie"/>
+<result property="daidikou_buxudikou_fenshu" column="daidikou_buxudikou_fenshu"/>
+<result property="daidikou_buxudikou_jine" column="daidikou_buxudikou_jine"/>
+<result property="daidikou_buxudikou_shuie" column="daidikou_buxudikou_shuie"/>
+<result property="daidikou_qitapingzheng_fenshu" column="daidikou_qitapingzheng_fenshu"/>
+<result property="daidikou_qitapingzheng_jine" column="daidikou_qitapingzheng_jine"/>
+<result property="daidikou_qitapingzheng_shuie" column="daidikou_qitapingzheng_shuie"/>
+<result property="daidikou_haiguan_fenshu" column="daidikou_haiguan_fenshu"/>
+<result property="daidikou_haiguan_jine" column="daidikou_haiguan_jine"/>
+<result property="daidikou_haiguan_shuie" column="daidikou_haiguan_shuie"/>
+<result property="daidikou_nongchanpin_fenshu" column="daidikou_nongchanpin_fenshu"/>
+<result property="daidikou_nongchanpin_jine" column="daidikou_nongchanpin_jine"/>
+<result property="daidikou_nongchanpin_shuie" column="daidikou_nongchanpin_shuie"/>
+<result property="daidikou_daikou_fenshu" column="daidikou_daikou_fenshu"/>
+<result property="daidikou_daikou_jine" column="daidikou_daikou_jine"/>
+<result property="daidikou_daikou_shuie" column="daidikou_daikou_shuie"/>
+<result property="daidikou_qita_fenshu" column="daidikou_qita_fenshu"/>
+<result property="daidikou_qita_jine" column="daidikou_qita_jine"/>
+<result property="daidikou_qita_shuie" column="daidikou_qita_shuie"/>
+<result property="qita_shuikong_fenshu" column="qita_shuikong_fenshu"/>
+<result property="qita_shuikong_jine" column="qita_shuikong_jine"/>
+<result property="qita_shuikong_shuie" column="qita_shuikong_shuie"/>
+<result property="qita_daikou_fenshu" column="qita_daikou_fenshu"/>
+<result property="qita_daikou_jine" column="qita_daikou_jine"/>
+<result property="qita_daikou_shuie" column="qita_daikou_shuie"/>
+
+</resultMap>
+
+    <select id="getJinXiangByProjectId" parameterType="Integer" resultType="FinalJinXiang">
+		select id,project_id,shendikou_shuikong_fenshu,shendikou_shuikong_jine,shendikou_shuikong_shuie,shendikou_benqirenzheng_fenshu,shendikou_benqirenzheng_jine,shendikou_benqirenzheng_shuie,shendikou_qianqirenzheng_fenshu,shendikou_qianqirenzheng_jine,shendikou_qianqirenzheng_shuie,shendikou_koushui_fenshu,shendikou_koushui_jine,shendikou_koushui_shuie,shendikou_haiguan_fenshu,shendikou_haiguan_jine,shendikou_haiguan_shuie,shendikou_nongchanpin_fenshu,shendikou_nongchanpin_jine,shendikou_nongchanpin_shuie,shendikou_daikou_fenshu,shendikou_daikou_jine,shendikou_daikou_shuie,shendikou_qita_fenshu,shendikou_qita_jine,shendikou_qita_shuie,shendikou_pingzheng_fenshu,shendikou_pingzheng_jine,shendikou_pingzheng_shuie,shendikou_jinxiang_fenshu,shendikou_jinxiang_jine,shendikou_jinxiang_shuie,shendikou_dikouheji_fenshu,shendikou_dikouheji_jine,shendikou_dikouheji_shuie,zhuanchu_mianshui_shuie,zhuanchu_fulixiaofei_shuie,zhuanchu_feisunshi_shuie,zhuanchu_jianyijishui_shuie,zhuanchu_mianditui_shuie,zhuanchu_nashuijiancha_shuie,zhuanchu_hongzizhuanyong_shuie,zhuanchu_dijianqianshui_shuie,zhuanchu_tuishui_shuie,zhuanchu_zhuchuqingxing_shuie,daidikou_shuikong_fenshu,daidikou_shuikong_jine,daidikou_shuikong_shuie,daidikou_qichuweishenbao_fenshu,daidikou_qichuweishenbao_jine,daidikou_qichuweishenbao_shuie,daidikou_benqiweishenbao_fenshu,daidikou_benqiweishenbao_jine,daidikou_benqiweishenbao_shuie,daidikou_qimoweishenbao_fenshu,daidikou_qimoweishenbao_jine,daidikou_qimoweishenbao_shuie,daidikou_buxudikou_fenshu,daidikou_buxudikou_jine,daidikou_buxudikou_shuie,daidikou_qitapingzheng_fenshu,daidikou_qitapingzheng_jine,daidikou_qitapingzheng_shuie,daidikou_haiguan_fenshu,daidikou_haiguan_jine,daidikou_haiguan_shuie,daidikou_nongchanpin_fenshu,daidikou_nongchanpin_jine,daidikou_nongchanpin_shuie,daidikou_daikou_fenshu,daidikou_daikou_jine,daidikou_daikou_shuie,daidikou_qita_fenshu,daidikou_qita_jine,daidikou_qita_shuie,qita_shuikong_fenshu,qita_shuikong_jine,qita_shuikong_shuie,qita_daikou_fenshu,qita_daikou_jine,qita_daikou_shuie
+		from final_jinxiang
+    	where project_id=#{project_id}
+    </select>
+</mapper>

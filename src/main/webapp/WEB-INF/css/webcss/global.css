@@ -655,3 +655,9 @@ table {
 	position: fixed;
 	bottom: 0px;
 }
+
+
+#left-menu{
+	overflow: scroll;
+	height: 90vh;
+}

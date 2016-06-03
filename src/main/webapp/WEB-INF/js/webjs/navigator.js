@@ -4,13 +4,16 @@ $(document).ready(function(){
 		var roles = data.data;
 		console.log(roles.indexOf(""));
 		if(roles.indexOf("开票人") != -1){
-			$("#navigator").append('<li><a class="link" href="/views/webviews/invoice/recognize.html">开票</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/create.html">开票</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/history.html">历史记录</a></li>');
 		}
 		if(roles.indexOf("业务主任") !=-1){
-			$("#navigator").append('<li><a class="link" href="/views/webviews/invoice/check.html">审批</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/approve.html">审批</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/history.html">审批记录</a></li>');
 		}
 		if(roles.indexOf("分管所长") != -1){
-			$("#navigator").append('<li><a class="link" href="/views/webviews/user/manage.html">二次审批</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/approve2.html">二次审批</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/history.html">审批记录</a></li>');
 
 		}
 		if(roles.indexOf("管理") != -1){
