@@ -85,6 +85,9 @@
 	<mvc:resources mapping="/views/frontviews/**" location="/WEB-INF/views/frontviews/" cache-period="3600" />
 	<mvc:resources mapping="/views/webviews/error/**" location="/WEB-INF/views/webviews/error/" cache-period="3600" />
 	
+
+	<mvc:resources mapping="/views/recordviews/**" location="/WEB-INF/views/recordviews/" cache-period="3600" />
+	
 	<mvc:resources mapping="/files/company/**" location="file:/home/files/company/" cache-period="3600" />
 	<mvc:resources mapping="/files/image/**" location="file:/home/files/image/" cache-period="3600" />
 	<mvc:resources mapping="/files/accounter/**" location="/WEB-INF/files/accounter/" cache-period="3600" />
@@ -103,9 +106,9 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver">
 		</property>
 		<property name="url"
-			value="jdbc:mysql://121.40.63.208:3306/rrs?useUnicode=true&amp;characterEncoding=UTF-8"></property>
+			value="jdbc:mysql://139.196.40.99:3306/beirunweb?useUnicode=true&amp;characterEncoding=UTF-8"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="cvb89IKMwepl"></property>
+		<property name="password" value="Cckzcbm110"></property>
 		<property name="maxIdle" value="30"></property>
 		<property name="defaultAutoCommit" value="true"></property>
 	</bean>

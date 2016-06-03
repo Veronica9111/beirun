@@ -128,7 +128,7 @@ function deleteRow(elem) {
 		var dataSet = [];
 		var roles = [];
 		var table;
-		$.post('/user/getAllUsersWithWorkRecords', {},function(data){
+		$.post('/user/getAllUsersAsList', {},function(data){
 			if (data.status == "nok"){
 
 
@@ -158,8 +158,6 @@ function deleteRow(elem) {
 			    	            { title: "姓名" },
 			    	            { title: "邮箱" },
 			    	            { title: "公司" },
-			    	            { title: "识别数" },
-			    	            { title: "审核数" },
 			    	            { title: "状态"},
 			    	            { title: ""}
 

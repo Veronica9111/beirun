@@ -3,6 +3,7 @@ package com.wisdom.web.api.controller;
 import java.io.Reader;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -274,9 +275,9 @@ public class UserController {
 			retMap.put("status", "nok");
 			return retMap;
 		}
-		List<String> record = userService.getUserWithWorkRecords(uid);
-		String data = JSONArray.fromObject(record).toString();
-		retMap.put("data", data);
+		//List<String> record = userService.getUserWithWorkRecords(uid);
+		//String data = JSONArray.fromObject(record).toString();
+		//retMap.put("data", data);
 		retMap.put("status", "ok");
 		return retMap;
 	}
@@ -370,6 +371,40 @@ public class UserController {
 		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
 		List<String> roles = roleService.getUserRoles(uid);
 		retMap.put("data", roles);
+		return retMap;
+	}
+	
+	@RequestMapping("/user/getAllUsersAsList")
+	@ResponseBody
+	public Map<String, String> getAllUsersAsList(HttpServletRequest request){
+		List<Map<String, String>> users = userService.getAllUsers();
+		List<List<String>> retList = new ArrayList<>();
+		for(Map<String, String> user: users){
+			List<String> tmpList = new ArrayList<>();
+			String id = user.get("id");
+			tmpList.add(user.get("id"));
+			tmpList.add(user.get("name"));
+			tmpList.add(user.get("mail"));
+			tmpList.add(user.get("company"));
+			//tmpList.add(user.get("active"));
+			String activate= "";
+			if(user.get("active").equals("1")){
+				tmpList.add("未激活");
+				activate = "<input type='button' value='激活' class='activate' id='activate-" + id + "'/>";
+			}else{
+				tmpList.add("已激活");
+				activate = "<input type='button' disabled='disabled' value='激活' class='activate' id='activate-" + id + "'/>";
+			}
+			String edit = "<input type='button' value='编辑' class='edit' id='edit-"+ id +"'/>";
+			String delete = "<input type='button' value='删除' class='delete' id='delete-"+ id +"'/>";
+			tmpList.add(activate + edit + delete);
+			retList.add(tmpList);
+			
+			
+		}
+		Map<String, String>retMap = new HashMap<>();
+		String data = JSONArray.fromObject(retList).toString();
+		retMap.put("data", data);
 		return retMap;
 	}
 }

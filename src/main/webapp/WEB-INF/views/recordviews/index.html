@@ -3,8 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/webcss/bootstrap.css">
+<link rel="stylesheet" href="/css/webcss/bootstrap-treeview.min.css">
+<link rel="stylesheet" href="/css/webcss/jquery-ui.css">
+<style>
+	#tree{
+		width: 30vw;
+	}
+</style>
 </head>
-<body>
 
+<body>
+<div id="tree"></div>
+<input type="button" id="button" value="press"/>
+<div id="dialog"></div>
+
+
+<script src="/js/webjs/jquery-1.11.3.js"></script>
+<script src="/js/webjs/bootstrap-treeview.min.js"></script>
+<script src="/js/webjs/jquery-ui.js"></script>
+<script>
+function getTree() {
+	  // Some logic to retrieve, or generate tree structure
+	  var data = [
+  {
+    text: "Parent 1",
+    nodes: [
+      {
+        text: "Child 1",
+        nodes: [
+          {
+            text: "Grandchild 1"
+          },
+          {
+            text: "Grandchild 2"
+          }
+        ]
+      },
+      {
+        text: "Child 2"
+      }
+    ]
+  },
+  {
+    text: "Parent 2"
+  },
+  {
+    text: "Parent 3"
+  },
+  {
+    text: "Parent 4"
+  },
+  {
+    text: "Parent 5"
+  }
+];
+	  return data;
+	}
+
+	$('#tree').treeview({data: getTree()});
+	
+	dialog = $( "#dialog" ).dialog({
+	      autoOpen: false,
+	      height: 300,
+	      width: 350,
+	      modal: true,
+	      buttons: {
+	        "Create an account": function(){
+	        	dialog.dialog("close");
+	        },
+	        Cancel: function() {
+	          dialog.dialog( "close" );
+	        }
+	      },
+	      close: function() {
+	        form[ 0 ].reset();
+	        allFields.removeClass( "ui-state-error" );
+	      }
+	    });
+	 
+	    form = dialog.find( "form" ).on( "submit", function( event ) {
+	      event.preventDefault();
+	      addUser();
+	    });
+	 
+	    $( "#button" ).button().on( "click", function() {
+	      dialog.dialog( "open" );
+	    });
+	
+
+</script>
 </body>
 </html>
