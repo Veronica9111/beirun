@@ -1,9 +1,16 @@
 package com.wisdom.web.api.controller;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,17 +22,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisdom.common.model.Permission;
+import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.permission.service.IPermissionService;
+import com.wisdom.project.service.IProjectService;
 import com.wisdom.user.service.IUserService;
 import com.wisdom.utils.SessionConstant;
 
 import net.sf.json.JSONArray;
 
+import java.lang.NumberFormatException;
+
 @Controller
 public class ProjectController {
 
-	@Autowired IPermissionService permissionService;
+	@Autowired IProjectService projectService;
 	
 	@Autowired IUserService userService;
 	
@@ -34,11 +46,47 @@ public class ProjectController {
 	
 	@RequestMapping("/project/addProject")
 	@ResponseBody
-	public Map<String, String> addProject(HttpServletRequest request){
+	public Map<String, String> addProject(HttpServletRequest request) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException,SecurityException, NoSuchMethodException{
 		Map<String, String> retMap = new HashMap<>();
-		String description = request.getParameter("description");
-		String createTime = request.getParameter("create_time");
-		System.out.println("Description: " + description + " Time: " + createTime);
+		Map<String, String[]> params = request.getParameterMap();
+		System.out.println(params.get("kaihuyinhang_yinhangzhanghao")[0]);
+		XiangMuTaiZhang xmtz = new XiangMuTaiZhang();
+		for (Entry<String, String[]> entry : params.entrySet()) {
+			
+			String methodName = "set" + Character.toUpperCase(entry.getKey().charAt(0)) + entry.getKey().substring(1);
+			String arg = entry.getValue()[0];
+
+		      Method m;
+			try {
+				m = xmtz.getClass().getMethod(methodName, String.class);
+				Object ret = m.invoke(xmtz, arg);
+			} catch (NoSuchMethodException e) {
+				try{
+					Double argD = Double.valueOf(arg);
+					m = xmtz.getClass().getMethod(methodName, Double.class);
+					Object ret = m.invoke(xmtz, argD);
+				}catch(NumberFormatException e2){
+
+				    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				    java.util.Date parsedDate;
+					try {
+						parsedDate = dateFormat.parse(arg);
+						Timestamp argT = new java.sql.Timestamp(parsedDate.getTime());
+						m = xmtz.getClass().getMethod(methodName, Timestamp.class);
+						Object ret = m.invoke(xmtz, argT);
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				    
+				}
+				}
+
+			
+		        
+		}
+		projectService.addProject(xmtz);
+		
 		retMap.put("status", "ok");
 		return retMap;
 	}
@@ -88,4 +136,29 @@ public class ProjectController {
 		return retMap;
 		
 	}
+	
+	@RequestMapping("/project/getProjectById")
+	@ResponseBody
+	public Map<String, Object> getProjectById(HttpServletRequest request) {
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		XiangMuTaiZhang xmtz = projectService.getXiangMuTaiZhangById(id);
+		ObjectMapper m = new ObjectMapper();
+		Map<String,Object> props = m.convertValue(xmtz, Map.class);
+		XiangMuTaiZhang anotherBean = (XiangMuTaiZhang) m.convertValue(props, XiangMuTaiZhang.class);
+		return props;
+		
+	}
+	
+	/*@RequestMapping("/project/updateProjectById")
+	@ResponseBody
+	public Map<String, Object> updateProjectById(HttpServletRequest request) {
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		XiangMuTaiZhang xmtz = projectService.getXiangMuTaiZhangById(id);
+		ObjectMapper m = new ObjectMapper();
+		Map<String,Object> props = m.convertValue(xmtz, Map.class);
+		XiangMuTaiZhang anotherBean = (XiangMuTaiZhang) m.convertValue(props, XiangMuTaiZhang.class);
+		return props;
+		
+	}*/
+	
 }

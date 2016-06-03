@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.XiangMuTaiZhangMapper">
+<cache />
+<resultMap type="com.wisdom.common.model.XiangMuTaiZhang" id="XiangMuTaiZhang">  
+<result property="id" column="id"/>
+<result property="fengongsimingcheng" column="fengongsimingcheng"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="danweimingcheng" column="danweimingcheng"/>
+<result property="fadingdaibiaoren_lianxidianhua" column="fadingdaibiaoren_lianxidianhua"/>
+<result property="nashuirenshibiehao" column="nashuirenshibiehao"/>
+<result property="kaihuyinhang_yinhangzhanghao" column="kaihuyinhang_yinhangzhanghao"/>
+<result property="danweidizhi_lianxidianhua" column="danweidizhi_lianxidianhua"/>
+<result property="xiangmumingcheng" column="xiangmumingcheng"/>
+<result property="xiangmufuzeren_lianxidianhua" column="xiangmufuzeren_lianxidianhua"/>
+<result property="hetongleixing" column="hetongleixing"/>
+<result property="shuilv" column="shuilv"/>
+<result property="zhengshoulv" column="zhengshoulv"/>
+<result property="buhanshuijine" column="buhanshuijine"/>
+<result property="shuie" column="shuie"/>
+<result property="hejijine" column="hejijine"/>
+<result property="juesuanjine" column="juesuanjine"/>
+<result property="yujihetongzongchengben" column="yujihetongzongchengben"/>
+<result property="hetongqiandingshijian" column="hetongqiandingshijian"/>
+<result property="hetongkaigongshijian" column="hetongkaigongshijian"/>
+<result property="kaigongxukezhengshijian" column="kaigongxukezhengshijian"/>
+<result property="yujiwangongshijian" column="yujiwangongshijian"/>
+<result property="hetongfukuanfangshi" column="hetongfukuanfangshi"/>
+</resultMap>
+ <insert id="addXiangMuTaiZhang" parameterType="String">
+insert into xiangmutaizhang(fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidianhua,nashuirenshibiehao,kaihuyinhang_yinhangzhanghao,danweidizhi_lianxidianhua,xiangmumingcheng,xiangmufuzeren_lianxidianhua,hetongleixing,shuilv,zhengshoulv,buhanshuijine,shuie,hejijine,juesuanjine,yujihetongzongchengben,hetongqiandingshijian,hetongkaigongshijian,kaigongxukezhengshijian,yujiwangongshijian,hetongfukuanfangshi)
+values(#{fengongsimingcheng},#{xiangmubu},#{danweimingcheng},#{fadingdaibiaoren_lianxidianhua},#{nashuirenshibiehao},#{kaihuyinhang_yinhangzhanghao},#{danweidizhi_lianxidianhua},#{xiangmumingcheng},#{xiangmufuzeren_lianxidianhua},#{hetongleixing},#{shuilv},#{zhengshoulv},#{buhanshuijine},#{shuie},#{hejijine},#{juesuanjine},#{yujihetongzongchengben},#{hetongqiandingshijian},#{hetongkaigongshijian},#{kaigongxukezhengshijian},#{yujiwangongshijian},#{hetongfukuanfangshi})
+</insert>
+<select id="getXiangMuTaiZhangById" parameterType="Integer" resultType="XiangMuTaiZhang">
+select id,fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidianhua,nashuirenshibiehao,kaihuyinhang_yinhangzhanghao,danweidizhi_lianxidianhua,xiangmumingcheng,xiangmufuzeren_lianxidianhua,hetongleixing,shuilv,zhengshoulv,buhanshuijine,shuie,hejijine,juesuanjine,yujihetongzongchengben,hetongqiandingshijian,hetongkaigongshijian,kaigongxukezhengshijian,yujiwangongshijian,hetongfukuanfangshi
+from xiangmutaizhang
+where id=#{id}
+</select>
+
+
+</mapper>

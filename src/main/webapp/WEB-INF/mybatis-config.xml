@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="FinalXiaoXiang" type="com.wisdom.common.model.FinalXiaoXiang" />
 		<typeAlias alias="FinalShenBaoBiao" type="com.wisdom.common.model.FinalShenBaoBiao" />
 		<typeAlias alias="FinalJinXiang" type="com.wisdom.common.model.FinalJinXiang" />
+		<typeAlias alias="XiangMuTaiZhang" type="com.wisdom.common.model.XiangMuTaiZhang" />
 
   </typeAliases>
   <mappers>
@@ -40,6 +41,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mapper resource="com/wisdom/common/mapper/FinalXiaoXiangMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/FinalJinXiangMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/FinalShenBaoBiaoMapper.xml" />
+    <mapper resource="com/wisdom/common/mapper/XiangMuTaiZhangMapper.xml" />
 
   </mappers>
 

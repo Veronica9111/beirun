@@ -205,6 +205,10 @@
   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 </bean>
 
+<bean id="XiangMuTaiZhangMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="com.wisdom.common.mapper.XiangMuTaiZhangMapper" />
+  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
 
 	<bean id="userController" class="com.wisdom.web.api.controller.UserController">
   		<property name="testMapper" ref="testMapper" />
@@ -236,7 +240,9 @@
 		<property name="candidateMapper" ref="candidateMapper" />
 	</bean>	
 	
-
+	<bean id="projectServiceImpl" class="com.wisdom.project.service.impl.ProjectServiceImpl">
+		<property name="XiangMuTaiZhangMapper" ref="XiangMuTaiZhangMapper" />
+	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
   <property name="basePackage" value="mapper" />

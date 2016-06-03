@@ -1,31 +1,160 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset='UTF-8'>
 <title>Insert title here</title>
-<link rel="stylesheet" href="/css/webcss/bootstrap.css" />
-<link rel="stylesheet" href="/css/webcss/bootstrap-theme.css" />
+<link rel='stylesheet' href='/css/webcss/bootstrap.css' />
+<link rel='stylesheet' href='/css/webcss/bootstrap-theme.css' />
+<script src="/js/webjs/jquery-1.11.3.js"></script>
 <style>
 .title{
 	margin-left: 20vw;
 }
 
+.form-control{
+	width: auto;
+	margin-bottom: 1vh;
+	margin-right: 0px;
+}
+
+.form-group{
+
+		
+}
 </style>
 </head>
 <body>
 
-<div>
-	<h3 class="title">项目台账</h3>
-	<form class="navbar-form navbar-left" role="search">
-  <div class="form-group">
+	<div>
+	<h3 class='title'>项目台账</h3>
+	<div class='navbar-form navbar-left' role='search'>
+  <div class='form-group'>
     <label>分公司名称</label>
-    <input id="fengongsimingcheng" type="text" class="form-control" placeholder="分公司名称"/>
+    <input id='fengongsimingcheng' type='text' class='form-control text' placeholder='分公司名称'/>
     <label>项目部</label>
-    <input id="xiangmubu" type="text" class="form-control" placeholder="项目部"/>
+    <input id='xiangmubu' type='text' class='form-control text' placeholder='项目部'/>
   </div>
-  <h3 class="title">甲方基本信息情况表</h3>
-</form>
+  <h3 class='title'>甲方基本信息情况表</h3>
+  <div class='form-group'>
+      <label>单位名称</label>
+  	<input id='danweimingcheng' type='text' class='form-control text' placeholder='单位名称'/>
+  </div><br>
+    <div class='form-group'>
+      <label>法定代表人、联系电话</label>
+  	<input id='fadingdaibiaoren_lianxidianhua' type='text' class='form-control text' placeholder='法定代表人、联系电话'/>
+  </div><br>
+      <div class='form-group'>
+      <label>纳税人识别号</label>
+  	<input id='nashuirenshibiehao' type='text' class='form-control text' placeholder='纳税人识别号'/>
+  </div><br>
+    <div class='form-group'>
+      <label>开户银行、银行账号</label>
+  	<input id='kaihuyinhang_yinhangzhanghao' type='text' class='form-control text' placeholder='开户银行、银行账号'/>
+  </div><br>
+      <div class='form-group'>
+      <label>单位地址、联系电话</label>
+  	<input id='danweidizhi_lianxidianhua' type='text' class='form-control text' placeholder='单位地址、联系电话'/>
+  </div><br>
+        <div class='form-group'>
+      <label>项目名称</label>
+  	<input id='xiangmumingcheng' type='text' class='form-control text' placeholder='项目名称'/>
+  </div><br>
+  
+        <div class='form-group'>
+      <label>项目负责人、联系电话</label>
+  	<input id='xiangmufuzeren_lianxidianhua' type='text' class='form-control text' placeholder='项目负责人、联系电话'/>
+  </div><br>
+  
+  <div class='form-group'>
+      <label>合同类型</label>
+  	  <form id="hetongleixing">
+  		<input type="radio" name="baogongbaoliao" value="baogongbaoliao"> 包工包料
+  		<input type="radio" name="qingbaogong" value="qingbaogong"> 清包工
+  		<input type="radio" name="jiagongcai" value="jiagongcai"> 甲供材
+  		<input type="radio" name="qita" value="qita">其他
+	</form>
+  </div><br>
+  
+  <div class='form-group'>
+      <label>税率</label>
+  	<input id='shuilv' type='text' class='form-control text' placeholder='税率'/>
+  	<label>征收率</label>
+  	<input id="zhengshoulv" type="text" class="form-control text" placeholder='征收率'/>
+  </div><br>
+  
+   <div class='form-group'>
+   <label>合同金额</label>
+      <label>不含税金额</label>
+  	<input id='buhanshuijine' type='text' class='form-control text' placeholder='不含税金额'/>
+  	<label>税额</label>
+  	<input id="shuie" type="text" class="form-control text" placeholder='税额'/>
+  	<label>合计金额</label>
+  	<input id="hejijine" type="text" class="form-control text" placeholder='合计金额'/>
+  </div><br>
+  
+    <div class='form-group'>
+      <label>决算金额</label>
+  	<input id='juesuanjine' type='text' class='form-control text' placeholder='决算金额'/>
+  </div><br>
+  
+      <div class='form-group'>
+      <label>预计合同总成本</label>
+  	<input id='yujihetongzongchengben' type='text' class='form-control text' placeholder='预计合同总成本'/>
+  </div><br>
+  
+  <div class='form-group'>
+      <label>合同签订时间</label>
+  	<input id='hetongqiandingshijian' type='text' class='form-control text' placeholder='合同签订时间'/>
+  	<label>合同开工时间</label>
+  	<input id='hetongkaigongshijian' type='text' class='form-control text' placeholder='合同开工时间'/>
+  	  	<label>开工许可证时间</label>
+  	<input id='kaigongxukezhengshijian' type='text' class='form-control text' placeholder='开工许可证时间'/>
+  	<label>预计完工时间</label>
+  	 <input id='yujiwangongshijian' type='text' class='form-control text' placeholder='预计完工时间'/>
+  </div><br>
+  
+  
+    <div class='form-group'>
+      <label>合同付款方式</label>
+  	  <form id="hetongfukuanfangshi">
+  		<input type="radio" name="yicixingfukuan" value="yicixingfukuan"> 一次性付款
+  		<input type="radio" name="wangongjindu" value="wangongjindu"> 完工进度
+	</form>
+  </div>
 </div>
+</div>
+
+<input id="submit" type="button" value="提交">
+<script>
+$("#submit").on("click", function(){
+	console.log($(".text"));
+	var hetongleixing = $('input:checked', '#hetongleixing').val();
+	var hetongfukuanfangshi = $('input:checked', '#hetongfukuanfangshi').val();
+	console.log(hetongleixing);
+	console.log(hetongfukuanfangshi);
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+	dataSet['hetongleixing'] = hetongleixing;
+	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
+	
+	$.post('/project/addProject', dataSet, function(data){
+		console.log(data);
+		
+	});
+	
+});
+
+$.post("/project/getProjectById", {id:1}, function(data){
+	console.log(data);
+	for(key in data){
+		$("#" + key).val(data[key]);
+	}
+	
+});
+</script>
 
 </body>
 </html>
