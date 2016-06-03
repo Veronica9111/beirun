@@ -1,0 +1,143 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>发票审核</title>
+<meta name="description" content="简介">
+<meta name="keywords" content="关键字">
+<link rel="stylesheet" type="text/css" href="/css/webcss/global.css"/>
+		    <script src="/js/webjs/jquery-1.11.3.js"></script>
+
+</head>
+
+<body>
+<div class="nav">
+  <div class="container"> <img src="images/logo-white1.png">
+    <ul class="nav-header">
+      <li><a class="fp" href="">发票识别</a></li>
+      <li><a href="">发票审核</a></li>
+      <li><a href="">发票管理</a></li>
+      <li><a href="">用户管理</a></li>
+      <li><a href="/views/webviews/user/setting.html">个人设置</a></li>
+      <li><a id="logout">退出登录</a></li>
+    </ul>
+  </div>
+</div>
+<div class="text">
+  <ul class="nav-left">
+    <img id="invoice-img" src="images/images/fapiao_03.png">
+  </ul>
+  <ul class="nav-right">
+    <table id="addCont" width="400" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>供应商</th>
+        <th>摘要</th>
+        <th>金额</th>
+        <th>操作</th>
+      </tr>
+      <tr class="data-row">
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td align="center"><span class="del-list"><a href="javascript:;">删除</a></span></td>
+      </tr>
+    </table>
+    <p class="mt10 ft14"><a class="add-icon" href="javascript:;">点击添加</a></p>
+
+    <p class="btn-l">
+      <input type="checkbox" style="vertical-align:middle;">
+      固定资产</p>
+    <p class="btn-r">
+      <input id="invalid" type="checkbox" style="vertical-align:middle;">
+     无法识别</p>
+    <p class="btn">
+      <input id="submit" type="submit" value="提交">
+    </p>
+  </ul>
+</div>
+<div class="footer">
+  <div class="container">
+    <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
+  </div>
+</div>
+    <script>
+        $(function(){
+                var aTr = document.getElementsByTagName('tr');
+                
+                var aDlist = '<tr class="data-row">' +
+                        '<td>' + '<input type="text">' + '</td>' +
+                        '<td>' + '<input type="text">' + '</td>' +
+						'<td>' + '<input type="text">' + '</td>' +
+                        '<td align="center"><span class="del-list"><a href="javascript:;">删除</a></span></td>' +
+                  '</tr>';
+                
+                $('.add-icon').click(function(){
+                        $('#addCont').find('tr').css('display','table-row');
+                        $('#addCont').find('tbody').append(aDlist);        
+                });
+                
+                $('.del-list').on('click',function(){
+                        $(this).parent().parent().remove();                   
+                });
+                                                                
+        });
+        
+        var id = "";
+        $.post('/invoice/getInvoiceForUser', {"status":"UNCHECK"}, function(data){
+        	console.log(data);
+        	if(data.status == "nok"){
+        		alert("您的访问超时，请重新登录！");
+        		window.location.href = "/views/frontviews/index.html";
+        	}
+        	if(data.data == ""){
+        		alert("所有任务已完成，请联系您的管理员！");
+        	}
+        	console.log($.parseJSON(data.data));
+        	var result = $.parseJSON(data.data);
+        	var invoicePath = result[0]['path'];
+        	id = result[0]['id'];
+        	console.log(invoicePath);
+        	$("#invoice-img").attr("src", invoicePath);
+        });
+
+        
+        //Send the recognized data
+        $("#submit").on("click", function(){
+        	if($("#invalid").prop("checked")){
+        		$.post('/invoice/updateInvoiceStatus',{'id':id, 'status':'INVALID'}, function(data){
+        			console.log(data);
+        		});
+        	}else{
+        		var resultList = [];
+        		$(".data-row").each(function(){
+        			console.log($(this).children());
+        			var supplier = $(this).children().eq(0).find('input');
+        			var description = $(this).children().eq(1).find('input');
+        			var amount = $(this).children().eq(2).find('input');
+        			resultList.push({'supplier': supplier.val(), 'description':description.val(), 'amount':amount.val()});
+        		});
+        		var FA = "no";
+        		if($("#fa").prop("checked")){
+        			FA = "yes";
+        		}
+        		$.post('/invoice/updateInvoiceContent', {"data": JSON.stringify(resultList), 'FA':FA, "id":id}, function(data){
+        			if(data.status == 'ok'){
+        				alert("切换到下一张");
+        			}
+        			else{
+        				alert("提交出错，请稍后再试！");
+        			}
+        		});
+        	}
+        });
+        
+        $("#logout").click(function(){
+        	$.post("/logout", {}, function(){
+        		window.location.href = '/views/frontviews/index.html';
+        	});
+        });
+        
+</script>
+</body>
+</html>

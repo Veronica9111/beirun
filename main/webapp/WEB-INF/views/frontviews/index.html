@@ -1,0 +1,247 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>发票识别系统</title>
+<meta name="description" content="简介">
+<meta name="keywords" content="关键字">
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery-ui.css" />
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css"/>
+<link rel="stylesheet" href="/css/webcss/bootstrap.css" />
+<link rel="stylesheet" href="/css/webcss/bootstrap-theme.css" />
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme-blue.css" />
+<script src=""></script>
+<style>
+@charset "UTF-8";
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, blockquote, pre, form, input, textarea, fieldset, table, th, td {
+	margin: 0;
+	padding: 0
+}
+body, button, input, select, textarea {
+	font: normal 16px/2em "Microsoft YaHei";
+}
+body {
+	color: #b3b3b3;
+	background-color: #fff;
+}
+ul, ol {
+	list-style: none
+}
+img {
+	border: 0;
+	vertical-align: top;
+}
+:focus {
+	outline: 0
+}
+.clear {
+	clear: both;
+	height: 0;
+	font-size: 0;
+	overflow: hidden
+}
+.clearfix:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden
+}
+.clearfix {
+	clear: both;
+	zoom: 1
+}
+.v-a-m {
+	vertical-align: middle
+}
+h1 {
+	font-size: 18px
+}
+h2 {
+	font-size: 16px
+}
+h3 {
+	font-size: 14px
+}
+h4, h5, h6 {
+	font-size: 100%
+}
+a {
+	color: #121111;
+	text-decoration: none
+}
+a:hover {
+	color: #484848;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+.container {
+	margin: 0 auto;
+	margin-left: 50px;
+	margin: auto;
+	position: relative;
+}
+.all {
+	width: 100%;
+	height: 100%;
+}
+.bj {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+}
+.login {
+	width: 350px;
+	height: 450px;
+	background: #fff;
+	border: 1px solid #D9EDF7;
+	top: 25%;
+	right: 15%;
+	border-radius: 0.6em;
+	position: absolute;
+	box-shadow: 5px 5px 10px #D9EDF7;
+}
+.login img {
+	width: 40px;
+	height: 40px;
+}
+.login .login-box p {
+	padding-top: 30px;
+}
+.login-box .sub input {
+	width: 250px;
+	height: 45px;
+	background: #006DD4;
+	color: #fff;
+}
+.login-box a {
+	color: #316BF1;
+	margin-left: 75px;
+}
+.login .form-group input {
+	height: 35px;
+	width: 200px;
+}
+.login .login-box {
+	margin-top: 20px;
+	margin-left: 50px;
+}
+.head {
+	width: 100%;
+	height: 50px;
+	background: #2E86C5;
+	border-radius: 0.6em 0.6em 0 0;
+}
+.head p {
+	line-height: 50px;
+	text-align: center;
+	color: #fff;
+}
+
+#forget-password{
+    float: right;
+    margin: -1em 2em 0.5em 0em;
+    cursor:pointer;
+    color: #337AB7;
+}
+
+body{
+	background-image: url("/img/webimg/bg.jpg");
+	background-repeat:no-repeat;
+	  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+.glyphicon{
+    background-color: #006DD4;
+    color: white;
+    padding: 0.5em;
+    font-size: larger;
+    border-radius: 0.3em;
+}
+
+input {
+	border-radius: 0.2em;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.ui-dialog .ui-dialog-title {
+  text-align: center;
+ }
+</style>
+</head>
+<body>
+<div class="all">
+  <div class="login">
+    <ul class="head">
+      <p>发票识别系统</p>
+    </ul>
+    <ul class="login-box">
+      <form>
+        <p class="form-group"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          <input id="name" type="text" placeholder="用户名"/>
+        </p>
+        <p class="form-group"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+          <input id="password" type="password" class="upass" placeholder="密码"/>
+        </p>
+        <p>
+ <a id="forget-password">忘记密码？</a></p>
+        <p class="sub">
+          <input id="login" type="button" class="btn primary-btn" value="登录"/>
+        </p>
+      </form>
+      <div id="message"></div>
+    </ul>
+  </div>
+</div>
+<div id="forget-pwd-dialog" style="display:none;">
+<p>请输入邮箱或员工号，我们将为您重新生成新密码</p>
+<input id="uid" type="textfield" placeholder="请输入邮箱或员工号"/>
+</div>
+<script src="/js/webjs/jquery-1.11.3.js"></script>
+<script src="/js/webjs/jquery-ui.js"></script>
+<script>
+	$("#forget-password").click(function(){
+		$("#forget-pwd-dialog").dialog({
+		      resizable: true,
+		      height:270,
+		      width: 450,
+		      title: "忘记密码",
+		      modal: true,
+			buttons: {
+		        "发送新密码": function() {
+		        	$.post("/user/generateNewPassword", {uid: $("#uid").val()}, function(data){
+		        		console.log(data);
+		        	});
+		          $( this ).dialog( "close" );
+		        }
+		      }
+		});
+	});
+
+	$("#login").click(function(){
+		var name = $("#name").val();
+		var password = $("#password").val();
+			$.post("/login",{"id":name, "password":password}, function(data){
+				console.log(data);
+				if(data.status == 'ok'){
+					window.location.href=data.url;
+					//window.location.href="/views/webviews/invoice/recognize.html";
+				}
+				else{
+					$("#message").html("用户名或密码错误，请重新输入！");
+				}
+		});
+	});
+</script>
+</body>
+</html>

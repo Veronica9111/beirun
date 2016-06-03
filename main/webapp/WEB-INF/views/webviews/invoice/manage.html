@@ -1,0 +1,675 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>发票管理</title>
+<meta name="description" content="简介">
+<meta name="keywords" content="关键字">
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery-ui.css" />
+
+	<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css"/>
+	<link rel="stylesheet" href="/css/webcss/tooltipster.css" />
+	<link rel="stylesheet" href="/css/webcss/dropit.css" type="text/css" />
+
+
+<style>
+.operation ul { display: none; } /* Hide before plugin loads */
+.operation ul.dropit-submenu {
+    background-color: #fff;
+    border: 1px solid #b2b2b2;
+    padding: 6px 0;
+    margin: 3px 0 0 1px;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+       -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+            box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+}          
+.operation ul.dropit-submenu a {
+    display: block;
+    font-size: 14px;
+    line-height: 25px;
+    color: #7a868e;
+    padding: 0 18px;
+}
+.operation ul.dropit-submenu a:hover {
+    background: #248fc1;
+    color: #fff;
+    text-decoration: none;
+}
+@charset "UTF-8";
+
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p,
+	blockquote, pre, form, input, textarea, fieldset, table, th, td {
+	margin: 0;
+	padding: 0
+}
+
+body, button, input, select, textarea {
+	font: normal 16px/2em "Microsoft YaHei";
+}
+
+body {
+	color: #b3b3b3;
+	background-color: #fff;
+}
+
+ul, ol {
+	list-style: none
+}
+
+img {
+	border: 0;
+	vertical-align: top;
+}
+
+:focus {
+	outline: 0
+}
+
+.clear {
+	clear: both;
+	height: 0;
+	font-size: 0;
+	overflow: hidden
+}
+
+.clearfix:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden
+}
+
+.clearfix {
+	clear: both;
+	zoom: 1
+}
+
+.v-a-m {
+	vertical-align: middle
+}
+
+h1 {
+	font-size: 18px
+}
+
+h2 {
+	font-size: 16px
+}
+
+h3 {
+	font-size: 14px
+}
+
+h4, h5, h6 {
+	font-size: 100%
+}
+
+a {
+	color: #121111;
+	text-decoration: none
+}
+
+a:hover {
+	color: #484848;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+.container {
+	width: 85%;
+	margin: 0 auto;
+}
+
+.nav {
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	margin-left: 50px;
+	margin: auto;
+	position: relative;
+	background: #098B8B
+}
+
+.nav img {
+	margin-top: 18px;
+}
+
+.nav ul {
+	float: right;
+}
+
+.nav ul li {
+	float: left;
+	position: relative;
+}
+
+.nav li a {
+	font-size: 24px;
+	padding-left: 25px;
+	color: #fff;
+}
+
+.nav li a:hover {
+	color: #E3E0E0;
+}
+
+.nav .fp {
+	display: block;
+	color: #E3E0E0;
+	width: 120px;
+	height: 80px;
+	text-align: center;
+	background-color: #1F595A;
+	margin-left: 25px;
+	padding: 0px;
+}
+
+.nav-t {
+	width: 85%;
+	height: 835px;
+	position: relative;
+	margin: 3em auto;
+}
+
+.nav-t li a {
+	color: darkcyan;
+	font-size: 20px;
+	margin-left: 15px;
+}
+
+.nav-t .bs a {
+	color: #000000;
+}
+
+.nav-t .nav-l {
+	float: left;
+	border-bottom: 1px dashed #9B9595;
+}
+
+.nav-t .nav-l li {
+	float: left;
+}
+
+.nav-t .nav-r {
+	float: right;
+	border-bottom: 1px dashed #9B9595;
+}
+
+.nav-t .nav-r li {
+	float: left;
+}
+
+.ui-tabs-nav{
+	width: 100%;
+}
+
+.footer {
+	display: block;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #EDEDED;
+	background: #098B8B;
+	overflow: hidden;
+}
+
+.content {
+	margin-top: 5em;
+	margin-left: 5%;
+	overflow: auto;
+}
+
+
+
+.invoice-img {
+	width: 150px;
+	height: 150px;
+	margin: 0.5em;
+}
+
+.invoice {
+	float: left;
+}
+
+.action{
+	    width: 65vw;
+    float: left;
+}
+
+#delete-unrecognized{
+	cursor:pointer;
+}
+
+#unrecognized {
+		border: 0px;
+}
+
+#delete-recognized{
+	cursor:pointer;
+}
+
+#recognized {
+		border: 0px;
+}
+
+#delete-invalid{
+	cursor:pointer;
+}
+
+#invalid {
+		border: 0px;
+}
+.ui-tabs-anchor{
+	padding:1em;
+}
+
+.footer {
+	display: block;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #EDEDED;
+	background: #098B8B;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0px;
+}
+
+.invoice {
+    border: 1px solid lightgray;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+}
+
+.invoice > p {
+	color: #363636;
+}
+</style>
+</head>
+
+<body>
+	<div class="nav">
+		<div class="container">
+			<a href="/views/webviews/user/setting.html"><img src="/img/webimg/logo-white1.png"></a>
+			<ul id="navigator" class="nav-header">
+			</ul>
+		</div>
+	</div>
+	<div class="nav-t">
+
+		<div class="container" id="container">
+			<ul class="nav-l">
+				<li><a href="#invalid">无法识别</a></li>
+				<li><a href="#unrecognized">未识别</a></li>
+				<li><a href="#recognized">已识别</a></li>
+			</ul>
+
+			<div id="invalid" class="content">
+				<div class="action">
+				<ul class="nav-r">
+					<li class="bs"><input type="checkbox"
+							name="zone_checkbox" value="zone_checkbox"
+							id="check-all-invalid">全选</input>
+					</li>
+					<li id="dispatch-invalid" class="fen">
+					<ul class="operation">
+ 					   <li>
+					        <a href="#">操作</a>
+					        <ul>
+					            <li><a href="javascript:reset()"　id="reset">重置</a></li>
+					            <li><a href="#" id="decrease-priority">其它</a></li>
+					            <li><a href="#">其它</a></li>
+					            <li><a href="#">其它</a></li>
+					        </ul>
+					    </li>
+					</ul>
+					</li>
+					<li><a class="fl delete" id="delete-unrecognized" >删除</a></li>
+				</ul>
+				</div>
+
+			</div>
+			<div id="unrecognized" class="content">
+				<div class="action">
+				<ul class="nav-r">
+					<li class="bs"><input type="checkbox"
+							name="zone_checkbox" value="zone_checkbox"
+							id="check-all-unrecognized">全选</input>
+					</li>
+					<li id="dispatch-unrecognized" class="fen">
+					<ul class="operation">
+ 					   <li>
+					        <a href="#">操作</a>
+					        <ul>
+					            <li><a href="javascript:increasePriority()"　id="increase-priority">提高优先级</a></li>
+					            <li><a href="javascript:decreasePriority()" id="decrease-priority">降低优先级</a></li>
+					            <li><a href="#">其它</a></li>
+					            <li><a href="#">其它</a></li>
+					        </ul>
+					    </li>
+					</ul>
+					</li>
+					<li><a class="fl delete" id="delete-unrecognized" >删除</a></li>
+				</ul>
+				</div>
+
+			</div>
+			<div id="recognized" class="content">
+			<div class="action">
+				<ul class="nav-r">
+					<li class="bs"> <input type="checkbox"
+							name="zone_checkbox" value="zone_checkbox"
+							id="check-all-recognized">全选</input>
+					</li>
+					<li id="dispatch-recognized" class="fen">
+					<ul class="operation">
+ 					   <li>
+					        <a href="#">操作</a>
+					        <ul>
+					            <li><a href="javascript:alert('hello');"　id="increase-priority">导出</a></li>
+					            <li><a href="#" id="decrease-priority">其它</a></li>
+					            <li><a href="#">其它</a></li>
+					            <li><a href="#">其它</a></li>
+					        </ul>
+					    </li>
+					</ul>
+					</li>
+					<li><a class="fl delete" id="delete-unrecognized" >删除</a></li>
+				</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="dispatcher" style="display:none;" >
+			<ul id="dispatcher-ul">
+			</ul>
+		</div>
+		
+		<div class="mask"></div>
+		<div class="footer">
+			<div class="container">
+				<p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL
+					RIGHTS RESERVED</p>
+			</div>
+		</div>
+</body>
+<script src="/js/webjs/jquery-1.11.3.js"></script>
+<script src="/js/webjs/jquery-ui.js"></script>
+<script src="/js/webjs/jquery.tooltipster.js"></script>
+<script src="/js/webjs/dropit.js"></script>
+	<script src="/js/webjs/navigator.js"></script>
+
+<script>
+	$("#container").tabs();
+    $('.operation').dropit();
+    
+
+    function reset(){
+    	var resetStr = "";
+    	$(".invalid-checkbox:checked").each(function(){
+    		
+    		resetStr += $(this).attr("id") + ",";
+    	});
+    	$.post("/invoice/updateInvoicesStatus", {invoiceIds: resetStr, status: "UNRECOGNIZED"},function(){
+    		alert("发票状态已重置为未识别！");
+    		window.location.href="/views/webviews/invoice/manage.html";
+    	});
+
+    	
+    }
+    function increasePriority(){
+    	var invoices = [];
+    	
+       	$( ".unrecognized-checkbox:checked" ).each(function(){
+    		console.log($(this).parent().find("b"));
+    		var priority = $(this).parent().find("b")[0];
+    		console.log(priority.innerHTML);
+    		if(priority.innerHTML == "低"){
+    			invoices.push($(this).attr("id"));
+    			priority.innerHTML = "一般";
+    		}else if (priority.innerHTML == "一般"){
+    			invoices.push($(this).attr("id"));
+    			priority.innerHTML = "高";
+    		}
+    	});
+       	var invoiceStr = invoices.join();
+       	$.post("/invoice/updateInvoicePriority", {"invoices": invoiceStr, "action": "increase"}, function(data){
+       		console.log(data);
+       	});
+    	
+    }
+    
+    function decreasePriority(){
+    	var invoices = [];
+       	$( ".unrecognized-checkbox:checked" ).each(function(){
+    		console.log($(this).parent().find("b"));
+    		var priority = $(this).parent().find("b")[0];
+    		console.log(priority.innerHTML);
+    		if(priority.innerHTML == "一般"){
+    			invoices.push($(this).attr("id"));
+    			priority.innerHTML = "低";
+    		}else if (priority.innerHTML == "高"){
+    			invoices.push($(this).attr("id"));
+    			priority.innerHTML = "一般";
+    		}
+    	});
+       	var invoiceStr = invoices.join();
+       	$.post("/invoice/updateInvoicePriority", {"invoices": invoiceStr, "action": "decrease"}, function(data){
+       		console.log(data);
+       	});
+    }
+
+
+	$.post("/invoice/getInvoicesByStatus", {"status":"UNRECOGNIZED"}, function(data){
+		console.log(data);
+
+		if(data.status == 'nok'){
+			alert("您的访问超时，请重新登录！");
+			window.location.href="/views/frontviews/index.html";
+			return;
+		}
+		var invoices = $.parseJSON(data.data);
+		console.log(invoices);
+		for(key in invoices){
+			var priority = "";
+			console.log(invoices[key]["priority"] ==20);
+			if(invoices[key]["priority"] == 10) {
+				priority = "一般";
+			}else if (invoices[key]["priority"] == 20) {
+				priority = "高";
+			}else {
+				priority = "低";
+			}
+			var invoiceBox = '<div class="tooltip invoice" title="&lt;img onerror=&quot;imgError(this); &quot; src=&quot;'+invoices[key]["path"] + '&quot; /&gt;"><img onerror="imgError(this);" class="invoice-img" src="' + invoices[key]["path"] +
+			'" /> <input type="checkbox" class="unrecognized-checkbox" id="' + invoices[key]["invoice_id"] + '" /><p>优先级: <b>' + priority + '</b></p></div>';
+			$("#unrecognized").append(invoiceBox);
+		}
+		$('.tooltip').tooltipster({
+			contentAsHTML: true
+	    });
+		console.log(invoices);
+	});
+	
+	$.post("/invoice/getInvoicesByStatus", {"status":"RECOGNIZED"}, function(data){
+		console.log(data);
+
+		if(data.status == 'nok'){
+			alert("您的访问超时，请重新登录！");
+			window.location.href="/views/frontviews/index.html";
+			return;
+		}
+		var invoices = $.parseJSON(data.data);
+		console.log(invoices);
+		for(key in invoices){
+			var priority = "";
+			console.log(invoices[key]["priority"] ==20);
+			if(invoices[key]["priority"] == 10) {
+				priority = "一般";
+			}else if (invoices[key]["priority"] == 20) {
+				priority = "高";
+			}else {
+				priority = "低";
+			}
+			var invoiceBox = '<div class="tooltip invoice" title="&lt;img src=&quot;'+invoices[key]["path"] + '&quot; /&gt;"><img class="invoice-img" src="' + invoices[key]["path"] +
+			'" /> <input type="checkbox" class="recognized-checkbox" id="' + invoices[key]["invoice_id"] + '" /><p>优先级: <b>' + priority + '</b></p></div>';
+			$("#recognized").append(invoiceBox);
+		}
+		$('.tooltip').tooltipster({
+			contentAsHTML: true
+	    });
+		console.log(invoices);
+	});
+	
+	$.post("/invoice/getInvoicesByStatus", {"status":"INVALID"}, function(data){
+		console.log('hellloooo');
+
+		if(data.status == 'nok'){
+			alert("您的访问超时，请重新登录！");
+			window.location.href="/views/frontviews/index.html";
+			return;
+		}
+		var invoices = $.parseJSON(data.data);
+		console.log(invoices);
+		for(key in invoices){
+			var priority = "";
+			console.log(invoices[key]["priority"] ==20);
+			if(invoices[key]["priority"] == 10) {
+				priority = "一般";
+			}else if (invoices[key]["priority"] == 20) {
+				priority = "高";
+			}else {
+				priority = "低";
+			}
+			var invoiceBox = '<div class="tooltip invoice" title="&lt;img src=&quot;'+invoices[key]["path"] + '&quot; /&gt;"><img class="invoice-img" src="' + invoices[key]["path"] +
+			'" /> <input type="checkbox" class="invalid-checkbox" id="' + invoices[key]["invoice_id"] + '" /><p>优先级: <b>' + priority + '</b></p></div>';
+			$("#invalid").append(invoiceBox);
+		}
+		$('.tooltip').tooltipster({
+			contentAsHTML: true
+	    });
+		console.log(invoices);
+	});
+
+	
+	$("#check-all-unrecognized").change(function(){
+		if($(this).prop("checked")){
+			$(".unrecognized-checkbox").each(function(){
+				$(this).prop("checked", true);
+			});
+			
+		}else{
+			$(".unrecognized-checkbox").each(function(){
+				$(this).prop("checked", false);
+			});
+		}
+		
+	});
+	
+	$("#delete-unrecognized").on("click", function(){
+		$(".unrecognized-checkbox:checked").each(function(){
+			$(this).parent().remove();
+		});
+		
+	});
+	
+	$("#check-all-recognized").change(function(){
+		if($(this).prop("checked")){
+			$(".recognized-checkbox").each(function(){
+				$(this).prop("checked", true);
+			});
+			
+		}else{
+			$(".recognized-checkbox").each(function(){
+				$(this).prop("checked", false);
+			});
+		}
+		
+	});
+	
+	$("#delete-recognized").on("click", function(){
+		$(".recognized-checkbox:checked").each(function(){
+			$(this).parent().remove();
+		});
+		
+	});	
+	
+	$("#check-all-invalid").change(function(){
+		if($(this).prop("checked")){
+			$(".invalid-checkbox").each(function(){
+				$(this).prop("checked", true);
+			});
+			
+		}else{
+			$(".invalid-checkbox").each(function(){
+				$(this).prop("checked", false);
+			});
+		}
+		
+	});
+	
+	$("#delete-invalid").on("click", function(){
+		$(".invalid-checkbox:checked").each(function(){
+			$(this).parent().remove();
+		});
+		
+	});
+	
+    function imgError(image) {
+        image.onerror = "";
+        image.src = "/img/webimg/error-small.jpg";
+        return true;
+    }
+	
+</script>
+<script language="JavaScript">
+	function getByClass(cla, obj) {
+		var obj = obj || document, arr = [];
+
+		if (document.getElementsByClassName) {
+			return document.getElementsByClassName(cla);
+		} else {
+			var all = obj.getElementsByTagName('*');
+
+			for (var i = 0, len = all.length; i < len; i++) {
+				if (all[i].className.match(cla) != null)
+					arr.push(all[i]);
+			}
+
+			return arr;
+		}
+	}
+	function checkAll(cla, obj) {
+		var checkboxs = getByClass(cla);
+		var len = checkboxs.length;
+		for (i = 0; i < len; i++) {
+			checkboxs[i].checked = obj.checked;
+		}
+	}
+	
+
+</script>
+<script>
+	$(function() {
+		$("#delete").bind("click", allDelete);
+		function allDelete() {
+			$(".tp-t :checkbox:checked").each(function(index, element) {//循环没一个勾选checked input元素
+				var row = $(this).parent().parent();
+				row.remove();
+			});
+			calAll();
+		}
+
+	})
+</script>
+</html>

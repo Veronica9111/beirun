@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.InvoiceMapper">
+<cache />
+<resultMap type="com.wisdom.common.model.Invoice" id="Invoice">  
+<result property="id" column="id"/>
+<result property="uid" column="uid"/>
+<result property="name" column="name"/>  
+<result property="created_time" column="created_time"/>  
+<result property="modified_time" column="modified_time"/>  
+<result property="priority" column="priority"/>  
+<result property="path" column="path"/> 
+<result property="company" column="company"/> 
+<result property="exported" column="exported"/> 
+<result property="document" column="document"/> 
+<result property="status" column="status"/>
+<result property="invoice_id" column="invoice_id"/>
+<result property="company_id" column="company_id"/>
+</resultMap>
+  <select id="getAllInvoices" resultType="Invoice">
+    SELECT
+      *
+    FROM invoice
+  </select>
+  
+  <insert id="addInvoice" parameterType="String">
+  INSERT INTO invoice
+  (id, name, created_time, priority, path, company, exported, uid,document, status, invoice_id, company_id)
+VALUES
+  (#{id}, #{name},#{created_time}, #{priority}, #{path}, #{company}, 0, null, null, "UNRECOGNIZED", #{invoice_id}, #{company_id})
+ON DUPLICATE KEY UPDATE
+  created_time     = VALUES(created_time),
+  priority = VALUES(priority),
+  path = VALUES(path),
+  company = VALUES(company),
+  company_id = VALUES(company_id)
+
+  </insert>
+  <select id="getInvoicesByCompany" parameterType="String" resultType="Invoice">
+  select * from invoice where company=#{company}
+  </select>
+  <select id="getInvoicesByStatus" parameterType="String" resultType="Invoice">
+  select * from invoice where status=#{status}
+  </select>
+  <select id="getUnexportedInvoices" resultType="Invoice">
+  select * from invoice where exported = 0
+  </select>
+  <select id="getInvoiceById" resultType="Invoice" parameterType="String">
+  select * from invoice where id=#{id}
+  </select>
+  <update id="setInvoiceExported" parameterType="String">
+  update invoice set exported=1 where id=#{id}
+  </update>
+  <update id="updateInvoiceStatus" parameterType="String">
+  update invoice set status=#{status}, modified_time=now() where id=#{id}
+  </update>
+  <update id="updateInvoiceOwner" parameterType="Integer" >
+  update invoice set uid=#{uid} where id=#{id}
+  </update>
+  <update id="updateInvoiceStatusWithInvoiceId" parameterType="String">
+  update invoice set status=#{status} where invoice_id=#{invoice_id}
+  </update>
+  <insert id="addModifyInvoiceRecord" parameterType="String">
+  insert into record (uid, invoice_id, action, created_time) values(#{uid}, #{invoice_id}, #{action}, #{created_time})
+  </insert>
+  <select id="getInvoiceForUserByStatus" parameterType="String" resultType="Invoice">
+  select * from invoice where status=#{status} and (uid is null or uid = 0) order by created_time, priority desc limit 1
+  </select>
+  <select id="getInvoiceByUserAndStatus" parameterType="String" resultType="Invoice">
+  select * from invoice where status=#{status} and uid=#{uid} order by created_time, priority desc limit 1
+  </select>
+  <update id="increaseInvoicePriority" parameterType="String">
+  update invoice set priority = priority + 10 where id = #{id}
+  </update>
+  <update id="decreaseInvoicePriority" parameterType="String">
+  update invoice set priority = priority - 10 where id = #{id}
+  </update>
+  <delete id="deleteInvoice" parameterType="long">
+  delete from invoice where invoice_id=#{invoice_id}
+  </delete>
+  <select id="getInvoiceByInvoiceId" parameterType="long" resultType="Invoice">
+  select * from invoice where invoice_id=#{invoice_id}
+  </select>
+
+</mapper>
