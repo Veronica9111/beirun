@@ -10,10 +10,10 @@ public interface XiangMuTaiZhangMapper {
 
 	Integer addXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
-	XiangMuTaiZhang getXiangMuTaiZhangById(Integer id);
+	XiangMuTaiZhang getXiangMuTaiZhangById(Long id);
 	
 	void updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
-	List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Integer company_id);
+	List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long company_id);
 
 }

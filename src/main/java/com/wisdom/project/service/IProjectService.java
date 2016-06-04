@@ -14,7 +14,7 @@ public interface IProjectService {
 	
 	public Boolean addProject(XiangMuTaiZhang xmtz);
 	
-	public XiangMuTaiZhang getXiangMuTaiZhangById(Integer id);
+	public XiangMuTaiZhang getXiangMuTaiZhangById(Long id);
 	
 	public Boolean updateProject(XiangMuTaiZhang xmtz);
 	
@@ -28,6 +28,6 @@ public interface IProjectService {
 	
 	public Boolean updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
-	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Integer companyId);
+	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long companyId);
 
 }

@@ -95,7 +95,7 @@ public class ProjectServiceImpl implements IProjectService {
 
 
 	@Override
-	public XiangMuTaiZhang getXiangMuTaiZhangById(Integer id) {
+	public XiangMuTaiZhang getXiangMuTaiZhangById(Long id) {
 		return xiangmutaizhangMapper.getXiangMuTaiZhangById(id);
 	}
 
@@ -110,7 +110,7 @@ public class ProjectServiceImpl implements IProjectService {
 
 	@Override
 	public List<XiangMuTaiZhang> getProjectsByCompanyId(Integer companyId) {
-		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId(companyId);
+		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId((long)companyId);
 
 	}
 
@@ -195,7 +195,7 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 	
 	@Override
-	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Integer companyId) {
+	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long companyId) {
 		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId(companyId);
 
 	}

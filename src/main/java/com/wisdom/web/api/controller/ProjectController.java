@@ -118,8 +118,8 @@ public class ProjectController {
 		queryKey = queryKey.substring(0, 1).toUpperCase() + queryKey.substring(1);
 		Object ret;
 		if(isInteger(queryValue)){
-			Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, Integer.class);
-			 ret = m.invoke(projectService, Integer.valueOf(queryValue));
+			Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, Long.class);
+			 ret = m.invoke(projectService, Long.valueOf(queryValue));
 		}else{
 			Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, String.class);
 			ret = m.invoke(projectService, queryValue);
@@ -221,7 +221,7 @@ public class ProjectController {
 	@RequestMapping("/project/getProjectById")
 	@ResponseBody
 	public Map<String, Object> getProjectById(HttpServletRequest request) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
+		Long id = Long.valueOf(request.getParameter("id"));
 		XiangMuTaiZhang xmtz = projectService.getXiangMuTaiZhangById(id);
 		ObjectMapper m = new ObjectMapper();
 		Map<String,Object> props = m.convertValue(xmtz, Map.class);
@@ -233,7 +233,7 @@ public class ProjectController {
 	@RequestMapping("/project/modifyProject")
 	@ResponseBody
 	public Map<String, String> updateProjectById(HttpServletRequest request) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
-		Integer id = Integer.valueOf(request.getParameter("id"));
+		Long id = Long.valueOf(request.getParameter("id"));
 		XiangMuTaiZhang xmtz = projectService.getXiangMuTaiZhangById(id);
 		Map<String, String[]> params = request.getParameterMap();
 		xmtz = setXiangMuTaiZhangModel(xmtz, params);
@@ -309,10 +309,11 @@ public class ProjectController {
 		      if(entry.getKey().equals("id") || entry.getKey().equals("class_name")){
 		    	  continue;
 		      }
-		      if(entry.getKey().equals("company_id")){
-		    	  Integer argI = Integer.valueOf(arg);
-		    	  m = model.getClass().getMethod(methodName, String.class);
+		      if(entry.getKey().indexOf("_id") != -1){
+		    	  Long argI = Long.valueOf(arg);
+		    	  m = model.getClass().getMethod(methodName, Long.class);
 					Object ret = m.invoke(model, argI);
+					continue;
 		      }
 			try {
 				m = model.getClass().getMethod(methodName, String.class);
