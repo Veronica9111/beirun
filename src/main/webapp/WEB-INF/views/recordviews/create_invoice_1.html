@@ -994,6 +994,13 @@ td
 	</td>
    </tr>
   </table>
+  <div id="dialog">
+      <input id="putong" type="button" value="普通" class="btn btn-default btn-lg"/>
+      <input id="jianyi" type="button" value="简易" class="btn btn-default btn-lg"/>
+  </div>
+  <input id="submit" type="button" value="弹出框" class="btn btn-default btn-lg" />
+  <input id="approve" type="button" value="通过" class="btn btn-success btn-lg" />
+  <input id="reject" type="button" value="拒绝" class="btn btn-danger btn-lg" />
 </div>
 <div class="mask"></div>
 <div class="footer">
@@ -1001,7 +1008,27 @@ td
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
-
+<script type="text/javascript">
+dialog = $( "#dialog" ).dialog({
+    autoOpen: false,
+    height: 200,
+    width: 250,
+    modal: true,
+    buttons: {
+      Cancel: function() {
+        dialog.dialog( "close" );
+      }
+    },
+    close: function() {
+      form[ 0 ].reset();
+      allFields.removeClass( "ui-state-error" );
+    }
+  });
+  $("#submit").on("click", function(){
+      dialog.dialog( "open" );
+	  
+  });
+</script>
 
 </body>
 
