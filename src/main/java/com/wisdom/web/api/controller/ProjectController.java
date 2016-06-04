@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Permission;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.permission.service.IPermissionService;
@@ -70,6 +71,45 @@ public class ProjectController {
 		String type = request.getParameter("type");
 		System.out.println("Prject Id: " + projectId + " approvalName: " + approvalName + " status: " + status + " type: " + type);
 		retMap.put("status", "ok");
+		return retMap;
+	}
+	
+	@RequestMapping("/project/getProjectsByCompanyId")
+	@ResponseBody
+	public Map<String, String> getProjectsByCompanyId(HttpServletRequest request, HttpSession httpSession){
+		Map<String, String> retMap = new HashMap<>();
+		Integer companyId = Integer.valueOf(request.getParameter("company_id"));
+
+		List<XiangMuTaiZhang> projects = projectService.getProjectsByCompanyId(companyId);
+		List<Object> retList = new ArrayList<>();
+		for(XiangMuTaiZhang project: projects){
+			List<Object> tmpList = new ArrayList<>();
+			tmpList.add(project.getId());
+			tmpList.add(project.getXiangmumingcheng());
+			retList.add(tmpList);
+		}
+		String data = JSONArray.fromObject(retList).toString();
+		retMap.put("data", data);
+		return retMap;
+		
+	}
+	
+	@RequestMapping("/project/getKaiPiaoShenQingDanByProjectId")
+	@ResponseBody
+	public Map<String, String> getKaiPiaoShenQingDanByProjectId(HttpServletRequest request, HttpSession httpSession){
+		Map<String, String> retMap = new HashMap<>();
+		Integer projectId = Integer.valueOf(request.getParameter("project_id"));
+		List<KaiPiaoShenQingDan> kpsqdList = projectService.getKaiPiaoShenQingDanByProjectId(projectId);
+		List<Object> retList = new ArrayList<>();
+		for(KaiPiaoShenQingDan kpsqd: kpsqdList){
+			List<Object> tmpList = new ArrayList<>();
+			tmpList.add(kpsqd.getId());
+			tmpList.add(kpsqd.getKaipiaoneirong());
+			retList.add(tmpList);
+			
+		}
+		String data = JSONArray.fromObject(retList).toString();
+		retMap.put("data", data);
 		return retMap;
 	}
 
@@ -132,6 +172,47 @@ public class ProjectController {
 		
 	}
 	
+	
+	@RequestMapping("/project/getXiangMuTaiZhangHTML")
+	@ResponseBody
+	public Map<String, String> getXiangMuTaiZhangHTML(HttpServletRequest request) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		String type = request.getParameter("type");
+		String html = "";
+		Map<String, String> retMap = new HashMap<>();
+		
+		if (type.equals("create")){
+			html="<table width='1333' border='0' cellpadding='0' cellspacing='0' style='width:666.50pt;border-collapse:collapse;table-layout:fixed;'> <tr height='42' style='height:21.00pt;'>      <td class='xl65' height='42' width='1333' colspan='10' style='height:21.00pt;width:666.50pt;border-right:none;border-bottom:none;' x:str>项 目 台 账</td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl66' height='28' colspan='2' style='text-align:left;height:14.00pt;border-right:none;border-bottom:none;' x:str>分公司名称：</td>      <td class='xl66' height='28' colspan='3' style='height:14.00pt;border-right:none;border-bottom:none;' x:str id='fengongsimingcheng'></td>      <td class='xl67' colspan='2' style='border-right:none;border-bottom:none;' x:str>项目部：</td>     <td class='xl67' colspan='3' style='border-right:none;border-bottom:none;' x:str id='xiangmubu'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl68' height='28' colspan='10' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>甲方基本信息情况表</td>    </tr>    <tr height='28' style='height:14.00pt;'>     <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>单位名称</td>      <td class='xl70' colspan='8' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str ><input style='width:100%;' id='danweimingcheng'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>法定代表人、联系电话</td>      <td class='xl70' colspan='8' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='fadingdaibiaoren_lianxidianhua'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>纳税人识别号</td>      <td class='xl70' colspan='8' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='nashuirenshibiehao'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开户银行、银行账号</td>      <td class='xl70' colspan='8' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='kaihuyinhang_yinhangzhanghao'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>单位地址、联系电话<span style='mso-spacerun:yes;'>&nbsp;</span></td>      <td class='xl70' colspan='8' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='danweidizhi_lianxidianhua'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>项目名称</td>      <td class='xl70' colspan='8' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='xiangmumingcheng'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>项目负责人、联系电话</td>      <td class='xl70' colspan='8' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='xiangmufuzeren_lianxidianhua'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>合同类型</td>      <td class='xl70' colspan='8' style='text-align:left;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>     <form id='hetongleixing' style='height:20px;line-height:20px;'>            <input type='radio' name='hetongleixing_select' value='baogongbaoliao'> 包工包料           <input type='radio' name='hetongleixing_select' value='qingbaogong'> 清包工            <input type='radio' name='hetongleixing_select' value='jiagongcai'> 甲供材         <input type='radio' name='hetongleixing_select' value='qita'>其他      </form>  </td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>税率</td>      <td class='xl70' colspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='shuilv'></td>      <td class='xl70' x:str>征收率</td>      <td class='xl70' colspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='zhengshoulv'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>合同金额</td>      <td class='xl70' x:str>不含税金额</td>      <td class='xl70' id=''><input style='width:100%;' id='buhanshuijine'></td>      <td class='xl70' x:str>税额</td>      <td class='xl70' id=''><input style='width:100%;' id='shuie'></td>      <td class='xl70'></td>      <td class='xl70'></td>      <td class='xl70' x:str>合计金额</td>      <td class='xl70' id=''><input style='width:100%;' id='hejijine'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>决算金额</td>      <td class='xl70' colspan='8' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='juesuanjine'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>预计合同总成本</td>      <td class='xl70' colspan='8' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='yujihetongzongchengben'></td>     </tr>     <tr height='56' style='height:28.00pt;'>      <td class='xl69' height='56' colspan='2' style='height:28.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>合同签订时间</td>      <td class='xl70' colspan='2' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='hetongqiandingshijian'></td>      <td class='xl71' x:str>合同开工时间</td>      <td class='xl71' id=''><input style='width:100%;' id='hetongkaigongshijian'></td>      <td class='xl71' x:str>开工许可证时间</td>      <td class='xl71' id=''><input style='width:100%;' id='kaigongxukezhengshijian'></td>      <td class='xl71' x:str>预计完工时间</td>      <td class='xl71' id=''><input style='width:100%;' id='yujiwangongshijian'></td>     </tr>     <tr height='28' style='height:14.00pt;'>      <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>合同付款方式</td>      <td class='xl70' colspan='8' style='text-align:left;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>     <form id='hetongfukuanfangshi' style='height:20px;line-height:20px;'>          <input type='radio' name='hetongfukuanfangshi_select' value='yicixingfukuan'>一次性付款            <input type='radio' name='hetongfukuanfangshi_select' value='qingbaogong'>完工进度         <input type='radio' name='hetongfukuanfangshi_select' value='jiagongcai'>其它      </form>    </td>     </tr>    </table><input id='create-xiangmutaizhang' type='button' value='创建'/>";
+			retMap.put("data", html);
+		}
+		retMap.put("status", "ok");
+
+		return retMap;
+		
+	}
+	
+	@RequestMapping("/getMenu")
+	@ResponseBody
+	public Map<String, String> getMenu(HttpServletRequest request){
+		Map<String, String> retMap = new HashMap<>();
+		Map<String, List<Map<String, List<String>>>> menu = new HashMap<>();
+		/*Integer companyId = Integer.valueOf(request.getParameter("company_id"));
+		
+		List<XiangMuTaiZhang> projects = projectService.getProjectsByCompanyId(companyId);
+		List<String> projectNames = new ArrayList<>();
+		for(XiangMuTaiZhang project: projects){
+			projectNames.add(project.getXiangmumingcheng());
+		}
+		String data = JSONArray.fromObject(projectNames).toString();*/
+		
+		List<Map<String, Object>> menus = projectService.getMenu();
+		String data = JSONArray.fromObject(menus).toString();
+		retMap.put("data", data);
+		
+		return retMap;
+	}
+	
+	
+	
 	public XiangMuTaiZhang setXiangMuTaiZhangModel(XiangMuTaiZhang xmtz, Map<String, String[]> params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 for (Entry<String, String[]> entry : params.entrySet()) {
 			
@@ -141,6 +222,11 @@ for (Entry<String, String[]> entry : params.entrySet()) {
 		      Method m;
 		      if(entry.getKey().equals("id")){
 		    	  continue;
+		      }
+		      if(entry.getKey().equals("company_id")){
+		    	  Integer argI = Integer.valueOf(arg);
+		    	  m = xmtz.getClass().getMethod(methodName, String.class);
+					Object ret = m.invoke(xmtz, argI);
 		      }
 			try {
 				m = xmtz.getClass().getMethod(methodName, String.class);

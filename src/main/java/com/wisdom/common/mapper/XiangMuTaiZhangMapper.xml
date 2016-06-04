@@ -27,20 +27,25 @@
 <result property="kaigongxukezhengshijian" column="kaigongxukezhengshijian"/>
 <result property="yujiwangongshijian" column="yujiwangongshijian"/>
 <result property="hetongfukuanfangshi" column="hetongfukuanfangshi"/>
+<result property="company_id" column="company_id"/>
 </resultMap>
  <insert id="addXiangMuTaiZhang" parameterType="String">
-insert into xiangmutaizhang(fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidianhua,nashuirenshibiehao,kaihuyinhang_yinhangzhanghao,danweidizhi_lianxidianhua,xiangmumingcheng,xiangmufuzeren_lianxidianhua,hetongleixing,shuilv,zhengshoulv,buhanshuijine,shuie,hejijine,juesuanjine,yujihetongzongchengben,hetongqiandingshijian,hetongkaigongshijian,kaigongxukezhengshijian,yujiwangongshijian,hetongfukuanfangshi)
-values(#{fengongsimingcheng},#{xiangmubu},#{danweimingcheng},#{fadingdaibiaoren_lianxidianhua},#{nashuirenshibiehao},#{kaihuyinhang_yinhangzhanghao},#{danweidizhi_lianxidianhua},#{xiangmumingcheng},#{xiangmufuzeren_lianxidianhua},#{hetongleixing},#{shuilv},#{zhengshoulv},#{buhanshuijine},#{shuie},#{hejijine},#{juesuanjine},#{yujihetongzongchengben},#{hetongqiandingshijian},#{hetongkaigongshijian},#{kaigongxukezhengshijian},#{yujiwangongshijian},#{hetongfukuanfangshi})
+insert into xiangmutaizhang(fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidianhua,nashuirenshibiehao,kaihuyinhang_yinhangzhanghao,danweidizhi_lianxidianhua,xiangmumingcheng,xiangmufuzeren_lianxidianhua,hetongleixing,shuilv,zhengshoulv,buhanshuijine,shuie,hejijine,juesuanjine,yujihetongzongchengben,hetongqiandingshijian,hetongkaigongshijian,kaigongxukezhengshijian,yujiwangongshijian,hetongfukuanfangshi,company_id)
+values(#{fengongsimingcheng},#{xiangmubu},#{danweimingcheng},#{fadingdaibiaoren_lianxidianhua},#{nashuirenshibiehao},#{kaihuyinhang_yinhangzhanghao},#{danweidizhi_lianxidianhua},#{xiangmumingcheng},#{xiangmufuzeren_lianxidianhua},#{hetongleixing},#{shuilv},#{zhengshoulv},#{buhanshuijine},#{shuie},#{hejijine},#{juesuanjine},#{yujihetongzongchengben},#{hetongqiandingshijian},#{hetongkaigongshijian},#{kaigongxukezhengshijian},#{yujiwangongshijian},#{hetongfukuanfangshi},#{company_id})
 </insert>
 <select id="getXiangMuTaiZhangById" parameterType="Integer" resultType="XiangMuTaiZhang">
-select id,fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidianhua,nashuirenshibiehao,kaihuyinhang_yinhangzhanghao,danweidizhi_lianxidianhua,xiangmumingcheng,xiangmufuzeren_lianxidianhua,hetongleixing,shuilv,zhengshoulv,buhanshuijine,shuie,hejijine,juesuanjine,yujihetongzongchengben,hetongqiandingshijian,hetongkaigongshijian,kaigongxukezhengshijian,yujiwangongshijian,hetongfukuanfangshi
+select id,fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidianhua,nashuirenshibiehao,kaihuyinhang_yinhangzhanghao,danweidizhi_lianxidianhua,xiangmumingcheng,xiangmufuzeren_lianxidianhua,hetongleixing,shuilv,zhengshoulv,buhanshuijine,shuie,hejijine,juesuanjine,yujihetongzongchengben,hetongqiandingshijian,hetongkaigongshijian,kaigongxukezhengshijian,yujiwangongshijian,hetongfukuanfangshi,company_id
 from xiangmutaizhang
 where id=#{id}
 </select>
 <update id="updateXiangMuTaiZhang" parameterType="Integer">
-update xiangmutaizhang set fengongsimingcheng=#{fengongsimingcheng},xiangmubu=#{xiangmubu},danweimingcheng=#{danweimingcheng},fadingdaibiaoren_lianxidianhua=#{fadingdaibiaoren_lianxidianhua},nashuirenshibiehao=#{nashuirenshibiehao},kaihuyinhang_yinhangzhanghao=#{kaihuyinhang_yinhangzhanghao},danweidizhi_lianxidianhua=#{danweidizhi_lianxidianhua},xiangmumingcheng=#{xiangmumingcheng},xiangmufuzeren_lianxidianhua=#{xiangmufuzeren_lianxidianhua},hetongleixing=#{hetongleixing},shuilv=#{shuilv},zhengshoulv=#{zhengshoulv},buhanshuijine=#{buhanshuijine},shuie=#{shuie},hejijine=#{hejijine},juesuanjine=#{juesuanjine},yujihetongzongchengben=#{yujihetongzongchengben},hetongqiandingshijian=#{hetongqiandingshijian},hetongkaigongshijian=#{hetongkaigongshijian},kaigongxukezhengshijian=#{kaigongxukezhengshijian},yujiwangongshijian=#{yujiwangongshijian},hetongfukuanfangshi=#{hetongfukuanfangshi}
+update xiangmutaizhang set fengongsimingcheng=#{fengongsimingcheng},xiangmubu=#{xiangmubu},danweimingcheng=#{danweimingcheng},fadingdaibiaoren_lianxidianhua=#{fadingdaibiaoren_lianxidianhua},nashuirenshibiehao=#{nashuirenshibiehao},kaihuyinhang_yinhangzhanghao=#{kaihuyinhang_yinhangzhanghao},danweidizhi_lianxidianhua=#{danweidizhi_lianxidianhua},xiangmumingcheng=#{xiangmumingcheng},xiangmufuzeren_lianxidianhua=#{xiangmufuzeren_lianxidianhua},hetongleixing=#{hetongleixing},shuilv=#{shuilv},zhengshoulv=#{zhengshoulv},buhanshuijine=#{buhanshuijine},shuie=#{shuie},hejijine=#{hejijine},juesuanjine=#{juesuanjine},yujihetongzongchengben=#{yujihetongzongchengben},hetongqiandingshijian=#{hetongqiandingshijian},hetongkaigongshijian=#{hetongkaigongshijian},kaigongxukezhengshijian=#{kaigongxukezhengshijian},yujiwangongshijian=#{yujiwangongshijian},hetongfukuanfangshi=#{hetongfukuanfangshi},company_id=#{company_id}
 where id=#{id}
 </update>
-
+<select id="getXiangMuTaiZhangByCompanyId" parameterType="Integer" resultType="XiangMuTaiZhang">
+select id,fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidianhua,nashuirenshibiehao,kaihuyinhang_yinhangzhanghao,danweidizhi_lianxidianhua,xiangmumingcheng,xiangmufuzeren_lianxidianhua,hetongleixing,shuilv,zhengshoulv,buhanshuijine,shuie,hejijine,juesuanjine,yujihetongzongchengben,hetongqiandingshijian,hetongkaigongshijian,kaigongxukezhengshijian,yujiwangongshijian,hetongfukuanfangshi,company_id
+from xiangmutaizhang
+where company_id=#{company_id}
+</select>
 
 </mapper>

@@ -177,7 +177,11 @@ $("#modify").on("click", function(){
 	});
 	
 });
-</script>
 
+$.post("/getMenu",{company_id: 1}, function(data){
+	console.log(data);
+	
+});
+</script>
 </body>
 </html>

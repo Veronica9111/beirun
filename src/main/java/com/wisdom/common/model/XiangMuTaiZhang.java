@@ -29,6 +29,7 @@ public class XiangMuTaiZhang implements java.io.Serializable{
     private Timestamp kaigongxukezhengshijian;
     private Timestamp yujiwangongshijian;
     private String hetongfukuanfangshi;
+    private Integer company_id;
 
 
 
@@ -38,7 +39,7 @@ public class XiangMuTaiZhang implements java.io.Serializable{
         super();
     }
  
-    public XiangMuTaiZhang(Integer id,String fengongsimingcheng,String xiangmubu,String danweimingcheng,String fadingdaibiaoren_lianxidianhua,String nashuirenshibiehao,String kaihuyinhang_yinhangzhanghao,String danweidizhi_lianxidianhua,String xiangmumingcheng,String xiangmufuzeren_lianxidianhua,String hetongleixing,String shuilv,String zhengshoulv,Double buhanshuijine,Double shuie,Double hejijine,Double juesuanjine,Double yujihetongzongchengben,Timestamp hetongqiandingshijian,Timestamp hetongkaigongshijian,Timestamp kaigongxukezhengshijian,Timestamp yujiwangongshijian,String hetongfukuanfangshi) {
+    public XiangMuTaiZhang(Integer id,String fengongsimingcheng,String xiangmubu,String danweimingcheng,String fadingdaibiaoren_lianxidianhua,String nashuirenshibiehao,String kaihuyinhang_yinhangzhanghao,String danweidizhi_lianxidianhua,String xiangmumingcheng,String xiangmufuzeren_lianxidianhua,String hetongleixing,String shuilv,String zhengshoulv,Double buhanshuijine,Double shuie,Double hejijine,Double juesuanjine,Double yujihetongzongchengben,Timestamp hetongqiandingshijian,Timestamp hetongkaigongshijian,Timestamp kaigongxukezhengshijian,Timestamp yujiwangongshijian,String hetongfukuanfangshi, Integer company_id) {
         super();
         this.id = id;
         this.fengongsimingcheng = fengongsimingcheng;
@@ -63,6 +64,7 @@ public class XiangMuTaiZhang implements java.io.Serializable{
         this.kaigongxukezhengshijian = kaigongxukezhengshijian;
         this.yujiwangongshijian = yujiwangongshijian;
         this.hetongfukuanfangshi= hetongfukuanfangshi;
+        this.company_id = company_id;
 
 
 
@@ -258,6 +260,14 @@ public class XiangMuTaiZhang implements java.io.Serializable{
 
 	public void setHetongfukuanfangshi(String hetongfukuanfangshi) {
 		this.hetongfukuanfangshi = hetongfukuanfangshi;
+	}
+
+	public Integer getCompany_id() {
+		return company_id;
+	}
+
+	public void setCompany_id(Integer company_id) {
+		this.company_id = company_id;
 	}
     
     

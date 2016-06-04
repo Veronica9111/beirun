@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.CompanyMapper">
+<cache />
+<resultMap type="com.wisdom.common.model.Company" id="Company">  
+<result property="id" column="id"/> 
+<result property="name" column="name"/>
+<result property="parent_id" column="parent_id"/>
+<result property="level" column="level"/>
+<result property="create_time" column="create_time"/>     
+</resultMap>
+
+  
+
+ <select id="getAllCompanies" resultType="Company">
+	select id, name, parent_id, level, create_time from company
+</select>
+</mapper>
