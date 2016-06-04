@@ -190,6 +190,20 @@ public class ProjectController {
 		
 	}
 	
+	@RequestMapping("/project/getKaiPiaoShenQingDanHTML")
+	@ResponseBody
+	public Map<String, String> getKaiPiaoShenQingDanHTML(HttpServletRequest request){
+		String type = request.getParameter("type");
+		String html = "";
+		Map<String, String> retMap = new HashMap<>();
+		if(type.equals("create")){
+			html = "  <table width='1097' border='0' cellpadding='0' cellspacing='0' style='width:548.50pt;border-collapse:collapse;table-layout:fixed;'>  <tr height='35' style='height:17.50pt;'>    <td class='xl65' height='35' width='1097' colspan='6' style='height:17.50pt;width:548.50pt;border-right:none;border-bottom:none;' x:str>开票申请单</td>   </tr>   <tr height='28' style='height:14.00pt;'>    <td class='xl66' height='28' style='height:14.00pt;' x:str>分公司名称：</td>    <td class='xl66' id='fengongsimingcheng'></td>    <td class='xl67' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;'></td>    <td class='xl66' x:str>项目部：</td>    <td class='xl66' id='xiangmubu'></td>   </tr>   <tr height='28' style='height:14.00pt;'>    <td class='xl68' height='28' style='height:14.00pt;' x:str>项目名称</td>    <td class='xl69' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='xiangmumingcheng'></td>    <td class='xl71' x:str>合同总金额</td>    <td class='xl71' colspan='2' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='hetongzongjine'></td>   </tr>   <tr height='28' style='height:14.00pt;'>    <td class='xl73' height='112' rowspan='4' style='height:56.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请日期</td>    <td class='xl74' rowspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开票内容</td>    <td class='xl75' colspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请开票金额 （含税）</td>   </tr>   <tr height='28' style='height:14.00pt;'>    <td class='xl79' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开具发票</td>    <td class='xl80' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>收讫款项</td>    <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>完工进度</td>    <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>其他</td>   </tr>   <tr height='28' style='height:14.00pt;'/>   <tr height='28' style='height:14.00pt;'/>   <tr height='28' style='height:14.00pt;'>    <td class='xl87' height='28' style='height:14.00pt;' id='shenqingriqi'><input style='width:100%;' id='shenqingriqi'></td>    <td class='xl87' id='kaipiaoneirong'><input style='width:100%;' id='kaipiaoneirong'></td>    <td class='xl87' id='kaijufapiao'><input style='width:100%;' id='kaijufapiao'></td>    <td class='xl87' id='shouqikuanxiang'><input style='width:100%;' id='shouqikuanxiang'></td>    <td class='xl87' id='wangongjindu'><input style='width:100%;' id='wangongjindu'></td>    <td class='xl87' id='qita'><input style='width:100%;' id='qita'></td>   </tr>  </table>";
+			retMap.put("data", html);
+		}
+		retMap.put("status", "ok");
+		return retMap;
+	}
+		
 	@RequestMapping("/getMenu")
 	@ResponseBody
 	public Map<String, String> getMenu(HttpServletRequest request){

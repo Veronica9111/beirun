@@ -343,6 +343,7 @@ $.post('/getMenu',{},function(dataSet){
 				console.log(data);
 				 dataSet  = $.parseJSON(data.data);
 				$("#container").html("<input id='create-kpsqd' value='新建开票申请单' type='button'/><table id='kpsqd-table'></table>");
+
 				$('#kpsqd-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
 			    	data: dataSet,	
 			    	"order": [[ 0, "desc" ]],
@@ -361,6 +362,17 @@ $.post('/getMenu',{},function(dataSet){
 				        //{ title: "" }
 				    ]
 				} );
+				$("#create-kpsqd").on("click", function(){
+					$.post("/project/getKaiPiaoShenQingDanHTML", {'type':'create'}, function(data){
+						$("#container").html(data.data);
+						var parentNode = $('#left-menu').treeview('getParent', node);
+						console.log(parentNode);
+						var companyName = parentNode.text;
+						$("#fengongsimingcheng").html(companyName);
+					});
+					
+				});
+				
 			});
 			
 		}else if(level == "1"){
