@@ -125,6 +125,7 @@
 </div>
 
 <input id="submit" type="button" value="提交">
+<input id="modify" type="button" value="更新">
 <script>
 $("#submit").on("click", function(){
 	console.log($(".text"));
@@ -152,6 +153,28 @@ $.post("/project/getProjectById", {id:1}, function(data){
 	for(key in data){
 		$("#" + key).val(data[key]);
 	}
+	
+});
+
+$("#modify").on("click", function(){
+	console.log($(".text"));
+	var hetongleixing = $('input:checked', '#hetongleixing').val();
+	var hetongfukuanfangshi = $('input:checked', '#hetongfukuanfangshi').val();
+	console.log(hetongleixing);
+	console.log(hetongfukuanfangshi);
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+	dataSet['hetongleixing'] = hetongleixing;
+	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
+	dataSet['id'] = 1;
+	
+	$.post('/project/modifyProject', dataSet, function(data){
+		console.log(data);
+		
+	});
 	
 });
 </script>

@@ -12,5 +12,7 @@ public interface IProjectService {
 	
 	public XiangMuTaiZhang getXiangMuTaiZhangById(Integer id);
 	
+	public Boolean updateProject(XiangMuTaiZhang xmtz);
+	
 
 }

@@ -81,5 +81,13 @@ public class ProjectServiceImpl implements IProjectService {
 		return xiangmutaizhangMapper.getXiangMuTaiZhangById(id);
 	}
 
+
+	@Override
+	public Boolean updateProject(XiangMuTaiZhang xmtz) {
+
+		xiangmutaizhangMapper.updateXiangMuTaiZhang(xmtz);
+		return true;
+	}
+
 	
 }

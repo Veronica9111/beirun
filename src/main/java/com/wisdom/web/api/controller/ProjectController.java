@@ -51,42 +51,10 @@ public class ProjectController {
 		Map<String, String[]> params = request.getParameterMap();
 		System.out.println(params.get("kaihuyinhang_yinhangzhanghao")[0]);
 		XiangMuTaiZhang xmtz = new XiangMuTaiZhang();
-		for (Entry<String, String[]> entry : params.entrySet()) {
-			
-			String methodName = "set" + Character.toUpperCase(entry.getKey().charAt(0)) + entry.getKey().substring(1);
-			String arg = entry.getValue()[0];
-
-		      Method m;
-			try {
-				m = xmtz.getClass().getMethod(methodName, String.class);
-				Object ret = m.invoke(xmtz, arg);
-			} catch (NoSuchMethodException e) {
-				try{
-					Double argD = Double.valueOf(arg);
-					m = xmtz.getClass().getMethod(methodName, Double.class);
-					Object ret = m.invoke(xmtz, argD);
-				}catch(NumberFormatException e2){
-
-				    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				    java.util.Date parsedDate;
-					try {
-						parsedDate = dateFormat.parse(arg);
-						Timestamp argT = new java.sql.Timestamp(parsedDate.getTime());
-						m = xmtz.getClass().getMethod(methodName, Timestamp.class);
-						Object ret = m.invoke(xmtz, argT);
-					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				    
-				}
-				}
-
-			
-		        
-		}
-		projectService.addProject(xmtz);
 		
+		
+		xmtz = setXiangMuTaiZhangModel(xmtz, params);
+		projectService.addProject(xmtz);
 		retMap.put("status", "ok");
 		return retMap;
 	}
@@ -149,16 +117,62 @@ public class ProjectController {
 		
 	}
 	
-	/*@RequestMapping("/project/updateProjectById")
+	@RequestMapping("/project/modifyProject")
 	@ResponseBody
-	public Map<String, Object> updateProjectById(HttpServletRequest request) {
+	public Map<String, String> updateProjectById(HttpServletRequest request) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		Integer id = Integer.valueOf(request.getParameter("id"));
 		XiangMuTaiZhang xmtz = projectService.getXiangMuTaiZhangById(id);
-		ObjectMapper m = new ObjectMapper();
-		Map<String,Object> props = m.convertValue(xmtz, Map.class);
-		XiangMuTaiZhang anotherBean = (XiangMuTaiZhang) m.convertValue(props, XiangMuTaiZhang.class);
-		return props;
+		Map<String, String[]> params = request.getParameterMap();
+		xmtz = setXiangMuTaiZhangModel(xmtz, params);
+		projectService.updateProject(xmtz);
+		Map<String, String> retMap = new HashMap<>();
+		retMap.put("status", "ok");
+
+		return retMap;
 		
-	}*/
+	}
+	
+	public XiangMuTaiZhang setXiangMuTaiZhangModel(XiangMuTaiZhang xmtz, Map<String, String[]> params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+for (Entry<String, String[]> entry : params.entrySet()) {
+			
+			String methodName = "set" + Character.toUpperCase(entry.getKey().charAt(0)) + entry.getKey().substring(1);
+			String arg = entry.getValue()[0];
+
+		      Method m;
+		      if(entry.getKey().equals("id")){
+		    	  continue;
+		      }
+			try {
+				m = xmtz.getClass().getMethod(methodName, String.class);
+				Object ret = m.invoke(xmtz, arg);
+			} catch (NoSuchMethodException e) {
+				try{
+					Double argD = Double.valueOf(arg);
+					m = xmtz.getClass().getMethod(methodName, Double.class);
+					Object ret = m.invoke(xmtz, argD);
+				}catch(NumberFormatException e2){
+
+				    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				    java.util.Date parsedDate;
+					try {
+						parsedDate = dateFormat.parse(arg);
+						Timestamp argT = new java.sql.Timestamp(parsedDate.getTime());
+						m = xmtz.getClass().getMethod(methodName, Timestamp.class);
+						Object ret = m.invoke(xmtz, argT);
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				    
+				}
+				}
+
+			
+		        
+		}
+		return xmtz; 
+	}
+	
+	
 	
 }

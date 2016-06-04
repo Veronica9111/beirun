@@ -9,5 +9,7 @@ public interface XiangMuTaiZhangMapper {
 	Integer addXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
 	XiangMuTaiZhang getXiangMuTaiZhangById(Integer id);
+	
+	void updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 
 }
