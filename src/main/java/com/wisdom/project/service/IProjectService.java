@@ -27,5 +27,7 @@ public interface IProjectService {
 	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
 	public Boolean updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
+	
+	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Integer companyId);
 
 }

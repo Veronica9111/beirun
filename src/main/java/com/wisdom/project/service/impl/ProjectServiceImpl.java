@@ -193,4 +193,10 @@ public class ProjectServiceImpl implements IProjectService {
 		xiangmutaizhangMapper.updateXiangMuTaiZhang(xmtz);
 		return true;
 	}
+	
+	@Override
+	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Integer companyId) {
+		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId(companyId);
+
+	}
 }

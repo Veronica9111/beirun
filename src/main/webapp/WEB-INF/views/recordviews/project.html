@@ -161,6 +161,13 @@ $.post("/project/getModel", query, function(data){
 	
 });
 
+var query = {query_key: 'companyId', query_value:2, class_name:'XiangMuTaiZhang'};
+$.post("/project/getModel", query, function(data){
+
+console.log(data)
+	
+});
+
 $("#modify").on("click", function(){
 	console.log($(".text"));
 	var hetongleixing = $('input:checked', '#hetongleixing').val();
