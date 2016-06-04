@@ -60,6 +60,79 @@ public class ProjectController {
 		return retMap;
 	}
 	
+	@RequestMapping("/project/addModel")
+	@ResponseBody
+	public Map<String, String> addModel(HttpServletRequest request) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, InvocationTargetException, NoSuchMethodException, ClassNotFoundException, InstantiationException{
+		Map<String, String> retMap = new HashMap<>();
+		Map<String, String[]> params = request.getParameterMap();
+		String className = params.get("class_name")[0];
+		String longClassName = "com.wisdom.common.model." + className;
+		Class c = Class.forName(longClassName);
+		Object instance = c.newInstance();
+		instance = setModel(instance, params);
+  	    Method m = projectService.getClass().getMethod("add"+className, instance.getClass());
+			Object ret = m.invoke(projectService, instance);
+			retMap.put("status", "ok");
+			return retMap;			
+	}
+	
+	@RequestMapping("/project/modifyModel")
+	@ResponseBody
+	public Map<String, String> ModifyModelById(HttpServletRequest request) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException, InstantiationException {
+		Map<String, String> retMap = new HashMap<>();
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		Map<String, String[]> params = request.getParameterMap();
+		String className = params.get("class_name")[0];
+		String longClassName = "com.wisdom.common.model." + className;
+		Class c = Class.forName(longClassName);
+		Object instance = c.newInstance();
+		instance = setModel(instance, params);
+		Method m = projectService.getClass().getMethod("update"+className, instance.getClass());
+		Object ret = m.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		return retMap;			
+		
+	}
+	
+	public  boolean isInteger(String s) {
+	    try { 
+	        Integer.parseInt(s); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    } catch(NullPointerException e) {
+	        return false;
+	    }
+	    // only got here if we didn't return false
+	    return true;
+	}
+	
+	@RequestMapping("/project/getModel")
+	@ResponseBody
+	public Map<String, String> getModel(HttpServletRequest request) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException, InstantiationException {
+		Map<String, String> retMap = new HashMap<>();
+		Map<String, String[]> params = request.getParameterMap();
+		String className = params.get("class_name")[0];
+		String longClassName = "com.wisdom.common.model." + className;
+		String queryKey = params.get("query_key")[0];
+		String queryValue = params.get("query_value")[0];
+		queryKey = queryKey.substring(0, 1).toUpperCase() + queryKey.substring(1);
+		Object ret;
+		if(isInteger(queryValue)){
+			Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, Integer.class);
+			 ret = m.invoke(projectService, Integer.valueOf(queryValue));
+		}else{
+			Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, String.class);
+			ret = m.invoke(projectService, queryValue);
+		}
+		
+		
+		String data = JSONArray.fromObject(ret).toString();
+		retMap.put("data", data);
+		retMap.put("status", "ok");
+		return retMap;			
+		
+	}
+	
 	
 	@RequestMapping("/project/approveProject")
 	@ResponseBody
@@ -225,6 +298,52 @@ public class ProjectController {
 		return retMap;
 	}
 	
+	
+	public Object setModel(Object model, Map<String, String[]> params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		for (Entry<String, String[]> entry : params.entrySet()) {
+			
+			String methodName = "set" + Character.toUpperCase(entry.getKey().charAt(0)) + entry.getKey().substring(1);
+			String arg = entry.getValue()[0];
+
+		      Method m;
+		      if(entry.getKey().equals("id") || entry.getKey().equals("class_name")){
+		    	  continue;
+		      }
+		      if(entry.getKey().equals("company_id")){
+		    	  Integer argI = Integer.valueOf(arg);
+		    	  m = model.getClass().getMethod(methodName, String.class);
+					Object ret = m.invoke(model, argI);
+		      }
+			try {
+				m = model.getClass().getMethod(methodName, String.class);
+				Object ret = m.invoke(model, arg);
+			} catch (NoSuchMethodException e) {
+				try{
+					Double argD = Double.valueOf(arg);
+					m = model.getClass().getMethod(methodName, Double.class);
+					Object ret = m.invoke(model, argD);
+				}catch(NumberFormatException e2){
+
+				    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				    java.util.Date parsedDate;
+					try {
+						parsedDate = dateFormat.parse(arg);
+						Timestamp argT = new java.sql.Timestamp(parsedDate.getTime());
+						m = model.getClass().getMethod(methodName, Timestamp.class);
+						Object ret = m.invoke(model, argT);
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				    
+				}
+				}
+
+			
+		        
+		}
+		return model; 
+	}
 	
 	
 	public XiangMuTaiZhang setXiangMuTaiZhangModel(XiangMuTaiZhang xmtz, Map<String, String[]> params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{

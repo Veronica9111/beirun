@@ -181,5 +181,22 @@ public class ProjectServiceImpl implements IProjectService {
 		return kaipiaoshenqingdanlist;
 	}
 
+	@Override
+	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz) {
+		xiangmutaizhangMapper.addXiangMuTaiZhang(xmtz);
+		return true;
+	}
+
+	@Override
+	public Boolean updateXiangMuTaiZhang(XiangMuTaiZhang xmtz) {
+
+		xiangmutaizhangMapper.updateXiangMuTaiZhang(xmtz);
+		return true;
+	}
 	
+	@Override
+	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Integer companyId) {
+		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId(companyId);
+
+	}
 }

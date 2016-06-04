@@ -141,18 +141,30 @@ $("#submit").on("click", function(){
 	dataSet['hetongleixing'] = hetongleixing;
 	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
 	
-	$.post('/project/addProject', dataSet, function(data){
+	dataSet["class_name"] = "XiangMuTaiZhang";
+	$.post('/project/addModel', dataSet, function(data){
 		console.log(data);
 		
 	});
 	
 });
 
-$.post("/project/getProjectById", {id:1}, function(data){
+var query = {query_key: 'id', query_value:1, class_name:'XiangMuTaiZhang'};
+$.post("/project/getModel", query, function(data){
+
+	var data = $.parseJSON(data.data)[0];
 	console.log(data);
 	for(key in data){
+		console.log(key);
 		$("#" + key).val(data[key]);
 	}
+	
+});
+
+var query = {query_key: 'companyId', query_value:2, class_name:'XiangMuTaiZhang'};
+$.post("/project/getModel", query, function(data){
+
+console.log(data)
 	
 });
 
