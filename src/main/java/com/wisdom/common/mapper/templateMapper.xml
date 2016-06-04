@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+    'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.KaiPiaoQingKuangBiaoMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.KaiPiaoQingKuangBiao" id="KaiPiaoQingKuangBiao">
+<result property="id" column="id"/>
+<result property="shengqingkaipiaoshijian" column="shengqingkaipiaoshijian"/>
+<result property="buhanshuijine" column="buhanshuijine"/>
+<result property="shuie" column="shuie"/>
+<result property="hejijine" column="hejijine"/>
+<result property="kaijufapiao" column="kaijufapiao"/>
+<result property="shouqikuanxiang" column="shouqikuanxiang"/>
+<result property="wangongjindu" column="wangongjindu"/>
+<result property="qita" column="qita"/>
+<result property="yikaipiaojine" column="yikaipiaojine"/>
+<result property="beizhu" column="beizhu"/>
+<result property="yijishenheren" column="yijishenheren"/>
+<result property="yiji_shenhe_status" column="yiji_shenhe_status"/>
+<result property="erjishenheren" column="erjishenheren"/>
+<result property="erji_shenhe_status" column="erji_shenhe_status"/>
+<result property="yiji_shenhe_beizhu" column="yiji_shenhe_beizhu"/>
+<result property="erji_shenhe_beizhu" column="erji_shenhe_beizhu"/>
+</resultMap>
+
+<insert id="addKaiPiaoQingKuangBiao" parameterType="String">
+insert into kaipiaoqingkuangbiao (shengqingkaipiaoshijian,buhanshuijine,shuie,hejijine,kaijufapiao,shouqikuanxiang,wangongjindu,qita,yikaipiaojine,beizhu,yijishenheren,yiji_shenhe_status,erjishenheren,erji_shenhe_status,yiji_shenhe_beizhu,erji_shenhe_beizhu,)
+values(#{shengqingkaipiaoshijian},#{buhanshuijine},#{shuie},#{hejijine},#{kaijufapiao},#{shouqikuanxiang},#{wangongjindu},#{qita},#{yikaipiaojine},#{beizhu},#{yijishenheren},#{yiji_shenhe_status},#{erjishenheren},#{erji_shenhe_status},#{yiji_shenhe_beizhu},#{erji_shenhe_beizhu})
+</insert>
+
+<update id="updateKaiPiaoQingKuangBiao" parameterType="String">
+update kaipiaoqingkuangbiao set shengqingkaipiaoshijian=#{shengqingkaipiaoshijian},buhanshuijine=#{buhanshuijine},shuie=#{shuie},hejijine=#{hejijine},kaijufapiao=#{kaijufapiao},shouqikuanxiang=#{shouqikuanxiang},wangongjindu=#{wangongjindu},qita=#{qita},yikaipiaojine=#{yikaipiaojine},beizhu=#{beizhu},yijishenheren=#{yijishenheren},yiji_shenhe_status=#{yiji_shenhe_status},erjishenheren=#{erjishenheren},erji_shenhe_status=#{erji_shenhe_status},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu},erji_shenhe_beizhu=#{erji_shenhe_beizhu}
+where id=#{id}
+</update>
+
+</mapper>

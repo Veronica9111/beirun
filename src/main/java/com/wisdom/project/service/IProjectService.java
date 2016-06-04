@@ -23,5 +23,9 @@ public interface IProjectService {
 	public List<Map<String, Object>> getMenu();
 	
 	public List<KaiPiaoShenQingDan> getKaiPiaoShenQingDanByProjectId(Integer projectId);
+	
+	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz);
+	
+	public Boolean updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 
 }
