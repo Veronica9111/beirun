@@ -100,6 +100,15 @@ public class ProjectServiceImpl implements IProjectService {
 	    this.jianyijishuifangfazhuanpiaojishuiMapper = jianyijishuifangfazhuanpiaojishuiMapper;
 }
 	
+	public JianYiJiShuiFangFaZhuanPiaoJiShuiMapper getJianyijishuifangfazhuanpiaojishuiMapper() {
+		return jianyijishuifangfazhuanpiaojishuiMapper;
+	}
+
+	public void setJianyijishuifangfazhuanpiaojishuiMapper(
+			JianYiJiShuiFangFaZhuanPiaoJiShuiMapper jianyijishuifangfazhuanpiaojishuiMapper) {
+		this.jianyijishuifangfazhuanpiaojishuiMapper = jianyijishuifangfazhuanpiaojishuiMapper;
+	}
+
 	public void setCompanyMapper(CompanyMapper companyMapper) {
 	    this.companyMapper = companyMapper;
 }
@@ -286,6 +295,18 @@ public class ProjectServiceImpl implements IProjectService {
 		xiangmutaizhangMapper.updateTime(id, hetongqiandingshijian);
 		xiangmutaizhangMapper.addTime(hetongqiandingshijian);
 		
+	}
+
+	@Override
+	public Boolean addJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
+		jianyijishuifangfazhuanpiaojishuiMapper.addJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
+		return true;
+	}
+
+	@Override
+	public Boolean updateJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
+		jianyijishuifangfazhuanpiaojishuiMapper.updateJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
+		return true;
 	}
 	
 /*	@Override

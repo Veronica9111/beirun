@@ -81,6 +81,7 @@ public class ProjectController {
 		Class c = Class.forName(longClassName);
 		Object instance = c.newInstance();
 		instance = setModel(instance, params,"partial");
+		System.out.println(className);
   	    Method m = projectService.getClass().getMethod("add"+className, instance.getClass());
 			Object ret = m.invoke(projectService, instance);
 			retMap.put("status", "ok");
