@@ -30,12 +30,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisdom.common.mapper.ArtifactMapper;
 import com.wisdom.common.mapper.CompanyMapper;
 import com.wisdom.common.mapper.InvoiceMapper;
+import com.wisdom.common.mapper.JianYiJiShuiFangFaZhuanPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoShenQingDanMapper;
 import com.wisdom.common.mapper.PermissionMapper;
 import com.wisdom.common.mapper.RecordMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.model.Company;
 import com.wisdom.common.model.Invoice;
+import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Record;
 import com.wisdom.common.model.XiangMuTaiZhang;
@@ -65,7 +67,8 @@ public class ProjectServiceImpl implements IProjectService {
 	  @Autowired
 	  private KaiPiaoShenQingDanMapper kaiPiaoShenQingDanMapper;
 	  
-
+	  @Autowired
+	  private JianYiJiShuiFangFaZhuanPiaoJiShuiMapper jianyijishuifangfazhuanpiaojishuiMapper;
 
 
 
@@ -80,6 +83,10 @@ public class ProjectServiceImpl implements IProjectService {
 	
 	public void setKaiPiaoShenQingDanMapper(KaiPiaoShenQingDanMapper kaiPiaoShenQingDanMapper) {
 	    this.kaiPiaoShenQingDanMapper = kaiPiaoShenQingDanMapper;
+}
+	
+	public void setJianYiJiShuiFangFaZhuanPiaoJiShuiMapper(JianYiJiShuiFangFaZhuanPiaoJiShuiMapper jianyijishuifangfazhuanpiaojishuiMapper) {
+	    this.jianyijishuifangfazhuanpiaojishuiMapper = jianyijishuifangfazhuanpiaojishuiMapper;
 }
 	
 	public void setCompanyMapper(CompanyMapper companyMapper) {
@@ -108,6 +115,13 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 
+	@Override
+	public Boolean updateProject(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
+
+		jianyijishuifangfazhuanpiaojishuiMapper.updateJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
+		return true;
+	}
+	
 	@Override
 	public List<XiangMuTaiZhang> getProjectsByCompanyId(Integer companyId) {
 		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId((long)companyId);
@@ -180,6 +194,13 @@ public class ProjectServiceImpl implements IProjectService {
 		
 		return kaipiaoshenqingdanlist;
 	}
+	
+	@Override
+	public JianYiJiShuiFangFaZhuanPiaoJiShui getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Long Id) {
+		JianYiJiShuiFangFaZhuanPiaoJiShui jianyijishuifangfazhuanpiaojishui = jianyijishuifangfazhuanpiaojishuiMapper.getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Id);
+		
+		return jianyijishuifangfazhuanpiaojishui;
+	}
 
 	@Override
 	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz) {
@@ -198,5 +219,11 @@ public class ProjectServiceImpl implements IProjectService {
 	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long companyId) {
 		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId(companyId);
 
+	}
+
+	@Override
+	public List<KaiPiaoShenQingDan> getJianYiJiShuiFangFaZhuanPiaoJiShuiByProjectId(Integer projectId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

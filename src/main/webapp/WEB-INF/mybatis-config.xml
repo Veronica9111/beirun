@@ -25,6 +25,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="FinalShenBaoBiao" type="com.wisdom.common.model.FinalShenBaoBiao" />
 		<typeAlias alias="FinalJinXiang" type="com.wisdom.common.model.FinalJinXiang" />
 		<typeAlias alias="XiangMuTaiZhang" type="com.wisdom.common.model.XiangMuTaiZhang" />
+		<typeAlias alias="JianYiJiShuiFangFaZhuanPiaoJiShui" type="com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui" />
 		<typeAlias alias="Company" type="com.wisdom.common.model.Company" />
 		<typeAlias alias="KaiPiaoShenQingDan" type="com.wisdom.common.model.KaiPiaoShenQingDan" />
 
@@ -46,6 +47,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mapper resource="com/wisdom/common/mapper/XiangMuTaiZhangMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/CompanyMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/KaiPiaoShenQingDanMapper.xml" />
+    <mapper resource="com/wisdom/common/mapper/JianYiJiShuiFangFaZhuanPiaoJiShuiMapper.xml" />
     
 
   </mappers>

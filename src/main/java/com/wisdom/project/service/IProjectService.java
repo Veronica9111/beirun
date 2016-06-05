@@ -5,6 +5,7 @@ package com.wisdom.project.service;
 import java.util.List;
 import java.util.Map;
 
+import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.XiangMuTaiZhang;
 
@@ -29,5 +30,11 @@ public interface IProjectService {
 	public Boolean updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
 	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long companyId);
+
+	public List<KaiPiaoShenQingDan> getJianYiJiShuiFangFaZhuanPiaoJiShuiByProjectId(Integer projectId);
+
+	public JianYiJiShuiFangFaZhuanPiaoJiShui getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Long id);
+
+	public Boolean updateProject(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
 
 }
