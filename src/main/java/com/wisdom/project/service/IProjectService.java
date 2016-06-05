@@ -9,6 +9,10 @@ import java.util.Map;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
+import com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa;
+import com.wisdom.common.model.QueRenShouRuFangShi_QiTa;
+import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
+import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.XiangMuTaiZhang;
 
 public interface IProjectService {
@@ -47,6 +51,18 @@ public interface IProjectService {
 	
 	public JianYiJiShuiFangFaPuPiaoJiShui getJianYiJiShuiFangFaPuPiaoJiShuiById(Long id);
 	public void updateTime(Long id, Timestamp hetongqiandingshijian);
+	
+	public Boolean addQueRenShouRuFangShi_QiTa(QueRenShouRuFangShi_QiTa queRenShouRuFangShi_QiTa);
+	
+	public QueRenShouRuFangShi_QiTa getQueRenShouRuFangShi_QiTaById(Long id);
+	
+	public Boolean updateQueRenShouRuFangShi_QiTa(QueRenShouRuFangShi_QiTa queRenShouRuFangShi_QiTa);
+
+	public Boolean addQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(QueRenShouRuFangShi_LaoWuShiJianZhanBiFa queRenShouRuFangShi_LaoWuShiJianZhanBiFa);
+
+	public QueRenShouRuFangShi_LaoWuShiJianZhanBiFa getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaById(Long id);
+	
+	public Boolean updateQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(QueRenShouRuFangShi_LaoWuShiJianZhanBiFa queRenShouRuFangShi_LaoWuShiJianZhanBiFa);
 
 	public List<KaiPiaoShenQingDan> getJianYiJiShuiFangFaZhuanPiaoJiShuiByProjectId(Integer projectId);
 
@@ -56,4 +72,15 @@ public interface IProjectService {
 
 	public Boolean addJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
 
+	public QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById(Long id);
+	
+	public Boolean addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
+	
+	public Boolean updateQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
+
+	public QueRenShouRuFangShi_YiWanGongGongZuoLiangFa getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaById(Long id);
+	
+	public Boolean addQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(QueRenShouRuFangShi_YiWanGongGongZuoLiangFa queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
+	
+	public Boolean updateQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(QueRenShouRuFangShi_YiWanGongGongZuoLiangFa queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
 }
