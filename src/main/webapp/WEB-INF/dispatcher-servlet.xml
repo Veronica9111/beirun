@@ -338,6 +338,14 @@
 			value="com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<bean id="PuTongFaPiaoKaiJuMingXiMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="mapperInterface" value="com.wisdom.common.mapper.PuTongFaPiaoKaiJuMingXiMapper" />
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="ShouQiKuanXiangMingXiBiaoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="mapperInterface" value="com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper" />
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	<bean id="projectServiceImpl" class="com.wisdom.project.service.impl.ProjectServiceImpl">
 		<property name="XiangMuTaiZhangMapper" ref="XiangMuTaiZhangMapper" />
 		<property name="JianYiJiShuiFangFaZhuanPiaoJiShuiMapper" ref="JianYiJiShuiFangFaZhuanPiaoJiShuiMapper" />
@@ -347,6 +355,8 @@
 		<property name="WeiKaiJuFaPiaoMingXiMapper" ref="WeiKaiJuFaPiaoMingXiMapper" />
 		<property name="WeiKaiJuFaPiaoMingXi_YiBanMapper" ref="WeiKaiJuFaPiaoMingXi_YiBanMapper" />
 		<property name="JianYiJiShuiFangFaPuPiaoJiShuiMapper" ref="JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
+		<property name="PuTongFaPiaoKaiJuMingXiMapper" ref="PuTongFaPiaoKaiJuMingXiMapper" />
+		<property name="ShouQiKuanXiangMingXiBiaoMapper" ref="ShouQiKuanXiangMingXiBiaoMapper" />
 		<property name="QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" ref="QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" />
 		<property name="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" ref="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" />
 		<property name="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper" ref="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper" />

@@ -29,6 +29,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Company" type="com.wisdom.common.model.Company" />
 		<typeAlias alias="KaiPiaoShenQingDan" type="com.wisdom.common.model.KaiPiaoShenQingDan" />
 		<typeAlias alias="JianYiJiShuiFangFaPuPiaoJiShui" type="com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui" />
+		<typeAlias alias="PuTongFaPiaoKaiJuMingXi" type="com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi" />
+		<typeAlias alias="ShouQiKuanXiangMingXiBiao" type="com.wisdom.common.model.ShouQiKuanXiangMingXiBiao" />
 		<typeAlias alias="ZhuanYongFaPiaoKaiJuMingXi" type="com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi" />
 		<typeAlias alias="WeiKaiJuFaPiaoMingXi" type="com.wisdom.common.model.WeiKaiJuFaPiaoMingXi" />
 		<typeAlias alias="WeiKaiJuFaPiaoMingXi_YiBan" type="WeiKaiJuFaPiaoMingXi_YiBan" />
@@ -57,6 +59,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mapper resource="com/wisdom/common/mapper/KaiPiaoShenQingDanMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/JianYiJiShuiFangFaZhuanPiaoJiShuiMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/JianYiJiShuiFangFaPuPiaoJiShuiMapper.xml" />
+    <mapper resource="com/wisdom/common/mapper/PuTongFaPiaoKaiJuMingXiMapper.xml" />
+    <mapper resource="com/wisdom/common/mapper/ShouQiKuanXiangMingXiBiaoMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/ZhuanYongFaPiaoKaiJuMingXiMapper.xml" />
 	<mapper resource="com/wisdom/common/mapper/WeiKaiJuFaPiaoMingXiMapper.xml" />
 	<mapper resource="com/wisdom/common/mapper/WeiKaiJuFaPiaoMingXi_YiBanMapper.xml" />
@@ -65,9 +69,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mapper resource="com/wisdom/common/mapper/QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/QueRenShouRuFangShi_QiTaMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/XiaoXiang_XiangMuMapper.xml" />
-    
-    
-
   </mappers>
 
 </configuration>

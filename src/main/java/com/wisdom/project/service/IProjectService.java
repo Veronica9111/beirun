@@ -9,6 +9,8 @@ import java.util.Map;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
+import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
+import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi_YiBan;
 import com.wisdom.common.model.XiangMuTaiZhang;
@@ -70,6 +72,20 @@ public interface IProjectService {
 
 	public JianYiJiShuiFangFaZhuanPiaoJiShui getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Long id);
 
+	public Boolean updateProject(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
+	
+	public Boolean addPuTongFaPiaoKaiJuMingXi(PuTongFaPiaoKaiJuMingXi ptf);
+	
+	public Boolean updatePuTongFaPiaoKaiJuMingXi(PuTongFaPiaoKaiJuMingXi ptf);
+	
+	public PuTongFaPiaoKaiJuMingXi getPuTongFaPiaoKaiJuMingXiById(Long id);
+	
+	public Boolean addShouQiKuanXiangMingXiBiao(ShouQiKuanXiangMingXiBiao ptf);
+	
+	public Boolean updateShouQiKuanXiangMingXiBiao(ShouQiKuanXiangMingXiBiao ptf);
+	
+	public ShouQiKuanXiangMingXiBiao getShouQiKuanXiangMingXiBiaoById(Long id);
+	
 	public QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById(Long id);
 	
 	public Boolean addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
