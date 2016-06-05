@@ -127,6 +127,10 @@
 <input id="submit" type="button" value="提交">
 <input id="modify" type="button" value="更新">
 <script>
+/*$.post("/project/updateTime", {}, function(){
+	console.log("ok");
+});
+*/
 $("#submit").on("click", function(){
 	console.log($(".text"));
 	var hetongleixing = $('input:checked', '#hetongleixing').val();
@@ -140,6 +144,8 @@ $("#submit").on("click", function(){
 	});
 	dataSet['hetongleixing'] = hetongleixing;
 	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
+	dataSet['company_id'] = 2;
+	dataSet['nashuileixing'] = 'fake';
 	
 	dataSet["class_name"] = "XiangMuTaiZhang";
 	$.post('/project/addModel', dataSet, function(data){
@@ -160,13 +166,14 @@ $.post("/project/getModel", query, function(data){
 	}
 	
 });
-
+/*
 var query = {query_key: 'companyId', query_value:2, class_name:'XiangMuTaiZhang'};
 $.post("/project/getModel", query, function(data){
 
 console.log(data)
 	
-});
+});*/
+
 
 $("#modify").on("click", function(){
 	console.log($(".text"));
@@ -182,8 +189,9 @@ $("#modify").on("click", function(){
 	dataSet['hetongleixing'] = hetongleixing;
 	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
 	dataSet['id'] = 1;
+	dataSet['class_name'] = "XiangMuTaiZhang";
 	
-	$.post('/project/modifyProject', dataSet, function(data){
+	$.post('/project/modifyModel', dataSet, function(data){
 		console.log(data);
 		
 	});

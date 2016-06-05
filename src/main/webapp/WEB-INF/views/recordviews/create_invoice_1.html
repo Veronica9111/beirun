@@ -866,12 +866,16 @@ td
 	
 	#container{
 		margin-left: 27vw;
-		margin-top: 50px;
+		margin-top: 20px;
 		width: 920px;
 		min-width:920px;
 		height: 400px;
 		min-height:400px;
 		overflow-x: auto; overflow-y: auto;
+	}
+	#but_position{
+		margin-left:27vw;
+		margin-top: 50px;
 	}
 
 </style>
@@ -889,6 +893,10 @@ td
 <div id="left-menu"></div>
 
 <!-- Container -->
+<div id="but_position">
+	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
+	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+</div>
 <div id="container">
 <table width='1333' border='0' cellpadding='0' cellspacing='0' style='width:666.50pt;border-collapse:collapse;table-layout:fixed;'>
    <tr height='28' style='height:14.00pt;'>
@@ -996,8 +1004,6 @@ td
    <tr>
    </tr>
   </table>
-  <input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
-  	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
 
 </div>
 <div class="mask"></div>
@@ -1045,9 +1051,10 @@ $("#modify").on("click", function(){
 	dataSet['hetongleixing'] = hetongleixing;
 	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
 	dataSet['nashuileixing'] = nashuileixing;
+	dataSet["class_name"] = "XiangMuTaiZhang";
 	dataSet['id'] = 1;
 	
-	$.post('/project/modifyProject', dataSet, function(data){
+	$.post('/project/modifyModel', dataSet, function(data){
 		console.log(data);
 		
 	});
@@ -1061,12 +1068,13 @@ $.post("/project/getModel", query, function(data){
 	console.log(data);
 	for(key in data){
 		if(key=="hetongleixing") {
-			$("input[type=radio][name=hetongleixing_select][value="+data[key]+"]").attr("checked",true);  
+			$("input[type=radio][name=hetongleixing_select][value='"+data[key]+"']").attr("checked",true);  
 		} if(key=="nashuileixing") {
-			$("input[type=radio][name=jiaoshuileixing_select][value="+data[key]+"]").attr("checked",true); 
+			$("input[type=radio][name=jiaoshuileixing_select][value='"+data[key]+"']").attr("checked",true); 
 		} else if(key=="hetongfukuanfangshi"){
-			$("input[type=radio][name=hetongfukuanfangshi_select][value="+data[key]+"]").attr("checked",true); 
+			$("input[type=radio][name=hetongfukuanfangshi_select][value='"+data[key]+"']").attr("checked",true); 
 		} else {
+			console.log(data[key]);
 			$("#" + key).val(data[key]);
 		}
 	}

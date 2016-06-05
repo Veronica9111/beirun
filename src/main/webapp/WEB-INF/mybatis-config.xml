@@ -28,6 +28,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="JianYiJiShuiFangFaZhuanPiaoJiShui" type="com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui" />
 		<typeAlias alias="Company" type="com.wisdom.common.model.Company" />
 		<typeAlias alias="KaiPiaoShenQingDan" type="com.wisdom.common.model.KaiPiaoShenQingDan" />
+		<typeAlias alias="JianYiJiShuiFangFaPuPiaoJiShui" type="com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui" />
 
   </typeAliases>
   <mappers>
@@ -48,6 +49,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mapper resource="com/wisdom/common/mapper/CompanyMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/KaiPiaoShenQingDanMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/JianYiJiShuiFangFaZhuanPiaoJiShuiMapper.xml" />
+    <mapper resource="com/wisdom/common/mapper/JianYiJiShuiFangFaPuPiaoJiShuiMapper.xml" />
     
 
   </mappers>

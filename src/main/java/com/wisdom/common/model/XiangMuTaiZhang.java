@@ -216,8 +216,12 @@ public void setHetongqiandingshijian (Timestamp hetongqiandingshijian) {
 
 public String getHetongqiandingshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String hetongqiandingshijian  = dateFormat.format(new Date());
+	String hetongqiandingshijian = "";
+	if(this.hetongqiandingshijian != null) {
+		hetongqiandingshijian  = dateFormat.format(this.hetongqiandingshijian);
+	}
 return hetongqiandingshijian;
+	//return this.hetongqiandingshijian;
 }
 
 public void setHetongkaigongshijian (Timestamp hetongkaigongshijian) {
@@ -226,8 +230,11 @@ public void setHetongkaigongshijian (Timestamp hetongkaigongshijian) {
 
 public String getHetongkaigongshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String hetongqiandingshijian  = dateFormat.format(new Date());
-return hetongqiandingshijian;
+	String rq = "";
+	if(this.hetongfukuanfangshi != null) {
+		rq  = dateFormat.format(this.hetongkaigongshijian);
+	}
+return rq;
 }
 
 public void setKaigongxukezhengshijian (Timestamp kaigongxukezhengshijian) {
@@ -236,8 +243,11 @@ public void setKaigongxukezhengshijian (Timestamp kaigongxukezhengshijian) {
 
 public String getKaigongxukezhengshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String hetongqiandingshijian  = dateFormat.format(new Date());
-return hetongqiandingshijian;
+	String hetongqiandingshijian = "";
+	if(this.kaigongxukezhengshijian != null) {
+		hetongqiandingshijian  = dateFormat.format(this.kaigongxukezhengshijian);
+	}
+	return hetongqiandingshijian;
 }
 
 public void setYujiwangongshijian (Timestamp yujiwangongshijian) {
@@ -246,7 +256,10 @@ public void setYujiwangongshijian (Timestamp yujiwangongshijian) {
 
 public String getYujiwangongshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String hetongqiandingshijian  = dateFormat.format(new Date());
+	String hetongqiandingshijian = "";
+	if(this.yujiwangongshijian != null) {
+		hetongqiandingshijian  = dateFormat.format(this.yujiwangongshijian);
+	}
 return hetongqiandingshijian;
 }
 

@@ -1,172 +1,177 @@
-package com.wisdom.common.model;
+package com.wisdom.common.model;import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
+public class KaiPiaoShenQingDan implements java.io.Serializable{
+private static final long serialVersionUID = 1L;
+public KaiPiaoShenQingDan() {}
+private Long id;
+private String fengongsimingcheng;
+private String xiangmubu;
+private String xiangmumingcheng;
+private String hetongzongjine;
+private Timestamp shenqingriqi;
+private Double kaijufapiao;
+private Double shouqikuanxiang;
+private String wangongjindu;
+private Double qita;
+private String kaipiaoneirong;
+private String tianbiaoren;
+private String tianbiaorendianhua;
+private Timestamp tianbiaoriqi;
+private Long kaipiaoqingkuangbiao_xiangmu_id;
+private String fuheren;
+public KaiPiaoShenQingDan(Long id, String fengongsimingcheng, String xiangmubu, String xiangmumingcheng, String hetongzongjine, Timestamp shenqingriqi, Double kaijufapiao, Double shouqikuanxiang, String wangongjindu, Double qita, String kaipiaoneirong, String tianbiaoren, String tianbiaorendianhua, Timestamp tianbiaoriqi, Long kaipiaoqingkuangbiao_xiangmu_id, String fuheren) {
+this.id=id;
+this.fengongsimingcheng=fengongsimingcheng;
+this.xiangmubu=xiangmubu;
+this.xiangmumingcheng=xiangmumingcheng;
+this.hetongzongjine=hetongzongjine;
+this.shenqingriqi=shenqingriqi;
+this.kaijufapiao=kaijufapiao;
+this.shouqikuanxiang=shouqikuanxiang;
+this.wangongjindu=wangongjindu;
+this.qita=qita;
+this.kaipiaoneirong=kaipiaoneirong;
+this.tianbiaoren=tianbiaoren;
+this.tianbiaorendianhua=tianbiaorendianhua;
+this.tianbiaoriqi=tianbiaoriqi;
+this.kaipiaoqingkuangbiao_xiangmu_id=kaipiaoqingkuangbiao_xiangmu_id;
+this.fuheren=fuheren;
+}
 
-public class KaiPiaoShenQingDan implements Serializable {
-    
-     private static final long serialVersionUID = 1L;
-     private Integer id;
-	private String fengongsimingcheng;
-	private String xiangmubu;
-	private String xiangmumingcheng;
-	private String hetongzongjine;
-	private Timestamp shenqingriqi;
-	private Double kaijufapiao;
-	private Double shouqikuanxiang;
-	private String wangongjindu;
-	private Double qita;
-	private String kaipiaoneirong;
-	private String tianbiaoren;
-	private String tianbiaorendianhua;
-	private Timestamp tianbiaoriqi;
-	private Integer xiangmutaizhang_id;
-   
-   public KaiPiaoShenQingDan() {
-       super();
-   }
-   
-   public KaiPiaoShenQingDan(Integer id,String fengongsimingcheng,String xiangmubu,String xiangmumingcheng,String hetongzongjine,Timestamp shenqingriqi,Double kaijufapiao,Double shouqikuanxiang,String wangongjindu,Double qita,String kaipiaoneirong,String tianbiaoren,String tianbiaorendianhua,Timestamp tianbiaoriqi,Integer xiangmutaizhang_id){
-   	super();
-		this.id = id;
-		this.fengongsimingcheng = fengongsimingcheng;
-		this.xiangmubu = xiangmubu;
-		this.xiangmumingcheng = xiangmumingcheng;
-		this.hetongzongjine = hetongzongjine;
-		this.shenqingriqi = shenqingriqi;
-		this.kaijufapiao = kaijufapiao;
-		this.shouqikuanxiang = shouqikuanxiang;
-		this.wangongjindu = wangongjindu;
-		this.qita = qita;
-		this.kaipiaoneirong = kaipiaoneirong;
-		this.tianbiaoren = tianbiaoren;
-		this.tianbiaorendianhua = tianbiaorendianhua;
-		this.tianbiaoriqi = tianbiaoriqi;
-		this.xiangmutaizhang_id = xiangmutaizhang_id;
+public void setId (Long id) {
+this.id=id;
+}
+
+public Long getId () {
+return this.id;
+}
+
+public void setFengongsimingcheng (String fengongsimingcheng) {
+this.fengongsimingcheng=fengongsimingcheng;
+}
+
+public String getFengongsimingcheng () {
+return this.fengongsimingcheng;
+}
+
+public void setXiangmubu (String xiangmubu) {
+this.xiangmubu=xiangmubu;
+}
+
+public String getXiangmubu () {
+return this.xiangmubu;
+}
+
+public void setXiangmumingcheng (String xiangmumingcheng) {
+this.xiangmumingcheng=xiangmumingcheng;
+}
+
+public String getXiangmumingcheng () {
+return this.xiangmumingcheng;
+}
+
+public void setHetongzongjine (String hetongzongjine) {
+this.hetongzongjine=hetongzongjine;
+}
+
+public String getHetongzongjine () {
+return this.hetongzongjine;
+}
+
+public void setShenqingriqi (Timestamp shenqingriqi) {
+		this.shenqingriqi=shenqingriqi;
+}
+
+public String getShenqingriqi () {
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	String rq = "";
+	if(this.shenqingriqi != null) {
+		rq  = dateFormat.format(this.shenqingriqi);
 	}
-
-public Integer getId() {
-	return id;
+return rq;
 }
 
-public void setId(Integer id) {
-	this.id = id;
+public void setKaijufapiao (Double kaijufapiao) {
+	this.kaijufapiao=kaijufapiao;
 }
 
-public String getFengongsimingcheng() {
-	return fengongsimingcheng;
+public Double getKaijufapiao () {
+return this.kaijufapiao;
 }
 
-public void setFengongsimingcheng(String fengongsimingcheng) {
-	this.fengongsimingcheng = fengongsimingcheng;
+public void setShouqikuanxiang (Double shouqikuanxiang) {
+	this.shouqikuanxiang=shouqikuanxiang;
 }
 
-public String getXiangmubu() {
-	return xiangmubu;
+public Double getShouqikuanxiang () {
+return this.shouqikuanxiang;
 }
 
-public void setXiangmubu(String xiangmubu) {
-	this.xiangmubu = xiangmubu;
+public void setWangongjindu (String wangongjindu) {
+this.wangongjindu=wangongjindu;
 }
 
-public String getXiangmumingcheng() {
-	return xiangmumingcheng;
+public String getWangongjindu () {
+return this.wangongjindu;
 }
 
-public void setXiangmumingcheng(String xiangmumingcheng) {
-	this.xiangmumingcheng = xiangmumingcheng;
+public void setQita (Double qita) {
+	this.qita=qita;
 }
 
-public String getHetongzongjine() {
-	return hetongzongjine;
+public Double getQita () {
+return this.qita;
 }
 
-public void setHetongzongjine(String hetongzongjine) {
-	this.hetongzongjine = hetongzongjine;
+public void setKaipiaoneirong (String kaipiaoneirong) {
+this.kaipiaoneirong=kaipiaoneirong;
 }
 
-public Timestamp getShenqingriqi() {
-	return shenqingriqi;
+public String getKaipiaoneirong () {
+return this.kaipiaoneirong;
 }
 
-public void setShenqingriqi(Timestamp shenqingriqi) {
-	this.shenqingriqi = shenqingriqi;
+public void setTianbiaoren (String tianbiaoren) {
+this.tianbiaoren=tianbiaoren;
 }
 
-public Double getKaijufapiao() {
-	return kaijufapiao;
+public String getTianbiaoren () {
+return this.tianbiaoren;
 }
 
-public void setKaijufapiao(Double kaijufapiao) {
-	this.kaijufapiao = kaijufapiao;
+public void setTianbiaorendianhua (String tianbiaorendianhua) {
+this.tianbiaorendianhua=tianbiaorendianhua;
 }
 
-public Double getShouqikuanxiang() {
-	return shouqikuanxiang;
+public String getTianbiaorendianhua () {
+return this.tianbiaorendianhua;
 }
 
-public void setShouqikuanxiang(Double shouqikuanxiang) {
-	this.shouqikuanxiang = shouqikuanxiang;
+public void setTianbiaoriqi (Timestamp tianbiaoriqi) {
+		this.tianbiaoriqi=tianbiaoriqi;
 }
 
-public String getWangongjindu() {
-	return wangongjindu;
+public Timestamp getTianbiaoriqi () {
+return this.tianbiaoriqi;
 }
 
-public void setWangongjindu(String wangongjindu) {
-	this.wangongjindu = wangongjindu;
+public void setKaipiaoqingkuangbiao_xiangmu_id (Long kaipiaoqingkuangbiao_xiangmu_id) {
+this.kaipiaoqingkuangbiao_xiangmu_id=kaipiaoqingkuangbiao_xiangmu_id;
 }
 
-public Double getQita() {
-	return qita;
+public Long getKaipiaoqingkuangbiao_xiangmu_id () {
+return this.kaipiaoqingkuangbiao_xiangmu_id;
 }
 
-public void setQita(Double qita) {
-	this.qita = qita;
+public void setFuheren (String fuheren) {
+this.fuheren=fuheren;
 }
 
-public String getKaipiaoneirong() {
-	return kaipiaoneirong;
-}
-
-public void setKaipiaoneirong(String kaipiaoneirong) {
-	this.kaipiaoneirong = kaipiaoneirong;
-}
-
-public String getTianbiaoren() {
-	return tianbiaoren;
-}
-
-public void setTianbiaoren(String tianbiaoren) {
-	this.tianbiaoren = tianbiaoren;
-}
-
-public String getTianbiaorendianhua() {
-	return tianbiaorendianhua;
-}
-
-public void setTianbiaorendianhua(String tianbiaorendianhua) {
-	this.tianbiaorendianhua = tianbiaorendianhua;
-}
-
-public Timestamp getTianbiaoriqi() {
-	return tianbiaoriqi;
-}
-
-public void setTianbiaoriqi(Timestamp tianbiaoriqi) {
-	this.tianbiaoriqi = tianbiaoriqi;
-}
-
-public Integer getXiangmutaizhang_id() {
-	return xiangmutaizhang_id;
-}
-
-public void setXiangmutaizhang_id(Integer xiangmutaizhang_id) {
-	this.xiangmutaizhang_id = xiangmutaizhang_id;
+public String getFuheren () {
+return this.fuheren;
 }
 
 
-   
-   
- }
+}

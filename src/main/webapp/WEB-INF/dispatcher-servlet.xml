@@ -106,7 +106,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver">
 		</property>
 		<property name="url"
-			value="jdbc:mysql://139.196.40.99:3306/beirunweb?useUnicode=true&amp;characterEncoding=UTF-8"></property>
+			value="jdbc:mysql://139.196.40.99:3306/beirunweb?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="Cckzcbm110"></property>
 		<property name="maxIdle" value="30"></property>
@@ -255,14 +255,17 @@
 		<property name="symbolMapper" ref="symbolMapper" />
 		<property name="candidateMapper" ref="candidateMapper" />
 	</bean>	
-	
+	<bean id="JianYiJiShuiFangFaPuPiaoJiShuiMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="mapperInterface" value="com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	<bean id="projectServiceImpl" class="com.wisdom.project.service.impl.ProjectServiceImpl">
 		<property name="XiangMuTaiZhangMapper" ref="XiangMuTaiZhangMapper" />
 		<property name="JianYiJiShuiFangFaZhuanPiaoJiShuiMapper" ref="JianYiJiShuiFangFaZhuanPiaoJiShuiMapper" />
 		<property name="CompanyMapper" ref="CompanyMapper" />
 		<property name="KaiPiaoShenQingDanMapper" ref="KaiPiaoShenQingDanMapper" />
+		<property name="JianYiJiShuiFangFaPuPiaoJiShuiMapper" ref="JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
 	</bean>
-	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
   <property name="basePackage" value="mapper" />
 </bean>

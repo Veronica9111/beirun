@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
-'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+    <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+    'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 <mapper namespace="com.wisdom.common.mapper.KaiPiaoShenQingDanMapper">
 <cache />
-<resultMap type="com.wisdom.common.model.KaiPiaoShenQingDan" id="KaiPiaoShenQingDan">  
-<result property="id" column="id"/>  
-<result property="invoice_id" column="invoice_id"/>  
-<result property="supplier_name" column="supplier_name"/>
-<result property="type" column="type"/>
-<result property="tax" column="tax"/>
-<result property="amount" column="amount"/>
-<result property="number" column="number"/>
-<result property="created_time" column="created_time"/>
-<result property="is_fa" column="is_fa"/>
+
+<resultMap type="com.wisdom.common.model.KaiPiaoShenQingDan" id="KaiPiaoShenQingDan">
+<result property="fengongsimingcheng" column="fengongsimingcheng"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="xiangmumingcheng" column="xiangmumingcheng"/>
+<result property="hetongzongjine" column="hetongzongjine"/>
+<result property="shenqingriqi" column="shenqingriqi"/>
+<result property="kaijufapiao" column="kaijufapiao"/>
+<result property="shouqikuanxiang" column="shouqikuanxiang"/>
+<result property="wangongjindu" column="wangongjindu"/>
+<result property="qita" column="qita"/>
+<result property="kaipiaoneirong" column="kaipiaoneirong"/>
+<result property="tianbiaoren" column="tianbiaoren"/>
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="tianbiaoriqi" column="tianbiaoriqi"/>
+<result property="kaipiaoqingkuangbiao_xiangmu_id" column="kaipiaoqingkuangbiao_xiangmu_id"/>
+<result property="fuheren" column="fuheren"/>
 </resultMap>
 
-<select id="getKaiPiaoShenQingDanByProjectId" resultType="KaiPiaoShenQingDan">
-select id,fengongsimingcheng,xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,xiangmutaizhang_id
-from kaipiaoshenqingdan
-where xiangmutaizhang_id = #{xiangmutaizhang_id}
-</select>
-
-<insert id="addKaiPiaoShenQingDan" >
-insert into kaipiaoshenqingdan (fengongsimingcheng,xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,xiangmutaizhang_id)
-values (#{id},#{fengongsimingcheng},#{xiangmubu},#{xiangmumingcheng},#{hetongzongjine},#{shenqingriqi},#{kaijufapiao},#{shouqikuanxiang},#{wangongjindu},#{qita},#{kaipiaoneirong},#{tianbiaoren},#{tianbiaorendianhua},#{tianbiaoriqi},#{xiangmutaizhang_id})
+<insert id="addKaiPiaoShenQingDan" parameterType="String">
+insert into kaipiaoshenqingdan (xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren,)
+values(#{xiangmubu},#{xiangmumingcheng},#{hetongzongjine},#{shenqingriqi},#{kaijufapiao},#{shouqikuanxiang},#{wangongjindu},#{qita},#{kaipiaoneirong},#{tianbiaoren},#{tianbiaorendianhua},#{tianbiaoriqi},#{kaipiaoqingkuangbiao_xiangmu_id},#{fuheren})
 </insert>
 
+<update id="updateKaiPiaoShenQingDan" parameterType="String">
+update kaipiaoshenqingdan set xiangmubu=#{xiangmubu},xiangmumingcheng=#{xiangmumingcheng},hetongzongjine=#{hetongzongjine},shenqingriqi=#{shenqingriqi},kaijufapiao=#{kaijufapiao},shouqikuanxiang=#{shouqikuanxiang},wangongjindu=#{wangongjindu},qita=#{qita},kaipiaoneirong=#{kaipiaoneirong},tianbiaoren=#{tianbiaoren},tianbiaorendianhua=#{tianbiaorendianhua},tianbiaoriqi=#{tianbiaoriqi},kaipiaoqingkuangbiao_xiangmu_id=#{kaipiaoqingkuangbiao_xiangmu_id},fuheren=#{fuheren}
+where id=#{id}
+</update>
+<select id="getKaiPiaoShenQingDanById" parameterType="Long" resultType="KaiPiaoShenQingDan">
+select id,fengongsimingcheng,xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren
+from kaipiaoshenqingdan
+where id=#{id}
+</select>
 </mapper>
