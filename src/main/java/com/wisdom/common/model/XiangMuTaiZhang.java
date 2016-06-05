@@ -230,11 +230,11 @@ public void setHetongkaigongshijian (Timestamp hetongkaigongshijian) {
 
 public String getHetongkaigongshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String hetongqiandingshijian = "";
+	String rq = "";
 	if(this.hetongfukuanfangshi != null) {
-		hetongqiandingshijian  = dateFormat.format(this.hetongfukuanfangshi);
+		rq  = dateFormat.format(this.hetongkaigongshijian);
 	}
-return hetongqiandingshijian;
+return rq;
 }
 
 public void setKaigongxukezhengshijian (Timestamp kaigongxukezhengshijian) {

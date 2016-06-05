@@ -342,11 +342,19 @@ public class ProjectController {
 				}catch(NumberFormatException e2){
 
 				   //	parsedDate = dateFormat.parse(arg);
+					if(!arg.isEmpty()) {
 						arg += " 00:00:00";
 						Timestamp argT = Timestamp.valueOf(arg);
 						//Timestamp argT = new java.sql.Timestamp(parsedDate.getTime());
 						m = model.getClass().getMethod(methodName, Timestamp.class);
 						Object ret = m.invoke(model, argT);
+					} else {
+						Timestamp argT = new Timestamp(System.currentTimeMillis());
+						//Timestamp argT = new java.sql.Timestamp(parsedDate.getTime());
+						m = model.getClass().getMethod(methodName, Timestamp.class);
+						Object ret = m.invoke(model, argT);
+					}
+						
 				    
 				}
 				}
@@ -359,7 +367,7 @@ public class ProjectController {
 	
 	
 	public XiangMuTaiZhang setXiangMuTaiZhangModel(XiangMuTaiZhang xmtz, Map<String, String[]> params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
-for (Entry<String, String[]> entry : params.entrySet()) {
+		for (Entry<String, String[]> entry : params.entrySet()) {
 			
 			String methodName = "set" + Character.toUpperCase(entry.getKey().charAt(0)) + entry.getKey().substring(1);
 			String arg = entry.getValue()[0];

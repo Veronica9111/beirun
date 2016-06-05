@@ -1051,9 +1051,10 @@ $("#modify").on("click", function(){
 	dataSet['hetongleixing'] = hetongleixing;
 	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
 	dataSet['nashuileixing'] = nashuileixing;
+	dataSet["class_name"] = "XiangMuTaiZhang";
 	dataSet['id'] = 1;
 	
-	$.post('/project/modifyProject', dataSet, function(data){
+	$.post('/project/modifyModel', dataSet, function(data){
 		console.log(data);
 		
 	});
