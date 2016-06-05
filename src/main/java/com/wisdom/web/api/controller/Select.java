@@ -17,7 +17,7 @@ public class Select {
 
 	public static void main(String[] args) {
 		try {
-			InputStreamReader read = new InputStreamReader(new FileInputStream(new File("/home/invoice/process/text.txt")), "UTF-8");// ���ǵ������ʽ
+			InputStreamReader read = new InputStreamReader(new FileInputStream(new File("/home/invoice/process/text.txt")), "UTF-8");
 			BufferedReader bufferedReader = new BufferedReader(read);
 			StringBuilder sb = new StringBuilder();
 			sb.append("select ");
@@ -26,7 +26,7 @@ public class Select {
 				sb.append(lineTxt+",");
 			}
 			sb.setCharAt(sb.length()-1, ' ');
-			sb.append(" from jianyijishuifangfazhuanpiaojishui where id=#{id}");
+			sb.append(" from shouqikuanxiangmingxibiao where id=#{id}");
 			read.close();
 			FileWriter writer = new FileWriter("/home/invoice/process/final.txt", true);
 			writer.write(sb.toString());

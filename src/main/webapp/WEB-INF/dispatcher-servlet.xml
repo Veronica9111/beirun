@@ -259,12 +259,22 @@
   		<property name="mapperInterface" value="com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
   		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<bean id="PuTongFaPiaoKaiJuMingXiMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="mapperInterface" value="com.wisdom.common.mapper.PuTongFaPiaoKaiJuMingXiMapper" />
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="ShouQiKuanXiangMingXiBiaoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="mapperInterface" value="com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper" />
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	<bean id="projectServiceImpl" class="com.wisdom.project.service.impl.ProjectServiceImpl">
 		<property name="XiangMuTaiZhangMapper" ref="XiangMuTaiZhangMapper" />
 		<property name="JianYiJiShuiFangFaZhuanPiaoJiShuiMapper" ref="JianYiJiShuiFangFaZhuanPiaoJiShuiMapper" />
 		<property name="CompanyMapper" ref="CompanyMapper" />
 		<property name="KaiPiaoShenQingDanMapper" ref="KaiPiaoShenQingDanMapper" />
 		<property name="JianYiJiShuiFangFaPuPiaoJiShuiMapper" ref="JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
+		<property name="PuTongFaPiaoKaiJuMingXiMapper" ref="PuTongFaPiaoKaiJuMingXiMapper" />
+		<property name="ShouQiKuanXiangMingXiBiaoMapper" ref="ShouQiKuanXiangMingXiBiaoMapper" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
   <property name="basePackage" value="mapper" />

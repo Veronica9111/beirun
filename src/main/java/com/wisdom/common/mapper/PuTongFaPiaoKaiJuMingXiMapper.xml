@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+    'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.PuTongFaPiaoKaiJuMingXiMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi" id="PuTongFaPiaoKaiJuMingXi">
+<result property="fengongsimingcheng" column="fengongsimingcheng"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="riqi" column="riqi"/>
+<result property="putong_11_xiaoshoue" column="putong_11_xiaoshoue"/>
+<result property="putong_11_xiaoxiangshuie" column="putong_11_xiaoxiangshuie"/>
+<result property="putong_11_xiaoji" column="putong_11_xiaoji"/>
+<result property="putong_3_xiaoshoue" column="putong_3_xiaoshoue"/>
+<result property="putong_3_xiaoxiangshuie" column="putong_3_xiaoxiangshuie"/>
+<result property="putong_3_xiaoji" column="putong_3_xiaoji"/>
+<result property="putong_17huowu_xiaoshoue" column="putong_17huowu_xiaoshoue"/>
+<result property="putong_17huowu_xiaoxiangshuie" column="putong_17huowu_xiaoxiangshuie"/>
+<result property="putong_17huowu_xiaoji" column="putong_17huowu_xiaoji"/>
+<result property="putong_17fuwu_xiaoshoue" column="putong_17fuwu_xiaoshoue"/>
+<result property="putong_17fuwu_xiaoxiangshuie" column="putong_17fuwu_xiaoxiangshuie"/>
+<result property="putong_17fuwu_xiaoji" column="putong_17fuwu_xiaoji"/>
+<result property="putong_13_xiaoshoue" column="putong_13_xiaoshoue"/>
+<result property="putong_13_xiaoxiangshuie" column="putong_13_xiaoxiangshuie"/>
+<result property="putong_13_xiaoji" column="putong_13_xiaoji"/>
+<result property="putong_6_xiaoshoue" column="putong_6_xiaoshoue"/>
+<result property="putong_6_xiaoxiangshuie" column="putong_6_xiaoxiangshuie"/>
+<result property="putong_6_xiaoji" column="putong_6_xiaoji"/>
+<result property="putong_heji_11_xiaoshoue" column="putong_heji_11_xiaoshoue"/>
+<result property="putong_heji_11_xiaoxiangshuie" column="putong_heji_11_xiaoxiangshuie"/>
+<result property="putong_heji_11_xiaoji" column="putong_heji_11_xiaoji"/>
+<result property="putong_heji_3_xiaoshoue" column="putong_heji_3_xiaoshoue"/>
+<result property="putong_heji_3_xiaoxiangshuie" column="putong_heji_3_xiaoxiangshuie"/>
+<result property="putong_heji_3_xiaoji" column="putong_heji_3_xiaoji"/>
+<result property="putong_heji_17huowu_xiaoshoue" column="putong_heji_17huowu_xiaoshoue"/>
+<result property="putong_heji_17huowu_xiaoxiangshuie" column="putong_heji_17huowu_xiaoxiangshuie"/>
+<result property="putong_heji_17huowu_xiaoji" column="putong_heji_17huowu_xiaoji"/>
+<result property="putong_heji_17fuwu_xiaoshoue" column="putong_heji_17fuwu_xiaoshoue"/>
+<result property="putong_heji_17fuwu_xiaoxiangshuie" column="putong_heji_17fuwu_xiaoxiangshuie"/>
+<result property="putong_heji_17fuwu_xiaoji" column="putong_heji_17fuwu_xiaoji"/>
+<result property="putong_heji_13_xiaoshoue" column="putong_heji_13_xiaoshoue"/>
+<result property="putong_heji_13_xiaoxiangshuie" column="putong_heji_13_xiaoxiangshuie"/>
+<result property="putong_heji_13_xiaoji" column="putong_heji_13_xiaoji"/>
+<result property="putong_heji_6_xiaoshoue" column="putong_heji_6_xiaoshoue"/>
+<result property="putong_heji_6_xiaoxiangshuie" column="putong_heji_6_xiaoxiangshuie"/>
+<result property="putong_heji_6_xiaoji" column="putong_heji_6_xiaoji"/>
+<result property="kaipiaoneirong" column="kaipiaoneirong"/>
+<result property="shenheren" column="shenheren"/>
+<result property="tianbiaoren" column="tianbiaoren"/>
+<result property="shenherendianhua" column="shenherendianhua"/>
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="shenheriqi" column="shenheriqi"/>
+<result property="tianbiaoriqi" column="tianbiaoriqi"/>
+<result property="kaipiaoshenqingdan_id" column="kaipiaoshenqingdan_id"/>
+</resultMap>
+
+<insert id="addPuTongFaPiaoKaiJuMingXi" parameterType="String">
+insert into putongfapiaokaijumingxi (fengongsimingcheng, xiangmubu,riqi,putong_11_xiaoshoue,putong_11_xiaoxiangshuie,putong_11_xiaoji,putong_3_xiaoshoue,putong_3_xiaoxiangshuie,putong_3_xiaoji,putong_17huowu_xiaoshoue,putong_17huowu_xiaoxiangshuie,putong_17huowu_xiaoji,putong_17fuwu_xiaoshoue,putong_17fuwu_xiaoxiangshuie,putong_17fuwu_xiaoji,putong_13_xiaoshoue,putong_13_xiaoxiangshuie,putong_13_xiaoji,putong_6_xiaoshoue,putong_6_xiaoxiangshuie,putong_6_xiaoji,putong_heji_11_xiaoshoue,putong_heji_11_xiaoxiangshuie,putong_heji_11_xiaoji,putong_heji_3_xiaoshoue,putong_heji_3_xiaoxiangshuie,putong_heji_3_xiaoji,putong_heji_17huowu_xiaoshoue,putong_heji_17huowu_xiaoxiangshuie,putong_heji_17huowu_xiaoji,putong_heji_17fuwu_xiaoshoue,putong_heji_17fuwu_xiaoxiangshuie,putong_heji_17fuwu_xiaoji,putong_heji_13_xiaoshoue,putong_heji_13_xiaoxiangshuie,putong_heji_13_xiaoji,putong_heji_6_xiaoshoue,putong_heji_6_xiaoxiangshuie,putong_heji_6_xiaoji,kaipiaoneirong,shenheren,tianbiaoren,shenherendianhua,tianbiaorendianhua,shenheriqi,tianbiaoriqi,kaipiaoshenqingdan_id)
+values(#{fengongsimingcheng},#{xiangmubu},#{riqi},#{putong_11_xiaoshoue},#{putong_11_xiaoxiangshuie},#{putong_11_xiaoji},#{putong_3_xiaoshoue},#{putong_3_xiaoxiangshuie},#{putong_3_xiaoji},#{putong_17huowu_xiaoshoue},#{putong_17huowu_xiaoxiangshuie},#{putong_17huowu_xiaoji},#{putong_17fuwu_xiaoshoue},#{putong_17fuwu_xiaoxiangshuie},#{putong_17fuwu_xiaoji},#{putong_13_xiaoshoue},#{putong_13_xiaoxiangshuie},#{putong_13_xiaoji},#{putong_6_xiaoshoue},#{putong_6_xiaoxiangshuie},#{putong_6_xiaoji},#{putong_heji_11_xiaoshoue},#{putong_heji_11_xiaoxiangshuie},#{putong_heji_11_xiaoji},#{putong_heji_3_xiaoshoue},#{putong_heji_3_xiaoxiangshuie},#{putong_heji_3_xiaoji},#{putong_heji_17huowu_xiaoshoue},#{putong_heji_17huowu_xiaoxiangshuie},#{putong_heji_17huowu_xiaoji},#{putong_heji_17fuwu_xiaoshoue},#{putong_heji_17fuwu_xiaoxiangshuie},#{putong_heji_17fuwu_xiaoji},#{putong_heji_13_xiaoshoue},#{putong_heji_13_xiaoxiangshuie},#{putong_heji_13_xiaoji},#{putong_heji_6_xiaoshoue},#{putong_heji_6_xiaoxiangshuie},#{putong_heji_6_xiaoji},#{kaipiaoneirong},#{shenheren},#{tianbiaoren},#{shenherendianhua},#{tianbiaorendianhua},#{shenheriqi},#{tianbiaoriqi},#{kaipiaoshenqingdan_id})
+</insert>
+
+<update id="updatePuTongFaPiaoKaiJuMingXi" parameterType="String">
+update putongfapiaokaijumingxi set fengongsimingcheng=#{fengongsimingcheng}, xiangmubu=#{xiangmubu},riqi=#{riqi},putong_11_xiaoshoue=#{putong_11_xiaoshoue},putong_11_xiaoxiangshuie=#{putong_11_xiaoxiangshuie},putong_11_xiaoji=#{putong_11_xiaoji},putong_3_xiaoshoue=#{putong_3_xiaoshoue},putong_3_xiaoxiangshuie=#{putong_3_xiaoxiangshuie},putong_3_xiaoji=#{putong_3_xiaoji},putong_17huowu_xiaoshoue=#{putong_17huowu_xiaoshoue},putong_17huowu_xiaoxiangshuie=#{putong_17huowu_xiaoxiangshuie},putong_17huowu_xiaoji=#{putong_17huowu_xiaoji},putong_17fuwu_xiaoshoue=#{putong_17fuwu_xiaoshoue},putong_17fuwu_xiaoxiangshuie=#{putong_17fuwu_xiaoxiangshuie},putong_17fuwu_xiaoji=#{putong_17fuwu_xiaoji},putong_13_xiaoshoue=#{putong_13_xiaoshoue},putong_13_xiaoxiangshuie=#{putong_13_xiaoxiangshuie},putong_13_xiaoji=#{putong_13_xiaoji},putong_6_xiaoshoue=#{putong_6_xiaoshoue},putong_6_xiaoxiangshuie=#{putong_6_xiaoxiangshuie},putong_6_xiaoji=#{putong_6_xiaoji},putong_heji_11_xiaoshoue=#{putong_heji_11_xiaoshoue},putong_heji_11_xiaoxiangshuie=#{putong_heji_11_xiaoxiangshuie},putong_heji_11_xiaoji=#{putong_heji_11_xiaoji},putong_heji_3_xiaoshoue=#{putong_heji_3_xiaoshoue},putong_heji_3_xiaoxiangshuie=#{putong_heji_3_xiaoxiangshuie},putong_heji_3_xiaoji=#{putong_heji_3_xiaoji},putong_heji_17huowu_xiaoshoue=#{putong_heji_17huowu_xiaoshoue},putong_heji_17huowu_xiaoxiangshuie=#{putong_heji_17huowu_xiaoxiangshuie},putong_heji_17huowu_xiaoji=#{putong_heji_17huowu_xiaoji},putong_heji_17fuwu_xiaoshoue=#{putong_heji_17fuwu_xiaoshoue},putong_heji_17fuwu_xiaoxiangshuie=#{putong_heji_17fuwu_xiaoxiangshuie},putong_heji_17fuwu_xiaoji=#{putong_heji_17fuwu_xiaoji},putong_heji_13_xiaoshoue=#{putong_heji_13_xiaoshoue},putong_heji_13_xiaoxiangshuie=#{putong_heji_13_xiaoxiangshuie},putong_heji_13_xiaoji=#{putong_heji_13_xiaoji},putong_heji_6_xiaoshoue=#{putong_heji_6_xiaoshoue},putong_heji_6_xiaoxiangshuie=#{putong_heji_6_xiaoxiangshuie},putong_heji_6_xiaoji=#{putong_heji_6_xiaoji},kaipiaoneirong=#{kaipiaoneirong},shenheren=#{shenheren},tianbiaoren=#{tianbiaoren},shenherendianhua=#{shenherendianhua},tianbiaorendianhua=#{tianbiaorendianhua},shenheriqi=#{shenheriqi},tianbiaoriqi=#{tianbiaoriqi},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+where id=#{id}
+</update>
+
+<select id="getPuTongFaPiaoKaiJuMingXiById" parameterType="Long" resultType="PuTongFaPiaoKaiJuMingXi">
+select id,fengongsimingcheng,xiangmubu,riqi,putong_11_xiaoshoue,putong_11_xiaoxiangshuie,putong_11_xiaoji,putong_3_xiaoshoue,putong_3_xiaoxiangshuie,putong_3_xiaoji,putong_17huowu_xiaoshoue,putong_17huowu_xiaoxiangshuie,putong_17huowu_xiaoji,putong_17fuwu_xiaoshoue,putong_17fuwu_xiaoxiangshuie,putong_17fuwu_xiaoji,putong_13_xiaoshoue,putong_13_xiaoxiangshuie,putong_13_xiaoji,putong_6_xiaoshoue,putong_6_xiaoxiangshuie,putong_6_xiaoji,putong_heji_11_xiaoshoue,putong_heji_11_xiaoxiangshuie,putong_heji_11_xiaoji,putong_heji_3_xiaoshoue,putong_heji_3_xiaoxiangshuie,putong_heji_3_xiaoji,putong_heji_17huowu_xiaoshoue,putong_heji_17huowu_xiaoxiangshuie,putong_heji_17huowu_xiaoji,putong_heji_17fuwu_xiaoshoue,putong_heji_17fuwu_xiaoxiangshuie,putong_heji_17fuwu_xiaoji,putong_heji_13_xiaoshoue,putong_heji_13_xiaoxiangshuie,putong_heji_13_xiaoji,putong_heji_6_xiaoshoue,putong_heji_6_xiaoxiangshuie,putong_heji_6_xiaoji,kaipiaoneirong,shenheren,tianbiaoren,shenherendianhua,tianbiaorendianhua,shenheriqi,tianbiaoriqi,kaipiaoshenqingdan_id  
+from putongfapiaokaijumingxi 
+where id=#{id}
+</select>
+</mapper>

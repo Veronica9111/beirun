@@ -34,14 +34,18 @@ import com.wisdom.common.mapper.JianYiJiShuiFangFaZhuanPiaoJiShuiMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoShenQingDanMapper;
 import com.wisdom.common.mapper.PermissionMapper;
+import com.wisdom.common.mapper.PuTongFaPiaoKaiJuMingXiMapper;
 import com.wisdom.common.mapper.RecordMapper;
+import com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.model.Company;
 import com.wisdom.common.model.Invoice;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
+import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.Record;
+import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.invoice.service.IInvoiceService;
 import com.wisdom.project.service.IProjectService;
@@ -74,6 +78,28 @@ public class ProjectServiceImpl implements IProjectService {
 	  
 	  @Autowired
 	  private JianYiJiShuiFangFaPuPiaoJiShuiMapper jianYiJiShuiFangFaPuPiaoJiShuiMapper;
+	  
+	  @Autowired
+	  private PuTongFaPiaoKaiJuMingXiMapper puTongFaPiaoKaiJuMingXiMapper;
+	  
+	  @Autowired
+	  private ShouQiKuanXiangMingXiBiaoMapper shouQiKuanXiangMingXiBiaoMapper;
+
+	public ShouQiKuanXiangMingXiBiaoMapper getShouQiKuanXiangMingXiBiaoMapper() {
+		return shouQiKuanXiangMingXiBiaoMapper;
+	}
+
+	public void setShouQiKuanXiangMingXiBiaoMapper(ShouQiKuanXiangMingXiBiaoMapper shouQiKuanXiangMingXiBiaoMapper) {
+		this.shouQiKuanXiangMingXiBiaoMapper = shouQiKuanXiangMingXiBiaoMapper;
+	}
+
+	public PuTongFaPiaoKaiJuMingXiMapper getPuTongFaPiaoKaiJuMingXiMapper() {
+		return puTongFaPiaoKaiJuMingXiMapper;
+	}
+
+	public void setPuTongFaPiaoKaiJuMingXiMapper(PuTongFaPiaoKaiJuMingXiMapper puTongFaPiaoKaiJuMingXiMapper) {
+		this.puTongFaPiaoKaiJuMingXiMapper = puTongFaPiaoKaiJuMingXiMapper;
+	}
 
 	public JianYiJiShuiFangFaPuPiaoJiShuiMapper getJianYiJiShuiFangFaPuPiaoJiShuiMapper() {
 		return jianYiJiShuiFangFaPuPiaoJiShuiMapper;
@@ -300,6 +326,40 @@ public class ProjectServiceImpl implements IProjectService {
 	public Boolean updateJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
 		jianyijishuifangfazhuanpiaojishuiMapper.updateJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
 		return true;
+	}
+
+	@Override
+	public Boolean addPuTongFaPiaoKaiJuMingXi(PuTongFaPiaoKaiJuMingXi ptf) {
+		puTongFaPiaoKaiJuMingXiMapper.addPuTongFaPiaoKaiJuMingXi(ptf);
+		return true;
+	}
+
+	@Override
+	public Boolean updatePuTongFaPiaoKaiJuMingXi(PuTongFaPiaoKaiJuMingXi ptf) {
+		puTongFaPiaoKaiJuMingXiMapper.updatePuTongFaPiaoKaiJuMingXi(ptf);
+		return true;
+	}
+
+	@Override
+	public PuTongFaPiaoKaiJuMingXi getPuTongFaPiaoKaiJuMingXiById(Long id) {
+		return puTongFaPiaoKaiJuMingXiMapper.getPuTongFaPiaoKaiJuMingXiById(id);
+	}
+
+	@Override
+	public Boolean addShouQiKuanXiangMingXiBiao(ShouQiKuanXiangMingXiBiao ptf) {
+		shouQiKuanXiangMingXiBiaoMapper.addShouQiKuanXiangMingXiBiao(ptf);
+		return true;
+	}
+
+	@Override
+	public Boolean updateShouQiKuanXiangMingXiBiao(ShouQiKuanXiangMingXiBiao ptf) {
+		shouQiKuanXiangMingXiBiaoMapper.updateShouQiKuanXiangMingXiBiao(ptf);
+		return true;
+	}
+
+	@Override
+	public ShouQiKuanXiangMingXiBiao getShouQiKuanXiangMingXiBiaoById(Long id) {
+		return shouQiKuanXiangMingXiBiaoMapper.getShouQiKuanXiangMingXiBiaoById(id);
 	}
 	
 /*	@Override
