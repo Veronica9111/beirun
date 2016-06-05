@@ -1025,12 +1025,16 @@ td
 	
 	#container{
 		margin-left: 27vw;
-		margin-top: 50px;
+		margin-top: 20px;
 		width: 920px;
 		min-width:920px;
 		height: 400px;
 		min-height:400px;
 		overflow-x: auto; overflow-y: auto;
+	}
+	#but_position{
+		margin-left:27vw;
+		margin-top: 50px;
 	}
 
 </style>
@@ -1048,23 +1052,28 @@ td
 <div id="left-menu"></div>
 
 <!-- Container -->
+<div id="but_position">
+	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
+	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+</div>
 <div id="container">
+
 <table width='1097' border='0' cellpadding='0' cellspacing='0' style='width:548.50pt;border-collapse:collapse;table-layout:fixed;'>
   <tr height='35' style='height:17.50pt;'>
     <td class='xl65' height='35' width='1097' colspan='6' style='height:17.50pt;width:548.50pt;border-right:none;border-bottom:none;' x:str>开票申请单</td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl66' height='28' style='height:14.00pt;' x:str>分公司名称：</td>
-    <td class='xl66' id='fengongsimingcheng'></td>
+    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
     <td class='xl67' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;'></td>
     <td class='xl66' x:str>项目部：</td>
-    <td class='xl66' id='xiangmubu'></td>
+    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='height:14.00pt;' x:str>项目名称</td>
-    <td class='xl69' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='xiangmumingcheng'></td>
+    <td class='xl69' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='xiangmumingcheng'></td>
     <td class='xl71' x:str>合同总金额</td>
-    <td class='xl71' colspan='2' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input style='width:100%;' id='hetongzongjine'></td>
+    <td class='xl71' colspan='2' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='hetongzongjine'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl73' height='112' rowspan='4' style='height:56.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请日期</td>
@@ -1080,18 +1089,18 @@ td
    <tr height='28' style='height:14.00pt;'/>
    <tr height='28' style='height:14.00pt;'/>
    <tr height='28' style='height:14.00pt;'>
-    <td class='xl87' height='28' style='height:14.00pt;' id='shenqingriqi'><input style='width:100%;' id='shenqingriqi'></td>
-    <td class='xl87' id='kaipiaoneirong'><input style='width:100%;' id='kaipiaoneirong'></td>
-    <td class='xl87' id='kaijufapiao'><input style='width:100%;' id='kaijufapiao'></td>
-    <td class='xl87' id='shouqikuanxiang'><input style='width:100%;' id='shouqikuanxiang'></td>
-    <td class='xl87' id='wangongjindu'><input style='width:100%;' id='wangongjindu'></td>
-    <td class='xl87' id='qita'><input style='width:100%;' id='qita'></td>
+    <td class='xl87' height='28' style='height:14.00pt;' id=''><input class="text" style='width:100%;' id='shenqingriqi'></td>
+    <td class='xl87' id=''><input class="text" style='width:100%;' id='kaipiaoneirong'></td>
+    <td class='xl87' id=''><input class="text" style='width:100%;' id='kaijufapiao'></td>
+    <td class='xl87' id=''><input class="text" style='width:100%;' id='shouqikuanxiang'></td>
+    <td class='xl87' id=''><input class="text" style='width:100%;' id='wangongjindu'></td>
+    <td class='xl87' id=''><input class="text" style='width:100%;' id='qita'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='border:none;height:14.00pt;' x:str>填表人：</td>
-    <td class='xl68' style='border:none;'><input style='border:1pt solid black;width:100%'width:100%' id='tianbiaoren'></td>
+    <td class='xl68' style='border:none;'><input class="text" style='border:1pt solid black;width:100%'width:100%' id='tianbiaoren'></td>
     <td class='xl68' style='border:none;height:14.00pt;' x:str>复核人：</td>
-    <td class='xl68' style='border:none;'><input style='border:1pt solid black;width:100%'width:100%' id='fuheren'></td>
+    <td class='xl68' style='border:none;'><input class="text" style='border:1pt solid black;width:100%'width:100%' id='fuheren'></td>
    </tr>
   </table>
 </div>
@@ -1104,6 +1113,45 @@ td
 
 
 </body>
+<script type="text/javascript">
+$("#submit").on("click", function(){
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+	dataSet["class_name"] = "KaiPiaoShenQingDan";
+	dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = "222";
+	$.post('/project/addModel', dataSet, function(data){
+		console.log(data);
+		
+	});
+	
+});
+$("#modify").on("click", function(){
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+	dataSet['id'] = 0;
+	dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = "222";
+	dataSet["class_name"] = "KaiPiaoShenQingDan";
+	$.post('/project/modifyModel', dataSet, function(data){
+		console.log(data);
+	});
+	
+});
 
+var query = {query_key: 'id', query_value:0, class_name:'KaiPiaoShenQingDan'};
+$.post("/project/getModel", query, function(data){
+	var data = $.parseJSON(data.data)[0];
+	console.log(data);
+	for(key in data){
+		$("#" + key).val(data[key]);
+	}
+	
+});
+</script>
 
 </html>

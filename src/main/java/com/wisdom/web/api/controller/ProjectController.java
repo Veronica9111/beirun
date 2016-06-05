@@ -2,11 +2,11 @@ package com.wisdom.web.api.controller;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +69,7 @@ public class ProjectController {
 		String longClassName = "com.wisdom.common.model." + className;
 		Class c = Class.forName(longClassName);
 		Object instance = c.newInstance();
-		instance = setModel(instance, params);
+		instance = setModel(instance, params, 0);
   	    Method m = projectService.getClass().getMethod("add"+className, instance.getClass());
 			Object ret = m.invoke(projectService, instance);
 			retMap.put("status", "ok");
@@ -86,12 +86,11 @@ public class ProjectController {
 		String longClassName = "com.wisdom.common.model." + className;
 		Class c = Class.forName(longClassName);
 		Object instance = c.newInstance();
-		instance = setModel(instance, params);
+		instance = setModel(instance, params, 1);
 		Method m = projectService.getClass().getMethod("update"+className, instance.getClass());
 		Object ret = m.invoke(projectService, instance);
 		retMap.put("status", "ok");
 		return retMap;			
-		
 	}
 	
 	public  boolean isInteger(String s) {
@@ -171,7 +170,7 @@ public class ProjectController {
 	@ResponseBody
 	public Map<String, String> getKaiPiaoShenQingDanByProjectId(HttpServletRequest request, HttpSession httpSession){
 		Map<String, String> retMap = new HashMap<>();
-		Integer projectId = Integer.valueOf(request.getParameter("project_id"));
+		Long projectId = Long.valueOf(request.getParameter("kaipiaoqingkuangbiao_xiangmu_id"));
 		List<KaiPiaoShenQingDan> kpsqdList = projectService.getKaiPiaoShenQingDanByProjectId(projectId);
 		List<Object> retList = new ArrayList<>();
 		for(KaiPiaoShenQingDan kpsqd: kpsqdList){
@@ -299,17 +298,17 @@ public class ProjectController {
 	}
 	
 	
-	public Object setModel(Object model, Map<String, String[]> params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+	public Object setModel(Object model, Map<String, String[]> params, int type) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 		for (Entry<String, String[]> entry : params.entrySet()) {
 			
 			String methodName = "set" + Character.toUpperCase(entry.getKey().charAt(0)) + entry.getKey().substring(1);
 			String arg = entry.getValue()[0];
 
 		      Method m;
-		      if(entry.getKey().equals("id") || entry.getKey().equals("class_name")){
+		      if(type==0 && entry.getKey().equals("id") || entry.getKey().equals("class_name")){
 		    	  continue;
 		      }
-		      if(entry.getKey().indexOf("_id") != -1){
+		      if(entry.getKey().indexOf("_id") != -1 || entry.getKey().equals("id")){
 		    	  Long argI = Long.valueOf(arg);
 		    	  m = model.getClass().getMethod(methodName, Long.class);
 					Object ret = m.invoke(model, argI);
@@ -326,16 +325,15 @@ public class ProjectController {
 				}catch(NumberFormatException e2){
 
 				    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				    java.util.Date parsedDate;
-					try {
-						parsedDate = dateFormat.parse(arg);
-						Timestamp argT = new java.sql.Timestamp(parsedDate.getTime());
-						m = model.getClass().getMethod(methodName, Timestamp.class);
-						Object ret = m.invoke(model, argT);
-					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+						try{
+						    Date parsedDate = (Date) dateFormat.parse(arg);
+						    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+						    m = model.getClass().getMethod(methodName, Timestamp.class);
+							Object ret = m.invoke(model, timestamp);
+						}catch(Exception ex){
+							ex.printStackTrace();
+						}
+						
 				    
 				}
 				}

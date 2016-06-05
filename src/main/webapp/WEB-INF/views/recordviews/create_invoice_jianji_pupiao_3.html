@@ -1839,12 +1839,16 @@ td
 	
 	#container{
 		margin-left: 27vw;
-		margin-top: 50px;
+		margin-top: 20px;
 		width: 920px;
 		min-width:920px;
 		height: 400px;
 		min-height:400px;
 		overflow-x: auto; overflow-y: auto;
+	}
+	#but_position{
+		margin-left:27vw;
+		margin-top: 50px;
 	}
 
 </style>
@@ -1862,6 +1866,10 @@ td
 <div id="left-menu"></div>
 
 <!-- Container -->
+<div id="but_position">
+	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
+	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+</div>
 <div id="container">
 <table width="3607.20" border="0" cellpadding="0" cellspacing="0" style='width:1803.60pt;border-collapse:collapse;table-layout:fixed;'>
   
@@ -1870,11 +1878,11 @@ td
    </tr>
    <tr height="52" class="xl65" style='height:26.00pt;'>
     <td class="xl67" height="52" style='height:26.00pt;' x:str>分公司名称：</td>
-    <td class="xl67" colspan="5" style='mso-ignore:colspan;' id='fengongsimingcheng'></td>
+    <td class="xl67" colspan="5" style='mso-ignore:colspan;' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
 
     <td class="xl78" style="text-align:left;" x:str>项目部：</td>
 
-    <td class="xl79" colspan="5" style='mso-ignore:colspan;' id='xiangmubu'></td>
+    <td class="xl79" colspan="5" style='mso-ignore:colspan;' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
     <td class="xl67"></td>
    </tr>
    <tr height="28" class="xl65" style='height:14.00pt;'>
@@ -1922,70 +1930,67 @@ td
     <td class="xl69" x:str>价税合计</td>
    </tr>
    <tr height="28" class="xl65" style='height:14.00pt;'>
-    <td class="xl75" height="28" style='height:14.00pt;'><input style='width:100%' id='riqi'></td>
-    <td class="xl75"><input style='width:100%' id='zhaiyao'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_3fuwu_qiyezibaojine'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_3fuwu_xiaoshoue'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_3fuwu_xiaoxiangshuie'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_3fuwu_xiaoji'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_3huowu_qiyezibaojine'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_3huowu_xiaoshoue'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_3huowu_xiaoxiangshuie'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_3huowu_xiaoji'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_5fuwu_qiyezibaojine'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_5fuwu_xiaoshoue'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_5fuwu_xiaoxiangshuie'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_5fuwu_xiaoji'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_5huowu_qiyezibaojine'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_5huowu_xiaoshoue'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_5huowu_xiaoxiangshuie'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_5huowu_xiaoji'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_4_qiyezibaojine'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_4_xiaoshoue'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_4_xiaoxiangshuie'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_4_xiaoji'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_6_qiyezibaojine'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_6_xiaoshoue'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_6_xiaoxiangshuie'></td>
-    <td class="xl75"><input style='width:100%' id='jianyipu_6_xiaoji'></td>
+    <td class="xl75" height="28" style='height:14.00pt;'><input class="text" style='width:100%' id='riqi'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='zhaiyao'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_3fuwu_qiyezibaojine'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_3fuwu_xiaoshoue'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_3fuwu_xiaoxiangshuie'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_3fuwu_xiaoji'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_3huowu_qiyezibaojine'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_3huowu_xiaoshoue'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_3huowu_xiaoxiangshuie'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_3huowu_xiaoji'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_5fuwu_qiyezibaojine'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_5fuwu_xiaoshoue'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_5fuwu_xiaoxiangshuie'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_5fuwu_xiaoji'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_5huowu_qiyezibaojine'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_5huowu_xiaoshoue'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_5huowu_xiaoxiangshuie'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_5huowu_xiaoji'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_4_qiyezibaojine'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_4_xiaoshoue'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_4_xiaoxiangshuie'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_4_xiaoji'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_6_qiyezibaojine'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_6_xiaoshoue'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_6_xiaoxiangshuie'></td>
+    <td class="xl75"><input class="text" style='width:100%' id='jianyipu_6_xiaoji'></td>
    </tr>
    
    <tr height="28" class="xl65" style='height:14.00pt;'>
     <td class="xl76" height="28" style='height:14.00pt;' x:str>合计</td>
     <td class="xl76"></td>
-    <td class="xl76" id='jianyipu_heji_3fuwu_qiye'></td>
-    <td class="xl75" id='jianyipu_heji_3fuwu_xiaoshoue'></td>
-    <td class="xl75" id='jianyipu_heji_3fuwu_11_xiaoxiangshuie'></td>
-    <td class="xl75" id='jianyipu_heji_3fuwu_jiashuiheji'></td>
-    <td class="xl75" id='jianyipu_heji_3huowu_qiye'></td>
-    <td class="xl75" id='jianyipu_heji_3huowu_xiaoshoue'></td>
-    <td class="xl75" id='jianyipu_heji_3huowu_xiaoxiangshuie'></td>
-    <td class="xl75" id='jianyipu_heji_3huowu_jiashuiheji'></td>
-    <td class="xl75" id='jianyipu_heji_5fuwu_qiye'></td>
-    <td class="xl75" id='jianyipu_heji_5fuwu_xiaoshoue'></td>
-    <td class="xl75" id='jianyipu_heji_5fuwu_xiaoxiangshuie'></td>
-    <td class="xl75" id='jianyipu_heji_5fuwu_jiashuiheji'></td>
-    <td class="xl75" id='jianyipu_heji_5huowu_qiye'></td>
-    <td class="xl75" id='jianyipu_heji_5huowu_xiaoshoue'></td>
-    <td class="xl75" id='jianyipu_heji_5huowu_xiaoxiangshuie'></td>
-    <td class="xl75" id='jianyipu_heji_5huowu_jiashuiheji'></td>
-    <td class="xl75" id='jianyipu_heji_4_qiye'></td>
-    <td class="xl75" id='jianyipu_heji_4_xiaoshoue'></td>
-    <td class="xl75" id='jianyipu_heji_4_xiaoxiangshuie'></td>
-    <td class="xl75" id='jianyipu_heji_4_jiashuiheji'></td>
-    <td class="xl75" id='jianyipu_heji_6_qiye'></td>
-    <td class="xl75" id='jianyipu_heji_6_xiaoshoue'></td>
-    <td class="xl75" id='jianyipu_heji_6_xiaoxiangshuie'></td>
-    <td class="xl75" id='jianyipu_heji_6_jiashuiheji'></td>
-   </tr>
-   <tr height="28" style='height:14.00pt;'>
-    <td class="xl65" height="28" colspan="26" style='height:14.00pt;mso-ignore:colspan;'></td>
+    <td class="xl76" id=''><input class="text" style='width:100%' id='jianyipu_heji_3fuwu_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3fuwu_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3fuwu_11_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3fuwu_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3huowu_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3huowu_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3huowu_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3huowu_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5fuwu_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5fuwu_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5fuwu_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5fuwu_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5huowu_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5huowu_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5huowu_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5huowu_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_4_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_4_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_4_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_4_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_6_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_6_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_6_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_6_jiashuiheji'></td>
    </tr>
    <tr height="28" class="xl65" style='height:14.00pt;'>
     <td class="xl65" height="28" style='height:14.00pt;' x:str>填表人：</td>
-    <td class="xl65" ><input style='border:1pt solid black;width:100%' id='tianbiaoren'></td>
+    <td class="xl65" ><input class="text" style='border:1pt solid black;width:100%' id='tianbiaoren'></td>
     <td class="xl65" height="28" style='height:14.00pt;' x:str>复核人：</td>
-    <td class="xl65" style='mso-ignore:colspan;'><input style='border:1pt solid black;width:100%' id='shenheren'></td>
+    <td class="xl65" style='mso-ignore:colspan;'><input class="text" style='border:1pt solid black;width:100%' id='shenheren'></td>
    </tr>
   </table>
 </div>
@@ -1996,7 +2001,46 @@ td
   </div>
 </div>
 
+<script type="text/javascript">
+$("#submit").on("click", function(){
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+	dataSet["class_name"] = "JianYiJiShuiFangFaPuPiaoJiShui";
+	dataSet["kaipiaoshenqingdan_id"] = "222";
+	$.post('/project/addModel', dataSet, function(data){
+		console.log(data);
+		
+	});
+	
+});
+$("#modify").on("click", function(){
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+	dataSet['id'] = 1;
+	dataSet["kaipiaoshenqingdan_id"] = "222";
+	dataSet["class_name"] = "JianYiJiShuiFangFaPuPiaoJiShui";
+	$.post('/project/modifyModel', dataSet, function(data){
+		console.log(data);
+	});
+	
+});
 
+var query = {query_key: 'id', query_value:1, class_name:'JianYiJiShuiFangFaPuPiaoJiShui'};
+$.post("/project/getModel", query, function(data){
+	var data = $.parseJSON(data.data)[0];
+	console.log(data);
+	for(key in data){
+		$("#" + key).val(data[key]);
+	}
+	
+});
+</script>
 </body>
 
 

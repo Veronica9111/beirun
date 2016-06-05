@@ -30,12 +30,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisdom.common.mapper.ArtifactMapper;
 import com.wisdom.common.mapper.CompanyMapper;
 import com.wisdom.common.mapper.InvoiceMapper;
+import com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoShenQingDanMapper;
 import com.wisdom.common.mapper.PermissionMapper;
 import com.wisdom.common.mapper.RecordMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.model.Company;
 import com.wisdom.common.model.Invoice;
+import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Record;
 import com.wisdom.common.model.XiangMuTaiZhang;
@@ -65,10 +67,20 @@ public class ProjectServiceImpl implements IProjectService {
 	  @Autowired
 	  private KaiPiaoShenQingDanMapper kaiPiaoShenQingDanMapper;
 	  
+	  @Autowired
+	  private JianYiJiShuiFangFaPuPiaoJiShuiMapper jianYiJiShuiFangFaPuPiaoJiShuiMapper;
 
 
 
 
+	public JianYiJiShuiFangFaPuPiaoJiShuiMapper getJianYiJiShuiFangFaPuPiaoJiShuiMapper() {
+		return jianYiJiShuiFangFaPuPiaoJiShuiMapper;
+	}
+
+	public void setJianYiJiShuiFangFaPuPiaoJiShuiMapper(
+			JianYiJiShuiFangFaPuPiaoJiShuiMapper jianYiJiShuiFangFaPuPiaoJiShuiMapper) {
+		this.jianYiJiShuiFangFaPuPiaoJiShuiMapper = jianYiJiShuiFangFaPuPiaoJiShuiMapper;
+	}
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(ProjectServiceImpl.class);
@@ -175,7 +187,7 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 	@Override
-	public List<KaiPiaoShenQingDan> getKaiPiaoShenQingDanByProjectId(Integer projectId) {
+	public List<KaiPiaoShenQingDan> getKaiPiaoShenQingDanByProjectId(Long projectId) {
 		List<KaiPiaoShenQingDan> kaipiaoshenqingdanlist = kaiPiaoShenQingDanMapper.getKaiPiaoShenQingDanByProjectId(projectId);
 		
 		return kaipiaoshenqingdanlist;
@@ -199,4 +211,33 @@ public class ProjectServiceImpl implements IProjectService {
 		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId(companyId);
 
 	}
+
+	@Override
+	public KaiPiaoShenQingDan getKaiPiaoShenQingDanById(Long id) {
+		return kaiPiaoShenQingDanMapper.getKaiPiaoShenQingDanById(id);
+	}
+
+	@Override
+	public Boolean updateKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd) {
+		kaiPiaoShenQingDanMapper.updateKaiPiaoShenQingDan(kpsqd);
+		return true;
+	}
+
+	@Override
+	public Boolean updateJianYiJiShuiFangFaPuPiaoJiShui(JianYiJiShuiFangFaPuPiaoJiShui jyjsffppjs) {
+		jianYiJiShuiFangFaPuPiaoJiShuiMapper.updateJianYiJiShuiFangFaPuPiaoJiShui(jyjsffppjs);
+		return true;
+	}
+
+	@Override
+	public Boolean addJianYiJiShuiFangFaPuPiaoJiShui(JianYiJiShuiFangFaPuPiaoJiShui jyjsffppjs) {
+		jianYiJiShuiFangFaPuPiaoJiShuiMapper.addJianYiJiShuiFangFaPuPiaoJiShui(jyjsffppjs);
+		return true;
+	}
+
+	@Override
+	public JianYiJiShuiFangFaPuPiaoJiShui getJianYiJiShuiFangFaPuPiaoJiShuiById(Long id) {
+		return jianYiJiShuiFangFaPuPiaoJiShuiMapper.getJianYiJiShuiFangFaPuPiaoJiShuiById(id);
+	}
+	
 }
