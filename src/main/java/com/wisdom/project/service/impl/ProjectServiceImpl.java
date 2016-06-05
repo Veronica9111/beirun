@@ -115,7 +115,8 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override
 	public Boolean updateProject(XiangMuTaiZhang xmtz) {
 
-		xiangmutaizhangMapper.updateXiangMuTaiZhang(xmtz);
+		Integer result = xiangmutaizhangMapper.updateXiangMuTaiZhang(xmtz);
+		result = result;
 		return true;
 	}
 
@@ -195,7 +196,15 @@ public class ProjectServiceImpl implements IProjectService {
 
 	@Override
 	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz) {
-		xiangmutaizhangMapper.addXiangMuTaiZhang(xmtz);
+		Integer result = xiangmutaizhangMapper.addXiangMuTaiZhang(xmtz);
+	/*	xmtz = xmtz;
+		Long id = xmtz.getId();
+		String hetongqiandingshijian = xmtz.getHetongkaigongshijian();
+		String hetongkaigongshijian = xmtz.getHetongkaigongshijian();
+		String kaigongxukezhengshijian = xmtz.getKaigongxukezhengshijian();
+		String yujiwangongshijian = xmtz.getYujiwangongshijian();
+		
+		this.updateTime(id, hetongqiandingshijian, hetongkaigongshijian, kaigongxukezhengshijian,yujiwangongshijian);*/
 		return true;
 	}
 
@@ -205,6 +214,8 @@ public class ProjectServiceImpl implements IProjectService {
 		xiangmutaizhangMapper.updateXiangMuTaiZhang(xmtz);
 		return true;
 	}
+	
+	
 	
 	@Override
 	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long companyId) {
@@ -240,4 +251,17 @@ public class ProjectServiceImpl implements IProjectService {
 		return jianYiJiShuiFangFaPuPiaoJiShuiMapper.getJianYiJiShuiFangFaPuPiaoJiShuiById(id);
 	}
 	
+	public void updateTime(Long id, Timestamp hetongqiandingshijian) {
+		xiangmutaizhangMapper.updateTime(id, hetongqiandingshijian);
+		xiangmutaizhangMapper.addTime(hetongqiandingshijian);
+		
+	}
+	
+/*	@Override
+	public void updateTime(Long id, String hetongqiandingshijian, String hetongkaigongshijian, String kaigongxukezhengshijian, String yujiwangongshijian) {
+
+		xiangmutaizhangMapper.updateTime(id, hetongqiandingshijian, hetongkaigongshijian, kaigongxukezhengshijian, yujiwangongshijian);
+		//xiangmutaizhangMapper.addTime(hetongqiandingshijian);
+		
+	}*/
 }

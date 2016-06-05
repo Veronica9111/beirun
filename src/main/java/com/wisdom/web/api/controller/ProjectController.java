@@ -45,6 +45,17 @@ public class ProjectController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ProjectController.class);
 	
+	@RequestMapping("/project/updateTime")
+	@ResponseBody
+	public Map<String,String> updateTime(HttpServletRequest request){
+		Long id = (long) 1;
+		String arg = "2016-10-30 00:00:00";
+		Timestamp argT = Timestamp.valueOf(arg);
+		projectService.updateTime(id, argT);
+		return null;
+	}
+	
+	
 	@RequestMapping("/project/addProject")
 	@ResponseBody
 	public Map<String, String> addProject(HttpServletRequest request) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException,SecurityException, NoSuchMethodException{
@@ -69,7 +80,7 @@ public class ProjectController {
 		String longClassName = "com.wisdom.common.model." + className;
 		Class c = Class.forName(longClassName);
 		Object instance = c.newInstance();
-		instance = setModel(instance, params, 0);
+		instance = setModel(instance, params,"partial");
   	    Method m = projectService.getClass().getMethod("add"+className, instance.getClass());
 			Object ret = m.invoke(projectService, instance);
 			retMap.put("status", "ok");
@@ -86,7 +97,7 @@ public class ProjectController {
 		String longClassName = "com.wisdom.common.model." + className;
 		Class c = Class.forName(longClassName);
 		Object instance = c.newInstance();
-		instance = setModel(instance, params, 1);
+		instance = setModel(instance, params, "full");
 		Method m = projectService.getClass().getMethod("update"+className, instance.getClass());
 		Object ret = m.invoke(projectService, instance);
 		retMap.put("status", "ok");
@@ -298,22 +309,28 @@ public class ProjectController {
 	}
 	
 	
-	public Object setModel(Object model, Map<String, String[]> params, int type) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+	public Object setModel(Object model, Map<String, String[]> params, String type) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 		for (Entry<String, String[]> entry : params.entrySet()) {
 			
 			String methodName = "set" + Character.toUpperCase(entry.getKey().charAt(0)) + entry.getKey().substring(1);
 			String arg = entry.getValue()[0];
 
 		      Method m;
-		      if(type==0 && entry.getKey().equals("id") || entry.getKey().equals("class_name")){
+		      if(entry.getKey().equals("class_name")){
 		    	  continue;
 		      }
-		      if(entry.getKey().indexOf("_id") != -1 || entry.getKey().equals("id")){
+		      if(entry.getKey().equals("id") && type.equals("full")){
+		    	  m = model.getClass().getMethod(methodName, Long.class);
+				  Object ret = m.invoke(model, Long.valueOf(arg));
+				  continue;
+		      }
+		      if(entry.getKey().indexOf("_id") != -1){
 		    	  Long argI = Long.valueOf(arg);
 		    	  m = model.getClass().getMethod(methodName, Long.class);
 					Object ret = m.invoke(model, argI);
 					continue;
 		      }
+		      
 			try {
 				m = model.getClass().getMethod(methodName, String.class);
 				Object ret = m.invoke(model, arg);
@@ -324,16 +341,12 @@ public class ProjectController {
 					Object ret = m.invoke(model, argD);
 				}catch(NumberFormatException e2){
 
-				    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-						try{
-						    Date parsedDate = (Date) dateFormat.parse(arg);
-						    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-						    m = model.getClass().getMethod(methodName, Timestamp.class);
-							Object ret = m.invoke(model, timestamp);
-						}catch(Exception ex){
-							ex.printStackTrace();
-						}
-						
+				   //	parsedDate = dateFormat.parse(arg);
+						arg += " 00:00:00";
+						Timestamp argT = Timestamp.valueOf(arg);
+						//Timestamp argT = new java.sql.Timestamp(parsedDate.getTime());
+						m = model.getClass().getMethod(methodName, Timestamp.class);
+						Object ret = m.invoke(model, argT);
 				    
 				}
 				}

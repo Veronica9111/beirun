@@ -221,6 +221,7 @@ public String getHetongqiandingshijian () {
 		hetongqiandingshijian  = dateFormat.format(this.hetongqiandingshijian);
 	}
 return hetongqiandingshijian;
+	//return this.hetongqiandingshijian;
 }
 
 public void setHetongkaigongshijian (Timestamp hetongkaigongshijian) {
