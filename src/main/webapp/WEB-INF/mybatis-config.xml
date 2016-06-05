@@ -23,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Artifact" type="com.wisdom.common.model.Artifact" />
 		<typeAlias alias="FinalXiaoXiang" type="com.wisdom.common.model.FinalXiaoXiang" />
 		<typeAlias alias="FinalShenBaoBiao" type="com.wisdom.common.model.FinalShenBaoBiao" />
+		<typeAlias alias="KaiPiaoQingKuangBiao_FenGongSi" type="com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi" />
 		<typeAlias alias="FinalJinXiang" type="com.wisdom.common.model.FinalJinXiang" />
 		<typeAlias alias="XiangMuTaiZhang" type="com.wisdom.common.model.XiangMuTaiZhang" />
 		<typeAlias alias="JianYiJiShuiFangFaZhuanPiaoJiShui" type="com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui" />
@@ -38,6 +39,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="QueRenShouRuFangShi_YiWanGongGongZuoLiangFa" type="com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa" />
 		<typeAlias alias="QueRenShouRuFangShi_LaoWuShiJianZhanBiFa" type="com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa" />
 		<typeAlias alias="QueRenShouRuFangShi_QiTa" type="com.wisdom.common.model.QueRenShouRuFangShi_QiTa" />	
+		<typeAlias alias="YiBanJiShuiFangFaNaShuiJianChaTiaoZheng" type="com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng" />
+		<typeAlias alias="FenBaoXiangMuMingXi" type="com.wisdom.common.model.FenBaoXiangMuMingXi" />
 		<typeAlias alias="XiaoXiang_XiangMu" type="com.wisdom.common.model.XiaoXiang_XiangMu" />
   </typeAliases>
   <mappers>
@@ -69,6 +72,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mapper resource="com/wisdom/common/mapper/QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/QueRenShouRuFangShi_QiTaMapper.xml" />
     <mapper resource="com/wisdom/common/mapper/XiaoXiang_XiangMuMapper.xml" />
+    <mapper resource="com/wisdom/common/mapper/FenBaoXiangMuMingXiMapper.xml"/>
+    <mapper resource="com/wisdom/common/mapper/YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.xml"/>
+    <mapper resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSiMapper.xml"/>
   </mappers>
 
 </configuration>

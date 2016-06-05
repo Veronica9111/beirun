@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng" id="YiBanJiShuiFangFaNaShuiJianChaTiaoZheng">
+<result property="fengongsimingcheng" column="fengongsimingcheng"/>
+<result property="nashui_6_xiaoxiangshuie" column="nashui_6_xiaoxiangshuie"/>
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="nashui_17huowu_xiaoji" column="nashui_17huowu_xiaoji"/>
+<result property="shenheshijian" column="shenheshijian"/>
+<result property="nashui_heji_17fuwu_xiaoji" column="nashui_heji_17fuwu_xiaoji"/>
+<result property="nashui_11_xiaoxiangshuie" column="nashui_11_xiaoxiangshuie"/>
+<result property="nashui_6_xiaoji" column="nashui_6_xiaoji"/>
+<result property="nashui_13_xiaoxiangshuie" column="nashui_13_xiaoxiangshuie"/>
+<result property="tianbiaoshijian" column="tianbiaoshijian"/>
+<result property="nashui_heji_13_xiaoji" column="nashui_heji_13_xiaoji"/>
+<result property="nashui_heji_17huowu_xiaoji" column="nashui_heji_17huowu_xiaoji"/>
+<result property="id" column="id"/>
+<result property="nashui_heji_13_xiaoshoue" column="nashui_heji_13_xiaoshoue"/>
+<result property="nashui_heji_17huowu_xiaoshoue" column="nashui_heji_17huowu_xiaoshoue"/>
+<result property="nashui_11_xiaoji" column="nashui_11_xiaoji"/>
+<result property="nashui_heji_3_xiaoji" column="nashui_heji_3_xiaoji"/>
+<result property="nashui_13_xiaoshoue" column="nashui_13_xiaoshoue"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="nashui_3_xiaoxiangshuie" column="nashui_3_xiaoxiangshuie"/>
+<result property="kaipiaoshenqingdan_id" column="kaipiaoshenqingdan_id"/>
+<result property="nashui_17huowu_xiaoshoue" column="nashui_17huowu_xiaoshoue"/>
+<result property="shenheren" column="shenheren"/>
+<result property="nashui_3_xiaoshoue" column="nashui_3_xiaoshoue"/>
+<result property="riqi" column="riqi"/>
+<result property="nashui_heji_6_xiaoxiangshuie" column="nashui_heji_6_xiaoxiangshuie"/>
+<result property="nashui_heji_11_xiaoshoue" column="nashui_heji_11_xiaoshoue"/>
+<result property="tianbiaoren" column="tianbiaoren"/>
+<result property="nashui_heji_17fuwu_xiaoshoue" column="nashui_heji_17fuwu_xiaoshoue"/>
+<result property="nashui_13_xiaoji" column="nashui_13_xiaoji"/>
+<result property="nashui_heji_17fuwu_xiaoxiangshuie" column="nashui_heji_17fuwu_xiaoxiangshuie"/>
+<result property="nashui_heji_17huowu_xiaoxiangshuie" column="nashui_heji_17huowu_xiaoxiangshuie"/>
+<result property="nashui_heji_13_xiaoxiangshuie" column="nashui_heji_13_xiaoxiangshuie"/>
+<result property="nashui_heji_3_xiaoxiangshuie" column="nashui_heji_3_xiaoxiangshuie"/>
+<result property="nashui_3_xiaoji" column="nashui_3_xiaoji"/>
+<result property="nashui_6_xiaoshoue" column="nashui_6_xiaoshoue"/>
+<result property="zhaiyao" column="zhaiyao"/>
+<result property="nashui_heji_3_xiaoshoue" column="nashui_heji_3_xiaoshoue"/>
+<result property="nashui_11_xiaoshoue" column="nashui_11_xiaoshoue"/>
+<result property="nashui_17huowu_xiaoxiangshuie" column="nashui_17huowu_xiaoxiangshuie"/>
+<result property="fuheren" column="fuheren"/>
+<result property="nashui_heji_11_xiaoji" column="nashui_heji_11_xiaoji"/>
+<result property="nashui_17fuwu_xiaoshoue" column="nashui_17fuwu_xiaoshoue"/>
+<result property="nashui_heji_6_xiaoji" column="nashui_heji_6_xiaoji"/>
+<result property="shenherendianhua" column="shenherendianhua"/>
+<result property="nashui_17fuwu_xiaoxiangshuie" column="nashui_17fuwu_xiaoxiangshuie"/>
+<result property="nashui_heji_11_xiaoxiangshuie" column="nashui_heji_11_xiaoxiangshuie"/>
+<result property="nashui_17fuwu_xiaoji" column="nashui_17fuwu_xiaoji"/>
+<result property="nashui_heji_6_xiaoshoue" column="nashui_heji_6_xiaoshoue"/>
+</resultMap>
+
+<select id="getYiBanJiShuiFangFaNaShuiJianChaTiaoZhengById" resultType="YiBanJiShuiFangFaNaShuiJianChaTiaoZheng">
+select fengongsimingcheng,nashui_6_xiaoxiangshuie,tianbiaorendianhua,nashui_17huowu_xiaoji,shenheshijian,nashui_heji_17fuwu_xiaoji,nashui_11_xiaoxiangshuie,nashui_6_xiaoji,nashui_13_xiaoxiangshuie,tianbiaoshijian,nashui_heji_13_xiaoji,nashui_heji_17huowu_xiaoji,id,nashui_heji_13_xiaoshoue,nashui_heji_17huowu_xiaoshoue,nashui_11_xiaoji,nashui_heji_3_xiaoji,nashui_13_xiaoshoue,xiangmubu,nashui_3_xiaoxiangshuie,kaipiaoshenqingdan_id,nashui_17huowu_xiaoshoue,shenheren,nashui_3_xiaoshoue,riqi,nashui_heji_6_xiaoxiangshuie,nashui_heji_11_xiaoshoue,tianbiaoren,nashui_heji_17fuwu_xiaoshoue,nashui_13_xiaoji,nashui_heji_17fuwu_xiaoxiangshuie,nashui_heji_17huowu_xiaoxiangshuie,nashui_heji_13_xiaoxiangshuie,nashui_heji_3_xiaoxiangshuie,nashui_3_xiaoji,nashui_6_xiaoshoue,zhaiyao,nashui_heji_3_xiaoshoue,nashui_11_xiaoshoue,nashui_17huowu_xiaoxiangshuie,fuheren,nashui_heji_11_xiaoji,nashui_17fuwu_xiaoshoue,nashui_heji_6_xiaoji,shenherendianhua,nashui_17fuwu_xiaoxiangshuie,nashui_heji_11_xiaoxiangshuie,nashui_17fuwu_xiaoji,nashui_heji_6_xiaoshoue
+from yibanjishuifangfanashuijianchatiaozheng
+where id=#{id}
+</select>
+
+<update id="updateYiBanJiShuiFangFaNaShuiJianChaTiaoZheng">
+update yibanjishuifangfanashuijianchatiaozheng set fengongsimingcheng=#{fengongsimingcheng},nashui_6_xiaoxiangshuie=#{nashui_6_xiaoxiangshuie},tianbiaorendianhua=#{tianbiaorendianhua},nashui_17huowu_xiaoji=#{nashui_17huowu_xiaoji},shenheshijian=#{shenheshijian},nashui_heji_17fuwu_xiaoji=#{nashui_heji_17fuwu_xiaoji},nashui_11_xiaoxiangshuie=#{nashui_11_xiaoxiangshuie},nashui_6_xiaoji=#{nashui_6_xiaoji},nashui_13_xiaoxiangshuie=#{nashui_13_xiaoxiangshuie},tianbiaoshijian=#{tianbiaoshijian},nashui_heji_13_xiaoji=#{nashui_heji_13_xiaoji},nashui_heji_17huowu_xiaoji=#{nashui_heji_17huowu_xiaoji},id=#{id},nashui_heji_13_xiaoshoue=#{nashui_heji_13_xiaoshoue},nashui_heji_17huowu_xiaoshoue=#{nashui_heji_17huowu_xiaoshoue},nashui_11_xiaoji=#{nashui_11_xiaoji},nashui_heji_3_xiaoji=#{nashui_heji_3_xiaoji},nashui_13_xiaoshoue=#{nashui_13_xiaoshoue},xiangmubu=#{xiangmubu},nashui_3_xiaoxiangshuie=#{nashui_3_xiaoxiangshuie},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id},nashui_17huowu_xiaoshoue=#{nashui_17huowu_xiaoshoue},shenheren=#{shenheren},nashui_3_xiaoshoue=#{nashui_3_xiaoshoue},riqi=#{riqi},nashui_heji_6_xiaoxiangshuie=#{nashui_heji_6_xiaoxiangshuie},nashui_heji_11_xiaoshoue=#{nashui_heji_11_xiaoshoue},tianbiaoren=#{tianbiaoren},nashui_heji_17fuwu_xiaoshoue=#{nashui_heji_17fuwu_xiaoshoue},nashui_13_xiaoji=#{nashui_13_xiaoji},nashui_heji_17fuwu_xiaoxiangshuie=#{nashui_heji_17fuwu_xiaoxiangshuie},nashui_heji_17huowu_xiaoxiangshuie=#{nashui_heji_17huowu_xiaoxiangshuie},nashui_heji_13_xiaoxiangshuie=#{nashui_heji_13_xiaoxiangshuie},nashui_heji_3_xiaoxiangshuie=#{nashui_heji_3_xiaoxiangshuie},nashui_3_xiaoji=#{nashui_3_xiaoji},nashui_6_xiaoshoue=#{nashui_6_xiaoshoue},zhaiyao=#{zhaiyao},nashui_heji_3_xiaoshoue=#{nashui_heji_3_xiaoshoue},nashui_11_xiaoshoue=#{nashui_11_xiaoshoue},nashui_17huowu_xiaoxiangshuie=#{nashui_17huowu_xiaoxiangshuie},fuheren=#{fuheren},nashui_heji_11_xiaoji=#{nashui_heji_11_xiaoji},nashui_17fuwu_xiaoshoue=#{nashui_17fuwu_xiaoshoue},nashui_heji_6_xiaoji=#{nashui_heji_6_xiaoji},shenherendianhua=#{shenherendianhua},nashui_17fuwu_xiaoxiangshuie=#{nashui_17fuwu_xiaoxiangshuie},nashui_heji_11_xiaoxiangshuie=#{nashui_heji_11_xiaoxiangshuie},nashui_17fuwu_xiaoji=#{nashui_17fuwu_xiaoji},nashui_heji_6_xiaoshoue=#{nashui_heji_6_xiaoshoue}
+where id=#{id}
+</update>
+
+<insert id="addYiBanJiShuiFangFaNaShuiJianChaTiaoZheng">
+insert into yibanjishuifangfanashuijianchatiaozheng (fengongsimingcheng,nashui_6_xiaoxiangshuie,tianbiaorendianhua,nashui_17huowu_xiaoji,shenheshijian,nashui_heji_17fuwu_xiaoji,nashui_11_xiaoxiangshuie,nashui_6_xiaoji,nashui_13_xiaoxiangshuie,tianbiaoshijian,nashui_heji_13_xiaoji,nashui_heji_17huowu_xiaoji,id,nashui_heji_13_xiaoshoue,nashui_heji_17huowu_xiaoshoue,nashui_11_xiaoji,nashui_heji_3_xiaoji,nashui_13_xiaoshoue,xiangmubu,nashui_3_xiaoxiangshuie,kaipiaoshenqingdan_id,nashui_17huowu_xiaoshoue,shenheren,nashui_3_xiaoshoue,riqi,nashui_heji_6_xiaoxiangshuie,nashui_heji_11_xiaoshoue,tianbiaoren,nashui_heji_17fuwu_xiaoshoue,nashui_13_xiaoji,nashui_heji_17fuwu_xiaoxiangshuie,nashui_heji_17huowu_xiaoxiangshuie,nashui_heji_13_xiaoxiangshuie,nashui_heji_3_xiaoxiangshuie,nashui_3_xiaoji,nashui_6_xiaoshoue,zhaiyao,nashui_heji_3_xiaoshoue,nashui_11_xiaoshoue,nashui_17huowu_xiaoxiangshuie,fuheren,nashui_heji_11_xiaoji,nashui_17fuwu_xiaoshoue,nashui_heji_6_xiaoji,shenherendianhua,nashui_17fuwu_xiaoxiangshuie,nashui_heji_11_xiaoxiangshuie,nashui_17fuwu_xiaoji,nashui_heji_6_xiaoshoue)
+values (#{fengongsimingcheng},#{nashui_6_xiaoxiangshuie},#{tianbiaorendianhua},#{nashui_17huowu_xiaoji},#{shenheshijian},#{nashui_heji_17fuwu_xiaoji},#{nashui_11_xiaoxiangshuie},#{nashui_6_xiaoji},#{nashui_13_xiaoxiangshuie},#{tianbiaoshijian},#{nashui_heji_13_xiaoji},#{nashui_heji_17huowu_xiaoji},#{id},#{nashui_heji_13_xiaoshoue},#{nashui_heji_17huowu_xiaoshoue},#{nashui_11_xiaoji},#{nashui_heji_3_xiaoji},#{nashui_13_xiaoshoue},#{xiangmubu},#{nashui_3_xiaoxiangshuie},#{kaipiaoshenqingdan_id},#{nashui_17huowu_xiaoshoue},#{shenheren},#{nashui_3_xiaoshoue},#{riqi},#{nashui_heji_6_xiaoxiangshuie},#{nashui_heji_11_xiaoshoue},#{tianbiaoren},#{nashui_heji_17fuwu_xiaoshoue},#{nashui_13_xiaoji},#{nashui_heji_17fuwu_xiaoxiangshuie},#{nashui_heji_17huowu_xiaoxiangshuie},#{nashui_heji_13_xiaoxiangshuie},#{nashui_heji_3_xiaoxiangshuie},#{nashui_3_xiaoji},#{nashui_6_xiaoshoue},#{zhaiyao},#{nashui_heji_3_xiaoshoue},#{nashui_11_xiaoshoue},#{nashui_17huowu_xiaoxiangshuie},#{fuheren},#{nashui_heji_11_xiaoji},#{nashui_17fuwu_xiaoshoue},#{nashui_heji_6_xiaoji},#{shenherendianhua},#{nashui_17fuwu_xiaoxiangshuie},#{nashui_heji_11_xiaoxiangshuie},#{nashui_17fuwu_xiaoji},#{nashui_heji_6_xiaoshoue})
+</insert>
+
+</mapper>

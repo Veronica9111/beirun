@@ -1,4 +1,5 @@
 package com.wisdom.project.service.impl;
+
 import java.sql.Timestamp;
 
 import java.util.ArrayList;
@@ -10,9 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.wisdom.common.mapper.CompanyMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaZhuanPiaoJiShuiMapper;
+import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_FenGongSiMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoShenQingDanMapper;
 import com.wisdom.common.mapper.WeiKaiJuFaPiaoMingXiMapper;
@@ -29,8 +30,10 @@ import com.wisdom.common.mapper.RecordMapper;
 import com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.mapper.XiaoXiang_XiangMuMapper;
+import com.wisdom.common.mapper.YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper;
 import com.wisdom.common.model.Company;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
@@ -46,34 +49,62 @@ import com.wisdom.common.model.Record;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.common.model.XiaoXiang_XiangMu;
+import com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng;
 import com.wisdom.invoice.service.IInvoiceService;
 import com.wisdom.project.service.IProjectService;
 
 @Service("projectService")
 public class ProjectServiceImpl implements IProjectService {
 
+	@Autowired
+	private XiangMuTaiZhangMapper xiangmutaizhangMapper;
 
-	  @Autowired
-	  private	XiangMuTaiZhangMapper xiangmutaizhangMapper;
-	  
-	  @Autowired
-	  private	CompanyMapper companyMapper;
-	  
-	  @Autowired
-	  private KaiPiaoShenQingDanMapper kaiPiaoShenQingDanMapper;
-	  
-	  @Autowired
-	  private JianYiJiShuiFangFaZhuanPiaoJiShuiMapper jianyijishuifangfazhuanpiaojishuiMapper;
-	  
-	  @Autowired
-	  private JianYiJiShuiFangFaPuPiaoJiShuiMapper jianYiJiShuiFangFaPuPiaoJiShuiMapper;
-	  
-	  @Autowired
-	  private PuTongFaPiaoKaiJuMingXiMapper puTongFaPiaoKaiJuMingXiMapper;
-	  
-	  @Autowired
-	  private ShouQiKuanXiangMingXiBiaoMapper shouQiKuanXiangMingXiBiaoMapper;
+	@Autowired
+	private CompanyMapper companyMapper;
 
+	@Autowired
+	private KaiPiaoShenQingDanMapper kaiPiaoShenQingDanMapper;
+
+	@Autowired
+	private JianYiJiShuiFangFaZhuanPiaoJiShuiMapper jianyijishuifangfazhuanpiaojishuiMapper;
+
+	@Autowired
+	private JianYiJiShuiFangFaPuPiaoJiShuiMapper jianYiJiShuiFangFaPuPiaoJiShuiMapper;
+
+	@Autowired
+	private PuTongFaPiaoKaiJuMingXiMapper puTongFaPiaoKaiJuMingXiMapper;
+
+	@Autowired
+	private ShouQiKuanXiangMingXiBiaoMapper shouQiKuanXiangMingXiBiaoMapper;
+
+	@Autowired
+	private YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper;
+
+    @Autowired
+    private FenBaoXiangMuMingXiMapper fenBaoXiangMuMingXiMapper;
+	
+	
+	
+	
+	
+	
+	
+    public void setFenBaoXiangMuMingXiMapper(FenBaoXiangMuMingXiMapper fenBaoXiangMuMingXiMapper){
+        this.fenBaoXiangMuMingXiMapper = fenBaoXiangMuMingXiMapper;
+    }
+
+    public FenBaoXiangMuMingXiMapper getFenBaoXiangMuMingXiMapper() {
+        return fenBaoXiangMuMingXiMapper;
+    }
+    
+	public void setYiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper(YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper){
+        this.yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper = yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper;
+    }
+
+    public YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper getYiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper() {
+        return yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper;
+    }
+	
 	public ShouQiKuanXiangMingXiBiaoMapper getShouQiKuanXiangMingXiBiaoMapper() {
 		return shouQiKuanXiangMingXiBiaoMapper;
 	}
@@ -89,51 +120,57 @@ public class ProjectServiceImpl implements IProjectService {
 	public void setPuTongFaPiaoKaiJuMingXiMapper(PuTongFaPiaoKaiJuMingXiMapper puTongFaPiaoKaiJuMingXiMapper) {
 		this.puTongFaPiaoKaiJuMingXiMapper = puTongFaPiaoKaiJuMingXiMapper;
 	}
-	  private ZhuanYongFaPiaoKaiJuMingXiMapper zhuanYongFaPiaoKaiJuMingXiMapper;
-	  
-	  @Autowired
-	  private WeiKaiJuFaPiaoMingXiMapper weiKaiJuFaPiaoMingXiMapper;
-	  
-	  @Autowired
-	  private WeiKaiJuFaPiaoMingXi_YiBanMapper weiKaiJuFaPiaoMingXi_YiBanMapper;
-	  
-	  public WeiKaiJuFaPiaoMingXiMapper getWeiKaiJuFaPiaoMingXiMapper(){
-		  return weiKaiJuFaPiaoMingXiMapper;
-	  }
-	  
-	  public void setWeiKaiJuFaPiaoMingXiMapper(WeiKaiJuFaPiaoMingXiMapper weiKaiJuFaPiaoMingXiMapper){
-		  this.weiKaiJuFaPiaoMingXiMapper = weiKaiJuFaPiaoMingXiMapper;
-	  }
-	  
-	  public WeiKaiJuFaPiaoMingXi_YiBanMapper getWeiKaiJuFaPiaoMingXi_YiBanMapper(){
-		  return weiKaiJuFaPiaoMingXi_YiBanMapper;
-	  }
-	  
-	  public void setWeiKaiJuFaPiaoMingXi_YiBanMapper(WeiKaiJuFaPiaoMingXi_YiBanMapper weiKaiJuFaPiaoMingXi_YiBanMapper){
-		  this.weiKaiJuFaPiaoMingXi_YiBanMapper = weiKaiJuFaPiaoMingXi_YiBanMapper;
-	  }
-	  
-	  public ZhuanYongFaPiaoKaiJuMingXiMapper getZhuanYongFaPiaoKaiJuMingXiMapper(){
-		  return zhuanYongFaPiaoKaiJuMingXiMapper;
-	  }
-	  
-	  public void setzhuanYongFaPiaoKaiJuMingXiMapper(ZhuanYongFaPiaoKaiJuMingXiMapper zhuanYongFaPiaoKaiJuMingXiMapper){
-		  this.zhuanYongFaPiaoKaiJuMingXiMapper = zhuanYongFaPiaoKaiJuMingXiMapper;
-	  }
-	  private QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper;
-	  
-	  @Autowired
-	  private QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper;
 
-	  @Autowired
-	  private QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper;
-	  
-	  @Autowired
-	  private QueRenShouRuFangShi_QiTaMapper queRenShouRuFangShi_QiTaMapper;
-	  
-	  @Autowired
-	  private XiaoXiang_XiangMuMapper xiaoXiang_XiangMuMapper;
+	private ZhuanYongFaPiaoKaiJuMingXiMapper zhuanYongFaPiaoKaiJuMingXiMapper;
 
+	@Autowired
+	private WeiKaiJuFaPiaoMingXiMapper weiKaiJuFaPiaoMingXiMapper;
+
+	@Autowired
+	private WeiKaiJuFaPiaoMingXi_YiBanMapper weiKaiJuFaPiaoMingXi_YiBanMapper;
+
+	@Autowired
+	public WeiKaiJuFaPiaoMingXiMapper getWeiKaiJuFaPiaoMingXiMapper() {
+		return weiKaiJuFaPiaoMingXiMapper;
+	}
+
+	@Autowired
+	public void setWeiKaiJuFaPiaoMingXiMapper(WeiKaiJuFaPiaoMingXiMapper weiKaiJuFaPiaoMingXiMapper) {
+		this.weiKaiJuFaPiaoMingXiMapper = weiKaiJuFaPiaoMingXiMapper;
+	}
+
+	@Autowired
+	public WeiKaiJuFaPiaoMingXi_YiBanMapper getWeiKaiJuFaPiaoMingXi_YiBanMapper() {
+		return weiKaiJuFaPiaoMingXi_YiBanMapper;
+	}
+
+	@Autowired
+	public void setWeiKaiJuFaPiaoMingXi_YiBanMapper(WeiKaiJuFaPiaoMingXi_YiBanMapper weiKaiJuFaPiaoMingXi_YiBanMapper) {
+		this.weiKaiJuFaPiaoMingXi_YiBanMapper = weiKaiJuFaPiaoMingXi_YiBanMapper;
+	}
+
+	@Autowired
+	public ZhuanYongFaPiaoKaiJuMingXiMapper getZhuanYongFaPiaoKaiJuMingXiMapper() {
+		return zhuanYongFaPiaoKaiJuMingXiMapper;
+	}
+
+	public void setzhuanYongFaPiaoKaiJuMingXiMapper(ZhuanYongFaPiaoKaiJuMingXiMapper zhuanYongFaPiaoKaiJuMingXiMapper) {
+		this.zhuanYongFaPiaoKaiJuMingXiMapper = zhuanYongFaPiaoKaiJuMingXiMapper;
+	}
+
+	private QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper;
+
+	@Autowired
+	private QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper;
+
+	@Autowired
+	private QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper;
+
+	@Autowired
+	private QueRenShouRuFangShi_QiTaMapper queRenShouRuFangShi_QiTaMapper;
+
+	@Autowired
+	private XiaoXiang_XiangMuMapper xiaoXiang_XiangMuMapper;
 
 	public JianYiJiShuiFangFaPuPiaoJiShuiMapper getJianYiJiShuiFangFaPuPiaoJiShuiMapper() {
 		return jianYiJiShuiFangFaPuPiaoJiShuiMapper;
@@ -144,22 +181,21 @@ public class ProjectServiceImpl implements IProjectService {
 		this.jianYiJiShuiFangFaPuPiaoJiShuiMapper = jianYiJiShuiFangFaPuPiaoJiShuiMapper;
 	}
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(ProjectServiceImpl.class);
-	
-	
+	private static final Logger logger = LoggerFactory.getLogger(ProjectServiceImpl.class);
+
 	public void setXiangMuTaiZhangMapper(XiangMuTaiZhangMapper xiangmutaizhangMapper) {
-		    this.xiangmutaizhangMapper = xiangmutaizhangMapper;
+		this.xiangmutaizhangMapper = xiangmutaizhangMapper;
 	}
-	
+
 	public void setKaiPiaoShenQingDanMapper(KaiPiaoShenQingDanMapper kaiPiaoShenQingDanMapper) {
-	    this.kaiPiaoShenQingDanMapper = kaiPiaoShenQingDanMapper;
-}
-	
-	public void setJianYiJiShuiFangFaZhuanPiaoJiShuiMapper(JianYiJiShuiFangFaZhuanPiaoJiShuiMapper jianyijishuifangfazhuanpiaojishuiMapper) {
-	    this.jianyijishuifangfazhuanpiaojishuiMapper = jianyijishuifangfazhuanpiaojishuiMapper;
-}
-	
+		this.kaiPiaoShenQingDanMapper = kaiPiaoShenQingDanMapper;
+	}
+
+	public void setJianYiJiShuiFangFaZhuanPiaoJiShuiMapper(
+			JianYiJiShuiFangFaZhuanPiaoJiShuiMapper jianyijishuifangfazhuanpiaojishuiMapper) {
+		this.jianyijishuifangfazhuanpiaojishuiMapper = jianyijishuifangfazhuanpiaojishuiMapper;
+	}
+
 	public JianYiJiShuiFangFaZhuanPiaoJiShuiMapper getJianyijishuifangfazhuanpiaojishuiMapper() {
 		return jianyijishuifangfazhuanpiaojishuiMapper;
 	}
@@ -170,30 +206,31 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 	public void setCompanyMapper(CompanyMapper companyMapper) {
-	    this.companyMapper = companyMapper;
-}
-	
-	public void setQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper(QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper) {
-	    this.queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper = queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper;
-}
-	
-	public void setQueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper(QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper) {
-	    this.queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper = queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper;
-}
-	
-	public void setQueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper(QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper) {
-	    this.queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper = queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper;
-}
-	
+		this.companyMapper = companyMapper;
+	}
+
+	public void setQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper(
+			QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper) {
+		this.queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper = queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper;
+	}
+
+	public void setQueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper(
+			QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper) {
+		this.queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper = queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper;
+	}
+
+	public void setQueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper(
+			QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper) {
+		this.queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper = queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper;
+	}
+
 	public void setQueRenShouRuFangShi_QiTaMapper(QueRenShouRuFangShi_QiTaMapper queRenShouRuFangShi_QiTaMapper) {
-	    this.queRenShouRuFangShi_QiTaMapper = queRenShouRuFangShi_QiTaMapper;
-}
-	
-	
-	
+		this.queRenShouRuFangShi_QiTaMapper = queRenShouRuFangShi_QiTaMapper;
+	}
+
 	public void setXiaoXiang_XiangMuMapper(XiaoXiang_XiangMuMapper xiaoXiang_XiangMuMapper) {
-	    this.xiaoXiang_XiangMuMapper = xiaoXiang_XiangMuMapper;
-}
+		this.xiaoXiang_XiangMuMapper = xiaoXiang_XiangMuMapper;
+	}
 
 	@Override
 	public Boolean addProject(XiangMuTaiZhang xmtz) {
@@ -201,12 +238,10 @@ public class ProjectServiceImpl implements IProjectService {
 		return true;
 	}
 
-
 	@Override
 	public XiangMuTaiZhang getXiangMuTaiZhangById(Long id) {
 		return xiangmutaizhangMapper.getXiangMuTaiZhangById(id);
 	}
-
 
 	@Override
 	public Boolean updateProject(XiangMuTaiZhang xmtz) {
@@ -215,54 +250,49 @@ public class ProjectServiceImpl implements IProjectService {
 		result = result;
 		return true;
 	}
-	
+
 	@Override
 	public Boolean addJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
 
 		jianyijishuifangfazhuanpiaojishuiMapper.addJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
 		return true;
 	}
-	
-	
-	
+
 	@Override
 	public List<XiangMuTaiZhang> getProjectsByCompanyId(Integer companyId) {
-		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId((long)companyId);
+		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId((long) companyId);
 
 	}
 
-	public List<Company> getSubCompanyByParent(List<Company>companies, Integer parentId){
+	public List<Company> getSubCompanyByParent(List<Company> companies, Integer parentId) {
 		List<Company> retList = new ArrayList<>();
-		for(Company company: companies){
-			if(company.getParent_id() == parentId){
+		for (Company company : companies) {
+			if (company.getParent_id() == parentId) {
 				retList.add(company);
 			}
 		}
 		return retList;
-		
+
 	}
 
 	@Override
 	public List<Map<String, Object>> getMenu() {
 		/*
-		[
-		 {'text':name,
-		  'nodes': [{},{}]}
-		 ]*/
+		 * [ {'text':name, 'nodes': [{},{}]} ]
+		 */
 		List<Map<String, Object>> retList = new ArrayList<>();
 		List<Company> companies = companyMapper.getAllCompanies();
 
-		
-		for(Company company: companies){
-			if(company.getLevel() == 0){
+		for (Company company : companies) {
+			if (company.getLevel() == 0) {
 				List<Company> subCompanies = getSubCompanyByParent(companies, company.getId());
 				List<Object> tmpSubList = new ArrayList<>();
-				for(Company subCompany: subCompanies){
+				for (Company subCompany : subCompanies) {
 					List<Company> subSubCompanies = getSubCompanyByParent(companies, subCompany.getId());
-					
+
 					List<Object> tmpList = new ArrayList<>();
-					for(Company subSubCompany: subSubCompanies){
-						Map<String, Object>  tmpMap = new HashMap<>();
+					for (Company subSubCompany : subSubCompanies) {
+						Map<String, Object> tmpMap = new HashMap<>();
 						tmpMap.put("text", subSubCompany.getName());
 						tmpMap.put("expanded", "false");
 						tmpMap.put("level", "2");
@@ -276,7 +306,7 @@ public class ProjectServiceImpl implements IProjectService {
 					tmpMapSub.put("nodes", tmpList);
 					tmpMapSub.put("company_id", subCompany.getId());
 					tmpSubList.add(tmpMapSub);
-					
+
 				}
 				Map<String, Object> tmpMapAll = new HashMap<>();
 				tmpMapAll.put("text", company.getName());
@@ -290,76 +320,81 @@ public class ProjectServiceImpl implements IProjectService {
 
 		return retList;
 	}
-	
+
 	@Override
-	public WeiKaiJuFaPiaoMingXi getWeiKaiJuFaPiaoMingXiById(Long id){
+	public WeiKaiJuFaPiaoMingXi getWeiKaiJuFaPiaoMingXiById(Long id) {
 		return weiKaiJuFaPiaoMingXiMapper.getWeiKaiJuFaPiaoMingXiById(id);
 	}
-	
+
 	@Override
-	public void addWeiKaiJuFaPiaoMingXi(WeiKaiJuFaPiaoMingXi wkjfpmx){
+	public void addWeiKaiJuFaPiaoMingXi(WeiKaiJuFaPiaoMingXi wkjfpmx) {
 		weiKaiJuFaPiaoMingXiMapper.addWeiKaiJuFaPiaoMingXi(wkjfpmx);
 	}
-	
-	@Override 
-	public void updateWeiKaiJuFaPiaoMingXi(WeiKaiJuFaPiaoMingXi wkjfpmx){
+
+	@Override
+	public void updateWeiKaiJuFaPiaoMingXi(WeiKaiJuFaPiaoMingXi wkjfpmx) {
 		weiKaiJuFaPiaoMingXiMapper.updateWeiKaiJuFaPiaoMingXi(wkjfpmx);
 	}
-	
+
 	@Override
-	public WeiKaiJuFaPiaoMingXi_YiBan getWeiKaiJuFaPiaoMingXi_YiBanById(Long id){
+	public WeiKaiJuFaPiaoMingXi_YiBan getWeiKaiJuFaPiaoMingXi_YiBanById(Long id) {
 		return weiKaiJuFaPiaoMingXi_YiBanMapper.getWeiKaiJuFaPiaoMingXi_YiBanById(id);
 	}
-	
+
 	@Override
-	public void addWeiKaiJuFaPiaoMingXi_YiBan(WeiKaiJuFaPiaoMingXi_YiBan wkjfpmx_yb){
+	public void addWeiKaiJuFaPiaoMingXi_YiBan(WeiKaiJuFaPiaoMingXi_YiBan wkjfpmx_yb) {
 		weiKaiJuFaPiaoMingXi_YiBanMapper.addWeiKaiJuFaPiaoMingXi_YiBan(wkjfpmx_yb);
 	}
-	
-	@Override 
-	public void updateWeiKaiJuFaPiaoMingXi_YiBan(WeiKaiJuFaPiaoMingXi_YiBan wkjfpmx_yb){
+
+	@Override
+	public void updateWeiKaiJuFaPiaoMingXi_YiBan(WeiKaiJuFaPiaoMingXi_YiBan wkjfpmx_yb) {
 		weiKaiJuFaPiaoMingXi_YiBanMapper.updateWeiKaiJuFaPiaoMingXi_YiBan(wkjfpmx_yb);
 	}
-	
+
 	@Override
-	public ZhuanYongFaPiaoKaiJuMingXi getZhuanYongFaPiaoKaiJuMingXiById(Long id){
+	public ZhuanYongFaPiaoKaiJuMingXi getZhuanYongFaPiaoKaiJuMingXiById(Long id) {
 		return zhuanYongFaPiaoKaiJuMingXiMapper.getZhuanYongFaPiaoKaiJuMingXiById(id);
 	}
+
 	@Override
-	public void addZhuanYongFaPiaoKaiJuMingXi(ZhuanYongFaPiaoKaiJuMingXi zyfpkjmx){
+	public void addZhuanYongFaPiaoKaiJuMingXi(ZhuanYongFaPiaoKaiJuMingXi zyfpkjmx) {
 		zhuanYongFaPiaoKaiJuMingXiMapper.addZhuanYongFaPiaoKaiJuMingXi(zyfpkjmx);
 	}
-	
+
 	@Override
-	public void updateZhuanYongFaPiaoKaiJuMingXi(ZhuanYongFaPiaoKaiJuMingXi zyfpkjmx){
+	public void updateZhuanYongFaPiaoKaiJuMingXi(ZhuanYongFaPiaoKaiJuMingXi zyfpkjmx) {
 		zhuanYongFaPiaoKaiJuMingXiMapper.updateZhuanYongFaPiaoKaiJuMingXi(zyfpkjmx);
 	}
-	
+
 	@Override
 	public List<KaiPiaoShenQingDan> getKaiPiaoShenQingDanByProjectId(Long projectId) {
-		List<KaiPiaoShenQingDan> kaipiaoshenqingdanlist = kaiPiaoShenQingDanMapper.getKaiPiaoShenQingDanByProjectId(projectId);
-		
+		List<KaiPiaoShenQingDan> kaipiaoshenqingdanlist = kaiPiaoShenQingDanMapper
+				.getKaiPiaoShenQingDanByProjectId(projectId);
+
 		return kaipiaoshenqingdanlist;
 	}
-	
+
 	@Override
 	public JianYiJiShuiFangFaZhuanPiaoJiShui getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Long Id) {
-		JianYiJiShuiFangFaZhuanPiaoJiShui jianyijishuifangfazhuanpiaojishui = jianyijishuifangfazhuanpiaojishuiMapper.getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Id);
-		
+		JianYiJiShuiFangFaZhuanPiaoJiShui jianyijishuifangfazhuanpiaojishui = jianyijishuifangfazhuanpiaojishuiMapper
+				.getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Id);
+
 		return jianyijishuifangfazhuanpiaojishui;
 	}
 
 	@Override
 	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz) {
 		Integer result = xiangmutaizhangMapper.addXiangMuTaiZhang(xmtz);
-	/*	xmtz = xmtz;
-		Long id = xmtz.getId();
-		String hetongqiandingshijian = xmtz.getHetongkaigongshijian();
-		String hetongkaigongshijian = xmtz.getHetongkaigongshijian();
-		String kaigongxukezhengshijian = xmtz.getKaigongxukezhengshijian();
-		String yujiwangongshijian = xmtz.getYujiwangongshijian();
-		
-		this.updateTime(id, hetongqiandingshijian, hetongkaigongshijian, kaigongxukezhengshijian,yujiwangongshijian);*/
+		/*
+		 * xmtz = xmtz; Long id = xmtz.getId(); String hetongqiandingshijian =
+		 * xmtz.getHetongkaigongshijian(); String hetongkaigongshijian =
+		 * xmtz.getHetongkaigongshijian(); String kaigongxukezhengshijian =
+		 * xmtz.getKaigongxukezhengshijian(); String yujiwangongshijian =
+		 * xmtz.getYujiwangongshijian();
+		 * 
+		 * this.updateTime(id, hetongqiandingshijian, hetongkaigongshijian,
+		 * kaigongxukezhengshijian,yujiwangongshijian);
+		 */
 		return true;
 	}
 
@@ -369,9 +404,7 @@ public class ProjectServiceImpl implements IProjectService {
 		xiangmutaizhangMapper.updateXiangMuTaiZhang(xmtz);
 		return true;
 	}
-	
-	
-	
+
 	@Override
 	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long companyId) {
 		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId(companyId);
@@ -383,6 +416,7 @@ public class ProjectServiceImpl implements IProjectService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	public KaiPiaoShenQingDan getKaiPiaoShenQingDanById(Long id) {
 		return kaiPiaoShenQingDanMapper.getKaiPiaoShenQingDanById(id);
 	}
@@ -409,17 +443,15 @@ public class ProjectServiceImpl implements IProjectService {
 	public JianYiJiShuiFangFaPuPiaoJiShui getJianYiJiShuiFangFaPuPiaoJiShuiById(Long id) {
 		return jianYiJiShuiFangFaPuPiaoJiShuiMapper.getJianYiJiShuiFangFaPuPiaoJiShuiById(id);
 	}
-	
+
 	public void updateTime(Long id, Timestamp hetongqiandingshijian) {
 		xiangmutaizhangMapper.updateTime(id, hetongqiandingshijian);
 		xiangmutaizhangMapper.addTime(hetongqiandingshijian);
-		
+
 	}
 
-
-
-    @Override
-    public Boolean addQueRenShouRuFangShi_QiTa(QueRenShouRuFangShi_QiTa qrsrfs_qt) {
+	@Override
+	public Boolean addQueRenShouRuFangShi_QiTa(QueRenShouRuFangShi_QiTa qrsrfs_qt) {
 		queRenShouRuFangShi_QiTaMapper.addQueRenShouRuFangShi_QiTa(qrsrfs_qt);
 		return true;
 	}
@@ -427,9 +459,10 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override
 	public Boolean updateJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
 		jianyijishuifangfazhuanpiaojishuiMapper.updateJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
-	    return true;
-    }
-    public QueRenShouRuFangShi_QiTa getQueRenShouRuFangShi_QiTaById(Long id) {
+		return true;
+	}
+
+	public QueRenShouRuFangShi_QiTa getQueRenShouRuFangShi_QiTaById(Long id) {
 		return queRenShouRuFangShi_QiTaMapper.getQueRenShouRuFangShi_QiTaById(id);
 	}
 
@@ -443,34 +476,38 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override
 	public Boolean addQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(
 			QueRenShouRuFangShi_LaoWuShiJianZhanBiFa queRenShouRuFangShi_LaoWuShiJianZhanBiFa) {
-		queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper.addQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(queRenShouRuFangShi_LaoWuShiJianZhanBiFa);
+		queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper
+				.addQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(queRenShouRuFangShi_LaoWuShiJianZhanBiFa);
 		return true;
 	}
 
 	@Override
 	public QueRenShouRuFangShi_LaoWuShiJianZhanBiFa getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaById(Long id) {
 		return queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper.getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaById(id);
-		
+
 	}
 
 	@Override
 	public Boolean updateQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(
 			QueRenShouRuFangShi_LaoWuShiJianZhanBiFa queRenShouRuFangShi_LaoWuShiJianZhanBiFa) {
-		queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper.updateQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(queRenShouRuFangShi_LaoWuShiJianZhanBiFa);
+		queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper
+				.updateQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(queRenShouRuFangShi_LaoWuShiJianZhanBiFa);
 		return true;
 	}
 
 	@Override
 	public QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById(Long id) {
 		// TODO Auto-generated method stub
-		return queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper.getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById(id);
+		return queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper
+				.getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById(id);
 	}
 
 	@Override
 	public Boolean addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(
 			QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa) {
 		// TODO Auto-generated method stub
-		queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper.addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
+		queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper
+				.addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
 		return true;
 	}
 
@@ -478,7 +515,8 @@ public class ProjectServiceImpl implements IProjectService {
 	public Boolean updateQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(
 			QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa) {
 		// TODO Auto-generated method stub
-		queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper.updateQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
+		queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper
+				.updateQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
 		return true;
 	}
 
@@ -493,7 +531,7 @@ public class ProjectServiceImpl implements IProjectService {
 		puTongFaPiaoKaiJuMingXiMapper.updatePuTongFaPiaoKaiJuMingXi(ptf);
 		return true;
 	}
-	
+
 	public QueRenShouRuFangShi_YiWanGongGongZuoLiangFa getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaById(Long id) {
 		// TODO Auto-generated method stub
 		return queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper.getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaById(id);
@@ -503,7 +541,8 @@ public class ProjectServiceImpl implements IProjectService {
 	public Boolean addQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(
 			QueRenShouRuFangShi_YiWanGongGongZuoLiangFa queRenShouRuFangShi_YiWanGongGongZuoLiangFa) {
 		// TODO Auto-generated method stub
-		queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper.addQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
+		queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper
+				.addQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
 		return true;
 	}
 
@@ -527,7 +566,8 @@ public class ProjectServiceImpl implements IProjectService {
 	public Boolean updateQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(
 			QueRenShouRuFangShi_YiWanGongGongZuoLiangFa queRenShouRuFangShi_YiWanGongGongZuoLiangFa) {
 		// TODO Auto-generated method stub
-		queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper.updateQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
+		queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper
+				.updateQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
 
 		return true;
 	}
@@ -549,6 +589,7 @@ public class ProjectServiceImpl implements IProjectService {
 	public ShouQiKuanXiangMingXiBiao getShouQiKuanXiangMingXiBiaoById(Long id) {
 		return shouQiKuanXiangMingXiBiaoMapper.getShouQiKuanXiangMingXiBiaoById(id);
 	}
+
 	public Boolean updateXiaoXiang_XiangMu(XiaoXiang_XiangMu xiaoXiang_XiangMu) {
 		// TODO Auto-generated method stub
 		xiaoXiang_XiangMuMapper.updateXiaoXiang_XiangMu(xiaoXiang_XiangMu);
@@ -560,14 +601,68 @@ public class ProjectServiceImpl implements IProjectService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	
-/*	@Override
-	public void updateTime(Long id, String hetongqiandingshijian, String hetongkaigongshijian, String kaigongxukezhengshijian, String yujiwangongshijian) {
 
-		xiangmutaizhangMapper.updateTime(id, hetongqiandingshijian, hetongkaigongshijian, kaigongxukezhengshijian, yujiwangongshijian);
-		//xiangmutaizhangMapper.addTime(hetongqiandingshijian);
-		
-	}*/
+	@Autowired
+	private KaiPiaoQingKuangBiao_FenGongSiMapper kaiPiaoQingKuangBiao_FenGongSiMapper;
+
+	public void setKaiPiaoQingKuangBiao_FenGongSiMapper(
+			KaiPiaoQingKuangBiao_FenGongSiMapper kaiPiaoQingKuangBiao_FenGongSiMapper) {
+		this.kaiPiaoQingKuangBiao_FenGongSiMapper = kaiPiaoQingKuangBiao_FenGongSiMapper;
+	}
+
+	public KaiPiaoQingKuangBiao_FenGongSiMapper getKaiPiaoQingKuangBiao_FenGongSiMapper() {
+		return kaiPiaoQingKuangBiao_FenGongSiMapper;
+	}
+
+	@Override
+	public KaiPiaoQingKuangBiao_FenGongSi getKaiPiaoQingKuangBiao_FenGongSiById(Long id) {
+		return kaiPiaoQingKuangBiao_FenGongSiMapper.getKaiPiaoQingKuangBiao_FenGongSiById(id);
+	}
+
+	@Override
+	public Boolean addKaiPiaoQingKuangBiao_FenGongSi(KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi) {
+		kaiPiaoQingKuangBiao_FenGongSiMapper.addKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
+		return true;
+	}
+
+	@Override
+	public Boolean updateKaiPiaoQingKuangBiao_FenGongSi(KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi) {
+		kaiPiaoQingKuangBiao_FenGongSiMapper.updateKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
+		return true;
+	}
+
+	 @Override
+	    public YiBanJiShuiFangFaNaShuiJianChaTiaoZheng getYiBanJiShuiFangFaNaShuiJianChaTiaoZhengById(Long id){
+	        return yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.getYiBanJiShuiFangFaNaShuiJianChaTiaoZhengById(id);
+	    }
+
+	    @Override
+	    public Boolean addYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(YiBanJiShuiFangFaNaShuiJianChaTiaoZheng yiBanJiShuiFangFaNaShuiJianChaTiaoZheng){
+	        yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.addYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(yiBanJiShuiFangFaNaShuiJianChaTiaoZheng);
+	        return true;
+	    }
+
+	    @Override
+	    public Boolean updateYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(YiBanJiShuiFangFaNaShuiJianChaTiaoZheng yiBanJiShuiFangFaNaShuiJianChaTiaoZheng){
+	        yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.updateYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(yiBanJiShuiFangFaNaShuiJianChaTiaoZheng);
+	        return true;
+	    }
+	    
+	    @Override
+	    public FenBaoXiangMuMingXi getFenBaoXiangMuMingXiById(Long id){
+	        return fenBaoXiangMuMingXiMapper.getFenBaoXiangMuMingXiById(id);
+	    }
+
+	    @Override
+	    public Boolean addFenBaoXiangMuMingXi(FenBaoXiangMuMingXi fenBaoXiangMuMingXi){
+	        fenBaoXiangMuMingXiMapper.addFenBaoXiangMuMingXi(fenBaoXiangMuMingXi);
+	        return true;
+	    }
+
+	    @Override
+	    public Boolean updateFenBaoXiangMuMingXi(FenBaoXiangMuMingXi fenBaoXiangMuMingXi){
+	        fenBaoXiangMuMingXiMapper.updateFenBaoXiangMuMingXi(fenBaoXiangMuMingXi);
+	        return true;
+	    }
+
 }

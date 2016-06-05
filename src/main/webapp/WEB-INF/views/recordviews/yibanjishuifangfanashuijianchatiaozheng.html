@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
+
+
+
 <link rel="stylesheet" type="text/css" href="/css/webcss/global.css"/>
 <link rel="stylesheet" type="text/css" href="/css/webcss/jquery.dataTables.min.css">
 <link rel="stylesheet" href="/css/webcss/bootstrap.css" />
@@ -14,11 +17,11 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
- <style>
+<style>
 <!-- @page
-	{margin:0.75in 0.71in 0.75in 0.71in;
-	mso-header-margin:0.32in;
-	mso-footer-margin:0.32in;}
+	{margin:0.98in 0.75in 0.98in 0.75in;
+	mso-header-margin:0.51in;
+	mso-footer-margin:0.51in;}
 tr
 	{mso-height-source:auto;
 	mso-ruby-visibility:none;}
@@ -84,31 +87,13 @@ br
 .font6
 	{color:#000000;
 	font-size:10.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font7
-	{color:#1F497D;
-	font-size:15.0pt;
 	font-weight:700;
 	font-style:normal;
 	text-decoration:none;
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:134;}
-.font8
-	{color:#FF0000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font9
+.font7
 	{color:#3F3F76;
 	font-size:11.0pt;
 	font-weight:400;
@@ -117,8 +102,17 @@ br
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
-.font10
-	{color:#800080;
+.font8
+	{color:#44546A;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font9
+	{color:#0000FF;
 	font-size:11.0pt;
 	font-weight:400;
 	font-style:normal;
@@ -127,16 +121,7 @@ br
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
-.font11
-	{color:#1F497D;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font12
+.font10
 	{color:#3F3F3F;
 	font-size:11.0pt;
 	font-weight:700;
@@ -145,25 +130,7 @@ br
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
-.font13
-	{color:#1F497D;
-	font-size:13.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font14
-	{color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font15
+.font11
 	{color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -172,12 +139,49 @@ br
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
-.font16
+.font12
+	{color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font13
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font14
 	{color:#9C0006;
 	font-size:11.0pt;
 	font-weight:400;
 	font-style:normal;
 	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font15
+	{color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font16
+	{color:#800080;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
@@ -191,43 +195,6 @@ br
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
 .font18
-	{color:#FA7D00;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font19
-	{color:#0000FF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:underline;
-	text-underline-style:single;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font20
-	{color:#1F497D;
-	font-size:18.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font21
-	{color:#FA7D00;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font22
 	{color:#7F7F7F;
 	font-size:11.0pt;
 	font-weight:400;
@@ -236,7 +203,52 @@ br
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
+.font19
+	{color:#FF0000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font20
+	{color:#44546A;
+	font-size:13.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font21
+	{color:#44546A;
+	font-size:18.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font22
+	{color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
 .font23
+	{color:#44546A;
+	font-size:15.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font24
 	{color:#9C6500;
 	font-size:11.0pt;
 	font-weight:400;
@@ -245,19 +257,10 @@ br
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
-.font24
+.font25
 	{color:#006100;
 	font-size:11.0pt;
 	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font25
-	{color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:700;
 	font-style:normal;
 	text-decoration:none;
 	font-family:"宋体";
@@ -289,7 +292,7 @@ br
 	mso-style-id:7;}
 .style17
 	{mso-pattern:auto none;
-	background:#EBF1DE;
+	background:#EDEDED;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -322,7 +325,7 @@ br
 	mso-style-id:6;}
 .style21
 	{mso-pattern:auto none;
-	background:#D8E4BC;
+	background:#DBDBDB;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -350,7 +353,7 @@ br
 	mso-style-id:3;}
 .style24
 	{mso-pattern:auto none;
-	background:#C4D79B;
+	background:#C9C9C9;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -395,7 +398,7 @@ br
 	mso-style-name:"注释";}
 .style29
 	{mso-pattern:auto none;
-	background:#DA9694;
+	background:#F4B084;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -406,7 +409,7 @@ br
 	mso-font-charset:0;
 	mso-style-name:"60% - 强调文字颜色 2";}
 .style30
-	{color:#1F497D;
+	{color:#44546A;
 	font-size:11.0pt;
 	font-weight:700;
 	font-style:normal;
@@ -426,7 +429,7 @@ br
 	mso-font-charset:0;
 	mso-style-name:"警告文本";}
 .style32
-	{color:#1F497D;
+	{color:#44546A;
 	font-size:18.0pt;
 	font-weight:700;
 	font-style:normal;
@@ -446,7 +449,7 @@ br
 	mso-font-charset:0;
 	mso-style-name:"解释性文本";}
 .style34
-	{color:#1F497D;
+	{color:#44546A;
 	font-size:15.0pt;
 	font-weight:700;
 	font-style:normal;
@@ -454,13 +457,10 @@ br
 	font-family:宋体;
 	mso-generic-font-family:auto;
 	mso-font-charset:134;
-	border-left:none;
-	border-top:none;
-	border-right:none;
-	border-bottom:1.0pt solid #4F81BD;
+	border-bottom:1.0pt solid #5B9BD5;
 	mso-style-name:"标题 1";}
 .style35
-	{color:#1F497D;
+	{color:#44546A;
 	font-size:13.0pt;
 	font-weight:700;
 	font-style:normal;
@@ -468,14 +468,11 @@ br
 	font-family:宋体;
 	mso-generic-font-family:auto;
 	mso-font-charset:134;
-	border-left:none;
-	border-top:none;
-	border-right:none;
-	border-bottom:1.0pt solid #4F81BD;
+	border-bottom:1.0pt solid #5B9BD5;
 	mso-style-name:"标题 2";}
 .style36
 	{mso-pattern:auto none;
-	background:#95B3D7;
+	background:#9BC2E6;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -486,7 +483,7 @@ br
 	mso-font-charset:0;
 	mso-style-name:"60% - 强调文字颜色 1";}
 .style37
-	{color:#1F497D;
+	{color:#44546A;
 	font-size:11.0pt;
 	font-weight:700;
 	font-style:normal;
@@ -494,14 +491,11 @@ br
 	font-family:宋体;
 	mso-generic-font-family:auto;
 	mso-font-charset:134;
-	border-left:none;
-	border-top:none;
-	border-right:none;
-	border-bottom:1.0pt solid #A7BFDE;
+	border-bottom:1.0pt solid #ACCCEA;
 	mso-style-name:"标题 3";}
 .style38
 	{mso-pattern:auto none;
-	background:#B1A0C7;
+	background:#FFD966;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -552,7 +546,7 @@ br
 	mso-style-name:"检查单元格";}
 .style42
 	{mso-pattern:auto none;
-	background:#FDE9D9;
+	background:#E2EFDA;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -564,7 +558,7 @@ br
 	mso-style-name:"20% - 强调文字颜色 6";}
 .style43
 	{mso-pattern:auto none;
-	background:#C0504D;
+	background:#ED7D31;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -583,9 +577,6 @@ br
 	font-family:宋体;
 	mso-generic-font-family:auto;
 	mso-font-charset:0;
-	border-left:none;
-	border-top:none;
-	border-right:none;
 	border-bottom:2.0pt double #FF8001;
 	mso-style-name:"链接单元格";}
 .style45
@@ -597,10 +588,8 @@ br
 	font-family:宋体;
 	mso-generic-font-family:auto;
 	mso-font-charset:0;
-	border-left:none;
-	border-top:.5pt solid #4F81BD;
-	border-right:none;
-	border-bottom:2.0pt double #4F81BD;
+	border-top:.5pt solid #5B9BD5;
+	border-bottom:2.0pt double #5B9BD5;
 	mso-style-name:"汇总";}
 .style46
 	{mso-pattern:auto none;
@@ -628,7 +617,7 @@ br
 	mso-style-name:"适中";}
 .style48
 	{mso-pattern:auto none;
-	background:#DAEEF3;
+	background:#D9E1F2;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -640,7 +629,7 @@ br
 	mso-style-name:"20% - 强调文字颜色 5";}
 .style49
 	{mso-pattern:auto none;
-	background:#4F81BD;
+	background:#5B9BD5;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -652,7 +641,7 @@ br
 	mso-style-name:"强调文字颜色 1";}
 .style50
 	{mso-pattern:auto none;
-	background:#DCE6F1;
+	background:#DDEBF7;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -664,7 +653,7 @@ br
 	mso-style-name:"20% - 强调文字颜色 1";}
 .style51
 	{mso-pattern:auto none;
-	background:#B8CCE4;
+	background:#BDD7EE;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -676,7 +665,7 @@ br
 	mso-style-name:"40% - 强调文字颜色 1";}
 .style52
 	{mso-pattern:auto none;
-	background:#F2DCDB;
+	background:#FCE4D6;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -688,7 +677,7 @@ br
 	mso-style-name:"20% - 强调文字颜色 2";}
 .style53
 	{mso-pattern:auto none;
-	background:#E6B8B7;
+	background:#F8CBAD;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -700,7 +689,7 @@ br
 	mso-style-name:"40% - 强调文字颜色 2";}
 .style54
 	{mso-pattern:auto none;
-	background:#9BBB59;
+	background:#A5A5A5;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -712,7 +701,7 @@ br
 	mso-style-name:"强调文字颜色 3";}
 .style55
 	{mso-pattern:auto none;
-	background:#8064A2;
+	background:#FFC000;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -724,7 +713,7 @@ br
 	mso-style-name:"强调文字颜色 4";}
 .style56
 	{mso-pattern:auto none;
-	background:#E4DFEC;
+	background:#FFF2CC;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -736,7 +725,7 @@ br
 	mso-style-name:"20% - 强调文字颜色 4";}
 .style57
 	{mso-pattern:auto none;
-	background:#CCC0DA;
+	background:#FFE699;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -748,7 +737,7 @@ br
 	mso-style-name:"40% - 强调文字颜色 4";}
 .style58
 	{mso-pattern:auto none;
-	background:#4BACC6;
+	background:#4472C4;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -760,7 +749,7 @@ br
 	mso-style-name:"强调文字颜色 5";}
 .style59
 	{mso-pattern:auto none;
-	background:#B7DEE8;
+	background:#B4C6E7;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -772,7 +761,7 @@ br
 	mso-style-name:"40% - 强调文字颜色 5";}
 .style60
 	{mso-pattern:auto none;
-	background:#92CDDC;
+	background:#8EA9DB;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -784,7 +773,7 @@ br
 	mso-style-name:"60% - 强调文字颜色 5";}
 .style61
 	{mso-pattern:auto none;
-	background:#F79646;
+	background:#70AD47;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -796,7 +785,7 @@ br
 	mso-style-name:"强调文字颜色 6";}
 .style62
 	{mso-pattern:auto none;
-	background:#FCD5B4;
+	background:#C6E0B4;
 	color:#000000;
 	font-size:11.0pt;
 	font-weight:400;
@@ -808,7 +797,7 @@ br
 	mso-style-name:"40% - 强调文字颜色 6";}
 .style63
 	{mso-pattern:auto none;
-	background:#FABF8F;
+	background:#A9D08E;
 	color:#FFFFFF;
 	font-size:11.0pt;
 	font-weight:400;
@@ -877,26 +866,66 @@ td
 	{mso-style-parent:style0;
 	text-align:center;
 	white-space:normal;
-	font-size:10.0pt;
-	mso-font-charset:134;}
+	font-size:9.0pt;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
 .xl72
 	{mso-style-parent:style0;
 	text-align:center;
 	white-space:normal;
 	font-size:9.0pt;
 	mso-font-charset:134;
-	border:.5pt solid windowtext;}
+	border-left:.5pt solid windowtext;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;}
 .xl73
+	{mso-style-parent:style0;
+	text-align:center;
+	white-space:normal;
+	font-size:9.0pt;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+.xl74
+	{mso-style-parent:style0;
+	white-space:normal;
+	font-size:9.0pt;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+.xl75
 	{mso-style-parent:style0;
 	white-space:normal;
 	mso-font-charset:134;
 	border:.5pt solid windowtext;}
-.xl74
+.xl76
 	{mso-style-parent:style0;
 	text-align:center;
 	white-space:normal;
 	mso-font-charset:134;
 	border:.5pt solid windowtext;}
+.xl77
+	{mso-style-parent:style0;
+	text-align:center;
+	white-space:normal;
+	font-size:10.0pt;
+	font-weight:700;
+	mso-font-charset:134;
+	border-bottom:.5pt solid windowtext;}
+.xl78
+	{mso-style-parent:style0;
+	text-align:center;
+	white-space:normal;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-bottom:.5pt solid windowtext;}
+.xl79
+	{mso-style-parent:style0;
+	text-align:center;
+	white-space:normal;
+	font-size:10.0pt;
+	font-weight:700;
+	mso-font-charset:134;}
  -->  </style>
 <style>
 	#left-menu{
@@ -931,122 +960,98 @@ td
 
 <!-- Left menu -->
 <div id="left-menu"></div>
+
+<!-- Container -->
 <div id="but_position">
 	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
 	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
 </div>
-<!-- Container -->
 <div id="container">
-<table width="3674.20" border="0" cellpadding="0" cellspacing="0" style='width:1837.10pt;border-collapse:collapse;table-layout:fixed;'>
-  <tr height="52.50" class="xl65" style='height:26.25pt;mso-height-source:userset;mso-height-alt:525;'>
-    <td class="xl70" height="52.50" width="3674.20" colspan="26" style='height:26.25pt;width:1837.10pt;border-right:none;border-bottom:none;' x:str>未开具发票明细</td>
+ <table width="2283.90" border="0" cellpadding="0" cellspacing="0" style='width:1141.95pt;border-collapse:collapse;table-layout:fixed;'>
+   <tr height="52.50" class="xl65" style='height:26.25pt;mso-height-source:userset;mso-height-alt:525;'>
+    <td class="xl70" height="52.50" width="2000.20" colspan="26" style='height:26.25pt;width:1837.10pt;border-right:none;border-bottom:none;' x:str>一般计税方法纳税检查调整</td>
    </tr>
-   <tr height="52.50" class="xl66" style='height:26.25pt;mso-height-source:userset;mso-height-alt:525;'>
-    <td class="xl66" height="52.50" style='height:26.25pt;' x:str>分公司名称：</td>
-    <td class="xl71" colspan="5" style='border-right:none;border-bottom:none;'><input class="text" type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
-    <td class="xl66" x:str>项目部：</td>
-    <td class="xl71" colspan="16" style='border-right:none;border-bottom:none;'><input class="text" type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+   <tr height="52" style='height:26.00pt;'>
+    <td class="xl67" colspan="2" height="52" style='height:26.00pt;' x:str>分公司名称：</td>
+    <td class="xl68" colspan="4" style='border-right:none;border-bottom:none;' id=''><input class="text" class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
+    <td colspan="2" style="text-align:left;" x:str>项目部：</td>
+    <td colspan="3" style='mso-ignore:colspan;'><input class="text" class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+    <td class="xl77" colspan="2" style='mso-ignore:colspan;'></td>
+    <td class="xl67"></td>
    </tr>
    <tr height="34.50" class="xl67" style='height:17.25pt;mso-height-source:userset;mso-height-alt:345;'>
-    <td class="xl72" height="131" rowspan="3" style='height:65.50pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>日期</td>
-    <td class="xl72" rowspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>摘要（未开票原因）</td>
-    <td class="xl72" colspan="4" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>11%税率</td>
-    <td class="xl72" colspan="4" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>3%税率</td>
-    <td class="xl72" colspan="4" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>17%税率的货物及加工修理修配劳务</td>
-    <td class="xl72" colspan="4" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>17%税率的服务、不动产和无形资产</td>
-    <td class="xl72" colspan="4" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>13%税率</td>
-    <td class="xl72" colspan="4" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>6%税率</td>
+    <td class="xl71" height="90.50" rowspan="2" style='height:45.25pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>日期</td>
+    <td class="xl72" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开票内容</td>
+    <td class="xl71" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>11%税率</td>
+    <td class="xl71" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>3%税率</td>
+    <td class="xl71" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>17%税率的货物及加工修理修配劳务</td>
+    <td class="xl71" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>17%税率的服务、不动产和无形资产</td>
+    <td class="xl71" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>13%税率</td>
+    <td class="xl71" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>6%税率</td>
    </tr>
-   <tr height="34.50" class="xl68" style='height:17.25pt;mso-height-source:userset;mso-height-alt:345;'>
-    <td class="xl72" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>企业自报金额</td>
-    <td class="xl72" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>审核确认金额</td>
-    <td class="xl72" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>企业自报金额</td>
-    <td class="xl72" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>审核确认金额</td>
-    <td class="xl72" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>企业自报金额</td>
-    <td class="xl72" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>审核确认金额</td>
-    <td class="xl72" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>企业自报金额</td>
-    <td class="xl72" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>审核确认金额</td>
-    <td class="xl72" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>企业自报金额</td>
-    <td class="xl72" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>审核确认金额</td>
-    <td class="xl72" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>企业自报金额</td>
-    <td class="xl72" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>审核确认金额</td>
+   <tr height="56" class="xl68" style='height:28.00pt;mso-height-source:userset;mso-height-alt:560;'>
+    <td class="xl71" x:str>销售额</td>
+    <td class="xl71" x:str>销项（应纳）税额</td>
+    <td class="xl71" x:str>小计</td>
+    <td class="xl71" x:str>销售额</td>
+    <td class="xl71" x:str>销项（应纳）税额</td>
+    <td class="xl71" x:str>小计</td>
+    <td class="xl71" x:str>销售额</td>
+    <td class="xl71" x:str>销项（应纳）税额</td>
+    <td class="xl71" x:str>小计</td>
+    <td class="xl71" x:str>销售额</td>
+    <td class="xl71" x:str>销项（应纳）税额</td>
+    <td class="xl71" x:str>小计</td>
+    <td class="xl71" x:str>销售额</td>
+    <td class="xl71" x:str>销项（应纳）税额</td>
+    <td class="xl71" x:str>小计</td>
+    <td class="xl71" x:str>销售额</td>
+    <td class="xl71" x:str>销项（应纳）税额</td>
+    <td class="xl71" x:str>小计</td>
    </tr>
-   <tr height="62" class="xl67" style='height:31.00pt;mso-height-source:userset;mso-height-alt:620;'>
-    <td class="xl72" x:str>销售额</td>
-    <td class="xl72" x:str>销项（应纳）税额</td>
-    <td class="xl72" x:str>价税合计</td>
-    <td class="xl72" x:str>销售额</td>
-    <td class="xl72" x:str>销项（应纳）税额</td>
-    <td class="xl72" x:str>价税合计</td>
-    <td class="xl72" x:str>销售额</td>
-    <td class="xl72" x:str>销项（应纳）税额</td>
-    <td class="xl72" x:str>价税合计</td>
-    <td class="xl72" x:str>销售额</td>
-    <td class="xl72" x:str>销项（应纳）税额</td>
-    <td class="xl72" x:str>价税合计</td>
-    <td class="xl72" x:str>销售额</td>
-    <td class="xl72" x:str>销项（应纳）税额</td>
-    <td class="xl72" x:str>价税合计</td>
-    <td class="xl72" x:str>销售额</td>
-    <td class="xl72" x:str>销项（应纳）税额</td>
-    <td class="xl72" x:str>价税合计</td>
-   </tr>
-   <tr height="37.50" class="xl69" style='height:18.75pt;mso-height-source:userset;mso-height-alt:375;'>
+   <tr height="37.50" class="xl67" style='height:18.75pt;mso-height-source:userset;mso-height-alt:375;'>
     <td class="xl73" height="37.50" style='height:18.75pt;'><input class="text"  style='width:100%' id='riqi'></td>
     <td class="xl73"><input class="text"  style='width:100%' id='zhaiyao'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_11_qiyezibaojine'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_11_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_11_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_11_xiaoji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_3_qiyezibaojine'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_3_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_3_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_3_xiaoji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_17huowu_qiyezibaojine'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_17huowu_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_17huowu_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_17huowu_xiaoji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_17fuwu_qiyezibaojine'></td>
-	<td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_17fuwu_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_17fuwu_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_17fuwu_xiaoji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_13_qiyezibaojine'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_13_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_13_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_13_xiaoji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_6_qiyezibaojine'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_6_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_6_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_6_xiaoji'></td>
-    </tr>
-   
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_11_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_11_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_11_xiaoji'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_3_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_3_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_3_xiaoji'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_17huowu_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_17huowu_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_17huowu_xiaoji'></td>
+	<td class="xl73"><input class="text"  style='width:100%' id='nashui_17fuwu_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_17fuwu_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_17fuwu_xiaoji'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_13_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_13_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_13_xiaoji'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_6_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_6_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_6_xiaoji'></td>
+   </tr>
    <tr height="37.50" class="xl69" style='height:18.75pt;mso-height-source:userset;mso-height-alt:375;'>
-    <td class="xl74" height="37.50" style='height:18.75pt;' x:str>合计</td>
-    <td class="xl74"></td>
-    <td class="xl74"><input class="text"  style='width:100%' id='yiban_weikai_heji_11_qiye'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_11_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_11_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_11_jiashuiheji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_3_qiye'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_3_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_3_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_3_jiashuiheji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_17huowu_qiye'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_17huowu_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_17huowu_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_17huowu_jiashuiheji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_17fuwu_qiye'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_17fuwu_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_17fuwu_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_17fuwu_jiashuiheji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_13_qiye'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_13_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_13_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_13_jiashuiheji'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_6_qiye'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_6_xiaoshoue'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_6_xiaoxiangshuie'></td>
-    <td class="xl73"><input class="text"  style='width:100%' id='yiban_weikai_heji_6_jiashuiheji'></td>
+    <td class="xl76" height="37.50" style='height:18.75pt;' x:str>合计</td>
+   <td class="xl74"></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_11_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_11_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_11_xiaoji'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_3_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_3_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_3_xiaoji'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_17huowu_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_17huowu_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_17huowu_xiaoji'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_17fuwu_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_17fuwu_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_17fuwu_xiaoji'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_13_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_13_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_13_xiaoji'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_6_xiaoshoue'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_6_xiaoxiangshuie'></td>
+    <td class="xl73"><input class="text"  style='width:100%' id='nashui_heji_6_xiaoji'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='border:none;height:14.00pt;' x:str>填表人：</td>
@@ -1054,7 +1059,6 @@ td
     <td class='xl68' style='border:none;height:14.00pt;' x:str>复核人：</td>
     <td class='xl68' style='border:none;'><input class="text"  style='border:1pt solid black;width:100%'width:100%' id='fuheren'></td>
    </tr>
- 
   </table>
 </div>
 <div class="mask"></div>
@@ -1096,7 +1100,7 @@ $("#submit").on("click", function(){
 		console.log($(this).attr('id'));
 		dataSet[$(this).attr('id')] = $(this).val();
 	});
-	dataSet["class_name"] = "WeiKaiJuFaPiaoMingXi_YiBan";
+	dataSet["class_name"] = "YiBanJiShuiFangFaNaShuiJianChaTiaoZheng";
 	dataSet["kaipiaoshenqingdan_id"] = "222";
 	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
 	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
@@ -1116,14 +1120,14 @@ $("#modify").on("click", function(){
 	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
 	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
 	dataSet["kaipiaoshenqingdan_id"] = "222";
-	dataSet["class_name"] = "WeiKaiJuFaPiaoMingXi_YiBan";
+	dataSet["class_name"] = "YiBanJiShuiFangFaNaShuiJianChaTiaoZheng";
 	$.post('/project/modifyModel', dataSet, function(data){
 		console.log(data);
 	});
 	
 });
 
-var query = {query_key: 'id', query_value:1, class_name:'WeiKaiJuFaPiaoMingXi_YiBan'};
+var query = {query_key: 'id', query_value:1, class_name:'YiBanJiShuiFangFaNaShuiJianChaTiaoZheng'};
 $.post("/project/getModel", query, function(data){
 	var data = $.parseJSON(data.data)[0];
 	console.log(data);
