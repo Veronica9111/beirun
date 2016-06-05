@@ -911,6 +911,12 @@ td
 		min-height:400px;
 		overflow-x: auto; overflow-y: auto;
 	}
+	
+	
+		#but_position{
+		margin-left:27vw;
+		margin-top: 50px;
+	}
 
 </style>
 </head>
@@ -926,6 +932,12 @@ td
 <!-- Left menu -->
 <div id="left-menu"></div>
 
+
+<div id="but_position">
+	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
+	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+</div>
+
 <!-- Container -->
 <div id="container">
 <table width='908' border='0' cellpadding='0' cellspacing='0' style='width:454.00pt;border-collapse:collapse;table-layout:fixed;'>
@@ -940,7 +952,7 @@ td
    </tr>
    <tr height='30' style='height:15.00pt;'>
     <td class='xl72' height='30' style='height:15.00pt;' x:str>项目名称</td>
-    <td colspan='3' style='border-right:.5pt solid windowtext;border-top:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input style='width:100%;' id='xiangmumingcheng'></td>
+    <td colspan='3' style='border-right:.5pt solid windowtext;border-top:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input class='text' style='width:100%;' id='xiangmumingcheng'></td>
    </tr>
    <tr height='30' style='height:15.00pt;'>
     <td class='xl74' height='90' rowspan='3' style='height:45.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请日期</td>
@@ -957,17 +969,17 @@ td
     <td colspan='4' style='mso-ignore:colspan;'></td>
    </tr>
    <tr height='30' style='height:15.00pt;'>
-    <td class='xl80' height='30' style='height:15.00pt;'><input style='width:100%;' id='shenqingriqi'></td>
-    <td class='xl74'><input style='width:100%;' id='fashengjine'></td>
-    <td class='xl74'><input style='width:100%;' id='yujizonge'></td>
-    <td class='xl74'><input style='width:100%;' id='bili'></td>
+    <td class='xl80' height='30' style='height:15.00pt;'><input class='text'  style='width:100%;' id='shenqingriqi'></td>
+    <td class='xl74'><input class='text'  style='width:100%;' id='fashengjine'></td>
+    <td class='xl74'><input class='text'  style='width:100%;' id='yujizonge'></td>
+    <td class='xl74'><input class='text'  style='width:100%;' id='bili'></td>
     <td colspan='4' style='mso-ignore:colspan;'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='height:14.00pt;' x:str>填表人：</td>
-    <td class='xl68' colspan='1'><input style='border:1pt solid black;width:100%' id='tianbiaoren'></td>
+    <td class='xl68' colspan='1'><input class='text' style='border:1pt solid black;width:100%' id='tianbiaoren'></td>
     <td class='xl68' x:str>复核人：</td>
-    <td class='xl68' colspan='1'><input style='border:1pt solid black;width:100%' id='fuheren'></td>
+    <td class='xl68' colspan='1'><input class='text'  style='border:1pt solid black;width:100%' id='fuheren'></td>
    </tr>
   </table>
 </div>
@@ -977,7 +989,60 @@ td
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
+<script type="text/javascript">
+$("#submit").on("click", function(){
+	console.log($(".text"));
+	var hetongleixing = $('input:checked', '#hetongleixing').val();
+	var hetongfukuanfangshi = $('input:checked', '#hetongfukuanfangshi').val();
+	var nashuileixing = $('input:checked', '#nashuileixing').val();
+	console.log(hetongleixing);
+	console.log(hetongfukuanfangshi);
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
 
+	dataSet["class_name"] = "QueRenShouRuFangShi_QiTa";
+
+	$.post('/project/addModel', dataSet, function(data){
+		console.log(data);
+		
+	});
+	
+});
+$("#modify").on("click", function(){
+	console.log($(".text"));
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+
+	dataSet["class_name"] = "QueRenShouRuFangShi_QiTa";
+	dataSet['id'] = 1;
+	
+	$.post('/project/modifyModel', dataSet, function(data){
+		console.log(data);
+		
+	});
+	
+});
+
+var query = {query_key: 'id', query_value:1, class_name:'QueRenShouRuFangShi_QiTa'};
+$.post("/project/getModel", query, function(data){
+
+	var data = $.parseJSON(data.data)[0];
+
+	for(key in data){
+
+			console.log(data[key]);
+			$("#" + key).val(data[key]);
+		
+	}
+	
+});
+</script>
 
 </body>
 

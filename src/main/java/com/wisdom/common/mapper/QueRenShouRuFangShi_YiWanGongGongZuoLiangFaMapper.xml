@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+    'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa" id="QueRenShouRuFangShi_YiWanGongGongZuoLiangFa">
+<result property="shenqingriqi" column="shenqingriqi"/>
+<result property="fengongsimingcheng" column="fengongsimingcheng"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="yiwangonggongzuoliang" column="yiwangonggongzuoliang"/>
+<result property="zonggongzuoliang" column="zonggongzuoliang"/>
+<result property="bili" column="bili"/>
+<result property="hetongjine" column="hetongjine"/>
+<result property="suodeshuiyingquerenshouru" column="suodeshuiyingquerenshouru"/>
+<result property="yiquerenshouru" column="yiquerenshouru"/>
+<result property="weiquerenshouru" column="weiquerenshouru"/>
+<result property="tianbiaoren" column="tianbiaoren"/>
+<result property="shenheren" column="shenheren"/>
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="shenherendianhua" column="shenherendianhua"/>
+<result property="tianbiaoriqi" column="tianbiaoriqi"/>
+<result property="xiangmumingcheng" column="xiangmumingcheng"/>
+<result property="shenheriqi" column="shenheriqi"/>
+<result property="fuheren" column="fuheren"/>
+<result property="kaipiaoshenqingdan_id" column="kaipiaoshenqingdan_id"/>
+</resultMap>
+
+<insert id="addQueRenShouRuFangShi_YiWanGongGongZuoLiangFa" parameterType="String">
+insert into querenshourufangshi_yiwangonggongzuoliangfa (shenqingriqi,fengongsimingcheng,xiangmubu,yiwangonggongzuoliang,zonggongzuoliang,bili,hetongjine,suodeshuiyingquerenshouru,yiquerenshouru,weiquerenshouru,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,xiangmumingcheng,shenheriqi,fuheren,kaipiaoshenqingdan_id)
+values(#{shenqingriqi},#{fengongsimingcheng},#{xiangmubu},#{yiwangonggongzuoliang},#{zonggongzuoliang},#{bili},#{hetongjine},#{suodeshuiyingquerenshouru},#{yiquerenshouru},#{weiquerenshouru},#{tianbiaoren},#{shenheren},#{tianbiaorendianhua},#{shenherendianhua},#{tianbiaoriqi},#{xiangmumingcheng},#{shenheriqi},#{fuheren},#{kaipiaoshenqingdan_id})
+</insert>
+
+<update id="updateQueRenShouRuFangShi_YiWanGongGongZuoLiangFa" parameterType="String">
+update querenshourufangshi_yiwangonggongzuoliangfa set shenqingriqi=#{shenqingriqi},fengongsimingcheng=#{fengongsimingcheng},xiangmubu=#{xiangmubu},yiwangonggongzuoliang=#{yiwangonggongzuoliang},zonggongzuoliang=#{zonggongzuoliang},bili=#{bili},hetongjine=#{hetongjine},suodeshuiyingquerenshouru=#{suodeshuiyingquerenshouru},yiquerenshouru=#{yiquerenshouru},weiquerenshouru=#{weiquerenshouru},tianbiaoren=#{tianbiaoren},shenheren=#{shenheren},tianbiaorendianhua=#{tianbiaorendianhua},shenherendianhua=#{shenherendianhua},tianbiaoriqi=#{tianbiaoriqi},xiangmumingcheng=#{xiangmumingcheng},shenheriqi=#{shenheriqi},fuheren=#{fuheren},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+where id=#{id}
+</update>
+
+<select id="getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaById" resultType="QueRenShouRuFangShi_YiWanGongGongZuoLiangFa">
+select shenqingriqi,fengongsimingcheng,xiangmubu,yiwangonggongzuoliang,zonggongzuoliang,bili,hetongjine,suodeshuiyingquerenshouru,yiquerenshouru,weiquerenshouru,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,xiangmumingcheng,shenheriqi,fuheren,kaipiaoshenqingdan_id
+from querenshourufangshi_yiwangonggongzuoliangfa
+where id=#{id}
+</select>
+
+</mapper>

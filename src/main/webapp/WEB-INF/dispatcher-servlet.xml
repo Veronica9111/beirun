@@ -271,7 +271,31 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
+<bean id="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="com.wisdom.common.mapper.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper" />
+  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
 
+<bean id="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="com.wisdom.common.mapper.QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" />
+  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+
+<bean id="QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="com.wisdom.common.mapper.QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" />
+  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+
+<bean id="QueRenShouRuFangShi_QiTaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="com.wisdom.common.mapper.QueRenShouRuFangShi_QiTaMapper" />
+  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+
+
+<bean id="XiaoXiang_XiangMuMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="com.wisdom.common.mapper.XiaoXiang_XiangMuMapper" />
+  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
 
 	<bean id="userController" class="com.wisdom.web.api.controller.UserController">
 		<property name="testMapper" ref="testMapper" />
@@ -316,6 +340,12 @@
 		<property name="KaiPiaoShenQingDanMapper" ref="KaiPiaoShenQingDanMapper" />
 		<property name="WeiKaiJuFaPiaoMingXiMapper" ref="WeiKaiJuFaPiaoMingXiMapper" />
 		<property name="JianYiJiShuiFangFaPuPiaoJiShuiMapper" ref="JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
+		<property name="QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" ref="QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" />
+		<property name="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" ref="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" />
+		<property name="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper" ref="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper" />
+		<property name="QueRenShouRuFangShi_QiTaMapper" ref="QueRenShouRuFangShi_QiTaMapper" />
+		<property name="XiaoXiang_XiangMuMapper" ref="XiaoXiang_XiangMuMapper" />
+		
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="mapper" />
