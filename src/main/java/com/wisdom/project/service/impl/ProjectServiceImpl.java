@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wisdom.common.mapper.CompanyMapper;
+import com.wisdom.common.mapper.FenBaoXiangMuMingXiMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaZhuanPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_FenGongSiMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper;
@@ -32,6 +33,7 @@ import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.mapper.XiaoXiang_XiangMuMapper;
 import com.wisdom.common.mapper.YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper;
 import com.wisdom.common.model.Company;
+import com.wisdom.common.model.FenBaoXiangMuMingXi;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;

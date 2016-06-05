@@ -1960,28 +1960,31 @@ td
    
    <tr height="28" class="xl65" style='height:14.00pt;'>
     <td class="xl76" height="28" style='height:14.00pt;' x:str>合计</td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%' id="fb_heji_17_fenbaohetongjine"></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%' id="fb_heji_11_fenbaohetongjine"></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%' id="fb_heji_6_fenbaohetongjine"></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%' id="fb_heji_5_fenbaohetongjine"></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%' id="fb_heji_3_fenbaohetongjine"></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%' id="fb_heji_miandi_fenbaohetongjine"></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%'></td>
-    <td class="xl75"><input class="text" style='width:100%' id="fb_heji_mianshui_fenbaohetongjine"></td>
-    
+    <td class="xl76"></td>
+    <td class="xl76" id=''><input class="text" style='width:100%' id='jianyipu_heji_3fuwu_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3fuwu_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3fuwu_11_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3fuwu_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3huowu_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3huowu_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3huowu_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_3huowu_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5fuwu_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5fuwu_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5fuwu_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5fuwu_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5huowu_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5huowu_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5huowu_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_5huowu_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_4_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_4_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_4_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_4_jiashuiheji'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_6_qiye'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_6_xiaoshoue'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_6_xiaoxiangshuie'></td>
+    <td class="xl75" id=''><input class="text" style='width:100%' id='jianyipu_heji_6_jiashuiheji'></td>
    </tr>
    <tr height="28" class="xl65" style='height:14.00pt;'>
     <td class="xl65" height="28" style='height:14.00pt;' x:str>填表人：</td>
@@ -2030,7 +2033,7 @@ $("#submit").on("click", function(){
 		console.log($(this).attr('id'));
 		dataSet[$(this).attr('id')] = $(this).val();
 	});
-	dataSet["class_name"] = "FenBaoXiangMuMingXi";
+	dataSet["class_name"] = "JianYiJiShuiFangFaPuPiaoJiShui";
 	dataSet["kaipiaoshenqingdan_id"] = "222";
 	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
 	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
@@ -2050,14 +2053,14 @@ $("#modify").on("click", function(){
 	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
 	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
 	dataSet["kaipiaoshenqingdan_id"] = "222";
-	dataSet["class_name"] = "FenBaoXiangMuMingXi";
+	dataSet["class_name"] = "JianYiJiShuiFangFaPuPiaoJiShui";
 	$.post('/project/modifyModel', dataSet, function(data){
 		console.log(data);
 	});
 	
 });
 
-var query = {query_key: 'id', query_value:1, class_name:'FenBaoXiangMuMingXi'};
+var query = {query_key: 'id', query_value:1, class_name:'JianYiJiShuiFangFaPuPiaoJiShui'};
 $.post("/project/getModel", query, function(data){
 	var data = $.parseJSON(data.data)[0];
 	console.log(data);
