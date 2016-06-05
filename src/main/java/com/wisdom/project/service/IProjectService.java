@@ -14,6 +14,7 @@ import com.wisdom.common.model.QueRenShouRuFangShi_QiTa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.XiangMuTaiZhang;
+import com.wisdom.common.model.XiaoXiang_XiangMu;
 
 public interface IProjectService {
 
@@ -68,10 +69,6 @@ public interface IProjectService {
 
 	public JianYiJiShuiFangFaZhuanPiaoJiShui getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Long id);
 
-	public Boolean updateJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
-
-	public Boolean addJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
-
 	public QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById(Long id);
 	
 	public Boolean addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
@@ -83,4 +80,10 @@ public interface IProjectService {
 	public Boolean addQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(QueRenShouRuFangShi_YiWanGongGongZuoLiangFa queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
 	
 	public Boolean updateQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(QueRenShouRuFangShi_YiWanGongGongZuoLiangFa queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
+
+	public XiaoXiang_XiangMu getXiaoXiang_XiangMuById(Long id);
+	
+	public Boolean addXiaoXiang_XiangMu(XiaoXiang_XiangMu xiaoXiang_XiangMu);
+	
+	public Boolean updateXiaoXiang_XiangMu(XiaoXiang_XiangMu xiaoXiang_XiangMu);
 }

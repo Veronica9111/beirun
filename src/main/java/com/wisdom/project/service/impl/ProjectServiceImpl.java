@@ -40,6 +40,7 @@ import com.wisdom.common.mapper.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMap
 import com.wisdom.common.mapper.QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper;
 import com.wisdom.common.mapper.RecordMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
+import com.wisdom.common.mapper.XiaoXiang_XiangMuMapper;
 import com.wisdom.common.model.Company;
 import com.wisdom.common.model.Invoice;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
@@ -51,6 +52,7 @@ import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.Record;
 import com.wisdom.common.model.XiangMuTaiZhang;
+import com.wisdom.common.model.XiaoXiang_XiangMu;
 import com.wisdom.invoice.service.IInvoiceService;
 import com.wisdom.project.service.IProjectService;
 import com.wisdom.utils.RedisSetting;
@@ -94,6 +96,9 @@ public class ProjectServiceImpl implements IProjectService {
 	  
 	  @Autowired
 	  private QueRenShouRuFangShi_QiTaMapper queRenShouRuFangShi_QiTaMapper;
+	  
+	  @Autowired
+	  private XiaoXiang_XiangMuMapper xiaoXiang_XiangMuMapper;
 
 
 	public JianYiJiShuiFangFaPuPiaoJiShuiMapper getJianYiJiShuiFangFaPuPiaoJiShuiMapper() {
@@ -149,7 +154,12 @@ public class ProjectServiceImpl implements IProjectService {
 	public void setQueRenShouRuFangShi_QiTaMapper(QueRenShouRuFangShi_QiTaMapper queRenShouRuFangShi_QiTaMapper) {
 	    this.queRenShouRuFangShi_QiTaMapper = queRenShouRuFangShi_QiTaMapper;
 }
-
+	
+	
+	
+	public void setXiaoXiang_XiangMuMapper(XiaoXiang_XiangMuMapper xiaoXiang_XiangMuMapper) {
+	    this.xiaoXiang_XiangMuMapper = xiaoXiang_XiangMuMapper;
+}
 
 	@Override
 	public Boolean addProject(XiangMuTaiZhang xmtz) {
@@ -175,17 +185,11 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override
 	public Boolean addJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
 
-		jianyijishuifangfazhuanpiaojishuiMapper.updateJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
+		jianyijishuifangfazhuanpiaojishuiMapper.addJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
 		return true;
 	}
 	
 	
-	@Override
-	public Boolean updateJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
-
-		jianyijishuifangfazhuanpiaojishuiMapper.updateJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
-		return true;
-	}
 	
 	@Override
 	public List<XiangMuTaiZhang> getProjectsByCompanyId(Integer companyId) {
@@ -334,11 +338,7 @@ public class ProjectServiceImpl implements IProjectService {
 		
 	}
 
-	@Override
-	public Boolean addJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
-		jianyijishuifangfazhuanpiaojishuiMapper.addJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
-	    return true;
-    }
+
 
     @Override
     public Boolean addQueRenShouRuFangShi_QiTa(QueRenShouRuFangShi_QiTa qrsrfs_qt) {
@@ -423,9 +423,31 @@ public class ProjectServiceImpl implements IProjectService {
 			QueRenShouRuFangShi_YiWanGongGongZuoLiangFa queRenShouRuFangShi_YiWanGongGongZuoLiangFa) {
 		// TODO Auto-generated method stub
 		queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper.updateQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
->>>>>>> Add tables
+
 		return true;
 	}
+
+	@Override
+	public XiaoXiang_XiangMu getXiaoXiang_XiangMuById(Long id) {
+		// TODO Auto-generated method stub
+		return xiaoXiang_XiangMuMapper.getXiaoXiang_XiangMuById(id);
+	}
+
+	@Override
+	public Boolean addXiaoXiang_XiangMu(XiaoXiang_XiangMu xiaoXiang_XiangMu) {
+		// TODO Auto-generated method stub
+		xiaoXiang_XiangMuMapper.addXiaoXiang_XiangMu(xiaoXiang_XiangMu);
+		return true;
+	}
+
+	@Override
+	public Boolean updateXiaoXiang_XiangMu(XiaoXiang_XiangMu xiaoXiang_XiangMu) {
+		// TODO Auto-generated method stub
+		xiaoXiang_XiangMuMapper.updateXiaoXiang_XiangMu(xiaoXiang_XiangMu);
+		return true;
+	}
+	
+	
 	
 /*	@Override
 	public void updateTime(Long id, String hetongqiandingshijian, String hetongkaigongshijian, String kaigongxukezhengshijian, String yujiwangongshijian) {
