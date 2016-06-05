@@ -348,17 +348,14 @@
 		<property name="KaiPiaoShenQingDanMapper" ref="KaiPiaoShenQingDanMapper" />
 		<property name="WeiKaiJuFaPiaoMingXiMapper" ref="WeiKaiJuFaPiaoMingXiMapper" />
 		<property name="JianYiJiShuiFangFaPuPiaoJiShuiMapper" ref="JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
-<<<<<<< HEAD
 		<property name="PuTongFaPiaoKaiJuMingXiMapper" ref="PuTongFaPiaoKaiJuMingXiMapper" />
 		<property name="ShouQiKuanXiangMingXiBiaoMapper" ref="ShouQiKuanXiangMingXiBiaoMapper" />
-=======
 		<property name="QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" ref="QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" />
 		<property name="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" ref="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" />
 		<property name="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper" ref="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper" />
 		<property name="QueRenShouRuFangShi_QiTaMapper" ref="QueRenShouRuFangShi_QiTaMapper" />
 		<property name="XiaoXiang_XiangMuMapper" ref="XiaoXiang_XiangMuMapper" />
 		
->>>>>>> 7778ff8b4c9f94012956a260d753954b0d59b138
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="mapper" />
