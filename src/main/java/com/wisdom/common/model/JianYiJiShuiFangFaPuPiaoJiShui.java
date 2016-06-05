@@ -160,11 +160,11 @@ public void setRiqi (Timestamp riqi) {
 
 public String getRiqi () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String shenqingriqi = "";
+	String riqi = "";
 	if(this.riqi != null) {
-		shenqingriqi  = dateFormat.format(this.riqi);
+		riqi  = dateFormat.format(this.riqi);
 	}
-return shenqingriqi;
+return riqi;
 }
 
 public void setJianyipu_3fuwu_xiaoshoue (Double jianyipu_3fuwu_xiaoshoue) {
@@ -405,11 +405,11 @@ public void setTianbiaoshijian (Timestamp tianbiaoshijian) {
 
 public String getTianbiaoshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String shenqingriqi = "";
+	String tianbiaoshijian = "";
 	if(this.tianbiaoshijian != null) {
-		shenqingriqi  = dateFormat.format(this.tianbiaoshijian);
+		tianbiaoshijian  = dateFormat.format(this.tianbiaoshijian);
 	}
-return shenqingriqi;
+return tianbiaoshijian;
 }
 
 public void setShenheshijian (Timestamp shenheshijian) {
@@ -418,11 +418,11 @@ public void setShenheshijian (Timestamp shenheshijian) {
 
 public String getShenheshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String shenqingriqi = "";
+	String shenheshijian = "";
 	if(this.shenheshijian != null) {
-		shenqingriqi  = dateFormat.format(this.shenheshijian);
+		shenheshijian  = dateFormat.format(this.shenheshijian);
 	}
-return shenqingriqi;
+return shenheshijian;
 }
 
 public void setFuheren (String fuheren) {

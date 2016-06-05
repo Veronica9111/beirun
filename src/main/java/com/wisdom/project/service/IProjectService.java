@@ -11,7 +11,15 @@ import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
+import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi;
 import com.wisdom.common.model.XiangMuTaiZhang;
+import com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi;
+import com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa;
+import com.wisdom.common.model.QueRenShouRuFangShi_QiTa;
+import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
+import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
+import com.wisdom.common.model.XiangMuTaiZhang;
+import com.wisdom.common.model.XiaoXiang_XiangMu;
 
 public interface IProjectService {
 
@@ -43,12 +51,21 @@ public interface IProjectService {
 	
 	public Boolean addJianYiJiShuiFangFaPuPiaoJiShui(JianYiJiShuiFangFaPuPiaoJiShui jyjsffppjs);
 	
-	public Boolean addJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
-	
-	public Boolean updateJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
 	
 	public JianYiJiShuiFangFaPuPiaoJiShui getJianYiJiShuiFangFaPuPiaoJiShuiById(Long id);
 	public void updateTime(Long id, Timestamp hetongqiandingshijian);
+	
+	public Boolean addQueRenShouRuFangShi_QiTa(QueRenShouRuFangShi_QiTa queRenShouRuFangShi_QiTa);
+	
+	public QueRenShouRuFangShi_QiTa getQueRenShouRuFangShi_QiTaById(Long id);
+	
+	public Boolean updateQueRenShouRuFangShi_QiTa(QueRenShouRuFangShi_QiTa queRenShouRuFangShi_QiTa);
+
+	public Boolean addQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(QueRenShouRuFangShi_LaoWuShiJianZhanBiFa queRenShouRuFangShi_LaoWuShiJianZhanBiFa);
+
+	public QueRenShouRuFangShi_LaoWuShiJianZhanBiFa getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaById(Long id);
+	
+	public Boolean updateQueRenShouRuFangShi_LaoWuShiJianZhanBiFa(QueRenShouRuFangShi_LaoWuShiJianZhanBiFa queRenShouRuFangShi_LaoWuShiJianZhanBiFa);
 
 	public List<KaiPiaoShenQingDan> getJianYiJiShuiFangFaZhuanPiaoJiShuiByProjectId(Integer projectId);
 
@@ -68,6 +85,38 @@ public interface IProjectService {
 	
 	public ShouQiKuanXiangMingXiBiao getShouQiKuanXiangMingXiBiaoById(Long id);
 	
+	public QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById(Long id);
 	
+	public Boolean addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
+	
+	public Boolean updateQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
 
+	public QueRenShouRuFangShi_YiWanGongGongZuoLiangFa getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaById(Long id);
+	
+	public Boolean addQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(QueRenShouRuFangShi_YiWanGongGongZuoLiangFa queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
+	
+	public Boolean updateQueRenShouRuFangShi_YiWanGongGongZuoLiangFa(QueRenShouRuFangShi_YiWanGongGongZuoLiangFa queRenShouRuFangShi_YiWanGongGongZuoLiangFa);
+
+
+	public void addZhuanYongFaPiaoKaiJuMingXi(ZhuanYongFaPiaoKaiJuMingXi zyfpkjmx);
+
+	public ZhuanYongFaPiaoKaiJuMingXi getZhuanYongFaPiaoKaiJuMingXiById(Long id);
+
+	public void updateZhuanYongFaPiaoKaiJuMingXi(ZhuanYongFaPiaoKaiJuMingXi zyfpkjmx);
+
+	public void addWeiKaiJuFaPiaoMingXi(WeiKaiJuFaPiaoMingXi wkjfpmx);
+
+	public void updateWeiKaiJuFaPiaoMingXi(WeiKaiJuFaPiaoMingXi wkjfpmx);
+
+	public WeiKaiJuFaPiaoMingXi getWeiKaiJuFaPiaoMingXiById(Long id);
+
+	public XiaoXiang_XiangMu getXiaoXiang_XiangMuById(Long id);
+	
+	public Boolean addXiaoXiang_XiangMu(XiaoXiang_XiangMu xiaoXiang_XiangMu);
+	
+	public Boolean updateXiaoXiang_XiangMu(XiaoXiang_XiangMu xiaoXiang_XiangMu);
+
+	public Boolean addJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
+
+	public Boolean updateJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
 }
