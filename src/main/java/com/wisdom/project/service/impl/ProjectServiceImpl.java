@@ -16,6 +16,7 @@ import com.wisdom.common.mapper.JianYiJiShuiFangFaZhuanPiaoJiShuiMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoShenQingDanMapper;
 import com.wisdom.common.mapper.WeiKaiJuFaPiaoMingXiMapper;
+import com.wisdom.common.mapper.WeiKaiJuFaPiaoMingXi_YiBanMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.mapper.ZhuanYongFaPiaoKaiJuMingXiMapper;
 import com.wisdom.common.mapper.PermissionMapper;
@@ -31,6 +32,7 @@ import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi;
+import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi_YiBan;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa;
@@ -68,12 +70,23 @@ public class ProjectServiceImpl implements IProjectService {
 	  @Autowired
 	  private WeiKaiJuFaPiaoMingXiMapper weiKaiJuFaPiaoMingXiMapper;
 	  
+	  @Autowired
+	  private WeiKaiJuFaPiaoMingXi_YiBanMapper weiKaiJuFaPiaoMingXi_YiBanMapper;
+	  
 	  public WeiKaiJuFaPiaoMingXiMapper getWeiKaiJuFaPiaoMingXiMapper(){
 		  return weiKaiJuFaPiaoMingXiMapper;
 	  }
 	  
 	  public void setWeiKaiJuFaPiaoMingXiMapper(WeiKaiJuFaPiaoMingXiMapper weiKaiJuFaPiaoMingXiMapper){
 		  this.weiKaiJuFaPiaoMingXiMapper = weiKaiJuFaPiaoMingXiMapper;
+	  }
+	  
+	  public WeiKaiJuFaPiaoMingXi_YiBanMapper getWeiKaiJuFaPiaoMingXi_YiBanMapper(){
+		  return weiKaiJuFaPiaoMingXi_YiBanMapper;
+	  }
+	  
+	  public void setWeiKaiJuFaPiaoMingXi_YiBanMapper(WeiKaiJuFaPiaoMingXi_YiBanMapper weiKaiJuFaPiaoMingXi_YiBanMapper){
+		  this.weiKaiJuFaPiaoMingXi_YiBanMapper = weiKaiJuFaPiaoMingXi_YiBanMapper;
 	  }
 	  
 	  public ZhuanYongFaPiaoKaiJuMingXiMapper getZhuanYongFaPiaoKaiJuMingXiMapper(){
@@ -267,6 +280,21 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override 
 	public void updateWeiKaiJuFaPiaoMingXi(WeiKaiJuFaPiaoMingXi wkjfpmx){
 		weiKaiJuFaPiaoMingXiMapper.updateWeiKaiJuFaPiaoMingXi(wkjfpmx);
+	}
+	
+	@Override
+	public WeiKaiJuFaPiaoMingXi_YiBan getWeiKaiJuFaPiaoMingXi_YiBanById(Long id){
+		return weiKaiJuFaPiaoMingXi_YiBanMapper.getWeiKaiJuFaPiaoMingXi_YiBanById(id);
+	}
+	
+	@Override
+	public void addWeiKaiJuFaPiaoMingXi_YiBan(WeiKaiJuFaPiaoMingXi_YiBan wkjfpmx_yb){
+		weiKaiJuFaPiaoMingXi_YiBanMapper.addWeiKaiJuFaPiaoMingXi_YiBan(wkjfpmx_yb);
+	}
+	
+	@Override 
+	public void updateWeiKaiJuFaPiaoMingXi_YiBan(WeiKaiJuFaPiaoMingXi_YiBan wkjfpmx_yb){
+		weiKaiJuFaPiaoMingXi_YiBanMapper.updateWeiKaiJuFaPiaoMingXi_YiBan(wkjfpmx_yb);
 	}
 	
 	@Override

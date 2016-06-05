@@ -260,6 +260,12 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
+	<bean id="WeiKaiJuFaPiaoMingXi_YiBanMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.wisdom.common.mapper.WeiKaiJuFaPiaoMingXi_YiBanMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
 	<bean id="KaiPiaoShenQingDanMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface"
 			value="com.wisdom.common.mapper.KaiPiaoShenQingDanMapper" />
@@ -339,6 +345,7 @@
 		<property name="ZhuanYongFaPiaoKaiJuMingXiMapper" ref="ZhuanYongFaPiaoKaiJuMingXiMapper" />
 		<property name="KaiPiaoShenQingDanMapper" ref="KaiPiaoShenQingDanMapper" />
 		<property name="WeiKaiJuFaPiaoMingXiMapper" ref="WeiKaiJuFaPiaoMingXiMapper" />
+		<property name="WeiKaiJuFaPiaoMingXi_YiBanMapper" ref="WeiKaiJuFaPiaoMingXi_YiBanMapper" />
 		<property name="JianYiJiShuiFangFaPuPiaoJiShuiMapper" ref="JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
 		<property name="QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" ref="QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper" />
 		<property name="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" ref="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" />
