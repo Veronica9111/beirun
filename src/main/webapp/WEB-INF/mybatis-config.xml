@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="ShouQiKuanXiangMingXiBiao" type="com.wisdom.common.model.ShouQiKuanXiangMingXiBiao" />
 		<typeAlias alias="ZhuanYongFaPiaoKaiJuMingXi" type="com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi" />
 		<typeAlias alias="WeiKaiJuFaPiaoMingXi" type="com.wisdom.common.model.WeiKaiJuFaPiaoMingXi" />
-		<typeAlias alias="WeiKaiJuFaPiaoMingXi_YiBan" type="WeiKaiJuFaPiaoMingXi_YiBan" />
+		<typeAlias alias="WeiKaiJuFaPiaoMingXi_YiBan" type="com.wisdom.common.model.WeiKaiJuFaPiaoMingXi_YiBan" />
 		<typeAlias alias="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa" type="com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa" />
 		<typeAlias alias="QueRenShouRuFangShi_YiWanGongGongZuoLiangFa" type="com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa" />
 		<typeAlias alias="QueRenShouRuFangShi_LaoWuShiJianZhanBiFa" type="com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa" />
