@@ -1,60 +1,31 @@
 package com.wisdom.project.service.impl;
-import static java.lang.Math.toIntExact;
-
-import java.io.IOException;
 import java.sql.Timestamp;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wisdom.common.mapper.ArtifactMapper;
+
 import com.wisdom.common.mapper.CompanyMapper;
-import com.wisdom.common.mapper.InvoiceMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaZhuanPiaoJiShuiMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoShenQingDanMapper;
-import com.wisdom.common.mapper.PermissionMapper;
-import com.wisdom.common.mapper.RecordMapper;
+import com.wisdom.common.mapper.WeiKaiJuFaPiaoMingXiMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
+import com.wisdom.common.mapper.ZhuanYongFaPiaoKaiJuMingXiMapper;
 import com.wisdom.common.model.Company;
-import com.wisdom.common.model.Invoice;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
-import com.wisdom.common.model.Record;
+import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi;
 import com.wisdom.common.model.XiangMuTaiZhang;
-import com.wisdom.invoice.service.IInvoiceService;
+import com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi;
 import com.wisdom.project.service.IProjectService;
-import com.wisdom.utils.RedisSetting;
-import com.wisdom.utils.SystemSetting;
-
-import net.sf.json.JSONArray;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-
-import com.wisdom.common.utils.ReadingXML;
-import com.wisdom.common.utils.WriteXML;
 
 @Service("projectService")
 public class ProjectServiceImpl implements IProjectService {
@@ -74,7 +45,28 @@ public class ProjectServiceImpl implements IProjectService {
 	  
 	  @Autowired
 	  private JianYiJiShuiFangFaPuPiaoJiShuiMapper jianYiJiShuiFangFaPuPiaoJiShuiMapper;
-
+	  
+	  @Autowired
+	  private ZhuanYongFaPiaoKaiJuMingXiMapper zhuanYongFaPiaoKaiJuMingXiMapper;
+	  
+	  @Autowired
+	  private WeiKaiJuFaPiaoMingXiMapper weiKaiJuFaPiaoMingXiMapper;
+	  
+	  public WeiKaiJuFaPiaoMingXiMapper getWeiKaiJuFaPiaoMingXiMapper(){
+		  return weiKaiJuFaPiaoMingXiMapper;
+	  }
+	  
+	  public void setWeiKaiJuFaPiaoMingXiMapper(WeiKaiJuFaPiaoMingXiMapper weiKaiJuFaPiaoMingXiMapper){
+		  this.weiKaiJuFaPiaoMingXiMapper = weiKaiJuFaPiaoMingXiMapper;
+	  }
+	  
+	  public ZhuanYongFaPiaoKaiJuMingXiMapper getZhuanYongFaPiaoKaiJuMingXiMapper(){
+		  return zhuanYongFaPiaoKaiJuMingXiMapper;
+	  }
+	  
+	  public void setzhuanYongFaPiaoKaiJuMingXiMapper(ZhuanYongFaPiaoKaiJuMingXiMapper zhuanYongFaPiaoKaiJuMingXiMapper){
+		  this.zhuanYongFaPiaoKaiJuMingXiMapper = zhuanYongFaPiaoKaiJuMingXiMapper;
+	  }
 	public JianYiJiShuiFangFaPuPiaoJiShuiMapper getJianYiJiShuiFangFaPuPiaoJiShuiMapper() {
 		return jianYiJiShuiFangFaPuPiaoJiShuiMapper;
 	}
@@ -132,21 +124,6 @@ public class ProjectServiceImpl implements IProjectService {
 
 		Integer result = xiangmutaizhangMapper.updateXiangMuTaiZhang(xmtz);
 		result = result;
-		return true;
-	}
-	
-	@Override
-	public Boolean addJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
-
-		jianyijishuifangfazhuanpiaojishuiMapper.updateJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
-		return true;
-	}
-	
-	
-	@Override
-	public Boolean updateJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs) {
-
-		jianyijishuifangfazhuanpiaojishuiMapper.updateJianYiJiShuiFangFaZhuanPiaoJiShui(jyjsffzpjs);
 		return true;
 	}
 	
@@ -215,7 +192,36 @@ public class ProjectServiceImpl implements IProjectService {
 
 		return retList;
 	}
-
+	
+	@Override
+	public WeiKaiJuFaPiaoMingXi getWeiKaiJuFaPiaoMingXiById(Long id){
+		return weiKaiJuFaPiaoMingXiMapper.getWeiKaiJuFaPiaoMingXiById(id);
+	}
+	
+	@Override
+	public void addWeiKaiJuFaPiaoMingXi(WeiKaiJuFaPiaoMingXi wkjfpmx){
+		weiKaiJuFaPiaoMingXiMapper.addWeiKaiJuFaPiaoMingXi(wkjfpmx);
+	}
+	
+	@Override 
+	public void updateWeiKaiJuFaPiaoMingXi(WeiKaiJuFaPiaoMingXi wkjfpmx){
+		weiKaiJuFaPiaoMingXiMapper.updateWeiKaiJuFaPiaoMingXi(wkjfpmx);
+	}
+	
+	@Override
+	public ZhuanYongFaPiaoKaiJuMingXi getZhuanYongFaPiaoKaiJuMingXiById(Long id){
+		return zhuanYongFaPiaoKaiJuMingXiMapper.getZhuanYongFaPiaoKaiJuMingXiById(id);
+	}
+	@Override
+	public void addZhuanYongFaPiaoKaiJuMingXi(ZhuanYongFaPiaoKaiJuMingXi zyfpkjmx){
+		zhuanYongFaPiaoKaiJuMingXiMapper.addZhuanYongFaPiaoKaiJuMingXi(zyfpkjmx);
+	}
+	
+	@Override
+	public void updateZhuanYongFaPiaoKaiJuMingXi(ZhuanYongFaPiaoKaiJuMingXi zyfpkjmx){
+		zhuanYongFaPiaoKaiJuMingXiMapper.updateZhuanYongFaPiaoKaiJuMingXi(zyfpkjmx);
+	}
+	
 	@Override
 	public List<KaiPiaoShenQingDan> getKaiPiaoShenQingDanByProjectId(Long projectId) {
 		List<KaiPiaoShenQingDan> kaipiaoshenqingdanlist = kaiPiaoShenQingDanMapper.getKaiPiaoShenQingDanByProjectId(projectId);
