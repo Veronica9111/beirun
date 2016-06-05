@@ -1061,12 +1061,13 @@ $.post("/project/getModel", query, function(data){
 	console.log(data);
 	for(key in data){
 		if(key=="hetongleixing") {
-			$("input[type=radio][name=hetongleixing_select][value="+data[key]+"]").attr("checked",true);  
+			$("input[type=radio][name=hetongleixing_select][value='"+data[key]+"']").attr("checked",true);  
 		} if(key=="nashuileixing") {
-			$("input[type=radio][name=jiaoshuileixing_select][value="+data[key]+"]").attr("checked",true); 
+			$("input[type=radio][name=jiaoshuileixing_select][value='"+data[key]+"']").attr("checked",true); 
 		} else if(key=="hetongfukuanfangshi"){
-			$("input[type=radio][name=hetongfukuanfangshi_select][value="+data[key]+"]").attr("checked",true); 
+			$("input[type=radio][name=hetongfukuanfangshi_select][value='"+data[key]+"']").attr("checked",true); 
 		} else {
+			console.log(data[key]);
 			$("#" + key).val(data[key]);
 		}
 	}
