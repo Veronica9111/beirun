@@ -216,8 +216,9 @@ public void setHetongqiandingshijian (Timestamp hetongqiandingshijian) {
 
 public String getHetongqiandingshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String hetongqiandingshijian  = dateFormat.format(new Date());
+	String hetongqiandingshijian  = dateFormat.format(this.hetongqiandingshijian);
 return hetongqiandingshijian;
+	//return this.hetongqiandingshijian;
 }
 
 public void setHetongkaigongshijian (Timestamp hetongkaigongshijian) {
@@ -226,8 +227,10 @@ public void setHetongkaigongshijian (Timestamp hetongkaigongshijian) {
 
 public String getHetongkaigongshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String hetongqiandingshijian  = dateFormat.format(new Date());
-return hetongqiandingshijian;
+	String hetongkaigongshijian  = dateFormat.format(this.hetongkaigongshijian);
+return hetongkaigongshijian;
+	//return this.hetongkaigongshijian;
+	
 }
 
 public void setKaigongxukezhengshijian (Timestamp kaigongxukezhengshijian) {
@@ -236,8 +239,9 @@ public void setKaigongxukezhengshijian (Timestamp kaigongxukezhengshijian) {
 
 public String getKaigongxukezhengshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String hetongqiandingshijian  = dateFormat.format(new Date());
-return hetongqiandingshijian;
+	String kaigongxukezhengshijian  = dateFormat.format(this.kaigongxukezhengshijian);
+return kaigongxukezhengshijian;
+	//return this.kaigongxukezhengshijian;
 }
 
 public void setYujiwangongshijian (Timestamp yujiwangongshijian) {
@@ -246,8 +250,9 @@ public void setYujiwangongshijian (Timestamp yujiwangongshijian) {
 
 public String getYujiwangongshijian () {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	String hetongqiandingshijian  = dateFormat.format(new Date());
-return hetongqiandingshijian;
+	String yujiwangongshijian  = dateFormat.format(this.yujiwangongshijian);
+return yujiwangongshijian;
+	//return this.yujiwangongshijian;
 }
 
 public void setHetongfukuanfangshi (String hetongfukuanfangshi) {

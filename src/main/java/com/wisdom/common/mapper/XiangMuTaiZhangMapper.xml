@@ -31,12 +31,12 @@
 <result property="company_id" column="company_id"/>
 </resultMap>
 
-<insert id="addXiangMuTaiZhang" parameterType="String">
+<insert id="addXiangMuTaiZhang" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 insert into xiangmutaizhang (fengongsimingcheng, xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidianhua,nashuirenshibiehao,kaihuyinhang_yinhangzhanghao,danweidizhi_lianxidianhua,xiangmumingcheng,xiangmufuzeren_lianxidianhua,hetongleixing,nashuileixing,shuilv,zhengshoulv,buhanshuijine,shuie,hejijine,juesuanjine,yujihetongzongchengben,hetongqiandingshijian,hetongkaigongshijian,kaigongxukezhengshijian,yujiwangongshijian,hetongfukuanfangshi,company_id)
 values(#{fengongsimingcheng},#{xiangmubu},#{danweimingcheng},#{fadingdaibiaoren_lianxidianhua},#{nashuirenshibiehao},#{kaihuyinhang_yinhangzhanghao},#{danweidizhi_lianxidianhua},#{xiangmumingcheng},#{xiangmufuzeren_lianxidianhua},#{hetongleixing},#{nashuileixing},#{shuilv},#{zhengshoulv},#{buhanshuijine},#{shuie},#{hejijine},#{juesuanjine},#{yujihetongzongchengben},#{hetongqiandingshijian},#{hetongkaigongshijian},#{kaigongxukezhengshijian},#{yujiwangongshijian},#{hetongfukuanfangshi},#{company_id})
 </insert>
 
-<update id="updateXiangMuTaiZhang" parameterType="String">
+<update id="updateXiangMuTaiZhang" >
 update xiangmutaizhang set xiangmubu=#{xiangmubu},danweimingcheng=#{danweimingcheng},fadingdaibiaoren_lianxidianhua=#{fadingdaibiaoren_lianxidianhua},nashuirenshibiehao=#{nashuirenshibiehao},kaihuyinhang_yinhangzhanghao=#{kaihuyinhang_yinhangzhanghao},danweidizhi_lianxidianhua=#{danweidizhi_lianxidianhua},xiangmumingcheng=#{xiangmumingcheng},xiangmufuzeren_lianxidianhua=#{xiangmufuzeren_lianxidianhua},hetongleixing=#{hetongleixing},nashuileixing=#{nashuileixing},shuilv=#{shuilv},zhengshoulv=#{zhengshoulv},buhanshuijine=#{buhanshuijine},shuie=#{shuie},hejijine=#{hejijine},juesuanjine=#{juesuanjine},yujihetongzongchengben=#{yujihetongzongchengben},hetongqiandingshijian=#{hetongqiandingshijian},hetongkaigongshijian=#{hetongkaigongshijian},kaigongxukezhengshijian=#{kaigongxukezhengshijian},yujiwangongshijian=#{yujiwangongshijian},hetongfukuanfangshi=#{hetongfukuanfangshi},company_id=#{company_id}
 where id=#{id}
 </update>
@@ -45,4 +45,12 @@ select id,fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidi
 from xiangmutaizhang
 where id=#{id}
 </select>
+
+<update id="updateTime">
+update xiangmutaizhang set hetongqiandingshijian=#{hetongqiandingshijian}
+where id=#{id}
+</update>
+<insert id="addTime">
+insert into xiangmutaizhang  (hetongqiandingshijian) values (#{hetongqiandingshijian})
+</insert>
 </mapper>

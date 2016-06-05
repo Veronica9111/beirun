@@ -2,6 +2,7 @@ package com.wisdom.project.service;
 
 
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -29,5 +30,7 @@ public interface IProjectService {
 	public Boolean updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
 	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long companyId);
+	
+	public void updateTime(Long id, Timestamp hetongqiandingshijian);
 
 }
