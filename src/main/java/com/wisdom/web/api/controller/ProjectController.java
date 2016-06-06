@@ -29,6 +29,7 @@ import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Permission;
+import com.wisdom.common.model.Role;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.permission.service.IPermissionService;
 import com.wisdom.project.service.IProjectService;
@@ -343,28 +344,40 @@ public class ProjectController {
 			List<Company> companies = projectService.getCompaniesByUid(uid);
 			List<Integer> companyIds = new ArrayList<>();
 			List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = new ArrayList<>();
+
 			for(Company company: companies){
 				KaiPiaoQingKuangBiaos.addAll(projectService.getKaiPiaoQingKuangBiao_XiangMuByCompanyId(company.getId()));
 				
 			}
-		
+			Integer approvalLevel = 0;
+			List<Role> roles = projectService.getUserRoles(uid);
+			for(Role role: roles){
+				if(role.getName().contains("一级")|| role.getName().contains("业务主任")){
+					approvalLevel = 1;
+				}else if(role.getName().contains("二级")||role.getName().contains("分管所长")){
+					approvalLevel = 2;
+				}
+			}		
+			
 			List<List<Object>> retList = new ArrayList<>();
 			Integer count = 0;
 			for(KaiPiaoQingKuangBiao_XiangMu elem: KaiPiaoQingKuangBiaos){
-				List<Object> tmp = new ArrayList<>();
-				if(elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0){
+
+
+				if(approvalLevel == 1 && elem.getYiji_shenhe_status() == 0){
 					count++;
 
+				}else if(approvalLevel == 2 && elem.getYiji_shenhe_status() == 1 && elem.getErji_shenhe_status() == 0){
+					count++;
 				}
+
 			}
+
 			String data = JSONArray.fromObject(retList).toString();
 			retMap.put("data", data);
 			retMap.put("count",count.toString());
-			//retMap.put("unapproved", Integer.toString(count));
 			retMap.put("status", "ok");
 			return retMap;
-
-		
 	}
 	
 	@RequestMapping("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi")
@@ -433,12 +446,18 @@ public class ProjectController {
 			KaiPiaoQingKuangBiaos.addAll(projectService.getKaiPiaoQingKuangBiao_XiangMuByCompanyId(company.getId()));
 			
 		}
-		//List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = projectService.getKaiPiaoQingKuangBiao_XiangMuByCompanyIds(companyIds);
-		
+		Integer approvalLevel = 0;
+		List<Role> roles = projectService.getUserRoles(uid);
+		for(Role role: roles){
+			if(role.getName().contains("一级")|| role.getName().contains("业务主任")){
+				approvalLevel = 1;
+			}else if(role.getName().contains("二级")||role.getName().contains("分管所长")){
+				approvalLevel = 2;
+			}
+		}		
 		
 		
 		List<List<Object>> retList = new ArrayList<>();
-		//List<KaiPiaoQingKuangBiao_ZongGongSi> KaiPiaoQingKuangBiaos = projectService.getAllKaiPiaoQingKuangBiao_ZongGongSi();
 		Integer count = 0;
 		for(KaiPiaoQingKuangBiao_XiangMu elem: KaiPiaoQingKuangBiaos){
 			List<Object> tmp = new ArrayList<>();
@@ -473,11 +492,14 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
-
-			if(elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0){
+			if(approvalLevel == 1 && elem.getYiji_shenhe_status() == 0){
+				count++;
+				retList.add(tmp);
+			}else if(approvalLevel == 2 && elem.getYiji_shenhe_status() == 1 && elem.getErji_shenhe_status() == 0){
 				count++;
 				retList.add(tmp);
 			}
+
 		}
 		String data = JSONArray.fromObject(retList).toString();
 		retMap.put("data", data);

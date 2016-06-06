@@ -854,6 +854,12 @@ public class ProjectServiceImpl implements IProjectService {
 			return kaiPiaoQingKuangBiao_XiangMuMapper.getKaiPiaoQingKuangBiao_XiangMuByCompanyId(company_id);
 		}
 
+		@Override
+		public List<Role> getUserRoles(Integer uid) {
+			// TODO Auto-generated method stub
+			return roleMapper.getUserRoles(uid);
+		}
+
 
 		
 
