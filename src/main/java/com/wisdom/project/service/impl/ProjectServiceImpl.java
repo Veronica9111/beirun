@@ -32,6 +32,7 @@ import com.wisdom.common.mapper.QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMappe
 import com.wisdom.common.mapper.RecordMapper;
 import com.wisdom.common.mapper.RoleMapper;
 import com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper;
+import com.wisdom.common.mapper.UserMapper;
 import com.wisdom.common.mapper.User_CompanyMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.mapper.XiaoXiang_XiangMuMapper;
@@ -56,6 +57,7 @@ import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.Record;
 import com.wisdom.common.model.Role;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
+import com.wisdom.common.model.User;
 import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.common.model.XiaoXiang_XiangMu;
@@ -109,6 +111,9 @@ public class ProjectServiceImpl implements IProjectService {
     @Autowired
     private RoleMapper roleMapper;
     
+    @Autowired
+    private UserMapper userMapper;
+    
     public void setRoleMapper(RoleMapper roleMapper){
         this.roleMapper = roleMapper;
     }
@@ -117,7 +122,14 @@ public class ProjectServiceImpl implements IProjectService {
         return roleMapper;
     }
 
+    public void setUserMapper(UserMapper userMapper){
+        this.userMapper = userMapper;
+    }
 
+    public UserMapper getUserMapper() {
+        return userMapper;
+    }
+    
     public void setKaiPiaoQingKuangBiao_FenGongSiMapper(KaiPiaoQingKuangBiao_FenGongSiMapper kaiPiaoQingKuangBiao_FenGongSiMapper){
         this.kaiPiaoQingKuangBiao_FenGongSiMapper = kaiPiaoQingKuangBiao_FenGongSiMapper;
     }
@@ -858,6 +870,12 @@ public class ProjectServiceImpl implements IProjectService {
 		public List<Role> getUserRoles(Integer uid) {
 			// TODO Auto-generated method stub
 			return roleMapper.getUserRoles(uid);
+		}
+
+		@Override
+		public User getUserById(Integer uid) {
+			// TODO Auto-generated method stub
+			return userMapper.getUserById(uid);
 		}
 
 

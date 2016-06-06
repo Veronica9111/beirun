@@ -17,6 +17,7 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
+<script src="/js/webjs/global.js"></script>
 <style>
 	#left-menu{
 		width: 25vw;
@@ -58,6 +59,10 @@
 
 </table>
 </div>
+
+<div id="dialog">
+	<input id="comment" type='textfield'/>
+</div>
 <div class="mask"></div>
 <div class="footer">
   <div class="container">
@@ -68,11 +73,12 @@
 
 </body>
 <script type="text/javascript">
+function startPageJS(){
 
 $.post("/project/getKaiPiaoQingKuangBiao_XiangMuByUser", {}, function(data){
 	dataSet = $.parseJSON(data.data);
 	console.log(dataSet);
-	$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
+	table = $('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
 	   	data: dataSet,
 	   	"order": [[ 0, "desc" ]],
 	   	"oLanguage": {
@@ -80,7 +86,9 @@ $.post("/project/getKaiPiaoQingKuangBiao_XiangMuByUser", {}, function(data){
 	   	    oPaginate: {
 	   	    	'sPrevious': "上一页",
 	   	    	'sNext': "下一页",
-	   	    }
+	   	    	
+	   	    },
+	   	 'sEmptyTable': "暂时没有待审核数据",
 	   	  },
 	   	  pageLength:10,
 		    columns: [
@@ -101,48 +109,90 @@ $.post("/project/getKaiPiaoQingKuangBiao_XiangMuByUser", {}, function(data){
 		        { title: "一级审核备注" },
 		        { title: "二级审核人" },
 		        { title: "二级审核状态" },
-		        { title: "二级审核备注" }
+		        { title: "二级审核备注" },
+		        { title: ""},
+		        { title: ""}
 		    ]
 		} );
+	  $("#history-table tbody").on("click", ".reject", function(){
+		 id = $(this).parent().parent().children().eq(0)[0].innerHTML;
+		 rejectButton = $(this);
+		dialog.dialog("open");
+	});
+	  
+	  $("#history-table tbody").on("click", ".approve", function(){
+			 id = $(this).parent().parent().children().eq(0)[0].innerHTML;
+			 var tmp = $(this);
+				if(global.roles.indexOf("一级") !=-1 || global.roles.indexOf("业务主任")!=-1){
+					$.post("/project/updateKaiPiaoQingKuangBiao_XiangMuStatus", {id:id, type:"first", comment:"",status:1}, function(data){
+						
+						table
+				        .row( tmp.parents('tr') )
+				        .remove()
+				        .draw();
+					});
+				}else if(global.roles.indexOf("二级") !=-1|| global.roles.indexOf("分管所长")!=-1){
+					$.post("/project/updateKaiPiaoQingKuangBiao_XiangMuStatus", {id:id,type:"second", comment:"",status:1}, function(data){
+						table
+				        .row( tmp.parents('tr') )
+				        .remove()
+				        .draw();
+					});
+				}		});
+	
+	dialog = $( "#dialog" ).dialog({
+	    autoOpen: false,
+	    height: 300,
+	    width: 350,
+	    modal: true,
+	    buttons: {
+	      "提交": function(){
+			//updateKaiPiaoQingKuangBiao_XiangMuStatus
+			var comment = $("#comment").val();
+			for(var i = 0; i < global.roles.length; i++){
+				if(global.roles.indexOf("一级") !=-1 || global.roles.indexOf("业务主任") !=-1){
+					$.post("/project/updateKaiPiaoQingKuangBiao_XiangMuStatus", {id:id, type:"first", comment:comment,status:2}, function(data){
+						table
+				        .row( rejectButton.parents('tr') )
+				        .remove()
+				        .draw();
+						
+					});
+				}else if(global.roles.indexOf("二级") !=-1|| global.roles.indexOf("分管所长") !=-1){
+					$.post("/project/updateKaiPiaoQingKuangBiao_XiangMuStatus", {id:id, type:"second", comment:comment,status:2}, function(data){
+						table
+				        .row( rejectButton.parents('tr') )
+				        .remove()
+				        .draw();
+						
+					});
+				}
+			}
+	    	  
+	      	dialog.dialog("close");
+	      },
+	      "取消": function() {
+	        dialog.dialog( "close" );
+	      }
+	    },
+	    close: function() {
+	      form[ 0 ].reset();
+	      allFields.removeClass( "ui-state-error" );
+	    }
+	  });
+
+	  form = dialog.find( "form" ).on( "submit", function( event ) {
+	    event.preventDefault();
+	    addUser();
+	  });
+
+
+
+	
 });
-/*
-$('#create_invoice').click(function(){
-	window.location="/project/redirectView?view=create_invoice_2.html&test=1";
-});
-var query = {query_key: 'xiangmutaizhang_id', query_value:1, class_name:'KaiPiaoQingKuangBiao_ZongGongSi'};
-$.post("/project/getModel", query, function(data){
-	 dataSet  = $.parseJSON(data.data);
-	$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
-   	data: dataSet,
-   	"order": [[ 0, "desc" ]],
-   	"oLanguage": {
-   	    "sSearch": "查找 ",
-   	    oPaginate: {
-   	    	'sPrevious': "上一页",
-   	    	'sNext': "下一页",
-   	    }
-   	  },
-   	  pageLength:10,
-	    columns: [
-			{ title: "ID" },
-	        { title: "申请开票时间" },
-	        { title: "不含税金额" },
-	        { title: "税额" },
-	        { title: "合计金额" },
-	        { title: "开具发票" },
-	        { title: "收讫款项" },
-	        { title: "完工进度" },
-	        { title: "其它" },
-	        { title: "已开票金额" },
-	        { title: "一级审核人" },
-	        { title: "一级审核状态" },
-	        { title: "一级审核备注" },
-	        { title: "二级审核人" },
-	        { title: "二级审核状态" },
-	        { title: "二级审核备注" }
-	    ]
-	} );
-});*/
+}
+
 </script>
 
 </html>
+

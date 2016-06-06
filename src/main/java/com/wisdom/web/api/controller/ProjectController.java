@@ -25,11 +25,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_ZongGongSiMapper;
 import com.wisdom.common.model.Company;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Permission;
 import com.wisdom.common.model.Role;
+import com.wisdom.common.model.User;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.permission.service.IPermissionService;
 import com.wisdom.project.service.IProjectService;
@@ -492,6 +494,11 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
+			String approveButton = "<input type='button' class='btn btn-success approve'value='通过' >";
+			String rejectButton = "<input type='button' class='btn btn-danger reject' value='拒绝' >";
+			tmp.add(approveButton);
+			tmp.add(rejectButton);
+			
 			if(approvalLevel == 1 && elem.getYiji_shenhe_status() == 0){
 				count++;
 				retList.add(tmp);
@@ -506,6 +513,49 @@ public class ProjectController {
 		retMap.put("count",count.toString());
 		//retMap.put("unapproved", Integer.toString(count));
 		retMap.put("status", "ok");
+		return retMap;
+	}
+	
+	@RequestMapping("/project/updateKaiPiaoQingKuangBiao_XiangMuStatus")
+	@ResponseBody
+	public Map<String, String> updateKaiPiaoQingKuangBiao_XiangMuStatus(HttpServletRequest request, HttpSession httpSession){
+		Map<String, String> retMap = new HashMap<>();
+		Long id = Long.valueOf(request.getParameter("id"));
+		String type = request.getParameter("type");
+		String comment = request.getParameter("comment");
+		Integer status = Integer.valueOf(request.getParameter("status"));
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		User user = projectService.getUserById(uid);
+		String userName = user.getName();
+		
+		KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu = projectService.getKaiPiaoQingKuangBiao_XiangMuById(id);
+		KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi = projectService.getKaiPiaoQingKuangBiao_FenGongSiById(id);
+		KaiPiaoQingKuangBiao_ZongGongSi kaiPiaoQingKuangBiao_ZongGongSi = projectService.getKaiPiaoQingKuangBiao_ZongGongSiById(id);
+		
+		if(type.equals("first")){
+			kaiPiaoQingKuangBiao_XiangMu.setYiji_shenhe_beizhu(comment);
+			kaiPiaoQingKuangBiao_XiangMu.setYiji_shenhe_status(status);
+			kaiPiaoQingKuangBiao_XiangMu.setYijishenheren(userName);
+			kaiPiaoQingKuangBiao_FenGongSi.setYiji_shenhe_beizhu(comment);
+			kaiPiaoQingKuangBiao_FenGongSi.setYiji_shenhe_status(status);
+			kaiPiaoQingKuangBiao_FenGongSi.setYijishenheren(userName);
+			kaiPiaoQingKuangBiao_ZongGongSi.setYiji_shenhe_beizhu(comment);
+			kaiPiaoQingKuangBiao_ZongGongSi.setYiji_shenhe_status(status);
+			kaiPiaoQingKuangBiao_ZongGongSi.setYijishenheren(userName);
+		}else if(type.equals("second")){
+			kaiPiaoQingKuangBiao_XiangMu.setErji_shenhe_beizhu(comment);
+			kaiPiaoQingKuangBiao_XiangMu.setErji_shenhe_status(status);
+			kaiPiaoQingKuangBiao_XiangMu.setErjishenheren(userName);
+			kaiPiaoQingKuangBiao_FenGongSi.setErji_shenhe_beizhu(comment);
+			kaiPiaoQingKuangBiao_FenGongSi.setErji_shenhe_status(status);
+			kaiPiaoQingKuangBiao_FenGongSi.setErjishenheren(userName);
+			kaiPiaoQingKuangBiao_ZongGongSi.setErji_shenhe_beizhu(comment);
+			kaiPiaoQingKuangBiao_ZongGongSi.setErji_shenhe_status(status);
+			kaiPiaoQingKuangBiao_ZongGongSi.setErjishenheren(userName);
+		}
+		projectService.updateKaiPiaoQingKuangBiao_XiangMu(kaiPiaoQingKuangBiao_XiangMu);
+		projectService.updateKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
+		projectService.updateKaiPiaoQingKuangBiao_ZongGongSi(kaiPiaoQingKuangBiao_ZongGongSi);
 		return retMap;
 	}
 	
