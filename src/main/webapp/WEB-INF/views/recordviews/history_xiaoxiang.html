@@ -73,7 +73,7 @@ $.post("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi", {}, function(data){
 
 	var list = $.parseJSON(data.data);
 	$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.unapproved + "</span>");
-	try{
+
 		$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
 		   	data: list,
 		   	"order": [[ 0, "desc" ]],
@@ -106,10 +106,8 @@ $.post("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi", {}, function(data){
 			        { title: "二级审核备注" }
 			    ]
 			} );
-	};
-	}catch(err){
-		//Don't need this function
-	}
+	
+
 	
 });
 
