@@ -17,9 +17,7 @@
 	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis.xsd
-	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
-	">
-
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
@@ -294,7 +292,14 @@
   <property name="mapperInterface" value="com.wisdom.common.mapper.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper" />
   <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 </bean>
-
+<bean id="KaiPiaoQingKuangBiao_XiangMuMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.wisdom.common.mapper.KaiPiaoQingKuangBiao_XiangMuMapper" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+<bean id="KaiPiaoQingKuangBiao_ZongGongSiMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.wisdom.common.mapper.KaiPiaoQingKuangBiao_ZongGongSiMapper" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
 <bean id="QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
   <property name="mapperInterface" value="com.wisdom.common.mapper.QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper" />
   <property name="sqlSessionFactory" ref="sqlSessionFactory" />

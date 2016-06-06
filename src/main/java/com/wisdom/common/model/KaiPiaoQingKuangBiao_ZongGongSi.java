@@ -3,7 +3,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 
-public class KaiPiaoQingKuangBiao_XiangMu implements java.io.Serializable{
+public class KaiPiaoQingKuangBiao_ZongGongSi implements java.io.Serializable{
 private static final long serialVersionUID = 1L;
 private String beizhu;
 private Double hejijine;
@@ -24,10 +24,11 @@ private Double shouqikuanxiang;
 private Double kaijufapiao;
 private Long id;
 private Long xiangmutaizhang_id;
-    public KaiPiaoQingKuangBiao_XiangMu() {
+    public KaiPiaoQingKuangBiao_ZongGongSi() {
         super();
     }
-    public KaiPiaoQingKuangBiao_XiangMu(String beizhu, Double hejijine, Double yikaipiaojine, String wangongjindu, Integer erji_shenhe_status, String yijishenheren, Double qita, Timestamp shengqingkaipiaoshijian, Integer yiji_shenhe_status, Double shuie, Double buhanshuijine, String erjishenheren, Double fenbaofapiao, String erji_shenhe_beizhu, String yiji_shenhe_beizhu, Double shouqikuanxiang, Double kaijufapiao, Long id, Long xiangmutaizhang_id){
+
+    public KaiPiaoQingKuangBiao_ZongGongSi(String beizhu, Double hejijine, Double yikaipiaojine, String wangongjindu, Integer erji_shenhe_status, String yijishenheren, Double qita, Timestamp shengqingkaipiaoshijian, Integer yiji_shenhe_status, Double shuie, Double buhanshuijine, String erjishenheren, Double fenbaofapiao, String erji_shenhe_beizhu, String yiji_shenhe_beizhu, Double shouqikuanxiang, Double kaijufapiao, Long id, Long xiangmutaizhang_id){
         this.beizhu = beizhu;
         this.hejijine = hejijine;
         this.yikaipiaojine = yikaipiaojine;

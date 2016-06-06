@@ -1094,6 +1094,12 @@ $.post("/project/getModel", query, function(data){
 	
 });
 }
+
+function nodeClick(node){
+	console.log(node);
+	var parentNode = $('#left-menu').treeview('getParent', node);
+	console.log(parentNode);
+}
 </script>
 
 </body>

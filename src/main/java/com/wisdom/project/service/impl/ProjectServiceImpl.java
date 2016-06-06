@@ -16,6 +16,7 @@ import com.wisdom.common.mapper.FenBaoXiangMuMingXiMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaZhuanPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_FenGongSiMapper;
 import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_XiangMuMapper;
+import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_ZongGongSiMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoShenQingDanMapper;
 import com.wisdom.common.mapper.WeiKaiJuFaPiaoMingXiMapper;
@@ -38,6 +39,7 @@ import com.wisdom.common.model.FenBaoXiangMuMingXi;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
@@ -60,9 +62,9 @@ import com.wisdom.project.service.IProjectService;
 @Service("projectService")
 public class ProjectServiceImpl implements IProjectService {
 
-	@Autowired
-    private KaiPiaoQingKuangBiao_XiangMuMapper kaiPiaoQingKuangBiao_XiangMuMapper;
-	
+    @Autowired
+    private KaiPiaoQingKuangBiao_FenGongSiMapper kaiPiaoQingKuangBiao_FenGongSiMapper;
+    
 	@Autowired
 	private XiangMuTaiZhangMapper xiangmutaizhangMapper;
 
@@ -90,8 +92,47 @@ public class ProjectServiceImpl implements IProjectService {
     @Autowired
     private FenBaoXiangMuMingXiMapper fenBaoXiangMuMingXiMapper;
 	
-	
-	
+    @Autowired
+    private KaiPiaoQingKuangBiao_XiangMuMapper kaiPiaoQingKuangBiao_XiangMuMapper;
+
+    @Autowired
+    private KaiPiaoQingKuangBiao_ZongGongSiMapper kaiPiaoQingKuangBiao_ZongGongSiMapper;
+
+
+    public void setKaiPiaoQingKuangBiao_FenGongSiMapper(KaiPiaoQingKuangBiao_FenGongSiMapper kaiPiaoQingKuangBiao_FenGongSiMapper){
+        this.kaiPiaoQingKuangBiao_FenGongSiMapper = kaiPiaoQingKuangBiao_FenGongSiMapper;
+    }
+
+    public KaiPiaoQingKuangBiao_FenGongSiMapper getKaiPiaoQingKuangBiao_FenGongSiMapper() {
+        return kaiPiaoQingKuangBiao_FenGongSiMapper;
+    }
+
+    public void setKaiPiaoQingKuangBiao_ZongGongSiMapper(KaiPiaoQingKuangBiao_ZongGongSiMapper kaiPiaoQingKuangBiao_ZongGongSiMapper){
+        this.kaiPiaoQingKuangBiao_ZongGongSiMapper = kaiPiaoQingKuangBiao_ZongGongSiMapper;
+    }
+
+    public KaiPiaoQingKuangBiao_ZongGongSiMapper getKaiPiaoQingKuangBiao_ZongGongSiMapper() {
+        return kaiPiaoQingKuangBiao_ZongGongSiMapper;
+    }
+
+    @Override
+    public KaiPiaoQingKuangBiao_FenGongSi getKaiPiaoQingKuangBiao_FenGongSiById(Long id){
+        return kaiPiaoQingKuangBiao_FenGongSiMapper.getKaiPiaoQingKuangBiao_FenGongSiById(id);
+    }
+
+    @Override
+    public Boolean addKaiPiaoQingKuangBiao_FenGongSi(KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi){
+        kaiPiaoQingKuangBiao_FenGongSiMapper.addKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
+        return true;
+    }
+
+    @Override
+    public Boolean updateKaiPiaoQingKuangBiao_FenGongSi(KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi){
+        kaiPiaoQingKuangBiao_FenGongSiMapper.updateKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
+        return true;
+    }
+
+
 	
 	
 	
@@ -103,6 +144,7 @@ public class ProjectServiceImpl implements IProjectService {
     public FenBaoXiangMuMingXiMapper getFenBaoXiangMuMingXiMapper() {
         return fenBaoXiangMuMingXiMapper;
     }
+    
     
 	public void setYiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper(YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper){
         this.yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper = yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper;
@@ -298,7 +340,35 @@ public class ProjectServiceImpl implements IProjectService {
 		 */
 		List<Map<String, Object>> retList = new ArrayList<>();
 		List<Company> companies = companyMapper.getAllCompanies();
-
+		List<Object> thirdList = new ArrayList<>();
+		for(Integer i = 0; i < 5; i++){
+			Map<String, Object> thirdLeaf = new HashMap<>();
+			String text = "第三层菜单" + String.valueOf(i);
+			thirdLeaf.put("text", text);
+			thirdLeaf.put("level", "5");
+			thirdList.add(thirdLeaf);
+		}
+		List<Object> secondList = new ArrayList<>();
+		for(Integer i = 0; i < 3; i++){
+			Map<String, Object> secondLeaf = new HashMap<>();
+			String text = "第二层菜单" + String.valueOf(i);
+			secondLeaf.put("text", text);
+			secondLeaf.put("level", "4");
+			secondLeaf.put("nodes", thirdList);
+			secondList.add(secondLeaf);
+		}
+		
+		List<Object> firstList = new ArrayList<>();
+		for(Integer i = 0; i< 2; i++){
+			Map<String, Object> firstLeaf = new HashMap<>();
+			String text = "第一层菜单" + String.valueOf(i);
+			firstLeaf.put("text", text);
+			firstLeaf.put("level", "3");
+			firstLeaf.put("nodes", secondList);
+			firstList.add(firstLeaf);
+		}
+		
+		
 		for (Company company : companies) {
 			if (company.getLevel() == 0) {
 				List<Company> subCompanies = getSubCompanyByParent(companies, company.getId());
@@ -312,6 +382,7 @@ public class ProjectServiceImpl implements IProjectService {
 						tmpMap.put("text", subSubCompany.getName());
 						tmpMap.put("expanded", "false");
 						tmpMap.put("level", "2");
+						tmpMap.put("nodes", firstList);
 						tmpMap.put("company_id", subSubCompany.getId());
 						tmpList.add(tmpMap);
 					}
@@ -642,36 +713,7 @@ public class ProjectServiceImpl implements IProjectService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Autowired
-	private KaiPiaoQingKuangBiao_FenGongSiMapper kaiPiaoQingKuangBiao_FenGongSiMapper;
-
-	public void setKaiPiaoQingKuangBiao_FenGongSiMapper(
-			KaiPiaoQingKuangBiao_FenGongSiMapper kaiPiaoQingKuangBiao_FenGongSiMapper) {
-		this.kaiPiaoQingKuangBiao_FenGongSiMapper = kaiPiaoQingKuangBiao_FenGongSiMapper;
-	}
-
-	public KaiPiaoQingKuangBiao_FenGongSiMapper getKaiPiaoQingKuangBiao_FenGongSiMapper() {
-		return kaiPiaoQingKuangBiao_FenGongSiMapper;
-	}
-
-	@Override
-	public KaiPiaoQingKuangBiao_FenGongSi getKaiPiaoQingKuangBiao_FenGongSiById(Long id) {
-		return kaiPiaoQingKuangBiao_FenGongSiMapper.getKaiPiaoQingKuangBiao_FenGongSiById(id);
-	}
-
-	@Override
-	public Boolean addKaiPiaoQingKuangBiao_FenGongSi(KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi) {
-		kaiPiaoQingKuangBiao_FenGongSiMapper.addKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
-		return true;
-	}
-
-	@Override
-	public Boolean updateKaiPiaoQingKuangBiao_FenGongSi(KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi) {
-		kaiPiaoQingKuangBiao_FenGongSiMapper.updateKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
-		return true;
-	}
-
+	
 	 @Override
 	    public YiBanJiShuiFangFaNaShuiJianChaTiaoZheng getYiBanJiShuiFangFaNaShuiJianChaTiaoZhengById(Long id){
 	        return yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.getYiBanJiShuiFangFaNaShuiJianChaTiaoZhengById(id);
@@ -691,19 +733,36 @@ public class ProjectServiceImpl implements IProjectService {
 
 		@Override
 		public FenBaoXiangMuMingXi getFenBaoXiangMuMingXiById(Long id) {
-			// TODO Auto-generated method stub
-			return null;
+			return fenBaoXiangMuMingXiMapper.getFenBaoXiangMuMingXiById(id);
 		}
 
 		@Override
 		public Boolean addFenBaoXiangMuMingXi(FenBaoXiangMuMingXi fenBaoXiangMuMingXi) {
-			// TODO Auto-generated method stub
+			fenBaoXiangMuMingXiMapper.addFenBaoXiangMuMingXi(fenBaoXiangMuMingXi);
 			return null;
 		}
 
+	    @Override
+	    public KaiPiaoQingKuangBiao_ZongGongSi getKaiPiaoQingKuangBiao_ZongGongSiById(Long id){
+	        return kaiPiaoQingKuangBiao_ZongGongSiMapper.getKaiPiaoQingKuangBiao_ZongGongSiById(id);
+	    }
+
+	    @Override
+	    public Boolean addKaiPiaoQingKuangBiao_ZongGongSi(KaiPiaoQingKuangBiao_ZongGongSi kaiPiaoQingKuangBiao_ZongGongSi){
+	        kaiPiaoQingKuangBiao_ZongGongSiMapper.addKaiPiaoQingKuangBiao_ZongGongSi(kaiPiaoQingKuangBiao_ZongGongSi);
+	        return true;
+	    }
+
+	    @Override
+	    public Boolean updateKaiPiaoQingKuangBiao_ZongGongSi(KaiPiaoQingKuangBiao_ZongGongSi kaiPiaoQingKuangBiao_ZongGongSi){
+	        kaiPiaoQingKuangBiao_ZongGongSiMapper.updateKaiPiaoQingKuangBiao_ZongGongSi(kaiPiaoQingKuangBiao_ZongGongSi);
+	        return true;
+	    }
+		
+
 		@Override
 		public Boolean updateFenBaoXiangMuMingXi(FenBaoXiangMuMingXi fenBaoXiangMuMingXi) {
-			// TODO Auto-generated method stub
+			fenBaoXiangMuMingXiMapper.updateFenBaoXiangMuMingXi(fenBaoXiangMuMingXi);
 			return null;
 		}
 	    
