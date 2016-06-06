@@ -10,15 +10,11 @@ $(document).ready(function(){
 		if(roles.indexOf("业务主任") !=-1){
 			$("#navigator").append('<li><a id="approve-nav" class="link" href="/views/recordviews/approval_invoice_list_2.html">审批</a></li>');
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/history_xiaoxiang.html">审批记录</a></li>');
-			$.post("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi", {}, function(data){
+			$.post("/project/getUnApprovedKaiPiaoQingKuangBiao_XiangMuByUserCount", {}, function(data){
 
-				var list = $.parseJSON(data.data);
-				$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.unapproved + "</span>");
-				try{
-					createApprovalTable(list);
-				}catch(err){
-					//Don't need this function
-				}
+
+				$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.count + "</span>");
+
 				
 			});
 		}
