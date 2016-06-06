@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/webcss/global.css"/>
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery.dataTables.min.css">
+<link rel="stylesheet" href="/css/webcss/bootstrap.css" />
+<link rel="stylesheet" href="/css/webcss/bootstrap-theme.css" />
+<script src="/js/webjs/jquery-1.11.3.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery-ui.css" />
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css"/>
+<script src="/js/webjs/jquery-ui.js"></script>
+<script src="/js/webjs/navigator.js"></script>
+<script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
+<script src="/js/webjs/bootstrap-treeview.min.js"></script>
+<script src="/js/webjs/tree-menu.js"></script>
+<style>
+	#left-menu{
+		width: 25vw;
+		position: fixed;
+	}
+	
+	#container{
+		margin-left: 27vw;
+		margin-top: 20px;
+		width: 920px;
+		min-width:920px;
+		height: 400px;
+		min-height:400px;
+		overflow-x: auto; overflow-y: auto;
+	}
+	#but_position{
+		margin-left:27vw;
+		margin-top: 50px;
+	}
+
+</style>
+</head>
+
+<body>
+<div class="nav">
+  <div class="container"> <a href="http://localhost:8080/views/webviews/user/setting.html"><img src="/img/webimg/logo-white1.png"></a>
+    <ul  id="navigator" class="nav-header">
+    </ul>
+  </div>
+</div>
+
+<!-- Left menu -->
+<div id="left-menu"></div>
+
+<!-- Container -->
+<div id="container">
+<table id="history-table" class="display" ></table>
+</div>
+<div class="mask"></div>
+<div class="footer">
+  <div class="container">
+    <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
+  </div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+var query = {query_key: 'xiangmutaizhang_id', query_value:1, class_name:'KaiPiaoQingKuangBiao_XiangMu'};
+$.post("/project/getModel", query, function(data){
+	 dataSet  = $.parseJSON(data.data);
+	$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
+   	data: dataSet,	
+   	"order": [[ 0, "desc" ]],
+   	"oLanguage": {
+   	    "sSearch": "查找 ",
+   	    oPaginate: {
+   	    	'sPrevious': "上一页",
+   	    	'sNext': "下一页",
+   	    }
+   	  },
+   	  pageLength:10,
+	    columns: [
+	        { title: "申请开票时间" },
+	        { title: "不含税金额" },
+	        { title: "税额" },
+	        { title: "合计金额" },
+	        { title: "开具发票" },
+	        { title: "收讫款项" },
+	        { title: "完工进度" },
+	        { title: "其它" },
+	        { title: "已开票金额" },
+	        { title: "分包发票" }
+	    ]
+	} );
+});
+</script>
+
+</html>

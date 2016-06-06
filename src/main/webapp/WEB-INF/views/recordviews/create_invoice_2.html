@@ -1053,8 +1053,8 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
-	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+	<input id="create_invoice" type="button" value="提交开票申请" class="btn btn-success btn-sm" />
+	<!-- <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" /> -->
 </div>
 <div id="container">
 
@@ -1114,7 +1114,7 @@ td
 
 </body>
 <script type="text/javascript">
-$("#submit").on("click", function(){
+$("#create_invoice").on("click", function(){
 	var dataSet = {};
 	$(".text").each(function(){
 		console.log($(this).attr('id'));

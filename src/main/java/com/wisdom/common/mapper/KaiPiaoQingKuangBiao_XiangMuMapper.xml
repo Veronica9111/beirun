@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.KaiPiaoQingKuangBiao_XiangMuMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu" id="KaiPiaoQingKuangBiao_XiangMu">
+<result property="beizhu" column="beizhu"/>
+<result property="hejijine" column="hejijine"/>
+<result property="yikaipiaojine" column="yikaipiaojine"/>
+<result property="wangongjindu" column="wangongjindu"/>
+<result property="erji_shenhe_status" column="erji_shenhe_status"/>
+<result property="yijishenheren" column="yijishenheren"/>
+<result property="qita" column="qita"/>
+<result property="shengqingkaipiaoshijian" column="shengqingkaipiaoshijian"/>
+<result property="yiji_shenhe_status" column="yiji_shenhe_status"/>
+<result property="shuie" column="shuie"/>
+<result property="buhanshuijine" column="buhanshuijine"/>
+<result property="erjishenheren" column="erjishenheren"/>
+<result property="erji_shenhe_beizhu" column="erji_shenhe_beizhu"/>
+<result property="yiji_shenhe_beizhu" column="yiji_shenhe_beizhu"/>
+<result property="shouqikuanxiang" column="shouqikuanxiang"/>
+<result property="kaijufapiao" column="kaijufapiao"/>
+<result property="id" column="id"/>
+<result property="xiangmutaizhang_id" column="xiangmutaizhang_id"/>
+</resultMap>
+
+<select id="getKaiPiaoQingKuangBiao_XiangMuById" resultType="KaiPiaoQingKuangBiao_XiangMu">
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+from kaipiaoqingkuangbiao_xiangmu
+where id=#{id}
+</select>
+
+<update id="updateKaiPiaoQingKuangBiao_XiangMu">
+update kaipiaoqingkuangbiao_xiangmu set beizhu=#{beizhu},hejijine=#{hejijine},yikaipiaojine=#{yikaipiaojine},wangongjindu=#{wangongjindu},erji_shenhe_status=#{erji_shenhe_status},yijishenheren=#{yijishenheren},qita=#{qita},shengqingkaipiaoshijian=#{shengqingkaipiaoshijian},yiji_shenhe_status=#{yiji_shenhe_status},shuie=#{shuie},buhanshuijine=#{buhanshuijine},erjishenheren=#{erjishenheren},erji_shenhe_beizhu=#{erji_shenhe_beizhu},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu},shouqikuanxiang=#{shouqikuanxiang},kaijufapiao=#{kaijufapiao},id=#{id},xiangmutaizhang_id=#{xiangmutaizhang_id}
+where id=#{id}
+</update>
+
+<insert id="addKaiPiaoQingKuangBiao_XiangMu">
+insert into kaipiaoqingkuangbiao_xiangmu (beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id)
+values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id},#{xiangmutaizhang_id})
+</insert>
+<select id="getKaiPiaoQingKuangBiao_XiangMuByXiangmutaizhang_id" parameterType="Long" resultType="KaiPiaoQingKuangBiao_XiangMu">
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+from kaipiaoqingkuangbiao_xiangmu
+where xiangmutaizhang_id=#{xiangmutaizhang_id}
+</select>
+</mapper>

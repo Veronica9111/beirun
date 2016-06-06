@@ -1,5 +1,6 @@
 package com.wisdom.common.model;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 
 public class FenBaoXiangMuMingXi implements java.io.Serializable{

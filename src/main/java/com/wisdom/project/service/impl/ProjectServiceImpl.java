@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wisdom.common.mapper.CompanyMapper;
+import com.wisdom.common.mapper.FenBaoXiangMuMingXiMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaZhuanPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_FenGongSiMapper;
+import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_XiangMuMapper;
 import com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper;
 import com.wisdom.common.mapper.KaiPiaoShenQingDanMapper;
 import com.wisdom.common.mapper.WeiKaiJuFaPiaoMingXiMapper;
@@ -32,8 +34,10 @@ import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.mapper.XiaoXiang_XiangMuMapper;
 import com.wisdom.common.mapper.YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper;
 import com.wisdom.common.model.Company;
+import com.wisdom.common.model.FenBaoXiangMuMingXi;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
@@ -56,6 +60,9 @@ import com.wisdom.project.service.IProjectService;
 @Service("projectService")
 public class ProjectServiceImpl implements IProjectService {
 
+	@Autowired
+    private KaiPiaoQingKuangBiao_XiangMuMapper kaiPiaoQingKuangBiao_XiangMuMapper;
+	
 	@Autowired
 	private XiangMuTaiZhangMapper xiangmutaizhangMapper;
 
@@ -132,6 +139,15 @@ public class ProjectServiceImpl implements IProjectService {
 	@Autowired
 	public WeiKaiJuFaPiaoMingXiMapper getWeiKaiJuFaPiaoMingXiMapper() {
 		return weiKaiJuFaPiaoMingXiMapper;
+	}
+
+	public KaiPiaoQingKuangBiao_XiangMuMapper getKaiPiaoQingKuangBiao_XiangMuMapper() {
+		return kaiPiaoQingKuangBiao_XiangMuMapper;
+	}
+
+	public void setKaiPiaoQingKuangBiao_XiangMuMapper(
+			KaiPiaoQingKuangBiao_XiangMuMapper kaiPiaoQingKuangBiao_XiangMuMapper) {
+		this.kaiPiaoQingKuangBiao_XiangMuMapper = kaiPiaoQingKuangBiao_XiangMuMapper;
 	}
 
 	@Autowired
@@ -373,7 +389,32 @@ public class ProjectServiceImpl implements IProjectService {
 
 		return kaipiaoshenqingdanlist;
 	}
+	
+	@Override
+	public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByXiangmutaizhang_id(Long xiangmutaizhang_id) {
+		List<KaiPiaoQingKuangBiao_XiangMu> kaipiaoshenqingdanlist = kaiPiaoQingKuangBiao_XiangMuMapper
+				.getKaiPiaoQingKuangBiao_XiangMuByXiangmutaizhang_id(xiangmutaizhang_id);
 
+		return kaipiaoshenqingdanlist;
+	}
+
+	 @Override
+	    public KaiPiaoQingKuangBiao_XiangMu getKaiPiaoQingKuangBiao_XiangMuById(Long id){
+	        return kaiPiaoQingKuangBiao_XiangMuMapper.getKaiPiaoQingKuangBiao_XiangMuById(id);
+	    }
+
+	    @Override
+	    public Boolean addKaiPiaoQingKuangBiao_XiangMu(KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu){
+	        kaiPiaoQingKuangBiao_XiangMuMapper.addKaiPiaoQingKuangBiao_XiangMu(kaiPiaoQingKuangBiao_XiangMu);
+	        return true;
+	    }
+
+	    @Override
+	    public Boolean updateKaiPiaoQingKuangBiao_XiangMu(KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu){
+	        kaiPiaoQingKuangBiao_XiangMuMapper.updateKaiPiaoQingKuangBiao_XiangMu(kaiPiaoQingKuangBiao_XiangMu);
+	        return true;
+	    }
+	
 	@Override
 	public JianYiJiShuiFangFaZhuanPiaoJiShui getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Long Id) {
 		JianYiJiShuiFangFaZhuanPiaoJiShui jianyijishuifangfazhuanpiaojishui = jianyijishuifangfazhuanpiaojishuiMapper
@@ -647,22 +688,23 @@ public class ProjectServiceImpl implements IProjectService {
 	        yiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.updateYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(yiBanJiShuiFangFaNaShuiJianChaTiaoZheng);
 	        return true;
 	    }
+
+		@Override
+		public FenBaoXiangMuMingXi getFenBaoXiangMuMingXiById(Long id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Boolean addFenBaoXiangMuMingXi(FenBaoXiangMuMingXi fenBaoXiangMuMingXi) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Boolean updateFenBaoXiangMuMingXi(FenBaoXiangMuMingXi fenBaoXiangMuMingXi) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	    
-	    @Override
-	    public FenBaoXiangMuMingXi getFenBaoXiangMuMingXiById(Long id){
-	        return fenBaoXiangMuMingXiMapper.getFenBaoXiangMuMingXiById(id);
-	    }
-
-	    @Override
-	    public Boolean addFenBaoXiangMuMingXi(FenBaoXiangMuMingXi fenBaoXiangMuMingXi){
-	        fenBaoXiangMuMingXiMapper.addFenBaoXiangMuMingXi(fenBaoXiangMuMingXi);
-	        return true;
-	    }
-
-	    @Override
-	    public Boolean updateFenBaoXiangMuMingXi(FenBaoXiangMuMingXi fenBaoXiangMuMingXi){
-	        fenBaoXiangMuMingXiMapper.updateFenBaoXiangMuMingXi(fenBaoXiangMuMingXi);
-	        return true;
-	    }
-
 }

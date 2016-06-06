@@ -124,18 +124,28 @@ public class ProjectController {
 		Map<String, String[]> params = request.getParameterMap();
 		String className = params.get("class_name")[0];
 		String longClassName = "com.wisdom.common.model." + className;
+		Class classType = Class.forName(longClassName);
 		String queryKey = params.get("query_key")[0];
 		String queryValue = params.get("query_value")[0];
 		queryKey = queryKey.substring(0, 1).toUpperCase() + queryKey.substring(1);
 		Object ret;
 		if(isInteger(queryValue)){
-			Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, Long.class);
-			 ret = m.invoke(projectService, Long.valueOf(queryValue));
+			if(queryValue.indexOf("_id") != 0) {
+				Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, Long.class);
+				ret = m.invoke(projectService, Long.valueOf(queryValue));
+				List<Object> retList = new ArrayList<>();
+				for(Object obj: (List<?>)ret){
+					
+				}
+				String data = JSONArray.fromObject(retList).toString();
+			} else {
+				Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, Long.class);
+				ret = m.invoke(projectService, Long.valueOf(queryValue));
+			}
 		}else{
 			Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, String.class);
 			ret = m.invoke(projectService, queryValue);
 		}
-		
 		
 		String data = JSONArray.fromObject(ret).toString();
 		retMap.put("data", data);
@@ -195,6 +205,13 @@ public class ProjectController {
 		String data = JSONArray.fromObject(retList).toString();
 		retMap.put("data", data);
 		return retMap;
+	}
+	
+	@RequestMapping("/project/redirectView")
+	public String redirectView(HttpServletRequest request){
+		String param = request.getParameter("param");
+		String view = request.getParameter("view");
+		return "redirect:/views/recordviews/"+view+"?param="+param;
 	}
 
 	@RequestMapping("/project/getAllProjectsForUser")
