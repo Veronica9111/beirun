@@ -12,6 +12,7 @@ private String wangongjindu;
 private Integer erji_shenhe_status;
 private String yijishenheren;
 private Double qita;
+private Long company_id;
 private Timestamp shengqingkaipiaoshijian;
 private Integer yiji_shenhe_status;
 private Double shuie;
@@ -27,7 +28,8 @@ private Long xiangmutaizhang_id;
     public KaiPiaoQingKuangBiao_XiangMu() {
         super();
     }
-    public KaiPiaoQingKuangBiao_XiangMu(String beizhu, Double hejijine, Double yikaipiaojine, String wangongjindu, Integer erji_shenhe_status, String yijishenheren, Double qita, Timestamp shengqingkaipiaoshijian, Integer yiji_shenhe_status, Double shuie, Double buhanshuijine, String erjishenheren, Double fenbaofapiao, String erji_shenhe_beizhu, String yiji_shenhe_beizhu, Double shouqikuanxiang, Double kaijufapiao, Long id, Long xiangmutaizhang_id){
+
+    public KaiPiaoQingKuangBiao_XiangMu(String beizhu, Double hejijine, Double yikaipiaojine, String wangongjindu, Integer erji_shenhe_status, String yijishenheren, Double qita, Long company_id, Timestamp shengqingkaipiaoshijian, Integer yiji_shenhe_status, Double shuie, Double buhanshuijine, String erjishenheren, Double fenbaofapiao, String erji_shenhe_beizhu, String yiji_shenhe_beizhu, Double shouqikuanxiang, Double kaijufapiao, Long id, Long xiangmutaizhang_id){
         this.beizhu = beizhu;
         this.hejijine = hejijine;
         this.yikaipiaojine = yikaipiaojine;
@@ -35,6 +37,7 @@ private Long xiangmutaizhang_id;
         this.erji_shenhe_status = erji_shenhe_status;
         this.yijishenheren = yijishenheren;
         this.qita = qita;
+        this.company_id = company_id;
         this.shengqingkaipiaoshijian = shengqingkaipiaoshijian;
         this.yiji_shenhe_status = yiji_shenhe_status;
         this.shuie = shuie;
@@ -103,6 +106,14 @@ private Long xiangmutaizhang_id;
 
     public void setQita(Double qita){
         this.qita = qita;
+    }
+
+    public Long getCompany_id() {
+        return company_id;
+    }
+
+    public void setCompany_id(Long company_id){
+        this.company_id = company_id;
     }
 
     public String getShengqingkaipiaoshijian() {

@@ -536,14 +536,12 @@ table {
 	color: #E3E0E0;
 }
 .nav .active {
-	display: block;
 	color: #E3E0E0;
-	width: 120px;
 	height: 60px;
 	text-align: center;
 	background-color: #1F595A;
 	margin-left: 25px;
-	padding: 0px;
+	padding: 15px;
 }
 .nav-t {
 	width: 85%;
@@ -656,8 +654,22 @@ table {
 	bottom: 0px;
 }
 
+#left-menu{
+	padding-bottom: 10vh;
+	
+}
+
 
 #left-menu{
 	overflow: scroll;
 	height: 90vh;
+}
+
+#message{
+	position: absolute;
+    margin-left:0.5em;
+    font-size: 15px;
+    z-index: 9999;
+    
+	
 }

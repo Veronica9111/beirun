@@ -11,12 +11,14 @@ import com.wisdom.common.model.JinXiangFaPiaoMingXi_FaPiao;
 import com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
+import com.wisdom.common.model.Company;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.FenBaoXiangMuMingXi;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
+import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi_YiBan;
 import com.wisdom.common.model.XiangMuTaiZhang;
@@ -60,7 +62,7 @@ public interface IProjectService {
 	
 	public List<XiangMuTaiZhang> getProjectsByCompanyId(Integer companyId);
 	
-	public List<Map<String, Object>> getMenu();
+	public List<Map<String, Object>> getMenu(Integer uid);
 	
 	public List<KaiPiaoShenQingDan> getKaiPiaoShenQingDanByProjectId(Long projectId);
 	
@@ -158,10 +160,6 @@ public interface IProjectService {
 	
 	public YiBanJiShuiFangFaNaShuiJianChaTiaoZheng getYiBanJiShuiFangFaNaShuiJianChaTiaoZhengById(Long id);
 
-	public Boolean addYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(YiBanJiShuiFangFaNaShuiJianChaTiaoZheng yiBanJiShuiFangFaNaShuiJianChaTiaoZheng);
-
-	public Boolean updateYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(YiBanJiShuiFangFaNaShuiJianChaTiaoZheng yiBanJiShuiFangFaNaShuiJianChaTiaoZheng);
-
 	public KaiPiaoQingKuangBiao_ZongGongSi getKaiPiaoQingKuangBiao_ZongGongSiById(Long id);
 
 	public Boolean addKaiPiaoQingKuangBiao_ZongGongSi(KaiPiaoQingKuangBiao_ZongGongSi kaiPiaoQingKuangBiao_ZongGongSi);
@@ -174,5 +172,26 @@ public interface IProjectService {
 
 	public Boolean updateKaiPiaoQingKuangBiao_FenGongSi(KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi);
 
+	public Boolean addYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(YiBanJiShuiFangFaNaShuiJianChaTiaoZheng yiBanJiShuiFangFaNaShuiJianChaTiaoZheng);
 
+	public Boolean updateYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(YiBanJiShuiFangFaNaShuiJianChaTiaoZheng yiBanJiShuiFangFaNaShuiJianChaTiaoZheng);
+
+	public User_Company getUser_CompanyById(Long id);
+
+	public Boolean addUser_Company(User_Company user_Company);
+
+	public Boolean updateUser_Company(User_Company user_Company);
+	
+	public List<Company> getCompaniesByUid(Integer uid);
+	
+	public List<KaiPiaoQingKuangBiao_ZongGongSi> getKaiPiaoQingKuangBiao_ZongGongSiByStatus(Integer status);
+	
+	public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi();
+	
+	public List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByXiangmutaizhang_id(Long xiangmutaizhang_id);
+	
+	public List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByCompanyId(Long company_id);
+	
+	//public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyIds(List<Integer> companyIds);
+	public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyId(Integer company_id);
 }

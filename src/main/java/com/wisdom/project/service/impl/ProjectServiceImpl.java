@@ -32,7 +32,9 @@ import com.wisdom.common.mapper.QueRenShouRuFangShi_QiTaMapper;
 import com.wisdom.common.mapper.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper;
 import com.wisdom.common.mapper.QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper;
 import com.wisdom.common.mapper.RecordMapper;
+import com.wisdom.common.mapper.RoleMapper;
 import com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper;
+import com.wisdom.common.mapper.User_CompanyMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.mapper.XiaoXiang_XiangMuMapper;
 import com.wisdom.common.mapper.YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper;
@@ -56,12 +58,15 @@ import com.wisdom.common.model.QueRenShouRuFangShi_QiTa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.Record;
+import com.wisdom.common.model.Role;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
+import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.common.model.XiaoXiang_XiangMu;
 import com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng;
 import com.wisdom.invoice.service.IInvoiceService;
 import com.wisdom.project.service.IProjectService;
+import com.wisdom.user.service.impl.UserServiceImpl;
 
 @Service("projectService")
 public class ProjectServiceImpl implements IProjectService {
@@ -102,11 +107,25 @@ public class ProjectServiceImpl implements IProjectService {
     @Autowired
     private FenBaoXiangMuMingXiMapper fenBaoXiangMuMingXiMapper;
 	
+	
+    @Autowired
+    private User_CompanyMapper user_CompanyMapper;
     @Autowired
     private KaiPiaoQingKuangBiao_XiangMuMapper kaiPiaoQingKuangBiao_XiangMuMapper;
 
     @Autowired
     private KaiPiaoQingKuangBiao_ZongGongSiMapper kaiPiaoQingKuangBiao_ZongGongSiMapper;
+    
+    @Autowired
+    private RoleMapper roleMapper;
+    
+    public void setRoleMapper(RoleMapper roleMapper){
+        this.roleMapper = roleMapper;
+    }
+
+    public RoleMapper getRoleMapper() {
+        return roleMapper;
+    }
 
     public void setJinXiangFaPiaoMingXi_RenZhengMapper(JinXiangFaPiaoMingXi_RenZhengMapper jinXiangFaPiaoMingXi_RenZhengMapper){
         this.jinXiangFaPiaoMingXi_RenZhengMapper = jinXiangFaPiaoMingXi_RenZhengMapper;
@@ -159,10 +178,6 @@ public class ProjectServiceImpl implements IProjectService {
     }
 
 
-	
-	
-	
-	
     public void setFenBaoXiangMuMingXiMapper(FenBaoXiangMuMingXiMapper fenBaoXiangMuMingXiMapper){
         this.fenBaoXiangMuMingXiMapper = fenBaoXiangMuMingXiMapper;
     }
@@ -265,6 +280,15 @@ public class ProjectServiceImpl implements IProjectService {
 		this.jianYiJiShuiFangFaPuPiaoJiShuiMapper = jianYiJiShuiFangFaPuPiaoJiShuiMapper;
 	}
 
+    public void setUser_CompanyMapper(User_CompanyMapper user_CompanyMapper){
+        this.user_CompanyMapper = user_CompanyMapper;
+    }
+
+    public User_CompanyMapper getUser_CompanyMapper() {
+        return user_CompanyMapper;
+    }
+
+	
 	private static final Logger logger = LoggerFactory.getLogger(ProjectServiceImpl.class);
 
 	public void setXiangMuTaiZhangMapper(XiangMuTaiZhangMapper xiangmutaizhangMapper) {
@@ -360,12 +384,12 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 	@Override
-	public List<Map<String, Object>> getMenu() {
+	public List<Map<String, Object>> getMenu(Integer uid) {
 		/*
 		 * [ {'text':name, 'nodes': [{},{}]} ]
 		 */
 		List<Map<String, Object>> retList = new ArrayList<>();
-		List<Company> companies = companyMapper.getAllCompanies();
+		//List<Company> companies = companyMapper.getAllCompanies();
 		List<Object> thirdList = new ArrayList<>();
 		for(Integer i = 0; i < 5; i++){
 			Map<String, Object> thirdLeaf = new HashMap<>();
@@ -394,6 +418,19 @@ public class ProjectServiceImpl implements IProjectService {
 			firstList.add(firstLeaf);
 		}
 		
+		List<Company> companies = new ArrayList<>();
+		List<Role> roles = roleMapper.getUserRoles(uid);
+		boolean showAll = false;
+		for(Role role: roles){
+			if(role.getName().contains("审核")||role.getName().contains("主任")||role.getName().contains("所长")){
+				companies = companyMapper.getAllCompanies();
+				showAll = true;
+				break;
+			}
+		}
+		if(!showAll){
+			companies = this.getCompaniesByUid(uid);
+		}
 		
 		for (Company company : companies) {
 			if (company.getLevel() == 0) {
@@ -493,6 +530,22 @@ public class ProjectServiceImpl implements IProjectService {
 				.getKaiPiaoQingKuangBiao_XiangMuByXiangmutaizhang_id(xiangmutaizhang_id);
 
 		return kaipiaoshenqingdanlist;
+	}
+	
+	@Override
+	public List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByXiangmutaizhang_id(Long xiangmutaizhang_id) {
+		List<KaiPiaoQingKuangBiao_FenGongSi> list = kaiPiaoQingKuangBiao_FenGongSiMapper
+				.getKaiPiaoQingKuangBiao_FenGongSiByXiangmutaizhang_id(xiangmutaizhang_id);
+
+		return list;
+	}
+	
+	@Override
+	public List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByCompanyId(Long company_id) {
+		List<KaiPiaoQingKuangBiao_FenGongSi> list = kaiPiaoQingKuangBiao_FenGongSiMapper
+				.getKaiPiaoQingKuangBiao_FenGongSiByCompanyId(company_id);
+
+		return list;
 	}
 
 	 @Override
@@ -802,13 +855,51 @@ public class ProjectServiceImpl implements IProjectService {
 	        jinXiangFaPiaoMingXi_FaPiaoMapper.addJinXiangFaPiaoMingXi_FaPiao(jinXiangFaPiaoMingXi_FaPiao);
 	        return true;
 	    }
+	    
+	    public User_Company getUser_CompanyById(Long id){
+	        return user_CompanyMapper.getUser_CompanyById(id);
+	    }
+
+	    @Override
+	    public Boolean addUser_Company(User_Company user_Company){
+	        user_CompanyMapper.addUser_Company(user_Company);
+	        return true;
+	    }
 
 	    @Override
 	    public Boolean updateJinXiangFaPiaoMingXi_FaPiao(JinXiangFaPiaoMingXi_FaPiao jinXiangFaPiaoMingXi_FaPiao){
 	        jinXiangFaPiaoMingXi_FaPiaoMapper.updateJinXiangFaPiaoMingXi_FaPiao(jinXiangFaPiaoMingXi_FaPiao);
 	        return true;
 	    }
-	    
+	    public Boolean updateUser_Company(User_Company user_Company){
+	        user_CompanyMapper.updateUser_Company(user_Company);
+	        return true;
+	    }
+
+		@Override
+		public List<Company> getCompaniesByUid(Integer uid) {
+			return companyMapper.getCompaniesByUid(uid);
+
+		}
+
+		@Override
+		public List<KaiPiaoQingKuangBiao_ZongGongSi> getKaiPiaoQingKuangBiao_ZongGongSiByStatus(Integer status) {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getKaiPiaoQingKuangBiao_ZongGongSiByStatus(status);
+		}
+
+		@Override
+		public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi() {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSi();
+		}
+
+		@Override
+		public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyId(Integer company_id) {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_XiangMuMapper.getKaiPiaoQingKuangBiao_XiangMuByCompanyId(company_id);
+		}
+
 	    @Override
 	    public JinXiangFaPiaoMingXi_RenZheng getJinXiangFaPiaoMingXi_RenZhengById(Long id){
 	        return jinXiangFaPiaoMingXi_RenZhengMapper.getJinXiangFaPiaoMingXi_RenZhengById(id);

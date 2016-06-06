@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration
-PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
 	<settings>
@@ -67,7 +65,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			type="com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu" />
 		<typeAlias alias="JinXiangFaPiaoMingXi_RenZheng"
 			type="com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng" />
+		<typeAlias alias="User_Company" type="com.wisdom.common.model.User_Company" />
 	</typeAliases>
+	
 	<mappers>
 		<mapper
 			resource="com/wisdom/common/mapper/JinXiangFaPiaoMingXi_RenZhengMapper.xml" />
@@ -118,6 +118,51 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSiMapper.xml" />
 		<mapper
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/UserMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/PermissionMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/InvoiceMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/RoleMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/RecordMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/SymbolMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/PhraseMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/CandidateMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/ArtifactMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FinalXiaoXiangMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FinalJinXiangMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FinalShenBaoBiaoMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/XiangMuTaiZhangMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/CompanyMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/KaiPiaoShenQingDanMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/JianYiJiShuiFangFaZhuanPiaoJiShuiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/JianYiJiShuiFangFaPuPiaoJiShuiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/PuTongFaPiaoKaiJuMingXiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/ShouQiKuanXiangMingXiBiaoMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/ZhuanYongFaPiaoKaiJuMingXiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/WeiKaiJuFaPiaoMingXiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/WeiKaiJuFaPiaoMingXi_YiBanMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/QueRenShouRuFangShi_QiTaMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/XiaoXiang_XiangMuMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FenBaoXiangMuMingXiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_ZongGongSiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/User_CompanyMapper.xml" />
 	</mappers>
-
 </configuration>

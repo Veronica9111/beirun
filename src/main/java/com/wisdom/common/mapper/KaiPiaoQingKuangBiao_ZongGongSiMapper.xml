@@ -42,4 +42,15 @@ insert into kaipiaoqingkuangbiao_zonggongsi (beizhu,hejijine,yikaipiaojine,wango
 values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{fenbaofapiao},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id},#{xiangmutaizhang_id})
 </insert>
 
+<select id="getKaiPiaoQingKuangBiao_ZongGongSiByStatus" resultType="KaiPiaoQingKuangBiao_ZongGongSi">
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+from kaipiaoqingkuangbiao_zonggongsi
+where yiji_shenhe_status=#{status} or erji_shenhe_status=#{status}
+</select>
+
+<select id="getAllKaiPiaoQingKuangBiao_ZongGongSi" resultType="KaiPiaoQingKuangBiao_ZongGongSi">
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+from kaipiaoqingkuangbiao_zonggongsi
+</select>
+
 </mapper>

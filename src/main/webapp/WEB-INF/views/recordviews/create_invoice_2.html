@@ -1053,11 +1053,26 @@ td
 
 <!-- Container -->
 <div id="dialog">
-	new dialog
+	<div style="height:70px;">
+	<label>发票类型选择</label>
+	<form id='fapiaokaijuleixing' style='height:20px;line-height:20px;'>
+  		<input type='radio' name='fapiaokaijuleixing_select' value='zhuanyong' checked>增值税专用发票<br>
+  		<input type='radio' name='fapiaokaijuleixing_select' value='pupiao'>增值税普通发票
+	</form>
+	</div>
+	<div id="shouruquerenfangshi_form" style="display:none;height:60px;">
+	<label>收入确认方式</label>
+	<form id='shouruquerenfangshi' style='height:20px;line-height:20px;'>
+  		<input type='radio' name='shouruquerenfangshi_select' value='chenbenzhanbi' checked>已发生成本占比法<br>
+  		<input type='radio' name='shouruquerenfangshi_select' value='laowushijianzhanbi'>劳务时间占比法<br>
+  		<input type='radio' name='shouruquerenfangshi_select' value='gongzuoliang'>已完工工作量法<br>
+  		<input type='radio' name='shouruquerenfangshi_select' value='qita'>其它<br>
+	</form>
+	</div>
 </div>
 <div id="but_position">
-	<input id="create_invoice" type="button" value="提交开票申请单" class="btn btn-success btn-sm" />
-	<!-- <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" /> -->
+	<input id="create_invoice" type="button" value="提交申请单" class="btn btn-success btn-sm" />
+	<input id="modify_invoice" type="button" value="保存申请单修改" class="btn btn-success btn-sm" />
 </div>
 <div id="container">
 
@@ -1094,10 +1109,10 @@ td
    <tr height='28' style='height:14.00pt;'>
     <td class='xl87' height='28' style='height:14.00pt;' id=''><input class="text" style='width:100%;' id='shenqingriqi'></td>
     <td class='xl87' id=''><input class="text" style='width:100%;' id='kaipiaoneirong'></td>
-    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='kaijufapiao'></td>
-    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
-    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='wangongjindu'></td>
-    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='qita'></td>
+    <td class='xl87 detail_table' derect_view='create_invoice_pupiao_3.html'><input class="text" disabled style='width:100%;' id='kaijufapiao'></td>
+    <td class='xl87 detail_table' derect_view='create_invoice_shouqikuanxiang_3.html'><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
+    <td class='xl87 detail_table' derect_view='jindu'><input class="text" disabled style='width:100%;' id='wangongjindu'></td>
+    <td class='xl87 detail_table' derect_view='qita'><input class="text" disabled style='width:100%;' id='qita'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='border:none;height:14.00pt;' x:str>填表人：</td>
@@ -1117,27 +1132,42 @@ td
 
 </body>
 <script type="text/javascript">
-$("#kaijufapiao").click(function(){
-	dialog = $( "#dialog" ).dialog({
-	      autoOpen: false,
-	      height: 300,
-	      width: 350,
-	      modal: true,
-	      buttons: {
-	        "Create an account": function(){
-	        	dialog.dialog("close");
-	        },
-	        Cancel: function() {
-	          dialog.dialog( "close" );
-	        }
-	      },
-	      close: function() {
-	        form[ 0 ].reset();
-	        allFields.removeClass( "ui-state-error" );
-	      }
-	    });
-	//window.location="/project/redirectView?view=create_invoice_2.html&test=1";
+var redirectView = "";
+dialog = $( "#dialog" ).dialog({
+    autoOpen: false,
+    height: 300,
+    width: 350,
+    modal: true,
+    buttons: {
+      "确定": function() {
+    	var fapiaoleixing = $('input:checked', '#fapiaokaijuleixing').val();
+    	var shourufangshi = $('input:checked', '#shouruquerenfangshi').val();
+    	dialog.dialog("close");
+    	if(redirectView == "jindu") {
+    		window.location="/project/redirectView?view=create_invoice_jindu_"+shourufangshi+"_3.html&invoice_type=" + fapiaoleixing;
+    	} else if(redirectView == "qita") {
+    		window.location="/project/redirectView?view=create_invoice_"+fapiaoleixing+"_3.html&invoice_type=" + fapiaoleixing;
+    	} else {
+    		window.location="/project/redirectView?view="+redirectView + "&invoice_type=" + fapiaoleixing;
+    	}
+      }
+    },
+    close: function() {
+    	dialog.dialog("close");
+    }
 });
+$(".detail_table").each(function(){
+	var directView = $(this).attr("derect_view");
+	$(this).on("click", function(){
+		redirectView = directView;
+		if(directView == "jindu")
+			$("#shouruquerenfangshi_form").show();
+		else
+			$("#shouruquerenfangshi_form").hide();
+		dialog.dialog("open");
+	});
+});
+
 $("#create_invoice").on("click", function(){
 	var dataSet = {};
 	$(".text").each(function(){
@@ -1152,7 +1182,7 @@ $("#create_invoice").on("click", function(){
 	});
 	
 });
-$("#modify").on("click", function(){
+$("#modify_invoice").on("click", function(){
 	var dataSet = {};
 	$(".text").each(function(){
 		console.log($(this).attr('id'));

@@ -342,6 +342,11 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
+<bean id="User_CompanyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.wisdom.common.mapper.User_CompanyMapper" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+
 	<bean id="userController" class="com.wisdom.web.api.controller.UserController">
 		<property name="testMapper" ref="testMapper" />
 	</bean>
@@ -412,6 +417,7 @@
 		<property name="KaiPiaoQingKuangBiao_XiangMuMapper" ref="KaiPiaoQingKuangBiao_XiangMuMapper" />
 		<property name="JinXiangFaPiaoMingXi_FaPiaoMapper" ref="JinXiangFaPiaoMingXi_FaPiaoMapper" />
 		<property name="JinXiangFaPiaoMingXi_RenZhengMapper" ref="JinXiangFaPiaoMingXi_RenZhengMapper" />
+		<property name="User_CompanyMapper" ref="User_CompanyMapper" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="mapper" />
