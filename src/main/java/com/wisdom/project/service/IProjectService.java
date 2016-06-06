@@ -170,4 +170,6 @@ public interface IProjectService {
 	public Boolean updateUser_Company(User_Company user_Company);
 	
 	public List<Company> getCompaniesByUid(Integer uid);
+	
+	public List<KaiPiaoQingKuangBiao_ZongGongSi> getKaiPiaoQingKuangBiao_ZongGongSiByStatus(Integer status);
 }

@@ -30,6 +30,7 @@ import com.wisdom.common.mapper.QueRenShouRuFangShi_QiTaMapper;
 import com.wisdom.common.mapper.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper;
 import com.wisdom.common.mapper.QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper;
 import com.wisdom.common.mapper.RecordMapper;
+import com.wisdom.common.mapper.RoleMapper;
 import com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper;
 import com.wisdom.common.mapper.User_CompanyMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
@@ -53,6 +54,7 @@ import com.wisdom.common.model.QueRenShouRuFangShi_QiTa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.Record;
+import com.wisdom.common.model.Role;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
 import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.XiangMuTaiZhang;
@@ -60,6 +62,7 @@ import com.wisdom.common.model.XiaoXiang_XiangMu;
 import com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng;
 import com.wisdom.invoice.service.IInvoiceService;
 import com.wisdom.project.service.IProjectService;
+import com.wisdom.user.service.impl.UserServiceImpl;
 
 @Service("projectService")
 public class ProjectServiceImpl implements IProjectService {
@@ -102,6 +105,17 @@ public class ProjectServiceImpl implements IProjectService {
 
     @Autowired
     private KaiPiaoQingKuangBiao_ZongGongSiMapper kaiPiaoQingKuangBiao_ZongGongSiMapper;
+    
+    @Autowired
+    private RoleMapper roleMapper;
+    
+    public void setRoleMapper(RoleMapper roleMapper){
+        this.roleMapper = roleMapper;
+    }
+
+    public RoleMapper getRoleMapper() {
+        return roleMapper;
+    }
 
 
     public void setKaiPiaoQingKuangBiao_FenGongSiMapper(KaiPiaoQingKuangBiao_FenGongSiMapper kaiPiaoQingKuangBiao_FenGongSiMapper){
@@ -378,8 +392,19 @@ public class ProjectServiceImpl implements IProjectService {
 			firstList.add(firstLeaf);
 		}
 		
-
-		List<Company> companies = this.getCompaniesByUid(uid);
+		List<Company> companies = new ArrayList<>();
+		List<Role> roles = roleMapper.getUserRoles(uid);
+		boolean showAll = false;
+		for(Role role: roles){
+			if(role.getName().contains("审核")||role.getName().contains("主任")||role.getName().contains("所长")){
+				companies = companyMapper.getAllCompanies();
+				showAll = true;
+				break;
+			}
+		}
+		if(!showAll){
+			companies = this.getCompaniesByUid(uid);
+		}
 		
 		for (Company company : companies) {
 			if (company.getLevel() == 0) {
@@ -799,6 +824,12 @@ public class ProjectServiceImpl implements IProjectService {
 		public List<Company> getCompaniesByUid(Integer uid) {
 			return companyMapper.getCompaniesByUid(uid);
 
+		}
+
+		@Override
+		public List<KaiPiaoQingKuangBiao_ZongGongSi> getKaiPiaoQingKuangBiao_ZongGongSiByStatus(Integer status) {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getKaiPiaoQingKuangBiao_ZongGongSiByStatus(status);
 		}
 
 	    

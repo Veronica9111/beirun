@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Permission;
 import com.wisdom.common.model.XiangMuTaiZhang;
@@ -329,6 +330,18 @@ public class ProjectController {
 		retMap.put("status", "ok");
 		return retMap;
 	}
+	
+	@RequestMapping("/project/getKaiPiaoQingKuangBiao_ZongGongSiByStatus")
+	@ResponseBody
+	public Map<String, String> getKaiPiaoQingKuangBiao_ZongGongSiByStatus(HttpServletRequest request){
+		Integer status = Integer.valueOf(request.getParameter("status"));
+		Map<String, String> retMap = new HashMap<>();
+		List<KaiPiaoQingKuangBiao_ZongGongSi> retList = projectService.getKaiPiaoQingKuangBiao_ZongGongSiByStatus(status);
+		String data = JSONArray.fromObject(retList).toString();
+		retMap.put("data", data);
+		retMap.put("status", "ok");
+		return retMap;
+	}
 		
 	@RequestMapping("/getMenu")
 	@ResponseBody
@@ -338,7 +351,7 @@ public class ProjectController {
 		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
 		
 		List<Map<String, Object>> menus = projectService.getMenu(uid);
-		String data = JSONArray.fromObject(menus).toString(uid);
+		String data = JSONArray.fromObject(menus).toString();
 		retMap.put("data", data);
 		
 		return retMap;
