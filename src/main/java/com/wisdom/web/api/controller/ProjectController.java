@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_ZongGongSiMapper;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
@@ -331,14 +332,65 @@ public class ProjectController {
 		return retMap;
 	}
 	
-	@RequestMapping("/project/getKaiPiaoQingKuangBiao_ZongGongSiByStatus")
+	@RequestMapping("/project/getAllUnApprovedKaiPiaoQingKuangBiao_ZongGongSi")
 	@ResponseBody
-	public Map<String, String> getKaiPiaoQingKuangBiao_ZongGongSiByStatus(HttpServletRequest request){
-		Integer status = Integer.valueOf(request.getParameter("status"));
+	public Map<String, String> getAllUnApprovedKaiPiaoQingKuangBiao_ZongGongSi(HttpServletRequest request){
 		Map<String, String> retMap = new HashMap<>();
-		List<KaiPiaoQingKuangBiao_ZongGongSi> retList = projectService.getKaiPiaoQingKuangBiao_ZongGongSiByStatus(status);
+		List<KaiPiaoQingKuangBiao_ZongGongSi> retList = projectService.getKaiPiaoQingKuangBiao_ZongGongSiByStatus(0);
+		Integer count = retList.size();
+		retMap.put("count", count.toString());
+		return retMap;
+		
+	}
+	
+	@RequestMapping("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi")
+	@ResponseBody
+	public Map<String, String> getAllKaiPiaoQingKuangBiao_ZongGongSi(HttpServletRequest request){
+		
+		Map<String, String> retMap = new HashMap<>();
+		List<KaiPiaoQingKuangBiao_ZongGongSi> KaiPiaoQingKuangBiaos = projectService.getAllKaiPiaoQingKuangBiao_ZongGongSi();
+		List<List<String>> retList = new ArrayList<>();
+		Integer count = 0;
+		for(KaiPiaoQingKuangBiao_ZongGongSi elem: KaiPiaoQingKuangBiaos){
+			List<String> tmp = new ArrayList<>();
+			tmp.add(elem.getId().toString());
+			tmp.add(elem.getShengqingkaipiaoshijian());
+			tmp.add(elem.getBuhanshuijine().toString());
+			tmp.add(elem.getShuie().toString());
+			tmp.add(elem.getHejijine().toString());
+			tmp.add(elem.getKaijufapiao().toString());
+			tmp.add(elem.getShouqikuanxiang().toString());
+			tmp.add(elem.getWangongjindu());
+			tmp.add(elem.getQita().toString());
+			tmp.add(elem.getYikaipiaojine().toString());
+			tmp.add(elem.getFenbaofapiao().toString());
+			tmp.add(elem.getBeizhu());
+			tmp.add(elem.getYijishenheren());
+			String approveStatus = "未审核";
+			if(elem.getYiji_shenhe_status() == 1){
+				approveStatus = "审核通过";
+			}else if(elem.getYiji_shenhe_status() == 2){
+				approveStatus = "审核未通过";
+			}
+			tmp.add(approveStatus);
+			tmp.add(elem.getErjishenheren());
+			String approveStatus2 = "未审核";
+			if(elem.getErji_shenhe_status() == 1){
+				approveStatus2 = "审核通过";
+			}else if(elem.getErji_shenhe_status() == 2){
+				approveStatus2 = "审核未通过";
+			}
+			tmp.add(approveStatus2);
+			tmp.add(elem.getYiji_shenhe_beizhu());
+			tmp.add(elem.getErji_shenhe_beizhu());
+			retList.add(tmp);
+			if(elem.getErji_shenhe_status() == 0 | elem.getYiji_shenhe_status() == 0){
+				count++;
+			}
+		}
 		String data = JSONArray.fromObject(retList).toString();
 		retMap.put("data", data);
+		retMap.put("unapproved", Integer.toString(count));
 		retMap.put("status", "ok");
 		return retMap;
 	}

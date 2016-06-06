@@ -832,5 +832,11 @@ public class ProjectServiceImpl implements IProjectService {
 			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getKaiPiaoQingKuangBiao_ZongGongSiByStatus(status);
 		}
 
+		@Override
+		public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi() {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSi();
+		}
+
 	    
 }

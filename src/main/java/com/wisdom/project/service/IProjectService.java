@@ -172,4 +172,6 @@ public interface IProjectService {
 	public List<Company> getCompaniesByUid(Integer uid);
 	
 	public List<KaiPiaoQingKuangBiao_ZongGongSi> getKaiPiaoQingKuangBiao_ZongGongSiByStatus(Integer status);
+	
+	public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi();
 }
