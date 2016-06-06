@@ -17,6 +17,7 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
+<script src="/js/webjs/global.js"></script>
 <style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
@@ -1014,6 +1015,8 @@ td
   </div>
 </div>
 <script type="text/javascript">
+function startPageJS(){
+console.log(global);
 $("#submit").on("click", function(){
 	console.log($(".text"));
 	var hetongleixing = $('input:checked', '#hetongleixing').val();
@@ -1090,6 +1093,7 @@ $.post("/project/getModel", query, function(data){
     }
 	
 });
+}
 </script>
 
 </body>
