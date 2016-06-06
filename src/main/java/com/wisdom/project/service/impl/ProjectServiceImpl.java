@@ -865,6 +865,7 @@ public class ProjectServiceImpl implements IProjectService {
 	        jinXiangFaPiaoMingXi_FaPiaoMapper.updateJinXiangFaPiaoMingXi_FaPiao(jinXiangFaPiaoMingXi_FaPiao);
 	        return true;
 	    }
+	    
 	    public Boolean updateUser_Company(User_Company user_Company){
 	        user_CompanyMapper.updateUser_Company(user_Company);
 	        return true;
