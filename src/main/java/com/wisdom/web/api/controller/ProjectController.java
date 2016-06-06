@@ -200,9 +200,9 @@ public class ProjectController {
 	@ResponseBody
 	public Map<String, String> getProjectsByCompanyId(HttpServletRequest request, HttpSession httpSession){
 		Map<String, String> retMap = new HashMap<>();
-		Integer companyId = Integer.valueOf(request.getParameter("company_id"));
+		Long companyId = Long.valueOf(request.getParameter("company_id"));
 
-		List<XiangMuTaiZhang> projects = projectService.getProjectsByCompanyId(companyId);
+		List<XiangMuTaiZhang> projects = projectService.getXiangMuTaiZhangByCompany_id(companyId);
 		List<Object> retList = new ArrayList<>();
 		for(XiangMuTaiZhang project: projects){
 			List<Object> tmpList = new ArrayList<>();

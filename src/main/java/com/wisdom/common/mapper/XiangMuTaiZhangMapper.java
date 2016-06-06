@@ -17,7 +17,7 @@ public interface XiangMuTaiZhangMapper {
 	
 	Integer updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
-	List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long company_id);
+	List<XiangMuTaiZhang> getXiangMuTaiZhangByCompany_id(Long company_id);
 	
 	void updateTime(@Param("id")Long id, @Param("hetongqiandingshijian")Timestamp hetongqiandingshijian);
 	

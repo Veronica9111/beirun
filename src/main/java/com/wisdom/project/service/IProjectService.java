@@ -60,7 +60,7 @@ public interface IProjectService {
 	
 	public Boolean updateProject(XiangMuTaiZhang xmtz);
 	
-	public List<XiangMuTaiZhang> getProjectsByCompanyId(Integer companyId);
+	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompany_id(Long companyId);
 	
 	public List<Map<String, Object>> getMenu(Integer uid);
 	
@@ -69,8 +69,6 @@ public interface IProjectService {
 	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
 	public Boolean updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
-	
-	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long companyId);
 	
 	public Boolean updateKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
 	

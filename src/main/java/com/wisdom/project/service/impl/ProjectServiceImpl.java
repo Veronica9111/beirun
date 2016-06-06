@@ -366,12 +366,6 @@ public class ProjectServiceImpl implements IProjectService {
 		return true;
 	}
 
-	@Override
-	public List<XiangMuTaiZhang> getProjectsByCompanyId(Integer companyId) {
-		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId((long) companyId);
-
-	}
-
 	public List<Company> getSubCompanyByParent(List<Company> companies, Integer parentId) {
 		List<Company> retList = new ArrayList<>();
 		for (Company company : companies) {
@@ -597,8 +591,8 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 	@Override
-	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Long companyId) {
-		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompanyId(companyId);
+	public List<XiangMuTaiZhang> getXiangMuTaiZhangByCompany_id(Long companyId) {
+		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompany_id(companyId);
 
 	}
 
