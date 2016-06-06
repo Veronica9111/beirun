@@ -1107,7 +1107,6 @@ function nodeClick(node){
 		$.post("/project/getModel", query, function(data){
 			$("#container").show();
 			var data = $.parseJSON(data.data)[0];
-			xiangmutaizhangIdParam = data["id"];
 			console.log("xiangmutaizhangIdParam" + xiangmutaizhangIdParam);
 			console.log(data);
 			if(data == null || data == undefined || data.length == 0) {
@@ -1116,6 +1115,7 @@ function nodeClick(node){
 				$("#update_project_info").show();
 				$("#create_invoice").show();
 				$("#update_project_info").removeAttr("disabled");
+				xiangmutaizhangIdParam = data["id"];
 				primary_id = data["id"];
 				for(key in data){
 					if(key=="hetongleixing") {
