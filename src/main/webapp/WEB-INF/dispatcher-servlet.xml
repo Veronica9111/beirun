@@ -189,7 +189,15 @@
 			value="com.wisdom.common.mapper.JinXiangFaPiaoMingXi_RenZhengMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-
+	<bean id="JinXiangShuieZhuanChuMingXi_FenGongSiMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.wisdom.common.mapper.JinXiangShuieZhuanChuMingXi_FenGongSiMapper" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+<bean id="JinXiangShuieZhuanChuMingXi_XiangMuBuMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.wisdom.common.mapper.JinXiangShuieZhuanChuMingXi_XiangMuBuMapper" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
+	
 
 	<bean id="invoiceMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.wisdom.common.mapper.InvoiceMapper" />
@@ -228,6 +236,10 @@
 			value="com.wisdom.common.mapper.YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+<bean id="BuDongChanFenQiDiKouBiaoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.wisdom.common.mapper.BuDongChanFenQiDiKouBiaoMapper" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
 
 	<bean id="candidateMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.wisdom.common.mapper.CandidateMapper" />
@@ -416,6 +428,12 @@
 		<property name="FenBaoXiangMuMingXiMapper" ref="FenBaoXiangMuMingXiMapper" />
 		<property name="KaiPiaoQingKuangBiao_XiangMuMapper" ref="KaiPiaoQingKuangBiao_XiangMuMapper" />
 		<property name="JinXiangFaPiaoMingXi_FaPiaoMapper" ref="JinXiangFaPiaoMingXi_FaPiaoMapper" />
+		<property name="BuDongChanFenQiDiKouBiaoMapper" ref="BuDongChanFenQiDiKouBiaoMapper" />
+
+		
+		<property name="JinXiangShuieZhuanChuMingXi_FenGongSiMapper" ref="JinXiangShuieZhuanChuMingXi_FenGongSiMapper" />
+<property name="JinXiangShuieZhuanChuMingXi_XiangMuBuMapper" ref="JinXiangShuieZhuanChuMingXi_XiangMuBuMapper" />
+
 		<property name="JinXiangFaPiaoMingXi_RenZhengMapper" ref="JinXiangFaPiaoMingXi_RenZhengMapper" />
 		<property name="User_CompanyMapper" ref="User_CompanyMapper" />
 	</bean>

@@ -6,7 +6,8 @@
 		<setting name="cacheEnabled" value="false" />
 	</settings>
 	<typeAliases>
-
+		<typeAlias alias="JinXiangShuieZhuanChuMingXi_FenGongSi" type="com.wisdom.common.model.JinXiangShuieZhuanChuMingXi_FenGongSi" />
+		<typeAlias alias="JinXiangShuieZhuanChuMingXi_XiangMuBu" type="com.wisdom.common.model.JinXiangShuieZhuanChuMingXi_XiangMuBu" />
 		<typeAlias alias="User" type="com.wisdom.common.model.User" />
 		<typeAlias alias="Permission" type="com.wisdom.common.model.Permission" />
 		<typeAlias alias="Invoice" type="com.wisdom.common.model.Invoice" />
@@ -50,6 +51,7 @@
 			type="com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa" />
 		<typeAlias alias="QueRenShouRuFangShi_QiTa"
 			type="com.wisdom.common.model.QueRenShouRuFangShi_QiTa" />
+			<typeAlias alias="BuDongChanFenQiDiKouBiao" type="com.wisdom.common.model.BuDongChanFenQiDiKouBiao" />
 		<typeAlias alias="YiBanJiShuiFangFaNaShuiJianChaTiaoZheng"
 			type="com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng" />
 		<typeAlias alias="FenBaoXiangMuMingXi"
@@ -119,6 +121,8 @@
 		<mapper
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml" />
 		<mapper resource="com/wisdom/common/mapper/UserMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/JinXiangShuieZhuanChuMingXi_FenGongSiMapper.xml"/>
+		<mapper resource="com/wisdom/common/mapper/JinXiangShuieZhuanChuMingXi_XiangMuBuMapper.xml"/>
 		<mapper resource="com/wisdom/common/mapper/PermissionMapper.xml" />
 		<mapper resource="com/wisdom/common/mapper/InvoiceMapper.xml" />
 		<mapper resource="com/wisdom/common/mapper/RoleMapper.xml" />
@@ -161,6 +165,7 @@
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_ZongGongSiMapper.xml" />
 		<mapper
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/BuDongChanFenQiDiKouBiaoMapper.xml"/>
 		<mapper
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml" />
 		<mapper resource="com/wisdom/common/mapper/User_CompanyMapper.xml" />

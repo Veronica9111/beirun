@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.BuDongChanFenQiDiKouBiaoMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.BuDongChanFenQiDiKouBiao" id="BuDongChanFenQiDiKouBiao">
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="tianbiaoshijian" column="tianbiaoshijian"/>
+<result property="id" column="id"/>
+<result property="shenheren" column="shenheren"/>
+<result property="erji_shenhe_status" column="erji_shenhe_status"/>
+<result property="field2" column="field2"/>
+<result property="field3" column="field3"/>
+<result property="field1" column="field1"/>
+<result property="company_id" column="company_id"/>
+<result property="field4" column="field4"/>
+<result property="field5" column="field5"/>
+<result property="qimodaidikou" column="qimodaidikou"/>
+<result property="erji_shenhe_beizhu" column="erji_shenhe_beizhu"/>
+<result property="benqibudongchan" column="benqibudongchan"/>
+<result property="benqibukedikou" column="benqibukedikou"/>
+<result property="shenheriqi" column="shenheriqi"/>
+<result property="beizhu" column="beizhu"/>
+<result property="erjishenheren" column="erjishenheren"/>
+<result property="xiangmutaizhang_id" column="xiangmutaizhang_id"/>
+<result property="yijishenheren" column="yijishenheren"/>
+<result property="tianbiaoren" column="tianbiaoren"/>
+<result property="benqikedikou" column="benqikedikou"/>
+<result property="qichudaidikou" column="qichudaidikou"/>
+<result property="yiji_shenhe_status" column="yiji_shenhe_status"/>
+<result property="shenherendianhua" column="shenherendianhua"/>
+<result property="yiji_shenhe_beizhu" column="yiji_shenhe_beizhu"/>
+</resultMap>
+
+<select id="getBuDongChanFenQiDiKouBiaoById" resultType="BuDongChanFenQiDiKouBiao">
+select tianbiaorendianhua,tianbiaoshijian,id,shenheren,erji_shenhe_status,field2,field3,field1,company_id,field4,field5,qimodaidikou,erji_shenhe_beizhu,benqibudongchan,benqibukedikou,shenheriqi,beizhu,erjishenheren,xiangmutaizhang_id,yijishenheren,tianbiaoren,benqikedikou,qichudaidikou,yiji_shenhe_status,shenherendianhua,yiji_shenhe_beizhu
+from budongchanfenqidikoubiao
+where id=#{id}
+</select>
+
+<update id="updateBuDongChanFenQiDiKouBiao">
+update budongchanfenqidikoubiao set tianbiaorendianhua=#{tianbiaorendianhua},tianbiaoshijian=#{tianbiaoshijian},id=#{id},shenheren=#{shenheren},erji_shenhe_status=#{erji_shenhe_status},field2=#{field2},field3=#{field3},field1=#{field1},company_id=#{company_id},field4=#{field4},field5=#{field5},qimodaidikou=#{qimodaidikou},erji_shenhe_beizhu=#{erji_shenhe_beizhu},benqibudongchan=#{benqibudongchan},benqibukedikou=#{benqibukedikou},shenheriqi=#{shenheriqi},beizhu=#{beizhu},erjishenheren=#{erjishenheren},xiangmutaizhang_id=#{xiangmutaizhang_id},yijishenheren=#{yijishenheren},tianbiaoren=#{tianbiaoren},benqikedikou=#{benqikedikou},qichudaidikou=#{qichudaidikou},yiji_shenhe_status=#{yiji_shenhe_status},shenherendianhua=#{shenherendianhua},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu}
+where id=#{id}
+</update>
+
+<insert id="addBuDongChanFenQiDiKouBiao">
+insert into budongchanfenqidikoubiao (tianbiaorendianhua,tianbiaoshijian,id,shenheren,erji_shenhe_status,field2,field3,field1,company_id,field4,field5,qimodaidikou,erji_shenhe_beizhu,benqibudongchan,benqibukedikou,shenheriqi,beizhu,erjishenheren,xiangmutaizhang_id,yijishenheren,tianbiaoren,benqikedikou,qichudaidikou,yiji_shenhe_status,shenherendianhua,yiji_shenhe_beizhu)
+values (#{tianbiaorendianhua},#{tianbiaoshijian},#{id},#{shenheren},#{erji_shenhe_status},#{field2},#{field3},#{field1},#{company_id},#{field4},#{field5},#{qimodaidikou},#{erji_shenhe_beizhu},#{benqibudongchan},#{benqibukedikou},#{shenheriqi},#{beizhu},#{erjishenheren},#{xiangmutaizhang_id},#{yijishenheren},#{tianbiaoren},#{benqikedikou},#{qichudaidikou},#{yiji_shenhe_status},#{shenherendianhua},#{yiji_shenhe_beizhu})
+</insert>
+
+</mapper>
