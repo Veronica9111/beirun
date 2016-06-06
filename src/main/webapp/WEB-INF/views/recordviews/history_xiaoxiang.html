@@ -55,7 +55,7 @@
 <!-- Container -->
 <div id="container">
 <table id="history-table" class="display" >
-<input id="create_invoice" type="button" style="margin-top" value="创建申请单" class="btn btn-success btn-sm" />
+
 </table>
 </div>
 <div class="mask"></div>
@@ -72,7 +72,7 @@
 $.post("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi", {}, function(data){
 
 	var list = $.parseJSON(data.data);
-	$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.unapproved + "</span>");
+	//$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.unapproved + "</span>");
 
 		$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
 		   	data: list,

@@ -1,8 +1,6 @@
 $(document).ready(function(){
 	$.post("/user/getRoles",{},function(data){
-		console.log(data)
 		var roles = data.data;
-		console.log(roles.indexOf(""));
 		if(roles.indexOf("开票人") != -1){
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/create.html">开票</a></li>');
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/history.html">历史记录</a></li>');
@@ -12,8 +10,10 @@ $(document).ready(function(){
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/history_xiaoxiang.html">审批记录</a></li>');
 			$.post("/project/getUnApprovedKaiPiaoQingKuangBiao_XiangMuByUserCount", {}, function(data){
 
-
-				$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.count + "</span>");
+				if(data.count != 0 || data.count != "0"){
+					console.log(data.count);
+					$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.count + "</span>");
+				}
 
 				
 			});
@@ -25,9 +25,10 @@ $(document).ready(function(){
 			$("#navigator").append('<li><a id="approve-nav" class="link" href="/views/recordviews/approval_invoice_list_2.html">审批</a></li>');
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/history_xiaoxiang.html">审批记录</a></li>');
 			$.post("/project/getUnApprovedKaiPiaoQingKuangBiao_XiangMuByUserCount", {}, function(data){
-
-
-				$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.count + "</span>");
+				console.log(data.count);
+				if(data.count != 0 || data.count != "0"){
+					$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.count + "</span>");
+				}
 
 				
 			});

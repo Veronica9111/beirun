@@ -1015,6 +1015,8 @@ td
   </div>
 </div>
 <script type="text/javascript">
+var create_project_company_id = "";
+var primary_id = "";
 function startPageJS(){
 console.log(global);
 $("#create_new_project").on("click", function(){
@@ -1032,7 +1034,7 @@ $("#create_new_project").on("click", function(){
 	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
 	dataSet['nashuileixing'] = nashuileixing;
 	dataSet["class_name"] = "XiangMuTaiZhang";
-	dataSet["company_id"] = "1111";
+	dataSet["company_id"] = create_project_company_id;
 	$.post('/project/addModel', dataSet, function(data){
 		console.log(data);	
 	});
@@ -1053,21 +1055,28 @@ $("#update_project_info").on("click", function(){
 	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
 	dataSet['nashuileixing'] = nashuileixing;
 	dataSet["class_name"] = "XiangMuTaiZhang";
-	dataSet['id'] = 1;
-	
+	dataSet['company_id'] = create_project_company_id;
+	dataSet['id'] = primary_id;
 	$.post('/project/modifyModel', dataSet, function(data){
 		console.log(data);
-		
 	});
-	
 });
 }
 
 $("#create_invoice").click(function(){
-	window.location="/project/redirectView?view=create_invoice_2.html&test=1";
+	window.location.href="/project/redirectView?view=create_invoice_list_2.html&param="+primary_id;
 });
 
 function nodeClick(node){
+	var gongsimingchengNode = $("#fengongsimingcheng");
+	var xiangmubuNode = $("#xiangmubu");
+	if(xiangmubuNode != null || xiangmubuNode != undefined) {
+		if(node.level == 1) {
+			var parentNode = $('#left-menu').treeview('getParent', node);
+			$("#fengongsimingcheng").val(parentNode.text);
+			$("#xiangmubu").val(node.text);
+		}
+	}
 	console.log(node);
 	/* var parentNode = $('#left-menu').treeview('getParent', node);
 	console.log(parentNode); */
@@ -1078,6 +1087,7 @@ function nodeClick(node){
 		$("#create_new_project").attr("disabled", "true");
 		//清除表中数据
 	} else if(node.level == "1") {
+		create_project_company_id = node.company_id;
 		var query = {query_key: 'company_id', query_value:node.company_id, class_name:'XiangMuTaiZhang'};
 		$.post("/project/getModel", query, function(data){
 			$("#container").show();
@@ -1089,6 +1099,7 @@ function nodeClick(node){
 				$("#update_project_info").show();
 				$("#create_invoice").show();
 				$("#update_project_info").removeAttr("disabled");
+				primary_id = data["id"];
 				for(key in data){
 					if(key=="hetongleixing") {
 						$("input[type=radio][name=hetongleixing_select][value='"+data[key]+"']").attr("checked",true);  
@@ -1098,6 +1109,7 @@ function nodeClick(node){
 						$("input[type=radio][name=hetongfukuanfangshi_select][value='"+data[key]+"']").attr("checked",true); 
 					} else {
 						console.log(data[key]);
+						if(key == "fengongsimingcheng" || key == "xiangmubu") continue;
 						$("#" + key).val(data[key]);
 					}
 				}

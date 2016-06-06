@@ -21,6 +21,7 @@ import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
+import com.wisdom.common.model.User;
 import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi_YiBan;
@@ -221,4 +222,6 @@ public interface IProjectService {
 	public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyId(Integer company_id);
 
 	public List<Role> getUserRoles(Integer uid);
+	
+	public User getUserById(Integer uid);
 }

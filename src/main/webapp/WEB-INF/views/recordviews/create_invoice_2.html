@@ -17,6 +17,7 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
+<script src="/js/webjs/global.js"></script>
 <style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
@@ -1133,79 +1134,92 @@ td
 </body>
 <script type="text/javascript">
 var redirectView = "";
-dialog = $( "#dialog" ).dialog({
-    autoOpen: false,
-    height: 300,
-    width: 350,
-    modal: true,
-    buttons: {
-      "确定": function() {
-    	var fapiaoleixing = $('input:checked', '#fapiaokaijuleixing').val();
-    	var shourufangshi = $('input:checked', '#shouruquerenfangshi').val();
-    	dialog.dialog("close");
-    	if(redirectView == "jindu") {
-    		window.location="/project/redirectView?view=create_invoice_jindu_"+shourufangshi+"_3.html&invoice_type=" + fapiaoleixing;
-    	} else if(redirectView == "qita") {
-    		window.location="/project/redirectView?view=create_invoice_"+fapiaoleixing+"_3.html&invoice_type=" + fapiaoleixing;
-    	} else {
-    		window.location="/project/redirectView?view="+redirectView + "&invoice_type=" + fapiaoleixing;
-    	}
-      }
-    },
-    close: function() {
-    	dialog.dialog("close");
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
     }
-});
-$(".detail_table").each(function(){
-	var directView = $(this).attr("derect_view");
-	$(this).on("click", function(){
-		redirectView = directView;
-		if(directView == "jindu")
-			$("#shouruquerenfangshi_form").show();
-		else
-			$("#shouruquerenfangshi_form").hide();
-		dialog.dialog("open");
+})(jQuery);
+var kaipiaoqingkuangdanIdParam = $.getUrlParam('param');
+function startPageJS(){
+	dialog = $( "#dialog" ).dialog({
+	    autoOpen: false,
+	    height: 300,
+	    width: 350,
+	    modal: true,
+	    buttons: {
+	      "确定": function() {
+	    	var fapiaoleixing = $('input:checked', '#fapiaokaijuleixing').val();
+	    	var shourufangshi = $('input:checked', '#shouruquerenfangshi').val();
+	    	dialog.dialog("close");
+	    	if(redirectView == "jindu") {
+	    		window.location="/project/redirectView?view=create_invoice_jindu_"+shourufangshi+"_3.html&invoice_type=" + fapiaoleixing;
+	    	} else if(redirectView == "qita") {
+	    		window.location="/project/redirectView?view=create_invoice_"+fapiaoleixing+"_3.html&invoice_type=" + fapiaoleixing;
+	    	} else {
+	    		window.location="/project/redirectView?view="+redirectView + "&invoice_type=" + fapiaoleixing;
+	    	}
+	      }
+	    },
+	    close: function() {
+	    	dialog.dialog("close");
+	    }
 	});
-});
+	$(".detail_table").each(function(){
+		var directView = $(this).attr("derect_view");
+		$(this).on("click", function(){
+			redirectView = directView;
+			if(directView == "jindu")
+				$("#shouruquerenfangshi_form").show();
+			else
+				$("#shouruquerenfangshi_form").hide();
+			dialog.dialog("open");
+		});
+	});
 
-$("#create_invoice").on("click", function(){
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-	dataSet["class_name"] = "KaiPiaoShenQingDan";
-	dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = "222";
-	$.post('/project/addModel', dataSet, function(data){
-		console.log(data);
+	$("#create_invoice").on("click", function(){
+		var dataSet = {};
+		$(".text").each(function(){
+			console.log($(this).attr('id'));
+			dataSet[$(this).attr('id')] = $(this).val();
+		});
+		dataSet["class_name"] = "KaiPiaoShenQingDan";
+		dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = "222";
+		$.post('/project/addModel', dataSet, function(data){
+			console.log(data);
+			
+		});
 		
 	});
-	
-});
-$("#modify_invoice").on("click", function(){
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
+	$("#modify_invoice").on("click", function(){
+		var dataSet = {};
+		$(".text").each(function(){
+			console.log($(this).attr('id'));
+			dataSet[$(this).attr('id')] = $(this).val();
+		});
+		dataSet['id'] = 0;
+		dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = "222";
+		dataSet["class_name"] = "KaiPiaoShenQingDan";
+		$.post('/project/modifyModel', dataSet, function(data){
+			console.log(data);
+		});
+		
 	});
-	dataSet['id'] = 0;
-	dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = "222";
-	dataSet["class_name"] = "KaiPiaoShenQingDan";
-	$.post('/project/modifyModel', dataSet, function(data){
-		console.log(data);
-	});
-	
-});
 
-var query = {query_key: 'id', query_value:0, class_name:'KaiPiaoShenQingDan'};
-$.post("/project/getModel", query, function(data){
-	var data = $.parseJSON(data.data)[0];
-	console.log(data);
-	for(key in data){
-		$("#" + key).val(data[key]);
-	}
+	var query = {query_key: 'id', query_value:0, class_name:'KaiPiaoShenQingDan'};
+	$.post("/project/getModel", query, function(data){
+		var data = $.parseJSON(data.data)[0];
+		console.log(data);
+		for(key in data){
+			$("#" + key).val(data[key]);
+		}
+		
+	});
+}
+function nodeClick(node){
 	
-});
+}
 </script>
 
 </html>
