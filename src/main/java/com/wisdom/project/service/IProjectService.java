@@ -9,8 +9,11 @@ import java.util.Map;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.JinXiangFaPiaoMingXi_FaPiao;
 import com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng;
+import com.wisdom.common.model.JinXiangShuieZhuanChuMingXi_FenGongSi;
+import com.wisdom.common.model.JinXiangShuieZhuanChuMingXi_XiangMuBu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
+import com.wisdom.common.model.BuDongChanFenQiDiKouBiao;
 import com.wisdom.common.model.Company;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.FenBaoXiangMuMingXi;
@@ -34,6 +37,29 @@ import com.wisdom.common.model.XiaoXiang_XiangMu;
 import com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng;
 
 public interface IProjectService {
+	public BuDongChanFenQiDiKouBiao getBuDongChanFenQiDiKouBiaoById(Long id);
+
+	public Boolean addBuDongChanFenQiDiKouBiao(BuDongChanFenQiDiKouBiao buDongChanFenQiDiKouBiao);
+
+	public Boolean updateBuDongChanFenQiDiKouBiao(BuDongChanFenQiDiKouBiao buDongChanFenQiDiKouBiao);
+
+
+
+	public JinXiangShuieZhuanChuMingXi_FenGongSi getJinXiangShuieZhuanChuMingXi_FenGongSiById(Long id);
+
+	public Boolean addJinXiangShuieZhuanChuMingXi_FenGongSi(JinXiangShuieZhuanChuMingXi_FenGongSi jinXiangShuieZhuanChuMingXi_FenGongSi);
+
+	public Boolean updateJinXiangShuieZhuanChuMingXi_FenGongSi(JinXiangShuieZhuanChuMingXi_FenGongSi jinXiangShuieZhuanChuMingXi_FenGongSi);
+
+
+
+	public JinXiangShuieZhuanChuMingXi_XiangMuBu getJinXiangShuieZhuanChuMingXi_XiangMuBuById(Long id);
+
+	public Boolean addJinXiangShuieZhuanChuMingXi_XiangMuBu(JinXiangShuieZhuanChuMingXi_XiangMuBu jinXiangShuieZhuanChuMingXi_XiangMuBu);
+
+	public Boolean updateJinXiangShuieZhuanChuMingXi_XiangMuBu(JinXiangShuieZhuanChuMingXi_XiangMuBu jinXiangShuieZhuanChuMingXi_XiangMuBu);
+
+
 	public JinXiangFaPiaoMingXi_RenZheng getJinXiangFaPiaoMingXi_RenZhengById(Long id);
 
 	public Boolean addJinXiangFaPiaoMingXi_RenZheng(JinXiangFaPiaoMingXi_RenZheng jinXiangFaPiaoMingXi_RenZheng);

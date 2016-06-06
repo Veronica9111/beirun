@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/webcss/global.css"/>
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery.dataTables.min.css">
+<link rel="stylesheet" href="/css/webcss/bootstrap.css" />
+<link rel="stylesheet" href="/css/webcss/bootstrap-theme.css" />
+<script src="/js/webjs/jquery-1.11.3.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery-ui.css" />
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css"/>
+<script src="/js/webjs/jquery-ui.js"></script>
+<script src="/js/webjs/navigator.js"></script>
+<script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
+<script src="/js/webjs/bootstrap-treeview.min.js"></script>
+<script src="/js/webjs/tree-menu.js"></script>
+<style>
+<!-- @page
+	{margin:0.98in 0.75in 0.98in 0.75in;
+	mso-header-margin:0.51in;
+	mso-footer-margin:0.51in;
+	mso-page-orientation:landscape;}
+tr
+	{mso-height-source:auto;
+	mso-ruby-visibility:none;}
+col
+	{mso-width-source:auto;
+	mso-ruby-visibility:none;}
+br
+	{mso-data-placement:same-cell;}
+.font0
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font1
+	{color:#000000;
+	font-size:16.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font2
+	{color:#000000;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font3
+	{color:#003366;
+	font-size:13.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font4
+	{color:#333399;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font5
+	{color:#003366;
+	font-size:18.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font6
+	{color:#800080;
+	font-size:22.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font7
+	{color:#FF9900;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font8
+	{color:#003366;
+	font-size:15.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font9
+	{color:#808080;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font10
+	{color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font11
+	{color:#800080;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font12
+	{color:#FF0000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font13
+	{color:#003366;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font14
+	{color:#0000FF;
+	font-size:22.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font15
+	{color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font16
+	{color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font17
+	{color:#993300;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font18
+	{color:#008000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font19
+	{color:#FF9900;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font20
+	{color:#333333;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font21
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.style0
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规";
+	mso-style-id:0;}
+.style16
+	{mso-number-format:"_ \0022\00A5\0022* \#\,\#\#0_ \;_ \0022\00A5\0022* \\-\#\,\#\#0_ \;_ \0022\00A5\0022* \\-_ \;_ \@_ ";
+	mso-style-name:"货币[0]";
+	mso-style-id:7;}
+.style17
+	{mso-pattern:auto none;
+	background:#CCFFCC;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"20% - 强调文字颜色 3";}
+.style18
+	{mso-pattern:auto none;
+	background:#FFCC99;
+	color:#333399;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:.5pt solid #808080;
+	mso-style-name:"输入";}
+.style19
+	{mso-number-format:"_ \0022\00A5\0022* \#\,\#\#0\.00_ \;_ \0022\00A5\0022* \\-\#\,\#\#0\.00_ \;_ \0022\00A5\0022* \\-??_ \;_ \@_ ";
+	mso-style-name:"货币";
+	mso-style-id:4;}
+.style20
+	{mso-number-format:"_ * \#\,\#\#0_ \;_ * \\-\#\,\#\#0_ \;_ * \0022-\0022_ \;_ \@_ ";
+	mso-style-name:"千位分隔[0]";
+	mso-style-id:6;}
+.style21
+	{mso-pattern:auto none;
+	background:#00FF00;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"40% - 强调文字颜色 3";}
+.style22
+	{mso-pattern:auto none;
+	background:#FF99CC;
+	color:#800080;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"差";}
+.style23
+	{mso-number-format:"_ * \#\,\#\#0\.00_ \;_ * \\-\#\,\#\#0\.00_ \;_ * \0022-\0022??_ \;_ \@_ ";
+	mso-style-name:"千位分隔";
+	mso-style-id:3;}
+.style24
+	{mso-pattern:auto none;
+	background:#00FF00;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"60% - 强调文字颜色 3";}
+.style25
+	{color:#0000FF;
+	font-size:22.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"超链接";
+	mso-style-id:8;}
+.style26
+	{mso-number-format:"0%";
+	mso-style-name:"百分比";
+	mso-style-id:5;}
+.style27
+	{color:#800080;
+	font-size:22.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"已访问的超链接";
+	mso-style-id:9;}
+.style28
+	{mso-pattern:auto none;
+	background:#FFFFCC;
+	border:.5pt solid #C0C0C0;
+	mso-style-name:"注释";}
+.style29
+	{mso-pattern:auto none;
+	background:#FF8080;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"60% - 强调文字颜色 2";}
+.style30
+	{color:#003366;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"标题 4";}
+.style31
+	{color:#FF0000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"警告文本";}
+.style32
+	{color:#003366;
+	font-size:18.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"标题";}
+.style33
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规 3 2 2";}
+.style34
+	{color:#808080;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"解释性文本";}
+.style35
+	{color:#003366;
+	font-size:15.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border-left:none;
+	border-top:none;
+	border-right:none;
+	border-bottom:1.5pt solid #333399;
+	mso-style-name:"标题 1";}
+.style36
+	{color:#003366;
+	font-size:13.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border-left:none;
+	border-top:none;
+	border-right:none;
+	border-bottom:1.5pt solid #C0C0C0;
+	mso-style-name:"标题 2";}
+.style37
+	{mso-pattern:auto none;
+	background:#0066CC;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"60% - 强调文字颜色 1";}
+.style38
+	{color:#003366;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border-left:none;
+	border-top:none;
+	border-right:none;
+	border-bottom:1.0pt solid #0066CC;
+	mso-style-name:"标题 3";}
+.style39
+	{mso-pattern:auto none;
+	background:#800080;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"60% - 强调文字颜色 4";}
+.style40
+	{mso-pattern:auto none;
+	background:#C0C0C0;
+	color:#333333;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:.5pt solid #333333;
+	mso-style-name:"输出";}
+.style41
+	{mso-pattern:auto none;
+	background:#C0C0C0;
+	color:#FF9900;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:.5pt solid #808080;
+	mso-style-name:"计算";}
+.style42
+	{mso-pattern:auto none;
+	background:#969696;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:2.0pt double #333333;
+	mso-style-name:"检查单元格";}
+.style43
+	{mso-pattern:auto none;
+	background:#FFCC99;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"20% - 强调文字颜色 6";}
+.style44
+	{mso-pattern:auto none;
+	background:#FF0000;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"强调文字颜色 2";}
+.style45
+	{color:#FF9900;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border-left:none;
+	border-top:none;
+	border-right:none;
+	border-bottom:2.0pt double #FF9900;
+	mso-style-name:"链接单元格";}
+.style46
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border-left:none;
+	border-top:.5pt solid #333399;
+	border-right:none;
+	border-bottom:2.0pt double #333399;
+	mso-style-name:"汇总";}
+.style47
+	{mso-pattern:auto none;
+	background:#CCFFCC;
+	color:#008000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"好";}
+.style48
+	{mso-pattern:auto none;
+	background:#FFFF99;
+	color:#993300;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"适中";}
+.style49
+	{mso-pattern:auto none;
+	background:#CCFFFF;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"20% - 强调文字颜色 5";}
+.style50
+	{mso-pattern:auto none;
+	background:#333399;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"强调文字颜色 1";}
+.style51
+	{mso-pattern:auto none;
+	background:#CCCCFF;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"20% - 强调文字颜色 1";}
+.style52
+	{mso-pattern:auto none;
+	background:#99CCFF;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"40% - 强调文字颜色 1";}
+.style53
+	{mso-pattern:auto none;
+	background:#FF99CC;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"20% - 强调文字颜色 2";}
+.style54
+	{mso-pattern:auto none;
+	background:#FF8080;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"40% - 强调文字颜色 2";}
+.style55
+	{mso-pattern:auto none;
+	background:#339966;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"强调文字颜色 3";}
+.style56
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规 2 2_增值税纳税申报表(北京)1";}
+.style57
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规 3 2";}
+.style58
+	{mso-pattern:auto none;
+	background:#800080;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"强调文字颜色 4";}
+.style59
+	{mso-pattern:auto none;
+	background:#CC99FF;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"20% - 强调文字颜色 4";}
+.style60
+	{mso-pattern:auto none;
+	background:#CC99FF;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"40% - 强调文字颜色 4";}
+.style61
+	{mso-pattern:auto none;
+	background:#33CCCC;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"强调文字颜色 5";}
+.style62
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规 2 2";}
+.style63
+	{mso-pattern:auto none;
+	background:#99CCFF;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"40% - 强调文字颜色 5";}
+.style64
+	{mso-pattern:auto none;
+	background:#33CCCC;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"60% - 强调文字颜色 5";}
+.style65
+	{mso-pattern:auto none;
+	background:#FF6600;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"强调文字颜色 6";}
+.style66
+	{mso-pattern:auto none;
+	background:#FFCC00;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"40% - 强调文字颜色 6";}
+.style67
+	{mso-pattern:auto none;
+	background:#FF9900;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-style-name:"60% - 强调文字颜色 6";}
+.style68
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:bottom;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规 2";}
+.style69
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规 3";}
+.style70
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规 3 2_附表一（仅扩围用）";}
+.style71
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:bottom;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规 4";}
+td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-pattern:auto;
+	mso-background-source:auto;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;}
+.xl73
+	{mso-style-parent:style56;
+	mso-font-charset:134;}
+.xl74
+	{mso-style-parent:style56;
+	text-align:center;
+	white-space:normal;
+	font-size:16.0pt;
+	font-weight:700;
+	mso-font-charset:134;}
+.xl75
+	{mso-style-parent:style56;
+	text-align:center;
+	font-size:12.0pt;
+	mso-font-charset:134;}
+.xl76
+	{mso-style-parent:style56;
+	font-size:12.0pt;
+	mso-font-charset:134;}
+.xl77
+	{mso-style-parent:style56;
+	text-align:right;
+	mso-font-charset:134;}
+.xl78
+	{mso-style-parent:style56;
+	text-align:center;
+	white-space:normal;
+	font-size:12.0pt;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+.xl79
+	{mso-style-parent:style56;
+	text-align:center;
+	white-space:normal;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+.xl80
+	{mso-style-parent:style56;
+	text-align:center;
+	font-size:12.0pt;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+.xl81
+	{mso-style-parent:style56;
+	text-align:center;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+.xl82
+	{mso-style-parent:style56;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+ -->  </style>
+<style>
+	#left-menu{
+		width: 25vw;
+		position: fixed;
+	}
+	
+	#container{
+		margin-left: 27vw;
+		margin-top: 20px;
+		width: 920px;
+		min-width:920px;
+		height: 400px;
+		min-height:400px;
+		overflow-x: auto; overflow-y: auto;
+	}
+	#but_position{
+		margin-left:27vw;
+		margin-top: 50px;
+	}
+
+</style>
+</head>
+
+<body>
+<div class="nav">
+  <div class="container"> <a href="http://localhost:8080/views/webviews/user/setting.html"><img src="/img/webimg/logo-white1.png"></a>
+    <ul  id="navigator" class="nav-header">
+    </ul>
+  </div>
+</div>
+
+<!-- Left menu -->
+<div id="left-menu"></div>
+
+<!-- Container -->
+<div id="but_position">
+	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
+	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+</div>
+<div id="container">
+  <table width="1403" border="0" cellpadding="0" cellspacing="0" style='width:701.50pt;border-collapse:collapse;table-layout:fixed;'>
+  
+   <tr height="28" style='height:14.00pt;'>
+    <td class="xl74" height="100" width="1403" colspan="5" rowspan="2" style='height:50.00pt;width:701.50pt;border-right:none;border-bottom:none;' x:str>增值税纳税申报表附列资料（五）<br/>（不动产分期抵扣计算表）</td>
+   </tr>
+   <tr height="72" style='height:36.00pt;mso-height-source:userset;mso-height-alt:720;'/>
+   <tr height="46.50" style='height:23.25pt;mso-height-source:userset;mso-height-alt:465;'>
+    <td class="xl75" height="46.50" colspan="5" style='height:23.25pt;border-right:none;border-bottom:none;' x:str>税款所属时间：<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>年<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>月<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>日至<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>年<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>月<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>日</td>
+   </tr>
+   <tr height="40.50" style='height:20.25pt;mso-height-source:userset;mso-height-alt:405;'>
+    <td class="xl76" height="40.50" style='height:20.25pt;' x:str>纳税人名称</td>
+    <td class="xl75" colspan="3" style='border-right:none;border-bottom:none;'></td>
+    <td class="xl77" x:str>金额单位：元至角分</td>
+   </tr>
+   <tr height="106.50" style='height:53.25pt;mso-height-source:userset;mso-height-alt:1065;'>
+    <td class="xl78" height="106.50" style='height:53.25pt;' x:str>期初待抵扣不动产进项税额</td>
+    <td class="xl78" x:str>本期不动产进项税额增加额</td>
+    <td class="xl78" x:str>本期可抵扣不动产进项税额</td>
+    <td class="xl79" x:str>本期用于不得抵扣进项税额项目的不动产进项税额</td>
+    <td class="xl79" x:str>期末待抵扣不动产进项税额</td>
+   </tr>
+   <tr height="79.50" style='height:39.75pt;mso-height-source:userset;mso-height-alt:795;'>
+    <td class="xl78" height="79.50" style='height:39.75pt;' x:num>1</td>
+    <td class="xl80" x:num>2</td>
+    <td class="xl80" x:str>3≤1+2</td>
+    <td class="xl81" x:num>4</td>
+    <td class="xl81" x:str>5=1+2-3-4</td>
+   </tr>
+   <tr height="73.50" style='height:36.75pt;mso-height-source:userset;mso-height-alt:735;'>
+    <td class="xl78" height="73.50" style='height:36.75pt;'><input style='width:100%;' id='qichudaidikou' class="text"></td>
+    <td class="xl80"><input style='width:100%;' id='benqibudongchan' class="text"></td>
+    <td class="xl80"><input style='width:100%;' id='benqikedikou' class="text"></td>
+    <td class="xl82"><input style='width:100%;' id='benqibukedikou' class="text"></td>
+    <td class="xl82"><input style='width:100%;' id='qimodaidikou' class="text"></td>
+   </tr>
+ 
+  </table>
+</div>
+<div class="mask"></div>
+<div class="footer">
+  <div class="container">
+    <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
+  </div>
+</div>
+<script type="text/javascript">
+$("#submit").on("click", function(){
+	console.log($(".text"));
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		console.log($(this).val());
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+
+	dataSet["class_name"] = "BuDongChanFenQiDiKouBiao";
+	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
+	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
+
+	$.post('/project/addModel', dataSet, function(data){
+		console.log(data);
+		
+	});
+	
+});
+$("#modify").on("click", function(){
+	console.log($(".text"));
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+
+	dataSet['id'] = 1;
+	dataSet["class_name"] = "BuDongChanFenQiDiKouBiao";
+	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
+	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
+	
+	$.post('/project/modifyModel', dataSet, function(data){
+		console.log(data);
+		
+	});
+	
+});
+
+var query = {query_key: 'id', query_value:1, class_name:'BuDongChanFenQiDiKouBiao'};
+$.post("/project/getModel", query, function(data){
+
+	var data = $.parseJSON(data.data)[0];
+
+	for(key in data){
+
+			console.log(data[key]);
+			$("#" + key).val(data[key]);
+		
+	}
+	
+});
+Date.prototype.Format = function(formatStr) {
+	var str = formatStr;
+	var Week = ['日', '一', '二', '三', '四', '五', '六'];
+
+	str = str.replace(/yyyy|YYYY/, this.getFullYear());
+	str = str.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this.getYear() % 100).toString() : '0' + (this.getYear() % 100));
+
+	str = str.replace(/MM/, (this.getMonth() + 1) > 9 ? (this.getMonth() + 1).toString() : '0' + (this.getMonth()+1));
+	str = str.replace(/M/g, this.getMonth());
+
+	str = str.replace(/w|W/g, Week[this.getDay()]);
+
+	str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' + this.getDate());
+	str = str.replace(/d|D/g, this.getDate());
+
+	str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString() : '0' + this.getHours());
+	str = str.replace(/h|H/g, this.getHours());
+	str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes().toString() : '0' + this.getMinutes());
+	str = str.replace(/m/g, this.getMinutes());
+
+	str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' + this.getSeconds());
+	str = str.replace(/s|S/g, this.getSeconds());
+
+	return str;
+}
+</script>
+
+</body>
+
+
+</html>
