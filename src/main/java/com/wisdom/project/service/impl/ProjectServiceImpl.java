@@ -505,6 +505,22 @@ public class ProjectServiceImpl implements IProjectService {
 
 		return kaipiaoshenqingdanlist;
 	}
+	
+	@Override
+	public List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByXiangmutaizhang_id(Long xiangmutaizhang_id) {
+		List<KaiPiaoQingKuangBiao_FenGongSi> list = kaiPiaoQingKuangBiao_FenGongSiMapper
+				.getKaiPiaoQingKuangBiao_FenGongSiByXiangmutaizhang_id(xiangmutaizhang_id);
+
+		return list;
+	}
+	
+	@Override
+	public List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByCompanyId(Long company_id) {
+		List<KaiPiaoQingKuangBiao_FenGongSi> list = kaiPiaoQingKuangBiao_FenGongSiMapper
+				.getKaiPiaoQingKuangBiao_FenGongSiByCompanyId(company_id);
+
+		return list;
+	}
 
 	 @Override
 	    public KaiPiaoQingKuangBiao_XiangMu getKaiPiaoQingKuangBiao_XiangMuById(Long id){

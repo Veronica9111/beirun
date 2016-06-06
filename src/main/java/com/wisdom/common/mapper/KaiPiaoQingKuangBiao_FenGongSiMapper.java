@@ -1,6 +1,7 @@
 package com.wisdom.common.mapper;
-import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
+import java.util.List;
 
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 
 public interface KaiPiaoQingKuangBiao_FenGongSiMapper {
 
@@ -10,4 +11,7 @@ public interface KaiPiaoQingKuangBiao_FenGongSiMapper {
 
     Integer updateKaiPiaoQingKuangBiao_FenGongSi(KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi);
 
+    List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByCompanyId(Long company_id);
+    
+    List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByXiangmutaizhang_id(Long xiangmutaizhang_id);
 }

@@ -80,6 +80,8 @@ public class UserController {
 			List<String> roles = roleService.getUserRoles(uid);
 			if (roles.contains("管理员")){
 				retMap.put("url", "/views/webviews/user/manage.html");
+			}else if(roles.contains("开票人")) {
+				retMap.put("url", "/views/recordviews/create_invoice_1.html");
 			}else{
 				retMap.put("url", "/views/webviews/user/setting.html");
 			}
