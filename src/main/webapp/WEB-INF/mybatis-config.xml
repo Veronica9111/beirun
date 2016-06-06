@@ -159,12 +159,9 @@
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_ZongGongSiMapper.xml" />
 		<mapper
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSiMapper.xml" />
-<<<<<<< HEAD
 		<mapper resource="com/wisdom/common/mapper/BuDongChanFenQiDiKouBiaoMapper.xml"/>
 		<mapper
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml" />
-=======
->>>>>>> c59949ea14fb61b510968827ba9330a09fa1655e
 		<mapper resource="com/wisdom/common/mapper/User_CompanyMapper.xml" />
 	</mappers>
 </configuration>
