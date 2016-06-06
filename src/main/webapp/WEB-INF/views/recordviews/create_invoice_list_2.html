@@ -17,6 +17,7 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
+<script src="/js/webjs/global.js"></script>
 <style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
@@ -1056,52 +1057,7 @@ td
 <div id="container">
 <table id="history-table" class="display" >
 </table>
-<input id="create_invoice" type="button" style="margin-top" value="创建新的申请单" class="btn btn-success btn-sm" />
-<table width='1097' border='0' cellpadding='0' cellspacing='0' style='width:548.50pt;border-collapse:collapse;table-layout:fixed;'>
-  <tr height='35' style='height:17.50pt;'>
-    <td class='xl65' height='35' width='1097' colspan='6' style='height:17.50pt;width:548.50pt;border-right:none;border-bottom:none;' x:str>开票申请单</td>
-   </tr>
-   <tr height='28' style='height:14.00pt;'>
-    <td class='xl66' height='28' style='height:14.00pt;' x:str>分公司名称：</td>
-    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
-    <td class='xl67' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;'></td>
-    <td class='xl66' x:str>项目部：</td>
-    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
-   </tr>
-   <tr height='28' style='height:14.00pt;'>
-    <td class='xl68' height='28' style='height:14.00pt;' x:str>项目名称</td>
-    <td class='xl69' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='xiangmumingcheng'></td>
-    <td class='xl71' x:str>合同总金额</td>
-    <td class='xl71' colspan='2' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='hetongzongjine'></td>
-   </tr>
-   <tr height='28' style='height:14.00pt;'>
-    <td class='xl73' height='112' rowspan='4' style='height:56.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请日期</td>
-    <td class='xl74' rowspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开票内容</td>
-    <td class='xl75' colspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请开票金额 （含税）</td>
-   </tr>
-   <tr height='28' style='height:14.00pt;'>
-    <td class='xl79' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开具发票</td>
-    <td class='xl80' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>收讫款项</td>
-    <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>完工进度</td>
-    <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>其他</td>
-   </tr>
-   <tr height='28' style='height:14.00pt;'/>
-   <tr height='28' style='height:14.00pt;'/>
-   <tr height='28' style='height:14.00pt;'>
-    <td class='xl87' height='28' style='height:14.00pt;' id=''><input class="text" style='width:100%;' id='shenqingriqi'></td>
-    <td class='xl87' id=''><input class="text" style='width:100%;' id='kaipiaoneirong'></td>
-    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='kaijufapiao'></td>
-    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
-    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='wangongjindu'></td>
-    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='qita'></td>
-   </tr>
-   <tr height='28' style='height:14.00pt;'>
-    <td class='xl68' height='28' style='border:none;height:14.00pt;' x:str>填表人：</td>
-    <td class='xl68' style='border:none;'><input class="text" style='border:1pt solid black;width:100%'width:100%' id='tianbiaoren'></td>
-    <td class='xl68' style='border:none;height:14.00pt;' x:str>复核人：</td>
-    <td class='xl68' style='border:none;'><input class="text" style='border:1pt solid black;width:100%'width:100%' id='fuheren'></td>
-   </tr>
-  </table>
+<input id="create_invoice" type="button" style="margin-top" value="创建新的开票申请单" class="btn btn-success btn-sm" />
 </div>
 <div class="mask"></div>
 <div class="footer">
@@ -1110,46 +1066,59 @@ td
   </div>
 </div>
 
-
-</body>
 <script type="text/javascript">
-$('#create_invoice').click(function(){
-	window.location="/project/redirectView?view=create_invoice_2.html&test=1";
-});
-var query = {query_key: 'xiangmutaizhang_id', query_value:1, class_name:'KaiPiaoQingKuangBiao_XiangMu'};
-$.post("/project/getModel", query, function(data){
-	 dataSet  = $.parseJSON(data.data);
-	$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
-   	data: dataSet,
-   	"order": [[ 0, "desc" ]],
-   	"oLanguage": {
-   	    "sSearch": "查找 ",
-   	    oPaginate: {
-   	    	'sPrevious': "上一页",
-   	    	'sNext': "下一页",
-   	    }
-   	  },
-   	  pageLength:10,
-	    columns: [
-			{ title: "ID" },
-	        { title: "申请开票时间" },
-	        { title: "不含税金额" },
-	        { title: "税额" },
-	        { title: "合计金额" },
-	        { title: "开具发票" },
-	        { title: "收讫款项" },
-	        { title: "完工进度" },
-	        { title: "其它" },
-	        { title: "已开票金额" },
-	        { title: "一级审核人" },
-	        { title: "一级审核状态" },
-	        { title: "一级审核备注" },
-	        { title: "二级审核人" },
-	        { title: "二级审核状态" },
-	        { title: "二级审核备注" }
-	    ]
-	} );
-});
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+})(jQuery);
+var xiangmutaizhangIdParam = $.getUrlParam('param');
+function startPageJS(){
+	console.log(global);
+	$('#create_invoice').click(function(){
+		window.location="/project/redirectView?view=create_invoice_2.html&param="+xiangmutaizhangIdParam;
+	});
+	var query = {query_key: 'xiangmutaizhang_id', query_value:xiangmutaizhangIdParam, class_name:'KaiPiaoQingKuangBiao_XiangMu'};
+	$.post("/project/getModel", query, function(data){
+		 dataSet  = $.parseJSON(data.data);
+		$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
+	   	data: dataSet,
+	   	"order": [[ 0, "desc" ]],
+	   	"oLanguage": {
+	   	    "sSearch": "查找 ",
+	   	    oPaginate: {
+	   	    	'sPrevious': "上一页",
+	   	    	'sNext': "下一页",
+	   	    }
+	   	  },
+	   	  pageLength:10,
+		    columns: [
+				{ title: "ID" },
+		        { title: "申请开票时间" },
+		        { title: "不含税金额" },
+		        { title: "税额" },
+		        { title: "合计金额" },
+		        { title: "开具发票" },
+		        { title: "收讫款项" },
+		        { title: "完工进度" },
+		        { title: "其它" },
+		        { title: "已开票金额" },
+		        { title: "一级审核人" },
+		        { title: "一级审核状态" },
+		        { title: "一级审核备注" },
+		        { title: "二级审核人" },
+		        { title: "二级审核状态" },
+		        { title: "二级审核备注" }
+		    ]
+		} );
+	});
+}
+function nodeClick(node){
+	
+}
 </script>
+</body>
 
 </html>

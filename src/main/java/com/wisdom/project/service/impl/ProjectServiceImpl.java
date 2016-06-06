@@ -581,6 +581,7 @@ public class ProjectServiceImpl implements IProjectService {
 
 	@Override
 	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz) {
+		@SuppressWarnings("unused")
 		Integer result = xiangmutaizhangMapper.addXiangMuTaiZhang(xmtz);
 		/*
 		 * xmtz = xmtz; Long id = xmtz.getId(); String hetongqiandingshijian =
