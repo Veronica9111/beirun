@@ -45,7 +45,11 @@ select id,fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidi
 from xiangmutaizhang
 where id=#{id}
 </select>
-
+<select id="getXiangMuTaiZhangByCompany_id" parameterType="Long" resultType="XiangMuTaiZhang">
+select id,fengongsimingcheng,xiangmubu,danweimingcheng,fadingdaibiaoren_lianxidianhua,nashuirenshibiehao,kaihuyinhang_yinhangzhanghao,danweidizhi_lianxidianhua,xiangmumingcheng,xiangmufuzeren_lianxidianhua,nashuileixing,hetongleixing,shuilv,zhengshoulv,buhanshuijine,shuie,hejijine,juesuanjine,yujihetongzongchengben,hetongqiandingshijian,hetongkaigongshijian,kaigongxukezhengshijian,yujiwangongshijian,hetongfukuanfangshi,company_id
+from xiangmutaizhang
+where company_id=#{company_id}
+</select>
 <update id="updateTime">
 update xiangmutaizhang set hetongqiandingshijian=#{hetongqiandingshijian}
 where id=#{id}

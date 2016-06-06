@@ -895,9 +895,9 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="create_new_project" style="" disabled type="button" value="创建新项目" class="btn btn-success btn-sm" />
+	<input id="create_new_project" disabled type="button" value="创建新项目" class="btn btn-success btn-sm" />
 	<input id="create_invoice" style="display:none;" type="button" value="创建开票申请" class="btn btn-success btn-sm" />
-	<input id="update_base_info"  style="display:none;" disabled type="button" value="更新基本信息" class="btn btn-success btn-sm" />
+	<input id="update_project_info"  style="display:none;" disabled type="button" value="更新基本信息" class="btn btn-success btn-sm" />
 </div>
 <div id="container" style="display:none;">
 <table width='1333' border='0' cellpadding='0' cellspacing='0' style='margin-bottom:20px;width:666.50pt;border-collapse:collapse;table-layout:fixed;'>
@@ -1019,7 +1019,7 @@ function startPageJS(){
 console.log(global);
 $("#create_new_project").on("click", function(){
 	
-}
+});
 $("#submit").on("click", function(){
 	console.log($(".text"));
 	var hetongleixing = $('input:checked', '#hetongleixing').val();
@@ -1069,38 +1069,47 @@ $("#modify").on("click", function(){
 });
 }
 
+$("#create_invoice").click(function(){
+	window.location="/project/redirectView?view=create_invoice_2.html&test=1";
+});
+
 function nodeClick(node){
 	console.log(node);
-	var parentNode = $('#left-menu').treeview('getParent', node);
-	console.log(parentNode);
-	var query = {query_key: 'id', query_value:1, class_name:'XiangMuTaiZhang'};
-	$.post("/project/getModel", query, function(data){
-
-		var data = $.parseJSON(data.data)[0];
-		console.log(data);
-		if(data == null || data == undefined || data.length == 0) {
-			$("#create_base_info").show();
-		} else {
-			$("#update_base_info").show();
-			$("#create_invoice").show();
-			$("#create_invoice").click(function(){
-				window.location="/project/redirectView?view=create_invoice_2.html&test=1";
-			});
-			for(key in data){
-				if(key=="hetongleixing") {
-					$("input[type=radio][name=hetongleixing_select][value='"+data[key]+"']").attr("checked",true);  
-				} if(key=="nashuileixing") {
-					$("input[type=radio][name=jiaoshuileixing_select][value='"+data[key]+"']").attr("checked",true); 
-				} else if(key=="hetongfukuanfangshi"){
-					$("input[type=radio][name=hetongfukuanfangshi_select][value='"+data[key]+"']").attr("checked",true); 
-				} else {
-					console.log(data[key]);
-					$("#" + key).val(data[key]);
+	/* var parentNode = $('#left-menu').treeview('getParent', node);
+	console.log(parentNode); */
+	if(node.level == "0") {
+		$("#container").hide();
+		$("#update_project_info").hide();
+		$("#create_invoice").hide();
+		$("#create_new_project").attr("disabled", "true");
+		//清除表中数据
+	} else if(node.level == "1") {
+		var query = {query_key: 'company_id', query_value:node.company_id, class_name:'XiangMuTaiZhang'};
+		$.post("/project/getModel", query, function(data){
+			$("#container").show();
+			var data = $.parseJSON(data.data)[0];
+			console.log(data);
+			if(data == null || data == undefined || data.length == 0) {
+				$("#create_new_project").removeAttr("disabled");
+			} else {
+				$("#update_project_info").show();
+				$("#create_invoice").show();
+				for(key in data){
+					if(key=="hetongleixing") {
+						$("input[type=radio][name=hetongleixing_select][value='"+data[key]+"']").attr("checked",true);  
+					} if(key=="nashuileixing") {
+						$("input[type=radio][name=jiaoshuileixing_select][value='"+data[key]+"']").attr("checked",true); 
+					} else if(key=="hetongfukuanfangshi"){
+						$("input[type=radio][name=hetongfukuanfangshi_select][value='"+data[key]+"']").attr("checked",true); 
+					} else {
+						console.log(data[key]);
+						$("#" + key).val(data[key]);
+					}
 				}
-			}
-	    }
-		
-	});
+		    }
+			
+		});
+	}
 }
 </script>
 
