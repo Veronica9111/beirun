@@ -27,7 +27,6 @@ private Long xiangmutaizhang_id;
     public KaiPiaoQingKuangBiao_XiangMu() {
         super();
     }
-
     public KaiPiaoQingKuangBiao_XiangMu(String beizhu, Double hejijine, Double yikaipiaojine, String wangongjindu, Integer erji_shenhe_status, String yijishenheren, Double qita, Timestamp shengqingkaipiaoshijian, Integer yiji_shenhe_status, Double shuie, Double buhanshuijine, String erjishenheren, Double fenbaofapiao, String erji_shenhe_beizhu, String yiji_shenhe_beizhu, Double shouqikuanxiang, Double kaijufapiao, Long id, Long xiangmutaizhang_id){
         this.beizhu = beizhu;
         this.hejijine = hejijine;

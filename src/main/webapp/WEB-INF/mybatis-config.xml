@@ -44,6 +44,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="KaiPiaoQingKuangBiao_XiangMu" type="com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu" />
 		<typeAlias alias="KaiPiaoQingKuangBiao_ZongGongSi" type="com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi" />
 		<typeAlias alias="XiaoXiang_XiangMu" type="com.wisdom.common.model.XiaoXiang_XiangMu" />
+		<typeAlias alias="KaiPiaoQingKuangBiao_XiangMu" type="com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu" />
   </typeAliases>
   <mappers>
 
@@ -79,6 +80,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mapper resource="com/wisdom/common/mapper/YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.xml"/>
     <mapper resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_ZongGongSiMapper.xml"/>
     <mapper resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSiMapper.xml"/>
+    <mapper resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml"/>
   </mappers>
 
 </configuration>

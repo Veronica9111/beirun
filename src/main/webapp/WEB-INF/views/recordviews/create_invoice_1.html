@@ -17,6 +17,7 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
+<script src="/js/webjs/global.js"></script>
 <style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
@@ -894,11 +895,12 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
-	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+	<input id="create_base_info" style="display:none;" disabled type="button" value="创建基本信息" class="btn btn-success btn-sm" />
+	<input id="create_invoice" style="display:none;" type="button" value="创建开票申请" class="btn btn-success btn-sm" />
+	<input id="update_base_info"  style="display:none;" disabled type="button" value="更新基本信息" class="btn btn-success btn-sm" />
 </div>
 <div id="container">
-<table width='1333' border='0' cellpadding='0' cellspacing='0' style='width:666.50pt;border-collapse:collapse;table-layout:fixed;'>
+<table width='1333' border='0' cellpadding='0' cellspacing='0' style='margin-bottom:20px;width:666.50pt;border-collapse:collapse;table-layout:fixed;'>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl66' height='28' colspan='2' style='text-align:left;height:14.00pt;border-right:none;border-bottom:none;' x:str>分公司名称：</td>
 	<td class='xl66' height='28' colspan='3' style='height:14.00pt;border-right:none;border-bottom:none;' x:str id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
@@ -948,10 +950,10 @@ td
 </td>
    </tr>
     <tr height='28' style='height:14.00pt;'>
-    <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>缴税类型</td>
+    <td class='xl69' height='28' colspan='2' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>计税方式</td>
     <td class='xl70' colspan='8' style='text-align:left;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'>
 	<form id='nashuileixing' style='height:20px;line-height:20px;'>
-  		<input type='radio' name='jiaoshuileixing_select' value='yibannashuiren' checked>一般纳税
+  		<input type='radio' name='jiaoshuileixing_select' value='yibannashuiren' checked>一般计税
   		<input type='radio' name='jiaoshuileixing_select' value='jianyijishui'>简易计税
 	</form>
 </td>
@@ -1013,6 +1015,8 @@ td
   </div>
 </div>
 <script type="text/javascript">
+function startPageJS(){
+console.log(global);
 $("#submit").on("click", function(){
 	console.log($(".text"));
 	var hetongleixing = $('input:checked', '#hetongleixing').val();
@@ -1066,20 +1070,36 @@ $.post("/project/getModel", query, function(data){
 
 	var data = $.parseJSON(data.data)[0];
 	console.log(data);
-	for(key in data){
-		if(key=="hetongleixing") {
-			$("input[type=radio][name=hetongleixing_select][value='"+data[key]+"']").attr("checked",true);  
-		} if(key=="nashuileixing") {
-			$("input[type=radio][name=jiaoshuileixing_select][value='"+data[key]+"']").attr("checked",true); 
-		} else if(key=="hetongfukuanfangshi"){
-			$("input[type=radio][name=hetongfukuanfangshi_select][value='"+data[key]+"']").attr("checked",true); 
-		} else {
-			console.log(data[key]);
-			$("#" + key).val(data[key]);
+	if(data == null || data == undefined || data.length == 0) {
+		$("#create_base_info").show();
+	} else {
+		$("#update_base_info").show();
+		$("#create_invoice").show();
+		$("#create_invoice").click(function(){
+			window.location="/project/redirectView?view=create_invoice_2.html&test=1";
+		});
+		for(key in data){
+			if(key=="hetongleixing") {
+				$("input[type=radio][name=hetongleixing_select][value='"+data[key]+"']").attr("checked",true);  
+			} if(key=="nashuileixing") {
+				$("input[type=radio][name=jiaoshuileixing_select][value='"+data[key]+"']").attr("checked",true); 
+			} else if(key=="hetongfukuanfangshi"){
+				$("input[type=radio][name=hetongfukuanfangshi_select][value='"+data[key]+"']").attr("checked",true); 
+			} else {
+				console.log(data[key]);
+				$("#" + key).val(data[key]);
+			}
 		}
-	}
+    }
 	
 });
+}
+
+function nodeClick(node){
+	console.log(node);
+	var parentNode = $('#left-menu').treeview('getParent', node);
+	console.log(parentNode);
+}
 </script>
 
 </body>
