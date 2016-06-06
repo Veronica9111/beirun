@@ -364,10 +364,6 @@
   		<property name="mapperInterface" value="com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper" />
   		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	<bean id="KaiPiaoQingKuangBiao_XiangMuMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-	    <property name="mapperInterface" value="com.wisdom.common.mapper.KaiPiaoQingKuangBiao_XiangMuMapper" />
-	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
 	<bean id="projectServiceImpl" class="com.wisdom.project.service.impl.ProjectServiceImpl">
 		<property name="XiangMuTaiZhangMapper" ref="XiangMuTaiZhangMapper" />
 		<property name="JianYiJiShuiFangFaZhuanPiaoJiShuiMapper" ref="JianYiJiShuiFangFaZhuanPiaoJiShuiMapper" />
