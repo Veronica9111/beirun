@@ -14,7 +14,7 @@ var timeStamp = d.getFullYear() + "-" + month + "-" + date;
 global.timeStamp = timeStamp;
 
 $.post('/user/getRoles',{},function(data){
-	if(data.data == []){
+	if(data.data.length == 0){
 		alert("访问已超时，请重新登录！");
 		window.location.href="/views/frontviews/index.html";
 
@@ -22,12 +22,11 @@ $.post('/user/getRoles',{},function(data){
 		var roles = data.data;
 		global.roles = roles;
 		$.post('/user/getUserName',{},function(data){
-			if(data.data == ""){
+			if(data.data == ""||data.data == null){
 				alert("访问已超时，请重新登录！");
 				window.location.href="/views/frontviews/index.html";		
 			}else{
 				var userName = data.data;
-				console.log(data);
 				global.userName = userName;
 				startPageJS();
 				
