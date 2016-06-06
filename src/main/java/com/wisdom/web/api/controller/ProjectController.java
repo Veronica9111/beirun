@@ -397,6 +397,7 @@ public class ProjectController {
 				approveStatus = "审核未通过";
 			}
 			tmp.add(approveStatus);
+			tmp.add(elem.getYiji_shenhe_beizhu());
 			tmp.add(elem.getErjishenheren());
 			String approveStatus2 = "未审核";
 			if(elem.getErji_shenhe_status() == 1){
@@ -405,7 +406,6 @@ public class ProjectController {
 				approveStatus2 = "审核未通过";
 			}
 			tmp.add(approveStatus2);
-			tmp.add(elem.getYiji_shenhe_beizhu());
 			tmp.add(elem.getErji_shenhe_beizhu());
 			retList.add(tmp);
 			if(elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0){
@@ -462,7 +462,9 @@ public class ProjectController {
 				approveStatus = "审核未通过";
 			}
 			tmp.add(approveStatus);
+			tmp.add(elem.getYiji_shenhe_beizhu());
 			tmp.add(elem.getErjishenheren());
+
 			String approveStatus2 = "未审核";
 			if(elem.getErji_shenhe_status() == 1){
 				approveStatus2 = "审核通过";
@@ -470,7 +472,6 @@ public class ProjectController {
 				approveStatus2 = "审核未通过";
 			}
 			tmp.add(approveStatus2);
-			tmp.add(elem.getYiji_shenhe_beizhu());
 			tmp.add(elem.getErji_shenhe_beizhu());
 
 			if(elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0){
