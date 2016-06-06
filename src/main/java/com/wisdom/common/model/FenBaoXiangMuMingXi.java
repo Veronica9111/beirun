@@ -42,12 +42,13 @@ private Double fb_3_fenbaohetongjine;
 private Double fb_heji_5_fenbaohetongjine;
 private Timestamp shenheshijian;
 private String tiaobiaoren;
+private Long kaipiaoshenqingdan_id;
 private String shenherendianhua;
     public FenBaoXiangMuMingXi() {
         super();
     }
 
-    public FenBaoXiangMuMingXi(String fengongsimingcheng, String tianbiaorendianhua, String fb_mianshui_fapiaohaoma, Double fb_heji_mianshui_fenbaohetongjine, String fb_6_fapiaohaoma, Double fb_heji_miandi_fenbaohetongjine, Timestamp fb_mianshui_riqi, String fuheren, Double fb_heji_6_fenbaohetongjine, Timestamp tianbiaoshijian, Timestamp fb_11_riqi, String fb_miandi_fapiaohaoma, Double fb_5_fenbaohetongjine, Long id, Double fb_17_fenbaohetongjine, Double fb_heji_17_fenbaohetongjine, Timestamp fb_17_riqi, String fb_17_fapiaohaoma, Timestamp fb_6_riqi, Double fb_11_fenbaohetongjine, Double fb_6_fenbaohetongjine, Double fb_mianshui_fenbaohetongjine, Timestamp fb_5_riqi, Timestamp fb_3_riqi, String shenheren, String fb_5_fapiaohaoma, Double fb_miandi_fenbaohetongjine, String fb_3_fapiaohaoma, Timestamp fb_miandi_riqi, Double fb_heji_11_fenbaohetongjine, Double fb_heji_3_fenbaohetongjine, String fb_11_fapiaohaoma, String xiangmubu, Double fb_3_fenbaohetongjine, Double fb_heji_5_fenbaohetongjine, Timestamp shenheshijian, String tiaobiaoren, String shenherendianhua){
+    public FenBaoXiangMuMingXi(String fengongsimingcheng, String tianbiaorendianhua, String fb_mianshui_fapiaohaoma, Double fb_heji_mianshui_fenbaohetongjine, String fb_6_fapiaohaoma, Double fb_heji_miandi_fenbaohetongjine, Timestamp fb_mianshui_riqi, String fuheren, Double fb_heji_6_fenbaohetongjine, Timestamp tianbiaoshijian, Timestamp fb_11_riqi, String fb_miandi_fapiaohaoma, Double fb_5_fenbaohetongjine, Long id, Double fb_17_fenbaohetongjine, Double fb_heji_17_fenbaohetongjine, Timestamp fb_17_riqi, String fb_17_fapiaohaoma, Timestamp fb_6_riqi, Double fb_11_fenbaohetongjine, Double fb_6_fenbaohetongjine, Double fb_mianshui_fenbaohetongjine, Timestamp fb_5_riqi, Timestamp fb_3_riqi, String shenheren, String fb_5_fapiaohaoma, Double fb_miandi_fenbaohetongjine, String fb_3_fapiaohaoma, Timestamp fb_miandi_riqi, Double fb_heji_11_fenbaohetongjine, Double fb_heji_3_fenbaohetongjine, String fb_11_fapiaohaoma, String xiangmubu, Double fb_3_fenbaohetongjine, Double fb_heji_5_fenbaohetongjine, Timestamp shenheshijian, String tiaobiaoren, Long kaipiaoshenqingdan_id, String shenherendianhua){
         this.fengongsimingcheng = fengongsimingcheng;
         this.tianbiaorendianhua = tianbiaorendianhua;
         this.fb_mianshui_fapiaohaoma = fb_mianshui_fapiaohaoma;
@@ -85,6 +86,7 @@ private String shenherendianhua;
         this.fb_heji_5_fenbaohetongjine = fb_heji_5_fenbaohetongjine;
         this.shenheshijian = shenheshijian;
         this.tiaobiaoren = tiaobiaoren;
+        this.kaipiaoshenqingdan_id = kaipiaoshenqingdan_id;
         this.shenherendianhua = shenherendianhua;
     }
 
@@ -427,6 +429,14 @@ private String shenherendianhua;
 
     public void setTiaobiaoren(String tiaobiaoren){
         this.tiaobiaoren = tiaobiaoren;
+    }
+
+    public Long getKaipiaoshenqingdan_id() {
+        return kaipiaoshenqingdan_id;
+    }
+
+    public void setKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id){
+        this.kaipiaoshenqingdan_id = kaipiaoshenqingdan_id;
     }
 
     public String getShenherendianhua() {
