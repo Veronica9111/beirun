@@ -1038,12 +1038,11 @@ $("#submit").on("click", function(){
 	dataSet["class_name"] = "XiangMuTaiZhang";
 	dataSet["company_id"] = "1111";
 	$.post('/project/addModel', dataSet, function(data){
-		console.log(data);
-		
+		console.log(data);	
 	});
 	
 });
-$("#modify").on("click", function(){
+$("#update_project_info").on("click", function(){
 	console.log($(".text"));
 	var hetongleixing = $('input:checked', '#hetongleixing').val();
 	var nashuileixing = $('input:checked', '#nashuileixing').val();
@@ -1094,6 +1093,7 @@ function nodeClick(node){
 			} else {
 				$("#update_project_info").show();
 				$("#create_invoice").show();
+				$("#update_project_info").removeAttr("disabled");
 				for(key in data){
 					if(key=="hetongleixing") {
 						$("input[type=radio][name=hetongleixing_select][value='"+data[key]+"']").attr("checked",true);  
