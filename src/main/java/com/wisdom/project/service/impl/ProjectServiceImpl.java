@@ -30,6 +30,7 @@ import com.wisdom.common.mapper.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMap
 import com.wisdom.common.mapper.QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper;
 import com.wisdom.common.mapper.RecordMapper;
 import com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper;
+import com.wisdom.common.mapper.User_CompanyMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.mapper.XiaoXiang_XiangMuMapper;
 import com.wisdom.common.mapper.YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper;
@@ -51,6 +52,7 @@ import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.Record;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
+import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.common.model.XiaoXiang_XiangMu;
 import com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng;
@@ -91,7 +93,8 @@ public class ProjectServiceImpl implements IProjectService {
     private FenBaoXiangMuMingXiMapper fenBaoXiangMuMingXiMapper;
 	
 	
-	
+    @Autowired
+    private User_CompanyMapper user_CompanyMapper;
 	
 	
 	
@@ -197,6 +200,15 @@ public class ProjectServiceImpl implements IProjectService {
 		this.jianYiJiShuiFangFaPuPiaoJiShuiMapper = jianYiJiShuiFangFaPuPiaoJiShuiMapper;
 	}
 
+    public void setUser_CompanyMapper(User_CompanyMapper user_CompanyMapper){
+        this.user_CompanyMapper = user_CompanyMapper;
+    }
+
+    public User_CompanyMapper getUser_CompanyMapper() {
+        return user_CompanyMapper;
+    }
+
+	
 	private static final Logger logger = LoggerFactory.getLogger(ProjectServiceImpl.class);
 
 	public void setXiangMuTaiZhangMapper(XiangMuTaiZhangMapper xiangmutaizhangMapper) {
@@ -292,12 +304,12 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 	@Override
-	public List<Map<String, Object>> getMenu() {
+	public List<Map<String, Object>> getMenu(Integer uid) {
 		/*
 		 * [ {'text':name, 'nodes': [{},{}]} ]
 		 */
 		List<Map<String, Object>> retList = new ArrayList<>();
-		List<Company> companies = companyMapper.getAllCompanies();
+		//List<Company> companies = companyMapper.getAllCompanies();
 		List<Object> thirdList = new ArrayList<>();
 		for(Integer i = 0; i < 5; i++){
 			Map<String, Object> thirdLeaf = new HashMap<>();
@@ -326,6 +338,8 @@ public class ProjectServiceImpl implements IProjectService {
 			firstList.add(firstLeaf);
 		}
 		
+
+		List<Company> companies = this.getCompaniesByUid(uid);
 		
 		for (Company company : companies) {
 			if (company.getLevel() == 0) {
@@ -735,5 +749,29 @@ public class ProjectServiceImpl implements IProjectService {
 			// TODO Auto-generated method stub
 			return null;
 		}
+		
+	    @Override
+	    public User_Company getUser_CompanyById(Long id){
+	        return user_CompanyMapper.getUser_CompanyById(id);
+	    }
+
+	    @Override
+	    public Boolean addUser_Company(User_Company user_Company){
+	        user_CompanyMapper.addUser_Company(user_Company);
+	        return true;
+	    }
+
+	    @Override
+	    public Boolean updateUser_Company(User_Company user_Company){
+	        user_CompanyMapper.updateUser_Company(user_Company);
+	        return true;
+	    }
+
+		@Override
+		public List<Company> getCompaniesByUid(Integer uid) {
+			return companyMapper.getCompaniesByUid(uid);
+
+		}
+
 	    
 }

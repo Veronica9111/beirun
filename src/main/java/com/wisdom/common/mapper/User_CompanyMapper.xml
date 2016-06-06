@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.User_CompanyMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.User_Company" id="User_Company">
+<result property="company_id" column="company_id"/>
+<result property="user_id" column="user_id"/>
+<result property="id" column="id"/>
+</resultMap>
+
+<select id="getUser_CompanyById" resultType="User_Company">
+select company_id,user_id,id
+from user_company
+where id=#{id}
+</select>
+
+<update id="updateUser_Company">
+update user_company set company_id=#{company_id},user_id=#{user_id},id=#{id}
+where id=#{id}
+</update>
+
+<insert id="addUser_Company">
+insert into user_company (company_id,user_id,id)
+values (#{company_id},#{user_id},#{id})
+</insert>
+
+</mapper>

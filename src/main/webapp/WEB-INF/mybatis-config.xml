@@ -43,6 +43,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="FenBaoXiangMuMingXi" type="com.wisdom.common.model.FenBaoXiangMuMingXi" />
 		<typeAlias alias="XiaoXiang_XiangMu" type="com.wisdom.common.model.XiaoXiang_XiangMu" />
 		<typeAlias alias="KaiPiaoQingKuangBiao_XiangMu" type="com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu" />
+ 		<typeAlias alias="User_Company" type="com.wisdom.common.model.User_Company" />
   </typeAliases>
   <mappers>
 
@@ -77,6 +78,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mapper resource="com/wisdom/common/mapper/YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.xml"/>
     <mapper resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSiMapper.xml"/>
     <mapper resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml"/>
+    <mapper resource="com/wisdom/common/mapper/User_CompanyMapper.xml"/>
   </mappers>
 
 </configuration>

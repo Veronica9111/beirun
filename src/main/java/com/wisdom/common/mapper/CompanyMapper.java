@@ -11,6 +11,8 @@ public interface CompanyMapper {
 
 	List<Company> getAllCompanies();
 	
+	List<Company> getCompaniesByUid(Integer uid);
+	
 	
 }
 

@@ -332,20 +332,13 @@ public class ProjectController {
 		
 	@RequestMapping("/getMenu")
 	@ResponseBody
-	public Map<String, String> getMenu(HttpServletRequest request){
+	public Map<String, String> getMenu(HttpServletRequest request, HttpSession httpSession){
 		Map<String, String> retMap = new HashMap<>();
 		Map<String, List<Map<String, List<String>>>> menu = new HashMap<>();
-		/*Integer companyId = Integer.valueOf(request.getParameter("company_id"));
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
 		
-		List<XiangMuTaiZhang> projects = projectService.getProjectsByCompanyId(companyId);
-		List<String> projectNames = new ArrayList<>();
-		for(XiangMuTaiZhang project: projects){
-			projectNames.add(project.getXiangmumingcheng());
-		}
-		String data = JSONArray.fromObject(projectNames).toString();*/
-		
-		List<Map<String, Object>> menus = projectService.getMenu();
-		String data = JSONArray.fromObject(menus).toString();
+		List<Map<String, Object>> menus = projectService.getMenu(uid);
+		String data = JSONArray.fromObject(menus).toString(uid);
 		retMap.put("data", data);
 		
 		return retMap;

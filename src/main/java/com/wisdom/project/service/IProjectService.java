@@ -9,11 +9,13 @@ import java.util.Map;
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
+import com.wisdom.common.model.Company;
 import com.wisdom.common.model.FenBaoXiangMuMingXi;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
+import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi_YiBan;
 import com.wisdom.common.model.XiangMuTaiZhang;
@@ -46,7 +48,7 @@ public interface IProjectService {
 	
 	public List<XiangMuTaiZhang> getProjectsByCompanyId(Integer companyId);
 	
-	public List<Map<String, Object>> getMenu();
+	public List<Map<String, Object>> getMenu(Integer uid);
 	
 	public List<KaiPiaoShenQingDan> getKaiPiaoShenQingDanByProjectId(Long projectId);
 	
@@ -153,4 +155,12 @@ public interface IProjectService {
 	public Boolean addYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(YiBanJiShuiFangFaNaShuiJianChaTiaoZheng yiBanJiShuiFangFaNaShuiJianChaTiaoZheng);
 
 	public Boolean updateYiBanJiShuiFangFaNaShuiJianChaTiaoZheng(YiBanJiShuiFangFaNaShuiJianChaTiaoZheng yiBanJiShuiFangFaNaShuiJianChaTiaoZheng);
+
+	public User_Company getUser_CompanyById(Long id);
+
+	public Boolean addUser_Company(User_Company user_Company);
+
+	public Boolean updateUser_Company(User_Company user_Company);
+	
+	public List<Company> getCompaniesByUid(Integer uid);
 }
