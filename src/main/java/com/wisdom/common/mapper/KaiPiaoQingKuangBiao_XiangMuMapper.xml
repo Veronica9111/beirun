@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
         'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
-<mapper namespace="com.wisdom.common.mapper.KaiPiaoQingKuangBiao_FenGongSiMapper">
+<mapper namespace="com.wisdom.common.mapper.KaiPiaoQingKuangBiao_XiangMuMapper">
 <cache />
 
-<resultMap type="com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi" id="KaiPiaoQingKuangBiao_FenGongSi">
+<resultMap type="com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu" id="KaiPiaoQingKuangBiao_XiangMu">
 <result property="beizhu" column="beizhu"/>
 <result property="hejijine" column="hejijine"/>
 <result property="yikaipiaojine" column="yikaipiaojine"/>
@@ -26,19 +26,19 @@
 <result property="xiangmutaizhang_id" column="xiangmutaizhang_id"/>
 </resultMap>
 
-<select id="getKaiPiaoQingKuangBiao_FenGongSiById" resultType="KaiPiaoQingKuangBiao_FenGongSi">
+<select id="getKaiPiaoQingKuangBiao_XiangMuById" resultType="KaiPiaoQingKuangBiao_XiangMu">
 select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
-from kaipiaoqingkuangbiao_fengongsi
+from kaipiaoqingkuangbiao_xiangmu
 where id=#{id}
 </select>
 
-<update id="updateKaiPiaoQingKuangBiao_FenGongSi">
-update kaipiaoqingkuangbiao_fengongsi set beizhu=#{beizhu},hejijine=#{hejijine},yikaipiaojine=#{yikaipiaojine},wangongjindu=#{wangongjindu},erji_shenhe_status=#{erji_shenhe_status},yijishenheren=#{yijishenheren},qita=#{qita},shengqingkaipiaoshijian=#{shengqingkaipiaoshijian},yiji_shenhe_status=#{yiji_shenhe_status},shuie=#{shuie},buhanshuijine=#{buhanshuijine},erjishenheren=#{erjishenheren},fenbaofapiao=#{fenbaofapiao},erji_shenhe_beizhu=#{erji_shenhe_beizhu},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu},shouqikuanxiang=#{shouqikuanxiang},kaijufapiao=#{kaijufapiao},id=#{id},xiangmutaizhang_id=#{xiangmutaizhang_id}
+<update id="updateKaiPiaoQingKuangBiao_XiangMu">
+update kaipiaoqingkuangbiao_xiangmu set beizhu=#{beizhu},hejijine=#{hejijine},yikaipiaojine=#{yikaipiaojine},wangongjindu=#{wangongjindu},erji_shenhe_status=#{erji_shenhe_status},yijishenheren=#{yijishenheren},qita=#{qita},shengqingkaipiaoshijian=#{shengqingkaipiaoshijian},yiji_shenhe_status=#{yiji_shenhe_status},shuie=#{shuie},buhanshuijine=#{buhanshuijine},erjishenheren=#{erjishenheren},fenbaofapiao=#{fenbaofapiao},erji_shenhe_beizhu=#{erji_shenhe_beizhu},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu},shouqikuanxiang=#{shouqikuanxiang},kaijufapiao=#{kaijufapiao},id=#{id},xiangmutaizhang_id=#{xiangmutaizhang_id}
 where id=#{id}
 </update>
 
-<insert id="addKaiPiaoQingKuangBiao_FenGongSi">
-insert into kaipiaoqingkuangbiao_fengongsi (beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id)
+<insert id="addKaiPiaoQingKuangBiao_XiangMu">
+insert into kaipiaoqingkuangbiao_xiangmu (beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id)
 values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{fenbaofapiao},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id},#{xiangmutaizhang_id})
 </insert>
 
