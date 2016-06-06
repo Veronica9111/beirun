@@ -407,4 +407,14 @@ public class UserController {
 		retMap.put("data", data);
 		return retMap;
 	}
+	
+	@RequestMapping("/user/getUserName")
+	@ResponseBody	
+	public Map<String, String>getUserName(HttpSession httpSession, HttpServletRequest request){
+		Map<String, String> retMap = new HashMap<>();
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		Map<String, String> user = userService.getUserById(uid);
+		retMap.put("data", user.get("name"));
+		return retMap;
+	}
 }
