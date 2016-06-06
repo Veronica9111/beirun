@@ -54,7 +54,9 @@
 
 <!-- Container -->
 <div id="container">
-<table id="history-table" class="display" ></table>
+<table id="history-table" class="display" >
+<input id="create_invoice" type="button" style="margin-top" value="创建申请单" class="btn btn-success btn-sm" />
+</table>
 </div>
 <div class="mask"></div>
 <div class="footer">
@@ -66,11 +68,14 @@
 
 </body>
 <script type="text/javascript">
+$('#create_invoice').click(function(){
+	window.location="/project/redirectView?view=create_invoice_2.html&test=1";
+});
 var query = {query_key: 'xiangmutaizhang_id', query_value:1, class_name:'KaiPiaoQingKuangBiao_XiangMu'};
 $.post("/project/getModel", query, function(data){
 	 dataSet  = $.parseJSON(data.data);
 	$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
-   	data: dataSet,	
+   	data: dataSet,
    	"order": [[ 0, "desc" ]],
    	"oLanguage": {
    	    "sSearch": "查找 ",
