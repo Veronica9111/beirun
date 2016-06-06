@@ -55,7 +55,7 @@
 <!-- Container -->
 <div id="container">
 <table id="history-table" class="display" >
-<input id="create_invoice" type="button" style="margin-top" value="创建申请单" class="btn btn-success btn-sm" />
+
 </table>
 </div>
 <div class="mask"></div>
@@ -69,7 +69,8 @@
 </body>
 <script type="text/javascript">
 
-function createApprovalTable(dataSet){
+$.post("/project/getKaiPiaoQingKuangBiao_XiangMuByUser", {}, function(data){
+	dataSet = $.parseJSON(data.data);
 	console.log(dataSet);
 	$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
 	   	data: dataSet,
@@ -103,7 +104,7 @@ function createApprovalTable(dataSet){
 		        { title: "二级审核备注" }
 		    ]
 		} );
-};
+});
 /*
 $('#create_invoice').click(function(){
 	window.location="/project/redirectView?view=create_invoice_2.html&test=1";
