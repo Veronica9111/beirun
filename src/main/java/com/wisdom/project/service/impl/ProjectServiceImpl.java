@@ -899,6 +899,11 @@ public class ProjectServiceImpl implements IProjectService {
 	    public JinXiangFaPiaoMingXi_RenZheng getJinXiangFaPiaoMingXi_RenZhengById(Long id){
 	        return jinXiangFaPiaoMingXi_RenZhengMapper.getJinXiangFaPiaoMingXi_RenZhengById(id);
 	    }
+		@Override
+		public List<Role> getUserRoles(Integer uid) {
+			// TODO Auto-generated method stub
+			return roleMapper.getUserRoles(uid);
+		}
 
 	    @Override
 	    public Boolean addJinXiangFaPiaoMingXi_RenZheng(JinXiangFaPiaoMingXi_RenZheng jinXiangFaPiaoMingXi_RenZheng){

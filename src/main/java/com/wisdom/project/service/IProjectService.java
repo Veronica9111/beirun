@@ -27,6 +27,7 @@ import com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_QiTa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
+import com.wisdom.common.model.Role;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.common.model.XiaoXiang_XiangMu;
 import com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng;
@@ -192,4 +193,6 @@ public interface IProjectService {
 	
 	//public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyIds(List<Integer> companyIds);
 	public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyId(Integer company_id);
+
+	public List<Role> getUserRoles(Integer uid);
 }

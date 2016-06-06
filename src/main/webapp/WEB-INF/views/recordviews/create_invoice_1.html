@@ -1018,10 +1018,6 @@ td
 function startPageJS(){
 console.log(global);
 $("#create_new_project").on("click", function(){
-	
-});
-$("#submit").on("click", function(){
-	console.log($(".text"));
 	var hetongleixing = $('input:checked', '#hetongleixing').val();
 	var hetongfukuanfangshi = $('input:checked', '#hetongfukuanfangshi').val();
 	var nashuileixing = $('input:checked', '#nashuileixing').val();
@@ -1040,7 +1036,6 @@ $("#submit").on("click", function(){
 	$.post('/project/addModel', dataSet, function(data){
 		console.log(data);	
 	});
-	
 });
 $("#update_project_info").on("click", function(){
 	console.log($(".text"));
