@@ -1052,8 +1052,11 @@ td
 <div id="left-menu"></div>
 
 <!-- Container -->
+<div id="dialog">
+	new dialog
+</div>
 <div id="but_position">
-	<input id="create_invoice" type="button" value="提交开票申请" class="btn btn-success btn-sm" />
+	<input id="create_invoice" type="button" value="提交开票申请单" class="btn btn-success btn-sm" />
 	<!-- <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" /> -->
 </div>
 <div id="container">
@@ -1091,10 +1094,10 @@ td
    <tr height='28' style='height:14.00pt;'>
     <td class='xl87' height='28' style='height:14.00pt;' id=''><input class="text" style='width:100%;' id='shenqingriqi'></td>
     <td class='xl87' id=''><input class="text" style='width:100%;' id='kaipiaoneirong'></td>
-    <td class='xl87' id=''><input class="text" style='width:100%;' id='kaijufapiao'></td>
-    <td class='xl87' id=''><input class="text" style='width:100%;' id='shouqikuanxiang'></td>
-    <td class='xl87' id=''><input class="text" style='width:100%;' id='wangongjindu'></td>
-    <td class='xl87' id=''><input class="text" style='width:100%;' id='qita'></td>
+    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='kaijufapiao'></td>
+    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
+    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='wangongjindu'></td>
+    <td class='xl87' id=''><input class="text" disabled style='width:100%;' id='qita'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='border:none;height:14.00pt;' x:str>填表人：</td>
@@ -1114,6 +1117,27 @@ td
 
 </body>
 <script type="text/javascript">
+$("#kaijufapiao").click(function(){
+	dialog = $( "#dialog" ).dialog({
+	      autoOpen: false,
+	      height: 300,
+	      width: 350,
+	      modal: true,
+	      buttons: {
+	        "Create an account": function(){
+	        	dialog.dialog("close");
+	        },
+	        Cancel: function() {
+	          dialog.dialog( "close" );
+	        }
+	      },
+	      close: function() {
+	        form[ 0 ].reset();
+	        allFields.removeClass( "ui-state-error" );
+	      }
+	    });
+	//window.location="/project/redirectView?view=create_invoice_2.html&test=1";
+});
 $("#create_invoice").on("click", function(){
 	var dataSet = {};
 	$(".text").each(function(){
