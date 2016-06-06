@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Permission;
 import com.wisdom.common.model.XiangMuTaiZhang;
@@ -117,6 +118,7 @@ public class ProjectController {
 	    return true;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/project/getModel")
 	@ResponseBody
 	public Map<String, String> getModel(HttpServletRequest request) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException, InstantiationException {
@@ -130,14 +132,11 @@ public class ProjectController {
 		queryKey = queryKey.substring(0, 1).toUpperCase() + queryKey.substring(1);
 		Object ret;
 		if(isInteger(queryValue)){
-			if(queryValue.indexOf("_id") != 0) {
+			if(("Xiangmutaizhang_id").equals(queryKey)) {
 				Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, Long.class);
 				ret = m.invoke(projectService, Long.valueOf(queryValue));
-				List<Object> retList = new ArrayList<>();
-				for(Object obj: (List<?>)ret){
-					
-				}
-				String data = JSONArray.fromObject(retList).toString();
+				List<List<String>> retList = generateDataTableData(ret);
+				ret = retList;
 			} else {
 				Method m = projectService.getClass().getMethod("get"+className+"By"+queryKey, Long.class);
 				ret = m.invoke(projectService, Long.valueOf(queryValue));
@@ -154,6 +153,32 @@ public class ProjectController {
 		
 	}
 	
+	private List<List<String>> generateDataTableData(Object obj) {
+		List<List<String>> list = new ArrayList<>();
+		List<KaiPiaoQingKuangBiao_XiangMu> modelList = (List<KaiPiaoQingKuangBiao_XiangMu>)obj;
+		for(KaiPiaoQingKuangBiao_XiangMu kpqkbxm : modelList) {
+			List<String> tmpList = new ArrayList<>();
+			tmpList.add(String.valueOf(kpqkbxm.getId()));
+			tmpList.add(kpqkbxm.getShengqingkaipiaoshijian());
+			tmpList.add(String.valueOf(kpqkbxm.getBuhanshuijine()));
+			tmpList.add(String.valueOf(kpqkbxm.getShuie()));
+			tmpList.add(String.valueOf(kpqkbxm.getHejijine()));
+			tmpList.add(String.valueOf(kpqkbxm.getKaijufapiao()));
+			tmpList.add(String.valueOf(kpqkbxm.getShouqikuanxiang()));
+			tmpList.add(String.valueOf(kpqkbxm.getWangongjindu()));
+			tmpList.add(String.valueOf(kpqkbxm.getQita()));
+			tmpList.add(String.valueOf(kpqkbxm.getYikaipiaojine()));
+			//缺少分包发票
+			tmpList.add(kpqkbxm.getYijishenheren());
+			tmpList.add(kpqkbxm.getYiji_shenhe_status() == 0? "未审核":(kpqkbxm.getYiji_shenhe_status()==1?"审核通过":"审核未通过"));
+			tmpList.add(kpqkbxm.getYiji_shenhe_beizhu());
+			tmpList.add(kpqkbxm.getErjishenheren());
+			tmpList.add(kpqkbxm.getErji_shenhe_status() == 0? "未审核":(kpqkbxm.getYiji_shenhe_status()==1?"审核通过":"审核未通过"));
+			tmpList.add(kpqkbxm.getErji_shenhe_beizhu());
+			list.add(tmpList);
+		}
+		return list;
+	}
 	
 	@RequestMapping("/project/approveProject")
 	@ResponseBody

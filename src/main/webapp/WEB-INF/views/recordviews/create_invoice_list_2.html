@@ -28,6 +28,7 @@
 		margin-top: 20px;
 		width: 920px;
 		min-width:920px;
+		max-width:920px;
 		height: 400px;
 		min-height:400px;
 		overflow-x: auto; overflow-y: auto;
@@ -80,6 +81,7 @@ $.post("/project/getModel", query, function(data){
    	  },
    	  pageLength:10,
 	    columns: [
+			{ title: "ID" },
 	        { title: "申请开票时间" },
 	        { title: "不含税金额" },
 	        { title: "税额" },
@@ -89,7 +91,12 @@ $.post("/project/getModel", query, function(data){
 	        { title: "完工进度" },
 	        { title: "其它" },
 	        { title: "已开票金额" },
-	        { title: "分包发票" }
+	        { title: "一级审核人" },
+	        { title: "一级审核状态" },
+	        { title: "一级审核备注" },
+	        { title: "二级审核人" },
+	        { title: "二级审核状态" },
+	        { title: "二级审核备注" }
 	    ]
 	} );
 });
