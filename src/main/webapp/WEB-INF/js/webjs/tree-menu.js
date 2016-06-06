@@ -3,9 +3,6 @@
 */
 
 
-
-
-
 $.post('/getMenu',{},function(dataSet){
 	var tree = $.parseJSON(dataSet.data);
 	$('#left-menu').treeview({data: tree});
