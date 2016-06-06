@@ -5,6 +5,7 @@
 <cache />
 
 <resultMap type="com.wisdom.common.model.XiangMuTaiZhang" id="XiangMuTaiZhang">
+<result property="id" column="id"/>
 <result property="fengongsimingcheng" column="fengongsimingcheng"/>
 <result property="xiangmubu" column="xiangmubu"/>
 <result property="danweimingcheng" column="danweimingcheng"/>

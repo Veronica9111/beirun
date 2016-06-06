@@ -2,6 +2,8 @@ package com.wisdom.web.api.controller;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,6 +42,7 @@ import com.wisdom.utils.SessionConstant;
 
 import net.sf.json.JSONArray;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.NumberFormatException;
 
 @Controller
@@ -94,6 +97,7 @@ public class ProjectController {
 		Method m = projectService.getClass().getMethod("add" + className, instance.getClass());
 		Object ret = m.invoke(projectService, instance);
 		retMap.put("status", "ok");
+		retMap.put("primary_id", String.valueOf(ret));
 		return retMap;
 	}
 
@@ -249,9 +253,29 @@ public class ProjectController {
 
 	@RequestMapping("/project/redirectView")
 	public String redirectView(HttpServletRequest request) {
-		String param = request.getParameter("param");
+		Map<String, String[]>  map = request.getParameterMap();
+		String param = "";
+		if(map != null) {
+			int index = 0;
+			for(Entry<String, String[]> entry : map.entrySet()) {
+				if(("view").equals(entry.getKey())) continue;
+				if(index == 0)
+					try {
+						param += entry.getKey() + "=" + URLEncoder.encode(entry.getValue()[0],"UTF-8");
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
+				else
+					try {
+						param += "&" + entry.getKey() + "=" + URLEncoder.encode(entry.getValue()[0], "UTF-8");
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
+				index++;
+			}
+		}
 		String view = request.getParameter("view");
-		return "redirect:/views/recordviews/" + view + "?param=" + param;
+		return "redirect:/views/recordviews/" + view + "?" + param;
 	}
 
 	@RequestMapping("/project/getAllProjectsForUser")

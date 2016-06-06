@@ -1073,7 +1073,7 @@ td
 </div>
 <div id="but_position">
 	<input id="create_invoice" type="button" value="提交申请单" class="btn btn-success btn-sm" />
-	<input id="modify_invoice" type="button" value="保存申请单修改" class="btn btn-success btn-sm" />
+	<!-- <input id="modify_invoice" type="button" value="保存申请单修改" class="btn btn-success btn-sm" /> -->
 </div>
 <div id="container">
 
@@ -1141,7 +1141,11 @@ var redirectView = "";
         if (r != null) return unescape(r[2]); return null;
     }
 })(jQuery);
-var kaipiaoqingkuangdanIdParam = $.getUrlParam('param');
+var xiangmutaizhangIdParam = $.getUrlParam('xiangmutaizhangIdParam');
+var gongsimingchengInfo = decodeURI($.getUrlParam('fengongsimingcheng'));
+var xiangmubuInfo = decodeURI($.getUrlParam('xiangmubu'));
+$("#xiangmubu").val(xiangmubuInfo);
+$("#fengongsimingcheng").val(gongsimingchengInfo);
 function startPageJS(){
 	dialog = $( "#dialog" ).dialog({
 	    autoOpen: false,
@@ -1190,30 +1194,6 @@ function startPageJS(){
 			console.log(data);
 			
 		});
-		
-	});
-	$("#modify_invoice").on("click", function(){
-		var dataSet = {};
-		$(".text").each(function(){
-			console.log($(this).attr('id'));
-			dataSet[$(this).attr('id')] = $(this).val();
-		});
-		dataSet['id'] = 0;
-		dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = "222";
-		dataSet["class_name"] = "KaiPiaoShenQingDan";
-		$.post('/project/modifyModel', dataSet, function(data){
-			console.log(data);
-		});
-		
-	});
-
-	var query = {query_key: 'id', query_value:0, class_name:'KaiPiaoShenQingDan'};
-	$.post("/project/getModel", query, function(data){
-		var data = $.parseJSON(data.data)[0];
-		console.log(data);
-		for(key in data){
-			$("#" + key).val(data[key]);
-		}
 		
 	});
 }

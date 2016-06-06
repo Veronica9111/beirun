@@ -68,7 +68,7 @@ public interface IProjectService {
 	
 	public List<KaiPiaoShenQingDan> getKaiPiaoShenQingDanByProjectId(Long projectId);
 	
-	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz);
+	public Long addXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
 	public Boolean updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	

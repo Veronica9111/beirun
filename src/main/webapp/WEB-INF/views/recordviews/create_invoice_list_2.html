@@ -1074,11 +1074,12 @@ td
         if (r != null) return unescape(r[2]); return null;
     }
 })(jQuery);
-var xiangmutaizhangIdParam = $.getUrlParam('param');
+var xiangmutaizhangIdParam = $.getUrlParam('xiangmutaizhang_id');
+var extraInfo = "&fengongsimingcheng=" + $.getUrlParam('fengongsimingcheng') + "&xiangmubu=" + $.getUrlParam('xiangmubu');
 function startPageJS(){
 	console.log(global);
 	$('#create_invoice').click(function(){
-		window.location="/project/redirectView?view=create_invoice_2.html&param="+xiangmutaizhangIdParam;
+		window.location="/project/redirectView?view=create_invoice_2.html&xiangmutaizhang_id="+xiangmutaizhangIdParam + extraInfo;
 	});
 	var query = {query_key: 'xiangmutaizhang_id', query_value:xiangmutaizhangIdParam, class_name:'KaiPiaoQingKuangBiao_XiangMu'};
 	$.post("/project/getModel", query, function(data){

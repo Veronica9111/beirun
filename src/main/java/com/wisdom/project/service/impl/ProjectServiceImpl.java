@@ -580,7 +580,7 @@ public class ProjectServiceImpl implements IProjectService {
 	}
 
 	@Override
-	public Boolean addXiangMuTaiZhang(XiangMuTaiZhang xmtz) {
+	public Long addXiangMuTaiZhang(XiangMuTaiZhang xmtz) {
 		@SuppressWarnings("unused")
 		Integer result = xiangmutaizhangMapper.addXiangMuTaiZhang(xmtz);
 		/*
@@ -593,7 +593,7 @@ public class ProjectServiceImpl implements IProjectService {
 		 * this.updateTime(id, hetongqiandingshijian, hetongkaigongshijian,
 		 * kaigongxukezhengshijian,yujiwangongshijian);
 		 */
-		return true;
+		return xmtz.getId();
 	}
 
 	@Override
