@@ -604,7 +604,12 @@ public class ProjectController {
 					Double argD = Double.valueOf(arg);
 					m = model.getClass().getMethod(methodName, Double.class);
 					Object ret = m.invoke(model, argD);
-				}catch(NumberFormatException e2){
+				}catch(NoSuchMethodException ex){
+					Long argI = Long.valueOf(arg);
+			    	m = model.getClass().getMethod(methodName, Long.class);
+					Object ret = m.invoke(model, argI);
+				}
+				catch(NumberFormatException e2){
 
 				   //	parsedDate = dateFormat.parse(arg);
 					if(!arg.isEmpty()) {
