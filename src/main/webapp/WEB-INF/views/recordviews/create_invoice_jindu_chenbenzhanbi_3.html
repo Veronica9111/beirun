@@ -1004,7 +1004,7 @@ td
 
 <div id="but_position">
 	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
-	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+	<!-- <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" /> -->
 </div>
 
 <!-- Container -->
@@ -1060,60 +1060,16 @@ td
   </div>
 </div>
 <script type="text/javascript">
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+})(jQuery);
+var invoice_type = $.getUrlParam('invoice_type');
 $("#submit").on("click", function(){
-	console.log($(".text"));
-	var hetongleixing = $('input:checked', '#hetongleixing').val();
-	var hetongfukuanfangshi = $('input:checked', '#hetongfukuanfangshi').val();
-	var nashuileixing = $('input:checked', '#nashuileixing').val();
-	console.log(hetongleixing);
-	console.log(hetongfukuanfangshi);
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-
-	dataSet["class_name"] = "QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa";
-	dataSet["tianbiaoriqi"] = "2016-01-01";
-	dataSet["shenheriqi"] = "2016-01-01";
-	$.post('/project/addModel', dataSet, function(data){
-		console.log(data);
-		
-	});
-	
-});
-$("#modify").on("click", function(){
-	console.log($(".text"));
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-
-	dataSet["class_name"] = "QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa";
-	dataSet["tianbiaoriqi"] = "2016-01-01";
-	dataSet["shenheriqi"] = "2016-01-01";
-	dataSet['id'] = 1;
-	
-	$.post('/project/modifyModel', dataSet, function(data){
-		console.log(data);
-		
-	});
-	
-});
-
-var query = {query_key: 'id', query_value:1, class_name:'QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa'};
-$.post("/project/getModel", query, function(data){
-
-	var data = $.parseJSON(data.data)[0];
-
-	for(key in data){
-
-			console.log(data[key]);
-			$("#" + key).val(data[key]);
-		
-	}
-	
+	window.location="/project/redirectView?view=create_invoice_"+invoice_type+"_3.html&"+window.location.search.substring(1);
 });
 </script>
 

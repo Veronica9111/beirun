@@ -1053,7 +1053,7 @@ td
 <div id="left-menu"></div>
 
 <!-- Container -->
-<div id="dialog">
+<div id="dialog" style="display:none;">
 	<div style="height:70px;">
 	<label>发票类型选择</label>
 	<form id='fapiaokaijuleixing' style='height:20px;line-height:20px;'>
@@ -1079,7 +1079,7 @@ td
 
 <table width='1097' border='0' cellpadding='0' cellspacing='0' style='width:548.50pt;border-collapse:collapse;table-layout:fixed;'>
   <tr height='35' style='height:17.50pt;'>
-    <td class='xl65' height='35' width='1097' colspan='6' style='height:17.50pt;width:548.50pt;border-right:none;border-bottom:none;' x:str>开票申请单</td>
+    <td class='xl65' height='35' width='1097' colspan='8' style='height:17.50pt;width:548.50pt;border-right:none;border-bottom:none;' x:str>开票申请单</td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl66' height='28' style='height:14.00pt;' x:str>分公司名称：</td>
@@ -1090,30 +1090,34 @@ td
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='height:14.00pt;' x:str>项目名称</td>
-    <td class='xl69' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='xiangmumingcheng'></td>
+    <td class='xl69' colspan='3' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='xiangmumingcheng'></td>
     <td class='xl71' x:str>合同总金额</td>
-    <td class='xl71' colspan='2' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='hetongzongjine'></td>
+    <td class='xl71' colspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='hetongzongjine'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl73' height='112' rowspan='4' style='height:56.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请日期</td>
     <td class='xl74' rowspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开票内容</td>
-    <td class='xl75' colspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请开票金额 （含税）</td>
+    <td class='xl74' rowspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否为<br>上期已缴税</td>
+    <td class='xl75' colspan='5' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请开票金额 （含税）</td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl79' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开具发票</td>
     <td class='xl80' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>收讫款项</td>
     <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>完工进度</td>
     <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>其他</td>
+    <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>分包项目</td>
    </tr>
    <tr height='28' style='height:14.00pt;'/>
    <tr height='28' style='height:14.00pt;'/>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl87' height='28' style='height:14.00pt;' id=''><input class="text" style='width:100%;' id='shenqingriqi'></td>
     <td class='xl87' id=''><input class="text" style='width:100%;' id='kaipiaoneirong'></td>
-    <td class='xl87 detail_table' derect_view='create_invoice_pupiao_3.html'><input class="text" disabled style='width:100%;' id='kaijufapiao'></td>
-    <td class='xl87 detail_table' derect_view='create_invoice_shouqikuanxiang_3.html'><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
+    <td class='xl87' id=''><input type="radio" name="yijiaoshui" checked>否<input type="radio" name="yijiaoshui">是</td>
+    <td class='xl87 detail_table' derect_view='kaiju'><input class="text" disabled style='width:100%;' id='kaijufapiao'></td>
+    <td class='xl87 detail_table' derect_view='shouqi'><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
     <td class='xl87 detail_table' derect_view='jindu'><input class="text" disabled style='width:100%;' id='wangongjindu'></td>
     <td class='xl87 detail_table' derect_view='qita'><input class="text" disabled style='width:100%;' id='qita'></td>
+    <td class='xl87 detail_table' derect_view='fenbao'><input class="text" disabled style='width:100%;' id='qita'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='border:none;height:14.00pt;' x:str>填表人：</td>
@@ -1133,6 +1137,31 @@ td
 
 </body>
 <script type="text/javascript">
+Date.prototype.Format = function(formatStr) {
+	var str = formatStr;
+	var Week = ['日', '一', '二', '三', '四', '五', '六'];
+
+	str = str.replace(/yyyy|YYYY/, this.getFullYear());
+	str = str.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this.getYear() % 100).toString() : '0' + (this.getYear() % 100));
+
+	str = str.replace(/MM/, (this.getMonth() + 1) > 9 ? (this.getMonth() + 1).toString() : '0' + (this.getMonth()+1));
+	str = str.replace(/M/g, this.getMonth());
+
+	str = str.replace(/w|W/g, Week[this.getDay()]);
+
+	str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' + this.getDate());
+	str = str.replace(/d|D/g, this.getDate());
+
+	str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString() : '0' + this.getHours());
+	str = str.replace(/h|H/g, this.getHours());
+	str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes().toString() : '0' + this.getMinutes());
+	str = str.replace(/m/g, this.getMinutes());
+
+	str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' + this.getSeconds());
+	str = str.replace(/s|S/g, this.getSeconds());
+
+	return str;
+}
 var redirectView = "";
 (function ($) {
     $.getUrlParam = function (name) {
@@ -1141,12 +1170,41 @@ var redirectView = "";
         if (r != null) return unescape(r[2]); return null;
     }
 })(jQuery);
-var xiangmutaizhangIdParam = $.getUrlParam('xiangmutaizhangIdParam');
+var xiangmutaizhangIdParam = $.getUrlParam('xiangmutaizhang_id');
+var company_id = $.getUrlParam('company_id');
 var gongsimingchengInfo = decodeURI($.getUrlParam('fengongsimingcheng'));
 var xiangmubuInfo = decodeURI($.getUrlParam('xiangmubu'));
 $("#xiangmubu").val(xiangmubuInfo);
 $("#fengongsimingcheng").val(gongsimingchengInfo);
+var extraInfo = window.location.search.substring(1);
 function startPageJS(){
+	var KaiPiaoQingKuangBiao_XiangMu_ID = "";
+	var KaiPiaoShenQingDan_ID = "";
+	
+	function saveData() {
+		var dataSet = {};
+		dataSet["class_name"] = "KaiPiaoQingKuangBiao_XiangMu";
+		dataSet["shengqingkaipiaoshijian"] = new Date().Format("yyyy-MM-DD");
+		dataSet["xiangmutaizhang_id"] = xiangmutaizhangIdParam;
+		dataSet["erji_shenhe_status"] = "0";
+		dataSet["yiji_shenhe_status"] = "0";
+		dataSet["company_id"] = company_id;
+		$.post('/project/addModel', dataSet, function(data){
+			console.log(data);
+			var primary_key = data.primary_id;
+			dataSet = {};
+			$(".text").each(function(){
+				console.log($(this).attr('id'));
+				dataSet[$(this).attr('id')] = $(this).val();
+			});
+			dataSet["class_name"] = "KaiPiaoShenQingDan";
+			dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = primary_key;
+			dataSet["tianbiaoriqi"] = new Date().Format("yyyy-MM-DD");
+			$.post('/project/addModel', dataSet, function(data){
+				console.log(data);
+			});
+		});
+	}
 	dialog = $( "#dialog" ).dialog({
 	    autoOpen: false,
 	    height: 300,
@@ -1157,12 +1215,15 @@ function startPageJS(){
 	    	var fapiaoleixing = $('input:checked', '#fapiaokaijuleixing').val();
 	    	var shourufangshi = $('input:checked', '#shouruquerenfangshi').val();
 	    	dialog.dialog("close");
+	    	//saveData();
 	    	if(redirectView == "jindu") {
-	    		window.location="/project/redirectView?view=create_invoice_jindu_"+shourufangshi+"_3.html&invoice_type=" + fapiaoleixing;
+	    		window.location="/project/redirectView?view=create_invoice_jindu_"+shourufangshi+"_3.html&invoice_type=" + fapiaoleixing + "&" + extraInfo;
+	    	} else if(redirectView == "shouqi") {
+	    		window.location="/project/redirectView?view=create_invoice_shouqikuanxiang_3.html&invoice_type=" + fapiaoleixing + "&" + extraInfo;
+	    	} else if(redirectView == "kaiju") {
+	    		window.location="/project/redirectView?view=create_invoice_"+fapiaoleixing+"_3.html&invoice_type=" + fapiaoleixing + "&" + extraInfo;
 	    	} else if(redirectView == "qita") {
-	    		window.location="/project/redirectView?view=create_invoice_"+fapiaoleixing+"_3.html&invoice_type=" + fapiaoleixing;
-	    	} else {
-	    		window.location="/project/redirectView?view="+redirectView + "&invoice_type=" + fapiaoleixing;
+	    		window.location="/project/redirectView?view=create_invoice_"+fapiaoleixing+"_3.html&invoice_type=" + fapiaoleixing + "&" + extraInfo;
 	    	}
 	      }
 	    },
@@ -1178,23 +1239,49 @@ function startPageJS(){
 				$("#shouruquerenfangshi_form").show();
 			else
 				$("#shouruquerenfangshi_form").hide();
-			dialog.dialog("open");
+			if(redirectView == "fenbao") {
+				//saveData();
+				window.location="/project/redirectView?view=fenbaoxiangmumingxi.html&"+extraInfo;
+			} else {
+				dialog.dialog("open");
+			}
 		});
 	});
 
 	$("#create_invoice").on("click", function(){
 		var dataSet = {};
-		$(".text").each(function(){
-			console.log($(this).attr('id'));
-			dataSet[$(this).attr('id')] = $(this).val();
-		});
-		dataSet["class_name"] = "KaiPiaoShenQingDan";
-		dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = "222";
+		dataSet["class_name"] = "KaiPiaoQingKuangBiao_XiangMu";
+		dataSet["shengqingkaipiaoshijian"] = new Date().Format("yyyy-MM-DD");
+		dataSet["xiangmutaizhang_id"] = xiangmutaizhangIdParam;
+		dataSet["erji_shenhe_status"] = "0";
+		dataSet["yiji_shenhe_status"] = "0";
+		dataSet["kaijufapiao"] = "0";
+		dataSet["shouqikuanxiang"] = "10";
+		dataSet["wangongjindu"] = "10";
+		dataSet["qita"] = "10";
+		dataSet["fenbaofapiao"] = "10";
+		dataSet["company_id"] = company_id;
 		$.post('/project/addModel', dataSet, function(data){
 			console.log(data);
-			
+			var primary_key = data.primary_id;
+			dataSet = {};
+			$(".text").each(function(){
+				console.log($(this).attr('id'));
+				dataSet[$(this).attr('id')] = $(this).val();
+			});
+			dataSet["class_name"] = "KaiPiaoShenQingDan";
+			dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = primary_key;
+			dataSet["tianbiaoriqi"] = new Date().Format("yyyy-MM-DD");
+			dataSet["kaijufapiao"] = "10";
+			dataSet["shouqikuanxiang"] = "10";
+			dataSet["wangongjindu"] = "10";
+			dataSet["qita"] = "10";
+			$.post('/project/addModel', dataSet, function(data){
+				console.log(data);
+				
+			});
+			window.location="/project/redirectView?view=create_invoice_1.html&param=0";
 		});
-		
 	});
 }
 function nodeClick(node){

@@ -1054,10 +1054,10 @@ td
 <div id="left-menu"></div>
 
 <!-- Container -->
-<div id="container">
+<div id="container" >
+<input id="create_invoice" type="button" style="style="margin-bottom:-20px;position:fixed;" value="创建新的开票申请单" class="btn btn-success btn-sm" />
 <table id="history-table" class="display" >
 </table>
-<input id="create_invoice" type="button" style="margin-top" value="创建新的开票申请单" class="btn btn-success btn-sm" />
 </div>
 <div class="mask"></div>
 <div class="footer">
@@ -1075,7 +1075,7 @@ td
     }
 })(jQuery);
 var xiangmutaizhangIdParam = $.getUrlParam('xiangmutaizhang_id');
-var extraInfo = "&fengongsimingcheng=" + $.getUrlParam('fengongsimingcheng') + "&xiangmubu=" + $.getUrlParam('xiangmubu');
+var extraInfo = "&fengongsimingcheng=" + $.getUrlParam('fengongsimingcheng') + "&xiangmubu=" + $.getUrlParam('xiangmubu') + "&company_id=" + $.getUrlParam('company_id');;
 function startPageJS(){
 	console.log(global);
 	$('#create_invoice').click(function(){

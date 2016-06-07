@@ -606,9 +606,9 @@ public class ProjectServiceImpl implements IProjectService {
 	    }
 
 	    @Override
-	    public Boolean addKaiPiaoQingKuangBiao_XiangMu(KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu){
+	    public Long addKaiPiaoQingKuangBiao_XiangMu(KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu){
 	        kaiPiaoQingKuangBiao_XiangMuMapper.addKaiPiaoQingKuangBiao_XiangMu(kaiPiaoQingKuangBiao_XiangMu);
-	        return true;
+	        return kaiPiaoQingKuangBiao_XiangMu.getId();
 	    }
 
 	    @Override
@@ -1070,6 +1070,10 @@ public class ProjectServiceImpl implements IProjectService {
 	    }
 
 		@Override
+		public Integer addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd) {
+			kaiPiaoShenQingDanMapper.addKaiPiaoShenQingDan(kpsqd);
+			return 0;
+		}
 		public KaiPiaoShenQingDan getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id(Long kaipiaoqingkuangbiao_xiangmu_id) {
 			// TODO Auto-generated method stub
 			return kaiPiaoShenQingDanMapper.getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id(kaipiaoqingkuangbiao_xiangmu_id);
