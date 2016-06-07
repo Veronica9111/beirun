@@ -1,0 +1,2659 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/webcss/global.css"/>
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery.dataTables.min.css">
+<link rel="stylesheet" href="/css/webcss/bootstrap.css" />
+<link rel="stylesheet" href="/css/webcss/bootstrap-theme.css" />
+<script src="/js/webjs/jquery-1.11.3.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery-ui.css" />
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css"/>
+<script src="/js/webjs/jquery-ui.js"></script>
+<script src="/js/webjs/navigator.js"></script>
+<script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
+<script src="/js/webjs/bootstrap-treeview.min.js"></script>
+<script src="/js/webjs/tree-menu.js"></script>
+ <style>
+			<!-- @page {
+				margin: 0.00in 0.00in 0.00in 0.00in;
+				mso-header-margin: 0.51in;
+				mso-footer-margin: 0.51in;
+				mso-horizontal-page-align: center;
+				mso-vertical-page-align: center;
+				mso-page-orientation: landscape;
+				mso-page-numbers-start: 1;
+			}
+			
+			tr {
+				mso-height-source: auto;
+				mso-ruby-visibility: none;
+			}
+			
+			col {
+				mso-width-source: auto;
+				mso-ruby-visibility: none;
+			}
+			
+			br {
+				mso-data-placement: same-cell;
+			}
+			
+			.font0 {
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font1 {
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font2 {
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "仿宋_GB2312";
+				mso-generic-font-family: modern;
+				mso-font-charset: 134;
+			}
+			
+			.font3 {
+				color: windowtext;
+				font-size: 14.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font4 {
+				color: windowtext;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font5 {
+				color: windowtext;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font6 {
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font7 {
+				color: #FF0000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font8 {
+				color: #808080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: italic;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font9 {
+				color: #800080;
+				font-size: 22.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: underline;
+				text-underline-style: single;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font10 {
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font11 {
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font12 {
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font13 {
+				color: #333399;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font14 {
+				color: #003366;
+				font-size: 13.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font15 {
+				color: #FF9900;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font16 {
+				color: #003366;
+				font-size: 15.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font17 {
+				color: #003366;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font18 {
+				color: #003366;
+				font-size: 18.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font19 {
+				color: #0000FF;
+				font-size: 22.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: underline;
+				text-underline-style: single;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font20 {
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font21 {
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font22 {
+				color: #993300;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font23 {
+				color: #333333;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font24 {
+				color: #FF9900;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.font25 {
+				color: windowtext;
+				font-size: 16.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: "宋体";
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+			}
+			
+			.style0 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规";
+				mso-style-id: 0;
+			}
+			
+			.style16 {
+				mso-number-format: "_-\0022\00A5\0022* \#\,\#\#0_-\;\\-\0022\00A5\0022* \#\,\#\#0_-\;_-\0022\00A5\0022* \0022-\0022_-\;_-\@_-";
+				mso-style-name: "货币[0]";
+				mso-style-id: 7;
+			}
+			
+			.style17 {
+				mso-number-format: "_-\0022\00A5\0022* \#\,\#\#0\.00_-\;\\-\0022\00A5\0022* \#\,\#\#0\.00_-\;_-\0022\00A5\0022* \0022-\0022??_-\;_-\@_-";
+				mso-style-name: "货币";
+				mso-style-id: 4;
+			}
+			
+			.style18 {
+				mso-pattern: auto none;
+				background: #FFCC99;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 着色 2";
+			}
+			
+			.style19 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 强调文字颜色 3";
+			}
+			
+			.style20 {
+				mso-pattern: auto none;
+				background: #FFCC99;
+				color: #333399;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: .5pt solid #808080;
+				mso-style-name: "输入";
+			}
+			
+			.style21 {
+				mso-number-format: "_-* \#\,\#\#0_-\;\\-* \#\,\#\#0_-\;_-* \0022-\0022_-\;_-\@_-";
+				mso-style-name: "千位分隔[0]";
+				mso-style-id: 6;
+			}
+			
+			.style22 {
+				mso-pattern: auto none;
+				background: #00FF00;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 强调文字颜色 3";
+			}
+			
+			.style23 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_税额减征、抵缴情况表_附表二、七";
+			}
+			
+			.style24 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差";
+			}
+			
+			.style25 {
+				mso-number-format: "_-* \#\,\#\#0\.00_-\;\\-* \#\,\#\#0\.00_-\;_-* \0022-\0022??_-\;_-\@_-";
+				mso-style-name: "千位分隔";
+				mso-style-id: 3;
+			}
+			
+			.style26 {
+				mso-pattern: auto none;
+				background: #00FF00;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 强调文字颜色 3";
+			}
+			
+			.style27 {
+				color: #0000FF;
+				font-size: 22.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: underline;
+				text-underline-style: single;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "超链接";
+				mso-style-id: 8;
+			}
+			
+			.style28 {
+				mso-number-format: "0%";
+				mso-style-name: "百分比";
+				mso-style-id: 5;
+			}
+			
+			.style29 {
+				color: #800080;
+				font-size: 22.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: underline;
+				text-underline-style: single;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "已访问的超链接";
+				mso-style-id: 9;
+			}
+			
+			.style30 {
+				mso-pattern: auto none;
+				background: #FFFFCC;
+				border: .5pt solid #C0C0C0;
+				mso-style-name: "注释";
+			}
+			
+			.style31 {
+				mso-pattern: auto none;
+				background: #FF8080;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 强调文字颜色 2";
+			}
+			
+			.style32 {
+				color: #003366;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "标题 4";
+			}
+			
+			.style33 {
+				color: #FF0000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "警告文本";
+			}
+			
+			.style34 {
+				mso-pattern: auto none;
+				background: #C0C0C0;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 着色 3";
+			}
+			
+			.style35 {
+				color: #003366;
+				font-size: 18.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "标题";
+			}
+			
+			.style36 {
+				mso-pattern: auto none;
+				background: #33CCCC;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "着色 1";
+			}
+			
+			.style37 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规 3 2 2";
+			}
+			
+			.style38 {
+				mso-pattern: auto none;
+				background: #CCCCFF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 着色 5";
+			}
+			
+			.style39 {
+				color: #808080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: italic;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "解释性文本";
+			}
+			
+			.style40 {
+				color: #003366;
+				font-size: 15.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border-left: none;
+				border-top: none;
+				border-right: none;
+				border-bottom: 1.5pt solid #333399;
+				mso-style-name: "标题 1";
+			}
+			
+			.style41 {
+				color: #003366;
+				font-size: 13.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border-left: none;
+				border-top: none;
+				border-right: none;
+				border-bottom: 1.5pt solid #C0C0C0;
+				mso-style-name: "标题 2";
+			}
+			
+			.style42 {
+				mso-pattern: auto none;
+				background: #0066CC;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 强调文字颜色 1";
+			}
+			
+			.style43 {
+				color: #003366;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border-left: none;
+				border-top: none;
+				border-right: none;
+				border-bottom: 1.0pt solid #0066CC;
+				mso-style-name: "标题 3";
+			}
+			
+			.style44 {
+				mso-pattern: auto none;
+				background: #800080;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 强调文字颜色 4";
+			}
+			
+			.style45 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_税额减征、抵缴情况表_增值税减免税申报明细表";
+			}
+			
+			.style46 {
+				mso-pattern: auto none;
+				background: #C0C0C0;
+				color: #333333;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: .5pt solid #333333;
+				mso-style-name: "输出";
+			}
+			
+			.style47 {
+				mso-pattern: auto none;
+				background: #FFFF99;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 着色 4";
+			}
+			
+			.style48 {
+				mso-pattern: auto none;
+				background: #C0C0C0;
+				color: #FF9900;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: .5pt solid #808080;
+				mso-style-name: "计算";
+			}
+			
+			.style49 {
+				mso-pattern: auto none;
+				background: #969696;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: 2.0pt double #333333;
+				mso-style-name: "检查单元格";
+			}
+			
+			.style50 {
+				mso-pattern: auto none;
+				background: #FFCC99;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 强调文字颜色 6";
+			}
+			
+			.style51 {
+				mso-pattern: auto none;
+				background: #FF0000;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "强调文字颜色 2";
+			}
+			
+			.style52 {
+				color: #FF9900;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border-left: none;
+				border-top: none;
+				border-right: none;
+				border-bottom: 2.0pt double #FF9900;
+				mso-style-name: "链接单元格";
+			}
+			
+			.style53 {
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 700;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border-left: none;
+				border-top: .5pt solid #333399;
+				border-right: none;
+				border-bottom: 2.0pt double #333399;
+				mso-style-name: "汇总";
+			}
+			
+			.style54 {
+				mso-pattern: auto none;
+				background: #99CCFF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 着色 5";
+			}
+			
+			.style55 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好";
+			}
+			
+			.style56 {
+				mso-pattern: auto none;
+				background: #333399;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "着色 5";
+			}
+			
+			.style57 {
+				mso-pattern: auto none;
+				background: #FFFF99;
+				color: #993300;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "适中";
+			}
+			
+			.style58 {
+				mso-pattern: auto none;
+				background: #FFFF99;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 着色 4";
+			}
+			
+			.style59 {
+				mso-pattern: auto none;
+				background: #CCFFFF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 强调文字颜色 5";
+			}
+			
+			.style60 {
+				mso-pattern: auto none;
+				background: #333399;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "强调文字颜色 1";
+			}
+			
+			.style61 {
+				mso-pattern: auto none;
+				background: #CCCCFF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 强调文字颜色 1";
+			}
+			
+			.style62 {
+				mso-pattern: auto none;
+				background: #99CCFF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 强调文字颜色 1";
+			}
+			
+			.style63 {
+				mso-pattern: auto none;
+				background: #99CCFF;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 着色 1";
+			}
+			
+			.style64 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 强调文字颜色 2";
+			}
+			
+			.style65 {
+				mso-pattern: auto none;
+				background: #FF8080;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 强调文字颜色 2";
+			}
+			
+			.style66 {
+				mso-pattern: auto none;
+				background: #339966;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "强调文字颜色 3";
+			}
+			
+			.style67 {
+				mso-pattern: auto none;
+				background: #800080;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "强调文字颜色 4";
+			}
+			
+			.style68 {
+				mso-pattern: auto none;
+				background: #C0C0C0;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 着色 3";
+			}
+			
+			.style69 {
+				mso-pattern: auto none;
+				background: #CC99FF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 强调文字颜色 4";
+			}
+			
+			.style70 {
+				mso-pattern: auto none;
+				background: #CC99FF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 强调文字颜色 4";
+			}
+			
+			.style71 {
+				mso-pattern: auto none;
+				background: #CCFFFF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 着色 1";
+			}
+			
+			.style72 {
+				mso-pattern: auto none;
+				background: #33CCCC;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "强调文字颜色 5";
+			}
+			
+			.style73 {
+				mso-pattern: auto none;
+				background: #99CCFF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 强调文字颜色 5";
+			}
+			
+			.style74 {
+				mso-pattern: auto none;
+				background: #FFCC99;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 着色 2";
+			}
+			
+			.style75 {
+				mso-pattern: auto none;
+				background: #33CCCC;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 强调文字颜色 5";
+			}
+			
+			.style76 {
+				mso-pattern: auto none;
+				background: #FF6600;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "强调文字颜色 6";
+			}
+			
+			.style77 {
+				mso-pattern: auto none;
+				background: #FFCC00;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 强调文字颜色 6";
+			}
+			
+			.style78 {
+				mso-pattern: auto none;
+				background: #FFFFFF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 着色 3";
+			}
+			
+			.style79 {
+				mso-pattern: auto none;
+				background: #FF9900;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 强调文字颜色 6";
+			}
+			
+			.style80 {
+				mso-pattern: auto none;
+				background: #FFFFCC;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 着色 4";
+			}
+			
+			.style81 {
+				mso-pattern: auto none;
+				background: #FF6600;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "着色 2";
+			}
+			
+			.style82 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "20% - 着色 6";
+			}
+			
+			.style83 {
+				mso-pattern: auto none;
+				background: #99CCFF;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 着色 1";
+			}
+			
+			.style84 {
+				mso-pattern: auto none;
+				background: #FFCC99;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 着色 2";
+			}
+			
+			.style85 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规 3 2_（20150724）不动产抵扣进项税额计算抵扣表-黄";
+			}
+			
+			.style86 {
+				mso-pattern: auto none;
+				background: #FFFF99;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "40% - 着色 6";
+			}
+			
+			.style87 {
+				mso-pattern: auto none;
+				background: #33CCCC;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 着色 5";
+			}
+			
+			.style88 {
+				mso-pattern: auto none;
+				background: #339966;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "60% - 着色 6";
+			}
+			
+			.style89 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_税额减征、抵缴情况表";
+			}
+			
+			.style90 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_税额减征、抵缴情况表_【附件1】《增值税纳税申报表（一般纳税人适用）》及其附列资料";
+			}
+			
+			.style91 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_税额减征、抵缴情况表_附表二、七";
+			}
+			
+			.style92 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_税额减征、抵缴情况表_附表六426";
+			}
+			
+			.style93 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_税额减征、抵缴情况表_建筑业（总机构）增值税纳税申报表附表20150717";
+			}
+			
+			.style94 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_税额减征、抵缴情况表_三稿426.1";
+			}
+			
+			.style95 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_税额减征、抵缴情况表_三稿427(ding)";
+			}
+			
+			.style96 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_税额减征、抵缴情况表_申报表(北京浙江）4月23日";
+			}
+			
+			.style97 {
+				mso-pattern: auto none;
+				background: #FF99CC;
+				color: #800080;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "差_增值税纳税申报表（适用个人出售房屋）";
+			}
+			
+			.style98 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: bottom;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规 2";
+			}
+			
+			.style99 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规 2 2";
+			}
+			
+			.style100 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: bottom;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规 2_（20150724）不动产抵扣进项税额计算抵扣表-黄";
+			}
+			
+			.style101 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规 3";
+			}
+			
+			.style102 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规 3 2";
+			}
+			
+			.style103 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规 3_（20150724）不动产抵扣进项税额计算抵扣表-黄";
+			}
+			
+			.style104 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: bottom;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规 4";
+			}
+			
+			.style105 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: bottom;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规_申报表（两套表）_增值税预缴纳税申报表";
+			}
+			
+			.style106 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规_销售额申报表（扩围2）_增值税预缴纳税申报表";
+			}
+			
+			.style107 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: #000000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规_增值税纳税申报表（适用个人出售房屋）";
+			}
+			
+			.style108 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: bottom;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规_增值税预缴纳税申报表";
+			}
+			
+			.style109 {
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: bottom;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+				mso-style-name: "常规_主表2007-11-01";
+			}
+			
+			.style110 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_税额减征、抵缴情况表";
+			}
+			
+			.style111 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_税额减征、抵缴情况表_【附件1】《增值税纳税申报表（一般纳税人适用）》及其附列资料";
+			}
+			
+			.style112 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_税额减征、抵缴情况表_附表六426";
+			}
+			
+			.style113 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_税额减征、抵缴情况表_建筑业（总机构）增值税纳税申报表附表20150717";
+			}
+			
+			.style114 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_税额减征、抵缴情况表_三稿426.1";
+			}
+			
+			.style115 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_税额减征、抵缴情况表_三稿427(ding)";
+			}
+			
+			.style116 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_税额减征、抵缴情况表_申报表(北京浙江）4月23日";
+			}
+			
+			.style117 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_税额减征、抵缴情况表_增值税减免税申报明细表";
+			}
+			
+			.style118 {
+				mso-pattern: auto none;
+				background: #CCFFCC;
+				color: #008000;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "好_增值税纳税申报表（适用个人出售房屋）";
+			}
+			
+			.style119 {
+				mso-pattern: auto none;
+				background: #969696;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "着色 3";
+			}
+			
+			.style120 {
+				mso-pattern: auto none;
+				background: #FFCC00;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "着色 4";
+			}
+			
+			.style121 {
+				mso-pattern: auto none;
+				background: #339966;
+				color: #FFFFFF;
+				font-size: 11.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				mso-style-name: "着色 6";
+			}
+			
+			td {
+				mso-style-parent: style0;
+				padding-top: 1px;
+				padding-right: 1px;
+				padding-left: 1px;
+				mso-ignore: padding;
+				mso-number-format: "General";
+				text-align: general;
+				vertical-align: middle;
+				white-space: nowrap;
+				mso-rotate: 0;
+				mso-pattern: auto;
+				mso-background-source: auto;
+				color: windowtext;
+				font-size: 12.0pt;
+				font-weight: 400;
+				font-style: normal;
+				text-decoration: none;
+				font-family: 宋体;
+				mso-generic-font-family: auto;
+				mso-font-charset: 134;
+				border: none;
+				mso-protection: locked visible;
+			}
+			
+			.xl123 {
+				mso-style-parent: style109;
+				text-align: center;
+				font-weight: 700;
+				mso-font-charset: 134;
+			}
+			
+			.xl124 {
+				mso-style-parent: style109;
+				font-weight: 700;
+				mso-font-charset: 134;
+			}
+			
+			.xl125 {
+				mso-style-parent: style109;
+				vertical-align: bottom;
+				font-weight: 700;
+				mso-font-charset: 134;
+			}
+			
+			.xl126 {
+				mso-style-parent: style109;
+				vertical-align: bottom;
+				font-family: 仿宋_GB2312, monospace;
+				mso-generic-font-family: modern;
+				mso-font-charset: 134;
+			}
+			
+			.xl127 {
+				mso-style-parent: style109;
+				text-align: center;
+				white-space: normal;
+				font-size: 14.0pt;
+				font-weight: 700;
+				mso-font-charset: 134;
+			}
+			
+			.xl128 {
+				mso-style-parent: style108;
+				font-size: 14.0pt;
+				font-weight: 700;
+				mso-font-charset: 134;
+			}
+			
+			.xl129 {
+				mso-style-parent: style109;
+				text-align: center;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+			}
+			
+			.xl130 {
+				mso-style-parent: style108;
+				text-align: center;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+			}
+			
+			.xl131 {
+				mso-style-parent: style109;
+				text-align: center;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl132 {
+				mso-style-parent: style109;
+				text-align: left;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+			}
+			
+			.xl133 {
+				mso-style-parent: style106;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl134 {
+				mso-style-parent: style109;
+				font-weight: 700;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+				border-top: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl135 {
+				mso-style-parent: style106;
+				text-align: center;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+				border-top: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl136 {
+				mso-style-parent: style106;
+				text-align: center;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-top: .5pt solid windowtext;
+				border-right: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl137 {
+				mso-style-parent: style106;
+				text-align: center;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-top: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl138 {
+				mso-style-parent: style108;
+				text-align: center;
+				white-space: normal;
+				font-size: 11.0pt;
+				font-weight: 700;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+				border-top: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl139 {
+				mso-style-parent: style108;
+				text-align: center;
+				white-space: normal;
+				font-size: 11.0pt;
+				font-weight: 700;
+				mso-font-charset: 134;
+				border-top: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl140 {
+				mso-style-parent: style108;
+				text-align: center;
+				white-space: normal;
+				font-size: 11.0pt;
+				font-weight: 700;
+				mso-font-charset: 134;
+				border-top: .5pt solid windowtext;
+				border-right: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl141 {
+				mso-style-parent: style108;
+				text-align: center;
+				white-space: normal;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl142 {
+				mso-style-parent: style106;
+				text-align: center;
+				white-space: normal;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl143 {
+				mso-style-parent: style108;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl144 {
+				mso-style-parent: style108;
+				text-align: center;
+				color: #000000;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl145 {
+				mso-style-parent: style109;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl146 {
+				mso-style-parent: style108;
+				white-space: normal;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl147 {
+				mso-style-parent: style109;
+				text-align: center;
+				font-size: 11.0pt;
+				font-weight: 700;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+				border-top: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl148 {
+				mso-style-parent: style109;
+				text-align: center;
+				font-size: 11.0pt;
+				font-weight: 700;
+				mso-font-charset: 134;
+				border-top: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl149 {
+				mso-style-parent: style109;
+				text-align: center;
+				font-size: 11.0pt;
+				font-weight: 700;
+				mso-font-charset: 134;
+				border-top: .5pt solid windowtext;
+				border-right: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl150 {
+				mso-style-parent: style109;
+				text-align: center;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+				border-top: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl151 {
+				mso-style-parent: style109;
+				text-align: center;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-top: .5pt solid windowtext;
+				border-right: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl152 {
+				mso-style-parent: style109;
+				text-align: center;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl153 {
+				mso-style-parent: style105;
+				text-align: center;
+				layout-flow: vertical;
+				color: #000000;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl154 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+				border-top: .5pt solid windowtext;
+			}
+			
+			.xl155 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-top: .5pt solid windowtext;
+				border-right: .5pt solid windowtext;
+			}
+			
+			.xl156 {
+				mso-style-parent: style107;
+				text-align: center;
+				layout-flow: vertical;
+				color: #000000;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border: .5pt solid windowtext;
+			}
+			
+			.xl157 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				color: #000000;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+				border-top: .5pt solid windowtext;
+			}
+			
+			.xl158 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				color: #000000;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-top: .5pt solid windowtext;
+				border-right: .5pt solid windowtext;
+			}
+			
+			.xl159 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+			}
+			
+			.xl160 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-right: .5pt solid windowtext;
+			}
+			
+			.xl161 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				color: #000000;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+			}
+			
+			.xl162 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				color: #000000;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-right: .5pt solid windowtext;
+			}
+			
+			.xl163 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl164 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-right: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl165 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				color: #000000;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-left: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			.xl166 {
+				mso-style-parent: style107;
+				text-align: left;
+				white-space: normal;
+				color: #000000;
+				font-size: 11.0pt;
+				mso-font-charset: 134;
+				border-right: .5pt solid windowtext;
+				border-bottom: .5pt solid windowtext;
+			}
+			
+			-->
+		</style>
+<style>
+	#left-menu{
+		width: 25vw;
+		position: fixed;
+	}
+	
+	#container{
+		margin-left: 27vw;
+		margin-top: 50px;
+		width: 920px;
+		min-width:920px;
+		height: 400px;
+		min-height:400px;
+		overflow-x: auto; overflow-y: auto;
+	}
+
+</style>
+</head>
+
+<body>
+<div class="nav">
+  <div class="container"> <a href="http://localhost:8080/views/webviews/user/setting.html"><img src="/img/webimg/logo-white1.png"></a>
+    <ul  id="navigator" class="nav-header">
+    </ul>
+  </div>
+</div>
+
+<!-- Left menu -->
+<div id="left-menu"></div>
+
+<!-- Container -->
+<div id="container">
+<table width="1326" border="0" cellpadding="0" cellspacing="0" style='width:663.00pt;border-collapse:collapse;table-layout:fixed;'>
+				<tr height="28.50" style='height:14.25pt;mso-height-source:userset;mso-height-alt:285;'>
+					<td class="xl126" height="28.50" width="217.50" style='height:14.25pt;width:108.75pt;' x:str>附件5</td>
+					<td class="xl125" width="217.50" style='width:108.75pt;'></td>
+					<td class="xl125" width="225" style='width:112.50pt;'></td>
+					<td class="xl125" width="217.50" style='width:108.75pt;'></td>
+					<td class="xl125" width="231" style='width:115.50pt;'></td>
+					<td class="xl125" width="217.50" style='width:108.75pt;'></td>
+				</tr>
+				<tr height="67.50" style='height:33.75pt;mso-height-source:userset;mso-height-alt:675;'>
+					<td class="xl127" height="67.50" colspan="6" style='height:33.75pt;border-right:none;border-bottom:none;' x:str>增值税预缴税款表</td>
+				</tr>
+				<tr height="27" class="xl123" style='height:13.50pt;mso-height-source:userset;mso-height-alt:270;'>
+					<td class="xl129" height="27" colspan="6" style='height:13.50pt;border-right:none;border-bottom:none;' x:str>税款所属时间：<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp; </span>年<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>月<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>日 至<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>年
+						<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>月<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp; </span>日</td>
+				</tr>
+				<tr height="48" class="xl124" style='height:24.00pt;mso-height-source:userset;mso-height-alt:480;'>
+					<td class="xl131" height="48" colspan="4" style='height:24.00pt;border-right:none;border-bottom:.5pt solid windowtext;' x:str>纳税人识别号 ：
+						<font class="font25">□□□□□□□□□□□□□□□□□□□□</font>
+						<font class="font4"><span style='mso-spacerun:yes;'>&nbsp;&nbsp;</span></font>
+					</td>
+					<td class="xl132" x:str>是否适用一般计税方法</td>
+					<td class="xl132" x:str><span style='mso-spacerun:yes;'>&nbsp;&nbsp;</span>是 □<span style='mso-spacerun:yes;'>&nbsp;&nbsp; </span>否 □</td>
+				</tr>
+				<tr height="31.90" class="xl124" style='height:15.95pt;mso-height-source:userset;mso-height-alt:319;'>
+					<td class="xl133" height="31.90" style='height:15.95pt;' x:str>纳税人名称：（公章）<span style='display:none;'><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;</span></span>
+					</td>
+					<td class="xl133"></td>
+					<td class="xl133"></td>
+					<td class="xl133"></td>
+					<td class="xl133" colspan="2">金额单位：元（列至角<span style='display:none;'>分）</span></td>
+				</tr>
+				<tr height="31.90" class="xl124" style='height:15.95pt;mso-height-source:userset;mso-height-alt:319;'>
+					<td class="xl135" height="31.90" colspan="2" style='height:15.95pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>项目编号</td>
+					<td class="xl133"></td>
+					<td class="xl133" x:str>项目名称</td>
+					<td class="xl135" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'></td>
+				</tr>
+				<tr height="31.90" class="xl124" style='height:15.95pt;mso-height-source:userset;mso-height-alt:319;'>
+					<td class="xl135" height="31.90" colspan="2" style='height:15.95pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>项目地址</td>
+					<td class="xl135" colspan="4" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'></td>
+				</tr>
+				<tr height="0" class="xl124" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:319;'>
+					<td class="xl138" height="0" colspan="6" style='height:0.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>一、预征项目</td>
+				</tr>
+				<tr height="36" class="xl124" style='height:18.00pt;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl141" height="72" colspan="2" rowspan="2" style='height:36.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>预征项目和栏次</td>
+					<td class="xl142" x:str>销售额</td>
+					<td class="xl142" x:str>扣除金额</td>
+					<td class="xl142" x:str>预征率</td>
+					<td class="xl141" x:str><span style='mso-spacerun:yes;'>&nbsp;</span>预征税额</td>
+				</tr>
+				<tr height="36" class="xl124" style='height:18.00pt;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl142" x:num>1</td>
+					<td class="xl142" x:num>2</td>
+					<td class="xl142" x:num>3</td>
+					<td class="xl141" x:num>4=(1-2)×3</td>
+				</tr>
+				<tr height="36" class="xl124" style='height:18.00pt;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl143" height="36" style='height:18.00pt;' x:str>建筑服务</td>
+					<td class="xl141" x:num>1</td>
+					<td class="xl141"></td>
+					<td class="xl144"></td>
+					<td class="xl144"></td>
+					<td class="xl141"></td>
+				</tr>
+				<tr height="36" class="xl124" style='height:18.00pt;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl145" height="36" style='height:18.00pt;' x:str>销售不动产</td>
+					<td class="xl141" x:num>2</td>
+					<td class="xl141"></td>
+					<td class="xl144"></td>
+					<td class="xl144"></td>
+					<td class="xl141"></td>
+				</tr>
+				<tr height="36" class="xl124" style='height:18.00pt;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl146" height="36" style='height:18.00pt;' x:str>出租不动产</td>
+					<td class="xl141" x:num>3</td>
+					<td class="xl141"></td>
+					<td class="xl144"></td>
+					<td class="xl144"></td>
+					<td class="xl141"></td>
+				</tr>
+				<tr height="36" class="xl124" style='height:18.00pt;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl146" height="36" style='height:18.00pt;'></td>
+					<td class="xl141" x:num>4</td>
+					<td class="xl141"></td>
+					<td class="xl144"></td>
+					<td class="xl144"></td>
+					<td class="xl141"></td>
+				</tr>
+				<tr height="36" class="xl124" style='height:18.00pt;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl146" height="36" style='height:18.00pt;'></td>
+					<td class="xl141" x:num>5</td>
+					<td class="xl141"></td>
+					<td class="xl144"></td>
+					<td class="xl144"></td>
+					<td class="xl141"></td>
+				</tr>
+				<tr height="36" class="xl124" style='height:18.00pt;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl141" height="36" style='height:18.00pt;' x:str>合计</td>
+					<td class="xl141" x:num>6</td>
+					<td class="xl141"></td>
+					<td class="xl144"></td>
+					<td class="xl144"></td>
+					<td class="xl141"></td>
+				</tr>
+				<tr height="0" class="xl124" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl147" height="0" colspan="6" style='height:0.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>二、开具发票情况</td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl150" height="0" colspan="2" style='height:0.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>序号</td>
+					<td class="xl152" x:str>发票代码</td>
+					<td class="xl152" x:str>发票号码</td>
+					<td class="xl152" x:str>金额</td>
+					<td class="xl152" x:str>税额</td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl150" height="0" colspan="2" style='height:0.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>合计</td>
+					<td class="xl152" x:str>——</td>
+					<td class="xl152" x:str>——</td>
+					<td class="xl152"></td>
+					<td class="xl152"></td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl150" height="0" colspan="2" style='height:0.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:num>1</td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl150" height="0" colspan="2" style='height:0.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:num>2</td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl150" height="0" colspan="2" style='height:0.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:num>3</td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl147" height="0" colspan="6" style='height:0.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>三、取得分包人开具发票情况</td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl145" height="0" style='height:0.00pt;' x:str>分包人税务登记证号</td>
+					<td class="xl152" x:str>发票代码</td>
+					<td class="xl152" x:str>发票号码</td>
+					<td class="xl152" x:str>金额</td>
+					<td class="xl152" x:str>税额</td>
+					<td class="xl152" x:str>完税凭证号码</td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl145" height="0" style='height:0.00pt;' x:str>合计</td>
+					<td class="xl152" x:str>——</td>
+					<td class="xl152" x:str>——</td>
+					<td class="xl152" x:str>——</td>
+					<td class="xl145"></td>
+					<td class="xl152" x:str>——</td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl145" height="0" style='height:0.00pt;'></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl145" height="0" style='height:0.00pt;'></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+				</tr>
+				<tr height="0" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl145" height="0" style='height:0.00pt;'></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+					<td class="xl145"></td>
+				</tr>
+				<tr height="0" class="xl124" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl147" height="0" colspan="6" style='height:0.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>四、工程分包情况</td>
+				</tr>
+				<tr height="0" class="xl124" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl152" height="0" style='height:0.00pt;' x:str>序号</td>
+					<td class="xl150" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>分包人名称</td>
+					<td class="xl150" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>分包人税务登记证号</td>
+					<td class="xl152" x:str>分包工程价款</td>
+				</tr>
+				<tr height="0" class="xl124" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl152" height="0" style='height:0.00pt;' x:num>1</td>
+					<td class="xl150" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'></td>
+					<td class="xl150" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'></td>
+					<td class="xl145"></td>
+				</tr>
+				<tr height="0" class="xl124" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl152" height="0" style='height:0.00pt;' x:num>2</td>
+					<td class="xl150" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'></td>
+					<td class="xl150" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'></td>
+					<td class="xl145"></td>
+				</tr>
+				<tr height="0" class="xl124" style='height:0.00pt;display:none;mso-height-source:userset;mso-height-alt:360;'>
+					<td class="xl152" height="0" style='height:0.00pt;' x:num>3</td>
+					<td class="xl150" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'></td>
+					<td class="xl150" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'></td>
+					<td class="xl145"></td>
+				</tr>
+				<tr height="45" style='height:22.50pt;mso-height-source:userset;mso-height-alt:450;'>
+					<td class="xl153" height="270" rowspan="6" style='height:135.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>授权声明</td>
+					<td class="xl154" colspan="2" rowspan="6" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;</span>如果你已委托代理人填报，请填写下列资料：&nbsp;&nbsp;&nbsp;&nbsp;为代理一切税务事宜，现授权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（地址）
+						&nbsp;&nbsp;&nbsp;&nbsp;为本次纳税人的代理填报人，任何与本表有关的往来文件，都可寄予此人。<br/>授权人签字：</td>
+					<td class="xl156" rowspan="6" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>填表人申明</td>
+					<td class="xl157" colspan="2" rowspan="6" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>以上内容是真实的、可靠的、完整的。<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br/><br/><br/>纳税人签字：</td>
+				</tr>
+				<tr height="45" style='height:22.50pt;mso-height-source:userset;mso-height-alt:450;' />
+				<tr height="45" style='height:22.50pt;mso-height-source:userset;mso-height-alt:450;' />
+				<tr height="45" style='height:22.50pt;mso-height-source:userset;mso-height-alt:450;' />
+				<tr height="45" style='height:22.50pt;mso-height-source:userset;mso-height-alt:450;' />
+				<tr height="45" style='height:22.50pt;mso-height-source:userset;mso-height-alt:450;' />
+				<![if supportMisalignedColumns]>
+				<tr width="0" style='display:none;'>
+					<td width="218" style='width:109;'></td>
+					<td width="225" style='width:113;'></td>
+					<td width="218" style='width:109;'></td>
+					<td width="231" style='width:116;'></td>
+					<td width="218" style='width:109;'></td>
+					<td width="108" style='width:54;'></td>
+				</tr>
+				<![endif]>
+			</table>
+</div>
+<div class="mask"></div>
+<div class="footer">
+  <div class="container">
+    <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#submit").on("click", function(){
+	console.log($(".text"));
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		console.log($(this).val());
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+
+	dataSet["class_name"] = "XiaoXiang_XiangMu";
+
+	$.post('/project/addModel', dataSet, function(data){
+		console.log(data);
+		
+	});
+	
+});
+$("#modify").on("click", function(){
+	console.log($(".text"));
+	var dataSet = {};
+	$(".text").each(function(){
+		console.log($(this).attr('id'));
+		dataSet[$(this).attr('id')] = $(this).val();
+	});
+
+	dataSet["class_name"] = "XiaoXiang_XiangMu";
+	dataSet['id'] = 1;
+	
+	$.post('/project/modifyModel', dataSet, function(data){
+		console.log(data);
+		
+	});
+	
+});
+
+var query = {query_key: 'id', query_value:1, class_name:'XiaoXiang_XiangMu'};
+$.post("/project/getModel", query, function(data){
+
+	var data = $.parseJSON(data.data)[0];
+
+	for(key in data){
+
+			console.log(data[key]);
+			$("#" + key).html(data[key]);
+		
+	}
+	
+});
+</script>
+
+
+</body>
+
+
+</html>
