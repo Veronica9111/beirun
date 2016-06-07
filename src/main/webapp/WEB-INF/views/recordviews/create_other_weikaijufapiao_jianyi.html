@@ -17,7 +17,8 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
- <style>
+<script src="/js/webjs/global.js"></script>
+<style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
 	mso-header-margin:0.32in;
@@ -922,6 +923,27 @@ td
 	}
 
 </style>
+<style>
+	#left-menu{
+		width: 25vw;
+		position: fixed;
+	}
+	
+	#container{
+		margin-left: 27vw;
+		margin-top: 20px;
+		width: 920px;
+		min-width:920px;
+		height: 400px;
+		min-height:400px;
+		overflow-x: auto; overflow-y: auto;
+	}
+	#but_position{
+		margin-left:27vw;
+		margin-top: 50px;
+	}
+
+</style>
 </head>
 
 <body>
@@ -934,15 +956,15 @@ td
 
 <!-- Left menu -->
 <div id="left-menu"></div>
-<div id="but_position">
-	<input id="weikaijufapiaomingxi_yiban"  type="button" value="一般计税未开具发票" class="btn btn-success btn-sm" />
-	<input id="weikaijufapiaomingxi" disabled type="button" value="简易计税未开具发票" class="btn btn-success btn-sm" />
-	<input id="yibanjishuifangfanashuijianchatiaozheng" type="button" value="纳税检查调整" class="btn btn-success btn-sm" />
-	<input id="fuwubudongchanwuxingzichankouchuxiangmumingxi" type="button" value="扣除项目明细" class="btn btn-success btn-sm" />
-</div>
-<!-- Container -->
-<div id="container">
 
+<!-- Container -->
+<div id="but_position">
+	<input id="weikaijufapiao" disabled type="button" value="一般计税未开具发票" class="btn btn-success btn-sm" />
+	<input id="weikaijufapiao" type="button" value="简易计税未开具发票" class="btn btn-success btn-sm" />
+	<input id="nashuijianchatiaozheng" type="button" value="纳税检查调整" class="btn btn-success btn-sm" />
+	<input id="kouchuxiangmumingxi" type="button" value="扣除项目明细" class="btn btn-success btn-sm" />
+</div>
+<div id="container">
 <table width="3674.20" border="0" cellpadding="0" cellspacing="0" style='width:1837.10pt;border-collapse:collapse;table-layout:fixed;'>
   <tr height="52.50" class="xl65" style='height:26.25pt;mso-height-source:userset;mso-height-alt:525;'>
     <td class="xl70" height="52.50" width="3674.20" colspan="26" style='height:26.25pt;width:1837.10pt;border-right:none;border-bottom:none;' x:str>未开具发票明细</td>
@@ -1069,69 +1091,10 @@ td
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
-
 <script type="text/javascript">
-$(".btn-success").click(function(){
-	window.location = "/views/recordviews/"+$(this).attr("id")+".html";
-});
-Date.prototype.Format = function(formatStr) {
-	var str = formatStr;
-	var Week = ['日', '一', '二', '三', '四', '五', '六'];
 
-	str = str.replace(/yyyy|YYYY/, this.getFullYear());
-	str = str.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this.getYear() % 100).toString() : '0' + (this.getYear() % 100));
-
-	str = str.replace(/MM/, (this.getMonth() + 1) > 9 ? (this.getMonth() + 1).toString() : '0' + (this.getMonth()+1));
-	str = str.replace(/M/g, this.getMonth());
-
-	str = str.replace(/w|W/g, Week[this.getDay()]);
-
-	str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' + this.getDate());
-	str = str.replace(/d|D/g, this.getDate());
-
-	str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString() : '0' + this.getHours());
-	str = str.replace(/h|H/g, this.getHours());
-	str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes().toString() : '0' + this.getMinutes());
-	str = str.replace(/m/g, this.getMinutes());
-
-	str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' + this.getSeconds());
-	str = str.replace(/s|S/g, this.getSeconds());
-
-	return str;
-}
-$("#submit").on("click", function(){
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-	dataSet["class_name"] = "WeiKaiJuFaPiaoMingXi";
-	dataSet["kaipiaoshenqingdan_id"] = "222";
-	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
-	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
-	$.post('/project/addModel', dataSet, function(data){
-		console.log(data);
-		
-	});
-	
-});
-$("#modify").on("click", function(){
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-	dataSet['id'] = 1;
-	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
-	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
-	dataSet["kaipiaoshenqingdan_id"] = "222";
-	dataSet["class_name"] = "WeiKaiJuFaPiaoMingXi";
-	$.post('/project/modifyModel', dataSet, function(data){
-		console.log(data);
-	});
-	
-});
 </script>
+
 </body>
 
 

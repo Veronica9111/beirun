@@ -1756,6 +1756,9 @@
 
 <!-- Container -->
 <div id="container">
+<input id="xiaoxiangbiao" disabled type="button" value="销项明细" class="btn btn-success btn-sm" />
+	<input id="jinxiangbiao"  type="button" value="进项明细" class="btn btn-success btn-sm" />
+	<input id="nashuishenbaobiao" type="button" value="纳税申报明细" class="btn btn-success btn-sm" />
 <table width="1697.10" border="0" cellpadding="0" cellspacing="0" style='width:848.55pt;border-collapse:collapse;table-layout:fixed;'>
 				<tr height="30" class="xl74" style='height:15.00pt;mso-height-source:userset;mso-height-alt:300;'>
 					<td class="xl77" height="30" width="1697.10" colspan="20" style='height:15.00pt;width:848.55pt;border-right:none;border-bottom:none;' x:str>增值税纳税申报表附列资料（一）</td>
@@ -2251,53 +2254,8 @@
 </div>
 
 <script type="text/javascript">
-$("#submit").on("click", function(){
-	console.log($(".text"));
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		console.log($(this).val());
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-
-	dataSet["class_name"] = "XiaoXiang_XiangMu";
-
-	$.post('/project/addModel', dataSet, function(data){
-		console.log(data);
-		
-	});
-	
-});
-$("#modify").on("click", function(){
-	console.log($(".text"));
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-
-	dataSet["class_name"] = "XiaoXiang_XiangMu";
-	dataSet['id'] = 1;
-	
-	$.post('/project/modifyModel', dataSet, function(data){
-		console.log(data);
-		
-	});
-	
-});
-
-var query = {query_key: 'id', query_value:1, class_name:'XiaoXiang_XiangMu'};
-$.post("/project/getModel", query, function(data){
-
-	var data = $.parseJSON(data.data)[0];
-
-	for(key in data){
-
-			console.log(data[key]);
-			$("#" + key).html(data[key]);
-		
-	}
-	
+$(".btn-success").click(function(){
+	window.location = "/views/recordviews/"+$(this).attr("id")+".html";
 });
 </script>
 

@@ -38,7 +38,7 @@ update kaipiaoqingkuangbiao_xiangmu set beizhu=#{beizhu},hejijine=#{hejijine},yi
 where id=#{id}
 </update>
 
-<insert id="addKaiPiaoQingKuangBiao_XiangMu">
+<insert id="addKaiPiaoQingKuangBiao_XiangMu" useGeneratedKeys="true"  keyProperty="id" keyColumn="id">
 insert into kaipiaoqingkuangbiao_xiangmu (beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id)
 values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{company_id},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{fenbaofapiao},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id},#{xiangmutaizhang_id})
 </insert>

@@ -963,8 +963,10 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
-	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+	<input id="weikaijufapiaomingxi_yiban"  type="button" value="一般计税未开具发票" class="btn btn-success btn-sm" />
+	<input id="weikaijufapiaomingxi"  type="button" value="简易计税未开具发票" class="btn btn-success btn-sm" />
+	<input id="yibanjishuifangfanashuijianchatiaozheng" disabled type="button" value="纳税检查调整" class="btn btn-success btn-sm" />
+	<input id="fuwubudongchanwuxingzichankouchuxiangmumingxi" type="button" value="扣除项目明细" class="btn btn-success btn-sm" />
 </div>
 <div id="container">
  <table width="2283.90" border="0" cellpadding="0" cellspacing="0" style='width:1141.95pt;border-collapse:collapse;table-layout:fixed;'>
@@ -1069,6 +1071,9 @@ td
 </div>
 
 <script type="text/javascript">
+$(".btn-success").click(function(){
+	window.location = "/views/recordviews/"+$(this).attr("id")+".html";
+});
 Date.prototype.Format = function(formatStr) {
 	var str = formatStr;
 	var Week = ['日', '一', '二', '三', '四', '五', '六'];
@@ -1124,16 +1129,6 @@ $("#modify").on("click", function(){
 	$.post('/project/modifyModel', dataSet, function(data){
 		console.log(data);
 	});
-	
-});
-
-var query = {query_key: 'id', query_value:1, class_name:'YiBanJiShuiFangFaNaShuiJianChaTiaoZheng'};
-$.post("/project/getModel", query, function(data){
-	var data = $.parseJSON(data.data)[0];
-	console.log(data);
-	for(key in data){
-		$("#" + key).val(data[key]);
-	}
 	
 });
 </script>

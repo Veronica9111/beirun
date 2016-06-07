@@ -76,7 +76,7 @@ public interface IProjectService {
 	
 	public KaiPiaoQingKuangBiao_XiangMu getKaiPiaoQingKuangBiao_XiangMuById(Long id);
 
-	public Boolean addKaiPiaoQingKuangBiao_XiangMu(KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu);
+	public Long addKaiPiaoQingKuangBiao_XiangMu(KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu);
 
 	public Boolean updateKaiPiaoQingKuangBiao_XiangMu(KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu);
 	
@@ -99,6 +99,8 @@ public interface IProjectService {
 	public Boolean updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
 	public Boolean updateKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
+	
+	public Integer addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
 	
 	public Boolean updateJianYiJiShuiFangFaPuPiaoJiShui(JianYiJiShuiFangFaPuPiaoJiShui jyjsffppjs);
 	

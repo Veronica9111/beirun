@@ -2,8 +2,11 @@ $(document).ready(function(){
 	$.post("/user/getRoles",{},function(data){
 		var roles = data.data;
 		if(roles.indexOf("开票人") != -1){
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/create.html">开票</a></li>');
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/history.html">历史记录</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/create_invoice_1.html">销项票</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/weikaijufapiaomingxi_yiban.html">销项附加信息</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/weikaijufapiaomingxi_yiban.html">进项票</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/weikaijufapiaomingxi_yiban.html">进项附加信息</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/xiaoxiangbiao.html">汇总信息</a></li>');
 		}
 		if(roles.indexOf("业务主任") !=-1){
 			$("#navigator").append('<li><a id="approve-nav" class="link" href="/views/recordviews/approval_invoice_list_2.html">审批</a></li>');
@@ -37,8 +40,8 @@ $(document).ready(function(){
 		if(roles.indexOf("管理") != -1){
 			$("#navigator").append('<li><a class="link" href="/views/webviews/invoice/manage.html">管理</a></li>');
 		}
-		$("#navigator").append('<li><a class="link" href="/views/webviews/user/setting.html">个人设置</a></li>');
-		$("#navigator").append('<li><a class="link" href="/logout">退出登录</a></li>');
+		/*$("#navigator").append('<li><a class="link" href="/views/webviews/user/setting.html">个人设置</a></li>');
+		$("#navigator").append('<li><a class="link" href="/logout">退出登录</a></li>');*/
 		
 		$(".link").each(function(){
 			if($(this).attr("href") == window.location.pathname){

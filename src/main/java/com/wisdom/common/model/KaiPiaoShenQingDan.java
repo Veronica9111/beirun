@@ -153,8 +153,13 @@ public void setTianbiaoriqi (Timestamp tianbiaoriqi) {
 		this.tianbiaoriqi=tianbiaoriqi;
 }
 
-public Timestamp getTianbiaoriqi () {
-return this.tianbiaoriqi;
+public String getTianbiaoriqi () {
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	String rq = "";
+	if(this.tianbiaoriqi != null) {
+		rq  = dateFormat.format(this.tianbiaoriqi);
+	}
+return rq;
 }
 
 public void setKaipiaoqingkuangbiao_xiangmu_id (Long kaipiaoqingkuangbiao_xiangmu_id) {

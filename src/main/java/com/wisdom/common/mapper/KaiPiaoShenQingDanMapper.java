@@ -9,7 +9,7 @@ import com.wisdom.common.model.XiangMuTaiZhang;
 
 public interface KaiPiaoShenQingDanMapper {
 
-	void addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
+	Integer addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
 	
 	List<KaiPiaoShenQingDan> getKaiPiaoShenQingDanByProjectId(Long kaipiaoqingkuangbiao_xiangmu_id);
 	

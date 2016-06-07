@@ -5,6 +5,7 @@
 <cache />
 
 <resultMap type="com.wisdom.common.model.KaiPiaoShenQingDan" id="KaiPiaoShenQingDan">
+<result property="id" column="id"/>
 <result property="fengongsimingcheng" column="fengongsimingcheng"/>
 <result property="xiangmubu" column="xiangmubu"/>
 <result property="xiangmumingcheng" column="xiangmumingcheng"/>
@@ -22,8 +23,8 @@
 <result property="fuheren" column="fuheren"/>
 </resultMap>
 
-<insert id="addKaiPiaoShenQingDan" parameterType="String">
-insert into kaipiaoshenqingdan (xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren,)
+<insert id="addKaiPiaoShenQingDan" parameterType="String"  useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+insert into kaipiaoshenqingdan (xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren)
 values(#{xiangmubu},#{xiangmumingcheng},#{hetongzongjine},#{shenqingriqi},#{kaijufapiao},#{shouqikuanxiang},#{wangongjindu},#{qita},#{kaipiaoneirong},#{tianbiaoren},#{tianbiaorendianhua},#{tianbiaoriqi},#{kaipiaoqingkuangbiao_xiangmu_id},#{fuheren})
 </insert>
 
