@@ -862,8 +862,8 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
-	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+	<input id="jinxiangfapiaomingxi_renzheng" disabled type="button" value="进项凭证" class="btn btn-success btn-sm" />
+	<input id="fapiaoshangchuan" type="button" value="进项发票" class="btn btn-success btn-sm" />
 </div>
 <div id="container">
   <table width="2484.60" border="0" cellpadding="0" cellspacing="0" style='width:1242.30pt;border-collapse:collapse;table-layout:fixed;'>
@@ -1020,9 +1020,7 @@ $("#modify").on("click", function(){
 	dataSet["shenheriqi"] = new Date().Format("yyyy-MM-DD");
 	$.post('/project/modifyModel', dataSet, function(data){
 		console.log(data);
-		
 	});
-	
 });
 
 var query = {query_key: 'id', query_value:1, class_name:'JinXiangFaPiaoMingXi_RenZheng'};
@@ -1064,6 +1062,9 @@ Date.prototype.Format = function(formatStr) {
 
 	return str;
 }
+$(".btn-success").click(function(){
+	window.location = "/views/recordviews/"+$(this).attr("id")+".html";
+});
 </script>
 
 </body>

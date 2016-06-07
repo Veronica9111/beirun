@@ -1240,6 +1240,10 @@
 
 <!-- Container -->
 <div id="container">
+<input id="xiaoxiangbiao"  type="button" value="销项明细" class="btn btn-success btn-sm" />
+	<input id="jinxiangbiao"  disabled type="button" value="进项明细" class="btn btn-success btn-sm" />
+	<input id="yujiaoshuikuanbiao" type="button" value="预缴税款表" class="btn btn-success btn-sm" />
+	<input id="nashuishenbaobiao" type="button" value="纳税申报明细" class="btn btn-success btn-sm" />
 <table width="1097" border="0" cellpadding="0" cellspacing="0" style='width:548.50pt;border-collapse:collapse;table-layout:fixed;'>
 			<tr height="97.50" style='height:48.75pt;mso-height-source:userset;mso-height-alt:975;'>
 				<td class="xl67" height="97.50" width="1097" colspan="7" style='height:48.75pt;width:548.50pt;border-right:none;border-bottom:none;' x:str>增值税纳税申报表附列资料（二）<br/>（本期进项税额明细）</td>
@@ -1586,18 +1590,8 @@ $("#modify").on("click", function(){
 	
 });
 
-var query = {query_key: 'id', query_value:1, class_name:'XiaoXiang_XiangMu'};
-$.post("/project/getModel", query, function(data){
-
-	var data = $.parseJSON(data.data)[0];
-
-	for(key in data){
-
-			console.log(data[key]);
-			$("#" + key).html(data[key]);
-		
-	}
-	
+$(".btn-success").click(function(){
+	window.location = "/views/recordviews/"+$(this).attr("id")+".html";
 });
 </script>
 

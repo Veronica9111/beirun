@@ -1757,9 +1757,14 @@
 
 <!-- Container -->
 <div id="container">
+
+<input id="xiaoxiangbiao"  type="button" value="销项明细" class="btn btn-success btn-sm" />
+	<input id="jinxiangbiao"  type="button" value="进项明细" class="btn btn-success btn-sm" />
+	<input id="yujiaoshuikuanbiao" type="button" value="预缴税款表" class="btn btn-success btn-sm" />
+	<input id="nashuishenbaobiao" disabled type="button" value="纳税申报明细" class="btn btn-success btn-sm" />
   <table width="971" border="0" cellpadding="0" cellspacing="0" style="width:728.25pt;border-collapse:collapse;table-layout:fixed;">
    <tbody><tr height="24" style="height:18.00pt;mso-height-source:userset;mso-height-alt:360;">
-    <td class="xl153" height="24" width="971" colspan="43" style="height:18.00pt;width:728.25pt;border-right:none;border-bottom:none;" x:str=""><font class="font8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font class="font2"> </font><font class="font33"> </font><font class="font9">&nbsp;</font><font class="font33"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font><font class="font9">增</font><font class="font33"> </font><font class="font9">值</font><font class="font33"> </font><font class="font9">税</font><font class="font33"> </font><font class="font9">纳</font><font class="font33"> </font><font class="font9">税</font><font class="font33"> </font><font class="font9">申</font><font class="font33"> </font><font class="font9">报</font><font class="font33"> </font><font class="font9">表</font></td>
+    <td class="xl153" height="24" width="971" colspan="43" style="height:18.00pt;width:728.25pt;border-right:none;border-bottom:none;" x:str=""><font class="font8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font class="font2"> </font><font class="font33"> </font><font class=" ">&nbsp;</font><font class="font33"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font><font class=" ">增</font><font class="font33"> </font><font class=" ">值</font><font class="font33"> </font><font class=" ">税</font><font class="font33"> </font><font class=" ">纳</font><font class="font33"> </font><font class=" ">税</font><font class="font33"> </font><font class=" ">申</font><font class="font33"> </font><font class=" ">报</font><font class="font33"> </font><font class=" ">表</font></td>
    </tr>
    <tr height="26.53" style="height:19.90pt;mso-height-source:userset;mso-height-alt:398;">
     <td class="xl154" height="26.53" colspan="43" style="height:19.90pt;border-right:none;border-bottom:none;" x:str="">（适用于增值税一般纳税人）</td>
@@ -2251,18 +2256,8 @@ $("#modify").on("click", function(){
 	
 });
 
-var query = {query_key: 'id', query_value:1, class_name:'XiaoXiang_XiangMu'};
-$.post("/project/getModel", query, function(data){
-
-	var data = $.parseJSON(data.data)[0];
-
-	for(key in data){
-
-			console.log(data[key]);
-			$("#" + key).html(data[key]);
-		
-	}
-	
+$(".btn-success").click(function(){
+	window.location = "/views/recordviews/"+$(this).attr("id")+".html";
 });
 </script>
 
