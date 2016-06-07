@@ -59,7 +59,10 @@ public interface IProjectService {
 
 	public Boolean updateJinXiangShuieZhuanChuMingXi_XiangMuBu(JinXiangShuieZhuanChuMingXi_XiangMuBu jinXiangShuieZhuanChuMingXi_XiangMuBu);
 
+	public List<JinXiangFaPiaoMingXi_RenZheng> getJinXiangFaPiaoMingXi_RenZhengByCompanyId(Long company_id);
 
+	public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(Long company_id);
+	
 	public JinXiangFaPiaoMingXi_RenZheng getJinXiangFaPiaoMingXi_RenZhengById(Long id);
 
 	public Boolean addJinXiangFaPiaoMingXi_RenZheng(JinXiangFaPiaoMingXi_RenZheng jinXiangFaPiaoMingXi_RenZheng);
