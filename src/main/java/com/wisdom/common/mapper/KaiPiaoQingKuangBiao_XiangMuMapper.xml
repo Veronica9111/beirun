@@ -63,4 +63,10 @@ where company_id in
           #{item}
     </foreach>
 </select> -->
+
+<select id="getAllKaiPiaoQingKuangBiao_XiangMu" resultType="KaiPiaoQingKuangBiao_XiangMu">
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+from kaipiaoqingkuangbiao_xiangmu
+where company_id=#{company_id}
+</select>
 </mapper>

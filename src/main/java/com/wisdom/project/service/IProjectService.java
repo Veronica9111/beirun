@@ -217,7 +217,7 @@ public interface IProjectService {
 	
 	public List<KaiPiaoQingKuangBiao_ZongGongSi> getKaiPiaoQingKuangBiao_ZongGongSiByStatus(Integer status);
 	
-	public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi();
+	public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi(Long companyId);
 	
 	public List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByXiangmutaizhang_id(Long xiangmutaizhang_id);
 	
@@ -251,5 +251,9 @@ public interface IProjectService {
 	public List<QueRenShouRuFangShi_LaoWuShiJianZhanBiFa> getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
 	
 	public 	List<QueRenShouRuFangShi_QiTa> getQueRenShouRuFangShi_QiTaByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+
+	public List<KaiPiaoQingKuangBiao_XiangMu>getAllKaiPiaoQingKuangBiao_XiangMu(Long companyId);
+	
+	public List<KaiPiaoQingKuangBiao_FenGongSi>getAllKaiPiaoQingKuangBiao_FenGongSi(Long companyId);
 
 }

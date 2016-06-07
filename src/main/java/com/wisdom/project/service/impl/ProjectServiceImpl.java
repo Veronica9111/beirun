@@ -992,9 +992,9 @@ public class ProjectServiceImpl implements IProjectService {
 		}
 
 		@Override
-		public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi() {
+		public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi(Long companyId) {
 			// TODO Auto-generated method stub
-			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSi();
+			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSi(companyId);
 		}
 
 		@Override
@@ -1158,5 +1158,17 @@ public class ProjectServiceImpl implements IProjectService {
 		public Integer approveJinXiangFaPiaoMingXi_RenZheng(Integer id,Integer yiji_shenhe_status, String beizhu){
 			return jinXiangFaPiaoMingXi_RenZhengMapper.approveJinXiangFaPiaoMingXi_RenZheng(id,yiji_shenhe_status,beizhu);
 		}
+		public List<KaiPiaoQingKuangBiao_XiangMu> getAllKaiPiaoQingKuangBiao_XiangMu(Long companyId) {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_XiangMuMapper.getAllKaiPiaoQingKuangBiao_XiangMu(companyId);
+		}
+
+		@Override
+		public List<KaiPiaoQingKuangBiao_FenGongSi> getAllKaiPiaoQingKuangBiao_FenGongSi(Long companyId) {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_FenGongSiMapper.getAllKaiPiaoQingKuangBiao_FenGongSi(companyId);
+		}
+
+
 
 }
