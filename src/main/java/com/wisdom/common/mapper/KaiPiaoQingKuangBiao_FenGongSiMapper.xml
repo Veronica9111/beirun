@@ -41,4 +41,9 @@ insert into kaipiaoqingkuangbiao_fengongsi (beizhu,hejijine,yikaipiaojine,wangon
 values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{company_id},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id})
 </insert>
 
+<select id="getAllKaiPiaoQingKuangBiao_FenGongSi" resultType="KaiPiaoQingKuangBiao_FenGongSi">
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id
+from kaipiaoqingkuangbiao_fengongsi
+where company_id=#{company_id}
+</select>
 </mapper>

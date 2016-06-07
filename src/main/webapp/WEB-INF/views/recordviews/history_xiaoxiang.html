@@ -69,87 +69,68 @@
 </body>
 <script type="text/javascript">
 
-$.post("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi", {}, function(data){
 
-	var list = $.parseJSON(data.data);
-	//$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.unapproved + "</span>");
 
-		$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
-		   	data: list,
-		   	"order": [[ 0, "desc" ]],
-		   	"oLanguage": {
-		   	    "sSearch": "查找 ",
-		   	    oPaginate: {
-		   	    	'sPrevious': "上一页",
-		   	    	'sNext': "下一页",
-		   	    }
-		   	  },
-		   	  pageLength:10,
-			    columns: [
-					{ title: "ID" },
-			        { title: "申请开票时间" },
-			        { title: "不含税金额" },
-			        { title: "税额" },
-			        { title: "合计金额" },
-			        { title: "开具发票" },
-			        { title: "收讫款项" },
-			        { title: "完工进度" },
-			        { title: "其它" },
-			        { title: "已开票金额" },
-			        { title: "分包发票"},
-			        { title: "备注"},
-			        { title: "一级审核人" },
-			        { title: "一级审核状态" },
-			        { title: "一级审核备注" },
-			        { title: "二级审核人" },
-			        { title: "二级审核状态" },
-			        { title: "二级审核备注" }
-			    ]
-			} );
+function nodeClick(node){
+
+	if(node.level == 0){
+		//总公司
+		url = "/project/getAllKaiPiaoQingKuangBiao_ZongGongSi";
+	}else if(node.level == 1){
+		//分公司
+		url = "/project/getAllKaiPiaoQingKuangBiao_FenGongSi";
+	}else{
+		//项目
+		url = "/project/getAllKaiPiaoQingKuangBiao_XiangMu";
+	}
 	
+	$.post(url, {"company_id":node.company_id}, function(data){
 
-	
-});
+		var list = $.parseJSON(data.data);
+		//$("#approve-nav").html("审批<span id='message' class='label label-danger label-small label-as-badge'>" + data.unapproved + "</span>");
+			try{
+				table.destroy();
+			}catch(err){
+				//Table is not defined
+			}
+			table = $('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
+			   	data: list,
+			   	"order": [[ 0, "desc" ]],
+			   	"oLanguage": {
+			   	    "sSearch": "查找 ",
+			   	    oPaginate: {
+			   	    	'sPrevious': "上一页",
+			   	    	'sNext': "下一页",
+			   	    },
+				   	 'sEmptyTable': "暂时没有数据",
+			   	  },
+			   	  pageLength:10,
+				    columns: [
+						{ title: "ID" },
+				        { title: "申请开票时间" },
+				        { title: "不含税金额" },
+				        { title: "税额" },
+				        { title: "合计金额" },
+				        { title: "开具发票" },
+				        { title: "收讫款项" },
+				        { title: "完工进度" },
+				        { title: "其它" },
+				        { title: "已开票金额" },
+				        { title: "分包发票"},
+				        { title: "备注"},
+				        { title: "一级审核人" },
+				        { title: "一级审核状态" },
+				        { title: "一级审核备注" },
+				        { title: "二级审核人" },
+				        { title: "二级审核状态" },
+				        { title: "二级审核备注" }
+				    ]
+				} );
+		
 
-	
-/*
-$('#create_invoice').click(function(){
-	window.location="/project/redirectView?view=create_invoice_2.html&test=1";
-});
-var query = {query_key: 'xiangmutaizhang_id', query_value:1, class_name:'KaiPiaoQingKuangBiao_ZongGongSi'};
-$.post("/project/getModel", query, function(data){
-	 dataSet  = $.parseJSON(data.data);
-	$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
-   	data: dataSet,
-   	"order": [[ 0, "desc" ]],
-   	"oLanguage": {
-   	    "sSearch": "查找 ",
-   	    oPaginate: {
-   	    	'sPrevious': "上一页",
-   	    	'sNext': "下一页",
-   	    }
-   	  },
-   	  pageLength:10,
-	    columns: [
-			{ title: "ID" },
-	        { title: "申请开票时间" },
-	        { title: "不含税金额" },
-	        { title: "税额" },
-	        { title: "合计金额" },
-	        { title: "开具发票" },
-	        { title: "收讫款项" },
-	        { title: "完工进度" },
-	        { title: "其它" },
-	        { title: "已开票金额" },
-	        { title: "一级审核人" },
-	        { title: "一级审核状态" },
-	        { title: "一级审核备注" },
-	        { title: "二级审核人" },
-	        { title: "二级审核状态" },
-	        { title: "二级审核备注" }
-	    ]
-	} );
-});*/
+		
+	});
+}
 </script>
 
 </html>

@@ -2,6 +2,7 @@ package com.wisdom.common.mapper;
 import java.util.List;
 
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.XiangMuTaiZhang;
 
 
@@ -17,5 +18,7 @@ public interface KaiPiaoQingKuangBiao_XiangMuMapper {
     
    // List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyIds(List<Integer> list);
     List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyId(Integer company_id);
+    
+    List<KaiPiaoQingKuangBiao_XiangMu> getAllKaiPiaoQingKuangBiao_XiangMu(Long company_id);
 
 }

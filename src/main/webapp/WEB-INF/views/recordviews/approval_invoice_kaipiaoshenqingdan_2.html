@@ -17,7 +17,8 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
- <style>
+<script src="/js/webjs/global.js"></script>
+<style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
 	mso-header-margin:0.32in;
@@ -41,7 +42,7 @@ br
 	mso-font-charset:134;}
 .font1
 	{color:#000000;
-	font-size:12.0pt;
+	font-size:14.0pt;
 	font-weight:700;
 	font-style:normal;
 	text-decoration:none;
@@ -59,8 +60,8 @@ br
 	mso-font-charset:134;}
 .font3
 	{color:#000000;
-	font-size:9.0pt;
-	font-weight:400;
+	font-size:10.0pt;
+	font-weight:700;
 	font-style:normal;
 	text-decoration:none;
 	font-family:"宋体";
@@ -76,32 +77,32 @@ br
 	mso-generic-font-family:auto;
 	mso-font-charset:134;}
 .font5
-	{color:#006100;
-	font-size:11.0pt;
+	{color:#000000;
+	font-size:10.0pt;
 	font-weight:400;
 	font-style:normal;
 	text-decoration:none;
 	font-family:"宋体";
 	mso-generic-font-family:auto;
-	mso-font-charset:0;}
+	mso-font-charset:134;}
 .font6
-	{color:#1F497D;
+	{color:#7F7F7F;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font7
+	{color:#000000;
 	font-size:11.0pt;
 	font-weight:700;
 	font-style:normal;
 	text-decoration:none;
 	font-family:"宋体";
 	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font7
-	{color:#1F497D;
-	font-size:15.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
+	mso-font-charset:0;}
 .font8
 	{color:#9C0006;
 	font-size:11.0pt;
@@ -112,7 +113,7 @@ br
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
 .font9
-	{color:#9C6500;
+	{color:#FA7D00;
 	font-size:11.0pt;
 	font-weight:400;
 	font-style:normal;
@@ -121,6 +122,24 @@ br
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
 .font10
+	{color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font11
+	{color:#FF0000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font12
 	{color:#800080;
 	font-size:11.0pt;
 	font-weight:400;
@@ -130,52 +149,7 @@ br
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
-.font11
-	{color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font12
-	{color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
 .font13
-	{color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font14
-	{color:#FA7D00;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font15
-	{color:#1F497D;
-	font-size:18.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font16
 	{color:#3F3F76;
 	font-size:11.0pt;
 	font-weight:400;
@@ -184,21 +158,49 @@ br
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
-.font17
+.font14
+	{color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font15
 	{color:#000000;
 	font-size:11.0pt;
-	font-weight:700;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font16
+	{color:#9C6500;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font17
+	{color:#006100;
+	font-size:11.0pt;
+	font-weight:400;
 	font-style:normal;
 	text-decoration:none;
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
 .font18
-	{color:#FA7D00;
+	{color:#0000FF;
 	font-size:11.0pt;
 	font-weight:400;
 	font-style:normal;
-	text-decoration:none;
+	text-decoration:underline;
+	text-underline-style:single;
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
@@ -212,6 +214,15 @@ br
 	mso-generic-font-family:auto;
 	mso-font-charset:134;}
 .font20
+	{color:#1F497D;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font21
 	{color:#3F3F3F;
 	font-size:11.0pt;
 	font-weight:700;
@@ -220,34 +231,33 @@ br
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
-.font21
-	{color:#7F7F7F;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:italic;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
 .font22
-	{color:#0000FF;
-	font-size:11.0pt;
-	font-weight:400;
+	{color:#1F497D;
+	font-size:18.0pt;
+	font-weight:700;
 	font-style:normal;
-	text-decoration:underline;
-	text-underline-style:single;
+	text-decoration:none;
 	font-family:"宋体";
 	mso-generic-font-family:auto;
-	mso-font-charset:0;}
+	mso-font-charset:134;}
 .font23
-	{color:#FF0000;
+	{color:#FA7D00;
 	font-size:11.0pt;
-	font-weight:400;
+	font-weight:700;
 	font-style:normal;
 	text-decoration:none;
 	font-family:"宋体";
 	mso-generic-font-family:auto;
 	mso-font-charset:0;}
+.font24
+	{color:#1F497D;
+	font-size:15.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
 .style0
 	{mso-number-format:"General";
 	text-align:general;
@@ -828,89 +838,184 @@ td
 	mso-protection:locked visible;}
 .xl65
 	{mso-style-parent:style0;
-	white-space:normal;
+	text-align:center;
+	font-size:14.0pt;
+	font-weight:700;
 	mso-font-charset:134;}
 .xl66
 	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:12.0pt;
-	font-weight:700;
-	mso-font-charset:134;}
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-bottom:.5pt solid windowtext;}
 .xl67
 	{mso-style-parent:style0;
-	white-space:normal;
+	text-align:center;
 	font-size:10.0pt;
-	mso-font-charset:134;}
+	mso-font-charset:134;
+	border-bottom:.5pt solid windowtext;}
 .xl68
 	{mso-style-parent:style0;
 	text-align:center;
-	white-space:normal;
 	font-size:10.0pt;
-	mso-font-charset:134;}
+	font-weight:700;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
 .xl69
 	{mso-style-parent:style0;
 	text-align:center;
-	white-space:normal;
-	font-size:9.0pt;
+	font-size:10.0pt;
+	font-weight:700;
 	mso-font-charset:134;
-	border:.5pt solid windowtext;}
+	border-left:.5pt solid windowtext;
+	border-top:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
 .xl70
 	{mso-style-parent:style0;
 	text-align:center;
-	white-space:normal;
-	font-size:9.0pt;
+	font-size:10.0pt;
+	font-weight:700;
+	mso-font-charset:134;
+	border-top:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+.xl71
+	{mso-style-parent:style0;
+	text-align:center;
+	font-size:10.0pt;
+	font-weight:700;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-top:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+.xl72
+	{mso-style-parent:style0;
+	text-align:center;
+	font-size:10.0pt;
+	font-weight:700;
+	mso-font-charset:134;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+.xl73
+	{mso-style-parent:style0;
+	text-align:center;
+	font-size:10.0pt;
 	mso-font-charset:134;
 	border-left:.5pt solid windowtext;
 	border-top:.5pt solid windowtext;
 	border-right:.5pt solid windowtext;}
-.xl71
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:9.0pt;
-	mso-font-charset:134;
-	border-left:.5pt solid windowtext;
-	border-right:.5pt solid windowtext;
-	border-bottom:.5pt solid windowtext;}
-.xl72
-	{mso-style-parent:style0;
-	white-space:normal;
-	font-size:9.0pt;
-	mso-font-charset:134;
-	border:.5pt solid windowtext;}
-.xl73
-	{mso-style-parent:style0;
-	white-space:normal;
-	mso-font-charset:134;
-	border:.5pt solid windowtext;}
 .xl74
 	{mso-style-parent:style0;
 	text-align:center;
-	white-space:normal;
+	font-size:10.0pt;
 	mso-font-charset:134;
-	border:.5pt solid windowtext;}
+	border-left:.5pt solid windowtext;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;}
 .xl75
 	{mso-style-parent:style0;
 	text-align:center;
-	white-space:normal;
 	font-size:10.0pt;
 	mso-font-charset:134;
+	border-top:.5pt solid windowtext;
 	border-bottom:.5pt solid windowtext;}
 .xl76
 	{mso-style-parent:style0;
 	text-align:center;
-	white-space:normal;
 	font-size:10.0pt;
-	font-weight:700;
 	mso-font-charset:134;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
 	border-bottom:.5pt solid windowtext;}
 .xl77
 	{mso-style-parent:style0;
 	text-align:center;
-	white-space:normal;
 	font-size:10.0pt;
-	font-weight:700;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;}
+.xl78
+	{mso-style-parent:style0;
+	text-align:center;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;}
+.xl79
+	{mso-style-parent:style0;
+	mso-number-format:"yyyy/m/d";
+	text-align:center;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;}
+.xl80
+	{mso-style-parent:style0;
+	mso-number-format:"yyyy/m/d";
+	text-align:center;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;}
+.xl81
+	{mso-style-parent:style0;
+	mso-number-format:"yyyy/m/d";
+	text-align:center;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-right:.5pt solid windowtext;}
+.xl82
+	{mso-style-parent:style0;
+	mso-number-format:"yyyy/m/d";
+	text-align:center;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;}
+.xl83
+	{mso-style-parent:style0;
+	text-align:center;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+.xl84
+	{mso-style-parent:style0;
+	text-align:center;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+.xl85
+	{mso-style-parent:style0;
+	mso-number-format:"yyyy/m/d";
+	text-align:center;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+.xl86
+	{mso-style-parent:style0;
+	mso-number-format:"yyyy/m/d";
+	text-align:center;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+.xl87
+	{mso-style-parent:style0;
+	font-size:10.0pt;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+.xl88
+	{mso-style-parent:style0;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+.xl89
+	{mso-style-parent:style0;
 	mso-font-charset:134;}
  -->  </style>
 <style>
@@ -921,14 +1026,23 @@ td
 	
 	#container{
 		margin-left: 27vw;
-		margin-top: 50px;
+		margin-top: 20px;
 		width: 920px;
 		min-width:920px;
 		height: 400px;
 		min-height:400px;
 		overflow-x: auto; overflow-y: auto;
 	}
-
+	#but_position{
+		margin-left:27vw;
+		margin-top: 50px;
+	}
+    .text{
+		background-color:white;
+		border:none;
+		width:100%;
+		height:100%;
+	}
 </style>
 </head>
 
@@ -944,101 +1058,72 @@ td
 <div id="left-menu"></div>
 
 <!-- Container -->
+<div id="dialog">
+	<div style="height:70px;">
+	<label>发票类型选择</label>
+	<form id='fapiaokaijuleixing' style='height:20px;line-height:20px;'>
+  		<input type='radio' name='fapiaokaijuleixing_select' value='zhuanyong' checked>增值税专用发票<br>
+  		<input type='radio' name='fapiaokaijuleixing_select' value='pupiao'>增值税普通发票
+	</form>
+	</div>
+	<div id="shouruquerenfangshi_form" style="display:none;height:60px;">
+	<label>收入确认方式</label>
+	<form id='shouruquerenfangshi' style='height:20px;line-height:20px;'>
+  		<input type='radio' name='shouruquerenfangshi_select' value='chenbenzhanbi' checked>已发生成本占比法<br>
+  		<input type='radio' name='shouruquerenfangshi_select' value='laowushijianzhanbi'>劳务时间占比法<br>
+  		<input type='radio' name='shouruquerenfangshi_select' value='gongzuoliang'>已完工工作量法<br>
+  		<input type='radio' name='shouruquerenfangshi_select' value='qita'>其它<br>
+	</form>
+	</div>
+</div>
+<div id="but_position">
+	<!-- <input id="modify_invoice" type="button" value="保存申请单修改" class="btn btn-success btn-sm" /> -->
+</div>
 <div id="container">
 
-<table width="1980" border="0" cellpadding="0" cellspacing="0" style='width:990.00pt;border-collapse:collapse;table-layout:fixed;'>
-  
-   <tr height="30" style='height:15.00pt;'>
-    <td class="xl66" height="30" width="1980" colspan="20" style='height:15.00pt;width:990.00pt;border-right:none;border-bottom:none;' x:str>普通发票开具明细</td>
-   </tr>
-   <tr height="52" style='height:26.00pt;'>
-    <td class="xl67" colspan="2" height="52" style='height:26.00pt;' x:str>分公司名称：</td>
-    <td class="xl68" colspan="6" style='border-right:none;border-bottom:none;' id='fengongsimingcheng'></td>
-    <td class="xl75" colspan="2" style="text-align:left;" x:str>项目部：</td>
-    <td class="xl76" colspan="6" style='mso-ignore:colspan;' id='xiangmubu'></td>
-    <td class="xl77" colspan="2" style='mso-ignore:colspan;'></td>
-    <td class="xl67"></td>
-   </tr>
-   <tr height="28" style='height:14.00pt;'>
-    <td class="xl69" height="76" rowspan="2" style='height:38.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>日期</td>
-    <td class="xl70" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开票内容</td>
-    <td class="xl69" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>11%税率</td>
-    <td class="xl69" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>3%税率</td>
-    <td class="xl69" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>17%税率的货物及加工修理修配劳务</td>
-    <td class="xl69" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>17%税率的服务、不动产和无形资产</td>
-    <td class="xl69" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>13%税率</td>
-    <td class="xl69" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>6%税率</td>
-   </tr>
-   <tr height="48" style='height:24.00pt;'>
-    <td class="xl69" x:str>销售额</td>
-    <td class="xl69" x:str>销项（应纳）税额</td>
-    <td class="xl69" x:str>小计</td>
-    <td class="xl69" x:str>销售额</td>
-    <td class="xl69" x:str>销项（应纳）税额</td>
-    <td class="xl69" x:str>小计</td>
-    <td class="xl69" x:str>销售额</td>
-    <td class="xl69" x:str>销项（应纳）税额</td>
-    <td class="xl69" x:str>小计</td>
-    <td class="xl69" x:str>销售额</td>
-    <td class="xl69" x:str>销项（应纳）税额</td>
-    <td class="xl69" x:str>小计</td>
-    <td class="xl69" x:str>销售额</td>
-    <td class="xl69" x:str>销项（应纳）税额</td>
-    <td class="xl69" x:str>小计</td>
-    <td class="xl69" x:str>销售额</td>
-    <td class="xl69" x:str>销项（应纳）税额</td>
-    <td class="xl69" x:str>小计</td>
-   </tr>
-   <tr id="data-row0" height="28" style='height:14.00pt;'>
-    <td class="xl72" height="28" style='height:14.00pt;'><input style='width:100%' id='riqi'></td>
-	<td class="xl72"><input style='width:100%' id='kaipiaoneirong'></td>
-    <td class="xl72"><input style='width:100%' id='putong_11_xiaoshoue'></td>
-    <td class="xl72"><input style='width:100%' id='putong_11_xiaoxiangshuie'></td>
-    <td class="xl72"><input style='width:100%' id='putong_11_xiaoji'></td>
-    <td class="xl72"><input style='width:100%' id='putong_3_xiaoshoue'></td>
-    <td class="xl72"><input style='width:100%' id='putong_3_xiaoxiangshuie'></td>
-    <td class="xl72"><input style='width:100%' id='putong_3_xiaoji'></td>
-    <td class="xl72"><input style='width:100%' id='putong_17huowu_xiaoshoue'></td>
-    <td class="xl72"><input style='width:100%' id='putong_17huowu_xiaoxiangshuie'></td>
-    <td class="xl72"><input style='width:100%' id='putong_17huowu_xiaoji'></td>
-    <td class="xl72"><input style='width:100%' id='putong_17fuwu_xiaoshoue'></td>
-    <td class="xl72"><input style='width:100%' id='putong_17fuwu_xiaoxiangshuie'></td>
-    <td class="xl72"><input style='width:100%' id='putong_17fuwu_xiaoji'></td>
-    <td class="xl72"><input style='width:100%' id='putong_13_xiaoshoue'></td>
-    <td class="xl72"><input style='width:100%' id='putong_13_xiaoxiangshuie'></td>
-    <td class="xl72"><input style='width:100%' id='putong_13_xiaoji'></td>
-    <td class="xl72"><input style='width:100%' id='putong_6_xiaoshoue'></td>
-    <td class="xl72"><input style='width:100%' id='putong_6_xiaoxiangshuieqi'></td>
-    <td class="xl72"><input style='width:100%' id='putong_6_xiaojiqi'></td>
-   </tr>
-   
-   <tr height="28" style='height:14.00pt;'>
-    <td class="xl74" height="28" style='height:14.00pt;' x:str>合计</td>
-    <td class="xl74"></td>
-    <td class="xl73" id='putong_heji_11_xiaoshoue'></td>
-    <td class="xl73" id='putong_heji_11_xiaoxiangshuie'></td>
-    <td class="xl73" id='putong_heji_11_xiaoji'></td>
-    <td class="xl73" id='putong_heji_3_xiaoshoue'></td>
-    <td class="xl73" id='putong_heji_3_xiaoxiangshuie'></td>
-    <td class="xl73" id='putong_heji_3_xiaoji'></td>
-    <td class="xl73" id='putong_heji_17huowu_xiaoshoue'></td>
-    <td class="xl73" id='putong_heji_17huowu_xiaoxiangshuie'></td>
-    <td class="xl73" id='putong_heji_17huowu_xiaoji'></td>
-    <td class="xl73" id='putong_heji_17fuwu_xiaoshoue'></td>
-    <td class="xl73" id='putong_heji_17fuwu_xiaoxiangshuie'></td>
-    <td class="xl73" id='putong_heji_17fuwu_xiaoji'></td>
-    <td class="xl73" id='putong_heji_13_xiaoshoue'></td>
-    <td class="xl73" id='putong_heji_13_xiaoxiangshuie'></td>
-    <td class="xl73" id='putong_heji_13_xiaoji'></td>
-    <td class="xl73" id='putong_heji_6_xiaoshoue'></td>
-    <td class="xl73" id='putong_heji_6_xiaoxiangshuie'></td>
-    <td class="xl73" id='putong_heji_6_xiaoxiangshuie'></td>
+<table width='1097' border='0' cellpadding='0' cellspacing='0' style='width:548.50pt;border-collapse:collapse;table-layout:fixed;'>
+  <tr height='35' style='height:17.50pt;'>
+    <td class='xl65' height='35' width='1097' colspan='6' style='height:17.50pt;width:548.50pt;border-right:none;border-bottom:none;' x:str>开票申请单</td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
-    <td class='xl68' height='28' style='height:14.00pt;' x:str>填表人：</td>
-    <td class='xl68'><input style='border:1pt solid black;width:100%' id='tianbiaoren'></td>
-    <td class='xl68' x:str>复核人：</td>
-    <td class='xl68'><input style='border:1pt solid black;width:100%' id='shenheren'></td>
+    <td class='xl66' height='28' style='height:14.00pt;' x:str>分公司名称：</td>
+    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
+    <td class='xl67' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;'></td>
+    <td class='xl66' x:str>项目部：</td>
+    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+   </tr>
+   <tr height='28' style='height:14.00pt;'>
+    <td class='xl68' height='28' style='height:14.00pt;' x:str>项目名称</td>
+    <td class='xl69' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='xiangmumingcheng'></td>
+    <td class='xl71' x:str>合同总金额</td>
+    <td class='xl71' colspan='2' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='hetongzongjine'></td>
+   </tr>
+   <tr height='28' style='height:14.00pt;'>
+    <td class='xl73' height='112' rowspan='4' style='height:56.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请日期</td>
+    <td class='xl74' rowspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开票内容</td>
+    <td class='xl75' colspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请开票金额 （含税）</td>
+   </tr>
+   <tr height='28' style='height:14.00pt;'>
+    <td class='xl79' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开具发票</td>
+    <td class='xl80' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>收讫款项</td>
+    <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>完工进度</td>
+    <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>其他</td>
+   </tr>
+   <tr height='28' style='height:14.00pt;'/>
+   <tr height='28' style='height:14.00pt;'/>
+   <tr height='28' style='height:14.00pt;'>
+    <td class='xl87' height='28' style='height:14.00pt;' id=''><input class="text" style='width:100%;' id='shenqingriqi'></td>
+    <td class='xl87' id=''><input class="text" style='width:100%;' id='kaipiaoneirong'></td>
+    <td class='xl87 detail_table' name='kaijufapiao' derect_view='create_invoice_pupiao_3.html'><input class="text" disabled style='width:100%;' id='kaijufapiao'></td>
+    <td class='xl87 detail_table' name='shouqikuanxiang' derect_view='create_invoice_shouqikuanxiang_3.html'><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
+    <td class='xl87 detail_table' name='wangongjindu' derect_view='jindu'><input class="text" disabled style='width:100%;' id='wangongjindu'></td>
+    <td class='xl87 detail_table' name='qita' derect_view='qita'><input class="text" disabled style='width:100%;' id='qita'></td>
+   </tr>
+   <tr height='28' style='height:14.00pt;'>
+    <td class='xl68' height='28' style='border:none;height:14.00pt;' x:str>填表人：</td>
+    <td class='xl68' style='border:none;'><input class="text" style='border:1pt solid black;width:100%'width:100%' id='tianbiaoren'></td>
+    <td class='xl68' style='border:none;height:14.00pt;' x:str>复核人：</td>
+    <td class='xl68' style='border:none;'><input class="text" style='border:1pt solid black;width:100%'width:100%' id='fuheren'></td>
    </tr>
   </table>
 </div>
@@ -1048,8 +1133,10 @@ td
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
-<script>
 
+
+</body>
+<script type="text/javascript">
 var redirectView = "";
 (function ($) {
     $.getUrlParam = function (name) {
@@ -1058,41 +1145,109 @@ var redirectView = "";
         if (r != null) return unescape(r[2]); return null;
     }
 })(jQuery);
-var kaipiaoshenqingdan_id = decodeURI($.getUrlParam('id'));
-var tds = $("#data-row0 td input");
+var xiangmutaizhangIdParam = $.getUrlParam('xiangmutaizhangIdParam');
+var gongsimingchengInfo = decodeURI($.getUrlParam('fengongsimingcheng'));
+var xiangmubuInfo = decodeURI($.getUrlParam('xiangmubu'));
+var id = decodeURI($.getUrlParam('id'));
+console.log(id);
+var query = {query_key: 'kaipiaoqingkuangbiao_xiangmu_id', query_value:id, class_name:'KaiPiaoShenQingDan'};
 
-var tdsList = [];
-for(var i = 0; i < tds.length; i++){
-	console.log(tds.get(i));
-	tdsList.push(tds.get(i).id);
-}
-console.log(tdsList);
-$.post("/project/getOneFromFourInvoiceType", {'kaipiaoshenqingdan_id':kaipiaoshenqingdan_id}, function(data){
-
+$.post("/project/getModel", query, function(data){
+	console.log(data);
 	var dataSet = $.parseJSON(data.data);
-	console.log(dataSet);
-	for(var i = 0; i < dataSet.length; i++){
-		if(i == 0){
-			for(var key in dataSet[0]){
-				console.log(key);
-				console.log(dataSet[0][key]);
-				$("#" + key).val(dataSet[0][key]);
-			}
-		}else if(i > 0){
-			$("#data-row" + (i-1)).after("<tr id='data-row"+i+"' height='28' class='xl65' style='height:14.00pt;'>");
-			//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
-			for(var j = 0; j< tdsList.length; j++){
-				$("#data-row" + i).append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
-			}
-		}
+	kaipiaoshenqingdan_id = dataSet[0]["id"];
+	for(key in dataSet[0]){
+		console.log(key);
+		$("#" + key).val(dataSet[0][key]);
 	}
+	$(".text").each(function(){
+		$(this).prop("disabled", true);
+	});
+	
 });
 
+$(".detail_table").each(function(){
+	var directView = $(this).attr("derect_view");
+	var name = $(this).attr("name");
+	$(this).on("click", function(){
+		console.log(kaipiaoshenqingdan_id);
+		if(name == 'kaijufapiao'){
+			$.post("/project/getOneFromFourInvoiceType", {'kaipiaoshenqingdan_id':kaipiaoshenqingdan_id}, function(data){
+				if(data.type=="专票"){
+					window.location.href="/views/recordviews/approval_invoice_zhuanyong_2.html?id=" + kaipiaoshenqingdan_id;
+				}else if(data.type=="普票"){
+					window.location.href="/views/recordviews/approval_invoice_pupiao_2.html?id="+ kaipiaoshenqingdan_id;
+				}else if(data.type == "简易普票"){
+					window.location.href="/views/recordviews/approval_invoice_jianji_pupiao_2.html?id=" + kaipiaoshenqingdan_id;
+				}else if(data.type == "简易专票"){
+					window.location.href="/views/recordviews/approval_invoice_jianji_zhuanpiao_2.html?id=" + kaipiaoshenqingdan_id;
+				}
+			});
+			kaipiaoshenqingdan_id
+			
+		}else if(name == 'shouqikuanxiang'){
+			window.location.href="/views/recordviews/approval_invoice_shouqikuanxiang_2.html?id=" + kaipiaoshenqingdan_id;
+			
+		}else if(name == 'wangongjindu'){
+			$.post("/project/getOneFromFourProgressType",{'kaipiaoshenqingdan_id':kaipiaoshenqingdan_id}, function(data){
+				var type = data.type;
+				if(type == '劳务时间'){
+					window.location.href="/views/recordviews/approval_invoice_jindu_laowushijianzhanbi_2.html?id="+kaipiaoshenqingdan_id;
+				}else if( type == '已发生成本'){
+					window.location.href="/views/recordviews/approval_invoice_jindu_chenbenzhanbi_2.html?id="+kaipiaoshenqingdan_id;
+				}else if(type == '已完工'){
+					window.location.href="/views/recordviews/approval_invoice_jindu_gongzuoliang_2.html?id=" + kaipiaoshenqingdan_id;
+				}else if(type == '其它'){
+					window.location.href="/views/recordviews/approval_invoice_jindu_qita_2.html?id=" + kaipiaoshenqingdan_id;
+				}
+				
+			});
+			
+		}else if(name == 'qita'){
+			
+			$.post("/project/getOneFromFourInvoiceType", {'kaipiaoshenqingdan_id':kaipiaoshenqingdan_id}, function(data){
+				var type = data.type;
+				if(type == "普票"){
+					window.location.href="/views/recordviews/approval_invoice_pupiao_2.html?id=" + kaipiaoshenqingdan_id;
+				}else if(type == "专票"){
+					window.location.href="/views/recordviews/approval_invoice_zhuanyong_2.html?id=" + kaipiaoshenqingdan_id;
+				}else if(type == "简易普票"){
+					window.location.href="/views/recordviews/approval_invoice_jianji_pupiao_2.html?id=" + kaipiaoshenqingdan_id;
+				}else if(type == "简易专票"){
+					window.location.href="/views/recordviews/approval_invoice_jianji_zhuanpiao_2.html?id=" + kaipiaoshenqingdan_id;
+				}
+				
+			});
+		}
 
+		
+	});
+});
 
+$("#kaijufapiao").on("click",function(){
+	//Search 4 tables and redirect to one
+	console.log("开具发票");
+});
+
+$("#shouqikuanxiang").on("click", function(){
+	//还是上面的一条数据
+	//还会有多条数据
+	console.log("收讫款项");
+});
+
+$("#qita").on("click",function(){
+	//四选一跳走
+	console.log("其他");
+});
+
+$("#wangongjindu").on("click", function(){
+	//四选一还要html
+	console.log("完工进度");
+});
+
+function nodeClick(node){
+	
+}
 </script>
-
-</body>
-
 
 </html>

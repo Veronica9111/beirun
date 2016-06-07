@@ -1,89 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+       <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
         'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 <mapper namespace="com.wisdom.common.mapper.JinXiangFaPiaoMingXi_RenZhengMapper">
-<cache />
+	<cache />
 
-<resultMap type="com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng" id="JinXiangFaPiaoMingXi_RenZheng">
-<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
-<result property="heji_haiguan_shuie" column="heji_haiguan_shuie"/>
-<result property="heji_haiguan_jine" column="heji_haiguan_jine"/>
-<result property="heji_haiguan_fenshu" column="heji_haiguan_fenshu"/>
-<result property="heji_daikou_jiashuiheji" column="heji_daikou_jiashuiheji"/>
-<result property="daikou_fapiaohaoma" column="daikou_fapiaohaoma"/>
-<result property="heji_qita_jiashuiheji" column="heji_qita_jiashuiheji"/>
-<result property="heji_haiguan_jiashuiheji" column="heji_haiguan_jiashuiheji"/>
-<result property="nongchanpin_fenshu" column="nongchanpin_fenshu"/>
-<result property="heji_daikou_jine" column="heji_daikou_jine"/>
-<result property="daikou_shuie" column="daikou_shuie"/>
-<result property="heji_nongchanpin_shuie" column="heji_nongchanpin_shuie"/>
-<result property="heji_nongchanpin_jiashuiheji" column="heji_nongchanpin_jiashuiheji"/>
-<result property="daikou_jine" column="daikou_jine"/>
-<result property="id" column="id"/>
-<result property="xiangmutaizhang_id" column="xiangmutaizhang_id"/>
-<result property="qita_jine" column="qita_jine"/>
-<result property="heji_nongchanpin_jine" column="heji_nongchanpin_jine"/>
-<result property="field3" column="field3"/>
-<result property="field1" column="field1"/>
-<result property="haiguan_fapiaohaoma" column="haiguan_fapiaohaoma"/>
-<result property="field4" column="field4"/>
-<result property="nongchanpin_fapiaohaoma" column="nongchanpin_fapiaohaoma"/>
-<result property="nongchanpin_kaipiaoriqi" column="nongchanpin_kaipiaoriqi"/>
-<result property="heji_qita_jine" column="heji_qita_jine"/>
-<result property="erji_shenhe_status" column="erji_shenhe_status"/>
-<result property="daikou_fenshu" column="daikou_fenshu"/>
-<result property="nongchanpin_jine" column="nongchanpin_jine"/>
-<result property="heji_daikou_fenshu" column="heji_daikou_fenshu"/>
-<result property="xiangmubu" column="xiangmubu"/>
-<result property="heji_daikou_shuie" column="heji_daikou_shuie"/>
-<result property="yijishenheren" column="yijishenheren"/>
-<result property="shenheriqi" column="shenheriqi"/>
-<result property="beizhu" column="beizhu"/>
-<result property="erjishenheren" column="erjishenheren"/>
-<result property="shenheren" column="shenheren"/>
-<result property="qita_fenshu" column="qita_fenshu"/>
-<result property="company_id" column="company_id"/>
-<result property="tianbiaoriqi" column="tianbiaoriqi"/>
-<result property="haiguan_shuie" column="haiguan_shuie"/>
-<result property="heji_qita_fenshu" column="heji_qita_fenshu"/>
-<result property="haiguan_kaipiaoriqi" column="haiguan_kaipiaoriqi"/>
-<result property="qita_kaipiaoriqi" column="qita_kaipiaoriqi"/>
-<result property="tianbiaoren" column="tianbiaoren"/>
-<result property="qita_jiashuiheji" column="qita_jiashuiheji"/>
-<result property="haiguan_jine" column="haiguan_jine"/>
-<result property="erji_shenhe_beizhu" column="erji_shenhe_beizhu"/>
-<result property="nongchanpin_jiashuiheji" column="nongchanpin_jiashuiheji"/>
-<result property="daikou_kaipiaoriqi" column="daikou_kaipiaoriqi"/>
-<result property="nongchanpin_shuie" column="nongchanpin_shuie"/>
-<result property="fengongsi" column="fengongsi"/>
-<result property="heji_nongchanpin_fenshu" column="heji_nongchanpin_fenshu"/>
-<result property="haiguan_fenshu" column="haiguan_fenshu"/>
-<result property="haiguanjiashuiheji" column="haiguanjiashuiheji"/>
-<result property="qita_fapiaohaoma" column="qita_fapiaohaoma"/>
-<result property="yiji_shenhe_status" column="yiji_shenhe_status"/>
-<result property="field2" column="field2"/>
-<result property="daikou_jiashuiheji" column="daikou_jiashuiheji"/>
-<result property="shenherendianhua" column="shenherendianhua"/>
-<result property="qita_shuie" column="qita_shuie"/>
-<result property="yiji_shenhe_beizhu" column="yiji_shenhe_beizhu"/>
-<result property="heji_qita_shuie" column="heji_qita_shuie"/>
-<result property="field5" column="field5"/>
-</resultMap>
+	<resultMap type="com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng"
+		id="JinXiangFaPiaoMingXi_RenZheng">
+		<result property="tianbiaorendianhua" column="tianbiaorendianhua" />
+		<result property="heji_haiguan_shuie" column="heji_haiguan_shuie" />
+		<result property="heji_haiguan_jine" column="heji_haiguan_jine" />
+		<result property="heji_haiguan_fenshu" column="heji_haiguan_fenshu" />
+		<result property="heji_daikou_jiashuiheji" column="heji_daikou_jiashuiheji" />
+		<result property="daikou_fapiaohaoma" column="daikou_fapiaohaoma" />
+		<result property="heji_qita_jiashuiheji" column="heji_qita_jiashuiheji" />
+		<result property="heji_haiguan_jiashuiheji" column="heji_haiguan_jiashuiheji" />
+		<result property="nongchanpin_fenshu" column="nongchanpin_fenshu" />
+		<result property="heji_daikou_jine" column="heji_daikou_jine" />
+		<result property="daikou_shuie" column="daikou_shuie" />
+		<result property="heji_nongchanpin_shuie" column="heji_nongchanpin_shuie" />
+		<result property="heji_nongchanpin_jiashuiheji" column="heji_nongchanpin_jiashuiheji" />
+		<result property="daikou_jine" column="daikou_jine" />
+		<result property="id" column="id" />
+		<result property="xiangmutaizhang_id" column="xiangmutaizhang_id" />
+		<result property="qita_jine" column="qita_jine" />
+		<result property="heji_nongchanpin_jine" column="heji_nongchanpin_jine" />
+		<result property="field3" column="field3" />
+		<result property="field1" column="field1" />
+		<result property="haiguan_fapiaohaoma" column="haiguan_fapiaohaoma" />
+		<result property="field4" column="field4" />
+		<result property="nongchanpin_fapiaohaoma" column="nongchanpin_fapiaohaoma" />
+		<result property="nongchanpin_kaipiaoriqi" column="nongchanpin_kaipiaoriqi" />
+		<result property="heji_qita_jine" column="heji_qita_jine" />
+		<result property="erji_shenhe_status" column="erji_shenhe_status" />
+		<result property="daikou_fenshu" column="daikou_fenshu" />
+		<result property="nongchanpin_jine" column="nongchanpin_jine" />
+		<result property="heji_daikou_fenshu" column="heji_daikou_fenshu" />
+		<result property="xiangmubu" column="xiangmubu" />
+		<result property="heji_daikou_shuie" column="heji_daikou_shuie" />
+		<result property="yijishenheren" column="yijishenheren" />
+		<result property="shenheriqi" column="shenheriqi" />
+		<result property="beizhu" column="beizhu" />
+		<result property="erjishenheren" column="erjishenheren" />
+		<result property="shenheren" column="shenheren" />
+		<result property="qita_fenshu" column="qita_fenshu" />
+		<result property="company_id" column="company_id" />
+		<result property="tianbiaoriqi" column="tianbiaoriqi" />
+		<result property="haiguan_shuie" column="haiguan_shuie" />
+		<result property="heji_qita_fenshu" column="heji_qita_fenshu" />
+		<result property="haiguan_kaipiaoriqi" column="haiguan_kaipiaoriqi" />
+		<result property="qita_kaipiaoriqi" column="qita_kaipiaoriqi" />
+		<result property="tianbiaoren" column="tianbiaoren" />
+		<result property="qita_jiashuiheji" column="qita_jiashuiheji" />
+		<result property="haiguan_jine" column="haiguan_jine" />
+		<result property="erji_shenhe_beizhu" column="erji_shenhe_beizhu" />
+		<result property="nongchanpin_jiashuiheji" column="nongchanpin_jiashuiheji" />
+		<result property="daikou_kaipiaoriqi" column="daikou_kaipiaoriqi" />
+		<result property="nongchanpin_shuie" column="nongchanpin_shuie" />
+		<result property="fengongsi" column="fengongsi" />
+		<result property="heji_nongchanpin_fenshu" column="heji_nongchanpin_fenshu" />
+		<result property="haiguan_fenshu" column="haiguan_fenshu" />
+		<result property="haiguanjiashuiheji" column="haiguanjiashuiheji" />
+		<result property="qita_fapiaohaoma" column="qita_fapiaohaoma" />
+		<result property="yiji_shenhe_status" column="yiji_shenhe_status" />
+		<result property="field2" column="field2" />
+		<result property="daikou_jiashuiheji" column="daikou_jiashuiheji" />
+		<result property="shenherendianhua" column="shenherendianhua" />
+		<result property="qita_shuie" column="qita_shuie" />
+		<result property="yiji_shenhe_beizhu" column="yiji_shenhe_beizhu" />
+		<result property="heji_qita_shuie" column="heji_qita_shuie" />
+		<result property="field5" column="field5" />
+	</resultMap>
 
-<select id="getJinXiangFaPiaoMingXi_RenZhengById" resultType="JinXiangFaPiaoMingXi_RenZheng">
-select tianbiaorendianhua,heji_haiguan_shuie,heji_haiguan_jine,heji_haiguan_fenshu,heji_daikou_jiashuiheji,daikou_fapiaohaoma,heji_qita_jiashuiheji,heji_haiguan_jiashuiheji,nongchanpin_fenshu,heji_daikou_jine,daikou_shuie,heji_nongchanpin_shuie,heji_nongchanpin_jiashuiheji,daikou_jine,id,xiangmutaizhang_id,qita_jine,heji_nongchanpin_jine,field3,field1,haiguan_fapiaohaoma,field4,nongchanpin_fapiaohaoma,nongchanpin_kaipiaoriqi,heji_qita_jine,erji_shenhe_status,daikou_fenshu,nongchanpin_jine,heji_daikou_fenshu,xiangmubu,heji_daikou_shuie,yijishenheren,shenheriqi,beizhu,erjishenheren,shenheren,qita_fenshu,company_id,tianbiaoriqi,haiguan_shuie,heji_qita_fenshu,haiguan_kaipiaoriqi,qita_kaipiaoriqi,tianbiaoren,qita_jiashuiheji,haiguan_jine,erji_shenhe_beizhu,nongchanpin_jiashuiheji,daikou_kaipiaoriqi,nongchanpin_shuie,fengongsi,heji_nongchanpin_fenshu,haiguan_fenshu,haiguanjiashuiheji,qita_fapiaohaoma,yiji_shenhe_status,field2,daikou_jiashuiheji,shenherendianhua,qita_shuie,yiji_shenhe_beizhu,heji_qita_shuie,field5
-from jinxiangfapiaomingxi_renzheng
-where id=#{id}
-</select>
+	<select id="getJinXiangFaPiaoMingXi_RenZhengById" resultType="JinXiangFaPiaoMingXi_RenZheng">
+		select
+		tianbiaorendianhua,heji_haiguan_shuie,heji_haiguan_jine,heji_haiguan_fenshu,heji_daikou_jiashuiheji,daikou_fapiaohaoma,heji_qita_jiashuiheji,heji_haiguan_jiashuiheji,nongchanpin_fenshu,heji_daikou_jine,daikou_shuie,heji_nongchanpin_shuie,heji_nongchanpin_jiashuiheji,daikou_jine,id,xiangmutaizhang_id,qita_jine,heji_nongchanpin_jine,field3,field1,haiguan_fapiaohaoma,field4,nongchanpin_fapiaohaoma,nongchanpin_kaipiaoriqi,heji_qita_jine,erji_shenhe_status,daikou_fenshu,nongchanpin_jine,heji_daikou_fenshu,xiangmubu,heji_daikou_shuie,yijishenheren,shenheriqi,beizhu,erjishenheren,shenheren,qita_fenshu,company_id,tianbiaoriqi,haiguan_shuie,heji_qita_fenshu,haiguan_kaipiaoriqi,qita_kaipiaoriqi,tianbiaoren,qita_jiashuiheji,haiguan_jine,erji_shenhe_beizhu,nongchanpin_jiashuiheji,daikou_kaipiaoriqi,nongchanpin_shuie,fengongsi,heji_nongchanpin_fenshu,haiguan_fenshu,haiguanjiashuiheji,qita_fapiaohaoma,yiji_shenhe_status,field2,daikou_jiashuiheji,shenherendianhua,qita_shuie,yiji_shenhe_beizhu,heji_qita_shuie,field5
+		from jinxiangfapiaomingxi_renzheng
+		where id=#{id}
+	</select>
 
-<update id="updateJinXiangFaPiaoMingXi_RenZheng">
-update jinxiangfapiaomingxi_renzheng set tianbiaorendianhua=#{tianbiaorendianhua},heji_haiguan_shuie=#{heji_haiguan_shuie},heji_haiguan_jine=#{heji_haiguan_jine},heji_haiguan_fenshu=#{heji_haiguan_fenshu},heji_daikou_jiashuiheji=#{heji_daikou_jiashuiheji},daikou_fapiaohaoma=#{daikou_fapiaohaoma},heji_qita_jiashuiheji=#{heji_qita_jiashuiheji},heji_haiguan_jiashuiheji=#{heji_haiguan_jiashuiheji},nongchanpin_fenshu=#{nongchanpin_fenshu},heji_daikou_jine=#{heji_daikou_jine},daikou_shuie=#{daikou_shuie},heji_nongchanpin_shuie=#{heji_nongchanpin_shuie},heji_nongchanpin_jiashuiheji=#{heji_nongchanpin_jiashuiheji},daikou_jine=#{daikou_jine},id=#{id},xiangmutaizhang_id=#{xiangmutaizhang_id},qita_jine=#{qita_jine},heji_nongchanpin_jine=#{heji_nongchanpin_jine},field3=#{field3},field1=#{field1},haiguan_fapiaohaoma=#{haiguan_fapiaohaoma},field4=#{field4},nongchanpin_fapiaohaoma=#{nongchanpin_fapiaohaoma},nongchanpin_kaipiaoriqi=#{nongchanpin_kaipiaoriqi},heji_qita_jine=#{heji_qita_jine},erji_shenhe_status=#{erji_shenhe_status},daikou_fenshu=#{daikou_fenshu},nongchanpin_jine=#{nongchanpin_jine},heji_daikou_fenshu=#{heji_daikou_fenshu},xiangmubu=#{xiangmubu},heji_daikou_shuie=#{heji_daikou_shuie},yijishenheren=#{yijishenheren},shenheriqi=#{shenheriqi},beizhu=#{beizhu},erjishenheren=#{erjishenheren},shenheren=#{shenheren},qita_fenshu=#{qita_fenshu},company_id=#{company_id},tianbiaoriqi=#{tianbiaoriqi},haiguan_shuie=#{haiguan_shuie},heji_qita_fenshu=#{heji_qita_fenshu},haiguan_kaipiaoriqi=#{haiguan_kaipiaoriqi},qita_kaipiaoriqi=#{qita_kaipiaoriqi},tianbiaoren=#{tianbiaoren},qita_jiashuiheji=#{qita_jiashuiheji},haiguan_jine=#{haiguan_jine},erji_shenhe_beizhu=#{erji_shenhe_beizhu},nongchanpin_jiashuiheji=#{nongchanpin_jiashuiheji},daikou_kaipiaoriqi=#{daikou_kaipiaoriqi},nongchanpin_shuie=#{nongchanpin_shuie},fengongsi=#{fengongsi},heji_nongchanpin_fenshu=#{heji_nongchanpin_fenshu},haiguan_fenshu=#{haiguan_fenshu},haiguanjiashuiheji=#{haiguanjiashuiheji},qita_fapiaohaoma=#{qita_fapiaohaoma},yiji_shenhe_status=#{yiji_shenhe_status},field2=#{field2},daikou_jiashuiheji=#{daikou_jiashuiheji},shenherendianhua=#{shenherendianhua},qita_shuie=#{qita_shuie},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu},heji_qita_shuie=#{heji_qita_shuie},field5=#{field5}
-where id=#{id}
-</update>
+	<select id="getJinXiangFaPiaoMingXi_RenZhengByCompanyId"
+		resultType="JinXiangFaPiaoMingXi_RenZheng">
+		select
+		tianbiaorendianhua,heji_haiguan_shuie,heji_haiguan_jine,heji_haiguan_fenshu,heji_daikou_jiashuiheji,daikou_fapiaohaoma,heji_qita_jiashuiheji,heji_haiguan_jiashuiheji,nongchanpin_fenshu,heji_daikou_jine,daikou_shuie,heji_nongchanpin_shuie,heji_nongchanpin_jiashuiheji,daikou_jine,id,xiangmutaizhang_id,qita_jine,heji_nongchanpin_jine,field3,field1,haiguan_fapiaohaoma,field4,nongchanpin_fapiaohaoma,nongchanpin_kaipiaoriqi,heji_qita_jine,erji_shenhe_status,daikou_fenshu,nongchanpin_jine,heji_daikou_fenshu,xiangmubu,heji_daikou_shuie,yijishenheren,shenheriqi,beizhu,erjishenheren,shenheren,qita_fenshu,company_id,tianbiaoriqi,haiguan_shuie,heji_qita_fenshu,haiguan_kaipiaoriqi,qita_kaipiaoriqi,tianbiaoren,qita_jiashuiheji,haiguan_jine,erji_shenhe_beizhu,nongchanpin_jiashuiheji,daikou_kaipiaoriqi,nongchanpin_shuie,fengongsi,heji_nongchanpin_fenshu,haiguan_fenshu,haiguanjiashuiheji,qita_fapiaohaoma,yiji_shenhe_status,field2,daikou_jiashuiheji,shenherendianhua,qita_shuie,yiji_shenhe_beizhu,heji_qita_shuie,field5
+		from jinxiangfapiaomingxi_renzheng
+		where company_id=#{company_id}
+	</select>
+	
+	
+	<update id="approveJinXiangFaPiaoMingXi_RenZheng">
+		update jinxiangfapiaomingxi_renzheng set yiji_shenhe_status =
+		#{yiji_shenhe_status},beizhu=#{beizhu}
+		where id=#{id}
+	</update>
+	
+	<update id="updateJinXiangFaPiaoMingXi_RenZheng">
+		update jinxiangfapiaomingxi_renzheng set
+		tianbiaorendianhua=#{tianbiaorendianhua},heji_haiguan_shuie=#{heji_haiguan_shuie},heji_haiguan_jine=#{heji_haiguan_jine},heji_haiguan_fenshu=#{heji_haiguan_fenshu},heji_daikou_jiashuiheji=#{heji_daikou_jiashuiheji},daikou_fapiaohaoma=#{daikou_fapiaohaoma},heji_qita_jiashuiheji=#{heji_qita_jiashuiheji},heji_haiguan_jiashuiheji=#{heji_haiguan_jiashuiheji},nongchanpin_fenshu=#{nongchanpin_fenshu},heji_daikou_jine=#{heji_daikou_jine},daikou_shuie=#{daikou_shuie},heji_nongchanpin_shuie=#{heji_nongchanpin_shuie},heji_nongchanpin_jiashuiheji=#{heji_nongchanpin_jiashuiheji},daikou_jine=#{daikou_jine},id=#{id},xiangmutaizhang_id=#{xiangmutaizhang_id},qita_jine=#{qita_jine},heji_nongchanpin_jine=#{heji_nongchanpin_jine},field3=#{field3},field1=#{field1},haiguan_fapiaohaoma=#{haiguan_fapiaohaoma},field4=#{field4},nongchanpin_fapiaohaoma=#{nongchanpin_fapiaohaoma},nongchanpin_kaipiaoriqi=#{nongchanpin_kaipiaoriqi},heji_qita_jine=#{heji_qita_jine},erji_shenhe_status=#{erji_shenhe_status},daikou_fenshu=#{daikou_fenshu},nongchanpin_jine=#{nongchanpin_jine},heji_daikou_fenshu=#{heji_daikou_fenshu},xiangmubu=#{xiangmubu},heji_daikou_shuie=#{heji_daikou_shuie},yijishenheren=#{yijishenheren},shenheriqi=#{shenheriqi},beizhu=#{beizhu},erjishenheren=#{erjishenheren},shenheren=#{shenheren},qita_fenshu=#{qita_fenshu},company_id=#{company_id},tianbiaoriqi=#{tianbiaoriqi},haiguan_shuie=#{haiguan_shuie},heji_qita_fenshu=#{heji_qita_fenshu},haiguan_kaipiaoriqi=#{haiguan_kaipiaoriqi},qita_kaipiaoriqi=#{qita_kaipiaoriqi},tianbiaoren=#{tianbiaoren},qita_jiashuiheji=#{qita_jiashuiheji},haiguan_jine=#{haiguan_jine},erji_shenhe_beizhu=#{erji_shenhe_beizhu},nongchanpin_jiashuiheji=#{nongchanpin_jiashuiheji},daikou_kaipiaoriqi=#{daikou_kaipiaoriqi},nongchanpin_shuie=#{nongchanpin_shuie},fengongsi=#{fengongsi},heji_nongchanpin_fenshu=#{heji_nongchanpin_fenshu},haiguan_fenshu=#{haiguan_fenshu},haiguanjiashuiheji=#{haiguanjiashuiheji},qita_fapiaohaoma=#{qita_fapiaohaoma},yiji_shenhe_status=#{yiji_shenhe_status},field2=#{field2},daikou_jiashuiheji=#{daikou_jiashuiheji},shenherendianhua=#{shenherendianhua},qita_shuie=#{qita_shuie},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu},heji_qita_shuie=#{heji_qita_shuie},field5=#{field5}
+		where id=#{id}
+	</update>
 
-<insert id="addJinXiangFaPiaoMingXi_RenZheng">
-insert into jinxiangfapiaomingxi_renzheng (tianbiaorendianhua,heji_haiguan_shuie,heji_haiguan_jine,heji_haiguan_fenshu,heji_daikou_jiashuiheji,daikou_fapiaohaoma,heji_qita_jiashuiheji,heji_haiguan_jiashuiheji,nongchanpin_fenshu,heji_daikou_jine,daikou_shuie,heji_nongchanpin_shuie,heji_nongchanpin_jiashuiheji,daikou_jine,id,xiangmutaizhang_id,qita_jine,heji_nongchanpin_jine,field3,field1,haiguan_fapiaohaoma,field4,nongchanpin_fapiaohaoma,nongchanpin_kaipiaoriqi,heji_qita_jine,erji_shenhe_status,daikou_fenshu,nongchanpin_jine,heji_daikou_fenshu,xiangmubu,heji_daikou_shuie,yijishenheren,shenheriqi,beizhu,erjishenheren,shenheren,qita_fenshu,company_id,tianbiaoriqi,haiguan_shuie,heji_qita_fenshu,haiguan_kaipiaoriqi,qita_kaipiaoriqi,tianbiaoren,qita_jiashuiheji,haiguan_jine,erji_shenhe_beizhu,nongchanpin_jiashuiheji,daikou_kaipiaoriqi,nongchanpin_shuie,fengongsi,heji_nongchanpin_fenshu,haiguan_fenshu,haiguanjiashuiheji,qita_fapiaohaoma,yiji_shenhe_status,field2,daikou_jiashuiheji,shenherendianhua,qita_shuie,yiji_shenhe_beizhu,heji_qita_shuie,field5)
-values (#{tianbiaorendianhua},#{heji_haiguan_shuie},#{heji_haiguan_jine},#{heji_haiguan_fenshu},#{heji_daikou_jiashuiheji},#{daikou_fapiaohaoma},#{heji_qita_jiashuiheji},#{heji_haiguan_jiashuiheji},#{nongchanpin_fenshu},#{heji_daikou_jine},#{daikou_shuie},#{heji_nongchanpin_shuie},#{heji_nongchanpin_jiashuiheji},#{daikou_jine},#{id},#{xiangmutaizhang_id},#{qita_jine},#{heji_nongchanpin_jine},#{field3},#{field1},#{haiguan_fapiaohaoma},#{field4},#{nongchanpin_fapiaohaoma},#{nongchanpin_kaipiaoriqi},#{heji_qita_jine},#{erji_shenhe_status},#{daikou_fenshu},#{nongchanpin_jine},#{heji_daikou_fenshu},#{xiangmubu},#{heji_daikou_shuie},#{yijishenheren},#{shenheriqi},#{beizhu},#{erjishenheren},#{shenheren},#{qita_fenshu},#{company_id},#{tianbiaoriqi},#{haiguan_shuie},#{heji_qita_fenshu},#{haiguan_kaipiaoriqi},#{qita_kaipiaoriqi},#{tianbiaoren},#{qita_jiashuiheji},#{haiguan_jine},#{erji_shenhe_beizhu},#{nongchanpin_jiashuiheji},#{daikou_kaipiaoriqi},#{nongchanpin_shuie},#{fengongsi},#{heji_nongchanpin_fenshu},#{haiguan_fenshu},#{haiguanjiashuiheji},#{qita_fapiaohaoma},#{yiji_shenhe_status},#{field2},#{daikou_jiashuiheji},#{shenherendianhua},#{qita_shuie},#{yiji_shenhe_beizhu},#{heji_qita_shuie},#{field5})
-</insert>
+	<insert id="addJinXiangFaPiaoMingXi_RenZheng">
+		insert into jinxiangfapiaomingxi_renzheng
+		(tianbiaorendianhua,heji_haiguan_shuie,heji_haiguan_jine,heji_haiguan_fenshu,heji_daikou_jiashuiheji,daikou_fapiaohaoma,heji_qita_jiashuiheji,heji_haiguan_jiashuiheji,nongchanpin_fenshu,heji_daikou_jine,daikou_shuie,heji_nongchanpin_shuie,heji_nongchanpin_jiashuiheji,daikou_jine,id,xiangmutaizhang_id,qita_jine,heji_nongchanpin_jine,field3,field1,haiguan_fapiaohaoma,field4,nongchanpin_fapiaohaoma,nongchanpin_kaipiaoriqi,heji_qita_jine,erji_shenhe_status,daikou_fenshu,nongchanpin_jine,heji_daikou_fenshu,xiangmubu,heji_daikou_shuie,yijishenheren,shenheriqi,beizhu,erjishenheren,shenheren,qita_fenshu,company_id,tianbiaoriqi,haiguan_shuie,heji_qita_fenshu,haiguan_kaipiaoriqi,qita_kaipiaoriqi,tianbiaoren,qita_jiashuiheji,haiguan_jine,erji_shenhe_beizhu,nongchanpin_jiashuiheji,daikou_kaipiaoriqi,nongchanpin_shuie,fengongsi,heji_nongchanpin_fenshu,haiguan_fenshu,haiguanjiashuiheji,qita_fapiaohaoma,yiji_shenhe_status,field2,daikou_jiashuiheji,shenherendianhua,qita_shuie,yiji_shenhe_beizhu,heji_qita_shuie,field5)
+		values
+		(#{tianbiaorendianhua},#{heji_haiguan_shuie},#{heji_haiguan_jine},#{heji_haiguan_fenshu},#{heji_daikou_jiashuiheji},#{daikou_fapiaohaoma},#{heji_qita_jiashuiheji},#{heji_haiguan_jiashuiheji},#{nongchanpin_fenshu},#{heji_daikou_jine},#{daikou_shuie},#{heji_nongchanpin_shuie},#{heji_nongchanpin_jiashuiheji},#{daikou_jine},#{id},#{xiangmutaizhang_id},#{qita_jine},#{heji_nongchanpin_jine},#{field3},#{field1},#{haiguan_fapiaohaoma},#{field4},#{nongchanpin_fapiaohaoma},#{nongchanpin_kaipiaoriqi},#{heji_qita_jine},#{erji_shenhe_status},#{daikou_fenshu},#{nongchanpin_jine},#{heji_daikou_fenshu},#{xiangmubu},#{heji_daikou_shuie},#{yijishenheren},#{shenheriqi},#{beizhu},#{erjishenheren},#{shenheren},#{qita_fenshu},#{company_id},#{tianbiaoriqi},#{haiguan_shuie},#{heji_qita_fenshu},#{haiguan_kaipiaoriqi},#{qita_kaipiaoriqi},#{tianbiaoren},#{qita_jiashuiheji},#{haiguan_jine},#{erji_shenhe_beizhu},#{nongchanpin_jiashuiheji},#{daikou_kaipiaoriqi},#{nongchanpin_shuie},#{fengongsi},#{heji_nongchanpin_fenshu},#{haiguan_fenshu},#{haiguanjiashuiheji},#{qita_fapiaohaoma},#{yiji_shenhe_status},#{field2},#{daikou_jiashuiheji},#{shenherendianhua},#{qita_shuie},#{yiji_shenhe_beizhu},#{heji_qita_shuie},#{field5})
+	</insert>
 
 </mapper>

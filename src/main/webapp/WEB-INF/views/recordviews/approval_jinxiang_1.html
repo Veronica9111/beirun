@@ -1073,8 +1073,8 @@ td {
 
 	<!-- Container -->
 	<div id="but_position">
-		<input id="create_new_fapiao" type="button" value="创建新进项发票"
-			class="btn btn-success btn-sm" /> <input id="create_new_renzheng"
+		<input id="create_new_fapiao" type="button" style="display: none;" value="创建新进项发票"
+			class="btn btn-success btn-sm" /> <input id="create_new_renzheng" style="display: none;"
 			type="button" value="创建新进项认证"
 			class="btn btn-success btn-sm" /> <input id="update_project_info"
 			style="display: none;" disabled type="button" value="更新基本信息"
@@ -1084,6 +1084,10 @@ td {
 		<table id="history-table"></table>
 		<table id="renzheng-table"></table>
 	</div>
+	<div id="dialog">
+	<p>备注：</p>
+	<input id="comment" type='textfield'/>
+</div>
 	<div class="mask"></div>
 	<div class="footer">
 		<div class="container">
@@ -1243,30 +1247,17 @@ td {
 								title : "通行费_金额"
 							}, {
 								title : "通行费_进项税额"
+							},{
+								title : ""
+							},{
+								title : "审批通过"
 							}, {
-								title : "审核状态"
-							}, {
-								title : "备注"
-							}, {
-								title : "编辑"
+								title : "审批拒绝"
 							} ]
 						});
 					});
 
-			$("#history-table .edit").on("click",function(){
-				window.location.href = "jinxiangfapiaomingxi_fapiao.html?id=1&company_id=101";
-			});
-			$('#renzheng-table edit').on("click",function(){
-				window.location.href = "jinxiangfapiaomingxi_renzheng.html?id=1&company_id=101"
-			});
-			
-			$("#create_new_fapiao").on("click",function(){
-				window.location.href="jinxiangfapiaomingxi_fapiao.html?company_id=109";
-			});
-			
-			
-			
-			$.post("/project/getJinXiangFaPiaoMingXi_RenZheng", {}, function(
+			$.post("/project/getJinXiangFaPiaoMingXi_RenZhengByCompanyId", {}, function(
 					data) {
 				dataSet = $.parseJSON(data.data);
 				console.log(dataSet);
@@ -1335,19 +1326,69 @@ td {
 					}, {
 						title : "其他-价税合计"
 					}, {
-						title : "1"
-					}, {
-						title : "2"
-					}, {
-						title : "3"
-					}, {
-						title : "4"
-					}, ]
+						title : "审核通过"
+					},{
+						title : "审核拒绝"
+					} ]
 				});
 			});
+			
+			$('#history-table .approve').click(function(){
+				id = $(this).parent().parent().children().eq(0)[0].innerHTML;
+				$.post('/project/approveJinXiangFaPiaoMingXi_FaPiao',{id:id,yiji_shenhe_status:1,beizhu:""},function(data) {
+					console.log(data);
+			 	});
+			});
+		
+			$('#renzheng-table .approve').click(function(){
+				id = $(this).parent().parent().children().eq(0)[0].innerHTML;
+				$.post('/project/approveJinXiangFaPiaoMingXi_RenZheng',{id:id,yiji_shenhe_status:1,beizhu:""},function(data) {
+					console.log(data);
+			 	});
+			});
+		
+			$('#history-table .reject').click(function(){
+				id = $(this).parent().parent().children().eq(0)[0].innerHTML;
+				url="/project/approveJinXiangFaPiaoMingXi_FaPiao";					
+				rejectButton = $(this);
+				dialog.dialog("open");
+			});
+		
+			$('#renzheng-table .reject').click(function(){
+				id = $(this).parent().parent().children().eq(0)[0].innerHTML;
+				url="/project/approveJinXiangFaPiaoMingXi_RenZheng";
+				rejectButton = $(this);
+				dialog.dialog("open");
+			});
+			
+			dialog = $( "#dialog" ).dialog({
+			    autoOpen: false,
+			    height: 300,
+			    width: 350,
+			    modal: true,
+			    buttons: {
+			      "确定": function() {
+			    	var beizhu = $('#comment').val();
+					$.post(url, {id:id, beizh:beizhu,status:2}, function(data){
+						table
+				        .row( rejectButton.parents('tr') )
+				        .remove()
+				        .draw();
+					});
+			    },
+			    close: function() {
+			    	dialog.dialog("close");
+			    }
+			}
+			});
+			
+			
+			
+			
+			
 			var create_project_company_id = "";
 			console.log(global);
-			
+		
 			$("#update_project_info")
 					.on(
 							"click",

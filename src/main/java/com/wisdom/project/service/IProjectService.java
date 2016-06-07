@@ -59,7 +59,10 @@ public interface IProjectService {
 
 	public Boolean updateJinXiangShuieZhuanChuMingXi_XiangMuBu(JinXiangShuieZhuanChuMingXi_XiangMuBu jinXiangShuieZhuanChuMingXi_XiangMuBu);
 
+	public List<JinXiangFaPiaoMingXi_RenZheng> getJinXiangFaPiaoMingXi_RenZhengByCompanyId(Long company_id);
 
+	public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(Long company_id);
+	
 	public JinXiangFaPiaoMingXi_RenZheng getJinXiangFaPiaoMingXi_RenZhengById(Long id);
 
 	public Boolean addJinXiangFaPiaoMingXi_RenZheng(JinXiangFaPiaoMingXi_RenZheng jinXiangFaPiaoMingXi_RenZheng);
@@ -140,6 +143,8 @@ public interface IProjectService {
 	
 	public ShouQiKuanXiangMingXiBiao getShouQiKuanXiangMingXiBiaoById(Long id);
 	
+	public List<ShouQiKuanXiangMingXiBiao> getShouQiKuanXiangMingXiBiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
 	public QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById(Long id);
 	
 	public Boolean addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
@@ -214,7 +219,7 @@ public interface IProjectService {
 	
 	public List<KaiPiaoQingKuangBiao_ZongGongSi> getKaiPiaoQingKuangBiao_ZongGongSiByStatus(Integer status);
 	
-	public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi();
+	public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi(Long companyId);
 	
 	public List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByXiangmutaizhang_id(Long xiangmutaizhang_id);
 	
@@ -226,4 +231,31 @@ public interface IProjectService {
 	public List<Role> getUserRoles(Integer uid);
 	
 	public User getUserById(Integer uid);
+
+	public Integer approveJinXiangFaPiaoMingXi_RenZheng(Integer id, Integer yiji_shenhe_status, String beizhu);
+
+	public Integer approveJinXiangFaPiaoMingXi_FaPiao(Integer id, Integer yiji_shenhe_status, String beizhu);
+	
+	public KaiPiaoShenQingDan getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id(Long id);
+	
+	public List<PuTongFaPiaoKaiJuMingXi> getPuTongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<ZhuanYongFaPiaoKaiJuMingXi> getZhuanYongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<JianYiJiShuiFangFaPuPiaoJiShui> getJianYiJiShuiFangFaPuPiaoJiShuiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<JianYiJiShuiFangFaZhuanPiaoJiShui> getJianYiJiShuiFangFaZhuanPiaoJiShuiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa> getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<QueRenShouRuFangShi_YiWanGongGongZuoLiangFa> getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+
+	public List<QueRenShouRuFangShi_LaoWuShiJianZhanBiFa> getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public 	List<QueRenShouRuFangShi_QiTa> getQueRenShouRuFangShi_QiTaByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+
+	public List<KaiPiaoQingKuangBiao_XiangMu>getAllKaiPiaoQingKuangBiao_XiangMu(Long companyId);
+	
+	public List<KaiPiaoQingKuangBiao_FenGongSi>getAllKaiPiaoQingKuangBiao_FenGongSi(Long companyId);
+
 }

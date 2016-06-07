@@ -1109,7 +1109,7 @@ $("#submit").on("click", function(){
 
 	dataSet["class_name"] = "BuDongChanFenQiDiKouBiao";
 	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
-	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
+	
 
 	$.post('/project/addModel', dataSet, function(data){
 		console.log(data);
@@ -1128,7 +1128,7 @@ $("#modify").on("click", function(){
 	dataSet['id'] = 1;
 	dataSet["class_name"] = "BuDongChanFenQiDiKouBiao";
 	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
-	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
+	dataSet["shenheriqi"] = new Date().Format("yyyy-MM-DD");
 	
 	$.post('/project/modifyModel', dataSet, function(data){
 		console.log(data);
