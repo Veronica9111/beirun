@@ -615,16 +615,16 @@ public class ProjectController {
 		Integer count = 0;
 		for (KaiPiaoQingKuangBiao_XiangMu elem : KaiPiaoQingKuangBiaos) {
 			List<Object> tmp = new ArrayList<>();
-			tmp.add(elem.getId().toString());
+			tmp.add(elem.getId() == null? "":elem.getId().toString());
 			tmp.add(elem.getShengqingkaipiaoshijian());
-			tmp.add(elem.getBuhanshuijine().toString());
-			tmp.add(elem.getShuie().toString());
-			tmp.add(elem.getHejijine().toString());
-			tmp.add(elem.getKaijufapiao().toString());
-			tmp.add(elem.getShouqikuanxiang().toString());
+			tmp.add(elem.getBuhanshuijine() == null? "":elem.getBuhanshuijine().toString());
+			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
+			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
+			tmp.add(elem.getKaijufapiao() == null ? "":elem.getKaijufapiao().toString());
+			tmp.add(elem.getShouqikuanxiang() == null ? "" : elem.getShouqikuanxiang().toString());
 			tmp.add(elem.getWangongjindu());
-			tmp.add(elem.getQita().toString());
-			tmp.add(elem.getYikaipiaojine().toString());
+			tmp.add(elem.getQita() == null?"":elem.getQita().toString());
+			tmp.add(elem.getYikaipiaojine() == null? "": elem.getYikaipiaojine().toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
 			tmp.add(elem.getBeizhu());
 			tmp.add(elem.getYijishenheren());
