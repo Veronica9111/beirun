@@ -843,8 +843,8 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
-	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+	<input id="budongchanfeiqidikoubiao" type="button" value="不动产分期抵扣表" class="btn btn-success btn-sm" />
+	<input id="jinxiangshuiezhuanchumingxi_xiangmubu" disabled type="button" value="进项转出税额明细" class="btn btn-success btn-sm" />
 </div>
 <div id="container">
   <table width="5104.10" border="0" cellpadding="0" cellspacing="0" style='width:2552.05pt;border-collapse:collapse;table-layout:fixed;'>
@@ -1108,19 +1108,8 @@ $("#modify").on("click", function(){
 	});
 	
 });
-
-var query = {query_key: 'id', query_value:1, class_name:'JinXiangShuieZhuanChuMingXi_XiangMuBu'};
-$.post("/project/getModel", query, function(data){
-
-	var data = $.parseJSON(data.data)[0];
-
-	for(key in data){
-
-			console.log(data[key]);
-			$("#" + key).val(data[key]);
-		
-	}
-	
+$(".btn-success").click(function(){
+	window.location = "/views/recordviews/"+$(this).attr("id")+".html";
 });
 Date.prototype.Format = function(formatStr) {
 	var str = formatStr;

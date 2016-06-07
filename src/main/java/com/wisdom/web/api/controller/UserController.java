@@ -82,8 +82,10 @@ public class UserController {
 				retMap.put("url", "/views/webviews/user/manage.html");
 			}else if(roles.contains("开票人")) {
 				retMap.put("url", "/views/recordviews/create_invoice_1.html");
-			}else if(roles.contains("开进项票人")) {
-				retMap.put("url", "/views/recordviews/approval_jinxiang_1.html");
+			}else if(roles.contains("分管所长")) {
+				retMap.put("url", "/views/recordviews/approval_invoice_list_2.html");
+			}else if(roles.contains("业务主任")) {
+				retMap.put("url", "/views/recordviews/approval_invoice_list_2.html");
 			}else{
 				retMap.put("url", "/views/webviews/user/setting.html");
 			}

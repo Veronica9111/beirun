@@ -993,6 +993,14 @@ public class ProjectController {
 		return retMap;
 	}
 	
+	
+	@RequestMapping("/project/sendTelInfo")
+	public String sendTelInfo(HttpServletRequest request, HttpSession httpSession) {
+		Map<String, String> retMap = new HashMap<>();
+		SMSSender.sendTemplateSMS("18601615517");
+		return "";
+	}
+	
 	@RequestMapping("/project/updateKaiPiaoQingKuangBiao_XiangMuStatus")
 	@ResponseBody
 	public Map<String, String> updateKaiPiaoQingKuangBiao_XiangMuStatus(HttpServletRequest request,
@@ -1002,10 +1010,18 @@ public class ProjectController {
 		String type = request.getParameter("type");
 		String comment = request.getParameter("comment");
 		Integer status = Integer.valueOf(request.getParameter("status"));
+		//status 1-pass,2-reject
+		//type first-1, second-2
 		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
 		User user = projectService.getUserById(uid);
 		String userName = user.getName();
-
+		if(("蒋中值").equals(userName)) {
+			SMSSender.sendTemplateSMS("18201897828");
+		} else if(("柴快长").equals(userName)) {
+			SMSSender.sendTemplateSMS("18601615517");
+		} else if(("小施").equals(userName)) {
+			SMSSender.sendTemplateSMS("13962731972");
+		}
 		KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu = projectService
 				.getKaiPiaoQingKuangBiao_XiangMuById(id);
 		KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi = projectService

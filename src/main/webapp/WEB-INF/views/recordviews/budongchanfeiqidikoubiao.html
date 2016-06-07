@@ -1049,8 +1049,8 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
-	<input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
+	<input id="budongchanfeiqidikoubiao" disabled type="button" value="不动产分期抵扣表" class="btn btn-success btn-sm" />
+	<input id="jinxiangshuiezhuanchumingxi_xiangmubu" type="button" value="进项转出税额明细" class="btn btn-success btn-sm" />
 </div>
 <div id="container">
   <table width="1403" border="0" cellpadding="0" cellspacing="0" style='width:701.50pt;border-collapse:collapse;table-layout:fixed;'>
@@ -1098,6 +1098,10 @@ td
   </div>
 </div>
 <script type="text/javascript">
+
+$(".btn-success").click(function(){
+	window.location = "/views/recordviews/"+$(this).attr("id")+".html";
+});
 $("#submit").on("click", function(){
 	console.log($(".text"));
 	var dataSet = {};
