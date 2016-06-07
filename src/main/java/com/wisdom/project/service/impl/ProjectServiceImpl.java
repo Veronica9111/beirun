@@ -992,9 +992,9 @@ public class ProjectServiceImpl implements IProjectService {
 		}
 
 		@Override
-		public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi() {
+		public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi(Long companyId) {
 			// TODO Auto-generated method stub
-			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSi();
+			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSi(companyId);
 		}
 
 		@Override
@@ -1147,6 +1147,18 @@ public class ProjectServiceImpl implements IProjectService {
 		public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(Long company_id) {
 			// TODO Auto-generated method stub
 			return jinXiangFaPiaoMingXi_FaPiaoMapper.getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(company_id);
+		}
+
+		@Override
+		public List<KaiPiaoQingKuangBiao_XiangMu> getAllKaiPiaoQingKuangBiao_XiangMu(Long companyId) {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_XiangMuMapper.getAllKaiPiaoQingKuangBiao_XiangMu(companyId);
+		}
+
+		@Override
+		public List<KaiPiaoQingKuangBiao_FenGongSi> getAllKaiPiaoQingKuangBiao_FenGongSi(Long companyId) {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_FenGongSiMapper.getAllKaiPiaoQingKuangBiao_FenGongSi(companyId);
 		}
 
 
