@@ -17,4 +17,6 @@ public interface ShouQiKuanXiangMingXiBiaoMapper {
 	void updateShouQiKuanXiangMingXiBiao(ShouQiKuanXiangMingXiBiao ptf);
 	
 	ShouQiKuanXiangMingXiBiao getShouQiKuanXiangMingXiBiaoById(Long id);
+	
+	List<ShouQiKuanXiangMingXiBiao> getShouQiKuanXiangMingXiBiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
 }

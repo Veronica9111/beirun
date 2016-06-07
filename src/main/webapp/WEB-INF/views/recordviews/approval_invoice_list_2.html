@@ -111,9 +111,16 @@ $.post("/project/getKaiPiaoQingKuangBiao_XiangMuByUser", {}, function(data){
 		        { title: "二级审核状态" },
 		        { title: "二级审核备注" },
 		        { title: ""},
+		        { title: ""},
 		        { title: ""}
 		    ]
 		} );
+
+	  $("#history-table tbody").on("click", ".check", function(){
+			 id = $(this).parent().parent().children().eq(0)[0].innerHTML;
+			 window.location.href="/views/recordviews/approval_invoice_kaipiaoshenqingdan_2.html?id=" +id;
+		});
+	
 	  $("#history-table tbody").on("click", ".reject", function(){
 		 id = $(this).parent().parent().children().eq(0)[0].innerHTML;
 		 rejectButton = $(this);

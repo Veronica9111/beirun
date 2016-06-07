@@ -16,4 +16,6 @@ public interface KaiPiaoShenQingDanMapper {
 	void updateKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
 	
 	KaiPiaoShenQingDan getKaiPiaoShenQingDanById(Long id);
+	
+	KaiPiaoShenQingDan getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id(Long kaipiaoqingkuangbiao_xiangmu_id);
 }

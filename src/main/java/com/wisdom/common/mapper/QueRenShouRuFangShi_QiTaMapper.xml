@@ -37,4 +37,9 @@ update querenshourufangshi_qita set gongsimingcheng=#{gongsimingcheng},xiangmubu
 where id=#{id}
 </update>
 
+<select id="getQueRenShouRuFangShi_QiTaByKaipiaoshenqingdan_id" parameterType="Integer" resultType="QueRenShouRuFangShi_QiTa">
+select id, gongsimingcheng,xiangmubu,shenqingriqi,fashengjine,yujizonge,bili,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,shenheriqi,xiangmumingcheng,fuheren,kaipiaoshenqingdan_id
+from querenshourufangshi_qita
+where kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+</select>
 </mapper>

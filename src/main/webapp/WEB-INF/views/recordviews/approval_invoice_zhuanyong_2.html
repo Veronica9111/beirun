@@ -988,7 +988,7 @@ td
     <td class="xl69" x:str>销项（应纳）税额</td>
     <td class="xl69" x:str>小计</td>
    </tr>
-   <tr height="28" style='height:14.00pt;'>
+   <tr id="data-row0" height="28" style='height:14.00pt;'>
     <td class="xl72" height="28" style='height:14.00pt;'><input style='width:100%' id='riqi'></td>
 	<td class="xl72"><input style='width:100%' id='kaipiaoneirong'></td>
     <td class="xl72"><input style='width:100%' id='zhuanpiao_11_xiaoshoue'></td>
@@ -1047,7 +1047,47 @@ td
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
+<script>
 
+var redirectView = "";
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+})(jQuery);
+var kaipiaoshenqingdan_id = decodeURI($.getUrlParam('id'));
+var tds = $("#data-row0 td input");
+
+var tdsList = [];
+for(var i = 0; i < tds.length; i++){
+	console.log(tds.get(i));
+	tdsList.push(tds.get(i).id);
+}
+console.log(tdsList);
+$.post("/project/getOneFromFourInvoiceType", {'kaipiaoshenqingdan_id':kaipiaoshenqingdan_id}, function(data){
+
+	var dataSet = $.parseJSON(data.data);
+	console.log(dataSet);
+	for(var i = 0; i < dataSet.length; i++){
+		if(i == 0){
+			for(var key in dataSet[0]){
+				console.log(key);
+				console.log(dataSet[0][key]);
+				$("#" + key).val(dataSet[0][key]);
+			}
+		}else if(i > 0){
+			$("#data-row" + (i-1)).after("<tr id='data-row"+i+"' height='28' class='xl65' style='height:14.00pt;'>");
+			//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
+			for(var j = 0; j< tdsList.length; j++){
+				$("#data-row" + i).append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
+			}
+		}
+	}
+});
+
+</script>
 
 </body>
 

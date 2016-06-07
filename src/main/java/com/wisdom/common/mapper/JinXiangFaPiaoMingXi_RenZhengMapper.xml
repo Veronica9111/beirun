@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-       
+       <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 <mapper namespace="com.wisdom.common.mapper.JinXiangFaPiaoMingXi_RenZhengMapper">
 	<cache />
 
@@ -84,18 +85,19 @@
 		from jinxiangfapiaomingxi_renzheng
 		where company_id=#{company_id}
 	</select>
-
+	
+	
+	<update id="approveJinXiangFaPiaoMingXi_RenZheng">
+		update jinxiangfapiaomingxi_renzheng set yiji_shenhe_status =
+		#{yiji_shenhe_status},beizhu=#{beizhu}
+		where id=#{id}
+	</update>
+	
 	<update id="updateJinXiangFaPiaoMingXi_RenZheng">
 		update jinxiangfapiaomingxi_renzheng set
 		tianbiaorendianhua=#{tianbiaorendianhua},heji_haiguan_shuie=#{heji_haiguan_shuie},heji_haiguan_jine=#{heji_haiguan_jine},heji_haiguan_fenshu=#{heji_haiguan_fenshu},heji_daikou_jiashuiheji=#{heji_daikou_jiashuiheji},daikou_fapiaohaoma=#{daikou_fapiaohaoma},heji_qita_jiashuiheji=#{heji_qita_jiashuiheji},heji_haiguan_jiashuiheji=#{heji_haiguan_jiashuiheji},nongchanpin_fenshu=#{nongchanpin_fenshu},heji_daikou_jine=#{heji_daikou_jine},daikou_shuie=#{daikou_shuie},heji_nongchanpin_shuie=#{heji_nongchanpin_shuie},heji_nongchanpin_jiashuiheji=#{heji_nongchanpin_jiashuiheji},daikou_jine=#{daikou_jine},id=#{id},xiangmutaizhang_id=#{xiangmutaizhang_id},qita_jine=#{qita_jine},heji_nongchanpin_jine=#{heji_nongchanpin_jine},field3=#{field3},field1=#{field1},haiguan_fapiaohaoma=#{haiguan_fapiaohaoma},field4=#{field4},nongchanpin_fapiaohaoma=#{nongchanpin_fapiaohaoma},nongchanpin_kaipiaoriqi=#{nongchanpin_kaipiaoriqi},heji_qita_jine=#{heji_qita_jine},erji_shenhe_status=#{erji_shenhe_status},daikou_fenshu=#{daikou_fenshu},nongchanpin_jine=#{nongchanpin_jine},heji_daikou_fenshu=#{heji_daikou_fenshu},xiangmubu=#{xiangmubu},heji_daikou_shuie=#{heji_daikou_shuie},yijishenheren=#{yijishenheren},shenheriqi=#{shenheriqi},beizhu=#{beizhu},erjishenheren=#{erjishenheren},shenheren=#{shenheren},qita_fenshu=#{qita_fenshu},company_id=#{company_id},tianbiaoriqi=#{tianbiaoriqi},haiguan_shuie=#{haiguan_shuie},heji_qita_fenshu=#{heji_qita_fenshu},haiguan_kaipiaoriqi=#{haiguan_kaipiaoriqi},qita_kaipiaoriqi=#{qita_kaipiaoriqi},tianbiaoren=#{tianbiaoren},qita_jiashuiheji=#{qita_jiashuiheji},haiguan_jine=#{haiguan_jine},erji_shenhe_beizhu=#{erji_shenhe_beizhu},nongchanpin_jiashuiheji=#{nongchanpin_jiashuiheji},daikou_kaipiaoriqi=#{daikou_kaipiaoriqi},nongchanpin_shuie=#{nongchanpin_shuie},fengongsi=#{fengongsi},heji_nongchanpin_fenshu=#{heji_nongchanpin_fenshu},haiguan_fenshu=#{haiguan_fenshu},haiguanjiashuiheji=#{haiguanjiashuiheji},qita_fapiaohaoma=#{qita_fapiaohaoma},yiji_shenhe_status=#{yiji_shenhe_status},field2=#{field2},daikou_jiashuiheji=#{daikou_jiashuiheji},shenherendianhua=#{shenherendianhua},qita_shuie=#{qita_shuie},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu},heji_qita_shuie=#{heji_qita_shuie},field5=#{field5}
 		where id=#{id}
 	</update>
-
-	<upadate id="approveJinXiangFaPiaoMingXi_RenZheng">
-		update jinxiangfapiaomingxi_renzheng set yiji_shenhe_status =
-		#{yiji_shenhe_status},beizhu=#{beizhu}
-		where id=#{id}
-	</upadate>
 
 	<insert id="addJinXiangFaPiaoMingXi_RenZheng">
 		insert into jinxiangfapiaomingxi_renzheng

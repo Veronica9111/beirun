@@ -16,4 +16,7 @@ public interface PuTongFaPiaoKaiJuMingXiMapper {
 	void updatePuTongFaPiaoKaiJuMingXi(PuTongFaPiaoKaiJuMingXi ptf);
 	
 	PuTongFaPiaoKaiJuMingXi getPuTongFaPiaoKaiJuMingXiById(Long id);
+	
+	List<PuTongFaPiaoKaiJuMingXi> getPuTongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+
 }

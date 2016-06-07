@@ -141,6 +141,8 @@ public interface IProjectService {
 	
 	public ShouQiKuanXiangMingXiBiao getShouQiKuanXiangMingXiBiaoById(Long id);
 	
+	public List<ShouQiKuanXiangMingXiBiao> getShouQiKuanXiangMingXiBiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
 	public QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById(Long id);
 	
 	public Boolean addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa(QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa queRenShouRuFangShi_YiFaShengChengBenZhanBiFa);
@@ -231,4 +233,23 @@ public interface IProjectService {
 	public Integer approveJinXiangFaPiaoMingXi_RenZheng(Integer id, Integer yiji_shenhe_status, String beizhu);
 
 	public Integer approveJinXiangFaPiaoMingXi_FaPiao(Integer id, Integer yiji_shenhe_status, String beizhu);
+	
+	public KaiPiaoShenQingDan getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id(Long id);
+	
+	public List<PuTongFaPiaoKaiJuMingXi> getPuTongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<ZhuanYongFaPiaoKaiJuMingXi> getZhuanYongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<JianYiJiShuiFangFaPuPiaoJiShui> getJianYiJiShuiFangFaPuPiaoJiShuiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<JianYiJiShuiFangFaZhuanPiaoJiShui> getJianYiJiShuiFangFaZhuanPiaoJiShuiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa> getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public List<QueRenShouRuFangShi_YiWanGongGongZuoLiangFa> getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+
+	public List<QueRenShouRuFangShi_LaoWuShiJianZhanBiFa> getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+	
+	public 	List<QueRenShouRuFangShi_QiTa> getQueRenShouRuFangShi_QiTaByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+
 }

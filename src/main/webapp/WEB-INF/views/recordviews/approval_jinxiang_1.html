@@ -1084,9 +1084,10 @@ td {
 		<table id="history-table"></table>
 		<table id="renzheng-table"></table>
 	</div>
-	<div id="beizhu">
-		<p></p>
-	</div>
+	<div id="dialog">
+	<p>备注：</p>
+	<input id="comment" type='textfield'/>
+</div>
 	<div class="mask"></div>
 	<div class="footer">
 		<div class="container">
@@ -1334,31 +1335,53 @@ td {
 			
 			$('#history-table .approve').click(function(){
 				id = $(this).parent().parent().children().eq(0)[0].innerHTML;
-				$.post('/approveJinXiangFaPiaoMingXi_FaPiao',{"id":id},function(data) {
+				$.post('/project/approveJinXiangFaPiaoMingXi_FaPiao',{id:id,yiji_shenhe_status:1,beizhu:""},function(data) {
 					console.log(data);
 			 	});
 			});
 		
-			$('#renzheng-table .reject').click(function(){
+			$('#renzheng-table .approve').click(function(){
 				id = $(this).parent().parent().children().eq(0)[0].innerHTML;
-				$.post('/approveJinXiangFaPiaoMingXi_RenZheng',{"id":id},function(data) {
+				$.post('/project/approveJinXiangFaPiaoMingXi_RenZheng',{id:id,yiji_shenhe_status:1,beizhu:""},function(data) {
 					console.log(data);
 			 	});
 			});
 		
 			$('#history-table .reject').click(function(){
 				id = $(this).parent().parent().children().eq(0)[0].innerHTML;
-				$.post('/rejectJinXiangFaPiaoMingXi_FaPiao',{"id":id,"beizhu",beizhu},function(data) {
-					console.log(data);
-			 	});
+				url="/project/approveJinXiangFaPiaoMingXi_FaPiao";					
+				rejectButton = $(this);
+				dialog.dialog("open");
 			});
 		
 			$('#renzheng-table .reject').click(function(){
 				id = $(this).parent().parent().children().eq(0)[0].innerHTML;
-				$.post('/rejectJinXiangFaPiaoMingXi_RenZheng',{"id":id,"beizhu":beizhu},function(data) {
-					console.log(data);
-			 	});
+				url="/project/approveJinXiangFaPiaoMingXi_RenZheng";
+				rejectButton = $(this);
+				dialog.dialog("open");
 			});
+			
+			dialog = $( "#dialog" ).dialog({
+			    autoOpen: false,
+			    height: 300,
+			    width: 350,
+			    modal: true,
+			    buttons: {
+			      "确定": function() {
+			    	var beizhu = $('#comment').val();
+					$.post(url, {id:id, beizh:beizhu,status:2}, function(data){
+						table
+				        .row( rejectButton.parents('tr') )
+				        .remove()
+				        .draw();
+					});
+			    },
+			    close: function() {
+			    	dialog.dialog("close");
+			    }
+			}
+			});
+			
 			
 			
 			
