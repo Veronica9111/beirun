@@ -797,7 +797,7 @@ public class ProjectController {
 			} else if(elem.getYiji_shenhe_status() == 2){
 				approveStatus = "审核未通过";
 			}
-			if(approvalLevel==1){
+			if(approvalLevel==2){
 				tmp.add(approveStatus);
 				tmp.add(elem.getYiji_shenhe_beizhu());
 				if(approveStatus.contains("未审核")){
@@ -811,7 +811,7 @@ public class ProjectController {
 					retList.add(tmp);
 					continue;
 				}
-			}else if(approvalLevel == 2){
+			}else if(approvalLevel == 1){
 				if(elem.getYiji_shenhe_status() != 0){
 					continue;
 				}else if(approveStatus.contains("未审核")){
@@ -918,9 +918,9 @@ public class ProjectController {
 		List<Role> roles = projectService.getUserRoles(uid);
 		for (Role role : roles) {
 			if (role.getName().contains("业务主任")) {
-				approvalLevel = 1;
-			} else if (role.getName().contains("开进项票人")) {
 				approvalLevel = 2;
+			} else if (role.getName().contains("开进项票人")) {
+				approvalLevel = 1;
 			}
 		}
 
