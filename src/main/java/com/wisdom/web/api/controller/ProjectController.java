@@ -27,6 +27,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_ZongGongSiMapper;
 import com.wisdom.common.model.Company;
+import com.wisdom.common.model.JinXiangFaPiaoMingXi_FaPiao;
+import com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
@@ -548,7 +550,239 @@ public class ProjectController {
 		retMap.put("status", "ok");
 		return retMap;
 	}
+	
+	@RequestMapping("/project/getJinXiangFaPiaoMingXi_FaPiao")
+	@ResponseBody
+	public Map<String, String> getJinXiangFaPiaoMingXi_FaPiao(HttpServletRequest request,
+			HttpSession httpSession) {
 
+		Map<String, String> retMap = new HashMap<>();
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		List<Company> companies = projectService.getCompaniesByUid(uid);
+		List<Integer> companyIds = new ArrayList<>();
+		List<JinXiangFaPiaoMingXi_FaPiao> jinxiangkaipiaomingxi_fapiaos = new ArrayList<>();
+		for (Company company : companies) {
+			jinxiangkaipiaomingxi_fapiaos.addAll(projectService.getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(Long.valueOf(company.getId())));
+
+		}
+		Integer approvalLevel = 0;
+		List<Role> roles = projectService.getUserRoles(uid);
+		for (Role role : roles) {
+			if (role.getName().contains("一级") || role.getName().contains("业务主任")) {
+				approvalLevel = 1;
+			} else if (role.getName().contains("二级") || role.getName().contains("分管所长")) {
+				approvalLevel = 2;
+			}
+		}
+
+		List<List<Object>> retList = new ArrayList<>();
+		Integer count = 0;
+		for (JinXiangFaPiaoMingXi_FaPiao elem : jinxiangkaipiaomingxi_fapiaos) {
+			List<Object> tmp = new ArrayList<>();
+			tmp.add(elem.getId().toString());
+			tmp.add(elem.getFapiaokaijushijian());
+			tmp.add(elem.getFapiaohaoma());
+			tmp.add(elem.getXiaohuodanweimingcheng());
+			tmp.add(elem.getHuowumingcheng());
+			tmp.add(elem.getJine());
+			tmp.add(elem.getJinxiangshuie());
+			tmp.add(elem.getFp_11_yunshu_jine());
+			tmp.add(elem.getFp_11_yunshu_jinxiangshuie());
+			tmp.add(elem.getFp_11_dianxin_jine());
+			tmp.add(elem.getFp_11_dianxin_jinxiangshuie());
+			tmp.add(elem.getFp_11_jianzhu_jine());
+			tmp.add(elem.getFp_11_jianzhu_jinxiangshuie());
+			tmp.add(elem.getFp_11_budong_jine());
+			tmp.add(elem.getFp_11_budong_jinxiangshuie());
+			tmp.add(elem.getFp_11_shourang_jine());
+			tmp.add(elem.getFp_11_shourang_jinxiangshuie());
+			tmp.add(elem.getFp_11_xiaoji_jine());
+			tmp.add(elem.getFp_11_xiaoji_jinxiangshuie());
+			tmp.add(elem.getFp_17_qita_jine());
+			tmp.add(elem.getFp_17_qita_jinxiangshuie());
+			tmp.add(elem.getFp_17_youxing_jine());
+			tmp.add(elem.getFp_17_youxing_jinxiangshuie());
+			tmp.add(elem.getFp_17_xiaoji_jine());
+			tmp.add(elem.getFp_17_xiaoji_jinxiangshuie());
+			tmp.add(elem.getFp_13_jine());
+			tmp.add(elem.getFp_13_jinxiangshuie());
+			tmp.add(elem.getFp_6_dianxin_jine());
+			tmp.add(elem.getFp_6_dianxin_jinxiangshuie());
+			tmp.add(elem.getFp_6_jinrong_jine());
+			tmp.add(elem.getFp_6_jinrong_jinxiangshuie());
+			tmp.add(elem.getFp_6_shenghuo_jine());
+			tmp.add(elem.getFp_6_shenghuo_jinxiangshuie());
+			tmp.add(elem.getFp_6_wuxing_jine());
+			tmp.add(elem.getFp_6_wuxing_jinxiangshuie());
+			tmp.add(elem.getFp_6_xiaoji_jine());
+			tmp.add(elem.getFp_6_xiaoji_jinxiangshuie());
+			tmp.add(elem.getFp_5_qita_jine());
+			tmp.add(elem.getFp_5_qita_jinxiangshuie());
+			tmp.add(elem.getFp_5_budong_jine());
+			tmp.add(elem.getFp_5_budong_jinxiangshuie());
+			tmp.add(elem.getFp_5_xiaoji_jine());
+			tmp.add(elem.getFp_5_xiaoji_jinxiangshuie());
+			tmp.add(elem.getFp_3_huowu_jine());
+			tmp.add(elem.getFp_3_huowu_jinxiangshuie());
+			tmp.add(elem.getFp_3_yunshu_jine());
+			tmp.add(elem.getFp_3_yunshu_jinxiangshuie());
+			tmp.add(elem.getFp_3_dianxin_jine());
+			tmp.add(elem.getFp_3_dianxin_jinxiangshuie());
+			tmp.add(elem.getFp_3_jianzhu_jine());
+			tmp.add(elem.getFp_3_jianzhu_jinxiangshuie());
+			tmp.add(elem.getFp_3_jinrong_jine());
+			tmp.add(elem.getFp_3_jinrong_jinxiangshuie());
+			tmp.add(elem.getFp_3_youxing_jine());
+			tmp.add(elem.getFp_3_youxing_jinxiangshuie());
+			tmp.add(elem.getFp_3_shenghuo_jine());
+			tmp.add(elem.getFp_3_shenghuo_jinxiangshuie());
+			tmp.add(elem.getFp_3_wuxing_jine());
+			tmp.add(elem.getFp_3_wuxing_jinxiangshuie());
+			tmp.add(elem.getFp_3_xiaoji_jine());
+			tmp.add(elem.getFp_3_xiaoji_jinxiangshuie());
+			tmp.add(elem.getFp_3_2_jine());
+			tmp.add(elem.getFp_3_2_jinxiangshuie());
+			tmp.add(elem.getFp_yongyu_jine());
+			tmp.add(elem.getFp_yongyu_jinxiangshuie());
+			tmp.add(elem.getFp_tongxingfei_jine());
+			tmp.add(elem.getFp_tongxingfei_jinxiangshuie());
+			
+			String approveStatus = "未审核";
+			if (elem.getYiji_shenhe_status() == 1) {
+				approveStatus = "审核通过";
+			} else {
+				approveStatus = "审核未通过";
+			}
+			tmp.add(approveStatus);
+			tmp.add(elem.getYiji_shenhe_beizhu());
+			//tmp.add(elem.getErjishenheren());
+
+			/*String approveStatus2 = "未审核";
+			if (elem.getErji_shenhe_status() == 1) {
+				approveStatus2 = "审核通过";
+			} else if (elem.getErji_shenhe_status() == 2) {
+				approveStatus2 = "审核未通过";
+			}*/
+			//tmp.add(approveStatus2);
+			//tmp.add(elem.getErji_shenhe_beizhu());
+			String approveButton = "<input type='button' class='btn btn-success approve'value='通过' >";
+			String rejectButton = "<input type='button' class='btn btn-danger reject' value='拒绝' >";
+			tmp.add(approveButton);
+			tmp.add(rejectButton);
+
+			retList.add(tmp);/*
+			if (approvalLevel == 1 && elem.getYiji_shenhe_status() == 0) {
+				count++;
+				retList.add(tmp);
+			} else if (approvalLevel == 2 && elem.getYiji_shenhe_status() == 1 && elem.getErji_shenhe_status() == 0) {
+				count++;
+				retList.add(tmp);
+			}*/
+
+		}
+		String data = JSONArray.fromObject(retList).toString();
+		retMap.put("data", data);
+		retMap.put("count", count.toString());
+		// retMap.put("unapproved", Integer.toString(count));
+		retMap.put("status", "ok");
+		return retMap;
+	}
+
+	@RequestMapping("/project/getJinXiangFaPiaoMingXi_RenZheng")
+	@ResponseBody
+	public Map<String, String> getJinXiangFaPiaoMingXi_RenZheng(HttpServletRequest request,
+			HttpSession httpSession) {
+
+		Map<String, String> retMap = new HashMap<>();
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		List<Company> companies = projectService.getCompaniesByUid(uid);
+		List<Integer> companyIds = new ArrayList<>();
+		List<JinXiangFaPiaoMingXi_RenZheng> jinxiangfapiaomingxi_renzhengs = new ArrayList<>();
+		for (Company company : companies) {
+			jinxiangfapiaomingxi_renzhengs.addAll(projectService.getJinXiangFaPiaoMingXi_RenZhengByCompanyId(Long.valueOf(company.getId())));
+
+		}
+		Integer approvalLevel = 0;
+		
+		List<Role> roles = projectService.getUserRoles(uid);
+		for (Role role : roles) {
+			if (role.getName().contains("一级") || role.getName().contains("业务主任")) {
+				approvalLevel = 1;
+			} else if (role.getName().contains("二级") || role.getName().contains("分管所长")) {
+				approvalLevel = 2;
+			}
+		}
+
+		List<List<Object>> retList = new ArrayList<>();
+		Integer count = 0;
+		for (JinXiangFaPiaoMingXi_RenZheng elem : jinxiangfapiaomingxi_renzhengs) {
+			List<Object> tmp = new ArrayList<>();
+			tmp.add(elem.getId().toString());
+			tmp.add(elem.getHaiguan_kaipiaoriqi());
+			tmp.add(elem.getHaiguan_fapiaohaoma());
+			tmp.add(elem.getHaiguan_fenshu());
+			tmp.add(elem.getHaiguan_jine());
+			tmp.add(elem.getHaiguan_shuie());
+			tmp.add(elem.getHaiguanjiashuiheji());
+			tmp.add(elem.getNongchanpin_kaipiaoriqi());
+			tmp.add(elem.getNongchanpin_fapiaohaoma());
+			tmp.add(elem.getNongchanpin_fenshu());
+			tmp.add(elem.getNongchanpin_jine());
+			tmp.add(elem.getNongchanpin_shuie());
+			tmp.add(elem.getNongchanpin_jiashuiheji());
+			tmp.add(elem.getDaikou_kaipiaoriqi());
+			tmp.add(elem.getDaikou_fapiaohaoma());
+			tmp.add(elem.getDaikou_fenshu());
+			tmp.add(elem.getDaikou_jine());
+			tmp.add(elem.getDaikou_shuie());
+			tmp.add(elem.getDaikou_jiashuiheji());
+			tmp.add(elem.getQita_kaipiaoriqi());
+			tmp.add(elem.getQita_fapiaohaoma());
+			tmp.add(elem.getQita_fenshu());
+			tmp.add(elem.getQita_jine());
+			tmp.add(elem.getQita_shuie());
+			tmp.add(elem.getQita_jiashuiheji());
+			
+			String approveStatus = "未审核";
+			if (elem.getYiji_shenhe_status() == 1) {
+				approveStatus = "审核通过";
+			} else if (elem.getYiji_shenhe_status() == 2) {
+				approveStatus = "审核未通过";
+			}
+			tmp.add(approveStatus);
+			tmp.add(elem.getYiji_shenhe_beizhu());
+			
+			/*tmp.add(elem.getErjishenheren());
+			String approveStatus2 = "未审核";
+			if (elem.getErji_shenhe_status() == 1) {
+				approveStatus2 = "审核通过";
+			} else if (elem.getErji_shenhe_status() == 2) {
+				approveStatus2 = "审核未通过";
+			}
+			tmp.add(approveStatus2);
+			tmp.add(elem.getErji_shenhe_beizhu());*/
+			String approveButton = "<input type='button' class='btn btn-success approve'value='通过' >";
+			String rejectButton = "<input type='button' class='btn btn-danger reject' value='拒绝' >";
+			tmp.add(approveButton);
+			tmp.add(rejectButton);
+			retList.add(tmp);
+			if (approvalLevel == 1 && elem.getYiji_shenhe_status() == 0) {
+				count++;
+				
+			} /*else if (approvalLevel == 2 && elem.getYiji_shenhe_status() == 1 && elem.getErji_shenhe_status() == 0) {
+				count++;
+				retList.add(tmp);
+			}*/
+
+		}
+		String data = JSONArray.fromObject(retList).toString();
+		retMap.put("data", data);
+		retMap.put("count", count.toString());
+		// retMap.put("unapproved", Integer.toString(count));
+		retMap.put("status", "ok");
+		return retMap;
+	}
+	
 	@RequestMapping("/project/updateKaiPiaoQingKuangBiao_XiangMuStatus")
 	@ResponseBody
 	public Map<String, String> updateKaiPiaoQingKuangBiao_XiangMuStatus(HttpServletRequest request,

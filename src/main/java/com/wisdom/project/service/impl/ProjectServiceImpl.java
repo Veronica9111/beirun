@@ -1069,6 +1069,18 @@ public class ProjectServiceImpl implements IProjectService {
 	        return true;
 	    }
 
+		@Override
+		public List<JinXiangFaPiaoMingXi_RenZheng> getJinXiangFaPiaoMingXi_RenZhengByCompanyId(Long company_id) {
+			// TODO Auto-generated method stub
+			return jinXiangFaPiaoMingXi_RenZhengMapper.getJinXiangFaPiaoMingXi_RenZhengByCompanyId(company_id);
+		}
+
+		@Override
+		public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(Long company_id) {
+			// TODO Auto-generated method stub
+			return jinXiangFaPiaoMingXi_FaPiaoMapper.getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(company_id);
+		}
+
 
 
 }
