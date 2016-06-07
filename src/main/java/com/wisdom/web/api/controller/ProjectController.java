@@ -103,6 +103,31 @@ public class ProjectController {
 		return retMap;
 	}
 
+	@RequestMapping("/project/approveJinXiangFaPiaoMingXi_FaPiao")
+	@ResponseBody
+	public Map<String, String> approveJinXiangFaPiaoMingXi_FaPiao(HttpServletRequest request){
+		Map<String, String> retMap = new HashMap<>();
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		Integer yiji_shenhe_status = Integer.valueOf(request.getParameter("yiji_shenhe_status"));
+		String beizhu = request.getParameter("beizhu");
+		projectService.approveJinXiangFaPiaoMingXi_FaPiao(id,yiji_shenhe_status,beizhu);
+		retMap.put("status", "ok");
+		return retMap;
+	}
+	
+	@RequestMapping("/project/approveJinXiangFaPiaoMingXi_RenZheng")
+	@ResponseBody
+	public Map<String, String> approveJinXiangFaPiaoMingXi_RenZheng(HttpServletRequest request){
+		Map<String, String> retMap = new HashMap<>();
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		Integer yiji_shenhe_status = Integer.valueOf(request.getParameter("yiji_shenhe_status"));
+		String beizhu = request.getParameter("beizhu");
+		projectService.approveJinXiangFaPiaoMingXi_RenZheng(id,yiji_shenhe_status,beizhu);
+		retMap.put("status", "ok");
+		return retMap;
+	}
+	
+	
 	@RequestMapping("/project/modifyModel")
 	@ResponseBody
 	public Map<String, String> ModifyModelById(HttpServletRequest request)
@@ -551,9 +576,9 @@ public class ProjectController {
 		return retMap;
 	}
 	
-	@RequestMapping("/project/getJinXiangFaPiaoMingXi_FaPiao")
+	@RequestMapping("/project/getJinXiangFaPiaoMingXi_FaPiaoByCompanyId")
 	@ResponseBody
-	public Map<String, String> getJinXiangFaPiaoMingXi_FaPiao(HttpServletRequest request,
+	public Map<String, String> getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(HttpServletRequest request,
 			HttpSession httpSession) {
 
 		Map<String, String> retMap = new HashMap<>();
@@ -568,10 +593,10 @@ public class ProjectController {
 		Integer approvalLevel = 0;
 		List<Role> roles = projectService.getUserRoles(uid);
 		for (Role role : roles) {
-			if (role.getName().contains("一级") || role.getName().contains("业务主任")) {
-				approvalLevel = 1;
-			} else if (role.getName().contains("二级") || role.getName().contains("分管所长")) {
+			if (role.getName().contains("开进项票人") ) {
 				approvalLevel = 2;
+			} else if (role.getName().contains("业务主任")) {
+				approvalLevel = 1;
 			}
 		}
 
@@ -650,35 +675,34 @@ public class ProjectController {
 			String approveStatus = "未审核";
 			if (elem.getYiji_shenhe_status() == 1) {
 				approveStatus = "审核通过";
-			} else {
+			} else if(elem.getYiji_shenhe_status() == 2){
 				approveStatus = "审核未通过";
 			}
-			tmp.add(approveStatus);
-			tmp.add(elem.getYiji_shenhe_beizhu());
-			//tmp.add(elem.getErjishenheren());
-
-			/*String approveStatus2 = "未审核";
-			if (elem.getErji_shenhe_status() == 1) {
-				approveStatus2 = "审核通过";
-			} else if (elem.getErji_shenhe_status() == 2) {
-				approveStatus2 = "审核未通过";
-			}*/
-			//tmp.add(approveStatus2);
-			//tmp.add(elem.getErji_shenhe_beizhu());
-			String approveButton = "<input type='button' class='btn btn-success approve'value='通过' >";
-			String rejectButton = "<input type='button' class='btn btn-danger reject' value='拒绝' >";
-			tmp.add(approveButton);
-			tmp.add(rejectButton);
-
-			retList.add(tmp);/*
-			if (approvalLevel == 1 && elem.getYiji_shenhe_status() == 0) {
-				count++;
-				retList.add(tmp);
-			} else if (approvalLevel == 2 && elem.getYiji_shenhe_status() == 1 && elem.getErji_shenhe_status() == 0) {
-				count++;
-				retList.add(tmp);
-			}*/
-
+			if(approvalLevel==1){
+				tmp.add(approveStatus);
+				tmp.add(elem.getYiji_shenhe_beizhu());
+				if(approveStatus.contains("未审核")){
+					String editButton = "<input type='button' class='btn btn-success edit' value='编辑' >";
+					tmp.add(editButton);
+					retList.add(tmp);
+					continue;
+				}else if(approveStatus.contains("通过")){
+					String editButton = "<input type='button' disabled class='btn btn-success edit' value='编辑' >";
+					tmp.add(editButton);
+					retList.add(tmp);
+					continue;
+				}
+			}else if(approvalLevel == 2){
+				if(elem.getYiji_shenhe_status() != 0){
+					continue;
+				}else if(approveStatus.contains("未审核")){
+					String approveButton = "<input type='button' class='btn btn-success approve' value='通过' >";
+					String rejectButton = "<input type='button' class='btn btn-danger reject' value='拒绝' >";
+					tmp.add(approveButton);
+					tmp.add(rejectButton);
+					retList.add(tmp);
+				}
+			}
 		}
 		String data = JSONArray.fromObject(retList).toString();
 		retMap.put("data", data);
@@ -688,9 +712,9 @@ public class ProjectController {
 		return retMap;
 	}
 
-	@RequestMapping("/project/getJinXiangFaPiaoMingXi_RenZheng")
+	@RequestMapping("/project/getJinXiangFaPiaoMingXi_RenZhengByCompanyId")
 	@ResponseBody
-	public Map<String, String> getJinXiangFaPiaoMingXi_RenZheng(HttpServletRequest request,
+	public Map<String, String> getJinXiangFaPiaoMingXi_RenZhengByCompanyId(HttpServletRequest request,
 			HttpSession httpSession) {
 
 		Map<String, String> retMap = new HashMap<>();
@@ -706,9 +730,9 @@ public class ProjectController {
 		
 		List<Role> roles = projectService.getUserRoles(uid);
 		for (Role role : roles) {
-			if (role.getName().contains("一级") || role.getName().contains("业务主任")) {
+			if (role.getName().contains("业务主任")) {
 				approvalLevel = 1;
-			} else if (role.getName().contains("二级") || role.getName().contains("分管所长")) {
+			} else if (role.getName().contains("开进项票人")) {
 				approvalLevel = 2;
 			}
 		}
@@ -746,39 +770,38 @@ public class ProjectController {
 			String approveStatus = "未审核";
 			if (elem.getYiji_shenhe_status() == 1) {
 				approveStatus = "审核通过";
-			} else if (elem.getYiji_shenhe_status() == 2) {
+			} else if(elem.getYiji_shenhe_status() == 2){
 				approveStatus = "审核未通过";
 			}
-			tmp.add(approveStatus);
-			tmp.add(elem.getYiji_shenhe_beizhu());
-			
-			/*tmp.add(elem.getErjishenheren());
-			String approveStatus2 = "未审核";
-			if (elem.getErji_shenhe_status() == 1) {
-				approveStatus2 = "审核通过";
-			} else if (elem.getErji_shenhe_status() == 2) {
-				approveStatus2 = "审核未通过";
+			if(approvalLevel==1){
+				tmp.add(approveStatus);
+				tmp.add(elem.getYiji_shenhe_beizhu());
+				if(approveStatus.contains("未审核")){
+					String editButton = "<input type='button' class='btn btn-success edit' value='编辑' >";
+					tmp.add(editButton);
+					retList.add(tmp);
+					continue;
+				}else if(approveStatus.contains("通过")){
+					String editButton = "<input type='button' disabled class='btn btn-success edit' value='编辑' >";
+					tmp.add(editButton);
+					retList.add(tmp);
+					continue;
+				}
+			}else if(approvalLevel == 2){
+				if(elem.getYiji_shenhe_status() != 0){
+					continue;
+				}else if(approveStatus.contains("未审核")){
+					String approveButton = "<input type='button' class='btn btn-success approve' value='通过' >";
+					String rejectButton = "<input type='button' class='btn btn-danger reject' value='拒绝' >";
+					tmp.add(approveButton);
+					tmp.add(rejectButton);
+					retList.add(tmp);
+				}
 			}
-			tmp.add(approveStatus2);
-			tmp.add(elem.getErji_shenhe_beizhu());*/
-			String approveButton = "<input type='button' class='btn btn-success approve'value='通过' >";
-			String rejectButton = "<input type='button' class='btn btn-danger reject' value='拒绝' >";
-			tmp.add(approveButton);
-			tmp.add(rejectButton);
-			retList.add(tmp);
-			if (approvalLevel == 1 && elem.getYiji_shenhe_status() == 0) {
-				count++;
-				
-			} /*else if (approvalLevel == 2 && elem.getYiji_shenhe_status() == 1 && elem.getErji_shenhe_status() == 0) {
-				count++;
-				retList.add(tmp);
-			}*/
-
 		}
 		String data = JSONArray.fromObject(retList).toString();
 		retMap.put("data", data);
 		retMap.put("count", count.toString());
-		// retMap.put("unapproved", Integer.toString(count));
 		retMap.put("status", "ok");
 		return retMap;
 	}

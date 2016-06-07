@@ -15,4 +15,5 @@ public interface JinXiangFaPiaoMingXi_RenZhengMapper {
 
     List<JinXiangFaPiaoMingXi_RenZheng> getJinXiangFaPiaoMingXi_RenZhengByCompanyId(Long company_id);
 
+	Integer approveJinXiangFaPiaoMingXi_RenZheng(Integer id,Integer yiji_shenhe_status, String beizhu);
 }

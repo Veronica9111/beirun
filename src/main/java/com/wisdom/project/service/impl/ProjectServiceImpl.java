@@ -1080,7 +1080,15 @@ public class ProjectServiceImpl implements IProjectService {
 			// TODO Auto-generated method stub
 			return jinXiangFaPiaoMingXi_FaPiaoMapper.getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(company_id);
 		}
+		
+		@Override
+		public Integer approveJinXiangFaPiaoMingXi_FaPiao(Integer id,Integer yiji_shenhe_status,String beizhu){
+			return jinXiangFaPiaoMingXi_FaPiaoMapper.approveJinXiangFaPiaoMingXi_FaPiao(id,yiji_shenhe_status,beizhu);
+		}
 
-
+		@Override
+		public Integer approveJinXiangFaPiaoMingXi_RenZheng(Integer id,Integer yiji_shenhe_status, String beizhu){
+			return jinXiangFaPiaoMingXi_RenZhengMapper.approveJinXiangFaPiaoMingXi_RenZheng(id,yiji_shenhe_status,beizhu);
+		}
 
 }

@@ -227,4 +227,8 @@ public interface IProjectService {
 	public List<Role> getUserRoles(Integer uid);
 	
 	public User getUserById(Integer uid);
+
+	public Integer approveJinXiangFaPiaoMingXi_RenZheng(Integer id, Integer yiji_shenhe_status, String beizhu);
+
+	public Integer approveJinXiangFaPiaoMingXi_FaPiao(Integer id, Integer yiji_shenhe_status, String beizhu);
 }
