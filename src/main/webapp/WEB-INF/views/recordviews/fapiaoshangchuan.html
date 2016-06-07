@@ -898,8 +898,8 @@ td
    <tr height="28" style='height:14.00pt;'>
     <td class="xl66" height="28" style='height:14.00pt;' x:str>发票日期</td>
     <td class="xl66" x:str>发票号码</td>
-    <td class="xl67" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>文件路径</td>
-    <td class="xl68" colspan="2"  x:str style="text-align:center">占比</td>
+    <td class="xl67" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>选择文件</td>
+    <td class="xl68" colspan="2"  x:str style="text-align:center">选择项目</td>
     <td class="xl68" x:str style="text-align:center">占比</td>
     <td class="xl68" style="text-align:center">选择</td>
    </tr>
@@ -930,8 +930,8 @@ td
 	});
 	$('#creat_tr').click(function(){
 		$('#table').append('<tr height="28" style="height:14.00pt;"><td class="xl68" height="28" style="height:14.00pt;"><input style="width:100%;"></td>'
-	    				   +'<td class="xl68"><input style="width:100%;"></td><td class="xl69" colspan="5" style="border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;"><input type="file" style="width:100%;"></td>'
-	    				   +'<td class="xl68"><input style="width:100%;"></td><td class="xl68" style="text-align:center"><input type="checkbox" name="xuanze"></td></tr>');
+	    				   +'<td class="xl68"><input style="width:100%;"></td><td class="xl69" colspan="3" style="border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;"><input type="file" style="width:100%;"></td>'
+	    				   +'<td class="xl68" colspan="2"  x:str style="text-align:center"><select style="width:100%"><option>今天的项目</option><option>明天的项目</option><option>后天的项目</option></select></td><td class="xl68"><input style="width:100%;"></td><td class="xl68" style="text-align:center"><input type="checkbox" name="xuanze"></td></tr>');
 	});
 	$('#del_tr').click(function(){
 		$('#table').find('tr:last').remove();
