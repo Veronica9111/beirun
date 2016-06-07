@@ -11,5 +11,8 @@ public interface JianYiJiShuiFangFaZhuanPiaoJiShuiMapper {
 	public JianYiJiShuiFangFaZhuanPiaoJiShui getJianYiJiShuiFangFaZhuanPiaoJiShuiById(Long id);
 
 	public void updateJianYiJiShuiFangFaZhuanPiaoJiShui(JianYiJiShuiFangFaZhuanPiaoJiShui jyjsffzpjs);
+	
+	public List<JianYiJiShuiFangFaZhuanPiaoJiShui> getJianYiJiShuiFangFaZhuanPiaoJiShuiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
+
 
 }

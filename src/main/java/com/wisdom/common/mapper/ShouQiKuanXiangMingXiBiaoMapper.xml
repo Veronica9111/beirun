@@ -35,4 +35,10 @@ select id,fengongsimingcheng,xiangmubu,fukuandanwei,shouqishijian,shouqijine,bei
 from shouqikuanxiangmingxibiao 
 where id=#{id}
 </select>
+
+<select id="getShouQiKuanXiangMingXiBiaoByKaipiaoshenqingdan_id" parameterType="Long" resultType="ShouQiKuanXiangMingXiBiao">
+select id,fengongsimingcheng,xiangmubu,fukuandanwei,shouqishijian,shouqijine,beizhu,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,shenheriqi,kaipiaoshenqingdan_id  
+from shouqikuanxiangmingxibiao 
+where kaipiaoshenqingdan_id=#{aipiaoshenqingdan_id}
+</select>
 </mapper>

@@ -42,4 +42,9 @@ from querenshourufangshi_laowushijianzhanbifa
 where id=#{id}
 </select>
 
+<select id="getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaByKaipiaoshenqingdan_id" resultType="QueRenShouRuFangShi_LaoWuShiJianZhanBiFa">
+select shenqingriqi, gongsimingcheng,xiangmubu,yifashengshijian,yujizongshijian,bili,hetongjine,suodeshuiyingquerenshouru,yiquerenshouru,weiquerenshouru,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,xiangmumingcheng,shenheriqi,fuheren,kaipiaoshenqingdan_id
+from querenshourufangshi_laowushijianzhanbifa
+where kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+</select>
 </mapper>

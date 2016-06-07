@@ -27,14 +27,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_ZongGongSiMapper;
 import com.wisdom.common.model.Company;
+import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
+import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Permission;
+import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
+import com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa;
+import com.wisdom.common.model.QueRenShouRuFangShi_QiTa;
+import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
+import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.Role;
 import com.wisdom.common.model.User;
 import com.wisdom.common.model.XiangMuTaiZhang;
+import com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi;
 import com.wisdom.permission.service.IPermissionService;
 import com.wisdom.project.service.IProjectService;
 import com.wisdom.user.service.IUserService;
@@ -529,6 +537,8 @@ public class ProjectController {
 			tmp.add(elem.getErji_shenhe_beizhu());
 			String approveButton = "<input type='button' class='btn btn-success approve'value='通过' >";
 			String rejectButton = "<input type='button' class='btn btn-danger reject' value='拒绝' >";
+			String checkButton = "<input type='button' class='btn btn-primary check' value='查看' >";
+			tmp.add(checkButton);
 			tmp.add(approveButton);
 			tmp.add(rejectButton);
 
@@ -549,6 +559,74 @@ public class ProjectController {
 		return retMap;
 	}
 
+	@RequestMapping("/project/getOneFromFourProgressType")
+	@ResponseBody
+	public Map<String, String> getOneFromFourProgressType(HttpServletRequest request){
+		Map<String, String> retMap = new HashMap<>();
+		String data;
+		String type;
+		Long kaipiaoshenqingdan_id = Long.valueOf(request.getParameter("kaipiaoshenqingdan_id"));
+		List<QueRenShouRuFangShi_LaoWuShiJianZhanBiFa> lwsj= projectService.getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		if(!lwsj.isEmpty()){
+			data = JSONArray.fromObject(lwsj).toString();
+			type = "劳务时间";
+		}else{
+			List<QueRenShouRuFangShi_QiTa> qt = projectService.getQueRenShouRuFangShi_QiTaByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+			if(!qt.isEmpty()){
+				data = JSONArray.fromObject(qt).toString();
+				type = "其它";
+			}else{
+				List<QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa> yfscb = projectService.getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaBykaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+				if(!yfscb.isEmpty()){
+					data = JSONArray.fromObject(yfscb).toString();
+					type = "已发生成本";
+				}else{
+					List<QueRenShouRuFangShi_YiWanGongGongZuoLiangFa> ywg = projectService.getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+					data = JSONArray.fromObject(ywg).toString();
+					type = "已完工";
+				}
+			}
+		}
+		retMap.put("data", data);
+		retMap.put("type", type);
+		return retMap;
+	}
+	
+	@RequestMapping("/project/getOneFromFourInvoiceType")
+	@ResponseBody
+	public Map<String, String> getOneFromFourInvoiceType(HttpServletRequest request){
+		Map<String, String> retMap = new HashMap<>();
+		String data;
+		String type;
+		Long kaipiaoshenqingdan_id = Long.valueOf(request.getParameter("kaipiaoshenqingdan_id"));
+		List<PuTongFaPiaoKaiJuMingXi> ptfpkjmx= projectService.getPuTongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		if(!ptfpkjmx.isEmpty()){
+			data = JSONArray.fromObject(ptfpkjmx).toString();
+			type = "普票";
+		}else{
+			List<ZhuanYongFaPiaoKaiJuMingXi> zyfpkjmx = projectService.getZhuanYongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+			if(!zyfpkjmx.isEmpty()){
+				data = JSONArray.fromObject(zyfpkjmx).toString();
+				type = "专票";
+			}else{
+				List<JianYiJiShuiFangFaPuPiaoJiShui> jyjsffppjs = projectService.getJianYiJiShuiFangFaPuPiaoJiShuiBykaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+				if(!jyjsffppjs.isEmpty()){
+					data = JSONArray.fromObject(jyjsffppjs).toString();
+					type = "简易普票";
+				}else{
+					List<JianYiJiShuiFangFaZhuanPiaoJiShui> jyjsffzp = projectService.getJianYiJiShuiFangFaZhuanPiaoJiShuiBykaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+					data = JSONArray.fromObject(jyjsffzp).toString();
+					type = "简易专票";
+				}
+			}
+		}
+		retMap.put("data", data);
+		retMap.put("type", type);
+		
+		return retMap;
+	}
+	
+	
 	@RequestMapping("/project/updateKaiPiaoQingKuangBiao_XiangMuStatus")
 	@ResponseBody
 	public Map<String, String> updateKaiPiaoQingKuangBiao_XiangMuStatus(HttpServletRequest request,

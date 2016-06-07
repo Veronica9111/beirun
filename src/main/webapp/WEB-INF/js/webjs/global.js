@@ -28,7 +28,11 @@ $.post('/user/getRoles',{},function(data){
 			}else{
 				var userName = data.data;
 				global.userName = userName;
-				startPageJS();
+				try{
+					startPageJS();
+				}catch(err){
+					//Don't need to do anything
+				}
 				
 			}
 		});

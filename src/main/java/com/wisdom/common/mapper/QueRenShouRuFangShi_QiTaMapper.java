@@ -15,5 +15,7 @@ public interface QueRenShouRuFangShi_QiTaMapper {
 	QueRenShouRuFangShi_QiTa getQueRenShouRuFangShi_QiTaById(Long id);
 	
 	Integer updateQueRenShouRuFangShi_QiTa(QueRenShouRuFangShi_QiTa qrsrfs_qt);
+	
+	List<QueRenShouRuFangShi_QiTa> getQueRenShouRuFangShi_QiTaByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
 
 }

@@ -1069,6 +1069,74 @@ public class ProjectServiceImpl implements IProjectService {
 	        return true;
 	    }
 
+		@Override
+		public KaiPiaoShenQingDan getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id(Long kaipiaoqingkuangbiao_xiangmu_id) {
+			// TODO Auto-generated method stub
+			return kaiPiaoShenQingDanMapper.getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id(kaipiaoqingkuangbiao_xiangmu_id);
+		}
+
+		@Override
+		public List<PuTongFaPiaoKaiJuMingXi> getPuTongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id) {
+			// TODO Auto-generated method stub
+			return puTongFaPiaoKaiJuMingXiMapper.getPuTongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		}
+
+		@Override
+		public List<ZhuanYongFaPiaoKaiJuMingXi> getZhuanYongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(
+				Long kaipiaoshenqingdan_id) {
+			// TODO Auto-generated method stub
+			return zhuanYongFaPiaoKaiJuMingXiMapper.getZhuanYongFaPiaoKaiJuMingXiBykaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		}
+
+		@Override
+		public List<JianYiJiShuiFangFaPuPiaoJiShui> getJianYiJiShuiFangFaPuPiaoJiShuiBykaipiaoshenqingdan_id(
+				Long kaipiaoshenqingdan_id) {
+			// TODO Auto-generated method stub
+			return jianYiJiShuiFangFaPuPiaoJiShuiMapper.getJianYiJiShuiFangFaPuPiaoJiShuiBykaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		}
+
+		@Override
+		public List<JianYiJiShuiFangFaZhuanPiaoJiShui> getJianYiJiShuiFangFaZhuanPiaoJiShuiBykaipiaoshenqingdan_id(
+				Long kaipiaoshenqingdan_id) {
+			// TODO Auto-generated method stub
+			return jianyijishuifangfazhuanpiaojishuiMapper.getJianYiJiShuiFangFaZhuanPiaoJiShuiBykaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		}
+
+		@Override
+		public List<ShouQiKuanXiangMingXiBiao> getShouQiKuanXiangMingXiBiaoByKaipiaoshenqingdan_id(
+				Long kaipiaoshenqingdan_id) {
+			// TODO Auto-generated method stub
+			return shouQiKuanXiangMingXiBiaoMapper.getShouQiKuanXiangMingXiBiaoByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		}
+
+		@Override
+		public List<QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa> getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaBykaipiaoshenqingdan_id(
+				Long kaipiaoshenqingdan_id) {
+			// TODO Auto-generated method stub
+			return queRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper.getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		}
+
+		@Override
+		public List<QueRenShouRuFangShi_YiWanGongGongZuoLiangFa> getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaByKaipiaoshenqingdan_id(
+				Long kaipiaoshenqingdan_id) {
+			// TODO Auto-generated method stub
+			return queRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper.getQueRenShouRuFangShi_YiWanGongGongZuoLiangFaByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		}
+
+		@Override
+		public List<QueRenShouRuFangShi_LaoWuShiJianZhanBiFa> getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaByKaipiaoshenqingdan_id(
+				Long kaipiaoshenqingdan_id) {
+			// TODO Auto-generated method stub
+			return queRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper.getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		}
+
+		@Override
+		public List<QueRenShouRuFangShi_QiTa> getQueRenShouRuFangShi_QiTaByKaipiaoshenqingdan_id(
+				Long kaipiaoshenqingdan_id) {
+			// TODO Auto-generated method stub
+			return queRenShouRuFangShi_QiTaMapper.getQueRenShouRuFangShi_QiTaByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+		}
+
 
 
 }
