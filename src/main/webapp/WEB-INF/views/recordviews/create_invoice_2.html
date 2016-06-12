@@ -1083,16 +1083,16 @@ td
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl66' height='28' style='height:14.00pt;' x:str>分公司名称：</td>
-    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
+    <td class='xl66' id='' colspan='2'><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' value="南京嘉元财务咨询有限公司" id='fengongsimingcheng'></td>
     <td class='xl67' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;'></td>
-    <td class='xl66' x:str>项目部：</td>
-    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+    <td class='xl66' x:str>项目名称：</td>
+    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' value="零星工程" id='xiangmubu'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='height:14.00pt;' x:str>项目名称</td>
-    <td class='xl69' colspan='3' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='xiangmumingcheng'></td>
+    <td class='xl69' colspan='3' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' value="零星工程" id='xiangmumingcheng'></td>
     <td class='xl71' x:str>合同总金额</td>
-    <td class='xl71' colspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='hetongzongjine'></td>
+    <td class='xl71' colspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' value="1030"  id='hetongzongjine'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl73' height='112' rowspan='4' style='height:56.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请日期</td>
@@ -1110,8 +1110,8 @@ td
    <tr height='28' style='height:14.00pt;'/>
    <tr height='28' style='height:14.00pt;'/>
    <tr height='28' style='height:14.00pt;'>
-    <td class='xl87' height='28' style='height:14.00pt;' id=''><input class="text" style='width:100%;' id='shenqingriqi'></td>
-    <td class='xl87' id=''><input class="text" style='width:100%;' id='kaipiaoneirong'></td>
+    <td class='xl87' height='28' style='height:14.00pt;' id=''><input value="2016-06-08" class="text" style='width:100%;' id='shenqingriqi'></td>
+    <td class='xl87' id=''><input class="text" style='width:100%;'  id='kaipiaoneirong'></td>
     <td class='xl87' id=''><input type="radio" name="yijiaoshui" checked>否<input type="radio" name="yijiaoshui">是</td>
     <td class='xl87 detail_table' derect_view='kaiju'><input class="text" disabled style='width:100%;' id='kaijufapiao'></td>
     <td class='xl87 detail_table' derect_view='shouqi'><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
@@ -1170,6 +1170,12 @@ var redirectView = "";
         if (r != null) return unescape(r[2]); return null;
     }
 })(jQuery);
+var kaipiaojine = $.getUrlParam('kaipiaojine');
+var kaipiaoneirong = $.getUrlParam('kaipiaoneirong');
+$("#kaijufapiao").val(kaipiaojine);
+if(kaipiaoneirong=="display") {
+	$("#kaipiaoneirong").val("培养基 ");
+}
 var xiangmutaizhangIdParam = $.getUrlParam('xiangmutaizhang_id');
 var company_id = $.getUrlParam('company_id');
 var gongsimingchengInfo = decodeURI($.getUrlParam('fengongsimingcheng'));
@@ -1255,11 +1261,15 @@ function startPageJS(){
 		dataSet["xiangmutaizhang_id"] = xiangmutaizhangIdParam;
 		dataSet["erji_shenhe_status"] = "0";
 		dataSet["yiji_shenhe_status"] = "0";
-		dataSet["kaijufapiao"] = "0";
-		dataSet["shouqikuanxiang"] = "10";
-		dataSet["wangongjindu"] = "10";
-		dataSet["qita"] = "10";
-		dataSet["fenbaofapiao"] = "10";
+		dataSet["kaijufapiao"] = "25600";
+		dataSet["shouqikuanxiang"] = "0";
+		dataSet["wangongjindu"] = "0";
+		dataSet["qita"] = "0";
+		dataSet["fenbaofapiao"] = "0";
+		dataSet["yikaipiaojine"] = "0";
+		dataSet["buhanshuijine"] = "21880.34";
+		dataSet["shuie"] = "3719.66";
+		dataSet["hejijine"] = "25600";
 		dataSet["company_id"] = company_id;
 		$.post('/project/addModel', dataSet, function(data){
 			console.log(data);
@@ -1272,10 +1282,23 @@ function startPageJS(){
 			dataSet["class_name"] = "KaiPiaoShenQingDan";
 			dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = primary_key;
 			dataSet["tianbiaoriqi"] = new Date().Format("yyyy-MM-DD");
-			dataSet["kaijufapiao"] = "10";
-			dataSet["shouqikuanxiang"] = "10";
-			dataSet["wangongjindu"] = "10";
-			dataSet["qita"] = "10";
+			dataSet["fengongsimingcheng"] = "南京嘉元财务咨询有限公司";
+			dataSet["xiangmubu"] = "零星工程";
+			dataSet["xiangmumingcheng"] = "零星工程";
+			dataSet["kaipiaoneirong"] = "培养基";
+			dataSet["hetongjine"] = "1030";
+			dataSet["tianbiaoren"] = "柴快长";
+			dataSet["fuheren"] = "柴快长";
+			dataSet["erji_shenhe_status"] = "0";
+			dataSet["yiji_shenhe_status"] = "0";
+			dataSet["kaijufapiao"] = "25600";
+			dataSet["shouqikuanxiang"] = "0";
+			dataSet["wangongjindu"] = "0";
+			dataSet["qita"] = "0";
+			dataSet["fenbaofapiao"] = "0";
+			dataSet["buhanshuijine"] = "21880.34";
+			dataSet["shuie"] = "3719.66";
+			dataSet["hejijine"] = "25600";
 			$.post('/project/addModel', dataSet, function(data){
 				console.log(data);
 				

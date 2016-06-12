@@ -102,11 +102,11 @@
 			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
-	<groupId>jdom</groupId>
-	<artifactId>jdom</artifactId>
-	<version>1.0</version>
-	</dependency>
-		
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 		<!-- apache commons -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -131,7 +131,14 @@
 			<version>${javax.servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>SendSMS</groupId>
+			<artifactId>SendSMS</artifactId>
+			<version>11</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/CCP_REST_SMS_SDK_JAVA_v2.6.3r.jar  
+			</systemPath>
+		</dependency>
 		<!-- throughtworks -->
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
@@ -183,49 +190,49 @@
 			<artifactId>itext-asian</artifactId>
 			<version>5.2.0</version>
 		</dependency>
-		
-<dependency>
-  <groupId>org.mybatis</groupId>
-  <artifactId>mybatis-spring</artifactId>
-  <version>1.1.0</version>
-</dependency>
-<dependency>
-	<groupId>redis.clients</groupId>
-	<artifactId>jedis</artifactId>
-	<version>2.6.0</version>
-</dependency>
-
-<dependency>
-	<groupId>org.springframework.data</groupId>
-	<artifactId>spring-data-redis</artifactId>
-	<version>1.5.0.RELEASE</version>
-</dependency>
-
-    <dependency>
-      <groupId>com.github.spullara.redis</groupId>
-      <artifactId>client</artifactId>
-      <version>0.7</version>
-    </dependency>
 
 		<dependency>
-  <groupId>org.apache.httpcomponents</groupId>
-  <artifactId>httpclient</artifactId>
-  <version>4.5.1</version>
-</dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.5.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.spullara.redis</groupId>
+			<artifactId>client</artifactId>
+			<version>0.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.1</version>
+		</dependency>
 
 	</dependencies>
 
 	<build>
-	<resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 		<finalName>rrsweb</finalName>
 		<plugins>
 			<plugin>
@@ -235,6 +242,25 @@
 					<target>${jdk.version}</target>
 					<encoding>utf8</encoding>
 				</configuration>
+				
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>  
+<artifactId>maven-war-plugin</artifactId>  
+<configuration>  
+    <webResources>  
+        <resource>  
+            <directory>${project.basedir}/lib</directory>  
+            <targetPath>WEB-INF/lib</targetPath>  
+            <filtering>false</filtering>  
+            <includes>  
+                <include>**/*.jar</include>  
+            </includes>  
+        </resource>  
+    </webResources>  
+</configuration>  
+<version>2.1.1</version> 
+				
 			</plugin>
 		</plugins>
 	</build>

@@ -959,9 +959,9 @@ td
    </tr>
    <tr height="52" style='height:26.00pt;'>
     <td class="xl67" colspan="2" height="52" style='height:26.00pt;' x:str>分公司名称：</td>
-    <td class="xl68" colspan="6" style='border-right:none;border-bottom:none;'><input class="text"  type="text"  type="text"  disabled style="background-color:white;border:none;width:100%;height:100%;" id='fengongsimingcheng' /></td>
-    <td class="xl75" colspan="2" x:str>项目部：</td>
-    <td class="xl76" colspan="6" style='mso-ignore:colspan;'><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'>></td>
+    <td class="xl68" colspan="6" style='border-right:none;border-bottom:none;'><input class="text"  type="text"  type="text"  value="南京嘉元财务咨询有限公司" disabled style="background-color:white;border:none;width:100%;height:100%;" id='fengongsimingcheng' /></td>
+    <td class="xl75" colspan="2" x:str>项目名称：</td>
+    <td class="xl76" colspan="6" style='mso-ignore:colspan;'><input class="text"  type="text"  type="text"  value="零星工程" disabled style='background-color:white;border:none;width:100%;height:100%;' value="培养基" id='xiangmubu'></td>
     <td class="xl77" colspan="2" style='mso-ignore:colspan;'></td>
     <td class="xl67"></td>
    </tr>
@@ -996,8 +996,8 @@ td
     <td class="xl69" x:str>小计</td>
    </tr>
    <tr height="28" style='height:14.00pt;'>
-    <td class="xl72" height="28" style='height:14.00pt;'><input class="text"  style='width:100%' id='riqi'></td>
-	<td class="xl72"><input class="text"  style='width:100%' id='kaipiaoneirong'></td>
+    <td class="xl72" height="28" style='height:14.00pt;'><input class="text"  style='width:100%' value="2016-06-08" id='riqi'></td>
+	<td class="xl72"><input class="text"  style='width:100%' value="培养基" id='kaipiaoneirong'></td>
     <td class="xl72"><input class="text"  style='width:100%' id='zhuanpiao_11_xiaoshoue'></td>
     <td class="xl72"><input class="text"  style='width:100%' id='zhuanpiao_11_xiaoxiangshuie'></td>
     <td class="xl72"><input class="text"  style='width:100%' id='zhuanpiao_11_xiaoji'></td>
@@ -1055,8 +1055,48 @@ td
   </div>
 </div>
 <script type="text/javascript">
+/**
+ ** 加法函数，用来得到精确的加法结果
+ ** 说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。
+ ** 调用：accAdd(arg1,arg2)
+ ** 返回值：arg1加上arg2的精确结果
+ **/
+function accAdd(arg1, arg2) {
+    var r1, r2, m, c;
+    try {
+        r1 = arg1.toString().split(".")[1].length;
+    }
+    catch (e) {
+        r1 = 0;
+    }
+    try {
+        r2 = arg2.toString().split(".")[1].length;
+    }
+    catch (e) {
+        r2 = 0;
+    }
+    c = Math.abs(r1 - r2);
+    m = Math.pow(10, Math.max(r1, r2));
+    if (c > 0) {
+        var cm = Math.pow(10, c);
+        if (r1 > r2) {
+            arg1 = Number(arg1.toString().replace(".", ""));
+            arg2 = Number(arg2.toString().replace(".", "")) * cm;
+        } else {
+            arg1 = Number(arg1.toString().replace(".", "")) * cm;
+            arg2 = Number(arg2.toString().replace(".", ""));
+        }
+    } else {
+        arg1 = Number(arg1.toString().replace(".", ""));
+        arg2 = Number(arg2.toString().replace(".", ""));
+    }
+    return (arg1 + arg2) / m;
+}
+
+//给Number类型增加一个add方法，调用起来更加方便。
 $("#submit").on("click", function(){
-	window.location="/project/redirectView?view=create_invoice_2.html&"+window.location.search.substring(1);
+	var kaipiaojine = accAdd($("#zhuanpiao_11_xiaoxiangshuie").val(),$("#zhuanpiao_11_xiaoshoue").val());
+	window.location="/project/redirectView?view=create_invoice_2.html&kaipiaoneirong=display&kaipiaojine="+kaipiaojine+"&"+window.location.search.substring(1);
 });
 </script>
 

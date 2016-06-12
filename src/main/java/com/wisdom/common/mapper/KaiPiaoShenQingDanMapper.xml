@@ -24,8 +24,8 @@
 </resultMap>
 
 <insert id="addKaiPiaoShenQingDan" parameterType="String"  useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-insert into kaipiaoshenqingdan (xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren)
-values(#{xiangmubu},#{xiangmumingcheng},#{hetongzongjine},#{shenqingriqi},#{kaijufapiao},#{shouqikuanxiang},#{wangongjindu},#{qita},#{kaipiaoneirong},#{tianbiaoren},#{tianbiaorendianhua},#{tianbiaoriqi},#{kaipiaoqingkuangbiao_xiangmu_id},#{fuheren})
+insert into kaipiaoshenqingdan (fengongsimingcheng, xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren)
+values(#{fengongsimingcheng},#{xiangmubu},#{xiangmumingcheng},#{hetongzongjine},#{shenqingriqi},#{kaijufapiao},#{shouqikuanxiang},#{wangongjindu},#{qita},#{kaipiaoneirong},#{tianbiaoren},#{tianbiaorendianhua},#{tianbiaoriqi},#{kaipiaoqingkuangbiao_xiangmu_id},#{fuheren})
 </insert>
 
 <update id="updateKaiPiaoShenQingDan" parameterType="String">

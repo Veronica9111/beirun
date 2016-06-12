@@ -951,7 +951,9 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="" type="button" value="提交认证审核" class="btn btn-success btn-sm" />
+<input id="submit_invoice" type="button" value="上传票据" class="btn btn-success btn-sm" />
+<input id="jinxiangzhangtai" type="button" value="进项账台" class="btn btn-success btn-sm" />
+	<!-- <input id="create_invoice" type="button" value="创建进项票" class="btn btn-success btn-sm" /> -->
 	<!-- <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" /> -->
 </div>
 <div id="container">
@@ -968,10 +970,10 @@ td
     <td class="xl65" width="140.30" style='width:70.15pt;'></td>
    </tr>
    <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
-    <td class="xl67" height="40.20" style='height:20.10pt;' x:str>分公司名称：</td>
-    <td class="xl67" colspan="2" style='mso-ignore:colspan;'><input class="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
-    <td class="xl67" x:str>项目部：</td>
-    <td class="xl67" colspan="10" style='mso-ignore:colspan;'><input class="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+    <td class="xl67" colspan="2" height="40.20" style='height:20.10pt;' x:str>分公司名称：</td>
+    <td class="xl67" colspan="4" style='mso-ignore:colspan;'><input class="text"  type="text"  value="南京嘉元财务咨询有限公司" disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
+    <td class="xl67" colspan="2" x:str>项目名称：</td>
+    <td class="xl67" colspan="10" style='mso-ignore:colspan;'><input class="text"  type="text" value="零星工程" disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
     <td class="xl71" colspan="12" style='mso-ignore:colspan;'></td>
     <td class="xl73" colspan="2" style='mso-ignore:colspan;'></td>
     <td class="xl71" colspan="13" style='mso-ignore:colspan;'></td>
@@ -1087,7 +1089,7 @@ td
     <td class="xl68" x:str>进项税额</td>
    </tr>
    <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
-    <td class="xl69" height="40.20" style='height:20.10pt;'><input style='width:100%;' id='fapiaokaijushijian' class="text"></td>
+    <td class="xl69" height="40.20" style='height:20.10pt;'><input style='width:100%;'  id='fapiaokaijushijian' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='fapiaohaoma' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='xiaohuodanweimingcheng' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='huowumingcheng' class="text"></td>
@@ -1237,8 +1239,20 @@ td
   </div>
 </div>
 <script type="text/javascript">
-$(".btn-success").click(function(){
-	window.location = "/views/recordviews/"+$(this).attr("id")+".html";
+var query = {query_key: 'id', query_value:1, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
+$.post("/project/getModel", query, function(data){
+	var data = $.parseJSON(data.data)[0];
+		for(key in data){
+			$("#" + key).val(data[key]);
+		}
+});
+$("#submit_invoice").click(function(){
+	//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
+	window.location = "/views/recordviews/fapiaoshangchuan.html";
+});
+$("#jinxiangzhangtai").click(function(){
+	//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
+	window.location = "/views/recordviews/jinxiangfapiaomingxi_fapiao.html?fapiaohaoma=31639332&fapiaoshijian=2016-04-21";
 });
 </script>
 

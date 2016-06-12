@@ -1016,11 +1016,11 @@ public class ProjectController {
 		User user = projectService.getUserById(uid);
 		String userName = user.getName();
 		if(("蒋中值").equals(userName)) {
-			SMSSender.sendTemplateSMS("18201897828");
+			SMSSender.sendTemplateSMS("18601615517");
 		} else if(("柴快长").equals(userName)) {
 			SMSSender.sendTemplateSMS("18601615517");
 		} else if(("小施").equals(userName)) {
-			SMSSender.sendTemplateSMS("13962731972");
+			SMSSender.sendTemplateSMS("18201897828");
 		}
 		KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu = projectService
 				.getKaiPiaoQingKuangBiao_XiangMuById(id);
@@ -1033,26 +1033,26 @@ public class ProjectController {
 			kaiPiaoQingKuangBiao_XiangMu.setYiji_shenhe_beizhu(comment);
 			kaiPiaoQingKuangBiao_XiangMu.setYiji_shenhe_status(status);
 			kaiPiaoQingKuangBiao_XiangMu.setYijishenheren(userName);
-			kaiPiaoQingKuangBiao_FenGongSi.setYiji_shenhe_beizhu(comment);
+			/*kaiPiaoQingKuangBiao_FenGongSi.setYiji_shenhe_beizhu(comment);
 			kaiPiaoQingKuangBiao_FenGongSi.setYiji_shenhe_status(status);
 			kaiPiaoQingKuangBiao_FenGongSi.setYijishenheren(userName);
 			kaiPiaoQingKuangBiao_ZongGongSi.setYiji_shenhe_beizhu(comment);
 			kaiPiaoQingKuangBiao_ZongGongSi.setYiji_shenhe_status(status);
-			kaiPiaoQingKuangBiao_ZongGongSi.setYijishenheren(userName);
+			kaiPiaoQingKuangBiao_ZongGongSi.setYijishenheren(userName);*/
 		} else if (type.equals("second")) {
 			kaiPiaoQingKuangBiao_XiangMu.setErji_shenhe_beizhu(comment);
 			kaiPiaoQingKuangBiao_XiangMu.setErji_shenhe_status(status);
 			kaiPiaoQingKuangBiao_XiangMu.setErjishenheren(userName);
-			kaiPiaoQingKuangBiao_FenGongSi.setErji_shenhe_beizhu(comment);
+			/*kaiPiaoQingKuangBiao_FenGongSi.setErji_shenhe_beizhu(comment);
 			kaiPiaoQingKuangBiao_FenGongSi.setErji_shenhe_status(status);
 			kaiPiaoQingKuangBiao_FenGongSi.setErjishenheren(userName);
 			kaiPiaoQingKuangBiao_ZongGongSi.setErji_shenhe_beizhu(comment);
 			kaiPiaoQingKuangBiao_ZongGongSi.setErji_shenhe_status(status);
-			kaiPiaoQingKuangBiao_ZongGongSi.setErjishenheren(userName);
+			kaiPiaoQingKuangBiao_ZongGongSi.setErjishenheren(userName);*/
 		}
 		projectService.updateKaiPiaoQingKuangBiao_XiangMu(kaiPiaoQingKuangBiao_XiangMu);
-		projectService.updateKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
-		projectService.updateKaiPiaoQingKuangBiao_ZongGongSi(kaiPiaoQingKuangBiao_ZongGongSi);
+		/*projectService.updateKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
+		projectService.updateKaiPiaoQingKuangBiao_ZongGongSi(kaiPiaoQingKuangBiao_ZongGongSi);*/
 		return retMap;
 	}
 

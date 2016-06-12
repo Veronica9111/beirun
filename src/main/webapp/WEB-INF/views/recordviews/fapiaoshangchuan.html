@@ -890,7 +890,9 @@ td
 
 <!-- Container -->
 <div id="container">
-<table id="table" width="1131" border="0" cellpadding="0" cellspacing="0" style='width:565.50pt;border-collapse:collapse;table-layout:fixed;'>
+<input id="submit_invoice" type="button" value="上传票据" class="btn btn-success btn-sm" />
+<input id="jinxiangzhangtai" type="button" value="进项账台" class="btn btn-success btn-sm" />
+<table id="table" width="1131" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:565.50pt;border-collapse:collapse;table-layout:fixed;'>
  
    <tr height="35" style='height:17.50pt;'>
     <td class="xl65" height="35" width="1131" colspan="9" style='height:17.50pt;width:565.50pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>发票文件</td>
@@ -907,14 +909,14 @@ td
     <td class="xl68" height="28" style='height:14.00pt;'><input style='width:100%;'></td>
     <td class="xl68"><input style='width:100%;'></td>
     <td class="xl69" colspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input type="file" style='width:100%;'></td>
-    <td class="xl68" colspan="2"  x:str style="text-align:center"><select style="width:100%"><option>财务项目</option></select></td>
+    <td class="xl68" colspan="2"  x:str style="text-align:center"><select style="width:100%"><option>零星工程</option></select></td>
     <td class="xl68"><input style='width:100%;'></td>
     <td class="xl68" style="text-align:center"><input type="checkbox" name="xuanze"></td>
    </tr>
   </table>
-<input id="submit_invoice" type="button" value="提交" style="width:100px;margin:10px 0 10px;">
-<input id="creat_tr" type="button" value="添加条目" style="width:100px;margin:10px;">
-<input id="del_tr" type="button" value="删除条目" style="width:100px;margin:10px;">
+<!-- <input id="submit_invoice" type="button" value="提交" style="width:100px;margin:10px 0 10px;"> -->
+<input id="creat_tr" type="button" value="添加条目" style="width:100px;margin-top:10px;">
+<input id="del_tr" type="button" value="删除条目" style="width:100px;margin-top:10px;">
 </div>
 
 <div class="mask"></div>
@@ -926,12 +928,18 @@ td
 
 <script type="text/javascript">
 	$("#submit_invoice").click(function(){
-		window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
+		//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
+		window.location = "/views/recordviews/jinxiangfapiaomingxi_fapiao2.html?fapiaohaoma=31639332&fapiaoshijian=2016-04-21";
 	});
+	$("#jinxiangzhangtai").click(function(){
+		//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
+		window.location = "/views/recordviews/jinxiangfapiaomingxi_fapiao.html";
+	});
+	
 	$('#creat_tr').click(function(){
 		$('#table').append('<tr height="28" style="height:14.00pt;"><td class="xl68" height="28" style="height:14.00pt;"><input style="width:100%;"></td>'
 	    				   +'<td class="xl68"><input style="width:100%;"></td><td class="xl69" colspan="3" style="border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;"><input type="file" style="width:100%;"></td>'
-	    				   +'<td class="xl68" colspan="2"  x:str style="text-align:center"><select style="width:100%"><option>今天的项目</option><option>明天的项目</option><option>后天的项目</option></select></td><td class="xl68"><input style="width:100%;"></td><td class="xl68" style="text-align:center"><input type="checkbox" name="xuanze"></td></tr>');
+	    				   +'<td class="xl68" colspan="2"  x:str style="text-align:center"><select style="width:100%"><option>零星项目</option></select></td><td class="xl68"><input style="width:100%;"></td><td class="xl68" style="text-align:center"><input type="checkbox" name="xuanze"></td></tr>');
 	});
 	$('#del_tr').click(function(){
 		$('#table').find('tr:last').remove();

@@ -17,7 +17,7 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
- <style>
+<style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
 	mso-header-margin:0.32in;
@@ -923,12 +923,16 @@ td
 	
 	#container{
 		margin-left: 27vw;
-		margin-top: 50px;
+		margin-top: 20px;
 		width: 920px;
 		min-width:920px;
 		height: 400px;
 		min-height:400px;
 		overflow-x: auto; overflow-y: auto;
+	}
+	#but_position{
+		margin-left:27vw;
+		margin-top: 50px;
 	}
 
 </style>
@@ -946,25 +950,11 @@ td
 <div id="left-menu"></div>
 
 <!-- Container -->
+<div id="but_position">
+	<input id="" type="button" value="提交认证审核" class="btn btn-success btn-sm" />
+	<!-- <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" /> -->
+</div>
 <div id="container">
-<input id=""  type="button" value="审核通过" class="btn btn-success btn-sm" />
-<table width="656" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:328.00pt;border-collapse:collapse;table-layout:fixed;'>
-
-   
-   <tr height="28" style='height:14.00pt;'>
-    <td class="xl66" height="28" style='height:14.00pt;' x:str>发票日期</td>
-    <td class="xl66" x:str>发票号码</td>
-    <td class="xl66" x:str>文件路径</td>
-    <td class="xl66" x:str>占比</td>
-   </tr>
-   <tr height="28" style='height:14.00pt;' id="info">
-    <td class="xl66" height="28" style='height:14.00pt;' x:str>2016-04-23</td>
-    <td class="xl66" x:str>31639332</td>
-    <td class="xl66" x:str><a href="/img/webimg/xx1.jpg">点击查看发票</td>
-    <td class="xl66" x:str>100%</td>
-   </tr>
-  </table>
-  
   <table width="6446.90" border="0" cellpadding="0" cellspacing="0" style='width:3223.45pt;border-collapse:collapse;table-layout:fixed;'>
    
    <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
@@ -1246,73 +1236,70 @@ td
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
-
 <script type="text/javascript">
-var query = {query_key: 'id', query_value:1, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
-$.post("/project/getModel", query, function(data){
-	var data = $.parseJSON(data.data)[0];
-		for(key in data){
-			$("#" + key).val(data[key]);
-		}
-});
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+})(jQuery);
+var fapiaohaoma = $.getUrlParam('fapiaohaoma');
+var fapiaoshijian = $.getUrlParam('fapiaoshijian');
+$("#fapiaokaijushijian").val(fapiaohaoma);
+$("#fapiaohaoma").val(fapiaoshijian);
+Date.prototype.Format = function(formatStr) {
+	var str = formatStr;
+	var Week = ['日', '一', '二', '三', '四', '五', '六'];
+
+	str = str.replace(/yyyy|YYYY/, this.getFullYear());
+	str = str.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this.getYear() % 100).toString() : '0' + (this.getYear() % 100));
+
+	str = str.replace(/MM/, (this.getMonth() + 1) > 9 ? (this.getMonth() + 1).toString() : '0' + (this.getMonth()+1));
+	str = str.replace(/M/g, this.getMonth());
+
+	str = str.replace(/w|W/g, Week[this.getDay()]);
+
+	str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' + this.getDate());
+	str = str.replace(/d|D/g, this.getDate());
+
+	str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString() : '0' + this.getHours());
+	str = str.replace(/h|H/g, this.getHours());
+	str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes().toString() : '0' + this.getMinutes());
+	str = str.replace(/m/g, this.getMinutes());
+
+	str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' + this.getSeconds());
+	str = str.replace(/s|S/g, this.getSeconds());
+
+	return str;
+}
+
 $(".btn-success").click(function(){
-	//window.location = "/views/recordviews/"+$(this).attr("id")+".html";
-	$("#info").hide();
-	$.post('/project/sendTelInfo', {}, function(data){
-		console.log(data);
-		
-	});
-});
-$("#submit").on("click", function(){
-	console.log($(".text"));
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		console.log($(this).val());
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-
-	dataSet["class_name"] = "XiaoXiang_XiangMu";
-
+	dataSet = {};
+	dataSet["class_name"] = "JinXiangFaPiaoMingXi_FaPiao";
+	dataSet["fengongsimingcheng"] = "南京嘉元财务咨询有限公司";
+	dataSet["fapiaohaoma"] = "31639332";
+	dataSet["xiangmubu"] = "零星工程";
+	dataSet["fapiaokaijushijian"] = "2016-04-21";
+	dataSet["xiaohuodanweimingcheng"] = "南京宝灵";
+	dataSet["huowumingcheng"] = "培养基";
+	dataSet["jine"] = "21880.34";
+	dataSet["jinxiangshuie"] = "3719.66";
+	dataSet["fp_11_yunshu_jine"] = "600.00";
+	dataSet["fp_11_yunshu_jinxiangshuie"] = "66";
+	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
+	dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
+	dataSet["xiaoji_jine"] = "21880.34";
+	dataSet["xiaoji_jinxiangshuie"] = "3719.66";
+	dataSet["xiaoji_11_yunshu_jine"] = "600.00";
+	dataSet["xiaoji_11_yunshu_jinxiangshuie"] = "66";
 	$.post('/project/addModel', dataSet, function(data){
 		console.log(data);
-		
+		window.location = "/views/recordviews/fapiaoshangchuan.html";
 	});
-	
-});
-$("#modify").on("click", function(){
-	console.log($(".text"));
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-
-	dataSet["class_name"] = "XiaoXiang_XiangMu";
-	dataSet['id'] = 1;
-	
-	$.post('/project/modifyModel', dataSet, function(data){
-		console.log(data);
-		
-	});
-	
-});
-
-var query = {query_key: 'id', query_value:1, class_name:'XiaoXiang_XiangMu'};
-$.post("/project/getModel", query, function(data){
-
-	var data = $.parseJSON(data.data)[0];
-
-	for(key in data){
-
-			console.log(data[key]);
-			$("#" + key).html(data[key]);
-		
-	}
-	
+	//window.location = "/views/recordviews/"+$(this).attr("id")+".html";
 });
 </script>
-
 
 </body>
 
