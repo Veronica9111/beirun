@@ -183,7 +183,7 @@ public class ProjectController {
 		queryKey = queryKey.substring(0, 1).toUpperCase() + queryKey.substring(1);
 		Object ret;
 		if (isInteger(queryValue)) {
-			if (("Xiangmutaizhang_id").equals(queryKey)) {
+			if (("Xiangmutaizhang_id").equals(queryKey) &&!className.equals("JinXiangFaPiaoMingXi_FaPiao")) {
 				Method m = projectService.getClass().getMethod("get" + className + "By" + queryKey, Long.class);
 				ret = m.invoke(projectService, Long.valueOf(queryValue));
 				List<List<String>> retList = generateDataTableData(ret);

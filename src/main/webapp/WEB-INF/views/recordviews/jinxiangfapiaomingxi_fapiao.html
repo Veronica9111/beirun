@@ -954,7 +954,7 @@ td
 <input id="submit_invoice" type="button" value="上传票据" class="btn btn-success btn-sm" />
 <input id="jinxiangzhangtai" type="button" value="进项账台" class="btn btn-success btn-sm" />
 	<!-- <input id="create_invoice" type="button" value="创建进项票" class="btn btn-success btn-sm" /> -->
-	<!-- <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" /> -->
+	 <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
 </div>
 <div id="container">
   <table width="6446.90" border="0" cellpadding="0" cellspacing="0" style='width:3223.45pt;border-collapse:collapse;table-layout:fixed;'>
@@ -1088,7 +1088,7 @@ td
     <td class="xl68" x:str>金额</td>
     <td class="xl68" x:str>进项税额</td>
    </tr>
-   <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
+   <tr id="data-row0" class="datarow" height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
     <td class="xl69" height="40.20" style='height:20.10pt;'><input style='width:100%;'  id='fapiaokaijushijian' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='fapiaohaoma' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='xiaohuodanweimingcheng' class="text"></td>
@@ -1239,12 +1239,54 @@ td
   </div>
 </div>
 <script type="text/javascript">
-var query = {query_key: 'id', query_value:1, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
+var redirectView = "";
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+})(jQuery);
+var xiangmutaizhang_id = decodeURI($.getUrlParam('id'));
+var tds = $("#data-row0 td input");
+
+var tdsList = [];
+for(var i = 0; i < tds.length; i++){
+	//console.log(tds.get(i));
+	tdsList.push(tds.get(i).id);
+}
+console.log(tdsList);
+
+
+var query = {query_key: 'xiangmutaizhang_id', query_value:xiangmutaizhang_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 $.post("/project/getModel", query, function(data){
-	var data = $.parseJSON(data.data)[0];
-		for(key in data){
-			$("#" + key).val(data[key]);
+
+	
+
+	var dataSet = $.parseJSON(data.data);
+	//console.log(dataSet);
+	for(var i = 0; i < dataSet.length; i++){
+		if(i == 0){
+			for(var key in dataSet[0]){
+				//console.log(key);
+				//console.log(dataSet[0][key]);
+				$("#" + key).val(dataSet[0][key]);
+				if(key != "id"){
+					$("#" + key).attr("name", dataSet[0]['id']);
+				}
+			}
+		}else if(i > 0){
+
+			$("#data-row" + (i-1)).after("<tr class='datarow' id='data-row"+i+"' height='40.20' class='xl65' style='height:20.10pt;'>");
+			//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
+			for(var j = 0; j< tdsList.length; j++){
+				if(tdsList[j] != 'id'){
+					$("#data-row" + i).append('<td class="xl69" ><input class="text" style="width:100%" name="' + dataSet[i]['id']+'" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
+				}
+			}
 		}
+	}
+	
 });
 $("#submit_invoice").click(function(){
 	//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
@@ -1253,6 +1295,20 @@ $("#submit_invoice").click(function(){
 $("#jinxiangzhangtai").click(function(){
 	//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
 	window.location = "/views/recordviews/jinxiangfapiaomingxi_fapiao.html?fapiaohaoma=31639332&fapiaoshijian=2016-04-21";
+});
+
+$("#modify").click(function(){
+	//var rows = $("tr .row");
+	console.log("click");
+	$(".datarow").each(function(){
+		console.log("here");
+		var inputs = $(this).find("input");
+		console.log(inputs);
+		var id = $(this).find("input").first().attr("name");
+		console.log(id);
+	});
+
+	
 });
 </script>
 
