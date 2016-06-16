@@ -65,6 +65,7 @@
 			type="com.wisdom.common.model.JinXiangFaPiaoMingXi_FaPiao" />
 		<typeAlias alias="JinXiangFaPiaoMingXi_RenZheng"
 			type="com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng" />
+		<typeAlias alias="PiaoJuWenJian" type="com.wisdom.common.model.PiaoJuWenJian" />
 		<typeAlias alias="User_Company" type="com.wisdom.common.model.User_Company" />
 	</typeAliases>
 	
@@ -82,6 +83,7 @@
 		<mapper resource="com/wisdom/common/mapper/PhraseMapper.xml" />
 		<mapper resource="com/wisdom/common/mapper/CandidateMapper.xml" />
 		<mapper resource="com/wisdom/common/mapper/ArtifactMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/PiaoJuWenJianMapper.xml"/>
 		<mapper resource="com/wisdom/common/mapper/FinalXiaoXiangMapper.xml" />
 		<mapper resource="com/wisdom/common/mapper/FinalJinXiangMapper.xml" />
 		<mapper resource="com/wisdom/common/mapper/FinalShenBaoBiaoMapper.xml" />

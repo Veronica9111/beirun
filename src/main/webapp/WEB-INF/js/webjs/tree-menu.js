@@ -15,7 +15,7 @@ $.post('/getMenu',{},function(dataSet){
 			//Don't need to react when the menu is clicked
 		}
 		
-		/*if(level == "2"){
+		if(level == "2"){
 			//获取项目所有的的开票申请单
 			$.post("/project/getKaiPiaoShenQingDanByProjectId", {'project_id': node[0].company_id}, function(data){
 				console.log(data);
@@ -119,7 +119,7 @@ $.post('/getMenu',{},function(dataSet){
 				});
 			});
 				
-		}//level endif*/
+		}//level endif
 		
 	});
 });

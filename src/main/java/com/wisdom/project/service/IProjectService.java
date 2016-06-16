@@ -19,6 +19,7 @@ import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.FenBaoXiangMuMingXi;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
+import com.wisdom.common.model.PiaoJuWenJian;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
 import com.wisdom.common.model.User;
@@ -50,6 +51,13 @@ public interface IProjectService {
 	public Boolean addJinXiangShuieZhuanChuMingXi_FenGongSi(JinXiangShuieZhuanChuMingXi_FenGongSi jinXiangShuieZhuanChuMingXi_FenGongSi);
 
 	public Boolean updateJinXiangShuieZhuanChuMingXi_FenGongSi(JinXiangShuieZhuanChuMingXi_FenGongSi jinXiangShuieZhuanChuMingXi_FenGongSi);
+
+	public PiaoJuWenJian getPiaoJuWenJianById(Long id);
+
+	public Boolean addPiaoJuWenJian(PiaoJuWenJian piaoJuWenJian);
+
+	public Boolean updatePiaoJuWenJian(PiaoJuWenJian piaoJuWenJian);
+
 
 
 
@@ -257,5 +265,8 @@ public interface IProjectService {
 	public List<KaiPiaoQingKuangBiao_XiangMu>getAllKaiPiaoQingKuangBiao_XiangMu(Long companyId);
 	
 	public List<KaiPiaoQingKuangBiao_FenGongSi>getAllKaiPiaoQingKuangBiao_FenGongSi(Long companyId);
+
+	public List<PiaoJuWenJian> getPiaoJuWenJianByCompany_id(Long companyId);
+
 
 }

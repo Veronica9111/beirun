@@ -12,17 +12,21 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_ZongGongSiMapper;
@@ -52,6 +56,8 @@ import com.wisdom.utils.SessionConstant;
 
 import net.sf.json.JSONArray;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.NumberFormatException;
 
@@ -1182,4 +1188,49 @@ public class ProjectController {
 		}
 		return xmtz;
 	}
+	
+	@RequestMapping("/project/addFile")
+	@ResponseBody
+	public Map<String, String> addFile(@RequestParam MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		Map<String, String> retMap = new HashMap<>();
+		String filePath = "/home/beirun/invoice";
+		String fileUnique = getUniqueIdentifier();
+		String fileName = file.getName();
+		String field_3 = fileUnique + fileName.substring(fileName.indexOf("."));
+		String[] data = {field_3};
+		try {
+			FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, field_3));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.debug(e.toString());
+		}
+		
+		Map<String, String[]> params = request.getParameterMap();
+		params.put("field_3", data);
+		String className = params.get("class_name")[0];
+		String longClassName = "com.wisdom.common.model." + className;
+		Class<?> c = Class.forName(longClassName);
+		Object instance = c.newInstance();
+		instance = setModel(instance, params, "partial");
+		System.out.println(className);
+		Method m = projectService.getClass().getMethod("add" + className, instance.getClass());
+		Object ret = m.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		retMap.put("primary_id", String.valueOf(ret));
+		return retMap;
+		
+	}
+	
+	private String getUniqueIdentifier() {
+		String uuid = UUID.randomUUID().toString();
+		uuid = uuid.substring(0, 8) + uuid.substring(9, 13) + uuid.substring(14, 18) + uuid.substring(19, 23)
+				+ uuid.substring(24);
+		return uuid;
+	}
+	
+	
+	
+	
+	
+	
 }
