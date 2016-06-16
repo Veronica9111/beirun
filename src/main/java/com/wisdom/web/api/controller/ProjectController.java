@@ -1200,8 +1200,8 @@ public class ProjectController {
 		Map<String, String> retMap = new HashMap<>();
 		String filePath = "/home/beirun/invoice";
 		String fileUnique = getUniqueIdentifier();
-		String fileName = file.getName();
-		String field_3 = fileUnique + fileName.substring(fileName.indexOf("."));
+		String fileName = file.getOriginalFilename();
+		String field_3 = fileUnique + fileName.substring(fileName.lastIndexOf("."));
 		String[] data = {field_3};
 		try {
 			FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, field_3));
@@ -1211,7 +1211,8 @@ public class ProjectController {
 		}
 		
 		Map<String, String[]> params = request.getParameterMap();
-		params.put("field_3", data);
+		params.put("field3", data);
+		params.put("wenjian",new String[]{fileName});
 		String className = params.get("class_name")[0];
 		String longClassName = "com.wisdom.common.model." + className;
 		Class<?> c = Class.forName(longClassName);

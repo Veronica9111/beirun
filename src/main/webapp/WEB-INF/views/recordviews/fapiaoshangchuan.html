@@ -1122,28 +1122,28 @@ td {
 			if(option==""||option==null){
 				$('#reminder').css("display","block");
 				$('#table').css("display","none");
+			}else{
+				var query_piaoju = {query_key:"company_id",query_value:"2",class_name:"PiaoJuWenJian"};
+				$.post("/project/getModel",query_piaoju,function(data){
+					console.log(data);
+					var dataSet = $.parseJSON(data.data);
+					for(var index=0; index<dataSet.length; index++){
+						var i = dataSet[index];
+						var td = $('<tr height="28" style="height:14.00pt;" id="'+i.id+'" class="existed"><td class="xl68" height="28" style="height:14.00pt;"><input style="width:100%;" disabled value="'+i.fapiaoriqi+'"></td>'
+						   +'<td class="xl68"><input style="width:100%;" disabled value="'+i.fapiaohaoma+'"></td><td class="xl69" colspan="3" style="border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;"><input style="width:100%;" disabled value="'+i.wenjian+'"></td>'
+						   +'<td class="xl68" colspan="2"  x:str style="text-align:center"><select style="width:100%" id="project" disabled value="'+i.xiangmu+'">'+ option +'</select></td><td class="xl68"><input style="width:100%;" disabled value="'+i.zhanbi+'"></td><td class="xl68" style="text-align:center"><input type="checkbox" name="xuanze"></td></tr>');
+						
+						$('#table').append(td);
+					}
+				});
 			}
 		});
-
-		if(option!=""||option!=null){
-		var query_piaoju = {query_key:"company_id",query_value:"2",class_name:"PiaoJuWenJian"};
-		$.post("/project/getModel",query_piaoju,function(data){
-			console.log(data);
-			var dataSet = $.parseJSON(data.data);
-			for(var index=0; index<dataSet.length; index++){
-				var i = dataSet[index];
-				var td = $('<tr height="28" style="height:14.00pt;" id="'+i.id+'" class="existed"><td class="xl68" height="28" style="height:14.00pt;"><input style="width:100%;" disabled value="'+i.fapiaoriqi+'"></td>'
-				   +'<td class="xl68"><input style="width:100%;" disabled value="'+i.fapiaohaoma+'"></td><td class="xl69" colspan="3" style="border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;"><input style="width:100%;" disabled value="'+i.wenjian+'"></td>'
-				   +'<td class="xl68" colspan="2"  x:str style="text-align:center"><select style="width:100%" id="project" disabled value="'+i.xiangmu+'">'+ option +'</select></td><td class="xl68"><input style="width:100%;" disabled value="'+i.zhanbi+'"></td><td class="xl68" style="text-align:center"><input type="checkbox" name="xuanze"></td></tr>');
-			}
-			
-			$('#table').append(td);
-		});
-		}
 	});
 	
 	
-
+	var upload_total = 0;
+	var has_upload_total = 0;
+	
 	$("#submit_invoice").click(function(){
 		/* //window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
 		window.location = "/views/recordviews/jinxiangfapiaomingxi_fapiao2.html?fapiaohaoma=31639332&fapiaoshijian=2016-04-21"; */
@@ -1156,7 +1156,7 @@ td {
 			var fapiaoriqi = $(td[0]).find('input').val();
 			var fapiaohaoma = $(td[1]).find('input').val();
 			var wenjian = $(td[2]).find('input').val();
-			var xiangmu = $(td[3]).find('input').val();
+			var xiangmu = $(td[3]).find('select').find("option:selected").text();
 			var zhanbi = $(td[4]).find('input').val();
 			var field1 = $(td[5]).find('input').prop('checked')?1:0;
 			
@@ -1165,22 +1165,24 @@ td {
 			}else if($(trs[index]).hasClass('existed')&&field1==1){
 				var id = $(trs[index]).attr('id');
 				var class_name = "PiaoJuWenJian";
-				var data = {id:id,field1:field1,class_name:class_name}
+				var data = {id:id,field1:field1,class_name:class_name};
+				$.ajaxSetup({async : false});
 				$.post('/project/modifyModel',data,function(data){
 				});
 				continue;
 			}
 			
-			if(fapiaoriqi==null||fapiaohaoma==null||wenjian==null||xiangmu==null||zhanbi==null){
+			if(fapiaoriqi==null||fapiaohaoma==null||wenjian==null||xiangmu==null){
 				continue;
 			}
 			
 			var data = {
+				class_name : "PiaoJuWenJian",
 				fapiaoriqi : fapiaoriqi,
 				fapiaohaoma : fapiaohaoma,
 				wenjian : wenjian,
 				xiangmu : xiangmu,
-				zhanbi : zhanbi,
+				zhanbi : zhanbi=="" || zhanbi==null ? 100:zhanbi,
 				field1 :field1
 			};
 			
@@ -1189,13 +1191,11 @@ td {
 			for(var JsonKey in data){
 				fd.append(JsonKey, data[JsonKey]);
 			}
-			fd.append("file",td[2].find('input').files[0]);
-			xhr.open("post","/project/addFile");
+			fd.append("file",$(td[2]).find('input')[0].files[0]);
+			xhr.open("post","/project/addFile",false);
 			xhr.send(fd);
-			if(xhr.readyState == 4){
-				location.reload(true);
-			}
 		}
+		location.reload(true);
 	});
 	
 	
