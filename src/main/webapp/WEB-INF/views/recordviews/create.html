@@ -15,6 +15,7 @@
 <script src="/js/webjs/jquery-ui.js"></script>
 <script src="/js/webjs/navigator.js"></script>
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/js/webjs/bload.js"></script>
 
 <style>
 	#left-menu{
@@ -46,19 +47,20 @@
 
 <!-- Container -->
 <div id="container">
-
+	<input id="mask" type="button" value="Mask"/>
 </div>
 
 <!-- Dialog -->
 <div id="dialog" >
 </div>
 
-<div class="mask"></div>
+
 <div class="footer">
   <div class="container">
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
+		   <div id="bloadify"> </div>
 
 
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
@@ -123,6 +125,27 @@
 	    	});
 	    	
 	    });
+	    
+	    
+		$('#mask').click(function(e){
+			e.preventDefault();
+			$('#bloadify').bload({
+				fadeInSpeed		: 600,
+				imagePath: '/js/webjs/bloading.gif',
+				fullScreen: true,
+				maskOpacity		: .6,
+				overlay : {
+					show		: true,
+					color: '#000',
+				}
+			},
+			function(bload){
+				setTimeout(function(){
+					bload.hide();
+				},3000);
+			});
+		});
+
 
 </script>
 </body>
