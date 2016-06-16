@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+    'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.JianYiJiShuiFangFaZhuanPiaoJiShuiMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui" id="JianYiJiShuiFangFaZhuanPiaoJiShui">
+<result property="fengongsimingcheng" column="fengongsimingcheng"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="riqi" column="riqi"/>
+<result property="jianyizhuan_3fuwu_xiaoshoue" column="jianyizhuan_3fuwu_xiaoshoue"/>
+<result property="jianyizhuan_3fuwu_xiaoxiangshuie" column="jianyizhuan_3fuwu_xiaoxiangshuie"/>
+<result property="jianyizhuan_3fuwu_xiaoji" column="jianyizhuan_3fuwu_xiaoji"/>
+<result property="jianyizhuan_3huowu_xiaoshoue" column="jianyizhuan_3huowu_xiaoshoue"/>
+<result property="jianyizhuan_3huowu_xiaoxiangshuie" column="jianyizhuan_3huowu_xiaoxiangshuie"/>
+<result property="jianyizhuan_3huowu_xiaoji" column="jianyizhuan_3huowu_xiaoji"/>
+<result property="jianyizhuan_5fuwu_xiaoshoue" column="jianyizhuan_5fuwu_xiaoshoue"/>
+<result property="jianyizhuan_5fuwu_xiaoxiangshuie" column="jianyizhuan_5fuwu_xiaoxiangshuie"/>
+<result property="jianyizhuan_5fuwu_xiaoji" column="jianyizhuan_5fuwu_xiaoji"/>
+<result property="jianyizhuan_5huowu_xiaoshoue" column="jianyizhuan_5huowu_xiaoshoue"/>
+<result property="jianyizhuan_5huowu_xiaoxiangshuie" column="jianyizhuan_5huowu_xiaoxiangshuie"/>
+<result property="jianyizhuan_5huowu_xiaoji" column="jianyizhuan_5huowu_xiaoji"/>
+<result property="jianyizhuan_4_xiaoshoue" column="jianyizhuan_4_xiaoshoue"/>
+<result property="jianyizhuan_4_xiaoxiangshuie" column="jianyizhuan_4_xiaoxiangshuie"/>
+<result property="jianyizhuan_4_xiaoji" column="jianyizhuan_4_xiaoji"/>
+<result property="jianyizhuan_6_xiaoshoue" column="jianyizhuan_6_xiaoshoue"/>
+<result property="jianyizhuan_6_xiaoxiangshuie" column="jianyizhuan_6_xiaoxiangshuie"/>
+<result property="jianyizhuan_6_xiaoji" column="jianyizhuan_6_xiaoji"/>
+<result property="zhaiyao" column="zhaiyao"/>
+<result property="jianyizhuan_3fuwu_qiyezibaojine" column="jianyizhuan_3fuwu_qiyezibaojine"/>
+<result property="jianyizhuan_3huowu_qiyezibaojine" column="jianyizhuan_3huowu_qiyezibaojine"/>
+<result property="jianyizhuan_5fuwu_qiyezibaojine" column="jianyizhuan_5fuwu_qiyezibaojine"/>
+<result property="jianyizhuan_5huowu_qiyezibaojine" column="jianyizhuan_5huowu_qiyezibaojine"/>
+<result property="jianyizhuan_4_qiyezibaojine" column="jianyizhuan_4_qiyezibaojine"/>
+<result property="jianyizhuan_6_qiyezibaojine" column="jianyizhuan_6_qiyezibaojine"/>
+<result property="tianbiaoren" column="tianbiaoren"/>
+<result property="shenheren" column="shenheren"/>
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="shenherendianhua" column="shenherendianhua"/>
+<result property="tianbiaoshijian" column="tianbiaoshijian"/>
+<result property="shenheshijian" column="shenheshijian"/>
+<result property="fuheren" column="fuheren"/>
+<result property="jianyizhuan_heji_3fuwu_qiye" column="jianyizhuan_heji_3fuwu_qiye"/>
+<result property="jianyizhuan_heji_3fuwu_xiaoshoue" column="jianyizhuan_heji_3fuwu_xiaoshoue"/>
+<result property="jianyizhuan_heji_3fuwu_11_xiaoxiangshuie" column="jianyizhuan_heji_3fuwu_11_xiaoxiangshuie"/>
+<result property="jianyizhuan_heji_3fuwu_jiashuiheji" column="jianyizhuan_heji_3fuwu_jiashuiheji"/>
+<result property="jianyizhuan_heji_3huowu_qiye" column="jianyizhuan_heji_3huowu_qiye"/>
+<result property="jianyizhuan_heji_3huowu_xiaoshoue" column="jianyizhuan_heji_3huowu_xiaoshoue"/>
+<result property="jianyizhuan_heji_3huowu_xiaoxiangshuie" column="jianyizhuan_heji_3huowu_xiaoxiangshuie"/>
+<result property="jianyizhuan_heji_3huowu_jiashuiheji" column="jianyizhuan_heji_3huowu_jiashuiheji"/>
+<result property="jianyizhuan_heji_5fuwu_qiye" column="jianyizhuan_heji_5fuwu_qiye"/>
+<result property="jianyizhuan_heji_5fuwu_xiaoshoue" column="jianyizhuan_heji_5fuwu_xiaoshoue"/>
+<result property="jianyizhuan_heji_5fuwu_xiaoxiangshuie" column="jianyizhuan_heji_5fuwu_xiaoxiangshuie"/>
+<result property="jianyizhuan_heji_5fuwu_jiashuiheji" column="jianyizhuan_heji_5fuwu_jiashuiheji"/>
+<result property="jianyizhuan_heji_5huowu_qiye" column="jianyizhuan_heji_5huowu_qiye"/>
+<result property="jianyizhuan_heji_5huowu_xiaoshoue" column="jianyizhuan_heji_5huowu_xiaoshoue"/>
+<result property="jianyizhuan_heji_5huowu_xiaoxiangshuie" column="jianyizhuan_heji_5huowu_xiaoxiangshuie"/>
+<result property="jianyizhuan_heji_5huowu_jiashuiheji" column="jianyizhuan_heji_5huowu_jiashuiheji"/>
+<result property="jianyizhuan_heji_4_qiye" column="jianyizhuan_heji_4_qiye"/>
+<result property="jianyizhuan_heji_4_xiaoshoue" column="jianyizhuan_heji_4_xiaoshoue"/>
+<result property="jianyizhuan_heji_4_xiaoxiangshuie" column="jianyizhuan_heji_4_xiaoxiangshuie"/>
+<result property="jianyizhuan_heji_4_jiashuiheji" column="jianyizhuan_heji_4_jiashuiheji"/>
+<result property="jianyizhuan_heji_6_qiye" column="jianyizhuan_heji_6_qiye"/>
+<result property="jianyizhuan_heji_6_xiaoshoue" column="jianyizhuan_heji_6_xiaoshoue"/>
+<result property="jianyizhuan_heji_6_xiaoxiangshuie" column="jianyizhuan_heji_6_xiaoxiangshuie"/>
+<result property="jianyizhuan_heji_6_jiashuiheji" column="jianyizhuan_heji_6_jiashuiheji"/>
+<result property="kaipiaoshenqingdan_id" column="kaipiaoshenqingdan_id"/>
+</resultMap>
+
+<select id="getJianYiJiShuiFangFaZhuanPiaoJiShuiById" parameterType="Long" resultType="JianYiJiShuiFangFaZhuanPiaoJiShui">
+select id,fengongsimingcheng,xiangmubu,riqi,jianyizhuan_3fuwu_xiaoshoue,jianyizhuan_3fuwu_xiaoxiangshuie,jianyizhuan_3fuwu_xiaoji,jianyizhuan_3huowu_xiaoshoue,jianyizhuan_3huowu_xiaoxiangshuie,jianyizhuan_3huowu_xiaoji,jianyizhuan_5fuwu_xiaoshoue,jianyizhuan_5fuwu_xiaoxiangshuie,jianyizhuan_5fuwu_xiaoji,jianyizhuan_5huowu_xiaoshoue,jianyizhuan_5huowu_xiaoxiangshuie,jianyizhuan_5huowu_xiaoji,jianyizhuan_4_xiaoshoue,jianyizhuan_4_xiaoxiangshuie,jianyizhuan_4_xiaoji,jianyizhuan_6_xiaoshoue,jianyizhuan_6_xiaoxiangshuie,jianyizhuan_6_xiaoji,zhaiyao,jianyizhuan_3fuwu_qiyezibaojine,jianyizhuan_3huowu_qiyezibaojine,jianyizhuan_5fuwu_qiyezibaojine,jianyizhuan_5huowu_qiyezibaojine,jianyizhuan_4_qiyezibaojine,jianyizhuan_6_qiyezibaojine,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoshijian,shenheshijian,fuheren,jianyizhuan_heji_3fuwu_qiye,jianyizhuan_heji_3fuwu_xiaoshoue,jianyizhuan_heji_3fuwu_11_xiaoxiangshuie,jianyizhuan_heji_3fuwu_jiashuiheji,jianyizhuan_heji_3huowu_qiye,jianyizhuan_heji_3huowu_xiaoshoue,jianyizhuan_heji_3huowu_xiaoxiangshuie,jianyizhuan_heji_3huowu_jiashuiheji,jianyizhuan_heji_5fuwu_qiye,jianyizhuan_heji_5fuwu_xiaoshoue,jianyizhuan_heji_5fuwu_xiaoxiangshuie,jianyizhuan_heji_5fuwu_jiashuiheji,jianyizhuan_heji_5huowu_qiye,jianyizhuan_heji_5huowu_xiaoshoue,jianyizhuan_heji_5huowu_xiaoxiangshuie,jianyizhuan_heji_5huowu_jiashuiheji,jianyizhuan_heji_4_qiye,jianyizhuan_heji_4_xiaoshoue,jianyizhuan_heji_4_xiaoxiangshuie,jianyizhuan_heji_4_jiashuiheji,jianyizhuan_heji_6_qiye,jianyizhuan_heji_6_xiaoshoue,jianyizhuan_heji_6_xiaoxiangshuie,jianyizhuan_heji_6_jiashuiheji,kaipiaoshenqingdan_id  from jianyijishuifangfazhuanpiaojishui where id=#{id}
+</select>
+
+<insert id="addJianYiJiShuiFangFaZhuanPiaoJiShui" parameterType="String">
+insert into jianyijishuifangfazhuanpiaojishui (fengongsimingcheng,xiangmubu,riqi,jianyizhuan_3fuwu_xiaoshoue,jianyizhuan_3fuwu_xiaoxiangshuie,jianyizhuan_3fuwu_xiaoji,jianyizhuan_3huowu_xiaoshoue,jianyizhuan_3huowu_xiaoxiangshuie,jianyizhuan_3huowu_xiaoji,jianyizhuan_5fuwu_xiaoshoue,jianyizhuan_5fuwu_xiaoxiangshuie,jianyizhuan_5fuwu_xiaoji,jianyizhuan_5huowu_xiaoshoue,jianyizhuan_5huowu_xiaoxiangshuie,jianyizhuan_5huowu_xiaoji,jianyizhuan_4_xiaoshoue,jianyizhuan_4_xiaoxiangshuie,jianyizhuan_4_xiaoji,jianyizhuan_6_xiaoshoue,jianyizhuan_6_xiaoxiangshuie,jianyizhuan_6_xiaoji,zhaiyao,jianyizhuan_3fuwu_qiyezibaojine,jianyizhuan_3huowu_qiyezibaojine,jianyizhuan_5fuwu_qiyezibaojine,jianyizhuan_5huowu_qiyezibaojine,jianyizhuan_4_qiyezibaojine,jianyizhuan_6_qiyezibaojine,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoshijian,shenheshijian,fuheren,jianyizhuan_heji_3fuwu_qiye,jianyizhuan_heji_3fuwu_xiaoshoue,jianyizhuan_heji_3fuwu_11_xiaoxiangshuie,jianyizhuan_heji_3fuwu_jiashuiheji,jianyizhuan_heji_3huowu_qiye,jianyizhuan_heji_3huowu_xiaoshoue,jianyizhuan_heji_3huowu_xiaoxiangshuie,jianyizhuan_heji_3huowu_jiashuiheji,jianyizhuan_heji_5fuwu_qiye,jianyizhuan_heji_5fuwu_xiaoshoue,jianyizhuan_heji_5fuwu_xiaoxiangshuie,jianyizhuan_heji_5fuwu_jiashuiheji,jianyizhuan_heji_5huowu_qiye,jianyizhuan_heji_5huowu_xiaoshoue,jianyizhuan_heji_5huowu_xiaoxiangshuie,jianyizhuan_heji_5huowu_jiashuiheji,jianyizhuan_heji_4_qiye,jianyizhuan_heji_4_xiaoshoue,jianyizhuan_heji_4_xiaoxiangshuie,jianyizhuan_heji_4_jiashuiheji,jianyizhuan_heji_6_qiye,jianyizhuan_heji_6_xiaoshoue,jianyizhuan_heji_6_xiaoxiangshuie,jianyizhuan_heji_6_jiashuiheji,kaipiaoshenqingdan_id)
+values(#{fengongsimingcheng},#{xiangmubu},#{riqi},#{jianyizhuan_3fuwu_xiaoshoue},#{jianyizhuan_3fuwu_xiaoxiangshuie},#{jianyizhuan_3fuwu_xiaoji},#{jianyizhuan_3huowu_xiaoshoue},#{jianyizhuan_3huowu_xiaoxiangshuie},#{jianyizhuan_3huowu_xiaoji},#{jianyizhuan_5fuwu_xiaoshoue},#{jianyizhuan_5fuwu_xiaoxiangshuie},#{jianyizhuan_5fuwu_xiaoji},#{jianyizhuan_5huowu_xiaoshoue},#{jianyizhuan_5huowu_xiaoxiangshuie},#{jianyizhuan_5huowu_xiaoji},#{jianyizhuan_4_xiaoshoue},#{jianyizhuan_4_xiaoxiangshuie},#{jianyizhuan_4_xiaoji},#{jianyizhuan_6_xiaoshoue},#{jianyizhuan_6_xiaoxiangshuie},#{jianyizhuan_6_xiaoji},#{zhaiyao},#{jianyizhuan_3fuwu_qiyezibaojine},#{jianyizhuan_3huowu_qiyezibaojine},#{jianyizhuan_5fuwu_qiyezibaojine},#{jianyizhuan_5huowu_qiyezibaojine},#{jianyizhuan_4_qiyezibaojine},#{jianyizhuan_6_qiyezibaojine},#{tianbiaoren},#{shenheren},#{tianbiaorendianhua},#{shenherendianhua},#{tianbiaoshijian},#{shenheshijian},#{fuheren},#{jianyizhuan_heji_3fuwu_qiye},#{jianyizhuan_heji_3fuwu_xiaoshoue},#{jianyizhuan_heji_3fuwu_11_xiaoxiangshuie},#{jianyizhuan_heji_3fuwu_jiashuiheji},#{jianyizhuan_heji_3huowu_qiye},#{jianyizhuan_heji_3huowu_xiaoshoue},#{jianyizhuan_heji_3huowu_xiaoxiangshuie},#{jianyizhuan_heji_3huowu_jiashuiheji},#{jianyizhuan_heji_5fuwu_qiye},#{jianyizhuan_heji_5fuwu_xiaoshoue},#{jianyizhuan_heji_5fuwu_xiaoxiangshuie},#{jianyizhuan_heji_5fuwu_jiashuiheji},#{jianyizhuan_heji_5huowu_qiye},#{jianyizhuan_heji_5huowu_xiaoshoue},#{jianyizhuan_heji_5huowu_xiaoxiangshuie},#{jianyizhuan_heji_5huowu_jiashuiheji},#{jianyizhuan_heji_4_qiye},#{jianyizhuan_heji_4_xiaoshoue},#{jianyizhuan_heji_4_xiaoxiangshuie},#{jianyizhuan_heji_4_jiashuiheji},#{jianyizhuan_heji_6_qiye},#{jianyizhuan_heji_6_xiaoshoue},#{jianyizhuan_heji_6_xiaoxiangshuie},#{jianyizhuan_heji_6_jiashuiheji},#{kaipiaoshenqingdan_id})
+</insert>
+
+<update id="updateJianYiJiShuiFangFaZhuanPiaoJiShui" parameterType="String">
+update jianyijishuifangfazhuanpiaojishui set xiangmubu=#{xiangmubu},riqi=#{riqi},jianyizhuan_3fuwu_xiaoshoue=#{jianyizhuan_3fuwu_xiaoshoue},jianyizhuan_3fuwu_xiaoxiangshuie=#{jianyizhuan_3fuwu_xiaoxiangshuie},jianyizhuan_3fuwu_xiaoji=#{jianyizhuan_3fuwu_xiaoji},jianyizhuan_3huowu_xiaoshoue=#{jianyizhuan_3huowu_xiaoshoue},jianyizhuan_3huowu_xiaoxiangshuie=#{jianyizhuan_3huowu_xiaoxiangshuie},jianyizhuan_3huowu_xiaoji=#{jianyizhuan_3huowu_xiaoji},jianyizhuan_5fuwu_xiaoshoue=#{jianyizhuan_5fuwu_xiaoshoue},jianyizhuan_5fuwu_xiaoxiangshuie=#{jianyizhuan_5fuwu_xiaoxiangshuie},jianyizhuan_5fuwu_xiaoji=#{jianyizhuan_5fuwu_xiaoji},jianyizhuan_5huowu_xiaoshoue=#{jianyizhuan_5huowu_xiaoshoue},jianyizhuan_5huowu_xiaoxiangshuie=#{jianyizhuan_5huowu_xiaoxiangshuie},jianyizhuan_5huowu_xiaoji=#{jianyizhuan_5huowu_xiaoji},jianyizhuan_4_xiaoshoue=#{jianyizhuan_4_xiaoshoue},jianyizhuan_4_xiaoxiangshuie=#{jianyizhuan_4_xiaoxiangshuie},jianyizhuan_4_xiaoji=#{jianyizhuan_4_xiaoji},jianyizhuan_6_xiaoshoue=#{jianyizhuan_6_xiaoshoue},jianyizhuan_6_xiaoxiangshuie=#{jianyizhuan_6_xiaoxiangshuie},jianyizhuan_6_xiaoji=#{jianyizhuan_6_xiaoji},zhaiyao=#{zhaiyao},jianyizhuan_3fuwu_qiyezibaojine=#{jianyizhuan_3fuwu_qiyezibaojine},jianyizhuan_3huowu_qiyezibaojine=#{jianyizhuan_3huowu_qiyezibaojine},jianyizhuan_5fuwu_qiyezibaojine=#{jianyizhuan_5fuwu_qiyezibaojine},jianyizhuan_5huowu_qiyezibaojine=#{jianyizhuan_5huowu_qiyezibaojine},jianyizhuan_4_qiyezibaojine=#{jianyizhuan_4_qiyezibaojine},jianyizhuan_6_qiyezibaojine=#{jianyizhuan_6_qiyezibaojine},tianbiaoren=#{tianbiaoren},shenheren=#{shenheren},tianbiaorendianhua=#{tianbiaorendianhua},shenherendianhua=#{shenherendianhua},tianbiaoshijian=#{tianbiaoshijian},shenheshijian=#{shenheshijian},fuheren=#{fuheren},jianyizhuan_heji_3fuwu_qiye=#{jianyizhuan_heji_3fuwu_qiye},jianyizhuan_heji_3fuwu_xiaoshoue=#{jianyizhuan_heji_3fuwu_xiaoshoue},jianyizhuan_heji_3fuwu_11_xiaoxiangshuie=#{jianyizhuan_heji_3fuwu_11_xiaoxiangshuie},jianyizhuan_heji_3fuwu_jiashuiheji=#{jianyizhuan_heji_3fuwu_jiashuiheji},jianyizhuan_heji_3huowu_qiye=#{jianyizhuan_heji_3huowu_qiye},jianyizhuan_heji_3huowu_xiaoshoue=#{jianyizhuan_heji_3huowu_xiaoshoue},jianyizhuan_heji_3huowu_xiaoxiangshuie=#{jianyizhuan_heji_3huowu_xiaoxiangshuie},jianyizhuan_heji_3huowu_jiashuiheji=#{jianyizhuan_heji_3huowu_jiashuiheji},jianyizhuan_heji_5fuwu_qiye=#{jianyizhuan_heji_5fuwu_qiye},jianyizhuan_heji_5fuwu_xiaoshoue=#{jianyizhuan_heji_5fuwu_xiaoshoue},jianyizhuan_heji_5fuwu_xiaoxiangshuie=#{jianyizhuan_heji_5fuwu_xiaoxiangshuie},jianyizhuan_heji_5fuwu_jiashuiheji=#{jianyizhuan_heji_5fuwu_jiashuiheji},jianyizhuan_heji_5huowu_qiye=#{jianyizhuan_heji_5huowu_qiye},jianyizhuan_heji_5huowu_xiaoshoue=#{jianyizhuan_heji_5huowu_xiaoshoue},jianyizhuan_heji_5huowu_xiaoxiangshuie=#{jianyizhuan_heji_5huowu_xiaoxiangshuie},jianyizhuan_heji_5huowu_jiashuiheji=#{jianyizhuan_heji_5huowu_jiashuiheji},jianyizhuan_heji_4_qiye=#{jianyizhuan_heji_4_qiye},jianyizhuan_heji_4_xiaoshoue=#{jianyizhuan_heji_4_xiaoshoue},jianyizhuan_heji_4_xiaoxiangshuie=#{jianyizhuan_heji_4_xiaoxiangshuie},jianyizhuan_heji_4_jiashuiheji=#{jianyizhuan_heji_4_jiashuiheji},jianyizhuan_heji_6_qiye=#{jianyizhuan_heji_6_qiye},jianyizhuan_heji_6_xiaoshoue=#{jianyizhuan_heji_6_xiaoshoue},jianyizhuan_heji_6_xiaoxiangshuie=#{jianyizhuan_heji_6_xiaoxiangshuie},jianyizhuan_heji_6_jiashuiheji=#{jianyizhuan_heji_6_jiashuiheji},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+where id=#{id}
+</update>
+
+<select id="getJianYiJiShuiFangFaZhuanPiaoJiShuiBykaipiaoshenqingdan_id" parameterType="Long" resultType="JianYiJiShuiFangFaZhuanPiaoJiShui">
+select id,fengongsimingcheng,xiangmubu,riqi,jianyizhuan_3fuwu_xiaoshoue,jianyizhuan_3fuwu_xiaoxiangshuie,jianyizhuan_3fuwu_xiaoji,jianyizhuan_3huowu_xiaoshoue,jianyizhuan_3huowu_xiaoxiangshuie,jianyizhuan_3huowu_xiaoji,jianyizhuan_5fuwu_xiaoshoue,jianyizhuan_5fuwu_xiaoxiangshuie,jianyizhuan_5fuwu_xiaoji,jianyizhuan_5huowu_xiaoshoue,jianyizhuan_5huowu_xiaoxiangshuie,jianyizhuan_5huowu_xiaoji,jianyizhuan_4_xiaoshoue,jianyizhuan_4_xiaoxiangshuie,jianyizhuan_4_xiaoji,jianyizhuan_6_xiaoshoue,jianyizhuan_6_xiaoxiangshuie,jianyizhuan_6_xiaoji,zhaiyao,jianyizhuan_3fuwu_qiyezibaojine,jianyizhuan_3huowu_qiyezibaojine,jianyizhuan_5fuwu_qiyezibaojine,jianyizhuan_5huowu_qiyezibaojine,jianyizhuan_4_qiyezibaojine,jianyizhuan_6_qiyezibaojine,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoshijian,shenheshijian,fuheren,jianyizhuan_heji_3fuwu_qiye,jianyizhuan_heji_3fuwu_xiaoshoue,jianyizhuan_heji_3fuwu_11_xiaoxiangshuie,jianyizhuan_heji_3fuwu_jiashuiheji,jianyizhuan_heji_3huowu_qiye,jianyizhuan_heji_3huowu_xiaoshoue,jianyizhuan_heji_3huowu_xiaoxiangshuie,jianyizhuan_heji_3huowu_jiashuiheji,jianyizhuan_heji_5fuwu_qiye,jianyizhuan_heji_5fuwu_xiaoshoue,jianyizhuan_heji_5fuwu_xiaoxiangshuie,jianyizhuan_heji_5fuwu_jiashuiheji,jianyizhuan_heji_5huowu_qiye,jianyizhuan_heji_5huowu_xiaoshoue,jianyizhuan_heji_5huowu_xiaoxiangshuie,jianyizhuan_heji_5huowu_jiashuiheji,jianyizhuan_heji_4_qiye,jianyizhuan_heji_4_xiaoshoue,jianyizhuan_heji_4_xiaoxiangshuie,jianyizhuan_heji_4_jiashuiheji,jianyizhuan_heji_6_qiye,jianyizhuan_heji_6_xiaoshoue,jianyizhuan_heji_6_xiaoxiangshuie,jianyizhuan_heji_6_jiashuiheji,kaipiaoshenqingdan_id  
+from jianyijishuifangfazhuanpiaojishui 
+where kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+</select>
+
+</mapper>

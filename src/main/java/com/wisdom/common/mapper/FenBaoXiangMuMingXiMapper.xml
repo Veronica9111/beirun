@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.FenBaoXiangMuMingXiMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.FenBaoXiangMuMingXi" id="FenBaoXiangMuMingXi">
+<result property="fengongsimingcheng" column="fengongsimingcheng"/>
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="fb_mianshui_fapiaohaoma" column="fb_mianshui_fapiaohaoma"/>
+<result property="fb_heji_mianshui_fenbaohetongjine" column="fb_heji_mianshui_fenbaohetongjine"/>
+<result property="fb_6_fapiaohaoma" column="fb_6_fapiaohaoma"/>
+<result property="fb_heji_miandi_fenbaohetongjine" column="fb_heji_miandi_fenbaohetongjine"/>
+<result property="fb_mianshui_riqi" column="fb_mianshui_riqi"/>
+<result property="fuheren" column="fuheren"/>
+<result property="fb_heji_6_fenbaohetongjine" column="fb_heji_6_fenbaohetongjine"/>
+<result property="tianbiaoshijian" column="tianbiaoshijian"/>
+<result property="fb_11_riqi" column="fb_11_riqi"/>
+<result property="fb_miandi_fapiaohaoma" column="fb_miandi_fapiaohaoma"/>
+<result property="fb_5_fenbaohetongjine" column="fb_5_fenbaohetongjine"/>
+<result property="id" column="id"/>
+<result property="fb_17_fenbaohetongjine" column="fb_17_fenbaohetongjine"/>
+<result property="fb_heji_17_fenbaohetongjine" column="fb_heji_17_fenbaohetongjine"/>
+<result property="fb_17_riqi" column="fb_17_riqi"/>
+<result property="fb_17_fapiaohaoma" column="fb_17_fapiaohaoma"/>
+<result property="fb_6_riqi" column="fb_6_riqi"/>
+<result property="fb_11_fenbaohetongjine" column="fb_11_fenbaohetongjine"/>
+<result property="fb_6_fenbaohetongjine" column="fb_6_fenbaohetongjine"/>
+<result property="fb_mianshui_fenbaohetongjine" column="fb_mianshui_fenbaohetongjine"/>
+<result property="fb_5_riqi" column="fb_5_riqi"/>
+<result property="fb_3_riqi" column="fb_3_riqi"/>
+<result property="shenheren" column="shenheren"/>
+<result property="fb_5_fapiaohaoma" column="fb_5_fapiaohaoma"/>
+<result property="fb_miandi_fenbaohetongjine" column="fb_miandi_fenbaohetongjine"/>
+<result property="fb_3_fapiaohaoma" column="fb_3_fapiaohaoma"/>
+<result property="fb_miandi_riqi" column="fb_miandi_riqi"/>
+<result property="fb_heji_11_fenbaohetongjine" column="fb_heji_11_fenbaohetongjine"/>
+<result property="fb_heji_3_fenbaohetongjine" column="fb_heji_3_fenbaohetongjine"/>
+<result property="fb_11_fapiaohaoma" column="fb_11_fapiaohaoma"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="fb_3_fenbaohetongjine" column="fb_3_fenbaohetongjine"/>
+<result property="fb_heji_5_fenbaohetongjine" column="fb_heji_5_fenbaohetongjine"/>
+<result property="shenheshijian" column="shenheshijian"/>
+<result property="tiaobiaoren" column="tiaobiaoren"/>
+<result property="kaipiaoshenqingdan_id" column="kaipiaoshenqingdan_id"/>
+<result property="shenherendianhua" column="shenherendianhua"/>
+</resultMap>
+
+<select id="getFenBaoXiangMuMingXiById" resultType="FenBaoXiangMuMingXi">
+select fengongsimingcheng,tianbiaorendianhua,fb_mianshui_fapiaohaoma,fb_heji_mianshui_fenbaohetongjine,fb_6_fapiaohaoma,fb_heji_miandi_fenbaohetongjine,fb_mianshui_riqi,fuheren,fb_heji_6_fenbaohetongjine,tianbiaoshijian,fb_11_riqi,fb_miandi_fapiaohaoma,fb_5_fenbaohetongjine,id,fb_17_fenbaohetongjine,fb_heji_17_fenbaohetongjine,fb_17_riqi,fb_17_fapiaohaoma,fb_6_riqi,fb_11_fenbaohetongjine,fb_6_fenbaohetongjine,fb_mianshui_fenbaohetongjine,fb_5_riqi,fb_3_riqi,shenheren,fb_5_fapiaohaoma,fb_miandi_fenbaohetongjine,fb_3_fapiaohaoma,fb_miandi_riqi,fb_heji_11_fenbaohetongjine,fb_heji_3_fenbaohetongjine,fb_11_fapiaohaoma,xiangmubu,fb_3_fenbaohetongjine,fb_heji_5_fenbaohetongjine,shenheshijian,tiaobiaoren,kaipiaoshenqingdan_id,shenherendianhua
+from fenbaoxiangmumingxi
+where id=#{id}
+</select>
+
+<update id="updateFenBaoXiangMuMingXi">
+update fenbaoxiangmumingxi set fengongsimingcheng=#{fengongsimingcheng},tianbiaorendianhua=#{tianbiaorendianhua},fb_mianshui_fapiaohaoma=#{fb_mianshui_fapiaohaoma},fb_heji_mianshui_fenbaohetongjine=#{fb_heji_mianshui_fenbaohetongjine},fb_6_fapiaohaoma=#{fb_6_fapiaohaoma},fb_heji_miandi_fenbaohetongjine=#{fb_heji_miandi_fenbaohetongjine},fb_mianshui_riqi=#{fb_mianshui_riqi},fuheren=#{fuheren},fb_heji_6_fenbaohetongjine=#{fb_heji_6_fenbaohetongjine},tianbiaoshijian=#{tianbiaoshijian},fb_11_riqi=#{fb_11_riqi},fb_miandi_fapiaohaoma=#{fb_miandi_fapiaohaoma},fb_5_fenbaohetongjine=#{fb_5_fenbaohetongjine},id=#{id},fb_17_fenbaohetongjine=#{fb_17_fenbaohetongjine},fb_heji_17_fenbaohetongjine=#{fb_heji_17_fenbaohetongjine},fb_17_riqi=#{fb_17_riqi},fb_17_fapiaohaoma=#{fb_17_fapiaohaoma},fb_6_riqi=#{fb_6_riqi},fb_11_fenbaohetongjine=#{fb_11_fenbaohetongjine},fb_6_fenbaohetongjine=#{fb_6_fenbaohetongjine},fb_mianshui_fenbaohetongjine=#{fb_mianshui_fenbaohetongjine},fb_5_riqi=#{fb_5_riqi},fb_3_riqi=#{fb_3_riqi},shenheren=#{shenheren},fb_5_fapiaohaoma=#{fb_5_fapiaohaoma},fb_miandi_fenbaohetongjine=#{fb_miandi_fenbaohetongjine},fb_3_fapiaohaoma=#{fb_3_fapiaohaoma},fb_miandi_riqi=#{fb_miandi_riqi},fb_heji_11_fenbaohetongjine=#{fb_heji_11_fenbaohetongjine},fb_heji_3_fenbaohetongjine=#{fb_heji_3_fenbaohetongjine},fb_11_fapiaohaoma=#{fb_11_fapiaohaoma},xiangmubu=#{xiangmubu},fb_3_fenbaohetongjine=#{fb_3_fenbaohetongjine},fb_heji_5_fenbaohetongjine=#{fb_heji_5_fenbaohetongjine},shenheshijian=#{shenheshijian},tiaobiaoren=#{tiaobiaoren},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id},shenherendianhua=#{shenherendianhua}
+where id=#{id}
+</update>
+
+<insert id="addFenBaoXiangMuMingXi">
+insert into fenbaoxiangmumingxi (fengongsimingcheng,tianbiaorendianhua,fb_mianshui_fapiaohaoma,fb_heji_mianshui_fenbaohetongjine,fb_6_fapiaohaoma,fb_heji_miandi_fenbaohetongjine,fb_mianshui_riqi,fuheren,fb_heji_6_fenbaohetongjine,tianbiaoshijian,fb_11_riqi,fb_miandi_fapiaohaoma,fb_5_fenbaohetongjine,id,fb_17_fenbaohetongjine,fb_heji_17_fenbaohetongjine,fb_17_riqi,fb_17_fapiaohaoma,fb_6_riqi,fb_11_fenbaohetongjine,fb_6_fenbaohetongjine,fb_mianshui_fenbaohetongjine,fb_5_riqi,fb_3_riqi,shenheren,fb_5_fapiaohaoma,fb_miandi_fenbaohetongjine,fb_3_fapiaohaoma,fb_miandi_riqi,fb_heji_11_fenbaohetongjine,fb_heji_3_fenbaohetongjine,fb_11_fapiaohaoma,xiangmubu,fb_3_fenbaohetongjine,fb_heji_5_fenbaohetongjine,shenheshijian,tiaobiaoren,kaipiaoshenqingdan_id,shenherendianhua)
+values (#{fengongsimingcheng},#{tianbiaorendianhua},#{fb_mianshui_fapiaohaoma},#{fb_heji_mianshui_fenbaohetongjine},#{fb_6_fapiaohaoma},#{fb_heji_miandi_fenbaohetongjine},#{fb_mianshui_riqi},#{fuheren},#{fb_heji_6_fenbaohetongjine},#{tianbiaoshijian},#{fb_11_riqi},#{fb_miandi_fapiaohaoma},#{fb_5_fenbaohetongjine},#{id},#{fb_17_fenbaohetongjine},#{fb_heji_17_fenbaohetongjine},#{fb_17_riqi},#{fb_17_fapiaohaoma},#{fb_6_riqi},#{fb_11_fenbaohetongjine},#{fb_6_fenbaohetongjine},#{fb_mianshui_fenbaohetongjine},#{fb_5_riqi},#{fb_3_riqi},#{shenheren},#{fb_5_fapiaohaoma},#{fb_miandi_fenbaohetongjine},#{fb_3_fapiaohaoma},#{fb_miandi_riqi},#{fb_heji_11_fenbaohetongjine},#{fb_heji_3_fenbaohetongjine},#{fb_11_fapiaohaoma},#{xiangmubu},#{fb_3_fenbaohetongjine},#{fb_heji_5_fenbaohetongjine},#{shenheshijian},#{tiaobiaoren},#{kaipiaoshenqingdan_id},#{shenherendianhua})
+</insert>
+
+</mapper>

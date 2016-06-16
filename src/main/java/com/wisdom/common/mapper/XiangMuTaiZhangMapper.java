@@ -2,7 +2,10 @@ package com.wisdom.common.mapper;
 
 
 
+import java.sql.Timestamp;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 import com.wisdom.common.model.XiangMuTaiZhang;;
 
@@ -10,10 +13,14 @@ public interface XiangMuTaiZhangMapper {
 
 	Integer addXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
-	XiangMuTaiZhang getXiangMuTaiZhangById(Integer id);
+	XiangMuTaiZhang getXiangMuTaiZhangById(Long id);
 	
-	void updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
+	Integer updateXiangMuTaiZhang(XiangMuTaiZhang xmtz);
 	
-	List<XiangMuTaiZhang> getXiangMuTaiZhangByCompanyId(Integer company_id);
+	List<XiangMuTaiZhang> getXiangMuTaiZhangByCompany_id(Long company_id);
+	
+	void updateTime(@Param("id")Long id, @Param("hetongqiandingshijian")Timestamp hetongqiandingshijian);
+	
+	void addTime( @Param("hetongqiandingshijian")Timestamp hetongqiandingshijian);
 
 }

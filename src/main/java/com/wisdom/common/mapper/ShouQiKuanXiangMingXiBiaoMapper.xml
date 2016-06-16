@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+    'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.ShouQiKuanXiangMingXiBiaoMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.ShouQiKuanXiangMingXiBiao" id="ShouQiKuanXiangMingXiBiao">
+<result property="fengongsimingcheng" column="fengongsimingcheng"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="fukuandanwei" column="fukuandanwei"/>
+<result property="shouqishijian" column="shouqishijian"/>
+<result property="shouqijine" column="shouqijine"/>
+<result property="beizhu" column="beizhu"/>
+<result property="tianbiaoren" column="tianbiaoren"/>
+<result property="shenheren" column="shenheren"/>
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="shenherendianhua" column="shenherendianhua"/>
+<result property="tianbiaoriqi" column="tianbiaoriqi"/>
+<result property="shenheriqi" column="shenheriqi"/>
+<result property="kaipiaoshenqingdan_id" column="kaipiaoshenqingdan_id"/>
+</resultMap>
+
+<insert id="addShouQiKuanXiangMingXiBiao" parameterType="String">
+insert into shouqikuanxiangmingxibiao (fengongsimingcheng, xiangmubu,fukuandanwei,shouqishijian,shouqijine,beizhu,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,shenheriqi,kaipiaoshenqingdan_id)
+values(#{fengongsimingcheng},#{xiangmubu},#{fukuandanwei},#{shouqishijian},#{shouqijine},#{beizhu},#{tianbiaoren},#{shenheren},#{tianbiaorendianhua},#{shenherendianhua},#{tianbiaoriqi},#{shenheriqi},#{kaipiaoshenqingdan_id})
+</insert>
+
+<update id="updateShouQiKuanXiangMingXiBiao" parameterType="String">
+update shouqikuanxiangmingxibiao set fengongsimingcheng=#{fengongsimingcheng},xiangmubu=#{xiangmubu},fukuandanwei=#{fukuandanwei},shouqishijian=#{shouqishijian},shouqijine=#{shouqijine},beizhu=#{beizhu},tianbiaoren=#{tianbiaoren},shenheren=#{shenheren},tianbiaorendianhua=#{tianbiaorendianhua},shenherendianhua=#{shenherendianhua},tianbiaoriqi=#{tianbiaoriqi},shenheriqi=#{shenheriqi},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+where id=#{id}
+</update>
+
+<select id="getShouQiKuanXiangMingXiBiaoById" parameterType="Long" resultType="ShouQiKuanXiangMingXiBiao">
+select id,fengongsimingcheng,xiangmubu,fukuandanwei,shouqishijian,shouqijine,beizhu,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,shenheriqi,kaipiaoshenqingdan_id  
+from shouqikuanxiangmingxibiao 
+where id=#{id}
+</select>
+
+<select id="getShouQiKuanXiangMingXiBiaoByKaipiaoshenqingdan_id" parameterType="Long" resultType="ShouQiKuanXiangMingXiBiao">
+select id,fengongsimingcheng,xiangmubu,fukuandanwei,shouqishijian,shouqijine,beizhu,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,shenheriqi,kaipiaoshenqingdan_id  
+from shouqikuanxiangmingxibiao 
+where kaipiaoshenqingdan_id=#{aipiaoshenqingdan_id}
+</select>
+</mapper>

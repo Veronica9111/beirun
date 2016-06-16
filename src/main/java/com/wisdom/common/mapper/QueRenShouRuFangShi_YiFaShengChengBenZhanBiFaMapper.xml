@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+    'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa" id="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa">
+<result property="shenqingriqi" column="shenqingriqi"/>
+<result property="leijiyifashengchengben" column="leijiyifashengchengben"/>
+<result property="yujizongchengben" column="yujizongchengben"/>
+<result property="bili" column="bili"/>
+<result property="hetongjine" column="hetongjine"/>
+<result property="suodeshuiyingquerenshouru" column="suodeshuiyingquerenshouru"/>
+<result property="yiquerenshouru" column="yiquerenshouru"/>
+<result property="weiquerenshouru" column="weiquerenshouru"/>
+<result property="tianbiaoren" column="tianbiaoren"/>
+<result property="shenheren" column="shenheren"/>
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="shenherendianhua" column="shenherendianhua"/>
+<result property="tianbiaoriqi" column="tianbiaoriqi"/>
+<result property="shenheriqi" column="shenheriqi"/>
+<result property="fengongsimingcheng" column="fengongsimingcheng"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="xiangmumingcheng" column="xiangmumingcheng"/>
+<result property="fuheren" column="fuheren"/>
+<result property="kaipiaoshenqingdan_id" column="kaipiaoshenqingdan_id"/>
+</resultMap>
+
+<insert id="addQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa" parameterType="String">
+insert into querenshourufangshi_yifashengchengbenzhanbifa (shenqingriqi,leijiyifashengchengben,yujizongchengben,bili,hetongjine,suodeshuiyingquerenshouru,yiquerenshouru,weiquerenshouru,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,shenheriqi,fengongsimingcheng,xiangmubu,xiangmumingcheng,fuheren,kaipiaoshenqingdan_id)
+values(#{shenqingriqi},#{leijiyifashengchengben},#{yujizongchengben},#{bili},#{hetongjine},#{suodeshuiyingquerenshouru},#{yiquerenshouru},#{weiquerenshouru},#{tianbiaoren},#{shenheren},#{tianbiaorendianhua},#{shenherendianhua},#{tianbiaoriqi},#{shenheriqi},#{fengongsimingcheng},#{xiangmubu},#{xiangmumingcheng},#{fuheren},#{kaipiaoshenqingdan_id})
+</insert>
+
+<update id="updateQueRenShouRuFangShi_YiFaShengChengBenZhanBiFa" parameterType="String">
+update querenshourufangshi_yifashengchengbenzhanbifa set shenqingriqi=#{shenqingriqi},leijiyifashengchengben=#{leijiyifashengchengben},yujizongchengben=#{yujizongchengben},bili=#{bili},hetongjine=#{hetongjine},suodeshuiyingquerenshouru=#{suodeshuiyingquerenshouru},yiquerenshouru=#{yiquerenshouru},weiquerenshouru=#{weiquerenshouru},tianbiaoren=#{tianbiaoren},shenheren=#{shenheren},tianbiaorendianhua=#{tianbiaorendianhua},shenherendianhua=#{shenherendianhua},tianbiaoriqi=#{tianbiaoriqi},shenheriqi=#{shenheriqi},fengongsimingcheng=#{fengongsimingcheng},xiangmubu=#{xiangmubu},xiangmumingcheng=#{xiangmumingcheng},fuheren=#{fuheren},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+where id=#{id}
+</update>
+
+<select id="getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaById" resultType="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa">
+select shenqingriqi,leijiyifashengchengben,yujizongchengben,bili,hetongjine,suodeshuiyingquerenshouru,yiquerenshouru,weiquerenshouru,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,shenheriqi,fengongsimingcheng,xiangmubu,xiangmumingcheng,fuheren,kaipiaoshenqingdan_id
+from querenshourufangshi_yifashengchengbenzhanbifa
+where id=#{id}
+</select>
+
+<select id="getQueRenShouRuFangShi_YiFaShengChengBenZhanBiFaByKaipiaoshenqingdan_id" resultType="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa">
+select shenqingriqi,leijiyifashengchengben,yujizongchengben,bili,hetongjine,suodeshuiyingquerenshouru,yiquerenshouru,weiquerenshouru,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,shenheriqi,fengongsimingcheng,xiangmubu,xiangmumingcheng,fuheren,kaipiaoshenqingdan_id
+from querenshourufangshi_yifashengchengbenzhanbifa
+where kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+</select>
+
+</mapper>

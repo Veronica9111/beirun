@@ -80,6 +80,12 @@ public class UserController {
 			List<String> roles = roleService.getUserRoles(uid);
 			if (roles.contains("管理员")){
 				retMap.put("url", "/views/webviews/user/manage.html");
+			}else if(roles.contains("开票人")) {
+				retMap.put("url", "/views/recordviews/create_invoice_1.html");
+			}else if(roles.contains("分管所长")) {
+				retMap.put("url", "/views/recordviews/approval_invoice_list_2.html");
+			}else if(roles.contains("业务主任")) {
+				retMap.put("url", "/views/recordviews/approval_invoice_list_2.html");
 			}else{
 				retMap.put("url", "/views/webviews/user/setting.html");
 			}
@@ -405,6 +411,16 @@ public class UserController {
 		Map<String, String>retMap = new HashMap<>();
 		String data = JSONArray.fromObject(retList).toString();
 		retMap.put("data", data);
+		return retMap;
+	}
+	
+	@RequestMapping("/user/getUserName")
+	@ResponseBody	
+	public Map<String, String>getUserName(HttpSession httpSession, HttpServletRequest request){
+		Map<String, String> retMap = new HashMap<>();
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		Map<String, String> user = userService.getUserById(uid);
+		retMap.put("data", user.get("name"));
 		return retMap;
 	}
 }

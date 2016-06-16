@@ -16,4 +16,9 @@
  <select id="getAllCompanies" resultType="Company">
 	select id, name, parent_id, level, create_time from company
 </select>
+<select id="getCompaniesByUid" resultType="Company">
+	select c.id, c.name,c.parent_id, c.level, c.create_time from company c 
+	left join user_company uc on c.id = uc.company_id
+	where uc.user_id = #{uid}
+</select>
 </mapper>

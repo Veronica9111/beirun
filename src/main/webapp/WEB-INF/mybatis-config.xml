@@ -1,53 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration
-PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-<settings>
-<setting name="cacheEnabled" value="false"/>
-</settings>
-  <typeAliases>
-
-    <typeAlias alias="User" type ="com.wisdom.common.model.User" />
-    <typeAlias alias="Permission" type="com.wisdom.common.model.Permission" />
-        <typeAlias alias="Invoice" type="com.wisdom.common.model.Invoice" />
-        <typeAlias alias="Role" type="com.wisdom.common.model.Role" />
-        <typeAlias alias="UserRole" type="com.wisdom.common.model.UserRole" />
-        <typeAlias alias="UserRecord" type="com.wisdom.common.model.UserRecord" />
-        <typeAlias alias="record" type="com.wisdom.common.model.Record" />
-        <typeAlias alias="RolePermissions" type="com.wisdom.common.model.RolePermissions" />
-        <typeAlias alias="Symbol" type="com.wisdom.common.model.Symbol" />
-        <typeAlias alias="Phrase" type="com.wisdom.common.model.Phrase" />
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="JinXiangShuieZhuanChuMingXi_FenGongSi" type="com.wisdom.common.model.JinXiangShuieZhuanChuMingXi_FenGongSi" />
+		<typeAlias alias="JinXiangShuieZhuanChuMingXi_XiangMuBu" type="com.wisdom.common.model.JinXiangShuieZhuanChuMingXi_XiangMuBu" />
+		<typeAlias alias="User" type="com.wisdom.common.model.User" />
+		<typeAlias alias="Permission" type="com.wisdom.common.model.Permission" />
+		<typeAlias alias="Invoice" type="com.wisdom.common.model.Invoice" />
+		<typeAlias alias="Role" type="com.wisdom.common.model.Role" />
+		<typeAlias alias="UserRole" type="com.wisdom.common.model.UserRole" />
+		<typeAlias alias="UserRecord" type="com.wisdom.common.model.UserRecord" />
+		<typeAlias alias="record" type="com.wisdom.common.model.Record" />
+		<typeAlias alias="RolePermissions" type="com.wisdom.common.model.RolePermissions" />
+		<typeAlias alias="Symbol" type="com.wisdom.common.model.Symbol" />
+		<typeAlias alias="Phrase" type="com.wisdom.common.model.Phrase" />
 		<typeAlias alias="Candidate" type="com.wisdom.common.model.Candidate" />
 		<typeAlias alias="Artifact" type="com.wisdom.common.model.Artifact" />
 		<typeAlias alias="FinalXiaoXiang" type="com.wisdom.common.model.FinalXiaoXiang" />
 		<typeAlias alias="FinalShenBaoBiao" type="com.wisdom.common.model.FinalShenBaoBiao" />
+		<typeAlias alias="KaiPiaoQingKuangBiao_FenGongSi"
+			type="com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi" />
 		<typeAlias alias="FinalJinXiang" type="com.wisdom.common.model.FinalJinXiang" />
 		<typeAlias alias="XiangMuTaiZhang" type="com.wisdom.common.model.XiangMuTaiZhang" />
+		<typeAlias alias="JianYiJiShuiFangFaZhuanPiaoJiShui"
+			type="com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui" />
 		<typeAlias alias="Company" type="com.wisdom.common.model.Company" />
-		<typeAlias alias="KaiPiaoShenQingDan" type="com.wisdom.common.model.KaiPiaoShenQingDan" />
-
-  </typeAliases>
-  <mappers>
-
-    <mapper resource="com/wisdom/common/mapper/UserMapper.xml"/>
-    <mapper resource="com/wisdom/common/mapper/PermissionMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/InvoiceMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/RoleMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/RecordMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/SymbolMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/PhraseMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/CandidateMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/ArtifactMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/FinalXiaoXiangMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/FinalJinXiangMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/FinalShenBaoBiaoMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/XiangMuTaiZhangMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/CompanyMapper.xml" />
-    <mapper resource="com/wisdom/common/mapper/KaiPiaoShenQingDanMapper.xml" />
-    
-
-  </mappers>
-
+		<typeAlias alias="KaiPiaoShenQingDan"
+			type="com.wisdom.common.model.KaiPiaoShenQingDan" />
+		<typeAlias alias="JianYiJiShuiFangFaPuPiaoJiShui"
+			type="com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui" />
+		<typeAlias alias="PuTongFaPiaoKaiJuMingXi"
+			type="com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi" />
+		<typeAlias alias="ShouQiKuanXiangMingXiBiao"
+			type="com.wisdom.common.model.ShouQiKuanXiangMingXiBiao" />
+		<typeAlias alias="ZhuanYongFaPiaoKaiJuMingXi"
+			type="com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi" />
+		<typeAlias alias="WeiKaiJuFaPiaoMingXi"
+			type="com.wisdom.common.model.WeiKaiJuFaPiaoMingXi" />
+		<typeAlias alias="WeiKaiJuFaPiaoMingXi_YiBan"
+			type="com.wisdom.common.model.WeiKaiJuFaPiaoMingXi_YiBan" />
+		<typeAlias alias="QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa"
+			type="com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa" />
+		<typeAlias alias="QueRenShouRuFangShi_YiWanGongGongZuoLiangFa"
+			type="com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa" />
+		<typeAlias alias="QueRenShouRuFangShi_LaoWuShiJianZhanBiFa"
+			type="com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa" />
+		<typeAlias alias="QueRenShouRuFangShi_QiTa"
+			type="com.wisdom.common.model.QueRenShouRuFangShi_QiTa" />
+			<typeAlias alias="BuDongChanFenQiDiKouBiao" type="com.wisdom.common.model.BuDongChanFenQiDiKouBiao" />
+		<typeAlias alias="YiBanJiShuiFangFaNaShuiJianChaTiaoZheng"
+			type="com.wisdom.common.model.YiBanJiShuiFangFaNaShuiJianChaTiaoZheng" />
+		<typeAlias alias="FenBaoXiangMuMingXi"
+			type="com.wisdom.common.model.FenBaoXiangMuMingXi" />
+		<typeAlias alias="KaiPiaoQingKuangBiao_XiangMu"
+			type="com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu" />
+		<typeAlias alias="KaiPiaoQingKuangBiao_ZongGongSi"
+			type="com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi" />
+		<typeAlias alias="XiaoXiang_XiangMu" type="com.wisdom.common.model.XiaoXiang_XiangMu" />
+		<typeAlias alias="JinXiangFaPiaoMingXi_FaPiao"
+			type="com.wisdom.common.model.JinXiangFaPiaoMingXi_FaPiao" />
+		<typeAlias alias="JinXiangFaPiaoMingXi_RenZheng"
+			type="com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng" />
+		<typeAlias alias="User_Company" type="com.wisdom.common.model.User_Company" />
+	</typeAliases>
+	
+	<mappers>
+		<mapper
+			resource="com/wisdom/common/mapper/JinXiangFaPiaoMingXi_RenZhengMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/JinXiangFaPiaoMingXi_FaPiaoMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/UserMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/PermissionMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/InvoiceMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/RoleMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/RecordMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/SymbolMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/PhraseMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/CandidateMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/ArtifactMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FinalXiaoXiangMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FinalJinXiangMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FinalShenBaoBiaoMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/XiangMuTaiZhangMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/CompanyMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/KaiPiaoShenQingDanMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/JianYiJiShuiFangFaZhuanPiaoJiShuiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/JianYiJiShuiFangFaPuPiaoJiShuiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/PuTongFaPiaoKaiJuMingXiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/ShouQiKuanXiangMingXiBiaoMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/ZhuanYongFaPiaoKaiJuMingXiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/WeiKaiJuFaPiaoMingXiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/WeiKaiJuFaPiaoMingXi_YiBanMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/QueRenShouRuFangShi_QiTaMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/XiaoXiang_XiangMuMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FenBaoXiangMuMingXiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_ZongGongSiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/UserMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/JinXiangShuieZhuanChuMingXi_FenGongSiMapper.xml"/>
+		<mapper resource="com/wisdom/common/mapper/JinXiangShuieZhuanChuMingXi_XiangMuBuMapper.xml"/>
+		<mapper resource="com/wisdom/common/mapper/PermissionMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/InvoiceMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/RoleMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/RecordMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/SymbolMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/PhraseMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/CandidateMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/ArtifactMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FinalXiaoXiangMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FinalJinXiangMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FinalShenBaoBiaoMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/XiangMuTaiZhangMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/CompanyMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/KaiPiaoShenQingDanMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/JianYiJiShuiFangFaZhuanPiaoJiShuiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/JianYiJiShuiFangFaPuPiaoJiShuiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/PuTongFaPiaoKaiJuMingXiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/ShouQiKuanXiangMingXiBiaoMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/ZhuanYongFaPiaoKaiJuMingXiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/WeiKaiJuFaPiaoMingXiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/WeiKaiJuFaPiaoMingXi_YiBanMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/QueRenShouRuFangShi_YiFaShengChengBenZhanBiFaMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/QueRenShouRuFangShi_YiWanGongGongZuoLiangFaMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/QueRenShouRuFangShi_QiTaMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/XiaoXiang_XiangMuMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/FenBaoXiangMuMingXiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/YiBanJiShuiFangFaNaShuiJianChaTiaoZhengMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_ZongGongSiMapper.xml" />
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSiMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/BuDongChanFenQiDiKouBiaoMapper.xml"/>
+		<mapper
+			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/User_CompanyMapper.xml" />
+	</mappers>
 </configuration>

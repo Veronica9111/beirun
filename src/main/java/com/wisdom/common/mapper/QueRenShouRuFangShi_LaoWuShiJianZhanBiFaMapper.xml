@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+    'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa" id="QueRenShouRuFangShi_LaoWuShiJianZhanBiFa">
+<result property="shenqingriqi" column="shenqingriqi"/>
+<result property="gongsimingcheng" column="gongsimingcheng"/>
+<result property="xiangmubu" column="xiangmubu"/>
+<result property="yifashengshijian" column="yifashengshijian"/>
+<result property="yujizongshijian" column="yujizongshijian"/>
+<result property="bili" column="bili"/>
+<result property="hetongjine" column="hetongjine"/>
+<result property="suodeshuiyingquerenshouru" column="suodeshuiyingquerenshouru"/>
+<result property="yiquerenshouru" column="yiquerenshouru"/>
+<result property="weiquerenshouru" column="weiquerenshouru"/>
+<result property="tianbiaoren" column="tianbiaoren"/>
+<result property="shenheren" column="shenheren"/>
+<result property="tianbiaorendianhua" column="tianbiaorendianhua"/>
+<result property="shenherendianhua" column="shenherendianhua"/>
+<result property="tianbiaoriqi" column="tianbiaoriqi"/>
+<result property="xiangmumingcheng" column="xiangmumingcheng"/>
+<result property="shenheriqi" column="shenheriqi"/>
+<result property="fuheren" column="fuheren"/>
+<result property="kaipiaoshenqingdan_id" column="kaipiaoshenqingdan_id"/>
+</resultMap>
+
+<insert id="addQueRenShouRuFangShi_LaoWuShiJianZhanBiFa" parameterType="String">
+insert into querenshourufangshi_laowushijianzhanbifa (shenqingriqi, gongsimingcheng,xiangmubu,yifashengshijian,yujizongshijian,bili,hetongjine,suodeshuiyingquerenshouru,yiquerenshouru,weiquerenshouru,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,xiangmumingcheng,shenheriqi,fuheren,kaipiaoshenqingdan_id)
+values(#{shenqingriqi},#{gongsimingcheng},#{xiangmubu},#{yifashengshijian},#{yujizongshijian},#{bili},#{hetongjine},#{suodeshuiyingquerenshouru},#{yiquerenshouru},#{weiquerenshouru},#{tianbiaoren},#{shenheren},#{tianbiaorendianhua},#{shenherendianhua},#{tianbiaoriqi},#{xiangmumingcheng},#{shenheriqi},#{fuheren},#{kaipiaoshenqingdan_id})
+</insert>
+
+<update id="updateQueRenShouRuFangShi_LaoWuShiJianZhanBiFa" parameterType="String">
+update querenshourufangshi_laowushijianzhanbifa set shenqingriqi=#{shenqingriqi},gongsimingcheng=#{gongsimingcheng},xiangmubu=#{xiangmubu},yifashengshijian=#{yifashengshijian},yujizongshijian=#{yujizongshijian},bili=#{bili},hetongjine=#{hetongjine},suodeshuiyingquerenshouru=#{suodeshuiyingquerenshouru},yiquerenshouru=#{yiquerenshouru},weiquerenshouru=#{weiquerenshouru},tianbiaoren=#{tianbiaoren},shenheren=#{shenheren},tianbiaorendianhua=#{tianbiaorendianhua},shenherendianhua=#{shenherendianhua},tianbiaoriqi=#{tianbiaoriqi},xiangmumingcheng=#{xiangmumingcheng},shenheriqi=#{shenheriqi},fuheren=#{fuheren},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+where id=#{id}
+</update>
+
+<select id="getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaById" resultType="QueRenShouRuFangShi_LaoWuShiJianZhanBiFa">
+select shenqingriqi, gongsimingcheng,xiangmubu,yifashengshijian,yujizongshijian,bili,hetongjine,suodeshuiyingquerenshouru,yiquerenshouru,weiquerenshouru,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,xiangmumingcheng,shenheriqi,fuheren,kaipiaoshenqingdan_id
+from querenshourufangshi_laowushijianzhanbifa
+where id=#{id}
+</select>
+
+<select id="getQueRenShouRuFangShi_LaoWuShiJianZhanBiFaByKaipiaoshenqingdan_id" resultType="QueRenShouRuFangShi_LaoWuShiJianZhanBiFa">
+select shenqingriqi, gongsimingcheng,xiangmubu,yifashengshijian,yujizongshijian,bili,hetongjine,suodeshuiyingquerenshouru,yiquerenshouru,weiquerenshouru,tianbiaoren,shenheren,tianbiaorendianhua,shenherendianhua,tianbiaoriqi,xiangmumingcheng,shenheriqi,fuheren,kaipiaoshenqingdan_id
+from querenshourufangshi_laowushijianzhanbifa
+where kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+</select>
+</mapper>
