@@ -1156,7 +1156,7 @@ td
     <td class="xl69"><input style='width:100%;' id='fp_tongxingfei_jine' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='fp_tongxingfei_jinxiangshuie' class="text"></td>
    </tr>
-   <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
+   <tr height="40.20" id="xiaoji" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
     <td class="xl70" height="40.20" style='height:20.10pt;' x:str>小计</td>
     <td class="xl70"></td>
     <td class="xl70"></td>
@@ -1258,7 +1258,7 @@ for(var i = 0; i < tds.length; i++){
 console.log(tdsList);
 
 
-var query = {query_key: 'xiangmutaizhang_id', query_value:xiangmutaizhang_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
+var query = {query_key: 'xiangmutaizhang_id', query_value: xiangmutaizhang_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 $.post("/project/getModel", query, function(data){
 
 	
@@ -1273,6 +1273,7 @@ $.post("/project/getModel", query, function(data){
 				$("#" + key).val(dataSet[0][key]);
 				if(key != "id"){
 					$("#" + key).attr("name", dataSet[0]['id']);
+					$("#" + key).addClass(key);
 				}
 			}
 		}else if(i > 0){
@@ -1281,11 +1282,65 @@ $.post("/project/getModel", query, function(data){
 			//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
 			for(var j = 0; j< tdsList.length; j++){
 				if(tdsList[j] != 'id'){
-					$("#data-row" + i).append('<td class="xl69" ><input class="text" style="width:100%" name="' + dataSet[i]['id']+'" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
+					$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]  +'" style="width:100%" name="' + dataSet[i]['id']+'" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
 				}
 			}
 		}
 	}
+	$("#xiaoji td input").each(function(){
+		var oldId =  $(this).attr("id");
+		if(oldId == "xiaoji_jine" || oldId == "xiaoji_jinxiangshuie"){
+			var id = oldId.replace("xiaoji_", "");
+			var count = 0;
+			var inputs = $("." + id).each(function(){
+				console.log($(this));
+				count += parseFloat($(this).val());
+				
+			});
+			$("#"+oldId).val(count);
+		}
+		
+		else if(oldId.indexOf("xiaoji_") != -1){
+	
+		
+			var id = oldId.replace("xiaoji_", "fp_");
+			//console.log(id);
+			var count = 0;
+			var inputs = $("." + id).each(function(){
+				console.log($(this));
+				count += parseFloat($(this).val());
+				
+			});
+			$("#"+oldId).val(count);
+		}
+	});
+	
+	$(".text").keyup(function(){
+		var id = $(this).attr("id");
+		if(id == "jine" || id == "jinxiangshuie"){
+			var xiaojiId = "xiaoji_" + id;
+			var count = 0;
+			var inputs = $("." + id).each(function(){
+				console.log($(this));
+				count += parseFloat($(this).val());
+				
+			});
+			$("#"+xiaojiId).val(count);
+		}
+		else if(id.indexOf("fp_") != -1){
+			
+			
+				var xiaoJiId = id.replace("fp_", "xiaoji_");
+				//console.log(id);
+				var count = 0;
+				var inputs = $("." + id).each(function(){
+					console.log($(this));
+					count += parseFloat($(this).val());
+					
+				});
+				$("#"+xiaoJiId).val(count);
+			}
+		});
 	
 });
 $("#submit_invoice").click(function(){
@@ -1305,11 +1360,50 @@ $("#modify").click(function(){
 		var inputs = $(this).find("input");
 		console.log(inputs);
 		var id = $(this).find("input").first().attr("name");
-		console.log(id);
+		var dataSet = {};
+		$(this).find("input").each(function(){
+			dataSet[$(this).attr("id")] = $(this).val();
+		});
+		dataSet['id'] = id;
+		dataSet['class_name'] = 'JinXiangFaPiaoMingXi_FaPiao';
+		dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
+		dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
+		//dataSet["xiangmutaizhang_id"] = xiangmutaizhang_id;
+		console.log(dataSet);
+		$.post("/project/modifyModel", dataSet, function(data){});
+		//console.log(id);
 	});
 
 	
 });
+
+Date.prototype.Format = function(formatStr) {
+    var str = formatStr;
+    var Week = ['日', '一', '二', '三', '四', '五', '六'];
+
+    str = str.replace(/yyyy|YYYY/, this.getFullYear());
+    str = str.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this.getYear() % 100).toString() : '0' + (this.getYear() % 100));
+
+    str = str.replace(/MM/, (this.getMonth() + 1) > 9 ? (this.getMonth() + 1).toString() : '0' + (this.getMonth()+1));
+    str = str.replace(/M/g, this.getMonth());
+
+    str = str.replace(/w|W/g, Week[this.getDay()]);
+
+    str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' + this.getDate());
+    str = str.replace(/d|D/g, this.getDate());
+
+    str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString() : '0' + this.getHours());
+    str = str.replace(/h|H/g, this.getHours());
+    str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes().toString() : '0' + this.getMinutes());
+    str = str.replace(/m/g, this.getMinutes());
+
+    str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' + this.getSeconds());
+    str = str.replace(/s|S/g, this.getSeconds());
+
+    return str;
+}
+
+
 </script>
 
 </body>
