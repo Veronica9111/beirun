@@ -265,6 +265,8 @@ public interface IProjectService {
 	public List<KaiPiaoQingKuangBiao_XiangMu>getAllKaiPiaoQingKuangBiao_XiangMu(Long companyId);
 	
 	public List<KaiPiaoQingKuangBiao_FenGongSi>getAllKaiPiaoQingKuangBiao_FenGongSi(Long companyId);
+	
+	public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByXiangmutaizhang_id(Long xiangmutaizhang_id);
 
 	public List<PiaoJuWenJian> getPiaoJuWenJianByCompany_id(Long companyId);
 

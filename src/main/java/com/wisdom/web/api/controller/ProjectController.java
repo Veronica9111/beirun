@@ -151,12 +151,14 @@ public class ProjectController {
 		Integer id = Integer.valueOf(request.getParameter("id"));
 		Map<String, String[]> params = request.getParameterMap();
 		String className = params.get("class_name")[0];
-		String longClassName = "com.wisdom.common.model." + className;
-		Class c = Class.forName(longClassName);
-		Object instance = c.newInstance();
+		Method m = projectService.getClass().getMethod("get" + className + "ById", Long.class);
+		Object instance = m.invoke(projectService, Long.valueOf(id));
+		//String longClassName = "com.wisdom.common.model." + className;
+		//Class c = Class.forName(longClassName);
+		//Object instance = c.newInstance();
 		instance = setModel(instance, params, "full");
-		Method m = projectService.getClass().getMethod("update" + className, instance.getClass());
-		Object ret = m.invoke(projectService, instance);
+		Method m2 = projectService.getClass().getMethod("update" + className, instance.getClass());
+		Object ret = m2.invoke(projectService, instance);
 		retMap.put("status", "ok");
 		return retMap;
 	}
@@ -189,7 +191,7 @@ public class ProjectController {
 		queryKey = queryKey.substring(0, 1).toUpperCase() + queryKey.substring(1);
 		Object ret;
 		if (isInteger(queryValue)) {
-			if (("Xiangmutaizhang_id").equals(queryKey)) {
+			if (("Xiangmutaizhang_id").equals(queryKey) &&!className.equals("JinXiangFaPiaoMingXi_FaPiao")) {
 				Method m = projectService.getClass().getMethod("get" + className + "By" + queryKey, Long.class);
 				ret = m.invoke(projectService, Long.valueOf(queryValue));
 				List<List<String>> retList = generateDataTableData(ret);
@@ -1082,6 +1084,9 @@ public class ProjectController {
 
 			String methodName = "set" + Character.toUpperCase(entry.getKey().charAt(0)) + entry.getKey().substring(1);
 			String arg = entry.getValue()[0];
+			if(arg == null){
+				continue;
+			}
 
 			Method m;
 			if (entry.getKey().equals("class_name")) {

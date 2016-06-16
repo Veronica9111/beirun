@@ -16,4 +16,6 @@ public interface JinXiangFaPiaoMingXi_FaPiaoMapper {
 	List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByCompanyId(Long company_id);
 
 	Integer approveJinXiangFaPiaoMingXi_FaPiao(Integer id,Integer yiji_shenhe_status,String beizhu);
+	
+	List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByXiangmutaizhang_id(Long xiangmutaizhang_id);
 }
