@@ -17,6 +17,13 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
+<script type="text/javascript">
+	function GetQueryString(name){
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+</script>
  <style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
@@ -1246,9 +1253,22 @@ td
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
-
+<script>
+	function hello(){
+		var node_id = GetQueryString("node_id");
+		var node = $('#left-menu').treeview('getNode', node_id);
+		console.log(node);
+		$('#left-menu').treeview('selectNode', [node, { silent: true } ]);
+		var parent = $('#left-menu').treeview('getParent', node);
+		console.log(parent);
+		$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);	
+	}
+</script>
 <script type="text/javascript">
-	var query = {query_key:'company_idAndStatus', query_value:2, class_name:'PiaoJuWenJian'};
+(function(){
+	var company_id = GetQueryString("company_id");
+	var id = parseInt(company_id);
+	var query = {query_key:'company_idAndStatus', query_value:id, class_name:'PiaoJuWenJian'};
 	$.post("/project/getModel",query,function(data){
 		console.log(data);
 		var dataSet = $.parseJSON(data.data);
@@ -1259,8 +1279,28 @@ td
 			$('#invoice_info').append(tr);
 		}
 	});
+})();
 </script>
-
+<script>
+	function nodeClick(node){
+		var company_id = node.company_id;
+		var node_id = node.nodeId;
+		if(node.level == 1){
+			var location= "/project/redirectView?view=fapiaowenjian_fengongsi.html&&company_id="+company_id+"&&node_id="+node_id;                                     
+			console.log(location);
+			window.location.href = location;
+		}else if(node.level ==2){
+			var location= "/project/redirectView?view=fapiaowenjian_xiangmubu.html&&company_id="+company_id+"&&node_id="+node_id;                                     
+			console.log(location);
+			window.location.href = location;
+		}else if(node.level ==0){
+			var location= "/project/redirectView?view=fapiaowenjian_zonggongsi.html";                                     
+			console.log(location);
+			window.location.href = location;
+		}
+		
+	}; 
+</script>
 <script type="text/javascript">
 var query = {query_key: 'id', query_value:1, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 $.post("/project/getModel", query, function(data){
@@ -1326,9 +1366,47 @@ $.post("/project/getModel", query, function(data){
 	
 });
 </script>
-
-
 </body>
+<script>
+$("#xiaoji td input").each(function(){
 
+	var oldId =  $(this).attr("id");
+	if(oldId == "xiaoji_jine" || oldId == "xiaoji_jinxiangshuie"){
+		var id = oldId.replace("xiaoji_", "");
+		var count = 0;
+		var inputs = $("." + id).each(function(){
+			console.log($(this));
+			count += parseFloat($(this).val());
+			
+		});
+		if(!isNaN(count)){
+			$("#"+oldId).val(count);
+		}
+	}
+	
+	else if(oldId.indexOf("xiaoji_") != -1){
+
+	
+		var id = oldId.replace("xiaoji_", "fp_");
+		//console.log(id);
+		var count = 0;
+		var inputs = $("." + id).each(function(){
+			console.log($(this));
+			count += parseFloat($(this).val());
+			
+		});
+		if(!isNaN(count)){
+			$("#"+oldId).val(count);
+		}
+	}
+});
+
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+</script>
 
 </html>
