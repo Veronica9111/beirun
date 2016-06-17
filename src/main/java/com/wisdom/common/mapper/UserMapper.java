@@ -45,4 +45,6 @@ public interface UserMapper {
   
   List<User> getUsersCurrentWork(@Param("rname")String roleName);
   
+  List<User> getUsersByCompanyId(Long company_id);
+  
 } 

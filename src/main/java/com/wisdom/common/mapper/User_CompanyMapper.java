@@ -9,5 +9,6 @@ public interface User_CompanyMapper {
     Integer addUser_Company(User_Company user_Company);
 
     Integer updateUser_Company(User_Company user_Company);
+    
 
 }

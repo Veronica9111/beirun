@@ -1228,6 +1228,88 @@ public class ProjectServiceImpl implements IProjectService {
 			return piaoJuWenJianMapper.getPiaoJuWenJianByCompany_idAndStatus(companyId);
 		}
 
+		@Override
+		public Map<String, User> getUsers(Long companyId, Integer uid) {
+			// TODO Auto-generated method stub
+			//开票人
+			User kaipiaoren = userMapper.getUserById(uid);
+			User yijishenheren = null;
+			User erjishenheren = null;
+			//一级审核
+			boolean isFirst = false;
+			boolean isSecond = false;
+			List<User> users = userMapper.getUsersByCompanyId(companyId);
+			for(User user: users){
+				Integer userId = user.getId();
+				List<Role> roles = roleMapper.getUserRoles(userId);
+				for(Role role:roles){
+					if (role.getName().equals("业务主任")){
+						isFirst = true;
+						yijishenheren = user;
+						
+					}
+					if(role.getName().equals("分管所长")){
+						isSecond = true;
+						erjishenheren = user;
+						
+					}
+				}
+				
+			}
+			Integer secondCompanyId = null;
+			if(isFirst == false || isSecond == false){
+				Company secondCompany = companyMapper.getParentCompanyById(companyId.intValue());
+				secondCompanyId = secondCompany.getId();
+				List<User> users2 = userMapper.getUsersByCompanyId(companyId);
+				for(User user: users2){
+					Integer userId = user.getId();
+					List<Role> roles = roleMapper.getUserRoles(userId);
+					for(Role role:roles){
+						if (isFirst == false && role.getName().equals("业务主任")){
+							isFirst = true;
+							yijishenheren = user;
+							
+						}
+						if(isSecond == false && role.getName().equals("分管所长")){
+							isSecond = true;
+							erjishenheren = user;
+							
+						}
+					}
+					
+				}
+			}
+			
+			if(isFirst == false || isSecond == false){
+				Company firstCompany = companyMapper.getParentCompanyById(secondCompanyId);
+				Integer firstCompanyId = firstCompany.getId();
+				List<User> users2 = userMapper.getUsersByCompanyId(companyId);
+				for(User user: users2){
+					Integer userId = user.getId();
+					List<Role> roles = roleMapper.getUserRoles(userId);
+					for(Role role:roles){
+						if (isFirst == false && role.getName().equals("业务主任")){
+							isFirst = true;
+							yijishenheren = user;
+							
+						}
+						if(isSecond == false && role.getName().equals("分管所长")){
+							isSecond = true;
+							erjishenheren = user;
+							
+						}
+					}
+					
+				}
+			}
+			
+			Map<String, User> result = new HashMap<>();
+			result.put("kaipiaoren", kaipiaoren);
+			result.put("yewuzhuren", yijishenheren);
+			result.put("fenguansuozhang", erjishenheren);
+			return result;
+		}
+
 
 
 }

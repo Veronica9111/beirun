@@ -108,4 +108,9 @@ left join role r on r.id = ur.role_id
 where r.name=#{rname}
 </select>
 
+<select id="getUsersByCompanyId" resultType="User" parameterType="String">
+select u.* from user u left join user_company uc
+on u.id = uc.user_id
+where uc.company_id=#{company_id}
+</select>
 </mapper>

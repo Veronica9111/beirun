@@ -21,4 +21,8 @@
 	left join user_company uc on c.id = uc.company_id
 	where uc.user_id = #{uid}
 </select>
+
+<select id="getParentCompanyById" resultType="Company">
+SELECT id, name, parent_id, level, create_time FROM company where id = (select parent_id from company where id = #{id});
+</select>
 </mapper>

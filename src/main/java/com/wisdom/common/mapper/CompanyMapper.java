@@ -12,6 +12,7 @@ public interface CompanyMapper {
 	List<Company> getAllCompanies();
 	
 	List<Company> getCompaniesByUid(Integer uid);
+	Company getParentCompanyById(Integer id);
 	
 	
 }

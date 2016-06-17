@@ -273,6 +273,8 @@ public interface IProjectService {
 	public List<PiaoJuWenJian> getPiaoJuWenJianByCompany_id(Long companyId);
 	
 	public List<PiaoJuWenJian> getPiaoJuWenJianByCompany_idAndStatus(Long companyId);
+	
+	public Map<String, User> getUsers(Long companyId, Integer uid);
 
 
 }
