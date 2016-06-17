@@ -1420,6 +1420,7 @@ $("#modify").click(function(){
 		//dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
 		dataSet['shenheren'] = $("#shenheren").val();
 		dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
+		dataSet["beizhu"] = $("#beizhu").val();
 		//dataSet["xiangmutaizhang_id"] = xiangmutaizhang_id;
 		console.log(dataSet);
 		$.post("/project/modifyModel", dataSet, function(data){});
