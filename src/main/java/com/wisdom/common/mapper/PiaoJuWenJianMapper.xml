@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.PiaoJuWenJianMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.PiaoJuWenJian" id="PiaoJuWenJian">
+<result property="fapiaoriqi" column="fapiaoriqi"/>
+<result property="xiangmu" column="xiangmu"/>
+<result property="xiangmutaizhang_id" column="xiangmutaizhang_id"/>
+<result property="wenjian" column="wenjian"/>
+<result property="field2" column="field2"/>
+<result property="field3" column="field3"/>
+<result property="field1" column="field1"/>
+<result property="company_id" column="company_id"/>
+<result property="field4" column="field4"/>
+<result property="field5" column="field5"/>
+<result property="fapiaohaoma" column="fapiaohaoma"/>
+<result property="zhanbi" column="zhanbi"/>
+<result property="id" column="id"/>
+</resultMap>
+
+<select id="getPiaoJuWenJianById" resultType="PiaoJuWenJian">
+select fapiaoriqi,xiangmu,xiangmutaizhang_id,wenjian,field2,field3,field1,company_id,field4,field5,fapiaohaoma,zhanbi,id
+from piaojuwenjian
+where id=#{id}
+</select>
+
+<select id="getPiaoJuWenJianByCompany_id" resultType="PiaoJuWenJian">
+select fapiaoriqi,xiangmu,xiangmutaizhang_id,wenjian,field2,field3,field1,company_id,field4,field5,fapiaohaoma,zhanbi,id
+from piaojuwenjian
+where company_id=#{company_id} and field1=0;
+</select>
+
+<update id="updatePiaoJuWenJian">
+update piaojuwenjian set fapiaoriqi=#{fapiaoriqi},xiangmu=#{xiangmu},xiangmutaizhang_id=#{xiangmutaizhang_id},wenjian=#{wenjian},field2=#{field2},field3=#{field3},field1=#{field1},company_id=#{company_id},field4=#{field4},field5=#{field5},fapiaohaoma=#{fapiaohaoma},zhanbi=#{zhanbi},id=#{id}
+where id=#{id}
+</update>
+
+<insert id="addPiaoJuWenJian">
+insert into piaojuwenjian (fapiaoriqi,xiangmu,xiangmutaizhang_id,wenjian,field2,field3,field1,company_id,field4,field5,fapiaohaoma,zhanbi,id)
+values (#{fapiaoriqi},#{xiangmu},#{xiangmutaizhang_id},#{wenjian},#{field2},#{field3},#{field1},#{company_id},#{field4},#{field5},#{fapiaohaoma},#{zhanbi},#{id})
+</insert>
+
+</mapper>

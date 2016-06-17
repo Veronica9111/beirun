@@ -12,17 +12,21 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wisdom.common.mapper.KaiPiaoQingKuangBiao_ZongGongSiMapper;
@@ -52,6 +56,8 @@ import com.wisdom.utils.SessionConstant;
 
 import net.sf.json.JSONArray;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.NumberFormatException;
 
@@ -290,29 +296,21 @@ public class ProjectController {
 
 	@RequestMapping("/project/redirectView")
 	public String redirectView(HttpServletRequest request) {
-		Map<String, String[]>  map = request.getParameterMap();
-		String param = "";
-		if(map != null) {
-			int index = 0;
-			for(Entry<String, String[]> entry : map.entrySet()) {
-				if(("view").equals(entry.getKey())) continue;
-				if(index == 0)
-					try {
-						param += entry.getKey() + "=" + URLEncoder.encode(entry.getValue()[0],"UTF-8");
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-				else
-					try {
-						param += "&" + entry.getKey() + "=" + URLEncoder.encode(entry.getValue()[0], "UTF-8");
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-				index++;
-			}
-		}
 		String view = request.getParameter("view");
-		return "redirect:/views/recordviews/" + view + "?" + param;
+		String queryString = request.getQueryString();
+		int pos1 = queryString.indexOf("view="+view+"&");
+		int pos2 = queryString.indexOf("view="+view);
+		if(pos1 != -1) {
+			queryString.replace("view="+view+"&", "").trim();
+		}
+		if(pos2 != -1) {
+			queryString.replace("view="+view, "").trim();
+		}
+		if(queryString.isEmpty()) {
+			return "redirect:/views/recordviews/" + view;
+		} else {
+			return "redirect:/views/recordviews/" + view + "?" + queryString;
+		}
 	}
 
 	@RequestMapping("/project/getAllProjectsForUser")
@@ -459,7 +457,7 @@ public class ProjectController {
 		Map<String, String> retMap = new HashMap<>();
 		Long companyId = Long.valueOf(request.getParameter("company_id")); 
 		List<KaiPiaoQingKuangBiao_ZongGongSi> KaiPiaoQingKuangBiaos = projectService
-				.getAllKaiPiaoQingKuangBiao_ZongGongSi(companyId);
+				.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);
 		List<List<Object>> retList = new ArrayList<>();
 		Integer count = 0;
 		for (KaiPiaoQingKuangBiao_ZongGongSi elem : KaiPiaoQingKuangBiaos) {
@@ -1186,5 +1184,75 @@ public class ProjectController {
 			}
 		}
 		return xmtz;
+	}
+	
+	@RequestMapping("/project/addFile")
+	@ResponseBody
+	public Map<String, String> addFile(@RequestParam MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		Map<String, String> retMap = new HashMap<>();
+		String filePath = "/home/beirun/invoice";
+		String fileUnique = getUniqueIdentifier();
+		String fileName = file.getOriginalFilename();
+		String field_3 = fileUnique + fileName.substring(fileName.lastIndexOf("."));
+		String[] data = {field_3};
+		try {
+			FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, field_3));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.debug(e.toString());
+		}
+		
+		Map<String, String[]> params = request.getParameterMap();
+		params.put("field3", data);
+		params.put("wenjian",new String[]{fileName});
+		String className = params.get("class_name")[0];
+		String longClassName = "com.wisdom.common.model." + className;
+		Class<?> c = Class.forName(longClassName);
+		Object instance = c.newInstance();
+		instance = setModel(instance, params, "partial");
+		System.out.println(className);
+		Method m = projectService.getClass().getMethod("add" + className, instance.getClass());
+		Object ret = m.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		retMap.put("primary_id", String.valueOf(ret));
+		return retMap;
+		
+	}
+	
+	private String getUniqueIdentifier() {
+		String uuid = UUID.randomUUID().toString();
+		uuid = uuid.substring(0, 8) + uuid.substring(9, 13) + uuid.substring(14, 18) + uuid.substring(19, 23)
+				+ uuid.substring(24);
+		return uuid;
+	}
+	
+	
+	@RequestMapping("/project/addKaiPiaoShenQingDan")
+	@ResponseBody
+	public Map<String, String> addKaiPiaoShenQingDan(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		Map<String, String> retMap = new HashMap<>();
+		String filePath = "/home/beirun/invoice";
+		String fileName = "";
+		if(file != null) {
+			String fileUnique = getUniqueIdentifier();
+			String fileOrignalName = file.getOriginalFilename();
+			fileName = fileUnique + fileOrignalName.substring(fileOrignalName.lastIndexOf("."));
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, fileName));
+			} catch (IOException e) {
+				logger.debug(e.toString());
+			}
+		}
+		Map<String, String[]> params = request.getParameterMap();
+		params.put("fapiaowenjian", new String[]{fileName});
+		String longClassName = "com.wisdom.common.model.KaiPiaoShenQingDan";
+		Class<?> c = Class.forName(longClassName);
+		Object instance = c.newInstance();
+		instance = setModel(instance, params, "partial");
+		Method m = projectService.getClass().getMethod("addKaiPiaoShenQingDan", instance.getClass());
+		Object ret = m.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		retMap.put("primary_id", String.valueOf(ret));
+		return retMap;
 	}
 }

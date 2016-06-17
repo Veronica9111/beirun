@@ -29,6 +29,7 @@ import com.wisdom.common.mapper.WeiKaiJuFaPiaoMingXi_YiBanMapper;
 import com.wisdom.common.mapper.XiangMuTaiZhangMapper;
 import com.wisdom.common.mapper.ZhuanYongFaPiaoKaiJuMingXiMapper;
 import com.wisdom.common.mapper.PermissionMapper;
+import com.wisdom.common.mapper.PiaoJuWenJianMapper;
 import com.wisdom.common.mapper.PuTongFaPiaoKaiJuMingXiMapper;
 import com.wisdom.common.mapper.QueRenShouRuFangShi_LaoWuShiJianZhanBiFaMapper;
 import com.wisdom.common.mapper.QueRenShouRuFangShi_QiTaMapper;
@@ -55,6 +56,7 @@ import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
+import com.wisdom.common.model.PiaoJuWenJian;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi;
 import com.wisdom.common.model.WeiKaiJuFaPiaoMingXi_YiBan;
@@ -112,9 +114,38 @@ public class ProjectServiceImpl implements IProjectService {
 
 
 
+    @Autowired
+    private PiaoJuWenJianMapper piaoJuWenJianMapper;
 
 
 
+
+
+
+    public void setPiaoJuWenJianMapper(PiaoJuWenJianMapper piaoJuWenJianMapper){
+        this.piaoJuWenJianMapper = piaoJuWenJianMapper;
+    }
+
+    public PiaoJuWenJianMapper getPiaoJuWenJianMapper() {
+        return piaoJuWenJianMapper;
+    }
+
+    @Override
+    public PiaoJuWenJian getPiaoJuWenJianById(Long id){
+        return piaoJuWenJianMapper.getPiaoJuWenJianById(id);
+    }
+
+    @Override
+    public Boolean addPiaoJuWenJian(PiaoJuWenJian piaoJuWenJian){
+        piaoJuWenJianMapper.addPiaoJuWenJian(piaoJuWenJian);
+        return true;
+    }
+
+    @Override
+    public Boolean updatePiaoJuWenJian(PiaoJuWenJian piaoJuWenJian){
+        piaoJuWenJianMapper.updatePiaoJuWenJian(piaoJuWenJian);
+        return true;
+    }
 
     @Override
     public BuDongChanFenQiDiKouBiao getBuDongChanFenQiDiKouBiaoById(Long id){
@@ -654,7 +685,12 @@ public class ProjectServiceImpl implements IProjectService {
 		return xiangmutaizhangMapper.getXiangMuTaiZhangByCompany_id(companyId);
 
 	}
-
+	
+	@Override
+	public List<PiaoJuWenJian> getPiaoJuWenJianByCompany_id(Long companyId){
+		return piaoJuWenJianMapper.getPiaoJuWenJianByCompany_id(companyId);
+	}
+	
 	@Override
 	public List<KaiPiaoShenQingDan> getJianYiJiShuiFangFaZhuanPiaoJiShuiByProjectId(Integer projectId) {
 		// TODO Auto-generated method stub
@@ -995,6 +1031,12 @@ public class ProjectServiceImpl implements IProjectService {
 		public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSi(Long companyId) {
 			// TODO Auto-generated method stub
 			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSi(companyId);
+		}
+		
+		@Override
+		public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(Long companyId) {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);
 		}
 
 		@Override

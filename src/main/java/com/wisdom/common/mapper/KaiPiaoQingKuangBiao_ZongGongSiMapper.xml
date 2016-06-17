@@ -24,10 +24,11 @@
 <result property="kaijufapiao" column="kaijufapiao"/>
 <result property="id" column="id"/>
 <result property="xiangmutaizhang_id" column="xiangmutaizhang_id"/>
+<result property="company_id" column="company_id"/>
 </resultMap>
 
 <select id="getKaiPiaoQingKuangBiao_ZongGongSiById" resultType="KaiPiaoQingKuangBiao_ZongGongSi">
-select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id, company_id 
 from kaipiaoqingkuangbiao_zonggongsi
 where id=#{id}
 </select>
@@ -38,19 +39,25 @@ where id=#{id}
 </update>
 
 <insert id="addKaiPiaoQingKuangBiao_ZongGongSi">
-insert into kaipiaoqingkuangbiao_zonggongsi (beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id)
-values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{fenbaofapiao},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id},#{xiangmutaizhang_id})
+insert into kaipiaoqingkuangbiao_zonggongsi (beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id, company_id)
+values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{fenbaofapiao},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id},#{xiangmutaizhang_id},#{company_id})
 </insert>
 
 <select id="getKaiPiaoQingKuangBiao_ZongGongSiByStatus" resultType="KaiPiaoQingKuangBiao_ZongGongSi">
-select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id,company_id 
 from kaipiaoqingkuangbiao_zonggongsi
 where yiji_shenhe_status=#{status} or erji_shenhe_status=#{status}
 </select>
 
 <select id="getAllKaiPiaoQingKuangBiao_ZongGongSi" resultType="KaiPiaoQingKuangBiao_ZongGongSi">
-select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id,company_id 
 from kaipiaoqingkuangbiao_zonggongsi
+</select>
+
+<select id="getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId" resultType="KaiPiaoQingKuangBiao_ZongGongSi">
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id,company_id 
+from kaipiaoqingkuangbiao_zonggongsi
+where company_id=#{company_id}
 </select>
 
 </mapper>
