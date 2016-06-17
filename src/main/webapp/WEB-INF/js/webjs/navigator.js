@@ -27,7 +27,7 @@ $(document).ready(function(){
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/approve2.html">二次审批</a></li>');
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/history.html">审批记录</a></li>');*/
 			$("#navigator").append('<li><a id="approve-nav" class="link" href="/views/recordviews/approval_invoice_list_2.html">审批销项</a></li>');
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/fapiaowenjian.html">审批进项</a></li>');
+			$("#navigator").append('<li><a class="link" href="/views/recordviews/fapiaowenjian_zonggongsi.html">审批进项</a></li>');
 			$.post("/project/getUnApprovedKaiPiaoQingKuangBiao_XiangMuByUserCount", {}, function(data){
 				console.log(data.count);
 				if(data.count != 0 || data.count != "0"){

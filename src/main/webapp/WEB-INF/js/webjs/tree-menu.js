@@ -6,6 +6,10 @@
 $.post('/getMenu',{},function(dataSet){
 	var tree = $.parseJSON(dataSet.data);
 	$('#left-menu').treeview({data: tree});
+	try{
+		hello();
+	}catch(err){
+	}
 	console.log("hello");
 	var currentNode = null;
 	$("#left-menu").on("click",function(){
