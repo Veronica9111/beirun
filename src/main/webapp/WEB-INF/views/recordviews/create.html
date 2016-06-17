@@ -127,17 +127,22 @@
 	    	
 	    });
 	    
-	    var bload = $('#bloadify').bload({
-			fadeInSpeed		: 600,
-			imagePath: '/js/webjs/bloading.gif',
-			fullScreen: true,
-			maskOpacity		: .6,
-			overlay : {
-				show		: true,
-				color: '#000',
-			}
-		});
-
+	    $("#mask").click(function(){
+	    
+		    var bload = $('#bloadify').bload({
+				fadeInSpeed		: 600,
+				imagePath: '/js/webjs/bloading.gif',
+				fullScreen: true,
+				maskOpacity		: .6,
+				overlay : {
+					show		: true,
+					color: '#000',
+				}
+			});
+			setTimeout(function(){
+				bload.hide();
+			}, 4000);
+	    });
 		$("#node").click(function(){
 			//$('#left-menu').treeview('expandNode', [ 2, { levels: 1, silent: true } ]);
 			var node = $('#left-menu').treeview('getNode', 2);
@@ -148,9 +153,7 @@
 			
 		});
 	    
-		setTimeout(function(){
-			bload.hide();
-		}, 4000);
+
 
 </script>
 </body>
