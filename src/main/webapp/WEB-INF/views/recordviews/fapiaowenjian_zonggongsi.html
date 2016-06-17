@@ -947,7 +947,7 @@ td
 
 <!-- Container -->
 <div id="container">
-<input id=""  type="button" value="审核通过" class="btn btn-success btn-sm" />
+<input id="success"  type="button" value="审核通过" class="btn btn-success btn-sm" />
 <table id="invoice_info" width="656" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:328.00pt;border-collapse:collapse;table-layout:fixed;'>
 
    
@@ -1096,7 +1096,7 @@ td
     <td class="xl68" x:str>金额</td>
     <td class="xl68" x:str>进项税额</td>
    </tr>
-   <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
+   <tr id="data-row0" class="datarow" height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
     <td class="xl69" height="40.20" style='height:20.10pt;'><input style='width:100%;'  id='fapiaokaijushijian' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='fapiaohaoma' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='xiaohuodanweimingcheng' class="text"></td>
@@ -1164,7 +1164,7 @@ td
     <td class="xl69"><input style='width:100%;' id='fp_tongxingfei_jine' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='fp_tongxingfei_jinxiangshuie' class="text"></td>
    </tr>
-   <tr id="xiaoji" height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
+   <tr height="40.20" id="xiaoji" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
     <td class="xl70" height="40.20" style='height:20.10pt;' x:str>小计</td>
     <td class="xl70"></td>
     <td class="xl70"></td>
@@ -1260,7 +1260,7 @@ td
 			console.log(location);
 			window.location.href = location;
 		}else if(node.level ==0){
-			var location= "/project/redirectView?view=fapiaowenjian_zonggongsi.html";                                     
+			var location= "/project/redirectView?view=fapiaowenjian_zonggongsi.html&&company_id="+company_id+"&&node_id="+node_id;                                     
 			console.log(location);
 			window.location.href = location;
 		}
@@ -1272,18 +1272,6 @@ td
 	function hello(){
 		$('#left-menu').treeview('selectNode', [0, { silent: true } ]);
 	}
-	
-	var query = {query_key:'company_idAndStatus', query_value:2, class_name:'PiaoJuWenJian'};
-	$.post("/project/getModel",query,function(data){
-		console.log(data);
-		var dataSet = $.parseJSON(data.data);
-		for(var index=0;index<dataSet.length;index++){
-			var tr = $('<tr height="28" style="height:14.00pt;"><td class="xl66" height="28" style="height:14.00pt;" x:str>'+dataSet[index].fapiaoriqi+'</td>'
-		    		  +'<td class="xl66" x:str>'+dataSet[index].fapiaohaoma+'</td><td class="xl66" x:str><a href="/home/beirun/invoice/'+dataSet[index].field3+'">点击查看发票</td>'
-		    		  +'<td class="xl66" x:str>'+dataSet[index].zhanbi+'%</td></tr>');
-			$('#invoice_info').append(tr);
-		}
-	});
 </script>
 
 <script type="text/javascript">
@@ -1323,30 +1311,144 @@ $.post("/project/getModel", query, function(data){
 
 </body>
 <script>
-$("#xiaoji td input").each(function(){
-	var oldId =  $(this).attr("id");
-	if(oldId == "xiaoji_jine" || oldId == "xiaoji_jinxiangshuie"){
-		var id = oldId.replace("xiaoji_", "");
-		var count = 0;
-		var inputs = $("." + id).each(function(){
-			console.log($(this));
-			count += parseFloat($(this).val());
+
+var tds = $("#data-row0 td input");
+var tdsList = [];
+for(var i = 0; i < tds.length; i++){
+	//console.log(tds.get(i));
+	tdsList.push(tds.get(i).id);
+}
+console.log(tdsList);
+var query = {query_key: 'companyId', query_value: 2, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
+$.post("/project/getModel", query, function(data){
+	var dataSet = $.parseJSON(data.data);
+	if(dataSet != null || dataSet != ""){
+		var company_id = GetQueryString("company_id");
+		var id = parseInt(company_id);
+		var query = {query_key:'company_idAndStatus', query_value:id, class_name:'PiaoJuWenJian'};
+		$.post("/project/getModel",query,function(data){
+			console.log(data);
+			var dataSet = $.parseJSON(data.data);
+			for(var index=0;index<dataSet.length;index++){
+				var tr = $('<tr height="28" style="height:14.00pt;"><td class="xl66" height="28" style="height:14.00pt;" x:str>'+dataSet[index].fapiaoriqi+'</td>'
+			    		  +'<td class="xl66" x:str>'+dataSet[index].fapiaohaoma+'</td><td class="xl66" x:str><a href="/home/beirun/invoice/'+dataSet[index].field3+'">点击查看发票</td>'
+			    		  +'<td class="xl66" x:str>'+dataSet[index].zhanbi+'%</td></tr>');
+				$('#invoice_info').append(tr);
+			}
 		});
-		if(!isNaN(count)){
-			$("#"+oldId).val(count);
-		}
-	}else if(oldId.indexOf("xiaoji_") != -1){
-		var id = oldId.replace("xiaoji_", "fp_");
-		//console.log(id);
-		var count = 0;
-		var inputs = $("." + id).each(function(){
-			console.log($(this));
-			count += parseFloat($(this).val());
-		});
-		if(!isNaN(count)){
-			$("#"+oldId).val(count);
+	}
+	//console.log(dataSet);
+	for(var i = 0; i < dataSet.length; i++){
+		if(i == 0){
+			for(var key in dataSet[0]){
+				//console.log(key);
+				//console.log(dataSet[0][key]);
+				$("#" + key).val(dataSet[0][key]);
+				if(key != "id"){
+					$("#" + key).attr("name", dataSet[0]['id']);
+					$("#" + key).addClass(key);
+				}
+			}
+			if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
+				$("#beizhu").val(dataSet[0]['beizhu']);
+			}
+		}else if(i > 0){
+
+			$("#data-row" + (i-1)).after("<tr class='datarow' id='data-row"+i+"' height='40.20' class='xl65' style='height:20.10pt;'>");
+			//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
+			for(var j = 0; j< tdsList.length; j++){
+				if(tdsList[j] != 'id'){
+					$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]  +'" style="width:100%" name="' + dataSet[i]['id']+'" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
+				}
+			}
+			if(dataSet[0]['beizhu'] != null && dataSet[i]['beizhu'] != ""){
+				$("#beizhu").val(dataSet[i]['beizhu']);
+			}
 		}
 	}
+	$("#xiaoji td input").each(function(){
+
+		var oldId =  $(this).attr("id");
+		if(oldId == "xiaoji_jine" || oldId == "xiaoji_jinxiangshuie"){
+			var id = oldId.replace("xiaoji_", "");
+			var count = 0;
+			var inputs = $("." + id).each(function(){
+				console.log($(this));
+				count += parseFloat($(this).val());
+				
+			});
+			if(!isNaN(count)){
+				$("#"+oldId).val(count);
+			}
+		}
+		
+		else if(oldId.indexOf("xiaoji_") != -1){
+	
+		
+			var id = oldId.replace("xiaoji_", "fp_");
+			//console.log(id);
+			var count = 0;
+			var inputs = $("." + id).each(function(){
+				console.log($(this));
+				count += parseFloat($(this).val());
+				
+			});
+			if(!isNaN(count)){
+				$("#"+oldId).val(count);
+			}
+		}
+	});
+	
+	$(".text").keyup(function(){
+
+		var id = $(this).attr("id");
+		if(id == "jine" || id == "jinxiangshuie"){
+			var xiaojiId = "xiaoji_" + id;
+			var count = 0;
+			var inputs = $("." + id).each(function(){
+				console.log($(this));
+				count += parseFloat($(this).val());
+				
+			});
+			if(!isNaN(count)){
+				$("#"+xiaojiId).val(count);
+			}
+		}
+		else if(id.indexOf("fp_") != -1){
+			
+			
+				var xiaoJiId = id.replace("fp_", "xiaoji_");
+				//console.log(id);
+				var count = 0;
+				console.log("hitttt");
+				console.log(dataSet);
+				if(dataSet.length == 0){
+					console.log(id);
+					var value = $("#" + id).val();
+					console.log(value);
+					$(".text").each(function(){
+
+						if($(this).attr('id') == xiaoJiId){
+							console.log($(this));
+							if(!isNaN(value)){
+								$(this).val(value);
+							}
+						}
+					});
+
+				}else{
+					var inputs = $("." + id).each(function(){
+						console.log($(this));
+						count += parseFloat($(this).val());
+						
+					});
+					console.log($("#"+xiaoJiId));
+					if(!isNaN(count)){
+						$("#"+xiaoJiId).val(count);
+					}
+				}
+			}
+		});
 });
 </script>
 
