@@ -955,8 +955,9 @@ td
 <input id="jinxiangzhangtai" type="button" value="进项账台" class="btn btn-success btn-sm" />
 	<!-- <input id="create_invoice" type="button" value="创建进项票" class="btn btn-success btn-sm" /> -->
 	 <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
-	 <input id="add" type="button" value="添加" class="btn btn-success btn-sm" />
+	 <br /><div><label>审核备注：</label><textarea id="beizhu"  style="margin-top: 2em;"></textarea></div>
 </div>
+
 <div id="container">
   <table width="6446.90" border="0" cellpadding="0" cellspacing="0" style='width:3223.45pt;border-collapse:collapse;table-layout:fixed;'>
    
@@ -1249,6 +1250,7 @@ var redirectView = "";
     }
 })(jQuery);
 var xiangmutaizhang_id = decodeURI($.getUrlParam('xiangmutaizhang_id'));
+var company_id = decodeURI($.getUrlParam('company_id'));
 var tds = $("#data-row0 td input");
 
 var tdsList = [];
@@ -1259,7 +1261,7 @@ for(var i = 0; i < tds.length; i++){
 console.log(tdsList);
 
 
-var query = {query_key: 'xiangmutaizhang_id', query_value: xiangmutaizhang_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
+var query = {query_key: 'companyId', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 $.post("/project/getModel", query, function(data){
 
 	
@@ -1277,6 +1279,9 @@ $.post("/project/getModel", query, function(data){
 					$("#" + key).addClass(key);
 				}
 			}
+			if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
+				$("#beizhu").val(dataSet[0]['beizhu']);
+			}
 		}else if(i > 0){
 
 			$("#data-row" + (i-1)).after("<tr class='datarow' id='data-row"+i+"' height='40.20' class='xl65' style='height:20.10pt;'>");
@@ -1285,6 +1290,9 @@ $.post("/project/getModel", query, function(data){
 				if(tdsList[j] != 'id'){
 					$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]  +'" style="width:100%" name="' + dataSet[i]['id']+'" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
 				}
+			}
+			if(dataSet[0]['beizhu'] != null && dataSet[i]['beizhu'] != ""){
+				$("#beizhu").val(dataSet[i]['beizhu']);
 			}
 		}
 	}
