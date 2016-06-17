@@ -48,6 +48,7 @@
 <!-- Container -->
 <div id="container">
 	<input id="mask" type="button" value="Mask"/>
+	<input id="node" type="button" value="Node"/>
 </div>
 
 <!-- Dialog -->
@@ -146,6 +147,15 @@
 			});
 		});
 
+		$("#node").click(function(){
+			//$('#left-menu').treeview('expandNode', [ 2, { levels: 1, silent: true } ]);
+			var node = $('#left-menu').treeview('getNode', 2);
+			$('#left-menu').treeview('selectNode', [ 2, { silent: true } ]);
+			var parent = $('#left-menu').treeview('getParent', node);
+			console.log(parent);
+			$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: 1, silent: true } ]);
+			
+		});
 
 </script>
 </body>

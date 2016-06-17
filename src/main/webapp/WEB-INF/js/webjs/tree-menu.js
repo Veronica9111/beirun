@@ -6,10 +6,13 @@
 $.post('/getMenu',{},function(dataSet){
 	var tree = $.parseJSON(dataSet.data);
 	$('#left-menu').treeview({data: tree});
-	$("#left-menu").click(function(){
+	console.log("hello");
+	$("#left-menu").on("click",function(){
+
 		var node = $('#left-menu').treeview('getSelected');
 
 		try{
+			console.log("nodeclick");
 			nodeClick(node[0]);
 		}catch(err){
 			//Don't need to react when the menu is clicked
