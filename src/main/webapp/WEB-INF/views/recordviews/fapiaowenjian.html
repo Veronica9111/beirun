@@ -948,7 +948,7 @@ td
 <!-- Container -->
 <div id="container">
 <input id=""  type="button" value="审核通过" class="btn btn-success btn-sm" />
-<table width="656" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:328.00pt;border-collapse:collapse;table-layout:fixed;'>
+<table id="invoice_info" width="656" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:328.00pt;border-collapse:collapse;table-layout:fixed;'>
 
    
    <tr height="28" style='height:14.00pt;'>
@@ -1246,6 +1246,21 @@ td
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
+
+<script type="text/javascript">
+	var query = {query_key:'company_idAndStatus', query_value:2, class_name:'PiaoJuWenJian'};
+	$.post("/project/getModel",query,function(data){
+		console.log(data);
+		var dataSet = $.parseJSON(data.data);
+		for(var index=0;index<dataSet.length;index++){
+			console.log("/home/beirun/invoice/"+dataSet[index].field3);
+			var tr = $('<tr height="28" style="height:14.00pt;"><td class="xl66" height="28" style="height:14.00pt;" x:str>'+dataSet[index].fapiaoriqi+'</td>'
+		    		  +'<td class="xl66" x:str>'+dataSet[index].fapiaohaoma+'</td><td class="xl66" x:str><a href="/home/beirun/invoice/'+dataSet[index].field3+'">点击查看发票</td>'
+		    		  +'<td class="xl66" x:str>'+dataSet[index].zhanbi+'%</td></tr>');
+			$('#invoice_info').append(tr);
+		}
+	});
+</script>
 
 <script type="text/javascript">
 var query = {query_key: 'id', query_value:1, class_name:'JinXiangFaPiaoMingXi_FaPiao'};

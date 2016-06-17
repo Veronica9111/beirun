@@ -14,4 +14,6 @@ public interface PiaoJuWenJianMapper {
 
 	List<PiaoJuWenJian> getPiaoJuWenJianByCompany_id(Long companyId);
 
+	List<PiaoJuWenJian> getPiaoJuWenJianByCompany_idAndStatus(Long companyId);
+
 }

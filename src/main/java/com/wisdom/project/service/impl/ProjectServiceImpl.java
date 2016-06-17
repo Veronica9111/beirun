@@ -1216,6 +1216,12 @@ public class ProjectServiceImpl implements IProjectService {
 			return jinXiangFaPiaoMingXi_FaPiaoMapper.getJinXiangFaPiaoMingXi_FaPiaoByXiangmutaizhang_id(xiangmutaizhang_id);
 		}
 
+		@Override
+		public List<PiaoJuWenJian> getPiaoJuWenJianByCompany_idAndStatus(Long companyId) {
+			// TODO Auto-generated method stub
+			return piaoJuWenJianMapper.getPiaoJuWenJianByCompany_idAndStatus(companyId);
+		}
+
 
 
 }

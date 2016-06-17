@@ -269,6 +269,8 @@ public interface IProjectService {
 	public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByXiangmutaizhang_id(Long xiangmutaizhang_id);
 
 	public List<PiaoJuWenJian> getPiaoJuWenJianByCompany_id(Long companyId);
+	
+	public List<PiaoJuWenJian> getPiaoJuWenJianByCompany_idAndStatus(Long companyId);
 
 
 }

@@ -32,6 +32,12 @@ from piaojuwenjian
 where company_id=#{company_id} and field1=0;
 </select>
 
+<select id="getPiaoJuWenJianByCompany_idAndStatus" resultType="PiaoJuWenJian">
+select fapiaoriqi,xiangmu,xiangmutaizhang_id,wenjian,field2,field3,field1,company_id,field4,field5,fapiaohaoma,zhanbi,id
+from piaojuwenjian
+where company_id=#{company_id} and field1=1;
+</select>
+
 <update id="updatePiaoJuWenJian">
 update piaojuwenjian set fapiaoriqi=#{fapiaoriqi},xiangmu=#{xiangmu},xiangmutaizhang_id=#{xiangmutaizhang_id},wenjian=#{wenjian},field2=#{field2},field3=#{field3},field1=#{field1},company_id=#{company_id},field4=#{field4},field5=#{field5},fapiaohaoma=#{fapiaohaoma},zhanbi=#{zhanbi},id=#{id}
 where id=#{id}
