@@ -1255,4 +1255,24 @@ public class ProjectController {
 		retMap.put("primary_id", String.valueOf(ret));
 		return retMap;
 	}
+	
+	@RequestMapping("/project/getUsers")
+	@ResponseBody
+	public Map<String, String> getUsers(HttpServletRequest request,
+			HttpSession httpSession) {
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+
+		Long companyId = Long.valueOf(request.getParameter("company_id"));
+		Map<String, User> Users = projectService.getUsers(companyId, uid);
+		String data = JSONArray.fromObject(Users).toString();
+		Map<String, String> retMap = new HashMap<>();
+		retMap.put("data", data);
+		return retMap;
+		
+	}
+	
+	
 }
+
+
+

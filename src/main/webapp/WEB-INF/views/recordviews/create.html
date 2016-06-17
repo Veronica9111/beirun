@@ -152,6 +152,10 @@
 			$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: 1, silent: true } ]);
 			
 		});
+		
+		$.post("/project/getUsers", {"company_id": 2}, function(data){
+			console.log(data);
+		})
 	    
 
 
