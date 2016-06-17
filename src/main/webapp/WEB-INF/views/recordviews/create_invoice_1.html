@@ -895,7 +895,8 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="create_new_project" disabled type="button" value="创建新项目" class="btn btn-success btn-sm" />
+	<!-- disabled delete 隐藏    add  style="display:none" -->
+	<input id="create_new_project" style="display:none" type="button" value="创建新项目" class="btn btn-success btn-sm" />
 	<input id="create_invoice" style="display:none;" type="button" value="创建开票申请" class="btn btn-success btn-sm" />
 	<input id="update_project_info"  style="display:none;" disabled type="button" value="更新基本信息" class="btn btn-success btn-sm" />
 </div>
@@ -1017,8 +1018,13 @@ td
 <script type="text/javascript">
 var create_project_company_id = "";
 var xiangmutaizhangIdParam = "";
-function startPageJS(){
+
 console.log(global);
+//点击根标签
+function clickRootNode() {
+	window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_zonggongsi_list.html&kaipiaoqingkuangbiao_zonggongsi_id="+1;
+}
+
 $("#create_new_project").on("click", function(){
 	var hetongleixing = $('input:checked', '#hetongleixing').val();
 	var hetongfukuanfangshi = $('input:checked', '#hetongfukuanfangshi').val();
@@ -1068,19 +1074,33 @@ $("#update_project_info").on("click", function(){
 		console.log(data);
 	});
 });
-}
+
 var xiangmubu = "";
 var fengongsimingcheng = "";
+//创建开票申请
 $("#create_invoice").click(function(){
 	var extraInfo = encodeURI("&fengongsimingcheng=" + fengongsimingcheng + "&xiangmubu=" + xiangmubu + "&company_id=" + create_project_company_id);
 	window.location.href="/project/redirectView?view=create_invoice_list_2.html&xiangmutaizhang_id="+xiangmutaizhangIdParam + extraInfo;
 });
+//创建新项目
+//$("#create_new_project").click(function(){
+//	var extraInfo = encodeURI("&fengongsimingcheng=" + fengongsimingcheng + "&xiangmubu=" + xiangmubu + "&company_id=" + create_project_company_id);
+//	window.location.href="/project/redirectView?view=create_invoice_list_3.html&xiangmutaizhang_id="+xiangmutaizhangIdParam + extraInfo;
+//});
 
 function nodeClick(node){
+	console.log("hola");
+	console.log(node);
 	var gongsimingchengNode = $("#fengongsimingcheng");
 	var xiangmubuNode = $("#xiangmubu");
 	if(xiangmubuNode != null || xiangmubuNode != undefined) {
+		//获取父标签 设置button隐藏
+		if(node.level == 0) {
+			$("#create_new_project").css("display", "none");
+			clickRootNode();
+		}
 		if(node.level == 1) {
+			$("#create_new_project").css("display", "");
 			$("#xiangmubu").val(node.text);
 			xiangmubu = node.text;
 		}
@@ -1099,7 +1119,7 @@ function nodeClick(node){
 		$("#container").hide();
 		$("#update_project_info").hide();
 		$("#create_invoice").hide();
-		$("#create_new_project").attr("disabled", "true");
+		//$("#create_new_project").attr("disabled", "true");
 		//清除表中数据
 	} else if(node.level == "1") {
 		create_project_company_id = node.company_id;
@@ -1135,6 +1155,11 @@ function nodeClick(node){
 		});
 	}
 }
+
+
+
+//创建新项目
+
 </script>
 
 </body>

@@ -296,29 +296,21 @@ public class ProjectController {
 
 	@RequestMapping("/project/redirectView")
 	public String redirectView(HttpServletRequest request) {
-		Map<String, String[]>  map = request.getParameterMap();
-		String param = "";
-		if(map != null) {
-			int index = 0;
-			for(Entry<String, String[]> entry : map.entrySet()) {
-				if(("view").equals(entry.getKey())) continue;
-				if(index == 0)
-					try {
-						param += entry.getKey() + "=" + URLEncoder.encode(entry.getValue()[0],"UTF-8");
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-				else
-					try {
-						param += "&" + entry.getKey() + "=" + URLEncoder.encode(entry.getValue()[0], "UTF-8");
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-				index++;
-			}
-		}
 		String view = request.getParameter("view");
-		return "redirect:/views/recordviews/" + view + "?" + param;
+		String queryString = request.getQueryString();
+		int pos1 = queryString.indexOf("view="+view+"&");
+		int pos2 = queryString.indexOf("view="+view);
+		if(pos1 != -1) {
+			queryString.replace("view="+view+"&", "").trim();
+		}
+		if(pos2 != -1) {
+			queryString.replace("view="+view, "").trim();
+		}
+		if(queryString.isEmpty()) {
+			return "redirect:/views/recordviews/" + view;
+		} else {
+			return "redirect:/views/recordviews/" + view + "?" + queryString;
+		}
 	}
 
 	@RequestMapping("/project/getAllProjectsForUser")
@@ -465,7 +457,7 @@ public class ProjectController {
 		Map<String, String> retMap = new HashMap<>();
 		Long companyId = Long.valueOf(request.getParameter("company_id")); 
 		List<KaiPiaoQingKuangBiao_ZongGongSi> KaiPiaoQingKuangBiaos = projectService
-				.getAllKaiPiaoQingKuangBiao_ZongGongSi(companyId);
+				.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);
 		List<List<Object>> retList = new ArrayList<>();
 		Integer count = 0;
 		for (KaiPiaoQingKuangBiao_ZongGongSi elem : KaiPiaoQingKuangBiaos) {
@@ -1235,8 +1227,32 @@ public class ProjectController {
 	}
 	
 	
-	
-	
-	
-	
+	@RequestMapping("/project/addKaiPiaoShenQingDan")
+	@ResponseBody
+	public Map<String, String> addKaiPiaoShenQingDan(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		Map<String, String> retMap = new HashMap<>();
+		String filePath = "/home/beirun/invoice";
+		String fileName = "";
+		if(file != null) {
+			String fileUnique = getUniqueIdentifier();
+			String fileOrignalName = file.getOriginalFilename();
+			fileName = fileUnique + fileOrignalName.substring(fileOrignalName.lastIndexOf("."));
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, fileName));
+			} catch (IOException e) {
+				logger.debug(e.toString());
+			}
+		}
+		Map<String, String[]> params = request.getParameterMap();
+		params.put("fapiaowenjian", new String[]{fileName});
+		String longClassName = "com.wisdom.common.model.KaiPiaoShenQingDan";
+		Class<?> c = Class.forName(longClassName);
+		Object instance = c.newInstance();
+		instance = setModel(instance, params, "partial");
+		Method m = projectService.getClass().getMethod("addKaiPiaoShenQingDan", instance.getClass());
+		Object ret = m.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		retMap.put("primary_id", String.valueOf(ret));
+		return retMap;
+	}
 }

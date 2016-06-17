@@ -21,7 +21,8 @@ private String tianbiaorendianhua;
 private Timestamp tianbiaoriqi;
 private Long kaipiaoqingkuangbiao_xiangmu_id;
 private String fuheren;
-public KaiPiaoShenQingDan(Long id, String fengongsimingcheng, String xiangmubu, String xiangmumingcheng, String hetongzongjine, Timestamp shenqingriqi, Double kaijufapiao, Double shouqikuanxiang, String wangongjindu, Double qita, String kaipiaoneirong, String tianbiaoren, String tianbiaorendianhua, Timestamp tianbiaoriqi, Long kaipiaoqingkuangbiao_xiangmu_id, String fuheren) {
+private String fapiaowenjian;
+public KaiPiaoShenQingDan(Long id, String fengongsimingcheng, String xiangmubu, String xiangmumingcheng, String hetongzongjine, Timestamp shenqingriqi, Double kaijufapiao, Double shouqikuanxiang, String wangongjindu, Double qita, String kaipiaoneirong, String tianbiaoren, String tianbiaorendianhua, Timestamp tianbiaoriqi, Long kaipiaoqingkuangbiao_xiangmu_id, String fuheren, String fapiaowenjian) {
 this.id=id;
 this.fengongsimingcheng=fengongsimingcheng;
 this.xiangmubu=xiangmubu;
@@ -38,6 +39,7 @@ this.tianbiaorendianhua=tianbiaorendianhua;
 this.tianbiaoriqi=tianbiaoriqi;
 this.kaipiaoqingkuangbiao_xiangmu_id=kaipiaoqingkuangbiao_xiangmu_id;
 this.fuheren=fuheren;
+this.fapiaowenjian = fapiaowenjian;
 }
 
 public void setId (Long id) {
@@ -176,6 +178,14 @@ this.fuheren=fuheren;
 
 public String getFuheren () {
 return this.fuheren;
+}
+
+public String getFapiaowenjian() {
+	return fapiaowenjian;
+}
+
+public void setFapiaowenjian(String fapiaowenjian) {
+	this.fapiaowenjian = fapiaowenjian;
 }
 
 

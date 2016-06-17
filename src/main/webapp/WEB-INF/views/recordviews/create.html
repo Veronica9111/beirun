@@ -48,6 +48,7 @@
 <!-- Container -->
 <div id="container">
 	<input id="mask" type="button" value="Mask"/>
+	<input id="node" type="button" value="Node"/>
 </div>
 
 <!-- Dialog -->
@@ -126,26 +127,30 @@
 	    	
 	    });
 	    
-	    
-		$('#mask').click(function(e){
-			e.preventDefault();
-			$('#bloadify').bload({
-				fadeInSpeed		: 600,
-				imagePath: '/js/webjs/bloading.gif',
-				fullScreen: true,
-				maskOpacity		: .6,
-				overlay : {
-					show		: true,
-					color: '#000',
-				}
-			},
-			function(bload){
-				setTimeout(function(){
-					bload.hide();
-				},3000);
-			});
+	    var bload = $('#bloadify').bload({
+			fadeInSpeed		: 600,
+			imagePath: '/js/webjs/bloading.gif',
+			fullScreen: true,
+			maskOpacity		: .6,
+			overlay : {
+				show		: true,
+				color: '#000',
+			}
 		});
 
+		$("#node").click(function(){
+			//$('#left-menu').treeview('expandNode', [ 2, { levels: 1, silent: true } ]);
+			var node = $('#left-menu').treeview('getNode', 2);
+			$('#left-menu').treeview('selectNode', [ 2, { silent: true } ]);
+			var parent = $('#left-menu').treeview('getParent', node);
+			console.log(parent);
+			$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: 1, silent: true } ]);
+			
+		});
+	    
+		setTimeout(function(){
+			bload.hide();
+		}, 4000);
 
 </script>
 </body>

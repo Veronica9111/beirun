@@ -29,8 +29,9 @@ private Timestamp hetongkaigongshijian;
 private Timestamp kaigongxukezhengshijian;
 private Timestamp yujiwangongshijian;
 private String hetongfukuanfangshi;
+private String hetongwenjian;
 private Long company_id;
-public XiangMuTaiZhang(Long id, String fengongsimingcheng, String xiangmubu, String danweimingcheng, String fadingdaibiaoren_lianxidianhua, String nashuirenshibiehao, String kaihuyinhang_yinhangzhanghao, String danweidizhi_lianxidianhua, String xiangmumingcheng, String xiangmufuzeren_lianxidianhua, String hetongleixing, String nashuileixing, String shuilv, String zhengshoulv, Double buhanshuijine, Double shuie, Double hejijine, Double juesuanjine, Double yujihetongzongchengben, Timestamp hetongqiandingshijian, Timestamp hetongkaigongshijian, Timestamp kaigongxukezhengshijian, Timestamp yujiwangongshijian, String hetongfukuanfangshi, Long company_id) {
+public XiangMuTaiZhang(Long id, String fengongsimingcheng, String xiangmubu, String danweimingcheng, String fadingdaibiaoren_lianxidianhua, String nashuirenshibiehao, String kaihuyinhang_yinhangzhanghao, String danweidizhi_lianxidianhua, String xiangmumingcheng, String xiangmufuzeren_lianxidianhua, String hetongleixing, String nashuileixing, String shuilv, String zhengshoulv, Double buhanshuijine, Double shuie, Double hejijine, Double juesuanjine, Double yujihetongzongchengben, Timestamp hetongqiandingshijian, Timestamp hetongkaigongshijian, Timestamp kaigongxukezhengshijian, Timestamp yujiwangongshijian, String hetongfukuanfangshi, Long company_id, String hetongwenjian) {
 this.id=id;
 this.fengongsimingcheng=fengongsimingcheng;
 this.xiangmubu=xiangmubu;
@@ -56,6 +57,7 @@ this.kaigongxukezhengshijian=kaigongxukezhengshijian;
 this.yujiwangongshijian=yujiwangongshijian;
 this.hetongfukuanfangshi=hetongfukuanfangshi;
 this.company_id=company_id;
+this.hetongwenjian = hetongwenjian;
 }
 
 public void setId (Long id) {
@@ -277,6 +279,14 @@ this.company_id=company_id;
 
 public Long getCompany_id () {
 return this.company_id;
+}
+
+public String getHetongwenjian() {
+	return hetongwenjian;
+}
+
+public void setHetongwenjian(String hetongwenjian) {
+	this.hetongwenjian = hetongwenjian;
 }
 
 
