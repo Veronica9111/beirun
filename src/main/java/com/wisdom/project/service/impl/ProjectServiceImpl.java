@@ -1032,6 +1032,12 @@ public class ProjectServiceImpl implements IProjectService {
 			// TODO Auto-generated method stub
 			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSi(companyId);
 		}
+		
+		@Override
+		public List<KaiPiaoQingKuangBiao_ZongGongSi> getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(Long companyId) {
+			// TODO Auto-generated method stub
+			return kaiPiaoQingKuangBiao_ZongGongSiMapper.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);
+		}
 
 		@Override
 		public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyId(Integer company_id) {

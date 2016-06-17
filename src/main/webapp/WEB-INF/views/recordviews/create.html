@@ -126,26 +126,20 @@
 	    	
 	    });
 	    
-	    
-		$('#mask').click(function(e){
-			e.preventDefault();
-			$('#bloadify').bload({
-				fadeInSpeed		: 600,
-				imagePath: '/js/webjs/bloading.gif',
-				fullScreen: true,
-				maskOpacity		: .6,
-				overlay : {
-					show		: true,
-					color: '#000',
-				}
-			},
-			function(bload){
-				setTimeout(function(){
-					bload.hide();
-				},3000);
-			});
+	    var bload = $('#bloadify').bload({
+			fadeInSpeed		: 600,
+			imagePath: '/js/webjs/bloading.gif',
+			fullScreen: true,
+			maskOpacity		: .6,
+			overlay : {
+				show		: true,
+				color: '#000',
+			}
 		});
-
+	    
+		setTimeout(function(){
+			bload.hide();
+		}, 4000);
 
 </script>
 </body>
