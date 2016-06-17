@@ -2,18 +2,17 @@ $(document).ready(function(){
 	$.post("/user/getRoles",{},function(data){
 		var roles = data.data;
 		if(roles.indexOf("开票人") != -1){
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/create_invoice_1.html">销项票</a></li>');
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/weikaijufapiaomingxi_yiban.html">销项其它信息</a></li>');
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/fapiaoshangchuan.html">进项票</a></li>');
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/budongchanfeiqidikoubiao.html">进项其它信息</a></li>');
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/xiaoxiangbiao.html">汇总信息</a></li>');
+			$("#navigator").append('<li><a class="link active" style="TEXT-DECORATION:none;" href="javascript:onKaiPiaoXiaoXiangClick();">销项票</a></li>');
+			//$("#navigator").append('<li><a class="link" href="/views/recordviews/weikaijufapiaomingxi_yiban.html">销项其它信息</a></li>');
+			$("#navigator").append('<li><a class="link" style="TEXT-DECORATION:none;" href="javascript:onKaiPiaoJinXiangClick();">进项票</a></li>');
+			//$("#navigator").append('<li><a class="link" href="/views/recordviews/budongchanfeiqidikoubiao.html">进项其它信息</a></li>');
+			//$("#navigator").append('<li><a class="link" href="/views/recordviews/xiaoxiangbiao.html">汇总信息</a></li>');
 		}
 		if(roles.indexOf("业务主任") !=-1){
 			$("#navigator").append('<li><a id="approve-nav" class="link" href="/views/recordviews/approval_invoice_list_2.html">审批销项</a></li>');
 			//$("#navigator").append('<li><a class="link" href="/views/recordviews/history_xiaoxiang.html">审批记录</a></li>');
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/fapiaowenjian.html">审批进项</a></li>');
 			$.post("/project/getUnApprovedKaiPiaoQingKuangBiao_XiangMuByUserCount", {}, function(data){
-
 				if(data.count != 0 || data.count != "0"){
 					console.log(data.count);
 					$("#approve-nav").html("审批消项<span id='message' class='label label-danger label-small label-as-badge'>" + data.count + "</span>");

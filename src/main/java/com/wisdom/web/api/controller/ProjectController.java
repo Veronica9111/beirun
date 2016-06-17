@@ -453,7 +453,6 @@ public class ProjectController {
 	@RequestMapping("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi")
 	@ResponseBody
 	public Map<String, String> getAllKaiPiaoQingKuangBiao_ZongGongSi(HttpServletRequest request) {
-
 		Map<String, String> retMap = new HashMap<>();
 		Long companyId = Long.valueOf(request.getParameter("company_id")); 
 		List<KaiPiaoQingKuangBiao_ZongGongSi> KaiPiaoQingKuangBiaos = projectService
@@ -473,7 +472,7 @@ public class ProjectController {
 			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
 			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
-			tmp.add(elem.getBeizhu());
+			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
 			if (elem.getYiji_shenhe_status() == 1) {
@@ -525,9 +524,9 @@ public class ProjectController {
 			tmp.add(elem.getWangongjindu());
 			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
 			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
-			//tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
-			tmp.add("");
-			tmp.add(elem.getBeizhu());
+			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
+			/*tmp.add("");
+			tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
 			if (elem.getYiji_shenhe_status() == 1) {
@@ -580,7 +579,7 @@ public class ProjectController {
 			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
 			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
-			tmp.add(elem.getBeizhu());
+			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
 			if (elem.getYiji_shenhe_status() == 1) {
@@ -1250,6 +1249,63 @@ public class ProjectController {
 		Object instance = c.newInstance();
 		instance = setModel(instance, params, "partial");
 		Method m = projectService.getClass().getMethod("addKaiPiaoShenQingDan", instance.getClass());
+		Object ret = m.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		retMap.put("primary_id", String.valueOf(ret));
+		return retMap;
+	}
+	
+	@RequestMapping("/project/updateXiangMuTaiZhangWithFile")
+	@ResponseBody
+	public Map<String, String> updateXiangMuTaiZhang(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		Map<String, String> retMap = new HashMap<>();
+		String filePath = "/home/beirun/invoice";
+		String fileName = "";
+		if(file != null) {
+			String fileUnique = getUniqueIdentifier();
+			String fileOrignalName = file.getOriginalFilename();
+			fileName = fileUnique + fileOrignalName.substring(fileOrignalName.lastIndexOf("."));
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, fileName));
+			} catch (IOException e) {
+				logger.debug(e.toString());
+			}
+		}
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		Map<String, String[]> params = request.getParameterMap();
+		params.put("hetongwenjian", new String[]{fileName});
+		Method m = projectService.getClass().getMethod("getXiangMuTaiZhangById", Long.class);
+		Object instance = m.invoke(projectService, Long.valueOf(id));
+		instance = setModel(instance, params, "full");
+		Method m2 = projectService.getClass().getMethod("updateXiangMuTaiZhang", instance.getClass());
+		m2.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		return retMap;
+	}
+	
+	@RequestMapping("/project/addXiangMuTaiZhangWithFile")
+	@ResponseBody
+	public Map<String, String> addXiangMuTaiZhangWithFile(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		Map<String, String> retMap = new HashMap<>();
+		String filePath = "/home/beirun/invoice";
+		String fileName = "";
+		if(file != null) {
+			String fileUnique = getUniqueIdentifier();
+			String fileOrignalName = file.getOriginalFilename();
+			fileName = fileUnique + fileOrignalName.substring(fileOrignalName.lastIndexOf("."));
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, fileName));
+			} catch (IOException e) {
+				logger.debug(e.toString());
+			}
+		}
+		Map<String, String[]> params = request.getParameterMap();
+		params.put("hetongwenjian", new String[]{fileName});
+		String longClassName = "com.wisdom.common.model.XiangMuTaiZhang";
+		Class<?> c = Class.forName(longClassName);
+		Object instance = c.newInstance();
+		instance = setModel(instance, params, "partial");
+		Method m = projectService.getClass().getMethod("addXiangMuTaiZhang", instance.getClass());
 		Object ret = m.invoke(projectService, instance);
 		retMap.put("status", "ok");
 		retMap.put("primary_id", String.valueOf(ret));
