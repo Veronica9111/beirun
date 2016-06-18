@@ -1258,16 +1258,13 @@ function hello() {
 }
 var tdsList = [];
 for(var i = 0; i < tds.length; i++){
-	//console.log(tds.get(i));
 	tdsList.push(tds.get(i).id);
 }
-console.log(tdsList);
 
 /* var query = {query_key: 'companyId', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'}; */
 var query = {companyId:company_id};
 $.post("/project/getJinXiangTaiZhangList", query, function(data){
 	var dataSet = $.parseJSON(data.data);
-	//console.log(dataSet);
 	for(var i = 0; i < dataSet.length; i++){
 		if(i == 0){
 			for(var key in dataSet[0]){
@@ -1307,7 +1304,6 @@ $.post("/project/getJinXiangTaiZhangList", query, function(data){
 			var id = oldId.replace("xiaoji_", "");
 			var count = 0;
 			var inputs = $("." + id).each(function(){
-				console.log($(this));
 				count += parseFloat($(this).val());
 				
 			});
@@ -1320,10 +1316,8 @@ $.post("/project/getJinXiangTaiZhangList", query, function(data){
 	
 		
 			var id = oldId.replace("xiaoji_", "fp_");
-			//console.log(id);
 			var count = 0;
 			var inputs = $("." + id).each(function(){
-				console.log($(this));
 				count += parseFloat($(this).val());
 				
 			});
@@ -1340,7 +1334,6 @@ $.post("/project/getJinXiangTaiZhangList", query, function(data){
 			var xiaojiId = "xiaoji_" + id;
 			var count = 0;
 			var inputs = $("." + id).each(function(){
-				console.log($(this));
 				count += parseFloat($(this).val());
 				
 			});
@@ -1352,18 +1345,12 @@ $.post("/project/getJinXiangTaiZhangList", query, function(data){
 			
 			
 				var xiaoJiId = id.replace("fp_", "xiaoji_");
-				//console.log(id);
 				var count = 0;
-				console.log("hitttt");
-				console.log(dataSet);
 				if(dataSet.length == 0){
-					console.log(id);
 					var value = $("#" + id).val();
-					console.log(value);
 					$(".text").each(function(){
 
 						if($(this).attr('id') == xiaoJiId){
-							console.log($(this));
 							if(!isNaN(value)){
 								$(this).val(value);
 							}
@@ -1372,11 +1359,9 @@ $.post("/project/getJinXiangTaiZhangList", query, function(data){
 
 				}else{
 					var inputs = $("." + id).each(function(){
-						console.log($(this));
 						count += parseFloat($(this).val());
 						
 					});
-					console.log($("#"+xiaoJiId));
 					if(!isNaN(count)){
 						$("#"+xiaoJiId).val(count);
 					}
@@ -1416,31 +1401,25 @@ function nodeClick(node){
 	if(currentSelectedNodeId == node.nodeId) return;
 	if(node.level == 0) { //一级节点
 		var zonggongsi_company_id = node.company_id; //获取company_id
-		console.log("总公司CompanyId:" + zonggongsi_company_id);
 		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_zonggongsi.html&company_id=" + zonggongsi_company_id + "&node_id="+node.nodeId;
 	} else if(node.level == 1) {
 		var fengongsi_company_id = node.company_id;
-		console.log("分公司CompanyId:" + fengongsi_company_id);
 		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_fengongsi.html&company_id=" + fengongsi_company_id + "&node_id="+node.nodeId;
 	} else if(node.level == 2) {
 		var xiangmubu_company_id = node.company_id;
-		console.log("项目部CompanyId:" + xiangmubu_company_id);
 		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_xiangmu.html&company_id=" + xiangmubu_company_id + "&node_id="+node.nodeId;
 	}
 }
 $("#modify").click(function() {
 	//var rows = $("tr .row");
-	console.log("click");
 	$(".datarow").each(function() {
 	var id = $(this).find("input")
 			.first().attr("name");
 	var status = $(this).find(
 			"input").first().val();
-	console.log(status);
 	var yiji_shenhe_status = (status == "未审核" ? 0
 			: (status == "审核通过" ? 1
 					: 2));
-	console.log(yiji_shenhe_status);
 	if (yiji_shenhe_status == 2) {
 		var beizhu = $('#beizhu').val();
 		dataSet = {
