@@ -1268,9 +1268,10 @@ for(var i = 0; i < tds.length; i++){
 console.log(tdsList);
 
 
-var query = {query_key: 'companyId', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
-$.post("/project/getModel", query, function(data){
-
+/* var query = {query_key: 'companyId', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
+$.post("/project/getModel", query, function(data){ */
+var query = {companyId:company_id};
+$.post("/project/getJinXiangTaiZhangList", query, function(data){
 	
 
 	var dataSet = $.parseJSON(data.data);

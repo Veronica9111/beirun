@@ -1249,6 +1249,8 @@ var redirectView = "";
     }
 })(jQuery);
 var xiangmuComapnyID = "";
+var fengongsiComapnyID = "";
+var zonggongsiComapnyID = "";
 var currentSelectedNodeId = "";
 function hello() {
 	var node_id = $.getUrlParam('node_id');
@@ -1560,12 +1562,16 @@ $("#add").click(function(){
 		dataSet['xiangmubu'] = $("#xiangmubu").val();
 		dataSet['tianbiaoren'] = $("#tianbiaoren").val();
 		dataSet['shenheren'] = $("#shenheren").val();
+		dataSet['yiji_shenhe_status'] = "0";
 		console.log(xiangmutaizhang_id);
 		console.log(company_id);
 		dataSet["xiangmutaizhang_id"] = 0;
 		dataSet["company_id"] = company_id;
-
 		$.post("/project/addModel", dataSet, function(data){});
+		/* dataSet["company_id"] = fengongsiComapnyID;
+		$.post("/project/addModel", dataSet, function(data){});
+		dataSet["company_id"] = zonggongsiComapnyID;
+		$.post("/project/addModel", dataSet, function(data){}); */
 		//console.log(id);
 		window.location = "/views/recordviews/jinxiangfapiaomingxi_fapiao_xiangmu.html?company_id=" + xiangmuComapnyID + "&node_id="+currentSelectedNodeId;
 	});

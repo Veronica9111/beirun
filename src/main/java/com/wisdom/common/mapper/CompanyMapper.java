@@ -11,6 +11,10 @@ public interface CompanyMapper {
 	List<Company> getCompaniesByUid(Integer uid);
 	Company getParentCompanyById(Integer id);
 	
+	List<Company> getXiangmuCompaniesByUid(Integer uid);
+	
+	List<Company> getChildCompanyById(Integer id);
+	
 	Integer addXiangMuCompany(Company company);
 }
 

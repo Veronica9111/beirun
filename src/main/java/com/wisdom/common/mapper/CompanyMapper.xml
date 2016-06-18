@@ -22,8 +22,17 @@
 	where uc.user_id = #{uid}
 </select>
 
+<select id="getXiangmuCompaniesByUid" resultType="Company">
+select id, name,parent_id, level, create_time from company where parent_id in (select b.id
+from user_company as a, company as b
+where a.user_id=#{uid} and a.company_id=b.id and b.level=1)
+</select>
+
 <select id="getParentCompanyById" resultType="Company">
 SELECT id, name, parent_id, level, create_time FROM company where id = (select parent_id from company where id = #{id});
+</select>
+<select id="getChildCompanyById" resultType="Company">
+SELECT id, name, parent_id, level, create_time FROM company where id in (select id from company where parent_id = #{id});
 </select>
 <insert id="addXiangMuCompany" parameterType="String"  useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 insert into company (name, parent_id, level, create_time)

@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -47,6 +48,7 @@ import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.Role;
 import com.wisdom.common.model.User;
+import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi;
 import com.wisdom.permission.service.IPermissionService;
@@ -175,7 +177,6 @@ public class ProjectController {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping("/project/getModel")
 	@ResponseBody
 	public Map<String, String> getModel(HttpServletRequest request)
@@ -184,8 +185,6 @@ public class ProjectController {
 		Map<String, String> retMap = new HashMap<>();
 		Map<String, String[]> params = request.getParameterMap();
 		String className = params.get("class_name")[0];
-		String longClassName = "com.wisdom.common.model." + className;
-		Class classType = Class.forName(longClassName);
 		String queryKey = params.get("query_key")[0];
 		String queryValue = params.get("query_value")[0];
 		queryKey = queryKey.substring(0, 1).toUpperCase() + queryKey.substring(1);
@@ -210,6 +209,70 @@ public class ProjectController {
 		retMap.put("status", "ok");
 		return retMap;
 
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/project/getJinXiangAuditList")
+	@ResponseBody
+	public Map<String, String> getJinXiangAuditList(HttpServletRequest request, HttpSession httpSession)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
+			SecurityException, ClassNotFoundException, InstantiationException {
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		Method m = projectService.getClass().getMethod("getXiangmuCompaniesByUid", Integer.class);
+		Object ret = m.invoke(projectService, uid);
+		@SuppressWarnings("unchecked")
+		List<JinXiangFaPiaoMingXi_FaPiao> dataList = new ArrayList<>();
+		List<Company> list = (List<Company>)ret;
+		for(Company com : list) {
+			m = projectService.getClass().getMethod("getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus", Long.class);
+			ret = m.invoke(projectService, Long.valueOf(com.getId()));
+			List<JinXiangFaPiaoMingXi_FaPiao> itemlist = (List<JinXiangFaPiaoMingXi_FaPiao>)ret;
+			dataList.addAll(itemlist);
+		}
+		Map<String, String> retMap = new HashMap<>();
+		String data = JSONArray.fromObject(dataList).toString();
+		retMap.put("data", data);
+		retMap.put("status", "ok");
+		return retMap;
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/project/getJinXiangTaiZhangList")
+	@ResponseBody
+	public Map<String, String> getJinXiangTaiZhangList(HttpServletRequest request, HttpSession httpSession)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
+			SecurityException, ClassNotFoundException, InstantiationException {
+		String comId = request.getParameter("companyId");
+		Integer companyId = Integer.valueOf(comId);
+		Method m = projectService.getClass().getMethod("getChildCompanyById", Integer.class);
+		Object ret = m.invoke(projectService, companyId);
+		List<Company> comList = (List<Company>)ret;
+		List<Company> finalList = new ArrayList<>();
+		for(Company com : comList) {
+			m = projectService.getClass().getMethod("getChildCompanyById", Integer.class);
+			ret = m.invoke(projectService, com.getId());
+			List<Company> li = (List<Company>)ret;
+			finalList.addAll(li);
+		}
+		if(comList.isEmpty()) {
+			Company c = new Company();
+			c.setId(companyId);
+			comList.add(c);
+		}
+		if(!finalList.isEmpty()) comList = finalList;
+		List<JinXiangFaPiaoMingXi_FaPiao> dataList = new ArrayList<>();
+		for(Company com : comList) {
+			m = projectService.getClass().getMethod("getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus", Long.class);
+			ret = m.invoke(projectService, Long.valueOf(com.getId()));
+			List<JinXiangFaPiaoMingXi_FaPiao> itemlist = (List<JinXiangFaPiaoMingXi_FaPiao>)ret;
+			dataList.addAll(itemlist);
+		}
+		Map<String, String> retMap = new HashMap<>();
+		String data = JSONArray.fromObject(dataList).toString();
+		retMap.put("data", data);
+		retMap.put("status", "ok");
+		return retMap;
 	}
 
 	private List<List<String>> generateDataTableData(Object obj) {
@@ -1284,7 +1347,7 @@ public class ProjectController {
 	
 	@RequestMapping("/project/addXiangMuTaiZhang")
 	@ResponseBody
-	public Map<String, String> addXiangMuTaiZhangWithFile(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+	public Map<String, String> addXiangMuTaiZhangWithFile(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request, HttpSession httpSession) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 		Map<String, String> retMap = new HashMap<>();
 		String filePath = "/home/beirun/invoice";
 		String fileName = "";
@@ -1297,7 +1360,7 @@ public class ProjectController {
 			} catch (IOException e) {
 				logger.debug(e.toString());
 			}
-		}
+		}		
 		Map<String, String[]> params = new HashMap<>();
 		params.put("name", request.getParameterValues("xiangmumingcheng"));
 		params.put("parent_id", request.getParameterValues("company_id"));
@@ -1319,6 +1382,16 @@ public class ProjectController {
 		instance = setModel(instance, params, "partial");
 		m = projectService.getClass().getMethod("addXiangMuTaiZhang", instance.getClass());
 		m.invoke(projectService, instance);
+		
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		longClassName = "com.wisdom.common.model.User_Company";
+		instance = new User_Company();
+		User_Company uc = (User_Company)instance;
+		uc.setCompany_id((Integer)compnyRet);
+		uc.setUser_id(uid);
+		m = projectService.getClass().getMethod("addUser_Company", instance.getClass());
+		m.invoke(projectService, instance);
+		
 		retMap.put("status", "ok");
 		retMap.put("primary_id", String.valueOf(compnyRet));
 		return retMap;

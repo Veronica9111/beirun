@@ -1022,9 +1022,21 @@ public class ProjectServiceImpl implements IProjectService {
 		}
 		
 		@Override
+		public List<Company> getXiangmuCompaniesByUid(Integer uid) {
+			return companyMapper.getXiangmuCompaniesByUid(uid);
+
+		}
+		
+		@Override
+		public List<Company> getChildCompanyById(Integer id) {
+			return companyMapper.getChildCompanyById(id);
+
+		}
+
+		@Override
 		public Integer addXiangMuCompany(Company company) {
 			companyMapper.addXiangMuCompany(company);
-			return 0;
+			return company.getId();
 		}
 
 		@Override

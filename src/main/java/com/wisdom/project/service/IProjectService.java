@@ -280,4 +280,7 @@ public interface IProjectService {
 	
 	public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus(Long companyId);
 	
+	public List<Company> getXiangmuCompaniesByUid(Integer uid);
+	
+	public List<Company> getChildCompanyById(Integer id);
 }
