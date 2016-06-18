@@ -277,6 +277,7 @@ public interface IProjectService {
 	public List<PiaoJuWenJian> getPiaoJuWenJianByCompany_idAndStatus(Long companyId);
 	
 	public Map<String, User> getUsers(Long companyId, Integer uid);
-
-
+	
+	public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus(Long companyId);
+	
 }

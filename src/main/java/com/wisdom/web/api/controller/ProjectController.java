@@ -995,7 +995,7 @@ public class ProjectController {
 	@RequestMapping("/project/sendTelInfo")
 	public String sendTelInfo(HttpServletRequest request, HttpSession httpSession) {
 		Map<String, String> retMap = new HashMap<>();
-		SMSSender.sendTemplateSMS("18601615517");
+		//SMSSender.sendTemplateSMS("18601615517");
 		return "";
 	}
 	
@@ -1013,13 +1013,13 @@ public class ProjectController {
 		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
 		User user = projectService.getUserById(uid);
 		String userName = user.getName();
-		if(("蒋中值").equals(userName)) {
+		/*if(("蒋中值").equals(userName)) {
 			SMSSender.sendTemplateSMS("18601615517");
 		} else if(("柴快长").equals(userName)) {
 			SMSSender.sendTemplateSMS("18601615517");
 		} else if(("小施").equals(userName)) {
 			SMSSender.sendTemplateSMS("18201897828");
-		}
+		}*/
 		KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu = projectService
 				.getKaiPiaoQingKuangBiao_XiangMuById(id);
 		KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi = projectService
