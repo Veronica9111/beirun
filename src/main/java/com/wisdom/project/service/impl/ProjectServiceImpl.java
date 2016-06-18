@@ -473,7 +473,7 @@ public class ProjectServiceImpl implements IProjectService {
 		 */
 		List<Map<String, Object>> retList = new ArrayList<>();
 		//List<Company> companies = companyMapper.getAllCompanies();
-		List<Object> thirdList = new ArrayList<>();
+		/*List<Object> thirdList = new ArrayList<>();
 		for(Integer i = 0; i < 5; i++){
 			Map<String, Object> thirdLeaf = new HashMap<>();
 			String text = "第三层菜单" + String.valueOf(i);
@@ -499,7 +499,7 @@ public class ProjectServiceImpl implements IProjectService {
 			firstLeaf.put("level", "3");
 			firstLeaf.put("nodes", secondList);
 			firstList.add(firstLeaf);
-		}
+		}*/
 		
 		List<Company> companies = new ArrayList<>();
 		List<Role> roles = roleMapper.getUserRoles(uid);
@@ -528,7 +528,7 @@ public class ProjectServiceImpl implements IProjectService {
 						tmpMap.put("text", subSubCompany.getName());
 						tmpMap.put("expanded", "false");
 						tmpMap.put("level", "2");
-						tmpMap.put("nodes", firstList);
+						/*tmpMap.put("nodes", firstList);*/
 						tmpMap.put("company_id", subSubCompany.getId());
 						tmpList.add(tmpMap);
 					}
@@ -1019,6 +1019,12 @@ public class ProjectServiceImpl implements IProjectService {
 		public List<Company> getCompaniesByUid(Integer uid) {
 			return companyMapper.getCompaniesByUid(uid);
 
+		}
+		
+		@Override
+		public Integer addXiangMuCompany(Company company) {
+			companyMapper.addXiangMuCompany(company);
+			return 0;
 		}
 
 		@Override

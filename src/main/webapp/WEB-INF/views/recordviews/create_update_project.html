@@ -905,8 +905,8 @@ td
    <tr height='28' style='height:14.00pt;'>
     <td class='xl66' height='28' colspan='2' style='text-align:left;height:14.00pt;border-right:none;border-bottom:none;' x:str>分公司名称：</td>
 	<td class='xl66' height='28' colspan='3' style='height:14.00pt;border-right:none;border-bottom:none;' x:str id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
-    <td class='xl67' colspan='2' style='border-right:none;border-bottom:none;' x:str>项目部：</td>
-	<td class='xl67' colspan='3' style='border-right:none;border-bottom:none;' x:str id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+    <!-- <td class='xl67' colspan='2' style='border-right:none;border-bottom:none;' x:str>项目部：</td>
+	<td class='xl67' colspan='3' style='border-right:none;border-bottom:none;' x:str id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td> -->
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' colspan='10' style='height:14.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>甲方基本信息情况表</td>
@@ -1017,7 +1017,9 @@ td
 </div>
 <div id="bloadify"> </div>
 <script type="text/javascript">
+var currentSelectedNodeId = "";
 var hetongwenjian = "";
+var xiangmubu = "";
 (function ($) {
     $.getUrlParam = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -1027,6 +1029,21 @@ var hetongwenjian = "";
 })(jQuery);
 var company_id = $.getUrlParam('company_id');
 var xiangmutaizhang_id = "";
+function hello() {
+	var node_id = $.getUrlParam('node_id');
+	currentSelectedNodeId = node_id;
+	var node = $('#left-menu').treeview('getNode', node_id);
+	console.log(node);
+	$('#left-menu').treeview('selectNode', [node, { silent: true } ]);
+	var parent = $('#left-menu').treeview('getParent', node);
+	if(node.level === 2) {
+		$("#fengongsimingcheng").val(node.text);
+	} else {
+		$("#fengongsimingcheng").val(parent.text);
+	}
+	console.log(parent);
+	$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);
+}
 $("#update_project_info").on("click", function(){
 	var hetongleixing = $('input:checked', '#hetongleixing').val();
 	var nashuileixing = $('input:checked', '#nashuileixing').val();
@@ -1042,8 +1059,7 @@ $("#update_project_info").on("click", function(){
 	dataSet["class_name"] = "XiangMuTaiZhang";
 	dataSet['company_id'] = company_id;
 	dataSet['id'] = xiangmutaizhang_id;
-	var fileInputValue = $('#hetongwenjian');
-	if(fileInputValue === hetongwenjian) {
+	if($('#hetongwenjian').val() == "") {
 		var bload = $('#bloadify').bload({
 			fadeInSpeed		: 600,
 			imagePath: '/js/webjs/bloading.gif',
@@ -1074,15 +1090,23 @@ $("#update_project_info").on("click", function(){
 				color: '#000',
 			}
 		});
-		xhr.open("post","/project/updateXiangMuTaiZhangWithFile", false);
+		xhr.open("post","/project/updateXiangMuTaiZhang", false);
 		xhr.send(fd);
 		bload.hide();
 	}
 });
-var query = {query_key: 'company_id', query_value:2, class_name:'XiangMuTaiZhang'};
+var query = {query_key: 'company_id', query_value:company_id, class_name:'XiangMuTaiZhang'};
 $.post("/project/getModel", query, function(data){
 	var data = $.parseJSON(data.data)[0];
 	for(key in data){
+		if(key == "hetongwenjian") {
+			hetongwenjian = data["hetongwenjian"];
+			continue;
+		}
+		if(key == "xiangmubu") {
+			xiangmubu = data[key];
+			continue;
+		}
 		if(key=="hetongleixing") {
 			$("input[type=radio][name=hetongleixing_select][value='"+data[key]+"']").attr("checked",true);  
 		} if(key=="nashuileixing") {
@@ -1094,9 +1118,27 @@ $.post("/project/getModel", query, function(data){
 			$("#" + key).val(data[key]);
 		}
 	}
-	hetongwenjian = data["hetongwenjian"];
 	xiangmutaizhang_id = data["id"];
 });
+$("#create_invoice").on("click", function() {
+	window.location.href = "/project/redirectView?view=create_invoice_2.html&company_id=" + company_id + "&node_id="+currentSelectedNodeId;
+});
+function nodeClick(node){
+	if(currentSelectedNodeId == node.nodeId) return;
+	if(node.level == 0) { //一级节点
+		var zonggongsi_company_id = node.company_id; //获取company_id
+		console.log("总公司CompanyId:" + zonggongsi_company_id);
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_zonggongsi_list.html&company_id=" + zonggongsi_company_id + "&node_id="+node.nodeId;
+	} else if(node.level == 1) {
+		var fengongsi_company_id = node.company_id;
+		console.log("分公司CompanyId:" + fengongsi_company_id);
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsi_company_id + "&node_id="+node.nodeId;
+	} else if(node.level == 2) {
+		var xiangmubu_company_id = node.company_id;
+		console.log("项目部CompanyId:" + xiangmubu_company_id);
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_xiangmu_list.html&company_id=" + xiangmubu_company_id + "&node_id="+node.nodeId;
+	}
+}
 </script>
 
 </body>

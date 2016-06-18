@@ -1073,6 +1073,9 @@ td
         if (r != null) return unescape(r[2]); return null;
     }
 })(jQuery);
+function hello() {
+	$('#left-menu').treeview('selectNode', [0, { silent: true } ]);
+}
 var kaipiaoqingkuangbiao_zonggongsi_IdParam = $.getUrlParam('company_id');
 function startPageJS(){
 	console.log(global);
@@ -1113,30 +1116,18 @@ function startPageJS(){
 	});
 }
 function nodeClick(node){
-	var gongsimingchengNode = $("#fengongsimingcheng");
-	var xiangmubuNode = $("#xiangmubu");
-	if(xiangmubuNode != null || xiangmubuNode != undefined) {
-		
-	}
-	if(gongsimingchengNode != null || gongsimingchengNode != undefined) {
-		if(node.level == 1) {
-			var parentNode = $('#left-menu').treeview('getParent', node);
-			$("#fengongsimingcheng").val(parentNode.text);
-			fengongsimingcheng = parentNode.text;
-		}
-	}
 	if(node.level == 0) { //一级节点
 		var zonggongsi_company_id = node.company_id; //获取company_id
 		console.log("总公司CompanyId:" + zonggongsi_company_id);
-		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_zonggongsi_list.html&company_id=" + zonggongsi_company_id;
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_zonggongsi_list.html&company_id=" + zonggongsi_company_id + "&node_id="+node.nodeId;
 	} else if(node.level == 1) {
 		var fengongsi_company_id = node.company_id;
 		console.log("分公司CompanyId:" + fengongsi_company_id);
-		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsi_company_id;
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsi_company_id + "&node_id="+node.nodeId;
 	} else if(node.level == 2) {
 		var xiangmubu_company_id = node.company_id;
 		console.log("项目部CompanyId:" + xiangmubu_company_id);
-		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_xiangmu_list.html&company_id=" + xiangmubu_company_id;
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_xiangmu_list.html&company_id=" + xiangmubu_company_id + "&node_id="+node.nodeId;
 	}
 }
 </script>

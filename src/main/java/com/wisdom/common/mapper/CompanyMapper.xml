@@ -25,4 +25,8 @@
 <select id="getParentCompanyById" resultType="Company">
 SELECT id, name, parent_id, level, create_time FROM company where id = (select parent_id from company where id = #{id});
 </select>
+<insert id="addXiangMuCompany" parameterType="String"  useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+insert into company (name, parent_id, level, create_time)
+values(#{name},#{parent_id},#{level},#{create_time})
+</insert>
 </mapper>

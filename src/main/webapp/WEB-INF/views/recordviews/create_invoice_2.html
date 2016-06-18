@@ -1099,7 +1099,7 @@ td
     <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='shouqikuanxiang'></td>
     <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='wangongjindu'></td>
     <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='qita'></td>
-    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='qita'></td>
+    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='fenbaoxiangmu'></td>
     <td class='xl87 detail_table' colspan='2'><input type="file" style='width:100%;' id='fapiaowenjian'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
@@ -1120,6 +1120,13 @@ td
 
 </body>
 <script type="text/javascript">
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+})(jQuery);
 Date.prototype.Format = function(formatStr) {
 	var str = formatStr;
 	var Week = ['日', '一', '二', '三', '四', '五', '六'];
@@ -1139,62 +1146,143 @@ Date.prototype.Format = function(formatStr) {
 	return str;
 }
 $('#shenqingriqi').val(new Date().Format("yyyy-MM-DD"));
+var currentSelectedNodeId = "";
+var xiangmuComapnyID = $.getUrlParam('company_id');;
+var fengongsiComapnyID = "";
+var zonggongsiComapnyID = "";
+var parentNodeId = "";
+function hello() {
+	var node_id = $.getUrlParam('node_id');
+	currentSelectedNodeId = node_id;
+	var node = $('#left-menu').treeview('getNode', node_id);
+	xiangmuComapnyID = node.company_id;
+	console.log(node);
+	$('#left-menu').treeview('selectNode', [node, { silent: true } ]);
+	var parent = $('#left-menu').treeview('getParent', node);
+	parentNodeId = parent.nodeId;
+	var parentParent = $('#left-menu').treeview('getParent', parent);
+	fengongsiComapnyID = parent.company_id;
+	zonggongsiComapnyID = parentParent.company_id;
+	$("#fengongsimingcheng").val(parent.text);
+	$("#xiangmubu").val(node.text);
+	console.log(parent);
+	$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);
+}
 function startPageJS(){
-	var query = {query_key: 'id', query_value:1, class_name:'XiangMuTaiZhang'};
+	var query = {query_key: 'company_id', query_value:xiangmuComapnyID, class_name:'XiangMuTaiZhang'};
 	$.post("/project/getModel", query, function(data){
 		var data = $.parseJSON(data.data)[0];
 		$('#fengongsimingcheng').val(data["fengongsimingcheng"]);
-		$('#xiangmubu').val(data["xiangmumingcheng"]);
 		$('#xiangmumingcheng').val(data["xiangmumingcheng"]);
 		$('#hetongzongjine').val(data["hejijine"]);
 	});
 	function saveData() {
+		var bload = $('#bloadify').bload({
+			fadeInSpeed		: 600,
+			imagePath: '/js/webjs/bloading.gif',
+			fullScreen: true,
+			maskOpacity	: .6,
+			overlay : {
+				show: true,
+				color: '#000',
+			}
+		});
+		var kaipiaoqingkuangbiao_xiangmu_id = "";
+		var kaijufapiao = $("#kaijufapiao").val();
+		var shouqikuanxiang = $("#shouqikuanxiang").val();
+		var wangongjindu = $("#wangongjindu").val();
+		var qita = $("#qita").val();
+		var fenbaofapiao = $("#fenbaoxiangmu").val();
+		var hejijine = 0;
+		if(kaijufapiao != "") {
+			hejijine += parseInt(kaijufapiao);
+		} else {
+			kaijufapiao = 0;
+		}
+		if(shouqikuanxiang != "") {
+			hejijine += parseInt(shouqikuanxiang);
+		} else {
+			shouqikuanxiang = 0;
+		}
+		if(wangongjindu != "") {
+			wangongjindu += parseInt(wangongjindu);
+		} else {
+			wangongjindu = 0;
+		}
+		if(qita != "") {
+			hejijine += parseInt(qita);
+		} else {
+			qita = 0;
+		}
+		if(fenbaofapiao != "") {
+			hejijine += parseInt(fenbaofapiao);
+		} else {
+			fenbaofapiao = 0;
+		}
 		var dataSet = {};
 		dataSet["class_name"] = "KaiPiaoQingKuangBiao_XiangMu";
 		dataSet["shengqingkaipiaoshijian"] = $('#shenqingriqi').val();
-		dataSet["xiangmutaizhang_id"] = "0";
+		dataSet["hejijine"] = hejijine;
+		dataSet["kaijufapiao"] = kaijufapiao;
+		dataSet["shouqikuanxiang"] = shouqikuanxiang;
+		dataSet["wangongjindu"] = wangongjindu;
+		dataSet["qita"] = qita;
+		dataSet["fenbaofapiao"] = fenbaofapiao;
+		dataSet["yikaipiaojine"] = hejijine;
 		dataSet["erji_shenhe_status"] = "0";
 		dataSet["yiji_shenhe_status"] = "0";
-		dataSet["company_id"] = "0";
+		dataSet["company_id"] = xiangmuComapnyID;
+		$.ajaxSetup({async : false});
 		$.post('/project/addModel', dataSet, function(data){
-			console.log(data);
-			var primary_key = data.primary_id;
-			dataSet = {};
-			$(".text").each(function(){
-				console.log($(this).attr('id'));
-				dataSet[$(this).attr('id')] = $(this).val();
-			});
-			dataSet["class_name"] = "KaiPiaoShenQingDan";
-			dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = primary_key;
-			dataSet["tianbiaoriqi"] = new Date().Format("yyyy-MM-DD");
-			var xhr = new XMLHttpRequest();
-			var fd = new FormData();
-			for(var JsonKey in dataSet){
-				fd.append(JsonKey, dataSet[JsonKey]);
-			}
-			fd.append("file",$('#fapiaowenjian')[0].files[0]);
-			var bload = $('#bloadify').bload({
-				fadeInSpeed		: 600,
-				imagePath: '/js/webjs/bloading.gif',
-				fullScreen: true,
-				maskOpacity	: .6,
-				overlay : {
-					show: true,
-					color: '#000',
-				}
-			});
-			xhr.open("post","/project/addKaiPiaoShenQingDan", false);
-			xhr.send(fd);
-			bload.hide();
-			//window.location="/project/redirectView?view=create_invoice_1.html";
+			kaipiaoqingkuangbiao_xiangmu_id = data.primary_id;
 		});
+		dataSet["class_name"] = "KaiPiaoQingKuangBiao_FenGongSi";
+		dataSet["company_id"] = fengongsiComapnyID;
+		$.ajaxSetup({async : false});
+		$.post('/project/addModel', dataSet, function(data){});
+		dataSet["class_name"] = "KaiPiaoQingKuangBiao_ZongGongSi";
+		dataSet["company_id"] = zonggongsiComapnyID;
+		$.ajaxSetup({async : false});
+		$.post('/project/addModel', dataSet, function(data){});
+		
+		dataSet = {};
+		$(".text").each(function(){
+			console.log($(this).attr('id'));
+			dataSet[$(this).attr('id')] = $(this).val();
+		});
+		dataSet["class_name"] = "KaiPiaoShenQingDan";
+		dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = kaipiaoqingkuangbiao_xiangmu_id;
+		dataSet["tianbiaoriqi"] = new Date().Format("yyyy-MM-DD");
+		var xhr = new XMLHttpRequest();
+		var fd = new FormData();
+		for(var JsonKey in dataSet){
+			fd.append(JsonKey, dataSet[JsonKey]);
+		}
+		fd.append("file",$('#fapiaowenjian')[0].files[0]);
+		xhr.open("post","/project/addKaiPiaoShenQingDan", false);
+		xhr.send(fd);
+		bload.hide();
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsiComapnyID + "&node_id="+parentNodeId;
 	}
 	$("#create_invoice").on("click", function(){
 		saveData();
 	});
 }
 function nodeClick(node){
-	console.log(node);
+	if(currentSelectedNodeId == node.nodeId) return;
+	if(node.level == 0) { //一级节点
+		var zonggongsi_company_id = node.company_id; //获取company_id
+		console.log("总公司CompanyId:" + zonggongsi_company_id);
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_zonggongsi_list.html&company_id=" + zonggongsi_company_id + "&node_id="+node.nodeId;
+	} else if(node.level == 1) {
+		var fengongsi_company_id = node.company_id;
+		console.log("分公司CompanyId:" + fengongsi_company_id);
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsi_company_id + "&node_id="+node.nodeId;
+	} else if(node.level == 2) {
+		var xiangmubu_company_id = node.company_id;
+		console.log("项目部CompanyId:" + xiangmubu_company_id);
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_xiangmu_list.html&company_id=" + xiangmubu_company_id + "&node_id="+node.nodeId;
+	}
 }
 </script>
 

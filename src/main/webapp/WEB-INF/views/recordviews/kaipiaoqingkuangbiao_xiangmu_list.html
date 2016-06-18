@@ -1055,8 +1055,9 @@ td
 
 <!-- Container -->
 <div id="container" >
-	<input id="create_invoice" type="button" style="style="margin-bottom:-20px;position:fixed;" value="创建开票申请" class="btn btn-success btn-sm" />
-	<input id="update_project_info" type="button" style="style="margin-bottom:-20px;position:fixed;" value="更新基本信息" class="btn btn-success btn-sm" />
+	<input id="create_invoice" type="button" style="z-index:99999;margin-bottom:-20px;position:fixed;" value="创建开票申请单" class="btn btn-success btn-sm" />
+	<input id="create_modify_project" type="button" style="z-index:9999999;margin-bottom:-20px;margin-left:120px;position:fixed;" value="修改项目基本信息" class="btn btn-success btn-sm" />
+	<!-- <input id="update_project_info" type="button" style="margin-bottom:-20px;position:fixed;" value="更新基本信息" class="btn btn-success btn-sm" /> -->
 <table id="history-table" class="display" >
 </table>
 </div>
@@ -1068,6 +1069,7 @@ td
 </div>
 
 <script type="text/javascript">
+var currentSelectedNodeId = "";
 (function ($) {
     $.getUrlParam = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -1076,6 +1078,16 @@ td
     }
 })(jQuery);
 var kaipiaoqingkuangbiao_xiangmu_IdParam = $.getUrlParam('company_id');
+function hello() {
+	var node_id = $.getUrlParam('node_id');
+	currentSelectedNodeId = node_id;
+	var node = $('#left-menu').treeview('getNode', node_id);
+	console.log(node);
+	$('#left-menu').treeview('selectNode', [node, { silent: true } ]);
+	var parent = $('#left-menu').treeview('getParent', node);
+	console.log(parent);
+	$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);
+}
 function startPageJS(){
 	console.log(global);
 	var query = {company_id:kaipiaoqingkuangbiao_xiangmu_IdParam};
@@ -1114,53 +1126,26 @@ function startPageJS(){
 		} );
 	});
 }
-$("#update_project_info").on("click", function(){
-	console.log($(".text"));
-	var hetongleixing = $('input:checked', '#hetongleixing').val();
-	var nashuileixing = $('input:checked', '#nashuileixing').val();
-	var hetongfukuanfangshi = $('input:checked', '#hetongfukuanfangshi').val();
-	console.log(hetongleixing);
-	console.log(hetongfukuanfangshi);
-	var dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-	dataSet['hetongleixing'] = hetongleixing;
-	dataSet['hetongfukuanfangshi'] = hetongfukuanfangshi;
-	dataSet['nashuileixing'] = nashuileixing;
-	dataSet["class_name"] = "XiangMuTaiZhang";
-	dataSet['company_id'] = create_project_company_id;
-	dataSet['id'] = xiangmutaizhangIdParam;
-	$.post('/project/modifyModel', dataSet, function(data){
-		console.log(data);
-	});
+$("#create_modify_project").on("click", function() {
+	window.location.href = "/project/redirectView?view=create_update_project.html&company_id=" + kaipiaoqingkuangbiao_xiangmu_IdParam + "&node_id="+currentSelectedNodeId;
+});
+$("#create_invoice").on("click", function() {
+	window.location.href = "/project/redirectView?view=create_invoice_2.html&company_id=" + kaipiaoqingkuangbiao_xiangmu_IdParam + "&node_id="+currentSelectedNodeId;
 });
 function nodeClick(node){
-	var gongsimingchengNode = $("#fengongsimingcheng");
-	var xiangmubuNode = $("#xiangmubu");
-	if(xiangmubuNode != null || xiangmubuNode != undefined) {
-		
-	}
-	if(gongsimingchengNode != null || gongsimingchengNode != undefined) {
-		if(node.level == 1) {
-			var parentNode = $('#left-menu').treeview('getParent', node);
-			$("#fengongsimingcheng").val(parentNode.text);
-			fengongsimingcheng = parentNode.text;
-		}
-	}
+	if(currentSelectedNodeId == node.nodeId) return;
 	if(node.level == 0) { //一级节点
 		var zonggongsi_company_id = node.company_id; //获取company_id
 		console.log("总公司CompanyId:" + zonggongsi_company_id);
-		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_zonggongsi_list.html&company_id=" + zonggongsi_company_id;
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_zonggongsi_list.html&company_id=" + zonggongsi_company_id + "&node_id="+node.nodeId;
 	} else if(node.level == 1) {
 		var fengongsi_company_id = node.company_id;
 		console.log("分公司CompanyId:" + fengongsi_company_id);
-		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsi_company_id;
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsi_company_id + "&node_id="+node.nodeId;
 	} else if(node.level == 2) {
 		var xiangmubu_company_id = node.company_id;
 		console.log("项目部CompanyId:" + xiangmubu_company_id);
-		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_xiangmu_list.html&company_id=" + xiangmubu_company_id;
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_xiangmu_list.html&company_id=" + xiangmubu_company_id + "&node_id="+node.nodeId;
 	}
 }
 </script>

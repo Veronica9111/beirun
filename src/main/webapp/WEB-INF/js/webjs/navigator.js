@@ -2,9 +2,9 @@ $(document).ready(function(){
 	$.post("/user/getRoles",{},function(data){
 		var roles = data.data;
 		if(roles.indexOf("开票人") != -1){
-			$("#navigator").append('<li><a class="link active" style="TEXT-DECORATION:none;" href="javascript:onKaiPiaoXiaoXiangClick();">销项票</a></li>');
+			$("#navigator").append('<li><a class="link active" style="TEXT-DECORATION:none;" href="/views/recordviews/kaipiaoqingkuangbiao_zonggongsi_list.html?company_id=1">销项票</a></li>');
 			//$("#navigator").append('<li><a class="link" href="/views/recordviews/weikaijufapiaomingxi_yiban.html">销项其它信息</a></li>');
-			$("#navigator").append('<li><a class="link" style="TEXT-DECORATION:none;" href="javascript:onKaiPiaoJinXiangClick();">进项票</a></li>');
+			$("#navigator").append('<li><a class="link" style="TEXT-DECORATION:none;" href="/views/recordviews/approval_invoice_list_2.html">进项票</a></li>');
 			//$("#navigator").append('<li><a class="link" href="/views/recordviews/budongchanfeiqidikoubiao.html">进项其它信息</a></li>');
 			//$("#navigator").append('<li><a class="link" href="/views/recordviews/xiaoxiangbiao.html">汇总信息</a></li>');
 		}

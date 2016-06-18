@@ -301,10 +301,9 @@ public class ProjectController {
 		int pos1 = queryString.indexOf("view="+view+"&");
 		int pos2 = queryString.indexOf("view="+view);
 		if(pos1 != -1) {
-			queryString.replace("view="+view+"&", "").trim();
-		}
-		if(pos2 != -1) {
-			queryString.replace("view="+view, "").trim();
+			queryString = queryString.replace("view="+view+"&", "").trim();
+		} else if(pos2 != -1) {
+			queryString = queryString.replace("view="+view, "").trim();
 		}
 		if(queryString.isEmpty()) {
 			return "redirect:/views/recordviews/" + view;
@@ -1088,7 +1087,7 @@ public class ProjectController {
 				Object ret = m.invoke(model, Long.valueOf(arg));
 				continue;
 			}
-			if (entry.getKey().indexOf("_id") != -1) {
+			if (entry.getKey().indexOf("_id") != -1 && !("parent_id").equals(entry.getKey())) {
 				Long argI = Long.valueOf(arg);
 				m = model.getClass().getMethod(methodName, Long.class);
 				Object ret = m.invoke(model, argI);
@@ -1255,7 +1254,7 @@ public class ProjectController {
 		return retMap;
 	}
 	
-	@RequestMapping("/project/updateXiangMuTaiZhangWithFile")
+	@RequestMapping("/project/updateXiangMuTaiZhang")
 	@ResponseBody
 	public Map<String, String> updateXiangMuTaiZhang(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 		Map<String, String> retMap = new HashMap<>();
@@ -1283,7 +1282,7 @@ public class ProjectController {
 		return retMap;
 	}
 	
-	@RequestMapping("/project/addXiangMuTaiZhangWithFile")
+	@RequestMapping("/project/addXiangMuTaiZhang")
 	@ResponseBody
 	public Map<String, String> addXiangMuTaiZhangWithFile(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 		Map<String, String> retMap = new HashMap<>();
@@ -1299,16 +1298,29 @@ public class ProjectController {
 				logger.debug(e.toString());
 			}
 		}
-		Map<String, String[]> params = request.getParameterMap();
-		params.put("hetongwenjian", new String[]{fileName});
-		String longClassName = "com.wisdom.common.model.XiangMuTaiZhang";
+		Map<String, String[]> params = new HashMap<>();
+		params.put("name", request.getParameterValues("xiangmumingcheng"));
+		params.put("parent_id", request.getParameterValues("company_id"));
+		params.put("level", new String[]{"2"});
+		params.put("create_time", new String[]{new Timestamp(System.currentTimeMillis()).toString().substring(0, 10)});
+		String longClassName = "com.wisdom.common.model.Company";
 		Class<?> c = Class.forName(longClassName);
 		Object instance = c.newInstance();
 		instance = setModel(instance, params, "partial");
-		Method m = projectService.getClass().getMethod("addXiangMuTaiZhang", instance.getClass());
-		Object ret = m.invoke(projectService, instance);
+		Method m = projectService.getClass().getMethod("addXiangMuCompany", instance.getClass());
+		Object compnyRet = m.invoke(projectService, instance);
+		
+		params = request.getParameterMap();
+		params.put("hetongwenjian", new String[]{fileName});
+		params.put("company_id", new String[]{String.valueOf(compnyRet)});
+		longClassName = "com.wisdom.common.model.XiangMuTaiZhang";
+		c = Class.forName(longClassName);
+		instance = c.newInstance();
+		instance = setModel(instance, params, "partial");
+		m = projectService.getClass().getMethod("addXiangMuTaiZhang", instance.getClass());
+		m.invoke(projectService, instance);
 		retMap.put("status", "ok");
-		retMap.put("primary_id", String.valueOf(ret));
+		retMap.put("primary_id", String.valueOf(compnyRet));
 		return retMap;
 	}
 	
