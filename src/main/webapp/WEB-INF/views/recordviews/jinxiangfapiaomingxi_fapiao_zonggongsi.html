@@ -1283,25 +1283,22 @@ $.post("/project/getJinXiangTaiZhangList", query, function(data){
 					$("#" + key).addClass(key);
 				}
 			}
-			if (dataSet[0]['beizhu'] != null&& dataSet[0]['beizhu'] != "") {
-				$("#beizhu").val(dataSet[0]['beizhu']);
-			}
 		}else if(i > 0){
-			$("#data-row" + (i - 1)).after("<tr class='datarow' id='data-row"+i+"' height='40.20' class='xl65' style='height:20.10pt;'>");
-			//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
-			for (var j = 0; j < tdsList.length; j++) {
-				if (tdsList[j] != 'id') {
-					if (j == 0) {
-						$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]+ '" style="width:100%" name="'+ dataSet[i]['id']+ '" id="'+ tdsList[j]+ '" value="'+ (dataSet[i][tdsList[j]] == 0 ? "未审核": (dataSet[i][tdsList[j]] == 1 ? "审核通过": "审核未通过"))+ '"></td>');
-					} else {
-						$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]+ '" style="width:100%" name="'+ dataSet[i]['id']+ '" id="'+ tdsList[j]+ '" value="'+ dataSet[i][tdsList[j]]+ '"></td>');
-					}
+		$("#data-row" + (i - 1)).after("<tr class='datarow' id='data-row"+i+"' height='40.20' class='xl65' style='height:20.10pt;'>");
+		//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
+		for (var j = 0; j < tdsList.length; j++) {
+			if (tdsList[j] != 'id') {
+				if (j == 0) {
+					$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]+ '" style="width:100%" name="'+ dataSet[i]['id']+ '" id="'+ tdsList[j]+ '" value="'+ (dataSet[i][tdsList[j]] == 0 ? "未审核": (dataSet[i][tdsList[j]] == 1 ? "审核通过": "审核未通过"))+ '"></td>');
+				} else {
+					$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]+ '" style="width:100%" name="'+ dataSet[i]['id']+ '" id="'+ tdsList[j]+ '" value="'+ dataSet[i][tdsList[j]]+ '"></td>');
 				}
 			}
-			if (dataSet[0]['beizhu'] != null&& dataSet[i]['beizhu'] != "") {
-					$("#beizhu").val(dataSet[i]['beizhu']);
-				}
+		}
+		if (dataSet[0]['beizhu'] != null&& dataSet[i]['beizhu'] != "") {
+				$("#beizhu").val(dataSet[i]['beizhu']);
 			}
+		}
 	}
 	$("#xiaoji td input").each(function(){
 
