@@ -1720,7 +1720,6 @@ td {
 					for ( var key in dataSet[0]) {
 						$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	
 						$('#xiangmubu').val(dataSet[0]['xiangmubu']);
-					}
 						if (key == "yiji_shenhe_status") {
 							$("#" + key).val((dataSet[0][key] == 0 ? "未审核": (dataSet[0][key] == 1 ? "审核通过": "审核未通过")));            
 						} else {
@@ -1729,13 +1728,9 @@ td {
 						if (key != "id") {
 							$("#" + key).attr("name",dataSet[0]['id']);
 							$("#" + key).addClass(key);
+							}
 						}
-					}
-					if (dataSet[0]['beizhu'] != null
-							&& dataSet[0]['beizhu'] != "") {
-						$("#beizhu").val(dataSet[0]['beizhu']);
-					}
-				} else if (i > 0) {
+					}else if (i > 0) {
 			
 					$("#data-row" + (i - 1)).after("<tr class='datarow' id='data-row"+i+"' height='40.20' class='xl65' style='height:20.10pt;'>");
 					//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
