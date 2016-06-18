@@ -1150,9 +1150,10 @@ Date.prototype.Format = function(formatStr) {
 }
 $('#shenqingriqi').val(new Date().Format("yyyy-MM-DD"));
 var currentSelectedNodeId = "";
-var xiangmuComapnyID = $.getUrlParam('company_id');;
+var xiangmuComapnyID = $.getUrlParam('company_id');
 var fengongsiComapnyID = "";
 var zonggongsiComapnyID = "";
+var priId = $.getUrlParam('id');
 var parentNodeId = "";
 function hello() {
 	var node_id = $.getUrlParam('node_id');
@@ -1172,7 +1173,7 @@ function hello() {
 	$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);
 }
 function startPageJS(){
-	var query = {query_key: 'company_id', query_value:xiangmuComapnyID, class_name:'XiangMuTaiZhang'};
+	var query = {query_key: 'kaipiaoqingkuangbiao_xiangmu_id', query_value:priId, class_name:'KaiPiaoShenQingDan'};
 	$.post("/project/getModel", query, function(data){
 		var data = $.parseJSON(data.data)[0];
 		$('#fengongsimingcheng').val(data["fengongsimingcheng"]);
