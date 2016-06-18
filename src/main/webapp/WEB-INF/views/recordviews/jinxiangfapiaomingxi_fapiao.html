@@ -960,9 +960,9 @@ td
 
 <div id="container">
   <table width="6446.90" border="0" cellpadding="0" cellspacing="0" style='width:3223.45pt;border-collapse:collapse;table-layout:fixed;'>
-   
    <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
     <td class="xl66" height="40.20" width="5590.10" colspan="59" style='height:20.10pt;width:2795.05pt;border-right:none;border-bottom:none;' x:str>进项发票明细（发票）</td>
+    <td class="xl66" width="93.50" style='width:46.75pt;'></td>
     <td class="xl66" width="93.50" style='width:46.75pt;'></td>
     <td class="xl66" width="83.90" style='width:41.95pt;'></td>
     <td class="xl66" width="97.60" style='width:48.80pt;'></td>
@@ -984,6 +984,7 @@ td
     <td class="xl65" colspan="4" style='mso-ignore:colspan;'></td>
    </tr>
    <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
+    <td class="xl68" height="154.20" rowspan="3" style='height:77.10pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>审核状态</td>
     <td class="xl68" height="154.20" rowspan="3" style='height:77.10pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>发票开具时间</td>
     <td class="xl68" rowspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>发票号码</td>
     <td class="xl68" rowspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>销货单位名称</td>
@@ -1091,6 +1092,7 @@ td
     <td class="xl68" x:str>进项税额</td>
    </tr>
    <tr id="data-row0" class="datarow" height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
+    <td class="xl69" height="40.20" style='height:20.10pt;'><input style='width:100%;'  id='yiji_shenhe_status' class="text"></td>
     <td class="xl69" height="40.20" style='height:20.10pt;'><input style='width:100%;'  id='fapiaokaijushijian' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='fapiaohaoma' class="text"></td>
     <td class="xl69"><input style='width:100%;' id='xiaohuodanweimingcheng' class="text"></td>
@@ -1160,6 +1162,7 @@ td
    </tr>
    <tr height="40.20" id="xiaoji" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
     <td class="xl70" height="40.20" style='height:20.10pt;' x:str>小计</td>
+    <td class="xl70"></td>
     <td class="xl70"></td>
     <td class="xl70"></td>
     <td class="xl70"></td>
@@ -1271,9 +1274,11 @@ $.post("/project/getModel", query, function(data){
 	for(var i = 0; i < dataSet.length; i++){
 		if(i == 0){
 			for(var key in dataSet[0]){
-				//console.log(key);
-				//console.log(dataSet[0][key]);
-				$("#" + key).val(dataSet[0][key]);
+				if(key == "yiji_shenhe_status"){
+					$("#" + key).val((dataSet[0][key]==0?"未审核":(dataSet[0][key]==1?"审核通过":"审核未通过")));
+				}else{
+					$("#" + key).val(dataSet[0][key]);
+				}
 				if(key != "id"){
 					$("#" + key).attr("name", dataSet[0]['id']);
 					$("#" + key).addClass(key);
@@ -1288,7 +1293,11 @@ $.post("/project/getModel", query, function(data){
 			//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
 			for(var j = 0; j< tdsList.length; j++){
 				if(tdsList[j] != 'id'){
+					if(j==0){
+						$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]  +'" style="width:100%" name="' + dataSet[i]['id']+'" id="'+ tdsList[j]+'" value="'+ (dataSet[i][tdsList[j]]==0?"未审核":(dataSet[i][tdsList[j]]==1?"审核通过":"审核未通过")) +'"></td>');
+					}else{
 					$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]  +'" style="width:100%" name="' + dataSet[i]['id']+'" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
+					}
 				}
 			}
 			if(dataSet[0]['beizhu'] != null && dataSet[i]['beizhu'] != ""){
@@ -1407,24 +1416,18 @@ $("#modify").click(function(){
 	//var rows = $("tr .row");
 	console.log("click");
 	$(".datarow").each(function(){
-		console.log("here");
-		var inputs = $(this).find("input");
-		console.log(inputs);
 		var id = $(this).find("input").first().attr("name");
-		var dataSet = {};
-		$(this).find("input").each(function(){
-			dataSet[$(this).attr("id")] = $(this).val();
-		});
-		dataSet['id'] = id;
-		dataSet['class_name'] = 'JinXiangFaPiaoMingXi_FaPiao';
-		//dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
-		dataSet['shenheren'] = $("#shenheren").val();
-		dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
-		dataSet["beizhu"] = $("#beizhu").val();
-		//dataSet["xiangmutaizhang_id"] = xiangmutaizhang_id;
-		console.log(dataSet);
-		$.post("/project/modifyModel", dataSet, function(data){});
-		//console.log(id);
+		var status = $(this).find("input").first().val();
+		console.log(status);
+		var yiji_shenhe_status = (status=="未审核"?0:(status=="审核通过"?1:2));
+		console.log(yiji_shenhe_status);
+		if(yiji_shenhe_status == 2){
+			var beizhu = $('#beizhu').val();
+			dataSet = {id:id,yiji_shenhe_status:0,class_name:'JinXiangFaPiaoMingXi_FaPiao',beizhu:beizhu};
+			$.ajaxSetup({async : false});
+			$.post("/project/modifyModel", dataSet, function(data){});
+		}
+		location.reload(true);
 	});
 
 	
