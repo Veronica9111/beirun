@@ -20,7 +20,6 @@ $(document).ready(function(){
 
 				
 			});
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/xiaoxiangbiao.html">汇总信息</a></li>');
 		}
 		if(roles.indexOf("分管所长") != -1){
 			/*
