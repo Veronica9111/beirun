@@ -18,6 +18,7 @@
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
 <script src="/js/webjs/global.js"></script>
+<script type="text/javascript" src="/js/webjs/bload.js"></script>
 <style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
@@ -1037,12 +1038,7 @@ td
 		margin-left:27vw;
 		margin-top: 50px;
 	}
-    .text{
-		background-color:white;
-		border:none;
-		width:100%;
-		height:100%;
-	}
+
 </style>
 </head>
 
@@ -1058,66 +1054,53 @@ td
 <div id="left-menu"></div>
 
 <!-- Container -->
-<div id="dialog">
-	<div style="height:70px;">
-	<label>发票类型选择</label>
-	<form id='fapiaokaijuleixing' style='height:20px;line-height:20px;'>
-  		<input type='radio' name='fapiaokaijuleixing_select' value='zhuanyong' checked>增值税专用发票<br>
-  		<input type='radio' name='fapiaokaijuleixing_select' value='pupiao'>增值税普通发票
-	</form>
-	</div>
-	<div id="shouruquerenfangshi_form" style="display:none;height:60px;">
-	<label>收入确认方式</label>
-	<form id='shouruquerenfangshi' style='height:20px;line-height:20px;'>
-  		<input type='radio' name='shouruquerenfangshi_select' value='chenbenzhanbi' checked>已发生成本占比法<br>
-  		<input type='radio' name='shouruquerenfangshi_select' value='laowushijianzhanbi'>劳务时间占比法<br>
-  		<input type='radio' name='shouruquerenfangshi_select' value='gongzuoliang'>已完工工作量法<br>
-  		<input type='radio' name='shouruquerenfangshi_select' value='qita'>其它<br>
-	</form>
-	</div>
-</div>
+
 <div id="but_position">
-	<!-- <input id="modify_invoice" type="button" value="保存申请单修改" class="btn btn-success btn-sm" /> -->
+	<input id="create_invoice" type="button" value="提交开票申请单" class="btn btn-success btn-sm" />
 </div>
 <div id="container">
-
 <table width='1097' border='0' cellpadding='0' cellspacing='0' style='width:548.50pt;border-collapse:collapse;table-layout:fixed;'>
   <tr height='35' style='height:17.50pt;'>
-    <td class='xl65' height='35' width='1097' colspan='6' style='height:17.50pt;width:548.50pt;border-right:none;border-bottom:none;' x:str>开票申请单</td>
+    <td class='xl65' height='35' width='1097' colspan='10' style='height:17.50pt;width:548.50pt;border-right:none;border-bottom:none;' x:str>开票申请单</td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl66' height='28' style='height:14.00pt;' x:str>分公司名称：</td>
-    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
-    <td class='xl67' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;'></td>
-    <td class='xl66' x:str>项目部：</td>
-    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+    <td class='xl66' id='' colspan='4'><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' value="" id='fengongsimingcheng'></td>
+    <td class='xl66' x:str>项目名称：</td>
+    <td class='xl66' id='' colspan='4'><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' value="" id='xiangmubu'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='height:14.00pt;' x:str>项目名称</td>
-    <td class='xl69' colspan='2' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='xiangmumingcheng'></td>
+    <td class='xl69' colspan='3' style='border-right:none;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' value="" id='xiangmumingcheng'></td>
     <td class='xl71' x:str>合同总金额</td>
-    <td class='xl71' colspan='2' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' id='hetongzongjine'></td>
+    <td class='xl71' colspan='5' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' id=''><input class="text" style='width:100%;' value=""  id='hetongzongjine'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl73' height='112' rowspan='4' style='height:56.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请日期</td>
     <td class='xl74' rowspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开票内容</td>
-    <td class='xl75' colspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请开票金额 （含税）</td>
+    <td class='xl74' rowspan='4' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>是否为<br>上期已缴税</td>
+    <td class='xl75' colspan='7' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请开票金额 （含税）</td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl79' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开具发票</td>
     <td class='xl80' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>收讫款项</td>
     <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>完工进度</td>
     <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>其他</td>
+    <td class='xl73' rowspan='3' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>分包项目</td>
+    <td class='xl73' rowspan='3' colspan='2' style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>票据文件</td>
    </tr>
    <tr height='28' style='height:14.00pt;'/>
    <tr height='28' style='height:14.00pt;'/>
    <tr height='28' style='height:14.00pt;'>
-    <td class='xl87' height='28' style='height:14.00pt;' id=''><input class="text" style='width:100%;' id='shenqingriqi'></td>
-    <td class='xl87' id=''><input class="text" style='width:100%;' id='kaipiaoneirong'></td>
-    <td class='xl87 detail_table' name='kaijufapiao' derect_view='create_invoice_pupiao_3.html'><input class="text" disabled style='width:100%;' id='kaijufapiao'></td>
-    <td class='xl87 detail_table' name='shouqikuanxiang' derect_view='create_invoice_shouqikuanxiang_3.html'><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
-    <td class='xl87 detail_table' name='wangongjindu' derect_view='jindu'><input class="text" disabled style='width:100%;' id='wangongjindu'></td>
-    <td class='xl87 detail_table' name='qita' derect_view='qita'><input class="text" disabled style='width:100%;' id='qita'></td>
+    <td class='xl87' height='28' style='height:14.00pt;' id=''><input value="" class="text" style='width:100%;' id='shenqingriqi'></td>
+    <td class='xl87' id=''><input class="text" style='width:100%;'  id='kaipiaoneirong'></td>
+    <td class='xl87' id=''><input type="radio" name="yijiaoshui" checked>否<input type="radio" name="yijiaoshui">是</td>
+    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='kaijufapiao'></td>
+    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='shouqikuanxiang'></td>
+    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='wangongjindu'></td>
+    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='qita'></td>
+    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='fenbaoxiangmu'></td>
+    <td class='xl87 detail_table' colspan='2'><input type="file" style='width:100%;' id='fapiaowenjian'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='border:none;height:14.00pt;' x:str>填表人：</td>
@@ -1133,11 +1116,13 @@ td
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
   </div>
 </div>
-
+<div id="bloadify"> </div>
 
 </body>
 <script type="text/javascript">
-var redirectView = "";
+function navJinXiao() {
+	$($(".nav_xiaoxiang")[0]).addClass("active");
+}
 (function ($) {
     $.getUrlParam = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -1145,108 +1130,162 @@ var redirectView = "";
         if (r != null) return unescape(r[2]); return null;
     }
 })(jQuery);
-var xiangmutaizhangIdParam = $.getUrlParam('xiangmutaizhangIdParam');
-var gongsimingchengInfo = decodeURI($.getUrlParam('fengongsimingcheng'));
-var xiangmubuInfo = decodeURI($.getUrlParam('xiangmubu'));
-var id = decodeURI($.getUrlParam('id'));
-console.log(id);
-var query = {query_key: 'kaipiaoqingkuangbiao_xiangmu_id', query_value:id, class_name:'KaiPiaoShenQingDan'};
-
-$.post("/project/getModel", query, function(data){
-	console.log(data);
-	var dataSet = $.parseJSON(data.data);
-	kaipiaoshenqingdan_id = dataSet[0]["id"];
-	for(key in dataSet[0]){
-		console.log(key);
-		$("#" + key).val(dataSet[0][key]);
-	}
-	$(".text").each(function(){
-		$(this).prop("disabled", true);
+Date.prototype.Format = function(formatStr) {
+	var str = formatStr;
+	var Week = ['日', '一', '二', '三', '四', '五', '六'];
+	str = str.replace(/yyyy|YYYY/, this.getFullYear());
+	str = str.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this.getYear() % 100).toString() : '0' + (this.getYear() % 100));
+	str = str.replace(/MM/, (this.getMonth() + 1) > 9 ? (this.getMonth() + 1).toString() : '0' + (this.getMonth()+1));
+	str = str.replace(/M/g, this.getMonth());
+	str = str.replace(/w|W/g, Week[this.getDay()]);
+	str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' + this.getDate());
+	str = str.replace(/d|D/g, this.getDate());
+	str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString() : '0' + this.getHours());
+	str = str.replace(/h|H/g, this.getHours());
+	str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes().toString() : '0' + this.getMinutes());
+	str = str.replace(/m/g, this.getMinutes());
+	str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' + this.getSeconds());
+	str = str.replace(/s|S/g, this.getSeconds());
+	return str;
+}
+$('#shenqingriqi').val(new Date().Format("yyyy-MM-DD"));
+var currentSelectedNodeId = "";
+var xiangmuComapnyID = $.getUrlParam('company_id');;
+var fengongsiComapnyID = "";
+var zonggongsiComapnyID = "";
+var parentNodeId = "";
+function hello() {
+	var node_id = $.getUrlParam('node_id');
+	currentSelectedNodeId = node_id;
+	var node = $('#left-menu').treeview('getNode', node_id);
+	xiangmuComapnyID = node.company_id;
+	console.log(node);
+	$('#left-menu').treeview('selectNode', [node, { silent: true } ]);
+	var parent = $('#left-menu').treeview('getParent', node);
+	parentNodeId = parent.nodeId;
+	var parentParent = $('#left-menu').treeview('getParent', parent);
+	fengongsiComapnyID = parent.company_id;
+	zonggongsiComapnyID = parentParent.company_id;
+	$("#fengongsimingcheng").val(parent.text);
+	$("#xiangmubu").val(node.text);
+	console.log(parent);
+	$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);
+}
+function startPageJS(){
+	var query = {query_key: 'company_id', query_value:xiangmuComapnyID, class_name:'XiangMuTaiZhang'};
+	$.post("/project/getModel", query, function(data){
+		var data = $.parseJSON(data.data)[0];
+		$('#fengongsimingcheng').val(data["fengongsimingcheng"]);
+		$('#xiangmumingcheng').val(data["xiangmumingcheng"]);
+		$('#hetongzongjine').val(data["hejijine"]);
 	});
-	
-});
-
-$(".detail_table").each(function(){
-	var directView = $(this).attr("derect_view");
-	var name = $(this).attr("name");
-	/* $(this).on("click", function(){
-		console.log(kaipiaoshenqingdan_id);
-		if(name == 'kaijufapiao'){
-			$.post("/project/getOneFromFourInvoiceType", {'kaipiaoshenqingdan_id':kaipiaoshenqingdan_id}, function(data){
-				if(data.type=="专票"){
-					window.location.href="/views/recordviews/approval_invoice_zhuanyong_2.html?id=" + kaipiaoshenqingdan_id;
-				}else if(data.type=="普票"){
-					window.location.href="/views/recordviews/approval_invoice_pupiao_2.html?id="+ kaipiaoshenqingdan_id;
-				}else if(data.type == "简易普票"){
-					window.location.href="/views/recordviews/approval_invoice_jianji_pupiao_2.html?id=" + kaipiaoshenqingdan_id;
-				}else if(data.type == "简易专票"){
-					window.location.href="/views/recordviews/approval_invoice_jianji_zhuanpiao_2.html?id=" + kaipiaoshenqingdan_id;
-				}
-			});
-			kaipiaoshenqingdan_id
-			
-		}else if(name == 'shouqikuanxiang'){
-			window.location.href="/views/recordviews/approval_invoice_shouqikuanxiang_2.html?id=" + kaipiaoshenqingdan_id;
-			
-		}else if(name == 'wangongjindu'){
-			$.post("/project/getOneFromFourProgressType",{'kaipiaoshenqingdan_id':kaipiaoshenqingdan_id}, function(data){
-				var type = data.type;
-				if(type == '劳务时间'){
-					window.location.href="/views/recordviews/approval_invoice_jindu_laowushijianzhanbi_2.html?id="+kaipiaoshenqingdan_id;
-				}else if( type == '已发生成本'){
-					window.location.href="/views/recordviews/approval_invoice_jindu_chenbenzhanbi_2.html?id="+kaipiaoshenqingdan_id;
-				}else if(type == '已完工'){
-					window.location.href="/views/recordviews/approval_invoice_jindu_gongzuoliang_2.html?id=" + kaipiaoshenqingdan_id;
-				}else if(type == '其它'){
-					window.location.href="/views/recordviews/approval_invoice_jindu_qita_2.html?id=" + kaipiaoshenqingdan_id;
-				}
-				
-			});
-			
-		}else if(name == 'qita'){
-			
-			$.post("/project/getOneFromFourInvoiceType", {'kaipiaoshenqingdan_id':kaipiaoshenqingdan_id}, function(data){
-				var type = data.type;
-				if(type == "普票"){
-					window.location.href="/views/recordviews/approval_invoice_pupiao_2.html?id=" + kaipiaoshenqingdan_id;
-				}else if(type == "专票"){
-					window.location.href="/views/recordviews/approval_invoice_zhuanyong_2.html?id=" + kaipiaoshenqingdan_id;
-				}else if(type == "简易普票"){
-					window.location.href="/views/recordviews/approval_invoice_jianji_pupiao_2.html?id=" + kaipiaoshenqingdan_id;
-				}else if(type == "简易专票"){
-					window.location.href="/views/recordviews/approval_invoice_jianji_zhuanpiao_2.html?id=" + kaipiaoshenqingdan_id;
-				}
-				
-			});
+	function saveData() {
+		var bload = $('#bloadify').bload({
+			fadeInSpeed		: 600,
+			imagePath: '/js/webjs/bloading.gif',
+			fullScreen: true,
+			maskOpacity	: .6,
+			overlay : {
+				show: true,
+				color: '#000',
+			}
+		});
+		var kaipiaoqingkuangbiao_xiangmu_id = "";
+		var kaijufapiao = $("#kaijufapiao").val();
+		var shouqikuanxiang = $("#shouqikuanxiang").val();
+		var wangongjindu = $("#wangongjindu").val();
+		var qita = $("#qita").val();
+		var fenbaofapiao = $("#fenbaoxiangmu").val();
+		var hejijine = 0;
+		if(kaijufapiao != "") {
+			hejijine += parseInt(kaijufapiao);
+		} else {
+			kaijufapiao = 0;
 		}
-
+		if(shouqikuanxiang != "") {
+			hejijine += parseInt(shouqikuanxiang);
+		} else {
+			shouqikuanxiang = 0;
+		}
+		if(wangongjindu != "") {
+			wangongjindu += parseInt(wangongjindu);
+		} else {
+			wangongjindu = 0;
+		}
+		if(qita != "") {
+			hejijine += parseInt(qita);
+		} else {
+			qita = 0;
+		}
+		if(fenbaofapiao != "") {
+			hejijine += parseInt(fenbaofapiao);
+		} else {
+			fenbaofapiao = 0;
+		}
+		var dataSet = {};
+		dataSet["class_name"] = "KaiPiaoQingKuangBiao_XiangMu";
+		dataSet["shengqingkaipiaoshijian"] = $('#shenqingriqi').val();
+		dataSet["hejijine"] = hejijine;
+		dataSet["kaijufapiao"] = kaijufapiao;
+		dataSet["shouqikuanxiang"] = shouqikuanxiang;
+		dataSet["wangongjindu"] = wangongjindu;
+		dataSet["qita"] = qita;
+		dataSet["fenbaofapiao"] = fenbaofapiao;
+		dataSet["yikaipiaojine"] = hejijine;
+		dataSet["erji_shenhe_status"] = "0";
+		dataSet["yiji_shenhe_status"] = "0";
+		dataSet["company_id"] = xiangmuComapnyID;
+		$.ajaxSetup({async : false});
+		$.post('/project/addModel', dataSet, function(data){
+			kaipiaoqingkuangbiao_xiangmu_id = data.primary_id;
+		});
+		dataSet["class_name"] = "KaiPiaoQingKuangBiao_FenGongSi";
+		dataSet["company_id"] = fengongsiComapnyID;
+		$.ajaxSetup({async : false});
+		$.post('/project/addModel', dataSet, function(data){});
+		dataSet["class_name"] = "KaiPiaoQingKuangBiao_ZongGongSi";
+		dataSet["company_id"] = zonggongsiComapnyID;
+		$.ajaxSetup({async : false});
+		$.post('/project/addModel', dataSet, function(data){});
 		
-	}); */
-});
-
-$("#kaijufapiao").on("click",function(){
-	//Search 4 tables and redirect to one
-	console.log("开具发票");
-});
-
-$("#shouqikuanxiang").on("click", function(){
-	//还是上面的一条数据
-	//还会有多条数据
-	console.log("收讫款项");
-});
-
-$("#qita").on("click",function(){
-	//四选一跳走
-	console.log("其他");
-});
-
-$("#wangongjindu").on("click", function(){
-	//四选一还要html
-	console.log("完工进度");
-});
-
+		dataSet = {};
+		$(".text").each(function(){
+			console.log($(this).attr('id'));
+			dataSet[$(this).attr('id')] = $(this).val();
+		});
+		dataSet["class_name"] = "KaiPiaoShenQingDan";
+		dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = kaipiaoqingkuangbiao_xiangmu_id;
+		dataSet["tianbiaoriqi"] = new Date().Format("yyyy-MM-DD");
+		var xhr = new XMLHttpRequest();
+		var fd = new FormData();
+		for(var JsonKey in dataSet){
+			fd.append(JsonKey, dataSet[JsonKey]);
+		}
+		fd.append("file",$('#fapiaowenjian')[0].files[0]);
+		xhr.open("post","/project/addKaiPiaoShenQingDan", false);
+		xhr.send(fd);
+		bload.hide();
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsiComapnyID + "&node_id="+parentNodeId;
+	}
+	$("#create_invoice").on("click", function(){
+		saveData();
+	});
+}
 function nodeClick(node){
-	
+	if(currentSelectedNodeId == node.nodeId) return;
+	if(node.level == 0) { //一级节点
+		var zonggongsi_company_id = node.company_id; //获取company_id
+		console.log("总公司CompanyId:" + zonggongsi_company_id);
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_zonggongsi_list.html&company_id=" + zonggongsi_company_id + "&node_id="+node.nodeId;
+	} else if(node.level == 1) {
+		var fengongsi_company_id = node.company_id;
+		console.log("分公司CompanyId:" + fengongsi_company_id);
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsi_company_id + "&node_id="+node.nodeId;
+	} else if(node.level == 2) {
+		var xiangmubu_company_id = node.company_id;
+		console.log("项目部CompanyId:" + xiangmubu_company_id);
+		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_xiangmu_list.html&company_id=" + xiangmubu_company_id + "&node_id="+node.nodeId;
+	}
 }
 </script>
 

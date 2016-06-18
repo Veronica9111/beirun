@@ -282,5 +282,7 @@ public interface IProjectService {
 	
 	public List<Company> getXiangmuCompaniesByUid(Integer uid);
 	
+	public List<Company> getXiaoXiangFengGongsiCompaniesByUid(Integer companyId, Integer uid);
+	
 	public List<Company> getChildCompanyById(Integer id);
 }

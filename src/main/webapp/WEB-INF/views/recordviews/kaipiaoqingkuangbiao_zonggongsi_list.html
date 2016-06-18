@@ -1083,7 +1083,7 @@ var kaipiaoqingkuangbiao_zonggongsi_IdParam = $.getUrlParam('company_id');
 function startPageJS(){
 	console.log(global);
 	var query = {company_id:kaipiaoqingkuangbiao_zonggongsi_IdParam};
-	$.post("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi", query, function(data){
+	$.post("/project/newGetAllKaiPiaoQingKuangBiaoByZonggongsi", query, function(data){
 		 dataSet  = $.parseJSON(data.data);
 		$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
 	   	data: dataSet,

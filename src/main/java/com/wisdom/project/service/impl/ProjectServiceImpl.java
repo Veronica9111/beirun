@@ -1334,6 +1334,11 @@ public class ProjectServiceImpl implements IProjectService {
 			return jinXiangFaPiaoMingXi_FaPiaoMapper.getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus(companyId);
 		}
 
+		@Override
+		public List<Company> getXiaoXiangFengGongsiCompaniesByUid(Integer uid, Integer companyId) {
+			return companyMapper.getXiaoXiangFengGongsiCompaniesByUid(companyId, uid);
+		}
+
 
 
 }

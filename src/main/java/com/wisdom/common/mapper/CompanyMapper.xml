@@ -28,6 +28,12 @@ from user_company as a, company as b
 where a.user_id=#{uid} and a.company_id=b.id and b.level=1)
 </select>
 
+<select id="getXiaoXiangFengGongsiCompaniesByUid" resultType="Company">
+select id, name,parent_id, level, create_time from company where parent_id=#{companyId} and parent_id in (select b.id
+from user_company as a, company as b
+where a.user_id=#{uid} and a.company_id=b.id and b.level=1)
+</select>
+
 <select id="getParentCompanyById" resultType="Company">
 SELECT id, name, parent_id, level, create_time FROM company where id = (select parent_id from company where id = #{id});
 </select>

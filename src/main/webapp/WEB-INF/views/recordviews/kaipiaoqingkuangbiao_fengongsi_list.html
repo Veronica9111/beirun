@@ -1093,7 +1093,7 @@ function startPageJS(){
 	kaipiaoqingkuangbiao_fengongsi_IdParam = $.getUrlParam('company_id');
 	console.log(global);
 	var query = {company_id:kaipiaoqingkuangbiao_fengongsi_IdParam};
-	$.post("/project/getAllKaiPiaoQingKuangBiao_FenGongSi", query, function(data){
+	$.post("/project/newGetAllKaiPiaoQingKuangBiaoByFengongsi", query, function(data){
 		 dataSet  = $.parseJSON(data.data);
 		$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
 	   	data: dataSet,
