@@ -1056,7 +1056,7 @@ td
 <!-- Container -->
 
 <div id="but_position">
-	<input id="create_invoice" type="button" value="提交开票申请单" class="btn btn-success btn-sm" />
+	<input id="create_invoice" type="button" value="提交修改" class="btn btn-success btn-sm" />
 </div>
 <div id="container">
 <table width='1097' border='0' cellpadding='0' cellspacing='0' style='width:548.50pt;border-collapse:collapse;table-layout:fixed;'>
@@ -1153,7 +1153,7 @@ var currentSelectedNodeId = "";
 var xiangmuComapnyID = $.getUrlParam('company_id');
 var fengongsiComapnyID = "";
 var zonggongsiComapnyID = "";
-var priId = $.getUrlParam('id');
+var kaipiaoshenqingdanPriId = $.getUrlParam('id');
 var parentNodeId = "";
 function hello() {
 	var node_id = $.getUrlParam('node_id');
@@ -1173,12 +1173,15 @@ function hello() {
 	$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);
 }
 function startPageJS(){
-	var query = {query_key: 'kaipiaoqingkuangbiao_xiangmu_id', query_value:priId, class_name:'KaiPiaoShenQingDan'};
+	var xiangmuPriId = "";
+	var query = {query_key: 'kaipiaoqingkuangbiao_xiangmu_id', query_value:kaipiaoshenqingdanPriId, class_name:'KaiPiaoShenQingDan'};
 	$.post("/project/getModel", query, function(data){
 		var data = $.parseJSON(data.data)[0];
-		$('#fengongsimingcheng').val(data["fengongsimingcheng"]);
-		$('#xiangmumingcheng').val(data["xiangmumingcheng"]);
-		$('#hetongzongjine').val(data["hejijine"]);
+		for(key in data){
+			if(key=="fapiaowenjian") continue;
+			$("#" + key).val(data[key]);
+		}
+		xiangmuPriId = data["id"];
 	});
 	function saveData() {
 		var bload = $('#bloadify').bload({
@@ -1209,7 +1212,7 @@ function startPageJS(){
 			shouqikuanxiang = 0;
 		}
 		if(wangongjindu != "") {
-			wangongjindu += parseInt(wangongjindu);
+			hejijine += parseInt(wangongjindu);
 		} else {
 			wangongjindu = 0;
 		}
@@ -1225,7 +1228,6 @@ function startPageJS(){
 		}
 		var dataSet = {};
 		dataSet["class_name"] = "KaiPiaoQingKuangBiao_XiangMu";
-		dataSet["shengqingkaipiaoshijian"] = $('#shenqingriqi').val();
 		dataSet["hejijine"] = hejijine;
 		dataSet["kaijufapiao"] = kaijufapiao;
 		dataSet["shouqikuanxiang"] = shouqikuanxiang;
@@ -1235,19 +1237,9 @@ function startPageJS(){
 		dataSet["yikaipiaojine"] = hejijine;
 		dataSet["erji_shenhe_status"] = "0";
 		dataSet["yiji_shenhe_status"] = "0";
-		dataSet["company_id"] = xiangmuComapnyID;
+		dataSet["id"] = kaipiaoshenqingdanPriId;
 		$.ajaxSetup({async : false});
-		$.post('/project/addModel', dataSet, function(data){
-			kaipiaoqingkuangbiao_xiangmu_id = data.primary_id;
-		});
-		dataSet["class_name"] = "KaiPiaoQingKuangBiao_FenGongSi";
-		dataSet["company_id"] = fengongsiComapnyID;
-		$.ajaxSetup({async : false});
-		$.post('/project/addModel', dataSet, function(data){});
-		dataSet["class_name"] = "KaiPiaoQingKuangBiao_ZongGongSi";
-		dataSet["company_id"] = zonggongsiComapnyID;
-		$.ajaxSetup({async : false});
-		$.post('/project/addModel', dataSet, function(data){});
+		$.post('/project/modifyModel', dataSet, function(data){});
 		
 		dataSet = {};
 		$(".text").each(function(){
@@ -1255,18 +1247,24 @@ function startPageJS(){
 			dataSet[$(this).attr('id')] = $(this).val();
 		});
 		dataSet["class_name"] = "KaiPiaoShenQingDan";
-		dataSet["kaipiaoqingkuangbiao_xiangmu_id"] = kaipiaoqingkuangbiao_xiangmu_id;
+		dataSet["id"] = xiangmuPriId;
 		dataSet["tianbiaoriqi"] = new Date().Format("yyyy-MM-DD");
-		var xhr = new XMLHttpRequest();
-		var fd = new FormData();
-		for(var JsonKey in dataSet){
-			fd.append(JsonKey, dataSet[JsonKey]);
+		if($('#fapiaowenjian').val() == "") {
+			$.ajaxSetup({async : false});
+			$.post('/project/modifyModel', dataSet, function(data){});
+		} else {
+			var xhr = new XMLHttpRequest();
+			var fd = new FormData();
+			for(var JsonKey in dataSet){
+				fd.append(JsonKey, dataSet[JsonKey]);
+			}
+			fd.append("file",$('#fapiaowenjian')[0].files[0]);
+			xhr.open("post","/project/updateKaiPiaoShenQingDan", false);
+			xhr.send(fd);
 		}
-		fd.append("file",$('#fapiaowenjian')[0].files[0]);
-		xhr.open("post","/project/addKaiPiaoShenQingDan", false);
-		xhr.send(fd);
 		bload.hide();
-		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsiComapnyID + "&node_id="+parentNodeId;
+		alert("修改成功");
+		//window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsiComapnyID + "&node_id="+parentNodeId;
 	}
 	$("#create_invoice").on("click", function(){
 		saveData();

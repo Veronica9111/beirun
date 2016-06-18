@@ -1113,13 +1113,17 @@ function startPageJS(){
 		        { title: "一级审核备注" },
 		        { title: "二级审核人" },
 		        { title: "二级审核状态" },
-		        { title: "二级审核备注" }
+		        { title: "二级审核备注" },
+		        { title: "操作"},
 		    ]
 		} );
+		 $("#history-table tbody").on("click", ".check", function(){
+			 id = $(this).parent().parent().children().eq(0)[0].innerHTML;
+			 window.location.href="/views/recordviews/create_check_invoice.html?id=" +id+"&node_id=0";
+		});
 	});
 }
 function nodeClick(node){
-	if(currentNodeId == node.nodeId) return;
 	if(node.level == 0) { //一级节点
 		var zonggongsi_company_id = node.company_id; //获取company_id
 		console.log("总公司CompanyId:" + zonggongsi_company_id);

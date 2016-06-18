@@ -623,6 +623,8 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
+			String checkButton = "<input type='button' class='btn btn-success check'value='查看' >";
+			tmp.add(checkButton);
 			retList.add(tmp);
 			if (elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0) {
 				count++;
@@ -685,6 +687,8 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
+			String checkButton = "<input type='button' class='btn btn-success check'value='查看' >";
+			tmp.add(checkButton);
 			retList.add(tmp);
 			if (elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0) {
 				count++;
@@ -1447,6 +1451,39 @@ public class ProjectController {
 		instance = setModel(instance, params, "partial");
 		Method m = projectService.getClass().getMethod("addKaiPiaoShenQingDan", instance.getClass());
 		Object ret = m.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		retMap.put("primary_id", String.valueOf(ret));
+		return retMap;
+	}
+	
+	@RequestMapping("/project/updateKaiPiaoShenQingDan")
+	@ResponseBody
+	public Map<String, String> updateKaiPiaoShenQingDan(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		Map<String, String> retMap = new HashMap<>();
+		String filePath = "/home/beirun/invoice";
+		String fileName = "";
+		if(file != null) {
+			String fileUnique = getUniqueIdentifier();
+			String fileOrignalName = file.getOriginalFilename();
+			fileName = fileUnique + fileOrignalName.substring(fileOrignalName.lastIndexOf("."));
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, fileName));
+			} catch (IOException e) {
+				logger.debug(e.toString());
+			}
+		}
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		Map<String, String[]> params = request.getParameterMap();
+		params.put("fapiaowenjian", new String[]{fileName});
+		String className = params.get("class_name")[0];
+		Method m = projectService.getClass().getMethod("get" + className + "ById", Long.class);
+		Object instance = m.invoke(projectService, Long.valueOf(id));
+		//String longClassName = "com.wisdom.common.model." + className;
+		//Class c = Class.forName(longClassName);
+		//Object instance = c.newInstance();
+		instance = setModel(instance, params, "full");
+		Method m2 = projectService.getClass().getMethod("update" + className, instance.getClass());
+		Object ret = m2.invoke(projectService, instance);
 		retMap.put("status", "ok");
 		retMap.put("primary_id", String.valueOf(ret));
 		return retMap;

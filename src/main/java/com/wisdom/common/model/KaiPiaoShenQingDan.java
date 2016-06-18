@@ -22,7 +22,8 @@ private Timestamp tianbiaoriqi;
 private Long kaipiaoqingkuangbiao_xiangmu_id;
 private String fuheren;
 private String fapiaowenjian;
-public KaiPiaoShenQingDan(Long id, String fengongsimingcheng, String xiangmubu, String xiangmumingcheng, String hetongzongjine, Timestamp shenqingriqi, Double kaijufapiao, Double shouqikuanxiang, String wangongjindu, Double qita, String kaipiaoneirong, String tianbiaoren, String tianbiaorendianhua, Timestamp tianbiaoriqi, Long kaipiaoqingkuangbiao_xiangmu_id, String fuheren, String fapiaowenjian) {
+private Double fenbaoxiangmu;
+public KaiPiaoShenQingDan(Long id, String fengongsimingcheng, String xiangmubu, String xiangmumingcheng, String hetongzongjine, Timestamp shenqingriqi, Double kaijufapiao, Double shouqikuanxiang, String wangongjindu, Double qita, String kaipiaoneirong, String tianbiaoren, String tianbiaorendianhua, Timestamp tianbiaoriqi, Long kaipiaoqingkuangbiao_xiangmu_id, String fuheren, String fapiaowenjian, Double fenbaoxiangmu) {
 this.id=id;
 this.fengongsimingcheng=fengongsimingcheng;
 this.xiangmubu=xiangmubu;
@@ -40,6 +41,15 @@ this.tianbiaoriqi=tianbiaoriqi;
 this.kaipiaoqingkuangbiao_xiangmu_id=kaipiaoqingkuangbiao_xiangmu_id;
 this.fuheren=fuheren;
 this.fapiaowenjian = fapiaowenjian;
+this.fenbaoxiangmu = fenbaoxiangmu;
+}
+
+public Double getFenbaoxiangmu() {
+	return fenbaoxiangmu;
+}
+
+public void setFenbaoxiangmu(Double fenbaoxiangmu) {
+	this.fenbaoxiangmu = fenbaoxiangmu;
 }
 
 public void setId (Long id) {

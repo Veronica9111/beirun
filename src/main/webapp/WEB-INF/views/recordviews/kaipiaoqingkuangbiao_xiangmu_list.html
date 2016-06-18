@@ -1130,7 +1130,7 @@ function startPageJS(){
 		} );
 		 $("#history-table tbody").on("click", ".check", function(){
 			 id = $(this).parent().parent().children().eq(0)[0].innerHTML;
-			 window.location.href="/views/recordviews/create_check_invoice.html?id=" +id;
+			 window.location.href="/views/recordviews/create_check_invoice.html?id=" +id+"&node_id="+currentSelectedNodeId;
 		});
 	});
 }
