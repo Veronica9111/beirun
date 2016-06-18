@@ -263,7 +263,7 @@ public class ProjectController {
 		if(!finalList.isEmpty()) comList = finalList;
 		List<JinXiangFaPiaoMingXi_FaPiao> dataList = new ArrayList<>();
 		for(Company com : comList) {
-			m = projectService.getClass().getMethod("getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus", Long.class);
+			m = projectService.getClass().getMethod("getJinXiangFaPiaoMingXi_FaPiaoByCompanyId", Long.class);
 			ret = m.invoke(projectService, Long.valueOf(com.getId()));
 			List<JinXiangFaPiaoMingXi_FaPiao> itemlist = (List<JinXiangFaPiaoMingXi_FaPiao>)ret;
 			dataList.addAll(itemlist);

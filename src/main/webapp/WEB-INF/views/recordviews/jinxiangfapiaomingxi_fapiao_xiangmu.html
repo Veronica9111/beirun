@@ -5,1510 +5,2021 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/webcss/global.css"/>
-<link rel="stylesheet" type="text/css" href="/css/webcss/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="/css/webcss/global.css" />
+<link rel="stylesheet" type="text/css"
+	href="/css/webcss/jquery.dataTables.min.css">
 <link rel="stylesheet" href="/css/webcss/bootstrap.css" />
 <link rel="stylesheet" href="/css/webcss/bootstrap-theme.css" />
 <script src="/js/webjs/jquery-1.11.3.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/webcss/jquery-ui.css" />
-<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css"/>
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css" />
 <script src="/js/webjs/jquery-ui.js"></script>
 <script src="/js/webjs/navigator.js"></script>
-<script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript"
+	src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
 <style>
-<!-- @page
-	{margin:0.75in 0.71in 0.75in 0.71in;
-	mso-header-margin:0.32in;
-	mso-footer-margin:0.32in;}
-tr
-	{mso-height-source:auto;
-	mso-ruby-visibility:none;}
-col
-	{mso-width-source:auto;
-	mso-ruby-visibility:none;}
-br
-	{mso-data-placement:same-cell;}
-.font0
-	{color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font1
-	{color:#000000;
-	font-size:12.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font2
-	{color:#000000;
-	font-size:10.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font3
-	{color:#000000;
-	font-size:9.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font4
-	{color:#000000;
-	font-size:10.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font5
-	{color:#1F497D;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font6
-	{color:#FA7D00;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font7
-	{color:#FA7D00;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font8
-	{color:#1F497D;
-	font-size:13.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font9
-	{color:#7F7F7F;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:italic;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font10
-	{color:#1F497D;
-	font-size:15.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font11
-	{color:#3F3F76;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font12
-	{color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font13
-	{color:#800080;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:underline;
-	text-underline-style:single;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font14
-	{color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font15
-	{color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font16
-	{color:#9C0006;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font17
-	{color:#3F3F3F;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font18
-	{color:#1F497D;
-	font-size:18.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:134;}
-.font19
-	{color:#0000FF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:underline;
-	text-underline-style:single;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font20
-	{color:#006100;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font21
-	{color:#000000;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font22
-	{color:#FF0000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.font23
-	{color:#9C6500;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:"宋体";
-	mso-generic-font-family:auto;
-	mso-font-charset:0;}
-.style0
-	{mso-number-format:"General";
-	text-align:general;
-	vertical-align:middle;
-	white-space:nowrap;
-	mso-rotate:0;
-	mso-pattern:auto;
-	mso-background-source:auto;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:134;
-	border:none;
-	mso-protection:locked visible;
-	mso-style-name:"常规";
-	mso-style-id:0;}
-.style16
-	{mso-number-format:"_ \0022\00A5\0022* \#\,\#\#0_ \;_ \0022\00A5\0022* \\-\#\,\#\#0_ \;_ \0022\00A5\0022* \0022-\0022_ \;_ \@_ ";
-	mso-style-name:"货币[0]";
-	mso-style-id:7;}
-.style17
-	{mso-pattern:auto none;
-	background:#EBF1DE;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"20% - 强调文字颜色 3";}
-.style18
-	{mso-pattern:auto none;
-	background:#FFCC99;
-	color:#3F3F76;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	border:.5pt solid #7F7F7F;
-	mso-style-name:"输入";}
-.style19
-	{mso-number-format:"_ \0022\00A5\0022* \#\,\#\#0\.00_ \;_ \0022\00A5\0022* \\-\#\,\#\#0\.00_ \;_ \0022\00A5\0022* \0022-\0022??_ \;_ \@_ ";
-	mso-style-name:"货币";
-	mso-style-id:4;}
-.style20
-	{mso-number-format:"_ * \#\,\#\#0_ \;_ * \\-\#\,\#\#0_ \;_ * \0022-\0022_ \;_ \@_ ";
-	mso-style-name:"千位分隔[0]";
-	mso-style-id:6;}
-.style21
-	{mso-pattern:auto none;
-	background:#D8E4BC;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"40% - 强调文字颜色 3";}
-.style22
-	{mso-pattern:auto none;
-	background:#FFC7CE;
-	color:#9C0006;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"差";}
-.style23
-	{mso-number-format:"_ * \#\,\#\#0\.00_ \;_ * \\-\#\,\#\#0\.00_ \;_ * \0022-\0022??_ \;_ \@_ ";
-	mso-style-name:"千位分隔";
-	mso-style-id:3;}
-.style24
-	{mso-pattern:auto none;
-	background:#C4D79B;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"60% - 强调文字颜色 3";}
-.style25
-	{color:#0000FF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:underline;
-	text-underline-style:single;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"超链接";
-	mso-style-id:8;}
-.style26
-	{mso-number-format:"0%";
-	mso-style-name:"百分比";
-	mso-style-id:5;}
-.style27
-	{color:#800080;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:underline;
-	text-underline-style:single;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"已访问的超链接";
-	mso-style-id:9;}
-.style28
-	{mso-pattern:auto none;
-	background:#FFFFCC;
-	border:.5pt solid #B2B2B2;
-	mso-style-name:"注释";}
-.style29
-	{mso-pattern:auto none;
-	background:#DA9694;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"60% - 强调文字颜色 2";}
-.style30
-	{color:#1F497D;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:134;
-	mso-style-name:"标题 4";}
-.style31
-	{color:#FF0000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"警告文本";}
-.style32
-	{color:#1F497D;
-	font-size:18.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:134;
-	mso-style-name:"标题";}
-.style33
-	{color:#7F7F7F;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:italic;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"解释性文本";}
-.style34
-	{color:#1F497D;
-	font-size:15.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:134;
-	border-left:none;
-	border-top:none;
-	border-right:none;
-	border-bottom:1.0pt solid #4F81BD;
-	mso-style-name:"标题 1";}
-.style35
-	{color:#1F497D;
-	font-size:13.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:134;
-	border-left:none;
-	border-top:none;
-	border-right:none;
-	border-bottom:1.0pt solid #4F81BD;
-	mso-style-name:"标题 2";}
-.style36
-	{mso-pattern:auto none;
-	background:#95B3D7;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"60% - 强调文字颜色 1";}
-.style37
-	{color:#1F497D;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:134;
-	border-left:none;
-	border-top:none;
-	border-right:none;
-	border-bottom:1.0pt solid #A7BFDE;
-	mso-style-name:"标题 3";}
-.style38
-	{mso-pattern:auto none;
-	background:#B1A0C7;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"60% - 强调文字颜色 4";}
-.style39
-	{mso-pattern:auto none;
-	background:#F2F2F2;
-	color:#3F3F3F;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	border:.5pt solid #3F3F3F;
-	mso-style-name:"输出";}
-.style40
-	{mso-pattern:auto none;
-	background:#F2F2F2;
-	color:#FA7D00;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	border:.5pt solid #7F7F7F;
-	mso-style-name:"计算";}
-.style41
-	{mso-pattern:auto none;
-	background:#A5A5A5;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	border:2.0pt double #3F3F3F;
-	mso-style-name:"检查单元格";}
-.style42
-	{mso-pattern:auto none;
-	background:#FDE9D9;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"20% - 强调文字颜色 6";}
-.style43
-	{mso-pattern:auto none;
-	background:#C0504D;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"强调文字颜色 2";}
-.style44
-	{color:#FA7D00;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	border-left:none;
-	border-top:none;
-	border-right:none;
-	border-bottom:2.0pt double #FF8001;
-	mso-style-name:"链接单元格";}
-.style45
-	{color:#000000;
-	font-size:11.0pt;
-	font-weight:700;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	border-left:none;
-	border-top:.5pt solid #4F81BD;
-	border-right:none;
-	border-bottom:2.0pt double #4F81BD;
-	mso-style-name:"汇总";}
-.style46
-	{mso-pattern:auto none;
-	background:#C6EFCE;
-	color:#006100;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"好";}
-.style47
-	{mso-pattern:auto none;
-	background:#FFEB9C;
-	color:#9C6500;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"适中";}
-.style48
-	{mso-pattern:auto none;
-	background:#DAEEF3;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"20% - 强调文字颜色 5";}
-.style49
-	{mso-pattern:auto none;
-	background:#4F81BD;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"强调文字颜色 1";}
-.style50
-	{mso-pattern:auto none;
-	background:#DCE6F1;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"20% - 强调文字颜色 1";}
-.style51
-	{mso-pattern:auto none;
-	background:#B8CCE4;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"40% - 强调文字颜色 1";}
-.style52
-	{mso-pattern:auto none;
-	background:#F2DCDB;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"20% - 强调文字颜色 2";}
-.style53
-	{mso-pattern:auto none;
-	background:#E6B8B7;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"40% - 强调文字颜色 2";}
-.style54
-	{mso-pattern:auto none;
-	background:#9BBB59;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"强调文字颜色 3";}
-.style55
-	{mso-pattern:auto none;
-	background:#8064A2;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"强调文字颜色 4";}
-.style56
-	{mso-pattern:auto none;
-	background:#E4DFEC;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"20% - 强调文字颜色 4";}
-.style57
-	{mso-pattern:auto none;
-	background:#CCC0DA;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"40% - 强调文字颜色 4";}
-.style58
-	{mso-pattern:auto none;
-	background:#4BACC6;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"强调文字颜色 5";}
-.style59
-	{mso-pattern:auto none;
-	background:#B7DEE8;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"40% - 强调文字颜色 5";}
-.style60
-	{mso-pattern:auto none;
-	background:#92CDDC;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"60% - 强调文字颜色 5";}
-.style61
-	{mso-pattern:auto none;
-	background:#F79646;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"强调文字颜色 6";}
-.style62
-	{mso-pattern:auto none;
-	background:#FCD5B4;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"40% - 强调文字颜色 6";}
-.style63
-	{mso-pattern:auto none;
-	background:#FABF8F;
-	color:#FFFFFF;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:0;
-	mso-style-name:"60% - 强调文字颜色 6";}
-td
-	{mso-style-parent:style0;
-	padding-top:1px;
-	padding-right:1px;
-	padding-left:1px;
-	mso-ignore:padding;
-	mso-number-format:"General";
-	text-align:general;
-	vertical-align:middle;
-	white-space:nowrap;
-	mso-rotate:0;
-	mso-pattern:auto;
-	mso-background-source:auto;
-	color:#000000;
-	font-size:11.0pt;
-	font-weight:400;
-	font-style:normal;
-	text-decoration:none;
-	font-family:宋体;
-	mso-generic-font-family:auto;
-	mso-font-charset:134;
-	border:none;
-	mso-protection:locked visible;}
-.xl65
-	{mso-style-parent:style0;
-	white-space:normal;
-	mso-font-charset:134;}
-.xl66
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:12.0pt;
-	font-weight:700;
-	mso-font-charset:134;}
-.xl67
-	{mso-style-parent:style0;
-	white-space:normal;
-	font-size:10.0pt;
-	mso-font-charset:134;}
-.xl68
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:9.0pt;
-	mso-font-charset:134;
-	border:.5pt solid windowtext;}
-.xl69
-	{mso-style-parent:style0;
-	white-space:normal;
-	mso-font-charset:134;
-	border:.5pt solid windowtext;}
-.xl70
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	mso-font-charset:134;
-	border:.5pt solid windowtext;}
-.xl71
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:10.0pt;
-	font-weight:700;
-	mso-font-charset:134;
-	border-bottom:.5pt solid windowtext;}
-.xl72
-	{mso-style-parent:style0;
-	white-space:normal;
-	font-size:9.0pt;
-	mso-font-charset:134;
-	border:.5pt solid windowtext;}
-.xl73
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:10.0pt;
-	mso-font-charset:134;
-	border-bottom:.5pt solid windowtext;}
-.xl74
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:9.0pt;
-	mso-font-charset:134;
-	border-left:.5pt solid windowtext;
-	border-top:.5pt solid windowtext;
-	border-bottom:.5pt solid windowtext;}
-.xl75
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:9.0pt;
-	mso-font-charset:134;
-	border-top:.5pt solid windowtext;
-	border-bottom:.5pt solid windowtext;}
-.xl76
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:10.0pt;
-	font-weight:700;
-	mso-font-charset:134;}
-.xl77
-	{mso-style-parent:style0;
-	text-align:center;
-	white-space:normal;
-	font-size:9.0pt;
-	mso-font-charset:134;
-	border-top:.5pt solid windowtext;
-	border-right:.5pt solid windowtext;
-	border-bottom:.5pt solid windowtext;}
- -->  </style>
-<style>
-	#left-menu{
-		width: 25vw;
-		position: fixed;
-	}
-	
-	#container{
-		margin-left: 27vw;
-		margin-top: 20px;
-		width: 920px;
-		min-width:920px;
-		height: 400px;
-		min-height:400px;
-		overflow-x: auto; overflow-y: auto;
-	}
-	#but_position{
-		margin-left:27vw;
-		margin-top: 50px;
-	}
+<!--
+@page {
+	margin: 0.75in 0.71in 0.75in 0.71in;
+	mso-header-margin: 0.32in;
+	mso-footer-margin: 0.32in;
+}
 
+tr {
+	mso-height-source: auto;
+	mso-ruby-visibility: none;
+}
+
+col {
+	mso-width-source: auto;
+	mso-ruby-visibility: none;
+}
+
+br {
+	mso-data-placement: same-cell;
+}
+
+.font0 {
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+}
+
+.font1 {
+	color: #000000;
+	font-size: 12.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+}
+
+.font2 {
+	color: #000000;
+	font-size: 10.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+}
+
+.font3 {
+	color: #000000;
+	font-size: 9.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+}
+
+.font4 {
+	color: #000000;
+	font-size: 10.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+}
+
+.font5 {
+	color: #1F497D;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+}
+
+.font6 {
+	color: #FA7D00;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font7 {
+	color: #FA7D00;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font8 {
+	color: #1F497D;
+	font-size: 13.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+}
+
+.font9 {
+	color: #7F7F7F;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: italic;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font10 {
+	color: #1F497D;
+	font-size: 15.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+}
+
+.font11 {
+	color: #3F3F76;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font12 {
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font13 {
+	color: #800080;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: underline;
+	text-underline-style: single;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font14 {
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font15 {
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font16 {
+	color: #9C0006;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font17 {
+	color: #3F3F3F;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font18 {
+	color: #1F497D;
+	font-size: 18.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+}
+
+.font19 {
+	color: #0000FF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: underline;
+	text-underline-style: single;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font20 {
+	color: #006100;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font21 {
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font22 {
+	color: #FF0000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.font23 {
+	color: #9C6500;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: "宋体";
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+}
+
+.style0 {
+	mso-number-format: "General";
+	text-align: general;
+	vertical-align: middle;
+	white-space: nowrap;
+	mso-rotate: 0;
+	mso-pattern: auto;
+	mso-background-source: auto;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+	border: none;
+	mso-protection: locked visible;
+	mso-style-name: "常规";
+	mso-style-id: 0;
+}
+
+.style16 {
+	mso-number-format:
+		"_ \0022\00A5\0022* \#\,\#\#0_ \;_ \0022\00A5\0022* \\-\#\,\#\#0_ \;_ \0022\00A5\0022* \0022-\0022_ \;_ \@_ ";
+	mso-style-name: "货币[0]";
+	mso-style-id: 7;
+}
+
+.style17 {
+	mso-pattern: auto none;
+	background: #EBF1DE;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "20% - 强调文字颜色 3";
+}
+
+.style18 {
+	mso-pattern: auto none;
+	background: #FFCC99;
+	color: #3F3F76;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	border: .5pt solid #7F7F7F;
+	mso-style-name: "输入";
+}
+
+.style19 {
+	mso-number-format:
+		"_ \0022\00A5\0022* \#\,\#\#0\.00_ \;_ \0022\00A5\0022* \\-\#\,\#\#0\.00_ \;_ \0022\00A5\0022* \0022-\0022??_ \;_ \@_ ";
+	mso-style-name: "货币";
+	mso-style-id: 4;
+}
+
+.style20 {
+	mso-number-format:
+		"_ * \#\,\#\#0_ \;_ * \\-\#\,\#\#0_ \;_ * \0022-\0022_ \;_ \@_ ";
+	mso-style-name: "千位分隔[0]";
+	mso-style-id: 6;
+}
+
+.style21 {
+	mso-pattern: auto none;
+	background: #D8E4BC;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "40% - 强调文字颜色 3";
+}
+
+.style22 {
+	mso-pattern: auto none;
+	background: #FFC7CE;
+	color: #9C0006;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "差";
+}
+
+.style23 {
+	mso-number-format:
+		"_ * \#\,\#\#0\.00_ \;_ * \\-\#\,\#\#0\.00_ \;_ * \0022-\0022??_ \;_ \@_ ";
+	mso-style-name: "千位分隔";
+	mso-style-id: 3;
+}
+
+.style24 {
+	mso-pattern: auto none;
+	background: #C4D79B;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "60% - 强调文字颜色 3";
+}
+
+.style25 {
+	color: #0000FF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: underline;
+	text-underline-style: single;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "超链接";
+	mso-style-id: 8;
+}
+
+.style26 {
+	mso-number-format: "0%";
+	mso-style-name: "百分比";
+	mso-style-id: 5;
+}
+
+.style27 {
+	color: #800080;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: underline;
+	text-underline-style: single;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "已访问的超链接";
+	mso-style-id: 9;
+}
+
+.style28 {
+	mso-pattern: auto none;
+	background: #FFFFCC;
+	border: .5pt solid #B2B2B2;
+	mso-style-name: "注释";
+}
+
+.style29 {
+	mso-pattern: auto none;
+	background: #DA9694;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "60% - 强调文字颜色 2";
+}
+
+.style30 {
+	color: #1F497D;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+	mso-style-name: "标题 4";
+}
+
+.style31 {
+	color: #FF0000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "警告文本";
+}
+
+.style32 {
+	color: #1F497D;
+	font-size: 18.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+	mso-style-name: "标题";
+}
+
+.style33 {
+	color: #7F7F7F;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: italic;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "解释性文本";
+}
+
+.style34 {
+	color: #1F497D;
+	font-size: 15.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom: 1.0pt solid #4F81BD;
+	mso-style-name: "标题 1";
+}
+
+.style35 {
+	color: #1F497D;
+	font-size: 13.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom: 1.0pt solid #4F81BD;
+	mso-style-name: "标题 2";
+}
+
+.style36 {
+	mso-pattern: auto none;
+	background: #95B3D7;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "60% - 强调文字颜色 1";
+}
+
+.style37 {
+	color: #1F497D;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom: 1.0pt solid #A7BFDE;
+	mso-style-name: "标题 3";
+}
+
+.style38 {
+	mso-pattern: auto none;
+	background: #B1A0C7;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "60% - 强调文字颜色 4";
+}
+
+.style39 {
+	mso-pattern: auto none;
+	background: #F2F2F2;
+	color: #3F3F3F;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	border: .5pt solid #3F3F3F;
+	mso-style-name: "输出";
+}
+
+.style40 {
+	mso-pattern: auto none;
+	background: #F2F2F2;
+	color: #FA7D00;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	border: .5pt solid #7F7F7F;
+	mso-style-name: "计算";
+}
+
+.style41 {
+	mso-pattern: auto none;
+	background: #A5A5A5;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	border: 2.0pt double #3F3F3F;
+	mso-style-name: "检查单元格";
+}
+
+.style42 {
+	mso-pattern: auto none;
+	background: #FDE9D9;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "20% - 强调文字颜色 6";
+}
+
+.style43 {
+	mso-pattern: auto none;
+	background: #C0504D;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "强调文字颜色 2";
+}
+
+.style44 {
+	color: #FA7D00;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom: 2.0pt double #FF8001;
+	mso-style-name: "链接单元格";
+}
+
+.style45 {
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 700;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	border-left: none;
+	border-top: .5pt solid #4F81BD;
+	border-right: none;
+	border-bottom: 2.0pt double #4F81BD;
+	mso-style-name: "汇总";
+}
+
+.style46 {
+	mso-pattern: auto none;
+	background: #C6EFCE;
+	color: #006100;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "好";
+}
+
+.style47 {
+	mso-pattern: auto none;
+	background: #FFEB9C;
+	color: #9C6500;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "适中";
+}
+
+.style48 {
+	mso-pattern: auto none;
+	background: #DAEEF3;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "20% - 强调文字颜色 5";
+}
+
+.style49 {
+	mso-pattern: auto none;
+	background: #4F81BD;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "强调文字颜色 1";
+}
+
+.style50 {
+	mso-pattern: auto none;
+	background: #DCE6F1;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "20% - 强调文字颜色 1";
+}
+
+.style51 {
+	mso-pattern: auto none;
+	background: #B8CCE4;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "40% - 强调文字颜色 1";
+}
+
+.style52 {
+	mso-pattern: auto none;
+	background: #F2DCDB;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "20% - 强调文字颜色 2";
+}
+
+.style53 {
+	mso-pattern: auto none;
+	background: #E6B8B7;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "40% - 强调文字颜色 2";
+}
+
+.style54 {
+	mso-pattern: auto none;
+	background: #9BBB59;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "强调文字颜色 3";
+}
+
+.style55 {
+	mso-pattern: auto none;
+	background: #8064A2;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "强调文字颜色 4";
+}
+
+.style56 {
+	mso-pattern: auto none;
+	background: #E4DFEC;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "20% - 强调文字颜色 4";
+}
+
+.style57 {
+	mso-pattern: auto none;
+	background: #CCC0DA;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "40% - 强调文字颜色 4";
+}
+
+.style58 {
+	mso-pattern: auto none;
+	background: #4BACC6;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "强调文字颜色 5";
+}
+
+.style59 {
+	mso-pattern: auto none;
+	background: #B7DEE8;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "40% - 强调文字颜色 5";
+}
+
+.style60 {
+	mso-pattern: auto none;
+	background: #92CDDC;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "60% - 强调文字颜色 5";
+}
+
+.style61 {
+	mso-pattern: auto none;
+	background: #F79646;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "强调文字颜色 6";
+}
+
+.style62 {
+	mso-pattern: auto none;
+	background: #FCD5B4;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "40% - 强调文字颜色 6";
+}
+
+.style63 {
+	mso-pattern: auto none;
+	background: #FABF8F;
+	color: #FFFFFF;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 0;
+	mso-style-name: "60% - 强调文字颜色 6";
+}
+
+td {
+	mso-style-parent: style0;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-left: 1px;
+	mso-ignore: padding;
+	mso-number-format: "General";
+	text-align: general;
+	vertical-align: middle;
+	white-space: nowrap;
+	mso-rotate: 0;
+	mso-pattern: auto;
+	mso-background-source: auto;
+	color: #000000;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: 宋体;
+	mso-generic-font-family: auto;
+	mso-font-charset: 134;
+	border: none;
+	mso-protection: locked visible;
+}
+
+.xl65 {
+	mso-style-parent: style0;
+	white-space: normal;
+	mso-font-charset: 134;
+}
+
+.xl66 {
+	mso-style-parent: style0;
+	text-align: center;
+	white-space: normal;
+	font-size: 12.0pt;
+	font-weight: 700;
+	mso-font-charset: 134;
+}
+
+.xl67 {
+	mso-style-parent: style0;
+	white-space: normal;
+	font-size: 10.0pt;
+	mso-font-charset: 134;
+}
+
+.xl68 {
+	mso-style-parent: style0;
+	text-align: center;
+	white-space: normal;
+	font-size: 9.0pt;
+	mso-font-charset: 134;
+	border: .5pt solid windowtext;
+}
+
+.xl69 {
+	mso-style-parent: style0;
+	white-space: normal;
+	mso-font-charset: 134;
+	border: .5pt solid windowtext;
+}
+
+.xl70 {
+	mso-style-parent: style0;
+	text-align: center;
+	white-space: normal;
+	mso-font-charset: 134;
+	border: .5pt solid windowtext;
+}
+
+.xl71 {
+	mso-style-parent: style0;
+	text-align: center;
+	white-space: normal;
+	font-size: 10.0pt;
+	font-weight: 700;
+	mso-font-charset: 134;
+	border-bottom: .5pt solid windowtext;
+}
+
+.xl72 {
+	mso-style-parent: style0;
+	white-space: normal;
+	font-size: 9.0pt;
+	mso-font-charset: 134;
+	border: .5pt solid windowtext;
+}
+
+.xl73 {
+	mso-style-parent: style0;
+	text-align: center;
+	white-space: normal;
+	font-size: 10.0pt;
+	mso-font-charset: 134;
+	border-bottom: .5pt solid windowtext;
+}
+
+.xl74 {
+	mso-style-parent: style0;
+	text-align: center;
+	white-space: normal;
+	font-size: 9.0pt;
+	mso-font-charset: 134;
+	border-left: .5pt solid windowtext;
+	border-top: .5pt solid windowtext;
+	border-bottom: .5pt solid windowtext;
+}
+
+.xl75 {
+	mso-style-parent: style0;
+	text-align: center;
+	white-space: normal;
+	font-size: 9.0pt;
+	mso-font-charset: 134;
+	border-top: .5pt solid windowtext;
+	border-bottom: .5pt solid windowtext;
+}
+
+.xl76 {
+	mso-style-parent: style0;
+	text-align: center;
+	white-space: normal;
+	font-size: 10.0pt;
+	font-weight: 700;
+	mso-font-charset: 134;
+}
+
+.xl77 {
+	mso-style-parent: style0;
+	text-align: center;
+	white-space: normal;
+	font-size: 9.0pt;
+	mso-font-charset: 134;
+	border-top: .5pt solid windowtext;
+	border-right: .5pt solid windowtext;
+	border-bottom: .5pt solid windowtext;
+}
+-->
+</style>
+<style>
+#left-menu {
+	width: 25vw;
+	position: fixed;
+}
+
+#container {
+	margin-left: 27vw;
+	margin-top: 20px;
+	width: 920px;
+	min-width: 920px;
+	height: 400px;
+	min-height: 400px;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+#but_position {
+	margin-left: 27vw;
+	margin-top: 50px;
+}
 </style>
 </head>
 
 <body>
-<div class="nav">
-  <div class="container"> <a href="http://localhost:8080/views/webviews/user/setting.html"><img src="/img/webimg/logo-white1.png"></a>
-    <ul  id="navigator" class="nav-header">
-    </ul>
-  </div>
-</div>
+	<div class="nav">
+		<div class="container">
+			<a href="http://localhost:8080/views/webviews/user/setting.html"><img
+				src="/img/webimg/logo-white1.png"></a>
+			<ul id="navigator" class="nav-header">
+			</ul>
+		</div>
+	</div>
 
-<!-- Left menu -->
-<div id="left-menu"></div>
+	<!-- Left menu -->
+	<div id="left-menu"></div>
 
-<!-- Container -->
+	<!-- Container -->
 
-<div id="container">
-	<input id="create_invoice" type="button" style="z-index:99999;margin-bottom:-20px;position:fixed;" value="创建新的进项" class="btn btn-success btn-sm" />
-  <table width="6446.90" border="0" cellpadding="0" cellspacing="0" style='width:3223.45pt;border-collapse:collapse;table-layout:fixed;'>
-   
-   <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
-    <td class="xl66" height="40.20" width="5590.10" colspan="59" style='height:20.10pt;width:2795.05pt;border-right:none;border-bottom:none;' x:str>进项发票明细（发票）</td>
-    <td class="xl66" width="93.50" style='width:46.75pt;'></td>
-    <td class="xl66" width="83.90" style='width:41.95pt;'></td>
-    <td class="xl66" width="97.60" style='width:48.80pt;'></td>
-    <td class="xl65" width="96.30" style='width:48.15pt;'></td>
-    <td class="xl65" width="204.90" style='width:102.45pt;'></td>
-    <td class="xl65" width="140.30" style='width:70.15pt;'></td>
-    <td class="xl65" width="140.30" style='width:70.15pt;'></td>
-   </tr>
-   <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
-    <td class="xl67" colspan="2" height="40.20" style='height:20.10pt;' x:str>分公司名称：</td>
-    <td class="xl67" colspan="4" style='mso-ignore:colspan;'><input class="text"  type="text"  value="南京嘉元财务咨询有限公司" disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
-    <td class="xl67" colspan="2" x:str>项目名称：</td>
-    <td class="xl67" colspan="10" style='mso-ignore:colspan;'><input class="text"  type="text" value="零星工程" disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
-    <td class="xl71" colspan="12" style='mso-ignore:colspan;'></td>
-    <td class="xl73" colspan="2" style='mso-ignore:colspan;'></td>
-    <td class="xl71" colspan="13" style='mso-ignore:colspan;'></td>
-    <td class="xl76" colspan="17" style='mso-ignore:colspan;'></td>
-    <td class="xl67" colspan="4" style='mso-ignore:colspan;'></td>
-    <td class="xl65" colspan="4" style='mso-ignore:colspan;'></td>
-   </tr>
-   <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
-    <td class="xl68" height="154.20" rowspan="3" style='height:77.10pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>发票开具时间</td>
-    <td class="xl68" rowspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>发票号码</td>
-    <td class="xl68" rowspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>销货单位名称</td>
-    <td class="xl68" rowspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>货物（服务）名称</td>
-    <td class="xl68" rowspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>金额</td>
-    <td class="xl68" rowspan="3" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>进项税额</td>
-    <td class="xl68" colspan="12" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>11%税率的进项</td>
-    <td class="xl68" colspan="6" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>17%税率的进项</td>
-    <td class="xl68" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>13%税率的进项</td>
-    <td class="xl68" colspan="10" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>6%税率的进项</td>
-    <td class="xl74" colspan="6" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>5%征收率的进项</td>
-    <td class="xl68" colspan="18" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>3%征收率的进项</td>
-    <td class="xl68" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>减按1.5%征收率的进项</td>
-    <td class="xl68" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>用于购建不动产并一次性抵扣的进项</td>
-    <td class="xl68" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>通行费的进项</td>
-   </tr>
-   <tr height="58" class="xl65" style='height:29.00pt;mso-height-source:userset;mso-height-alt:580;'>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>运输服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>电信服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>建筑安装服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str><span style='mso-spacerun:yes;'>&nbsp;</span>不动产租赁服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str><span style='mso-spacerun:yes;'>&nbsp;</span>受让土地使用权的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>小计</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>其他</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>有形动产租赁的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>小计</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>电信服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>金融保险服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>生活服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>取得无形资产的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>小计</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>其他</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>不动产租赁服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>小计</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>货物及加工、修理修配劳务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str><span style='mso-spacerun:yes;'>&nbsp;</span>运输服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>电信服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>建筑安装服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>金融保险服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str><span style='mso-spacerun:yes;'>&nbsp;</span>有形动产租赁服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>生活服务的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>取得无形资产的进项</td>
-    <td class="xl68" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>小计</td>
-   </tr>
-   <tr height="56" class="xl65" style='height:28.00pt;mso-height-source:userset;mso-height-alt:560;'>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-    <td class="xl68" x:str>金额</td>
-    <td class="xl68" x:str>进项税额</td>
-   </tr>
-   <tr id="data-row0" class="datarow" height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
-    <td class="xl69" height="40.20" style='height:20.10pt;'><input style='width:100%;'  id='fapiaokaijushijian' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fapiaohaoma' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaohuodanweimingcheng' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='huowumingcheng' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_yunshu_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_yunshu_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_dianxin_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_dianxin_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_jianzhu_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_jianzhu_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_budong_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_budong_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_shourang_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_shourang_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_xiaoji_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_11_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_17_qita_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_17_qita_jinxiangshuie' class="text"></td>
-    <td class="xl72"><input style='width:100%;' id='fp_17_youxing_jine' class="text"></td>
-    <td class="xl72"><input style='width:100%;' id='fp_17_youxing_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_17_xiaoji_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_17_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_13_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_13_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_dianxin_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_dianxin_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_jinrong_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_jinrong_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_shenghuo_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_shenghuo_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_wuxing_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_wuxing_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_xiaoji_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_6_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_5_qita_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_5_qita_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_5_budong_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_5_budong_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_5_xiaoji_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_5_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_huowu_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_huowu_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_yunshu_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_yunshu_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_dianxin_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_dianxin_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_jianzhu_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_jianzhu_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_jinrong_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_jinrong_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_youxing_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_youxing_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_shenghuo_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_shenghuo_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_wuxing_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_wuxing_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_xiaoji_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_2_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_3_2_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_yongyu_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_yongyu_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_tongxingfei_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='fp_tongxingfei_jinxiangshuie' class="text"></td>
-   </tr>
-   <tr height="40.20" id="xiaoji" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
-    <td class="xl70" height="40.20" style='height:20.10pt;' x:str>小计</td>
-    <td class="xl70"></td>
-    <td class="xl70"></td>
-    <td class="xl70"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_yunshu_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_yunshu_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_dianxin_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_dianxin_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_jianzhu_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_jianzhu_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_budong_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_budong_jinxiangshuie' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_shourang_jine' class="text"></td>
-    <td class="xl69"><input style='width:100%;' id='xiaoji_11_shourang_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_11_xiaoji_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_11_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_17_qita_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_17_qita_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_17_youxing_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_17_youxing_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_17_xiaoji_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_17_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_13_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_13_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_dianxin_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_dianxin_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_jinrong_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_jinrong_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_shenghuo_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_shenghuo_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_wuxing_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_wuxing_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_xiaoji_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_6_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_5_qita_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_5_qita_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_5_budong_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_5_budong_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_5_xiaoji_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_5_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_huowu_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_huowu_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_yunshu_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_yunshu_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_dianxin_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_dianxin_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_jianzhu_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_jianzhu_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_jinrong_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_jinrong_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_youxing_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_youxing_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_shenghuo_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_shenghuo_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_wuxing_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_wuxing_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_xiaoji_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_xiaoji_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_2_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_3_2_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_yongyu_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_yongyu_jinxiangshuie' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_tongxingfei_jine' class="text"></td>
-    <td class="xl70"><input style='width:100%;' id='xiaoji_tongxingfei_jinxiangshuie' class="text"></td>
-   </tr>
-   <tr height="28" class="xl65" style='height:14.00pt;'>
-    <td class="xl65" height="28" style='height:14.00pt;' x:str>填表人：</td>
-    <td class='xl68' colspan='3'><input style='width:100%' id='tianbiaoren' class="text"></td>
-   	<td class="xl65" height="28" style='height:14.00pt;' x:str>审核人：</td>
-    <td class='xl68' colspan='3'><input style='width:100%' id='shenheren' class="text"></td>
-   </tr>
-  </table>
-</div>
-<div class="mask"></div>
-<div class="footer">
-  <div class="container">
-    <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
-  </div>
-</div>
-<script type="text/javascript">
-function navJinXiao() {
-	$($(".nav_jinxiang")[0]).addClass("active");
-}
-var redirectView = "";
-(function ($) {
-    $.getUrlParam = function (name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
-})(jQuery);
-var currentSelectedNodeId = "";
-function hello() {
-	var node_id = $.getUrlParam('node_id');
-	currentSelectedNodeId = node_id;
-	var node = $('#left-menu').treeview('getNode', node_id);
-	console.log(node);
-	$('#left-menu').treeview('selectNode', [node, { silent: true } ]);
-	var parent = $('#left-menu').treeview('getParent', node);
-	console.log(parent);
-	$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);
-}
-var company_id = $.getUrlParam('company_id');
-var tds = $("#data-row0 td input");
+	<div id="container">
+		<input id="create_invoice" type="button" value="创建新的进项"
+			class="btn btn-success btn-sm" /> 
+		<input id="modify" type="button"
+			value="更新" class="btn btn-danger btn-sm" />
 
-var tdsList = [];
-for(var i = 0; i < tds.length; i++){
-	//console.log(tds.get(i));
-	tdsList.push(tds.get(i).id);
-}
-console.log(tdsList);
+		<table width="6446.90" border="0" cellpadding="0" cellspacing="0"
+			style='width: 3223.45pt; border-collapse: collapse; table-layout: fixed;'>
 
-
-/* var query = {query_key: 'companyId', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
-$.post("/project/getModel", query, function(data){ */
-var query = {companyId:company_id};
-$.post("/project/getJinXiangTaiZhangList", query, function(data){
-	
-
-	var dataSet = $.parseJSON(data.data);
-	//console.log(dataSet);
-	for(var i = 0; i < dataSet.length; i++){
-		if(i == 0){
-			for(var key in dataSet[0]){
-				//console.log(key);
-				//console.log(dataSet[0][key]);
-				$("#" + key).val(dataSet[0][key]);
-				if(key != "id"){
-					$("#" + key).attr("name", dataSet[0]['id']);
-					$("#" + key).addClass(key);
-				}
-			}
-		}else if(i > 0){
-
-			$("#data-row" + (i-1)).after("<tr class='datarow' id='data-row"+i+"' height='40.20' class='xl65' style='height:20.10pt;'>");
-			//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
-			for(var j = 0; j< tdsList.length; j++){
-				if(tdsList[j] != 'id'){
-					$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]  +'" style="width:100%" name="' + dataSet[i]['id']+'" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
-				}
-			}
+			<tr height="40.20" class="xl65"
+				style='height: 20.10pt; mso-height-source: userset; mso-height-alt: 402;'>
+				<td class="xl66" height="40.20" width="5590.10" colspan="59"
+					style='height: 20.10pt; width: 2795.05pt; border-right: none; border-bottom: none;'
+					x:str>进项发票明细（发票）</td>
+				<td class="xl66" width="93.50" style='width: 46.75pt;'></td>
+				<td class="xl66" width="93.50" style='width: 46.75pt;'></td>
+				<td class="xl66" width="83.90" style='width: 41.95pt;'></td>
+				<td class="xl66" width="97.60" style='width: 48.80pt;'></td>
+				<td class="xl65" width="96.30" style='width: 48.15pt;'></td>
+				<td class="xl65" width="204.90" style='width: 102.45pt;'></td>
+				<td class="xl65" width="140.30" style='width: 70.15pt;'></td>
+				<td class="xl65" width="140.30" style='width: 70.15pt;'></td>
+			</tr>
+			<tr height="40.20" class="xl65"
+				style='height: 20.10pt; mso-height-source: userset; mso-height-alt: 402;'>
+				<td class="xl67" colspan="2" height="40.20" style='height: 20.10pt;'
+					x:str>分公司名称：</td>
+				<td class="xl67" colspan="4" style='mso-ignore: colspan;'><input
+					class="text" type="text" value="南京嘉元财务咨询有限公司" disabled
+					style='background-color: white; border: none; width: 100%; height: 100%;'
+					id='fengongsimingcheng'></td>
+				<td class="xl67" colspan="2" x:str>项目名称：</td>
+				<td class="xl67" colspan="10" style='mso-ignore: colspan;'><input
+					class="text" type="text" value="零星工程" disabled
+					style='background-color: white; border: none; width: 100%; height: 100%;'
+					id='xiangmubu'></td>
+				<td class="xl71" colspan="12" style='mso-ignore: colspan;'></td>
+				<td class="xl73" colspan="2" style='mso-ignore: colspan;'></td>
+				<td class="xl71" colspan="13" style='mso-ignore: colspan;'></td>
+				<td class="xl76" colspan="17" style='mso-ignore: colspan;'></td>
+				<td class="xl67" colspan="4" style='mso-ignore: colspan;'></td>
+				<td class="xl65" colspan="4" style='mso-ignore: colspan;'></td>
+			</tr>
+			<tr height="40.20" class="xl65"
+				style='height: 20.10pt; mso-height-source: userset; mso-height-alt: 402;'>
+				<td class="xl68" height="154.20" rowspan="3"
+					style='height: 77.10pt; border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>审核状态</td>
+				<td class="xl68" height="154.20" rowspan="3"
+					style='height: 77.10pt; border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>发票开具时间</td>
+				<td class="xl68" rowspan="3"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>发票号码</td>
+				<td class="xl68" rowspan="3"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>销货单位名称</td>
+				<td class="xl68" rowspan="3"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>货物（服务）名称</td>
+				<td class="xl68" rowspan="3"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>金额</td>
+				<td class="xl68" rowspan="3"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>进项税额</td>
+				<td class="xl68" colspan="12"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>11%税率的进项</td>
+				<td class="xl68" colspan="6"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>17%税率的进项</td>
+				<td class="xl68" colspan="2" rowspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>13%税率的进项</td>
+				<td class="xl68" colspan="10"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>6%税率的进项</td>
+				<td class="xl74" colspan="6"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>5%征收率的进项</td>
+				<td class="xl68" colspan="18"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>3%征收率的进项</td>
+				<td class="xl68" colspan="2" rowspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>减按1.5%征收率的进项</td>
+				<td class="xl68" colspan="2" rowspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>用于购建不动产并一次性抵扣的进项</td>
+				<td class="xl68" colspan="2" rowspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>通行费的进项</td>
+			</tr>
+			<tr height="58" class="xl65"
+				style='height: 29.00pt; mso-height-source: userset; mso-height-alt: 580;'>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>运输服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>电信服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>建筑安装服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str><span style='mso-spacerun: yes;'>&nbsp;</span>不动产租赁服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str><span style='mso-spacerun: yes;'>&nbsp;</span>受让土地使用权的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>小计</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>其他</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>有形动产租赁的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>小计</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>电信服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>金融保险服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>生活服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>取得无形资产的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>小计</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>其他</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>不动产租赁服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>小计</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>货物及加工、修理修配劳务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str><span style='mso-spacerun: yes;'>&nbsp;</span>运输服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>电信服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>建筑安装服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>金融保险服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str><span style='mso-spacerun: yes;'>&nbsp;</span>有形动产租赁服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>生活服务的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>取得无形资产的进项</td>
+				<td class="xl68" colspan="2"
+					style='border-right: .5pt solid windowtext; border-bottom: .5pt solid windowtext;'
+					x:str>小计</td>
+			</tr>
+			<tr height="56" class="xl65"
+				style='height: 28.00pt; mso-height-source: userset; mso-height-alt: 560;'>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+				<td class="xl68" x:str>金额</td>
+				<td class="xl68" x:str>进项税额</td>
+			</tr>
+			<tr id="data-row0" class="datarow" height="40.20" class="xl65"
+				style='height: 20.10pt; mso-height-source: userset; mso-height-alt: 402;'>
+				<td class="xl69" height="40.20" style='height: 20.10pt;'><input
+					style='width: 100%;' id='yiji_shenhe_status' class="text"></td>
+				<td class="xl69" height="40.20" style='height: 20.10pt;'><input
+					style='width: 100%;' id='fapiaokaijushijian' class="text"></td>
+				<td class="xl69"><input style='width: 100%;' id='fapiaohaoma'
+					class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaohuodanweimingcheng' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='huowumingcheng' class="text"></td>
+				<td class="xl69"><input style='width: 100%;' id='jine'
+					class="text"></td>
+				<td class="xl69"><input style='width: 100%;' id='jinxiangshuie'
+					class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_yunshu_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_yunshu_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_dianxin_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_dianxin_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_jianzhu_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_jianzhu_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_budong_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_budong_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_shourang_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_shourang_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_xiaoji_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_11_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_17_qita_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_17_qita_jinxiangshuie' class="text"></td>
+				<td class="xl72"><input style='width: 100%;'
+					id='fp_17_youxing_jine' class="text"></td>
+				<td class="xl72"><input style='width: 100%;'
+					id='fp_17_youxing_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_17_xiaoji_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_17_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;' id='fp_13_jine'
+					class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_13_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_dianxin_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_dianxin_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_jinrong_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_jinrong_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_shenghuo_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_shenghuo_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_wuxing_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_wuxing_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_xiaoji_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_6_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_5_qita_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_5_qita_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_5_budong_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_5_budong_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_5_xiaoji_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_5_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_huowu_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_huowu_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_yunshu_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_yunshu_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_dianxin_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_dianxin_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_jianzhu_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_jianzhu_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_jinrong_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_jinrong_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_youxing_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_youxing_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_shenghuo_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_shenghuo_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_wuxing_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_wuxing_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_xiaoji_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;' id='fp_3_2_jine'
+					class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_3_2_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_yongyu_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_yongyu_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_tongxingfei_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='fp_tongxingfei_jinxiangshuie' class="text"></td>
+			</tr>
+			<tr height="40.20" id="xiaoji" class="xl65"
+				style='height: 20.10pt; mso-height-source: userset; mso-height-alt: 402;'>
+				<td class="xl70" height="40.20" style='height: 20.10pt;' x:str>小计</td>
+				<td class="xl70"></td>
+				<td class="xl70"></td>
+				<td class="xl70"></td>
+				<td class="xl70"></td>
+				<td class="xl70"><input style='width: 100%;' id='xiaoji_jine'
+					class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_yunshu_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_yunshu_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_dianxin_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_dianxin_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_jianzhu_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_jianzhu_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_budong_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_budong_jinxiangshuie' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_shourang_jine' class="text"></td>
+				<td class="xl69"><input style='width: 100%;'
+					id='xiaoji_11_shourang_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_11_xiaoji_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_11_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_17_qita_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_17_qita_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_17_youxing_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_17_youxing_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_17_xiaoji_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_17_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_13_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_13_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_dianxin_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_dianxin_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_jinrong_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_jinrong_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_shenghuo_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_shenghuo_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_wuxing_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_wuxing_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_xiaoji_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_6_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_5_qita_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_5_qita_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_5_budong_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_5_budong_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_5_xiaoji_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_5_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_huowu_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_huowu_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_yunshu_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_yunshu_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_dianxin_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_dianxin_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_jianzhu_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_jianzhu_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_jinrong_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_jinrong_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_youxing_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_youxing_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_shenghuo_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_shenghuo_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_wuxing_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_wuxing_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_xiaoji_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_xiaoji_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_2_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_3_2_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_yongyu_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_yongyu_jinxiangshuie' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_tongxingfei_jine' class="text"></td>
+				<td class="xl70"><input style='width: 100%;'
+					id='xiaoji_tongxingfei_jinxiangshuie' class="text"></td>
+			</tr>
+			<tr height="28" class="xl65" style='height: 14.00pt;'>
+				<td class="xl65" height="28" style='height: 14.00pt;' x:str>填表人：</td>
+				<td class='xl68' colspan='3'><input style='width: 100%'
+					id='tianbiaoren' class="text"></td>
+				<td class="xl65" height="28" style='height: 14.00pt;' x:str>审核人：</td>
+				<td class='xl68' colspan='3'><input style='width: 100%'
+					id='shenheren' class="text"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="mask"></div>
+	<div class="footer">
+		<div class="container">
+			<p>沪ICP备15012848号 | COPYRIGHT ? 2014-2015, BANGBANGZHANG, ALL
+				RIGHTS RESERVED</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function navJinXiao() {
+			$($(".nav_jinxiang")[0]).addClass("active");
 		}
-	}
-	$("#xiaoji td input").each(function(){
+		var redirectView = "";
+		(function($) {
+			$.getUrlParam = function(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null)
+					return unescape(r[2]);
+				return null;
+			}
+		})(jQuery);
+		var currentSelectedNodeId = "";
+		function hello() {
+			var node_id = $.getUrlParam('node_id');
+			currentSelectedNodeId = node_id;
+			var node = $('#left-menu').treeview('getNode', node_id);
+			console.log(node);
+			$('#left-menu').treeview('selectNode', [ node, {
+				silent : true
+			} ]);
+			var parent = $('#left-menu').treeview('getParent', node);
+			console.log(parent);
+			$('#left-menu').treeview('expandNode', [ parent.nodeId, {
+				levels : (node.level - 1),
+				silent : true
+			} ]);
+		}
+		var company_id = $.getUrlParam('company_id');
+		var tds = $("#data-row0 td input");
 
-		var oldId =  $(this).attr("id");
-		if(oldId == "xiaoji_jine" || oldId == "xiaoji_jinxiangshuie"){
-			var id = oldId.replace("xiaoji_", "");
-			var count = 0;
-			var inputs = $("." + id).each(function(){
-				console.log($(this));
-				count += parseFloat($(this).val());
-				
-			});
-			if(!isNaN(count)){
-				$("#"+oldId).val(count);
-			}
+		var tdsList = [];
+		for (var i = 0; i < tds.length; i++) {
+			//console.log(tds.get(i));
+			tdsList.push(tds.get(i).id);
 		}
-		
-		else if(oldId.indexOf("xiaoji_") != -1){
-	
-		
-			var id = oldId.replace("xiaoji_", "fp_");
-			//console.log(id);
-			var count = 0;
-			var inputs = $("." + id).each(function(){
-				console.log($(this));
-				count += parseFloat($(this).val());
-				
-			});
-			if(!isNaN(count)){
-				$("#"+oldId).val(count);
-			}
-		}
-	});
-	
-	$(".text").keyup(function(){
+		console.log(tdsList);
 
-		var id = $(this).attr("id");
-		if(id == "jine" || id == "jinxiangshuie"){
-			var xiaojiId = "xiaoji_" + id;
-			var count = 0;
-			var inputs = $("." + id).each(function(){
-				console.log($(this));
-				count += parseFloat($(this).val());
-				
-			});
-			if(!isNaN(count)){
-				$("#"+xiaojiId).val(count);
-			}
-		}
-		else if(id.indexOf("fp_") != -1){
+		/* var query = {query_key: 'companyId', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
+		 $.post("/project/getModel", query, function(data){ */
+		var query = {
+			companyId : company_id
+		};
+		$.post("/project/getJinXiangTaiZhangList",query,function(data) {
+
+			var dataSet = $.parseJSON(data.data);
+			//console.log(dataSet);
+			for (var i = 0; i < dataSet.length; i++) {
+				if (i == 0) {
+					for ( var key in dataSet[0]) {
+						if (key == "yiji_shenhe_status") {
+							$("#" + key).val((dataSet[0][key] == 0 ? "未审核": (dataSet[0][key] == 1 ? "审核通过": "审核未通过")));            
+						} else {
+							$("#" + key).val(dataSet[0][key]);
+						}
+						if (key != "id") {
+							$("#" + key).attr("name",dataSet[0]['id']);
+							$("#" + key).addClass(key);
+						}
+					}
+					if (dataSet[0]['beizhu'] != null
+							&& dataSet[0]['beizhu'] != "") {
+						$("#beizhu").val(dataSet[0]['beizhu']);
+					}
+				} else if (i > 0) {
 			
-			
-				var xiaoJiId = id.replace("fp_", "xiaoji_");
-				//console.log(id);
-				var count = 0;
-				console.log("hitttt");
-				console.log(dataSet);
-				if(dataSet.length == 0){
-					console.log(id);
-					var value = $("#" + id).val();
-					console.log(value);
-					$(".text").each(function(){
-
-						if($(this).attr('id') == xiaoJiId){
-							console.log($(this));
-							if(!isNaN(value)){
-								$(this).val(value);
+					$("#data-row" + (i - 1)).after("<tr class='datarow' id='data-row"+i+"' height='40.20' class='xl65' style='height:20.10pt;'>");
+					//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
+					for (var j = 0; j < tdsList.length; j++) {
+						if (tdsList[j] != 'id') {
+							if (j == 0) {
+								$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]+ '" style="width:100%" name="'+ dataSet[i]['id']+ '" id="'+ tdsList[j]+ '" value="'+ (dataSet[i][tdsList[j]] == 0 ? "未审核": (dataSet[i][tdsList[j]] == 1 ? "审核通过": "审核未通过"))+ '"></td>');
+							} else {
+								$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]+ '" style="width:100%" name="'+ dataSet[i]['id']+ '" id="'+ tdsList[j]+ '" value="'+ dataSet[i][tdsList[j]]+ '"></td>');
 							}
 						}
-					});
-
-				}else{
-					var inputs = $("." + id).each(function(){
-						console.log($(this));
-						count += parseFloat($(this).val());
-						
-					});
-					console.log($("#"+xiaoJiId));
-					if(!isNaN(count)){
-						$("#"+xiaoJiId).val(count);
+					}
+					if (dataSet[0]['beizhu'] != null&& dataSet[i]['beizhu'] != "") {
+						$("#beizhu").val(dataSet[i]['beizhu']);
 					}
 				}
-			}
-		});
-	
-});
-$("#submit_invoice").click(function(){
-	//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
-	window.location = "/views/recordviews/fapiaoshangchuan.html";
-});
-$("#jinxiangzhangtai").click(function(){
-	//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
-	window.location = "/views/recordviews/jinxiangfapiaomingxi_fapiao.html?fapiaohaoma=31639332&fapiaoshijian=2016-04-21";
-});
-
-$("#add").click(function(){
-	dataSet = {};
-	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		dataSet[$(this).attr('id')] = $(this).val();
-	});
-	dataSet['xiangmutaizhang_id'] = xiangmutaizhang_id;
-	dataSet['class_name'] = 'JinXiangFaPiaoMingXi_FaPiao';
-	dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
-	dataSet["shenheshijian"] = "";
-	$.post('/project/addModel', dataSet, function(data){});
-});
-
-$("#modify").click(function(){
-	//var rows = $("tr .row");
-	console.log("click");
-	$(".datarow").each(function(){
-		console.log("here");
-		var inputs = $(this).find("input");
-		console.log(inputs);
-		var id = $(this).find("input").first().attr("name");
-		var dataSet = {};
-		$(this).find("input").each(function(){
-			dataSet[$(this).attr("id")] = $(this).val();
-		});
-		dataSet['id'] = id;
-		dataSet['class_name'] = 'JinXiangFaPiaoMingXi_FaPiao';
-		//dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
-		dataSet['shenheren'] = $("#shenheren").val();
-		dataSet["shenheshijian"] = new Date().Format("yyyy-MM-DD");
-		//dataSet["xiangmutaizhang_id"] = xiangmutaizhang_id;
-		console.log(dataSet);
-		$.post("/project/modifyModel", dataSet, function(data){});
-		//console.log(id);
-	});
-
-	
-});
-
-Date.prototype.Format = function(formatStr) {
-    var str = formatStr;
-    var Week = ['日', '一', '二', '三', '四', '五', '六'];
-
-    str = str.replace(/yyyy|YYYY/, this.getFullYear());
-    str = str.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this.getYear() % 100).toString() : '0' + (this.getYear() % 100));
-
-    str = str.replace(/MM/, (this.getMonth() + 1) > 9 ? (this.getMonth() + 1).toString() : '0' + (this.getMonth()+1));
-    str = str.replace(/M/g, this.getMonth());
-
-    str = str.replace(/w|W/g, Week[this.getDay()]);
-
-    str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' + this.getDate());
-    str = str.replace(/d|D/g, this.getDate());
-
-    str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString() : '0' + this.getHours());
-    str = str.replace(/h|H/g, this.getHours());
-    str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes().toString() : '0' + this.getMinutes());
-    str = str.replace(/m/g, this.getMinutes());
-
-    str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' + this.getSeconds());
-    str = str.replace(/s|S/g, this.getSeconds());
-
-    return str;
-}
-
-/*$("input").keyup(function(){
-	console.log("hit");
-	var id = $(this).attr("id");
-	console.log(id);
-	if(id == "jine" || id == "jinxiangshuie"){
-		var xiaojiId = "xiaoji_" + id;
-		var count = 0;
-		var inputs = $("." + id).each(function(){
-			console.log($(this));
-			count += parseFloat($(this).val());
+				$("#xiaoji td input").each(function() {
 			
-		});
-		$("#"+xiaojiId).val(count);
-	}
-	else if(id.indexOf("fp_") != -1){
-		
-		
-			var xiaoJiId = id.replace("fp_", "xiaoji_");
-			//console.log(id);
-			var count = 0;
-			count = $("#" + id).val();
-			//console.log($("#"+xiaoJiId)[0].value);
-			//$("#"+xiaoJiId)[0].value = "222";
-			//console.log(xiaoJiId);
-			//xiaoJiId = "xiaoji_11_dianxin_jine";
-			$("#" + xiaoJiId).val("222");
-			//console.log("#" + xiaoJiId);
-			//$("#xiaoji_11_yunshu_jine").val("222");
-		}
-	});
-*/
-function nodeClick(node){
-	if(currentSelectedNodeId == node.nodeId) return;
-	if(node.level == 0) { //一级节点
-		var zonggongsi_company_id = node.company_id; //获取company_id
-		console.log("总公司CompanyId:" + zonggongsi_company_id);
-		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_zonggongsi.html&company_id=" + zonggongsi_company_id +"&node_id="+node.nodeId;
-	} else if(node.level == 1) {
-		var fengongsi_company_id = node.company_id;
-		console.log("分公司CompanyId:" + fengongsi_company_id);
-		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_fengongsi.html&company_id=" + fengongsi_company_id +"&node_id="+node.nodeId;
-	} else if(node.level == 2) {
-		var xiangmubu_company_id = node.company_id;
-		console.log("项目部CompanyId:" + xiangmubu_company_id);
-		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_xiangmu.html&company_id=" + xiangmubu_company_id +"&node_id="+node.nodeId;
-	}
-}
-$("#create_invoice").on("click", function() {
-	window.location.href = "/project/redirectView?view=fapiaoshangchuan.html&company_id=" + company_id + "&node_id="+currentSelectedNodeId;
-});
+									var oldId = $(this).attr(
+											"id");
+									if (oldId == "xiaoji_jine"
+											|| oldId == "xiaoji_jinxiangshuie") {
+										var id = oldId.replace(
+												"xiaoji_", "");
+										var count = 0;
+										var inputs = $("." + id).each(function() {
+															console.log($(this));
+															count += parseFloat($(this).val());
+														});
+										if (!isNaN(count)) {
+											$("#" + oldId).val(
+													count);
+										}
+									}
+			
+									else if (oldId.indexOf("xiaoji_") != -1) {
+										var id = oldId.replace("xiaoji_","fp_");
+										//console.log(id);
+										var count = 0;
+										var inputs = $("." + id).each(function() {
+															console.log($(this));
+															count += parseFloat($(this).val());
+														});
+										if (!isNaN(count)) {
+											$("#" + oldId).val(
+													count);
+										}
+									}
+								});
 
-</script>
+								$(".text")
+										.keyup(
+												function() {
+
+													var id = $(this).attr("id");
+													if (id == "jine"
+															|| id == "jinxiangshuie") {
+														var xiaojiId = "xiaoji_"
+																+ id;
+														var count = 0;
+														var inputs = $("." + id)
+																.each(
+																		function() {
+																			console
+																					.log($(this));
+																			count += parseFloat($(
+																					this)
+																					.val());
+
+																		});
+														if (!isNaN(count)) {
+															$("#" + xiaojiId)
+																	.val(count);
+														}
+													} else if (id
+															.indexOf("fp_") != -1) {
+
+														var xiaoJiId = id
+																.replace("fp_",
+																		"xiaoji_");
+														//console.log(id);
+														var count = 0;
+														console.log("hitttt");
+														console.log(dataSet);
+														if (dataSet.length == 0) {
+															console.log(id);
+															var value = $(
+																	"#" + id)
+																	.val();
+															console.log(value);
+															$(".text")
+																	.each(
+																			function() {
+
+																				if ($(
+																						this)
+																						.attr(
+																								'id') == xiaoJiId) {
+																					console
+																							.log($(this));
+																					if (!isNaN(value)) {
+																						$(
+																								this)
+																								.val(
+																										value);
+																					}
+																				}
+																			});
+
+														} else {
+															var inputs = $(
+																	"." + id)
+																	.each(
+																			function() {
+																				console
+																						.log($(this));
+																				count += parseFloat($(
+																						this)
+																						.val());
+
+																			});
+															console
+																	.log($("#"
+																			+ xiaoJiId));
+															if (!isNaN(count)) {
+																$(
+																		"#"
+																				+ xiaoJiId)
+																		.val(
+																				count);
+															}
+														}
+													}
+												});
+
+							};
+						});
+		$("#submit_invoice").click(function() {
+			//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
+			window.location = "/views/recordviews/fapiaoshangchuan.html";
+		});
+		$("#jinxiangzhangtai")
+				.click(
+						function() {
+							//window.location = "/views/recordviews/jinxiangfapiaomingxi_renzheng.html";
+							window.location = "/views/recordviews/jinxiangfapiaomingxi_fapiao.html?fapiaohaoma=31639332&fapiaoshijian=2016-04-21";
+						});
+
+		$("#add").click(function() {
+			dataSet = {};
+			$(".text").each(function() {
+				console.log($(this).attr('id'));
+				dataSet[$(this).attr('id')] = $(this).val();
+			});
+			dataSet['xiangmutaizhang_id'] = xiangmutaizhang_id;
+			dataSet['class_name'] = 'JinXiangFaPiaoMingXi_FaPiao';
+			dataSet["tianbiaoshijian"] = new Date().Format("yyyy-MM-DD");
+			dataSet["shenheshijian"] = "";
+			$.post('/project/addModel', dataSet, function(data) {
+			});
+		});
+
+		$("#modify").click(function() {
+							//var rows = $("tr .row");
+			console.log("click");
+			$(".datarow").each(function() {
+				var id = $(this).find("input")
+						.first().attr("name");
+				var status = $(this).find(
+						"input").first().val();
+				console.log(status);
+				var yiji_shenhe_status = (status == "未审核" ? 0
+						: (status == "审核通过" ? 1
+								: 2));
+				console.log(yiji_shenhe_status);
+				if (yiji_shenhe_status == 2) {
+					var beizhu = $('#beizhu')
+							.val();
+					dataSet = {
+						id : id,
+						yiji_shenhe_status : 0,
+						class_name : 'JinXiangFaPiaoMingXi_FaPiao',
+						beizhu : beizhu
+					};
+					$.ajaxSetup({async : false});
+					$.post("/project/modifyModel",dataSet,function(data) {});
+				}
+				location.reload(true);
+			});
+		});
+
+		Date.prototype.Format = function(formatStr) {
+			var str = formatStr;
+			var Week = [ '日', '一', '二', '三', '四', '五', '六' ];
+
+			str = str.replace(/yyyy|YYYY/, this.getFullYear());
+			str = str
+					.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this
+							.getYear() % 100).toString() : '0'
+							+ (this.getYear() % 100));
+
+			str = str.replace(/MM/, (this.getMonth() + 1) > 9 ? (this
+					.getMonth() + 1).toString() : '0' + (this.getMonth() + 1));
+			str = str.replace(/M/g, this.getMonth());
+
+			str = str.replace(/w|W/g, Week[this.getDay()]);
+
+			str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate()
+					.toString() : '0' + this.getDate());
+			str = str.replace(/d|D/g, this.getDate());
+
+			str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours()
+					.toString() : '0' + this.getHours());
+			str = str.replace(/h|H/g, this.getHours());
+			str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes()
+					.toString() : '0' + this.getMinutes());
+			str = str.replace(/m/g, this.getMinutes());
+
+			str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this
+					.getSeconds().toString() : '0' + this.getSeconds());
+			str = str.replace(/s|S/g, this.getSeconds());
+
+			return str;
+		}
+
+		/*$("input").keyup(function(){
+		 console.log("hit");
+		 var id = $(this).attr("id");
+		 console.log(id);
+		 if(id == "jine" || id == "jinxiangshuie"){
+		 var xiaojiId = "xiaoji_" + id;
+		 var count = 0;
+		 var inputs = $("." + id).each(function(){
+		 console.log($(this));
+		 count += parseFloat($(this).val());
+		
+		 });
+		 $("#"+xiaojiId).val(count);
+		 }
+		 else if(id.indexOf("fp_") != -1){
+		
+		
+		 var xiaoJiId = id.replace("fp_", "xiaoji_");
+		 //console.log(id);
+		 var count = 0;
+		 count = $("#" + id).val();
+		 //console.log($("#"+xiaoJiId)[0].value);
+		 //$("#"+xiaoJiId)[0].value = "222";
+		 //console.log(xiaoJiId);
+		 //xiaoJiId = "xiaoji_11_dianxin_jine";
+		 $("#" + xiaoJiId).val("222");
+		 //console.log("#" + xiaoJiId);
+		 //$("#xiaoji_11_yunshu_jine").val("222");
+		 }
+		 });
+		 */
+		function nodeClick(node) {
+			if (currentSelectedNodeId == node.nodeId)
+				return;
+			if (node.level == 0) { //一级节点
+				var zonggongsi_company_id = node.company_id; //获取company_id
+				console.log("总公司CompanyId:" + zonggongsi_company_id);
+				window.location.href = "/project/redirectView?view=jinxiangfapiaomingxi_fapiao_zonggongsi.html&company_id="
+						+ zonggongsi_company_id + "&node_id=" + node.nodeId;
+			} else if (node.level == 1) {
+				var fengongsi_company_id = node.company_id;
+				console.log("分公司CompanyId:" + fengongsi_company_id);
+				window.location.href = "/project/redirectView?view=jinxiangfapiaomingxi_fapiao_fengongsi.html&company_id="
+						+ fengongsi_company_id + "&node_id=" + node.nodeId;
+			} else if (node.level == 2) {
+				var xiangmubu_company_id = node.company_id;
+				console.log("项目部CompanyId:" + xiangmubu_company_id);
+				window.location.href = "/project/redirectView?view=jinxiangfapiaomingxi_fapiao_xiangmu.html&company_id="
+						+ xiangmubu_company_id + "&node_id=" + node.nodeId;
+			}
+		}
+		$("#create_invoice")
+				.on(
+						"click",
+						function() {
+							window.location.href = "/project/redirectView?view=fapiaoshangchuan.html&company_id="
+									+ company_id
+									+ "&node_id="
+									+ currentSelectedNodeId;
+						});
+	</script>
 
 </body>
 
