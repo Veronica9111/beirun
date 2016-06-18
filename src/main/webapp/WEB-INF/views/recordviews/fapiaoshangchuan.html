@@ -19,6 +19,13 @@
 	src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
+<script type="text/javascript">
+	function GetQueryString(name){
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+</script>
 <style>
 <!--
 @page {
@@ -1104,10 +1111,10 @@ td {
 
 	<script type="text/javascript">
 	var option = "";
-		
+	var company_id = GetQueryString("company_id");
 	
 	$(document).ready(function(){
-		var query_xiangmu = {query_key:"company_id",query_value:"2",class_name:"XiangMuTaiZhang"};
+		var query_xiangmu = {query_key:"company_id",query_value:company_id,class_name:"XiangMuTaiZhang"};
 		
 		$.post("/project/getModel",query_xiangmu,function(data){
 			console.log(data);
@@ -1183,7 +1190,8 @@ td {
 				wenjian : wenjian,
 				xiangmu : xiangmu,
 				zhanbi : zhanbi=="" || zhanbi==null ? 100:zhanbi,
-				field1 :field1
+				field1 :field1,
+				company_id:company_id
 			};
 			
 			var xhr = new XMLHttpRequest();
