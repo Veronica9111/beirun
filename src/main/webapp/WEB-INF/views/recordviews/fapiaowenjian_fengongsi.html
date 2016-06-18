@@ -1250,7 +1250,7 @@ td
 </div>
 <script>
 	var nodeid = "";
-
+	var beizhu_init = "";
 	function hello(){
 		var node_id = GetQueryString("node_id");
 		nodeid = node_id;
@@ -1297,6 +1297,9 @@ console.log(tdsList);
 var query = {query_key: 'company_idAndStatus', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 $.post("/project/getModel", query, function(data){
 	var dataSet = $.parseJSON(data.data);
+	if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
+		$("#beizhu").val(dataSet[0]['beizhu']);
+	}
 	if(dataSet != null && dataSet != ""&&dataSet.length!=0){
 		var company_id = GetQueryString("company_id");
 		var id = parseInt(company_id);
@@ -1318,6 +1321,7 @@ $.post("/project/getModel", query, function(data){
 			for(var key in dataSet[0]){
 				//console.log(key);
 				//console.log(dataSet[0][key]);
+				beizhu_init = dataSet[0]["beizhu"];
 				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	
 				$('#xiangmubu').val(dataSet[0]['xiangmubu']);
 				$("#" + key).val(dataSet[0][key]);
@@ -1325,9 +1329,6 @@ $.post("/project/getModel", query, function(data){
 					$("#" + key).attr("name", dataSet[0]['id']);
 					$("#" + key).addClass(key);
 				}
-			}
-			if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
-				$("#beizhu").val(dataSet[0]['beizhu']);
 			}
 		}else if(i > 0){
 
@@ -1455,7 +1456,7 @@ dialog = $( "#dialog" ).dialog({
     modal: true,
     buttons: {
       "提交": function(){
-    	  var comment = $("#comment").val();
+    	  var comment = beizhu_init + " " + $("#comment").val();
     	  $(".datarow").each(function(){
     			var id = $(this).find("input").first().attr("name");
     			console.log(id);

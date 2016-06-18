@@ -1252,7 +1252,8 @@ td
 </div>
 <script>
 	var nodeid = "";
-
+	var beizhu_init = "";
+	
 	function hello(){
 		var node_id = GetQueryString("node_id");
 		nodeid = node_id;
@@ -1317,8 +1318,7 @@ $.post("/project/getModel", query, function(data){
 	for(var i = 0; i < dataSet.length; i++){
 		if(i == 0){
 			for(var key in dataSet[0]){
-				//console.log(key);
-				//console.log(dataSet[0][key]);
+				beizhu_init = dataSet[0]["beizhu"];
 				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	
 				$('#xiangmubu').val(dataSet[0]['xiangmubu']);
 				$("#" + key).val(dataSet[0][key]);
@@ -1539,7 +1539,7 @@ dialog = $( "#dialog" ).dialog({
     modal: true,
     buttons: {
       "提交": function(){
-    	  var comment = $("#comment").val();
+    	  var comment = beizhu_init + " " + $("#comment").val();
     	  $(".datarow").each(function(){
     			var id = $(this).find("input").first().attr("name");
     			console.log(id);
