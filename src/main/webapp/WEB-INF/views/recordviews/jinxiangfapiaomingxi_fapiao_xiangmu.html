@@ -1144,6 +1144,8 @@ td {
 	<!-- Container -->
 
 <div id="but_position">
+
+<input id="create_invoice" type="button" value="创建新进项" class="btn btn-success btn-sm" />
 <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" />
 	 <br /><div><label>审核备注：</label><textarea id="beizhu"  style="margin-top: 2em;"></textarea></div>
 </div>
@@ -1710,10 +1712,10 @@ td {
 		$.post("/project/getJinXiangTaiZhangList",query,function(data) {
 
 			var dataSet = $.parseJSON(data.data);
-			if (dataSet[0]['beizhu'] != null&& dataSet[0]['beizhu'] != "") {
-				$("#beizhu").val(dataSet[0]['beizhu']);
-			}
 			for (var i = 0; i < dataSet.length; i++) {
+				if (dataSet[0]['beizhu'] != null&& dataSet[0]['beizhu'] != "") {
+					$("#beizhu").val(dataSet[0]['beizhu']);
+				}
 				if (i == 0) {
 					for ( var key in dataSet[0]) {
 						$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	

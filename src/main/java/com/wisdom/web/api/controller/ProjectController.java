@@ -41,6 +41,7 @@ import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Permission;
+import com.wisdom.common.model.PiaoJuWenJian;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_QiTa;
@@ -227,6 +228,32 @@ public class ProjectController {
 			m = projectService.getClass().getMethod("getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus", Long.class);
 			ret = m.invoke(projectService, Long.valueOf(com.getId()));
 			List<JinXiangFaPiaoMingXi_FaPiao> itemlist = (List<JinXiangFaPiaoMingXi_FaPiao>)ret;
+			dataList.addAll(itemlist);
+		}
+		Map<String, String> retMap = new HashMap<>();
+		String data = JSONArray.fromObject(dataList).toString();
+		retMap.put("data", data);
+		retMap.put("status", "ok");
+		return retMap;
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/project/getFapiaoWenjian")
+	@ResponseBody
+	public Map<String, String> getFapiaoWenjian(HttpServletRequest request, HttpSession httpSession)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
+			SecurityException, ClassNotFoundException, InstantiationException {
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		Method m = projectService.getClass().getMethod("getXiangmuCompaniesByUid", Integer.class);
+		Object ret = m.invoke(projectService, uid);
+		@SuppressWarnings("unchecked")
+		List<PiaoJuWenJian> dataList = new ArrayList<>();
+		List<Company> list = (List<Company>)ret;
+		for(Company com : list) {
+			m = projectService.getClass().getMethod("getPiaoJuWenJianByCompany_idAndStatus", Long.class);
+			ret = m.invoke(projectService, Long.valueOf(com.getId()));
+			List<PiaoJuWenJian> itemlist = (List<PiaoJuWenJian>)ret;
 			dataList.addAll(itemlist);
 		}
 		Map<String, String> retMap = new HashMap<>();

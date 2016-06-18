@@ -1087,8 +1087,8 @@ td
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl66' height='28' style='height:14.00pt;' x:str>分公司名称：</td>
-    <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
-    <td class='xl67' colspan='4' style='border-right:none;border-bottom:.5pt solid windowtext;'></td>
+    <td class='xl66' colspan='4' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
+    <!-- <td class='xl67' colspan='4' style='border-right:none;border-bottom:.5pt solid windowtext;'></td> -->
     <td class='xl66' x:str>项目部：</td>
     <td class='xl66' id=''><input class="text"  type="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
    </tr>
@@ -1120,8 +1120,8 @@ td
     <td class='xl87 detail_table' name='shouqikuanxiang' derect_view='create_invoice_shouqikuanxiang_3.html'><input class="text" disabled style='width:100%;' id='shouqikuanxiang'></td>
     <td class='xl87 detail_table' name='wangongjindu' derect_view='jindu'><input class="text" disabled style='width:100%;' id='wangongjindu'></td>
     <td class='xl87 detail_table' name='qita' derect_view='qita'><input class="text" disabled style='width:100%;' id='qita'></td>
-    <td class='xl87 detail_table' name='qita' derect_view='qita'><input class="text" disabled style='width:100%;' id='qita'></td>
-    <td class='xl87 detail_table' name='qita' derect_view='qita'><input class="text" disabled style='width:100%;' id='qita'></td>
+    <td class='xl87 detail_table' name='qita' derect_view='qita'><input class="text" disabled style='width:100%;' id='fenbaoxiangmu'></td>
+    <td class='xl87 detail_table' name='qita' derect_view='qita'><a id="wenjian">下载票据</a></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
     <td class='xl68' height='28' style='border:none;height:14.00pt;' x:str>填表人：</td>
@@ -1167,7 +1167,7 @@ $.post("/project/getModel", query, function(data){
 	$(".text").each(function(){
 		$(this).prop("disabled", true);
 	});
-	
+	$("#wenjian").attr("href", "/files/image/" + dataSet[0]["fapiaowenjian"]);	
 });
 
 $(".detail_table").each(function(){
