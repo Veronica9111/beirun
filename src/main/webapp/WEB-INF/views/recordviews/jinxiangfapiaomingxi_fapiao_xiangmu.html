@@ -952,6 +952,7 @@ td
 <!-- Container -->
 
 <div id="container">
+	<input id="create_invoice" type="button" style="z-index:99999;margin-bottom:-20px;position:fixed;" value="创建新的进项" class="btn btn-success btn-sm" />
   <table width="6446.90" border="0" cellpadding="0" cellspacing="0" style='width:3223.45pt;border-collapse:collapse;table-layout:fixed;'>
    
    <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
@@ -1234,6 +1235,9 @@ td
   </div>
 </div>
 <script type="text/javascript">
+function navJinXiao() {
+	$($(".nav_jinxiang")[0]).addClass("active");
+}
 var redirectView = "";
 (function ($) {
     $.getUrlParam = function (name) {
@@ -1242,7 +1246,18 @@ var redirectView = "";
         if (r != null) return unescape(r[2]); return null;
     }
 })(jQuery);
-var company_id = decodeURI($.getUrlParam('company_id'));
+var currentSelectedNodeId = "";
+function hello() {
+	var node_id = $.getUrlParam('node_id');
+	currentSelectedNodeId = node_id;
+	var node = $('#left-menu').treeview('getNode', node_id);
+	console.log(node);
+	$('#left-menu').treeview('selectNode', [node, { silent: true } ]);
+	var parent = $('#left-menu').treeview('getParent', node);
+	console.log(parent);
+	$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);
+}
+var company_id = $.getUrlParam('company_id');
 var tds = $("#data-row0 td input");
 
 var tdsList = [];
@@ -1473,33 +1488,24 @@ Date.prototype.Format = function(formatStr) {
 	});
 */
 function nodeClick(node){
-	var gongsimingchengNode = $("#fengongsimingcheng");
-	var xiangmubuNode = $("#xiangmubu");
-	if(xiangmubuNode != null || xiangmubuNode != undefined) {
-		
-	}
-	if(gongsimingchengNode != null || gongsimingchengNode != undefined) {
-		if(node.level == 1) {
-			var parentNode = $('#left-menu').treeview('getParent', node);
-			$("#fengongsimingcheng").val(parentNode.text);
-			fengongsimingcheng = parentNode.text;
-		}
-	}
+	if(currentSelectedNodeId == node.nodeId) return;
 	if(node.level == 0) { //一级节点
 		var zonggongsi_company_id = node.company_id; //获取company_id
 		console.log("总公司CompanyId:" + zonggongsi_company_id);
-		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_zonggongsi.html&company_id=" + zonggongsi_company_id;
+		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_zonggongsi.html&company_id=" + zonggongsi_company_id +"&node_id="+node.nodeId;
 	} else if(node.level == 1) {
 		var fengongsi_company_id = node.company_id;
 		console.log("分公司CompanyId:" + fengongsi_company_id);
-		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_fengongsi.html&company_id=" + fengongsi_company_id;
+		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_fengongsi.html&company_id=" + fengongsi_company_id +"&node_id="+node.nodeId;
 	} else if(node.level == 2) {
 		var xiangmubu_company_id = node.company_id;
 		console.log("项目部CompanyId:" + xiangmubu_company_id);
-		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_xiangmu.html&company_id=" + xiangmubu_company_id;
+		window.location.href="/project/redirectView?view=jinxiangfapiaomingxi_fapiao_xiangmu.html&company_id=" + xiangmubu_company_id +"&node_id="+node.nodeId;
 	}
 }
-
+$("#create_invoice").on("click", function() {
+	window.location.href = "/project/redirectView?view=fapiaoshangchuan.html&company_id=" + company_id + "&node_id="+currentSelectedNodeId;
+});
 
 </script>
 

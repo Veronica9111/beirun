@@ -1120,6 +1120,9 @@ td
 
 </body>
 <script type="text/javascript">
+function navJinXiao() {
+	$($(".nav_xiaoxiang")[0]).addClass("active");
+}
 (function ($) {
     $.getUrlParam = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
