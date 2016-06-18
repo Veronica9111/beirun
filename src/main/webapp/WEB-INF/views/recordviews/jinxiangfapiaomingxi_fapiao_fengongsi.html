@@ -1686,12 +1686,10 @@ td {
 			var node_id = $.getUrlParam('node_id');
 			currentSelectedNodeId = node_id;
 			var node = $('#left-menu').treeview('getNode', node_id);
-			console.log(node);
 			$('#left-menu').treeview('selectNode', [ node, {
 				silent : true
 			} ]);
 			var parent = $('#left-menu').treeview('getParent', node);
-			console.log(parent);
 			$('#left-menu').treeview('expandNode', [ parent.nodeId, {
 				levels : (node.level - 1),
 				silent : true
@@ -1699,10 +1697,8 @@ td {
 		}
 		var tdsList = [];
 		for (var i = 0; i < tds.length; i++) {
-			//console.log(tds.get(i));
 			tdsList.push(tds.get(i).id);
 		}
-		console.log(tdsList);
 
 		/* var query = {query_key: 'companyId', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 		 $.post("/project/getModel", query, function(data){ */
@@ -1712,7 +1708,6 @@ td {
 		$.post("/project/getJinXiangTaiZhangList",query,function(data) {
 			
 			var dataSet = $.parseJSON(data.data);
-			//console.log(dataSet);
 			for (var i = 0; i < dataSet.length; i++) {
 				if (i == 0) {
 					for ( var key in dataSet[0]) {
@@ -1751,7 +1746,6 @@ td {
 					var id = oldId.replace("xiaoji_", "");
 					var count = 0;
 					var inputs = $("." + id).each(function() {
-						console.log($(this));
 						count += parseFloat($(this).val());
 					});
 					if (!isNaN(count)) {
@@ -1762,10 +1756,8 @@ td {
 				else if (oldId.indexOf("xiaoji_") != -1) {
 
 					var id = oldId.replace("xiaoji_", "fp_");
-					//console.log(id);
 					var count = 0;
 					var inputs = $("." + id).each(function() {
-						console.log($(this));
 						count += parseFloat($(this).val());
 					});
 					if (!isNaN(count)) {
@@ -1781,7 +1773,6 @@ td {
 					var xiaojiId = "xiaoji_"+ id;
 					var count = 0;
 					var inputs = $("." + id).each(function() {
-						console.log($(this));
 						count += parseFloat($(this).val());
 					});
 					if (!isNaN(count)) {
@@ -1790,17 +1781,11 @@ td {
 				} else if (id.indexOf("fp_") != -1) {
 
 					var xiaoJiId = id.replace("fp_", "xiaoji_");
-					//console.log(id);
 					var count = 0;
-					console.log("hitttt");
-					console.log(dataSet);
 					if (dataSet.length == 0) {
-						console.log(id);
 						var value = $("#" + id).val();
-						console.log(value);
 						$(".text").each(function() {
 							if ($(this).attr('id') == xiaoJiId) {
-								console.log($(this));
 								if (!isNaN(value)) {
 									$(this).val(value);
 								}
@@ -1809,10 +1794,8 @@ td {
 
 					} else {
 						var inputs = $("." + id).each(function() {
-							console.log($(this));
 							count += parseFloat($(this).val());
 							});
-						console.log($("#"+ xiaoJiId));
 						if (!isNaN(count)) {
 							$("#" + xiaoJiId).val(count);
 						}
@@ -1833,17 +1816,14 @@ td {
 
 		$("#modify").click(function() {
 			//var rows = $("tr .row");
-			console.log("click");
 			$(".datarow").each(function() {
 			var id = $(this).find("input")
 					.first().attr("name");
 			var status = $(this).find(
 					"input").first().val();
-			console.log(status);
 			var yiji_shenhe_status = (status == "未审核" ? 0
 					: (status == "审核通过" ? 1
 							: 2));
-			console.log(yiji_shenhe_status);
 			if (yiji_shenhe_status == 2) {
 				var beizhu = $('#beizhu').val();
 				dataSet = {
@@ -1929,17 +1909,14 @@ td {
 				return;
 			if (node.level == 0) { //一级节点
 				var zonggongsi_company_id = node.company_id; //获取company_id
-				console.log("总公司CompanyId:" + zonggongsi_company_id);
 				window.location.href = "/project/redirectView?view=jinxiangfapiaomingxi_fapiao_zonggongsi.html&company_id="
 						+ zonggongsi_company_id + "&node_id=" + node.nodeId;
 			} else if (node.level == 1) {
 				var fengongsi_company_id = node.company_id;
-				console.log("分公司CompanyId:" + fengongsi_company_id);
 				window.location.href = "/project/redirectView?view=jinxiangfapiaomingxi_fapiao_fengongsi.html&company_id="
 						+ fengongsi_company_id + "&node_id=" + node.nodeId;
 			} else if (node.level == 2) {
 				var xiangmubu_company_id = node.company_id;
-				console.log("项目部CompanyId:" + xiangmubu_company_id);
 				window.location.href = "/project/redirectView?view=jinxiangfapiaomingxi_fapiao_xiangmu.html&company_id="
 						+ xiangmubu_company_id + "&node_id=" + node.nodeId;
 			}
