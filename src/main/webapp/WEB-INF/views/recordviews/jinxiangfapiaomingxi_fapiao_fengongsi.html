@@ -1708,6 +1708,9 @@ td {
 		$.post("/project/getJinXiangTaiZhangList",query,function(data) {
 			
 			var dataSet = $.parseJSON(data.data);
+			if (dataSet[0]['beizhu'] != null&& dataSet[0]['beizhu'] != "") {
+				$("#beizhu").val(dataSet[0]['beizhu']);
+			}
 			for (var i = 0; i < dataSet.length; i++) {
 				if (i == 0) {
 					for ( var key in dataSet[0]) {
@@ -1736,10 +1739,7 @@ td {
 							}
 						}
 					}
-					if (dataSet[0]['beizhu'] != null&& dataSet[i]['beizhu'] != "") {
-							$("#beizhu").val(dataSet[i]['beizhu']);
-						}
-					}
+				}
 			$("#xiaoji td input").each(function() {
 				var oldId = $(this).attr("id");
 				if (oldId == "xiaoji_jine"|| oldId == "xiaoji_jinxiangshuie") {
