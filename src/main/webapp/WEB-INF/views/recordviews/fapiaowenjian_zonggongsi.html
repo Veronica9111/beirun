@@ -958,6 +958,8 @@ td
 <div id="container">
 <input id="success"  type="button" value="审核通过" class="btn btn-success btn-sm" />
 <input id="deny"  type="button" value="审核拒绝" class="btn btn-danger btn-sm" />
+</br>
+<div><label>审核备注：</label><textarea id="beizhu" disabled style="margin-top: 2em;"></textarea></div>
 <table id="invoice_info" width="656" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:328.00pt;border-collapse:collapse;table-layout:fixed;'>
 
    
@@ -1297,17 +1299,17 @@ for(var i = 0; i < tds.length; i++){
 	//console.log(tds.get(i));
 	tdsList.push(tds.get(i).id);
 }
-console.log(tdsList);
 /* var query = {query_key: 'company_idAndStatus', query_value: 2, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 $.post("/project/getModel", query, function(data){ */
 $.post("/project/getJinXiangAuditList", null, function(data){
 	var dataSet = $.parseJSON(data.data);
 	if(dataSet != null && dataSet != ""&&dataSet.length!=0){
-		//var company_id = GetQueryString("company_id");
-		//var id = parseInt(company_id);
+		beizhu_init = dataSet[0]["beizhu"];
+		if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
+			$("#beizhu").val(dataSet[0]['beizhu']);
+		}
 		var query = {query_key:'company_idAndStatus', query_value:2, class_name:'PiaoJuWenJian'};
 		$.post("/project/getModel",query,function(data){
-			console.log(data);
 			var dataSet = $.parseJSON(data.data);
 			for(var index=0;index<dataSet.length;index++){
 				var tr = $('<tr height="28" style="height:14.00pt;"><td class="xl66" height="28" style="height:14.00pt;" x:str>'+dataSet[index].fapiaoriqi+'</td>'
@@ -1317,11 +1319,9 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 			}
 		});
 	}
-	//console.log(dataSet);
 	for(var i = 0; i < dataSet.length; i++){
 		if(i == 0){
 			for(var key in dataSet[0]){
-				beizhu_init = dataSet[0]["beizhu"];
 				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	
 				$('#xiangmubu').val(dataSet[0]['xiangmubu']);
 				$("#" + key).val(dataSet[0][key]);
@@ -1330,20 +1330,13 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 					$("#" + key).addClass(key);
 				}
 			}
-			if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
-				$("#beizhu").val(dataSet[0]['beizhu']);
-			}
 		}else if(i > 0){
-
 			$("#data-row" + (i-1)).after("<tr class='datarow' id='data-row"+i+"' height='40.20' class='xl65' style='height:20.10pt;'>");
 			//$("data-row"+"i").append('<td class="xl75" height="28" style="height:14.00pt;""><input style="width:100%" id="riqi"></td>')
 			for(var j = 0; j< tdsList.length; j++){
 				if(tdsList[j] != 'id'){
 					$("#data-row" + i).append('<td class="xl69" ><input  class="text '+ tdsList[j]  +'" style="width:100%" name="' + dataSet[i]['id']+'" id="'+ tdsList[j]+'" value="'+ dataSet[i][tdsList[j]] +'"></td>');
 				}
-			}
-			if(dataSet[0]['beizhu'] != null && dataSet[i]['beizhu'] != ""){
-				$("#beizhu").val(dataSet[i]['beizhu']);
 			}
 		}
 	}
@@ -1354,7 +1347,6 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 			var id = oldId.replace("xiaoji_", "");
 			var count = 0;
 			var inputs = $("." + id).each(function(){
-				console.log($(this));
 				count += parseFloat($(this).val());
 				
 			});
@@ -1367,10 +1359,8 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 	
 		
 			var id = oldId.replace("xiaoji_", "fp_");
-			//console.log(id);
 			var count = 0;
 			var inputs = $("." + id).each(function(){
-				console.log($(this));
 				count += parseFloat($(this).val());
 				
 			});
@@ -1387,7 +1377,6 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 			var xiaojiId = "xiaoji_" + id;
 			var count = 0;
 			var inputs = $("." + id).each(function(){
-				console.log($(this));
 				count += parseFloat($(this).val());
 				
 			});
@@ -1399,18 +1388,12 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 			
 			
 				var xiaoJiId = id.replace("fp_", "xiaoji_");
-				//console.log(id);
 				var count = 0;
-				console.log("hitttt");
-				console.log(dataSet);
 				if(dataSet.length == 0){
-					console.log(id);
 					var value = $("#" + id).val();
-					console.log(value);
 					$(".text").each(function(){
 
 						if($(this).attr('id') == xiaoJiId){
-							console.log($(this));
 							if(!isNaN(value)){
 								$(this).val(value);
 							}
@@ -1419,11 +1402,9 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 
 				}else{
 					var inputs = $("." + id).each(function(){
-						console.log($(this));
 						count += parseFloat($(this).val());
 						
 					});
-					console.log($("#"+xiaoJiId));
 					if(!isNaN(count)){
 						$("#"+xiaoJiId).val(count);
 					}
@@ -1436,7 +1417,6 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 $('#success').click(function(){
 	$(".datarow").each(function(){
 		var id = parseInt($(this).find("input").first().attr("name"));
-		console.log(id);
 		$.ajaxSetup({async : false});
 		$.post('/project/modifyModel',{id:id,yiji_shenhe_status:1,class_name:'JinXiangFaPiaoMingXi_FaPiao'},function(){});
 	});
@@ -1453,7 +1433,6 @@ dialog = $( "#dialog" ).dialog({
     	  var comment = beizhu_init + " " + $("#comment").val();
     	  $(".datarow").each(function(){
     			var id = $(this).find("input").first().attr("name");
-    			console.log(id);
     			$.ajaxSetup({async : false});
     			$.post('/project/modifyModel',{id:id,yiji_shenhe_status:2,beizhu:comment,class_name:'JinXiangFaPiaoMingXi_FaPiao'},function(){});
     		});
