@@ -951,10 +951,13 @@ td
 
 <!-- Left menu -->
 <div id="left-menu"></div>
-
+<div id="dialog">
+	<input id="comment" type='textfield'/>
+</div>
 <!-- Container -->
 <div id="container">
 <input id="success"  type="button" value="审核通过" class="btn btn-success btn-sm" />
+<input id="deny"  type="button" value="审核拒绝" class="btn btn-danger btn-sm" />
 <table id="invoice_info" width="656" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:328.00pt;border-collapse:collapse;table-layout:fixed;'>
 
    
@@ -963,12 +966,6 @@ td
     <td class="xl66" x:str>发票号码</td>
     <td class="xl66" x:str>文件路径</td>
     <td class="xl66" x:str>占比</td>
-   </tr>
-   <tr height="28" style='height:14.00pt;' id="info">
-    <td class="xl66" height="28" style='height:14.00pt;' x:str>2016-04-23</td>
-    <td class="xl66" x:str>31639332</td>
-    <td class="xl66" x:str><a href="/img/webimg/xx1.jpg">点击查看发票</td>
-    <td class="xl66" x:str>100%</td>
    </tr>
   </table>
   
@@ -1254,8 +1251,11 @@ td
   </div>
 </div>
 <script>
+	var nodeid = "";
+
 	function hello(){
 		var node_id = GetQueryString("node_id");
+		nodeid = node_id;
 		var node = $('#left-menu').treeview('getNode', node_id);
 		console.log(node);
 		$('#left-menu').treeview('selectNode', [node, { silent: true } ]);
@@ -1268,6 +1268,7 @@ td
 </script>
 <script>
 	function nodeClick(node){
+		if(node.nodeId == nodeid){return;}
 		var company_id = node.company_id;
 		var node_id = node.nodeId;
 		if(node.level == 1){
@@ -1295,10 +1296,10 @@ for(var i = 0; i < tds.length; i++){
 	tdsList.push(tds.get(i).id);
 }
 console.log(tdsList);
-var query = {query_key: 'companyId', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
+var query = {query_key: 'company_idAndStatus', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 $.post("/project/getModel", query, function(data){
 	var dataSet = $.parseJSON(data.data);
-	if(dataSet != null || dataSet != ""){
+	if(dataSet != null && dataSet != ""&&dataSet.length!=0){
 		var company_id = GetQueryString("company_id");
 		var id = parseInt(company_id);
 		var query = {query_key:'company_idAndStatus', query_value:id, class_name:'PiaoJuWenJian'};
@@ -1425,14 +1426,7 @@ $.post("/project/getModel", query, function(data){
 			}
 		});
 });
-$(".btn-success").click(function(){
-	//window.location = "/views/recordviews/"+$(this).attr("id")+".html";
-	$("#info").hide();
-	$.post('/project/sendTelInfo', {}, function(data){
-		console.log(data);
-		
-	});
-});
+
 $("#submit").on("click", function(){
 	console.log($(".text"));
 	var dataSet = {};
@@ -1526,6 +1520,46 @@ $("#xiaoji td input").each(function(){
 		}
 	}
 });
+$('#success').click(function(){
+	$(".datarow").each(function(){
+		var id = $(this).find("input").first().attr("name");
+		console.log(id);
+		$.ajaxSetup({async : false});
+		$.post('/project/modifyModel',{id:id,yiji_shenhe_status:1,class_name:'JinXiangFaPiaoMingXi_FaPiao'},function(){});
+	});
+	location.reload(true);
+});
+
+dialog = $( "#dialog" ).dialog({
+    autoOpen: false,
+    height: 300,
+    width: 350,
+    modal: true,
+    buttons: {
+      "提交": function(){
+    	  var comment = $("#comment").val();
+    	  $(".datarow").each(function(){
+    			var id = $(this).find("input").first().attr("name");
+    			console.log(id);
+    			$.ajaxSetup({async : false});
+    			$.post('/project/modifyModel',{id:id,yiji_shenhe_status:2,beizhu:comment,class_name:'JinXiangFaPiaoMingXi_FaPiao'},function(){});
+    		});
+    		location.reload(true);
+    	  
+      	dialog.dialog("close");
+      },
+      "取消": function() {
+        dialog.dialog( "close" );
+      }
+    },
+    close: function() {
+        dialog.dialog( "close" );
+    }
+  });
+  
+  $('#deny').click(function(){
+	  dialog.dialog("open");
+  });
 </script>
 
 </html>

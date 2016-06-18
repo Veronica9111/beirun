@@ -1310,6 +1310,12 @@ public class ProjectServiceImpl implements IProjectService {
 			return result;
 		}
 
+		@Override
+		public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus(Long companyId) {
+			// TODO Auto-generated method stub
+			return jinXiangFaPiaoMingXi_FaPiaoMapper.getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus(companyId);
+		}
+
 
 
 }
