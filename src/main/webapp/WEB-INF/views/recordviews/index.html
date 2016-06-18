@@ -1,97 +1,294 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="/css/webcss/bootstrap.css">
-<link rel="stylesheet" href="/css/webcss/bootstrap-treeview.min.css">
-<link rel="stylesheet" href="/css/webcss/jquery-ui.css">
+<meta charset="utf-8">
+<title>发票识别系统</title>
+<meta name="description" content="简介">
+<meta name="keywords" content="关键字">
+<link rel="stylesheet" type="text/css" href="/css/webcss/jquery-ui.css" />
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme.css"/>
+<link rel="stylesheet" href="/css/webcss/bootstrap.css" />
+<link rel="stylesheet" href="/css/webcss/bootstrap-theme.css" />
+<link rel="stylesheet" href="/css/webcss/jquery-ui.theme-blue.css" />
+<script src=""></script>
 <style>
-	#tree{
-		width: 30vw;
+@charset "UTF-8";
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, blockquote, pre, form, input, textarea, fieldset, table, th, td {
+	margin: 0;
+	padding: 0
+}
+body, button, input, select, textarea {
+	font: normal 16px/2em "Microsoft YaHei";
+}
+/*body {
+	color: #b3b3b3;
+	background-color: #fff;
+}*/
+ul, ol {
+	list-style: none
+}
+img {
+	border: 0;
+	vertical-align: top;
+}
+:focus {
+	outline: 0
+}
+.clear {
+	clear: both;
+	height: 0;
+	font-size: 0;
+	overflow: hidden
+}
+.clearfix:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden
+}
+.clearfix {
+	clear: both;
+	zoom: 1
+}
+.v-a-m {
+	vertical-align: middle
+}
+h1 {
+	font-size: 18px
+}
+h2 {
+	font-size: 16px
+}
+h3 {
+	font-size: 14px
+}
+h4, h5, h6 {
+	font-size: 100%
+}
+a {
+	color: #121111;
+	text-decoration: none
+}
+a:hover {
+	color: #484848;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+.container {
+	margin: 0 auto;
+	margin-left: 50px;
+	margin: auto;
+	position: relative;
+}
+.all {
+	width: 100%;
+	height: 100%;
+	background-image: url("/img/webimg/bg-2.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	
+	 background-size:100% 100%;
+}
+.bj {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+}
+/*.login {
+	width: 350px;
+	height: 450px;
+	background: #fff;
+	border: 1px solid #D9EDF7;
+	top: 20%;
+	left: 15%;
+	border-radius: 0.6em;
+	position: absolute;
+	box-shadow: 5px 5px 10px #D9EDF7;
+}*/
+.login {
+	width: 350px;
+	height: 450px;
+	top: 20%;
+	left: 13%;
+	
+	position: absolute;
 	}
+
+.login .login-box p {
+	padding-top: 30px;
+}
+.login-box .sub input {
+	padding: 10px 25px;
+	background: #EF6D44;
+	color: #fff;
+}
+.sub{
+	width:100%;
+	margin-top: 40px;
+}
+.login-box a {
+	color: #316BF1;
+	margin-left: 75px;
+}
+.login .form-group input {
+	height: 35px;
+	width: 250px;
+}
+.form-group input{
+	border:0;
+	background:none;
+	color: #FFFFFF;
+}
+.login .login-box {
+	margin-top: 20px;
+	
+}
+.head {
+	width: 100%;
+}
+.head p {
+	color: #FFFFFF;
+	
+}
+
+#forget-password{
+    float: right;
+    margin: -1em 2em 0.5em 0em;
+    cursor:pointer;
+    color: #FFFFFF;
+    
+}
+#forget-password:hover{
+	border-bottom: 1px solid #FFFFFF;
+}
+
+/*body{
+	background-image: url("/img/webimg/bg-1.jpg");
+	background-repeat:no-repeat;
+	  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+}*/
+
+.glyphicon{
+    
+    color: #EF6D44;
+    padding: 0.5em;
+    font-size: larger;
+    border-radius: 0.3em;
+}
+
+input {
+	border-radius: 0.2em;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.ui-dialog .ui-dialog-title {
+  text-align: center;
+ }
+ /*.all_right{
+ 	width: 60%;
+ 	height:600px;
+ 	background-color: #248FC1;
+ 	float: right;
+ 	margin-top: 20%;
+ 	
+ 	
+ }*/
+.form-group{
+	width: 100%;
+	border-bottom: 1px solid #FFFFFF;
+	margin-top: 25px;
+}
+
+.ui-widget-header{
+	border: 1px solid #EF6D44;
+	background: #EF6D44;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+	border: 1px solid #EF6D44;
+	background: #EF6D44;
+}
 </style>
 </head>
-
 <body>
-<div id="tree"></div>
-<input type="button" id="button" value="press"/>
-<div id="dialog"></div>
+<div class="all">
+	
+  <div class="login">
+    <div class="head">
+    	<img src="../../img/webimg/logo-white1.png" />
+      <p>欢迎您登录 我们将为您提供专业的服务</p>
+    </div>
+    <div class="login-box">
+      <form>
+        <div class="form-group"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          <input id="name" type="text" placeholder="用户名"/>
+        </div>
+        <div class="form-group"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+          <input id="password" type="password" class="upass" placeholder="密码" />
+        </div>
+        <div class="sub">
+          <input id="login" type="button" class="btn primary-btn" value="登录"/>
+          <p id="forget-password">忘记密码？</p>
+        </div>
+      </form>
+      <div id="message"></div>
+    </div>
+  </div>
+  <div class="all_right"></div>
+</div>
+<div id="forget-pwd-dialog" style="display:none;">
+<p>请输入邮箱或员工号，我们将为您重新生成新密码</p>
+<input id="uid" type="textfield" placeholder="请输入邮箱或员工号"/>
 
-
+</div>
 <script src="/js/webjs/jquery-1.11.3.js"></script>
-<script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/jquery-ui.js"></script>
 <script>
-function getTree() {
-	  // Some logic to retrieve, or generate tree structure
-	  var data = [
-  {
-    text: "Parent 1",
-    nodes: [
-      {
-        text: "Child 1",
-        nodes: [
-          {
-            text: "Grandchild 1"
-          },
-          {
-            text: "Grandchild 2"
-          }
-        ]
-      },
-      {
-        text: "Child 2"
-      }
-    ]
-  },
-  {
-    text: "Parent 2"
-  },
-  {
-    text: "Parent 3"
-  },
-  {
-    text: "Parent 4"
-  },
-  {
-    text: "Parent 5"
-  }
-];
-	  return data;
-	}
+	$("#forget-password").click(function(){
+		$("#forget-pwd-dialog").dialog({
+		      resizable: true,
+		      height:270,
+		      width: 450,
+		      title: "忘记密码",
+		      modal: true,
+			buttons: {
+		        "发送新密码": function() {
+		        	$.post("/user/generateNewPassword", {uid: $("#uid").val()}, function(data){
+		        		console.log(data);
+		        	});
+		          $( this ).dialog( "close" );
+		        }
+		      }
+		});
+	});
 
-	$('#tree').treeview({data: getTree()});
-	
-	dialog = $( "#dialog" ).dialog({
-	      autoOpen: false,
-	      height: 300,
-	      width: 350,
-	      modal: true,
-	      buttons: {
-	        "Create an account": function(){
-	        	dialog.dialog("close");
-	        },
-	        Cancel: function() {
-	          dialog.dialog( "close" );
-	        }
-	      },
-	      close: function() {
-	        form[ 0 ].reset();
-	        allFields.removeClass( "ui-state-error" );
-	      }
-	    });
-	 
-	    form = dialog.find( "form" ).on( "submit", function( event ) {
-	      event.preventDefault();
-	      addUser();
-	    });
-	 
-	    $( "#button" ).button().on( "click", function() {
-	      dialog.dialog( "open" );
-	    });
-	
-
+	$("#login").click(function(){
+		var name = $("#name").val();
+		var password = $("#password").val();
+			$.post("/login",{"id":name, "password":password}, function(data){
+				console.log(data);
+				if(data.status == 'ok'){
+					window.location.href=data.url;
+					//window.location.href="/views/webviews/invoice/recognize.html";
+				}
+				else{
+					$("#message").html("用户名或密码错误，请重新输入！").css("color","#FFFFFF");
+				}
+		});
+	});
 </script>
 </body>
 </html>

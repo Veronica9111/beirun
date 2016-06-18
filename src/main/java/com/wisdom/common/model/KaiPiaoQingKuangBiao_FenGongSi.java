@@ -22,12 +22,13 @@ private String erji_shenhe_beizhu;
 private String yiji_shenhe_beizhu;
 private Double shouqikuanxiang;
 private Double kaijufapiao;
+private Double fenbaofapiao;
 private Long id;
     public KaiPiaoQingKuangBiao_FenGongSi() {
         super();
     }
 
-    public KaiPiaoQingKuangBiao_FenGongSi(String beizhu, Double hejijine, Double yikaipiaojine, String wangongjindu, Integer erji_shenhe_status, String yijishenheren, Double qita, Long company_id, Timestamp shengqingkaipiaoshijian, Integer yiji_shenhe_status, Double shuie, Double buhanshuijine, String erjishenheren, String erji_shenhe_beizhu, String yiji_shenhe_beizhu, Double shouqikuanxiang, Double kaijufapiao, Long id){
+    public KaiPiaoQingKuangBiao_FenGongSi(String beizhu, Double hejijine, Double yikaipiaojine, String wangongjindu, Integer erji_shenhe_status, String yijishenheren, Double qita, Long company_id, Timestamp shengqingkaipiaoshijian, Integer yiji_shenhe_status, Double shuie, Double buhanshuijine, String erjishenheren, String erji_shenhe_beizhu, String yiji_shenhe_beizhu, Double shouqikuanxiang, Double kaijufapiao, Long id, Double fenbaofapiao){
         this.beizhu = beizhu;
         this.hejijine = hejijine;
         this.yikaipiaojine = yikaipiaojine;
@@ -46,6 +47,7 @@ private Long id;
         this.shouqikuanxiang = shouqikuanxiang;
         this.kaijufapiao = kaijufapiao;
         this.id = id;
+        this.fenbaofapiao = fenbaofapiao;
     }
 
     public String getBeizhu() {
@@ -196,5 +198,13 @@ private Long id;
     public void setId(Long id){
         this.id = id;
     }
+
+	public Double getFenbaofapiao() {
+		return fenbaofapiao;
+	}
+
+	public void setFenbaofapiao(Double fenbaofapiao) {
+		this.fenbaofapiao = fenbaofapiao;
+	}
 
 }
