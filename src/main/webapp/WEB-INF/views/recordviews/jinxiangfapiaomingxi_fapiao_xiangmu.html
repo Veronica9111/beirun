@@ -1718,6 +1718,9 @@ td {
 			for (var i = 0; i < dataSet.length; i++) {
 				if (i == 0) {
 					for ( var key in dataSet[0]) {
+						$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	
+						$('#xiangmubu').val(dataSet[0]['xiangmubu']);
+					}
 						if (key == "yiji_shenhe_status") {
 							$("#" + key).val((dataSet[0][key] == 0 ? "未审核": (dataSet[0][key] == 1 ? "审核通过": "审核未通过")));            
 						} else {
