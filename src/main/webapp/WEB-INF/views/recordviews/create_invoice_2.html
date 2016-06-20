@@ -1038,6 +1038,10 @@ td
 		margin-left:27vw;
 		margin-top: 50px;
 	}
+	
+	.dialog-text{
+		    background: #DDDCDC;
+	}
 
 </style>
 </head>
@@ -1095,11 +1099,11 @@ td
     <td class='xl87' height='28' style='height:14.00pt;' id=''><input value="" class="text" style='width:100%;' id='shenqingriqi'></td>
     <td class='xl87' id=''><input class="text" style='width:100%;'  id='kaipiaoneirong'></td>
     <td class='xl87' id=''><input type="radio" name="yijiaoshui" checked>否<input type="radio" name="yijiaoshui">是</td>
-    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='kaijufapiao'></td>
-    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='shouqikuanxiang'></td>
-    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='wangongjindu'></td>
-    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='qita'></td>
-    <td class='xl87 detail_table' ><input class="text" style='width:100%;' id='fenbaoxiangmu'></td>
+    <td class='xl87 detail_table' ><input class="text dialog" style='width:100%;' id='kaijufapiao'></td>
+    <td class='xl87 detail_table' ><input class="text dialog" style='width:100%;' id='shouqikuanxiang'></td>
+    <td class='xl87 detail_table' ><input class="text dialog" style='width:100%;' id='wangongjindu'></td>
+    <td class='xl87 detail_table' ><input class="text dialog" style='width:100%;' id='qita'></td>
+    <td class='xl87 detail_table' ><input class="text dialog" style='width:100%;' id='fenbaoxiangmu'></td>
     <td class='xl87 detail_table' colspan='2'><input type="file" style='width:100%;' id='fapiaowenjian'></td>
    </tr>
    <tr height='28' style='height:14.00pt;'>
@@ -1111,6 +1115,48 @@ td
   </table>
 </div>
 <div class="mask"></div>
+<div id="dialog">
+<div style="display:inline;">
+	<input class="radio" type="radio" name="type" value="pupiao" checked="checked"  style="display:inline;"/>普票 
+	<input class="radio" type="radio" name="type" value="zhuanpiao"  style="display:inline;"/>专票 
+</div>
+<div id="table">
+ <table width="919.50" border="0" cellpadding="0" cellspacing="0" style='width:459.75pt;border-collapse:collapse;table-layout:fixed;'>
+   <tr height="28" style='height:14.00pt;'>
+    <td class="xl66" height="84" colspan="7" rowspan="3" style='height:42.00pt;border-right:none;border-bottom:none;' x:str>一般计税专用发票开具明细</td>
+   </tr>
+   <tr height="28" style='height:14.00pt;'/>
+   <tr height="28" style='height:14.00pt;'/>
+   <tr height="28" style='height:14.00pt;'>
+    <td class="xl67" height="56" rowspan="2" style='height:28.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>日期</td>
+    <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开票内容</td>
+    <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>销售额</td>
+    <td class="xl68" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>销项（应纳）税额</td>
+    <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>小计</td>
+    <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>税率</td>
+   </tr>
+   <tr height="28" style='height:14.00pt;'/>
+   <tr height="28" style='height:14.00pt;'>
+    <td class="xl73" height="28" style='height:14.00pt;'><input class="dialog-text" style='width:100%' id='shenqingriqi'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='kaipiaoneirong'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='xiaoshoue'></td>
+    <td class="xl74" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input class="dialog-text" style='width:100%' id='shuie'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='xiaoji'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='shuilv'></td>
+   </tr>
+   <tr height="28" style='height:14.00pt;'>
+    <td class="xl73" height="28" style='height:14.00pt;text-align:center' x:str>合计</td>
+    <td class="xl73"></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_xiaoshoue'></td>
+    <td class="xl74" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input class="dialog-text" style='width:100%' id='heji_shuie'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_xiaoji'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_shuilv'></td>
+   </tr>
+  </table>
+</div>
+
+
+</div>
 <div class="footer">
   <div class="container">
     <p>沪ICP备15012848号 | COPYRIGHT © 2014-2015, BANGBANGZHANG, ALL RIGHTS RESERVED </p>
@@ -1120,6 +1166,9 @@ td
 
 </body>
 <script type="text/javascript">
+xiaoshoue = 0;
+shuie = 0;
+isEmpty = true;
 function navJinXiao() {
 	$($(".nav_xiaoxiang")[0]).addClass("active");
 }
@@ -1168,7 +1217,7 @@ function hello() {
 	zonggongsiComapnyID = parentParent.company_id;
 	$("#fengongsimingcheng").val(parent.text);
 	$("#xiangmubu").val(node.text);
-	console.log(parent);
+
 	$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);
 }
 function startPageJS(){
@@ -1180,6 +1229,20 @@ function startPageJS(){
 		$('#hetongzongjine').val(data["hejijine"]);
 	});
 	function saveData() {
+		
+		$(".dialog").each(function(){
+
+			if($(this).val() !="" && $(this).val() != null){
+				isEmpty = false;
+			}
+		});
+		if(isEmpty == true){
+			alert("申请开票金额不能为空！");
+			isEmpty = true;
+			return;
+		}else{
+			isEmpty = true;
+		}
 		var bload = $('#bloadify').bload({
 			fadeInSpeed		: 600,
 			imagePath: '/js/webjs/bloading.gif',
@@ -1262,10 +1325,51 @@ function startPageJS(){
 			fd.append(JsonKey, dataSet[JsonKey]);
 		}
 		fd.append("file",$('#fapiaowenjian')[0].files[0]);
+		xhr.onreadystatechange = function() {
+
+		    if (xhr.readyState == XMLHttpRequest.DONE) {
+		        //alert(xhr.responseText);
+		        console.log(xhr);
+		        
+		        kaipiaoshenqingdanId = $.parseJSON(xhr.responseText).primary_id;
+		        updateDataSet= {};
+				updateDataSet["class_name"]="KaiPiao_PuTongFaPiao";
+				updateDataSet["id"] = kaipiaoId;
+				updateDataSet["kaipiaoshenqingdan_id"] = kaipiaoshenqingdanId;
+				console.log("kaipiaoId: " + kaipiaoId);
+				console.log("kaipiaoshenqingdanId: " + kaipiaoshenqingdanId);
+				$.post("/project/modifyModel", updateDataSet, function(data){
+					//Update 开票情况表_项目
+					updateDataSet2={};
+					updateDataSet2["id"] = kaipiaoqingkuangbiao_xiangmu_id;
+					updateDataSet2["buhanshuijine"] = xiaoshoue;
+					updateDataSet2["shuie"] = shuie;
+					updateDataSet2["class_name"] = "KaiPiaoQingKuangBiao_XiangMu";
+					$.post("/project/modifyModel", updateDataSet2, function(data){
+						bload.hide();
+						window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsiComapnyID + "&node_id="+parentNodeId;
+
+						
+					});
+					
+					
+					
+				});
+				
+		    }
+		}
 		xhr.open("post","/project/addKaiPiaoShenQingDan", false);
-		xhr.send(fd);
-		bload.hide();
-		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsiComapnyID + "&node_id="+parentNodeId;
+		response = xhr.send(fd);
+
+		//console.log(response);
+		//kaipiaoshenqingdanId = response.primary_id;
+		/*updateDataSet["class_name"]="KaiPiao_PuTongFaPiao";
+		updateDataSet["id"] = kaipiaoId;
+		updateDataSet["kaipiaoshenqingdan_id"] = kaipiaoshenqingdanId;
+		$.post("/project/modifyModel", updateDataSet, function(data){});*/
+		//console.log(response);
+
+		//window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsiComapnyID + "&node_id="+parentNodeId;
 	}
 	$("#create_invoice").on("click", function(){
 		saveData();
@@ -1287,6 +1391,87 @@ function nodeClick(node){
 		window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_xiangmu_list.html&company_id=" + xiangmubu_company_id + "&node_id="+node.nodeId;
 	}
 }
+dialogDataSet = {};
+
+dialog = $( "#dialog" ).dialog({
+    autoOpen: false,
+    height: 400,
+    width: 750,
+    modal: true,
+    buttons: {
+      "提交": function(){
+    	 // console.log(dialogId);
+    	  $(".dialog-text").each(function(){
+    		 // console.log($(this).attr('id'));
+  			dialogDataSet[$(this).attr('id')] = $(this).val();	 
+  		  if($(this).attr("id") == "xiaoshoue"){
+			  xiaoshoue = $(this).val();
+		  }
+		  if($(this).attr("id") == "shuie"){
+			  shuie = $(this).val();
+		  }
+    	  });
+    	  dialogDataSet["field1"] = dialogId;
+
+    	  var type = $('input[name="type"]:checked').val();
+    	  //dialogDataSet["shenqingriqi"] = new Date().Format("yyyy-MM-DD");
+		  dialogDataSet["class_name"] = "KaiPiao_PuTongFaPiao";
+    	  //console.log(type);
+    	  if(type == "pupiao"){
+        	  dialogDataSet["field2"] = "pupiao";
+    	  }else if(type == "zhuanpiao"){
+        	  dialogDataSet["field2"] = "zhuanpiao"
+    	  }
+    	  $.post("/project/addModel", dialogDataSet, function(data){
+    		 // console.log(data);
+    		  kaipiaoId = data.primary_id;
+    	  });
+    	  $(".dialog").each(function(){
+    			  
+    		  if($(this).attr("id") != dialogId){
+    			  $(this).val("");
+    		  }else{
+    			  $(this).val(dialogDataSet["xiaoji"]);
+    		  }
+    	  });
+    	  //post to 
+    	  dialog.dialog( "close" );
+    	  
+      },
+      Cancel: function() {
+        dialog.dialog( "close" );
+      }
+    },
+    close: function() {
+        dialog.dialog( "close" );
+    }
+  });
+
+
+$(".dialog").on("click",function(){
+	console.log("click");
+	dialogId = $(this).attr("id");
+	$(".dialog-text").each(function(){
+		$(this).val("");
+	});
+	dialog.dialog("open");
+
+	console.log("end");
+});
+
+$('input[name="type"]').on("change", function(){
+	console.log($(this).val());
+	var type = $(this).val();
+	if(type == "zhuanpiao"){
+		$("#zhuanpiao").css("display", "");
+		$("#pupiao").css("display", "none");
+	}else{
+		$("#zhuanpiao").css("display", "none");
+		$("#pupiao").css("display", "");
+	}
+	
+});
+
 </script>
 
 </html>

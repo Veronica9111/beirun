@@ -110,7 +110,7 @@ public interface IProjectService {
 	
 	public Boolean updateKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
 	
-	public Integer addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
+	public Long addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
 	
 	public Boolean updateJianYiJiShuiFangFaPuPiaoJiShui(JianYiJiShuiFangFaPuPiaoJiShui jyjsffppjs);
 	
@@ -286,7 +286,7 @@ public interface IProjectService {
 	
 	public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoById(Long id);
 
-	public Boolean addKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
+	public Long addKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
 
 	public Boolean updateKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
 
