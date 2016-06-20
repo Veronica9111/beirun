@@ -283,6 +283,8 @@ public interface IProjectService {
 	public List<Company> getChildCompanyById(Integer id);
 	
 	public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoById(Long id);
+	
+	public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
 
 	public Boolean addKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
 
@@ -294,4 +296,5 @@ public interface IProjectService {
 
 	public Boolean updateKaiPiao_YiBanZhuanYongFaPiao(KaiPiao_YiBanZhuanYongFaPiao kaiPiao_YiBanZhuanYongFaPiao);
 
+	
 }

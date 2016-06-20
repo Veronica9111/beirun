@@ -18,6 +18,13 @@
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
 <script src="/js/webjs/global.js"></script>
+<script type="text/javascript">
+	function GetQueryString(name){
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+</script>
 <style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
@@ -1078,6 +1085,7 @@ td
 </div>
 <div id="but_position">
 	<!-- <input id="modify_invoice" type="button" value="保存申请单修改" class="btn btn-success btn-sm" /> -->
+	<input type="button" id="detail" class="btn btn-success btn-sm" value="查看明细">
 </div>
 <div id="container">
 
@@ -1141,6 +1149,7 @@ td
 
 </body>
 <script type="text/javascript">
+var id = GetQueryString("id");
 var redirectView = "";
 (function ($) {
     $.getUrlParam = function (name) {
@@ -1251,6 +1260,13 @@ $("#wangongjindu").on("click", function(){
 
 function nodeClick(node){
 	
+}
+
+$('#detail').click(function(){
+	window.location.href = '/project/redirectView?view=kaipiao_putongfapiao.html&&id='+id;
+});
+function navJinXiao() {
+	$($(".nav_xiaoxiang")[0]).addClass("active");
 }
 </script>
 

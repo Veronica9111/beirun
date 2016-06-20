@@ -1395,4 +1395,10 @@ public class ProjectServiceImpl implements IProjectService {
 		        kaiPiao_YiBanZhuanYongFaPiaoMapper.updateKaiPiao_YiBanZhuanYongFaPiao(kaiPiao_YiBanZhuanYongFaPiao);
 		        return true;
 		    }
+
+			@Override
+			public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id) {
+				// TODO Auto-generated method stub
+				return kaiPiao_PuTongFaPiaoMapper.getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+			}
 }

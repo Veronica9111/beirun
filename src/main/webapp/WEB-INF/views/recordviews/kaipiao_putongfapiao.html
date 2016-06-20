@@ -17,6 +17,13 @@
 <script type="text/javascript" language="javascript" src="/js/webjs/jquery.dataTables.min.js"></script>
 <script src="/js/webjs/bootstrap-treeview.min.js"></script>
 <script src="/js/webjs/tree-menu.js"></script>
+<script type="text/javascript">
+	function GetQueryString(name){
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+</script>
 <style>
 <!-- @page
 	{margin:0.75in 0.71in 0.75in 0.71in;
@@ -855,7 +862,7 @@ td
 
 <!-- Container -->
 <div id="but_position">
-	<input id="submit" type="button" value="提交" class="btn btn-success btn-sm" />
+	<!-- <input id="submit" type="button" value="提交" class="btn btn-success btn-sm" /> -->
 	<!-- <input id="modify" type="button" value="更新" class="btn btn-danger btn-sm" /> -->
 </div>
 <div id="container">
@@ -882,13 +889,13 @@ td
     <td class="xl73"><input class="text" style='width:100%' id='xiaoji'></td>
     <td class="xl73"><input class="text" style='width:100%' id='shuilv'></td>
    </tr>
-   <tr height="28" style='height:14.00pt;'>
+   <tr height="28" style='height:14.00pt;' id="heji">
     <td class="xl73" height="28" style='height:14.00pt;text-align:center' x:str>合计</td>
     <td class="xl73"></td>
-    <td class="xl73"><input class="text" style='width:100%' id='heji_xiaoshoue'></td>
-    <td class="xl74" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input class="text" style='width:100%' id='heji_shuie'></td>
-    <td class="xl73"><input class="text" style='width:100%' id='heji_xiaoji'></td>
-    <td class="xl73"><input class="text" style='width:100%' id='heji_shuilv'></td>
+    <td class="xl73"><input style='width:100%' id='heji_xiaoshoue'></td>
+    <td class="xl74" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input style='width:100%' id='heji_shuie'></td>
+    <td class="xl73"><input  style='width:100%' id='heji_xiaoji'></td>
+    <td class="xl73"><input  style='width:100%' id='heji_shuilv'></td>
    </tr>
   </table>
 </div>
@@ -900,10 +907,30 @@ td
 </div>
 
 <script type="text/javascript">
-$("#submit").on("click", function(){
-	window.location="/project/redirectView?view=create_invoice_2.html&"+window.location.search.substring(1);
-});
-
+var id = GetQueryString("id");
+(function(){
+	var data ={query_key:'kaipiaoshenqingdan_id',query_value:id,class_name:'KaiPiao_PuTongFaPiao'};
+	$.post('/project/getModel',data,function(data){
+		console.log(data);
+		var dataSet = $.parseJSON(data.data);
+		$('.text').each(function(){
+			console.log(dataSet[0][$(this).attr('id')]);
+			$(this).val(dataSet[0][$(this).attr('id')]);
+		});
+		
+		$("#heji td input").each(function() {
+			var oldId = $(this).attr("id");
+			if (oldId.indexOf("heji_") != -1) {
+				var id = oldId.replace("heji_", "");
+				console.log(dataSet[0][id]);
+				$(this).val(dataSet[0][id]);
+			}
+		});
+	});
+})();
+function navJinXiao() {
+	$($(".nav_xiaoxiang")[0]).addClass("active");
+}
 </script>
 </body>
 </html>
