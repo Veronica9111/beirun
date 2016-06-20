@@ -1108,7 +1108,7 @@ td {
 				RIGHTS RESERVED</p>
 		</div>
 	</div>
-<div id="dialog">
+<div id="dialog" style="display:none;">
 	<p style="text-align:center;margin-top:50px;">你还没有上传文件，请先上传文件！</p>
 </div>
 	<script type="text/javascript">
@@ -1120,10 +1120,11 @@ td {
 	    }
 	})(jQuery);
 	var currentSelectedNodeId = "";
-	var xiangmuComapnyID = $.getUrlParam('company_id');;
+	var xiangmuComapnyID = $.getUrlParam('company_id');
 	var fengongsiComapnyID = "";
 	var zonggongsiComapnyID = "";
 	var parentNodeId = "";
+	var writeCompanyId = $.getUrlParam('company_id');
 	function hello() {
 		var node_id = $.getUrlParam('node_id');
 		currentSelectedNodeId = node_id;
@@ -1148,7 +1149,11 @@ td {
 	var company_id = GetQueryString("company_id");
 	
 	$(document).ready(function(){
+<<<<<<< HEAD
 		var query_xiangmu = {query_key:"company_id",query_value:company_id,class_name:"XiangMuTaiZhang"};
+=======
+		var query_xiangmu = {query_key:"company_id",query_value:writeCompanyId,class_name:"XiangMuTaiZhang"};
+>>>>>>> 4ca9e1ae4ecae239c53de0acc75f45c0fa6453b0
 		
 		$.post("/project/getModel",query_xiangmu,function(data){
 			console.log(data);
@@ -1164,7 +1169,7 @@ td {
 				$('#reminder').css("display","block");
 				$('#table').css("display","none");
 			}else{
-				var query_piaoju = {query_key:"company_id",query_value:"2",class_name:"PiaoJuWenJian"};
+				var query_piaoju = {query_key:"company_id",query_value:writeCompanyId,class_name:"PiaoJuWenJian"};
 				$.post("/project/getModel",query_piaoju,function(data){
 					console.log(data);
 					var dataSet = $.parseJSON(data.data);
@@ -1223,6 +1228,7 @@ td {
 				fapiaohaoma : fapiaohaoma,
 				wenjian : wenjian,
 				xiangmu : xiangmu,
+				company_id:writeCompanyId,
 				zhanbi : zhanbi=="" || zhanbi==null ? 100:zhanbi,
 				field1 :field1,
 				company_id:company_id

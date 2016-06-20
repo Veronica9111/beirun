@@ -958,6 +958,8 @@ td
 <div id="container">
 <input id="success"  type="button" value="审核通过" class="btn btn-success btn-sm" />
 <input id="deny"  type="button" value="审核拒绝" class="btn btn-danger btn-sm" />
+</br>
+<div><label>审核备注：</label><textarea id="beizhu" disabled style="margin-top: 2em;"></textarea></div>
 <table id="invoice_info" width="656" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:328.00pt;border-collapse:collapse;table-layout:fixed;'>
 
    
@@ -983,9 +985,9 @@ td
    </tr>
    <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
     <td class="xl67" colspan="2" height="40.20" style='height:20.10pt;' x:str>分公司名称：</td>
-    <td class="xl67" colspan="4" style='mso-ignore:colspan;'><input class="text"  type="text"  value="南京嘉元财务咨询有限公司" disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
+    <td class="xl67" colspan="4" style='mso-ignore:colspan;'><input class="text"  type="text" disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
     <td class="xl67" colspan="2" x:str>项目名称：</td>
-    <td class="xl67" colspan="10" style='mso-ignore:colspan;'><input class="text"  type="text" value="零星工程" disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+    <td class="xl67" colspan="10" style='mso-ignore:colspan;'><input class="text"  type="text" disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
     <td class="xl71" colspan="12" style='mso-ignore:colspan;'></td>
     <td class="xl73" colspan="2" style='mso-ignore:colspan;'></td>
     <td class="xl71" colspan="13" style='mso-ignore:colspan;'></td>
@@ -1252,15 +1254,13 @@ td
 </div>
 <script>
 	var nodeid = "";
-
+	
 	function hello(){
 		var node_id = GetQueryString("node_id");
 		nodeid = node_id;
 		var node = $('#left-menu').treeview('getNode', node_id);
-		console.log(node);
 		$('#left-menu').treeview('selectNode', [node, { silent: true } ]);
 		var parent = $('#left-menu').treeview('getParent', node);
-		console.log(parent);
 		$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: (node.level-1), silent: true } ]);	
 	}
 </script>
@@ -1273,15 +1273,12 @@ td
 		var node_id = node.nodeId;
 		if(node.level == 1){
 			var location= "/project/redirectView?view=fapiaowenjian_fengongsi.html&&company_id="+company_id+"&&node_id="+node_id;                                     
-			console.log(location);
 			window.location.href = location;
 		}else if(node.level ==2){
 			var location= "/project/redirectView?view=fapiaowenjian_xiangmubu.html&&company_id="+company_id+"&&node_id="+node_id;                                     
-			console.log(location);
 			window.location.href = location;
 		}else if(node.level ==0){
 			var location= "/project/redirectView?view=fapiaowenjian_zonggongsi.html&&company_id="+company_id+"&&node_id="+node_id;                                     
-			console.log(location);
 			window.location.href = location;
 		}
 		
@@ -1292,19 +1289,19 @@ var company_id = parseInt(GetQueryString("company_id"));
 var tds = $("#data-row0 td input");
 var tdsList = [];
 for(var i = 0; i < tds.length; i++){
-	//console.log(tds.get(i));
 	tdsList.push(tds.get(i).id);
 }
-console.log(tdsList);
 var query = {query_key: 'company_idAndStatus', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 $.post("/project/getModel", query, function(data){
 	var dataSet = $.parseJSON(data.data);
+	if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
+		$("#beizhu").val(dataSet[0]['beizhu']);
+	}
 	if(dataSet != null && dataSet != ""&&dataSet.length!=0){
 		var company_id = GetQueryString("company_id");
 		var id = parseInt(company_id);
 		var query = {query_key:'company_idAndStatus', query_value:id, class_name:'PiaoJuWenJian'};
 		$.post("/project/getModel",query,function(data){
-			console.log(data);
 			var dataSet = $.parseJSON(data.data);
 			for(var index=0;index<dataSet.length;index++){
 				var tr = $('<tr height="28" style="height:14.00pt;"><td class="xl66" height="28" style="height:14.00pt;" x:str>'+dataSet[index].fapiaoriqi+'</td>'
@@ -1317,18 +1314,21 @@ $.post("/project/getModel", query, function(data){
 	for(var i = 0; i < dataSet.length; i++){
 		if(i == 0){
 			for(var key in dataSet[0]){
+<<<<<<< HEAD
 				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);
 				$('#xiangmubu').val(dataSet[0]['xiangmubu']);
 				//console.log(key);
 				//console.log(dataSet[0][key]);
+=======
+				beizhu_init = dataSet[0]["beizhu"];
+				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	
+				$('#xiangmubu').val(dataSet[0]['xiangmubu']);
+>>>>>>> 4ca9e1ae4ecae239c53de0acc75f45c0fa6453b0
 				$("#" + key).val(dataSet[0][key]);
 				if(key != "id"){
 					$("#" + key).attr("name", dataSet[0]['id']);
 					$("#" + key).addClass(key);
 				}
-			}
-			if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
-				$("#beizhu").val(dataSet[0]['beizhu']);
 			}
 		}else if(i > 0){
 
@@ -1351,7 +1351,6 @@ $.post("/project/getModel", query, function(data){
 			var id = oldId.replace("xiaoji_", "");
 			var count = 0;
 			var inputs = $("." + id).each(function(){
-				console.log($(this));
 				count += parseFloat($(this).val());
 				
 			});
@@ -1367,7 +1366,6 @@ $.post("/project/getModel", query, function(data){
 			//console.log(id);
 			var count = 0;
 			var inputs = $("." + id).each(function(){
-				console.log($(this));
 				count += parseFloat($(this).val());
 				
 			});
@@ -1384,7 +1382,6 @@ $.post("/project/getModel", query, function(data){
 			var xiaojiId = "xiaoji_" + id;
 			var count = 0;
 			var inputs = $("." + id).each(function(){
-				console.log($(this));
 				count += parseFloat($(this).val());
 				
 			});
@@ -1398,16 +1395,11 @@ $.post("/project/getModel", query, function(data){
 				var xiaoJiId = id.replace("fp_", "xiaoji_");
 				//console.log(id);
 				var count = 0;
-				console.log("hitttt");
-				console.log(dataSet);
 				if(dataSet.length == 0){
-					console.log(id);
 					var value = $("#" + id).val();
-					console.log(value);
 					$(".text").each(function(){
 
 						if($(this).attr('id') == xiaoJiId){
-							console.log($(this));
 							if(!isNaN(value)){
 								$(this).val(value);
 							}
@@ -1416,11 +1408,9 @@ $.post("/project/getModel", query, function(data){
 
 				}else{
 					var inputs = $("." + id).each(function(){
-						console.log($(this));
 						count += parseFloat($(this).val());
 						
 					});
-					console.log($("#"+xiaoJiId));
 					if(!isNaN(count)){
 						$("#"+xiaoJiId).val(count);
 					}
@@ -1430,27 +1420,21 @@ $.post("/project/getModel", query, function(data){
 });
 
 $("#submit").on("click", function(){
-	console.log($(".text"));
 	var dataSet = {};
 	$(".text").each(function(){
-		console.log($(this).attr('id'));
-		console.log($(this).val());
 		dataSet[$(this).attr('id')] = $(this).val();
 	});
 
 	dataSet["class_name"] = "XiaoXiang_XiangMu";
 
 	$.post('/project/addModel', dataSet, function(data){
-		console.log(data);
 		
 	});
 	
 });
 $("#modify").on("click", function(){
-	console.log($(".text"));
 	var dataSet = {};
 	$(".text").each(function(){
-		console.log($(this).attr('id'));
 		dataSet[$(this).attr('id')] = $(this).val();
 	});
 
@@ -1458,7 +1442,6 @@ $("#modify").on("click", function(){
 	dataSet['id'] = 1;
 	
 	$.post('/project/modifyModel', dataSet, function(data){
-		console.log(data);
 		
 	});
 	
@@ -1470,10 +1453,7 @@ $.post("/project/getModel", query, function(data){
 	var data = $.parseJSON(data.data)[0];
 
 	for(key in data){
-
-			console.log(data[key]);
 			$("#" + key).html(data[key]);
-		
 	}
 	
 });
@@ -1483,7 +1463,6 @@ $.post("/project/getModel", query, function(data){
 		var node = $('#left-menu').treeview('getNode', 2);
 		$('#left-menu').treeview('selectNode', [2, { silent: true } ]);
 		var parent = $('#left-menu').treeview('getParent', node);
-		console.log(parent);
 		$('#left-menu').treeview('expandNode', [ parent.nodeId, { levels: 1, silent: true } ]);
 	})();
 </script>
@@ -1497,7 +1476,6 @@ $("#xiaoji td input").each(function(){
 		var id = oldId.replace("xiaoji_", "");
 		var count = 0;
 		var inputs = $("." + id).each(function(){
-			console.log($(this));
 			count += parseFloat($(this).val());
 			
 		});
@@ -1513,7 +1491,6 @@ $("#xiaoji td input").each(function(){
 		//console.log(id);
 		var count = 0;
 		var inputs = $("." + id).each(function(){
-			console.log($(this));
 			count += parseFloat($(this).val());
 			
 		});
@@ -1525,7 +1502,6 @@ $("#xiaoji td input").each(function(){
 $('#success').click(function(){
 	$(".datarow").each(function(){
 		var id = $(this).find("input").first().attr("name");
-		console.log(id);
 		$.ajaxSetup({async : false});
 		$.post('/project/modifyModel',{id:id,yiji_shenhe_status:1,class_name:'JinXiangFaPiaoMingXi_FaPiao'},function(){});
 	});
@@ -1539,10 +1515,9 @@ dialog = $( "#dialog" ).dialog({
     modal: true,
     buttons: {
       "提交": function(){
-    	  var comment = $("#comment").val();
+    	  var comment = beizhu_init + " " + $("#comment").val();
     	  $(".datarow").each(function(){
     			var id = $(this).find("input").first().attr("name");
-    			console.log(id);
     			$.ajaxSetup({async : false});
     			$.post('/project/modifyModel',{id:id,yiji_shenhe_status:2,beizhu:comment,class_name:'JinXiangFaPiaoMingXi_FaPiao'},function(){});
     		});
@@ -1562,6 +1537,9 @@ dialog = $( "#dialog" ).dialog({
   $('#deny').click(function(){
 	  dialog.dialog("open");
   });
+  function navJinXiao() {
+		$($(".nav_jinxiang")[0]).addClass("active");
+	}
 </script>
 
 </html>

@@ -1083,7 +1083,7 @@ var kaipiaoqingkuangbiao_zonggongsi_IdParam = $.getUrlParam('company_id');
 function startPageJS(){
 	console.log(global);
 	var query = {company_id:kaipiaoqingkuangbiao_zonggongsi_IdParam};
-	$.post("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi", query, function(data){
+	$.post("/project/newGetAllKaiPiaoQingKuangBiaoByZonggongsi", query, function(data){
 		 dataSet  = $.parseJSON(data.data);
 		$('#history-table').DataTable( {"sDom": '<"top" f>rt<"bottom" p><"clear">',
 	   	data: dataSet,
@@ -1113,12 +1113,18 @@ function startPageJS(){
 		        { title: "一级审核备注" },
 		        { title: "二级审核人" },
 		        { title: "二级审核状态" },
-		        { title: "二级审核备注" }
+		        { title: "二级审核备注" },
+		        { title: "操作"},
 		    ]
 		} );
+		 $("#history-table tbody").on("click", ".check", function(){
+			 id = $(this).parent().parent().children().eq(0)[0].innerHTML;
+			 window.location.href="/views/recordviews/create_check_invoice.html?id=" +id+"&node_id=0";
+		});
 	});
 }
 function nodeClick(node){
+	console.log(node);
 	if(node.level == 0) { //一级节点
 		var zonggongsi_company_id = node.company_id; //获取company_id
 		console.log("总公司CompanyId:" + zonggongsi_company_id);

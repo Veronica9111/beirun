@@ -1022,9 +1022,21 @@ public class ProjectServiceImpl implements IProjectService {
 		}
 		
 		@Override
+		public List<Company> getXiangmuCompaniesByUid(Integer uid) {
+			return companyMapper.getXiangmuCompaniesByUid(uid);
+
+		}
+		
+		@Override
+		public List<Company> getChildCompanyById(Integer id) {
+			return companyMapper.getChildCompanyById(id);
+
+		}
+
+		@Override
 		public Integer addXiangMuCompany(Company company) {
 			companyMapper.addXiangMuCompany(company);
-			return 0;
+			return company.getId();
 		}
 
 		@Override
@@ -1320,6 +1332,11 @@ public class ProjectServiceImpl implements IProjectService {
 		public List<JinXiangFaPiaoMingXi_FaPiao> getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus(Long companyId) {
 			// TODO Auto-generated method stub
 			return jinXiangFaPiaoMingXi_FaPiaoMapper.getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus(companyId);
+		}
+
+		@Override
+		public List<Company> getXiaoXiangFengGongsiCompaniesByUid(Integer uid, Integer companyId) {
+			return companyMapper.getXiaoXiangFengGongsiCompaniesByUid(companyId, uid);
 		}
 
 

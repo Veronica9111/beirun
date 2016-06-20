@@ -5,13 +5,23 @@
 
 $.post('/getMenu',{},function(dataSet){
 	var tree = $.parseJSON(dataSet.data);
-	$('#left-menu').treeview({data: tree});
+	$('#left-menu').treeview({data: tree,
+		onNodeSelected:function(event, data){
+			console.log(event);
+			console.log(data);
+			try{
+				nodeClick(data);
+			}catch(err){
+				//Don't need to do anything
+			}
+		}
+	});
 	try{
 		hello();
 	}catch(err){
 	}
 	console.log("hello");
-	var currentNode = null;
+	/*var currentNode = null;
 	$("#left-menu").on("click",function(){
 		var node = $('#left-menu').treeview('getSelected');
 		try{
@@ -126,7 +136,7 @@ $.post('/getMenu',{},function(dataSet){
 				
 		}//level endif
 */		
-	});
+	//});
 });
 
 

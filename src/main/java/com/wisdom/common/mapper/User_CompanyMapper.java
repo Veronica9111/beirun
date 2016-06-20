@@ -1,6 +1,7 @@
 package com.wisdom.common.mapper;
-import com.wisdom.common.model.User_Company;
+import java.util.List;
 
+import com.wisdom.common.model.User_Company;
 
 public interface User_CompanyMapper {
 
@@ -10,5 +11,4 @@ public interface User_CompanyMapper {
 
     Integer updateUser_Company(User_Company user_Company);
     
-
 }

@@ -9,9 +9,9 @@ $(document).ready(function(){
 			//$("#navigator").append('<li><a class="link" href="/views/recordviews/xiaoxiangbiao.html">汇总信息</a></li>');
 		}
 		if(roles.indexOf("业务主任") !=-1){
-			$("#navigator").append('<li><a id="approve-nav" class="link" href="/views/recordviews/approval_invoice_list_2.html">审批销项</a></li>');
+			$("#navigator").append('<li><a id="approve-nav" style="TEXT-DECORATION:none;" class="nav_xiaoxiang" href="/views/recordviews/approval_invoice_list_2.html">审批销项</a></li>');
 			//$("#navigator").append('<li><a class="link" href="/views/recordviews/history_xiaoxiang.html">审批记录</a></li>');
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/fapiaowenjian.html">审批进项</a></li>');
+			$("#navigator").append('<li><a class="nav_jinxiang" style="TEXT-DECORATION:none;" href="/views/recordviews/fapiaowenjian_zonggongsi.html">审批进项</a></li>');
 			$.post("/project/getUnApprovedKaiPiaoQingKuangBiao_XiangMuByUserCount", {}, function(data){
 				if(data.count != 0 || data.count != "0"){
 					console.log(data.count);
@@ -25,8 +25,8 @@ $(document).ready(function(){
 			/*
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/approve2.html">二次审批</a></li>');
 			$("#navigator").append('<li><a class="link" href="/views/recordviews/history.html">审批记录</a></li>');*/
-			$("#navigator").append('<li><a id="approve-nav" class="link" href="/views/recordviews/approval_invoice_list_2.html">审批销项</a></li>');
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/fapiaowenjian_zonggongsi.html">审批进项</a></li>');
+			$("#navigator").append('<li><a id="approve-nav" style="TEXT-DECORATION:none;" class="nav_xiaoxiang" href="/views/recordviews/approval_invoice_list_2.html">审批销项</a></li>');
+			$("#navigator").append('<li><a class="nav_jinxiang" style="TEXT-DECORATION:none;" href="/views/recordviews/fapiaowenjian_zonggongsi.html">审批进项</a></li>');
 			$.post("/project/getUnApprovedKaiPiaoQingKuangBiao_XiangMuByUserCount", {}, function(data){
 				console.log(data.count);
 				if(data.count != 0 || data.count != "0"){
@@ -35,13 +35,13 @@ $(document).ready(function(){
 
 				
 			});
-			$("#navigator").append('<li><a class="link" href="/views/recordviews/xiaoxiangbiao.html">汇总信息</a></li>');
+			//$("#navigator").append('<li><a class="link" href="/views/recordviews/xiaoxiangbiao.html">汇总信息</a></li>');
 		}
 		if(roles.indexOf("管理") != -1){
-			$("#navigator").append('<li><a class="link" href="/views/webviews/invoice/manage.html">管理</a></li>');
+			$("#navigator").append('<li><a class="link" style="TEXT-DECORATION:none;" href="/views/webviews/invoice/manage.html">管理</a></li>');
 		}
 		//$("#navigator").append('<li><a class="link" href="/views/webviews/user/setting.html">个人设置</a></li>');
-		$("#navigator").append('<li><a class="link" href="/logout">退出</a></li>');
+		$("#navigator").append('<li><a style="TEXT-DECORATION:none;" class="link" href="/logout">退出</a></li>');
 		
 		/*$(".link").each(function(){
 			var tmp = window.location.pathname;

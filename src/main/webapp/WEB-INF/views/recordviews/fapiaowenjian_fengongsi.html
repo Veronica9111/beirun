@@ -958,6 +958,8 @@ td
 <div id="container">
 <input id="success"  type="button" value="审核通过" class="btn btn-success btn-sm" />
 <input id="deny"  type="button" value="审核拒绝" class="btn btn-danger btn-sm" />
+</br>
+<div><label>审核备注：</label><textarea id="beizhu" disabled style="margin-top: 2em;"></textarea></div>
 <table id="invoice_info" width="656" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:328.00pt;border-collapse:collapse;table-layout:fixed;'>
    <tr height="28" style='height:14.00pt;'>
     <td class="xl66" height="28" style='height:14.00pt;' x:str>发票日期</td>
@@ -981,9 +983,15 @@ td
    </tr>
    <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
     <td class="xl67" colspan="2" height="40.20" style='height:20.10pt;' x:str>分公司名称：</td>
+<<<<<<< HEAD
     <td class="xl67" colspan="4" style='mso-ignore:colspan;'><input class="text"  type="text" disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
     <td class="xl67" colspan="2" x:str>项目名称：</td>
     <td class="xl67" colspan="10" style='mso-ignore:colspan;'><input class="text"  type="text" disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+=======
+    <td class="xl67" colspan="4" style='mso-ignore:colspan;'><input class="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='fengongsimingcheng'></td>
+    <td class="xl67" colspan="2" x:str>项目名称：</td>
+    <td class="xl67" colspan="10" style='mso-ignore:colspan;'><input class="text"  type="text"  disabled style='background-color:white;border:none;width:100%;height:100%;' id='xiangmubu'></td>
+>>>>>>> 4ca9e1ae4ecae239c53de0acc75f45c0fa6453b0
     <td class="xl71" colspan="12" style='mso-ignore:colspan;'></td>
     <td class="xl73" colspan="2" style='mso-ignore:colspan;'></td>
     <td class="xl71" colspan="13" style='mso-ignore:colspan;'></td>
@@ -1250,7 +1258,7 @@ td
 </div>
 <script>
 	var nodeid = "";
-
+	var beizhu_init = "";
 	function hello(){
 		var node_id = GetQueryString("node_id");
 		nodeid = node_id;
@@ -1297,6 +1305,9 @@ console.log(tdsList);
 var query = {query_key: 'company_idAndStatus', query_value: company_id, class_name:'JinXiangFaPiaoMingXi_FaPiao'};
 $.post("/project/getModel", query, function(data){
 	var dataSet = $.parseJSON(data.data);
+	if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
+		$("#beizhu").val(dataSet[0]['beizhu']);
+	}
 	if(dataSet != null && dataSet != ""&&dataSet.length!=0){
 		
 		var company_id = GetQueryString("company_id");
@@ -1321,14 +1332,14 @@ $.post("/project/getModel", query, function(data){
 			for(var key in dataSet[0]){
 				//console.log(key);
 				//console.log(dataSet[0][key]);
+				beizhu_init = dataSet[0]["beizhu"];
+				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	
+				$('#xiangmubu').val(dataSet[0]['xiangmubu']);
 				$("#" + key).val(dataSet[0][key]);
 				if(key != "id"){
 					$("#" + key).attr("name", dataSet[0]['id']);
 					$("#" + key).addClass(key);
 				}
-			}
-			if(dataSet[0]['beizhu'] != null && dataSet[0]['beizhu'] != ""){
-				$("#beizhu").val(dataSet[0]['beizhu']);
 			}
 		}else if(i > 0){
 
@@ -1456,7 +1467,7 @@ dialog = $( "#dialog" ).dialog({
     modal: true,
     buttons: {
       "提交": function(){
-    	  var comment = $("#comment").val();
+    	  var comment = beizhu_init + " " + $("#comment").val();
     	  $(".datarow").each(function(){
     			var id = $(this).find("input").first().attr("name");
     			console.log(id);
@@ -1479,6 +1490,9 @@ dialog = $( "#dialog" ).dialog({
   $('#deny').click(function(){
 	  dialog.dialog("open");
   });
+  function navJinXiao() {
+		$($(".nav_jinxiang")[0]).addClass("active");
+	}
 </script>
 </body>
 </html>

@@ -22,25 +22,26 @@
 <result property="kaipiaoqingkuangbiao_xiangmu_id" column="kaipiaoqingkuangbiao_xiangmu_id"/>
 <result property="fuheren" column="fuheren"/>
 <result property="fapiaowenjian" column="fapiaowenjian"/>
+<result property="fenbaoxiangmu" column="fenbaoxiangmu"/>
 </resultMap>
 
 <insert id="addKaiPiaoShenQingDan" parameterType="String"  useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-insert into kaipiaoshenqingdan (fengongsimingcheng, xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren,fapiaowenjian)
-values(#{fengongsimingcheng},#{xiangmubu},#{xiangmumingcheng},#{hetongzongjine},#{shenqingriqi},#{kaijufapiao},#{shouqikuanxiang},#{wangongjindu},#{qita},#{kaipiaoneirong},#{tianbiaoren},#{tianbiaorendianhua},#{tianbiaoriqi},#{kaipiaoqingkuangbiao_xiangmu_id},#{fuheren},#{fapiaowenjian})
+insert into kaipiaoshenqingdan (fenbaoxiangmu,fengongsimingcheng, xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren,fapiaowenjian)
+values(#{fenbaoxiangmu},#{fengongsimingcheng},#{xiangmubu},#{xiangmumingcheng},#{hetongzongjine},#{shenqingriqi},#{kaijufapiao},#{shouqikuanxiang},#{wangongjindu},#{qita},#{kaipiaoneirong},#{tianbiaoren},#{tianbiaorendianhua},#{tianbiaoriqi},#{kaipiaoqingkuangbiao_xiangmu_id},#{fuheren},#{fapiaowenjian})
 </insert>
 
 <update id="updateKaiPiaoShenQingDan" parameterType="String">
-update kaipiaoshenqingdan set fapiaowenjian=#{fapiaowenjian},xiangmubu=#{xiangmubu},xiangmumingcheng=#{xiangmumingcheng},hetongzongjine=#{hetongzongjine},shenqingriqi=#{shenqingriqi},kaijufapiao=#{kaijufapiao},shouqikuanxiang=#{shouqikuanxiang},wangongjindu=#{wangongjindu},qita=#{qita},kaipiaoneirong=#{kaipiaoneirong},tianbiaoren=#{tianbiaoren},tianbiaorendianhua=#{tianbiaorendianhua},tianbiaoriqi=#{tianbiaoriqi},kaipiaoqingkuangbiao_xiangmu_id=#{kaipiaoqingkuangbiao_xiangmu_id},fuheren=#{fuheren}
+update kaipiaoshenqingdan set fenbaoxiangmu=#{fenbaoxiangmu},fapiaowenjian=#{fapiaowenjian},xiangmubu=#{xiangmubu},xiangmumingcheng=#{xiangmumingcheng},hetongzongjine=#{hetongzongjine},shenqingriqi=#{shenqingriqi},kaijufapiao=#{kaijufapiao},shouqikuanxiang=#{shouqikuanxiang},wangongjindu=#{wangongjindu},qita=#{qita},kaipiaoneirong=#{kaipiaoneirong},tianbiaoren=#{tianbiaoren},tianbiaorendianhua=#{tianbiaorendianhua},tianbiaoriqi=#{tianbiaoriqi},kaipiaoqingkuangbiao_xiangmu_id=#{kaipiaoqingkuangbiao_xiangmu_id},fuheren=#{fuheren}
 where id=#{id}
 </update>
 <select id="getKaiPiaoShenQingDanById" parameterType="Long" resultType="KaiPiaoShenQingDan">
-select id,fengongsimingcheng,xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren,fapiaowenjian 
+select id,fenbaoxiangmu,fengongsimingcheng,xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren,fapiaowenjian 
 from kaipiaoshenqingdan
 where id=#{id}
 </select>
 
 <select id="getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id" parameterType="Long" resultType="KaiPiaoShenQingDan">
-select id,fengongsimingcheng,xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren,fapiaowenjian
+select id,fenbaoxiangmu,fengongsimingcheng,xiangmubu,xiangmumingcheng,hetongzongjine,shenqingriqi,kaijufapiao,shouqikuanxiang,wangongjindu,qita,kaipiaoneirong,tianbiaoren,tianbiaorendianhua,tianbiaoriqi,kaipiaoqingkuangbiao_xiangmu_id,fuheren,fapiaowenjian
 from kaipiaoshenqingdan
 where kaipiaoqingkuangbiao_xiangmu_id=#{kaipiaoqingkuangbiao_xiangmu_id}
 </select>

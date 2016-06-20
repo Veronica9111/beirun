@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +41,7 @@ import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Permission;
+import com.wisdom.common.model.PiaoJuWenJian;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.QueRenShouRuFangShi_LaoWuShiJianZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_QiTa;
@@ -47,6 +49,7 @@ import com.wisdom.common.model.QueRenShouRuFangShi_YiFaShengChengBenZhanBiFa;
 import com.wisdom.common.model.QueRenShouRuFangShi_YiWanGongGongZuoLiangFa;
 import com.wisdom.common.model.Role;
 import com.wisdom.common.model.User;
+import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi;
 import com.wisdom.permission.service.IPermissionService;
@@ -175,7 +178,6 @@ public class ProjectController {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping("/project/getModel")
 	@ResponseBody
 	public Map<String, String> getModel(HttpServletRequest request)
@@ -184,8 +186,6 @@ public class ProjectController {
 		Map<String, String> retMap = new HashMap<>();
 		Map<String, String[]> params = request.getParameterMap();
 		String className = params.get("class_name")[0];
-		String longClassName = "com.wisdom.common.model." + className;
-		Class classType = Class.forName(longClassName);
 		String queryKey = params.get("query_key")[0];
 		String queryValue = params.get("query_value")[0];
 		queryKey = queryKey.substring(0, 1).toUpperCase() + queryKey.substring(1);
@@ -210,6 +210,96 @@ public class ProjectController {
 		retMap.put("status", "ok");
 		return retMap;
 
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/project/getJinXiangAuditList")
+	@ResponseBody
+	public Map<String, String> getJinXiangAuditList(HttpServletRequest request, HttpSession httpSession)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
+			SecurityException, ClassNotFoundException, InstantiationException {
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		Method m = projectService.getClass().getMethod("getXiangmuCompaniesByUid", Integer.class);
+		Object ret = m.invoke(projectService, uid);
+		@SuppressWarnings("unchecked")
+		List<JinXiangFaPiaoMingXi_FaPiao> dataList = new ArrayList<>();
+		List<Company> list = (List<Company>)ret;
+		for(Company com : list) {
+			m = projectService.getClass().getMethod("getJinXiangFaPiaoMingXi_FaPiaoByCompany_idAndStatus", Long.class);
+			ret = m.invoke(projectService, Long.valueOf(com.getId()));
+			List<JinXiangFaPiaoMingXi_FaPiao> itemlist = (List<JinXiangFaPiaoMingXi_FaPiao>)ret;
+			dataList.addAll(itemlist);
+		}
+		Map<String, String> retMap = new HashMap<>();
+		String data = JSONArray.fromObject(dataList).toString();
+		retMap.put("data", data);
+		retMap.put("status", "ok");
+		return retMap;
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/project/getFapiaoWenjian")
+	@ResponseBody
+	public Map<String, String> getFapiaoWenjian(HttpServletRequest request, HttpSession httpSession)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
+			SecurityException, ClassNotFoundException, InstantiationException {
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		Method m = projectService.getClass().getMethod("getXiangmuCompaniesByUid", Integer.class);
+		Object ret = m.invoke(projectService, uid);
+		@SuppressWarnings("unchecked")
+		List<PiaoJuWenJian> dataList = new ArrayList<>();
+		List<Company> list = (List<Company>)ret;
+		for(Company com : list) {
+			m = projectService.getClass().getMethod("getPiaoJuWenJianByCompany_idAndStatus", Long.class);
+			ret = m.invoke(projectService, Long.valueOf(com.getId()));
+			List<PiaoJuWenJian> itemlist = (List<PiaoJuWenJian>)ret;
+			dataList.addAll(itemlist);
+		}
+		Map<String, String> retMap = new HashMap<>();
+		String data = JSONArray.fromObject(dataList).toString();
+		retMap.put("data", data);
+		retMap.put("status", "ok");
+		return retMap;
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/project/getJinXiangTaiZhangList")
+	@ResponseBody
+	public Map<String, String> getJinXiangTaiZhangList(HttpServletRequest request, HttpSession httpSession)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
+			SecurityException, ClassNotFoundException, InstantiationException {
+		String comId = request.getParameter("companyId");
+		Integer companyId = Integer.valueOf(comId);
+		Method m = projectService.getClass().getMethod("getChildCompanyById", Integer.class);
+		Object ret = m.invoke(projectService, companyId);
+		List<Company> comList = (List<Company>)ret;
+		List<Company> finalList = new ArrayList<>();
+		for(Company com : comList) {
+			m = projectService.getClass().getMethod("getChildCompanyById", Integer.class);
+			ret = m.invoke(projectService, com.getId());
+			List<Company> li = (List<Company>)ret;
+			finalList.addAll(li);
+		}
+		if(comList.isEmpty()) {
+			Company c = new Company();
+			c.setId(companyId);
+			comList.add(c);
+		}
+		if(!finalList.isEmpty()) comList = finalList;
+		List<JinXiangFaPiaoMingXi_FaPiao> dataList = new ArrayList<>();
+		for(Company com : comList) {
+			m = projectService.getClass().getMethod("getJinXiangFaPiaoMingXi_FaPiaoByCompanyId", Long.class);
+			ret = m.invoke(projectService, Long.valueOf(com.getId()));
+			List<JinXiangFaPiaoMingXi_FaPiao> itemlist = (List<JinXiangFaPiaoMingXi_FaPiao>)ret;
+			dataList.addAll(itemlist);
+		}
+		Map<String, String> retMap = new HashMap<>();
+		String data = JSONArray.fromObject(dataList).toString();
+		retMap.put("data", data);
+		retMap.put("status", "ok");
+		return retMap;
 	}
 
 	private List<List<String>> generateDataTableData(Object obj) {
@@ -411,7 +501,8 @@ public class ProjectController {
 
 		Map<String, String> retMap = new HashMap<>();
 		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
-		List<Company> companies = projectService.getCompaniesByUid(uid);
+		//List<Company> companies = projectService.getCompaniesByUid(uid);
+		List<Company> companies = projectService.getXiangmuCompaniesByUid(uid);
 		List<Integer> companyIds = new ArrayList<>();
 		List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = new ArrayList<>();
 
@@ -451,11 +542,19 @@ public class ProjectController {
 
 	@RequestMapping("/project/getAllKaiPiaoQingKuangBiao_ZongGongSi")
 	@ResponseBody
-	public Map<String, String> getAllKaiPiaoQingKuangBiao_ZongGongSi(HttpServletRequest request) {
+	public Map<String, String> getAllKaiPiaoQingKuangBiao_ZongGongSi(HttpServletRequest request, HttpSession httpSession) {
 		Map<String, String> retMap = new HashMap<>();
-		Long companyId = Long.valueOf(request.getParameter("company_id")); 
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		List<Company> companies = projectService.getXiangmuCompaniesByUid(uid);
+		List<KaiPiaoQingKuangBiao_ZongGongSi> KaiPiaoQingKuangBiaos = new ArrayList<>();
+		for(Company com : companies) {
+			List<KaiPiaoQingKuangBiao_ZongGongSi> li = projectService
+					.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(Long.valueOf(com.getId()));
+			KaiPiaoQingKuangBiaos.addAll(li);
+		}
+		/*Long companyId = Long.valueOf(request.getParameter("company_id"));
 		List<KaiPiaoQingKuangBiao_ZongGongSi> KaiPiaoQingKuangBiaos = projectService
-				.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);
+				.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);*/
 		List<List<Object>> retList = new ArrayList<>();
 		Integer count = 0;
 		for (KaiPiaoQingKuangBiao_ZongGongSi elem : KaiPiaoQingKuangBiaos) {
@@ -490,6 +589,133 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
+			retList.add(tmp);
+			if (elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0) {
+				count++;
+			}
+		}
+		String data = JSONArray.fromObject(retList).toString();
+		retMap.put("data", data);
+		retMap.put("unapproved", Integer.toString(count));
+		retMap.put("status", "ok");
+		return retMap;
+	}
+	
+	@RequestMapping("/project/newGetAllKaiPiaoQingKuangBiaoByZonggongsi")
+	@ResponseBody
+	public Map<String, String> newGetAllKaiPiaoQingKuangBiaoByZonggongsi(HttpServletRequest request, HttpSession httpSession) {
+		Map<String, String> retMap = new HashMap<>();
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		List<Company> companies = projectService.getXiangmuCompaniesByUid(uid);
+		List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = new ArrayList<>();
+		for(Company com : companies) {
+			List<KaiPiaoQingKuangBiao_XiangMu> li = projectService
+					.getKaiPiaoQingKuangBiao_XiangMuByCompanyId(com.getId());
+			KaiPiaoQingKuangBiaos.addAll(li);
+		}
+		/*Long companyId = Long.valueOf(request.getParameter("company_id"));
+		List<KaiPiaoQingKuangBiao_ZongGongSi> KaiPiaoQingKuangBiaos = projectService
+				.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);*/
+		List<List<Object>> retList = new ArrayList<>();
+		Integer count = 0;
+		for (KaiPiaoQingKuangBiao_XiangMu elem : KaiPiaoQingKuangBiaos) {
+			List<Object> tmp = new ArrayList<>();
+			tmp.add(elem.getId().toString());
+			tmp.add(elem.getShengqingkaipiaoshijian());
+			tmp.add(elem.getBuhanshuijine() == null? "": elem.getBuhanshuijine().toString());
+			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
+			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
+			tmp.add(elem.getKaijufapiao() == null ? "":elem.getKaijufapiao().toString());
+			tmp.add(elem.getShouqikuanxiang() == null ? "" : elem.getShouqikuanxiang().toString());
+			tmp.add(elem.getWangongjindu());
+			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
+			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
+			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
+			/*tmp.add(elem.getBeizhu());*/
+			tmp.add(elem.getYijishenheren());
+			String approveStatus = "未审核";
+			if (elem.getYiji_shenhe_status() == 1) {
+				approveStatus = "审核通过";
+			} else if (elem.getYiji_shenhe_status() == 2) {
+				approveStatus = "审核未通过";
+			}
+			tmp.add(approveStatus);
+			tmp.add(elem.getYiji_shenhe_beizhu());
+			tmp.add(elem.getErjishenheren());
+			String approveStatus2 = "未审核";
+			if (elem.getErji_shenhe_status() == 1) {
+				approveStatus2 = "审核通过";
+			} else if (elem.getErji_shenhe_status() == 2) {
+				approveStatus2 = "审核未通过";
+			}
+			tmp.add(approveStatus2);
+			tmp.add(elem.getErji_shenhe_beizhu());
+			String checkButton = "<input type='button' class='btn btn-success check'value='查看' >";
+			tmp.add(checkButton);
+			retList.add(tmp);
+			if (elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0) {
+				count++;
+			}
+		}
+		String data = JSONArray.fromObject(retList).toString();
+		retMap.put("data", data);
+		retMap.put("unapproved", Integer.toString(count));
+		retMap.put("status", "ok");
+		return retMap;
+	}
+	
+	@RequestMapping("/project/newGetAllKaiPiaoQingKuangBiaoByFengongsi")
+	@ResponseBody
+	public Map<String, String> newGetAllKaiPiaoQingKuangBiaoByFengongsi(HttpServletRequest request, HttpSession httpSession) {
+		Map<String, String> retMap = new HashMap<>();
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		Integer companyId = Integer.valueOf(request.getParameter("company_id"));
+		List<Company> companies = projectService.getXiaoXiangFengGongsiCompaniesByUid(uid, companyId);
+		List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = new ArrayList<>();
+		for(Company com : companies) {
+			List<KaiPiaoQingKuangBiao_XiangMu> li = projectService
+					.getKaiPiaoQingKuangBiao_XiangMuByCompanyId(com.getId());
+			KaiPiaoQingKuangBiaos.addAll(li);
+		}
+		/*Long companyId = Long.valueOf(request.getParameter("company_id"));
+		List<KaiPiaoQingKuangBiao_ZongGongSi> KaiPiaoQingKuangBiaos = projectService
+				.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);*/
+		List<List<Object>> retList = new ArrayList<>();
+		Integer count = 0;
+		for (KaiPiaoQingKuangBiao_XiangMu elem : KaiPiaoQingKuangBiaos) {
+			List<Object> tmp = new ArrayList<>();
+			tmp.add(elem.getId().toString());
+			tmp.add(elem.getShengqingkaipiaoshijian());
+			tmp.add(elem.getBuhanshuijine() == null? "": elem.getBuhanshuijine().toString());
+			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
+			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
+			tmp.add(elem.getKaijufapiao() == null ? "":elem.getKaijufapiao().toString());
+			tmp.add(elem.getShouqikuanxiang() == null ? "" : elem.getShouqikuanxiang().toString());
+			tmp.add(elem.getWangongjindu());
+			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
+			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
+			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
+			/*tmp.add(elem.getBeizhu());*/
+			tmp.add(elem.getYijishenheren());
+			String approveStatus = "未审核";
+			if (elem.getYiji_shenhe_status() == 1) {
+				approveStatus = "审核通过";
+			} else if (elem.getYiji_shenhe_status() == 2) {
+				approveStatus = "审核未通过";
+			}
+			tmp.add(approveStatus);
+			tmp.add(elem.getYiji_shenhe_beizhu());
+			tmp.add(elem.getErjishenheren());
+			String approveStatus2 = "未审核";
+			if (elem.getErji_shenhe_status() == 1) {
+				approveStatus2 = "审核通过";
+			} else if (elem.getErji_shenhe_status() == 2) {
+				approveStatus2 = "审核未通过";
+			}
+			tmp.add(approveStatus2);
+			tmp.add(elem.getErji_shenhe_beizhu());
+			String checkButton = "<input type='button' class='btn btn-success check'value='查看' >";
+			tmp.add(checkButton);
 			retList.add(tmp);
 			if (elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0) {
 				count++;
@@ -597,6 +823,8 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
+			String checkButton = "<input type='button' class='btn btn-success check'value='查看' >";
+			tmp.add(checkButton);
 			retList.add(tmp);
 			if (elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0) {
 				count++;
@@ -617,7 +845,8 @@ public class ProjectController {
 
 		Map<String, String> retMap = new HashMap<>();
 		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
-		List<Company> companies = projectService.getCompaniesByUid(uid);
+		/*List<Company> companies = projectService.getCompaniesByUid(uid);*/
+		List<Company> companies = projectService.getXiangmuCompaniesByUid(uid);
 		List<Integer> companyIds = new ArrayList<>();
 		List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = new ArrayList<>();
 		for (Company company : companies) {
@@ -1254,6 +1483,39 @@ public class ProjectController {
 		return retMap;
 	}
 	
+	@RequestMapping("/project/updateKaiPiaoShenQingDan")
+	@ResponseBody
+	public Map<String, String> updateKaiPiaoShenQingDan(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		Map<String, String> retMap = new HashMap<>();
+		String filePath = "/home/beirun/invoice";
+		String fileName = "";
+		if(file != null) {
+			String fileUnique = getUniqueIdentifier();
+			String fileOrignalName = file.getOriginalFilename();
+			fileName = fileUnique + fileOrignalName.substring(fileOrignalName.lastIndexOf("."));
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, fileName));
+			} catch (IOException e) {
+				logger.debug(e.toString());
+			}
+		}
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		Map<String, String[]> params = request.getParameterMap();
+		params.put("fapiaowenjian", new String[]{fileName});
+		String className = params.get("class_name")[0];
+		Method m = projectService.getClass().getMethod("get" + className + "ById", Long.class);
+		Object instance = m.invoke(projectService, Long.valueOf(id));
+		//String longClassName = "com.wisdom.common.model." + className;
+		//Class c = Class.forName(longClassName);
+		//Object instance = c.newInstance();
+		instance = setModel(instance, params, "full");
+		Method m2 = projectService.getClass().getMethod("update" + className, instance.getClass());
+		Object ret = m2.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		retMap.put("primary_id", String.valueOf(ret));
+		return retMap;
+	}
+	
 	@RequestMapping("/project/updateXiangMuTaiZhang")
 	@ResponseBody
 	public Map<String, String> updateXiangMuTaiZhang(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
@@ -1284,7 +1546,7 @@ public class ProjectController {
 	
 	@RequestMapping("/project/addXiangMuTaiZhang")
 	@ResponseBody
-	public Map<String, String> addXiangMuTaiZhangWithFile(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+	public Map<String, String> addXiangMuTaiZhangWithFile(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request, HttpSession httpSession) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 		Map<String, String> retMap = new HashMap<>();
 		String filePath = "/home/beirun/invoice";
 		String fileName = "";
@@ -1297,7 +1559,7 @@ public class ProjectController {
 			} catch (IOException e) {
 				logger.debug(e.toString());
 			}
-		}
+		}		
 		Map<String, String[]> params = new HashMap<>();
 		params.put("name", request.getParameterValues("xiangmumingcheng"));
 		params.put("parent_id", request.getParameterValues("company_id"));
@@ -1319,6 +1581,16 @@ public class ProjectController {
 		instance = setModel(instance, params, "partial");
 		m = projectService.getClass().getMethod("addXiangMuTaiZhang", instance.getClass());
 		m.invoke(projectService, instance);
+		
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		longClassName = "com.wisdom.common.model.User_Company";
+		instance = new User_Company();
+		User_Company uc = (User_Company)instance;
+		uc.setCompany_id((Integer)compnyRet);
+		uc.setUser_id(uid);
+		m = projectService.getClass().getMethod("addUser_Company", instance.getClass());
+		m.invoke(projectService, instance);
+		
 		retMap.put("status", "ok");
 		retMap.put("primary_id", String.valueOf(compnyRet));
 		return retMap;

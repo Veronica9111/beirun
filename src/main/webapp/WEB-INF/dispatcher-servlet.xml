@@ -109,6 +109,8 @@
 
 	<mvc:resources mapping="/files/company/**" location="file:/home/files/company/"
 		cache-period="3600" />
+	<mvc:resources mapping="/files/image/**" location="file:/home/beirun/invoice/"
+		cache-period="3600" />
 	<mvc:resources mapping="/files/image/**" location="file:/home/files/image/"
 		cache-period="3600" />
 	<mvc:resources mapping="/files/accounter/**" location="/WEB-INF/files/accounter/"
