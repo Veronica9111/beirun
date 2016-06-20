@@ -19,6 +19,8 @@ import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.FenBaoXiangMuMingXi;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
+import com.wisdom.common.model.KaiPiao_PuTongFaPiao;
+import com.wisdom.common.model.KaiPiao_YiBanZhuanYongFaPiao;
 import com.wisdom.common.model.PiaoJuWenJian;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
 import com.wisdom.common.model.ShouQiKuanXiangMingXiBiao;
@@ -44,8 +46,6 @@ public interface IProjectService {
 
 	public Boolean updateBuDongChanFenQiDiKouBiao(BuDongChanFenQiDiKouBiao buDongChanFenQiDiKouBiao);
 
-
-
 	public JinXiangShuieZhuanChuMingXi_FenGongSi getJinXiangShuieZhuanChuMingXi_FenGongSiById(Long id);
 
 	public Boolean addJinXiangShuieZhuanChuMingXi_FenGongSi(JinXiangShuieZhuanChuMingXi_FenGongSi jinXiangShuieZhuanChuMingXi_FenGongSi);
@@ -57,9 +57,6 @@ public interface IProjectService {
 	public Boolean addPiaoJuWenJian(PiaoJuWenJian piaoJuWenJian);
 
 	public Boolean updatePiaoJuWenJian(PiaoJuWenJian piaoJuWenJian);
-
-
-
 
 	public JinXiangShuieZhuanChuMingXi_XiangMuBu getJinXiangShuieZhuanChuMingXi_XiangMuBuById(Long id);
 
@@ -237,7 +234,6 @@ public interface IProjectService {
 	
 	public List<KaiPiaoQingKuangBiao_FenGongSi> getKaiPiaoQingKuangBiao_FenGongSiByCompanyId(Long company_id);
 	
-	//public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyIds(List<Integer> companyIds);
 	public List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyId(Integer company_id);
 
 	public List<Role> getUserRoles(Integer uid);
@@ -285,4 +281,17 @@ public interface IProjectService {
 	public List<Company> getXiaoXiangFengGongsiCompaniesByUid(Integer companyId, Integer uid);
 	
 	public List<Company> getChildCompanyById(Integer id);
+	
+	public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoById(Long id);
+
+	public Boolean addKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
+
+	public Boolean updateKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
+
+	public KaiPiao_YiBanZhuanYongFaPiao getKaiPiao_YiBanZhuanYongFaPiaoById(Long id);
+
+	public Boolean addKaiPiao_YiBanZhuanYongFaPiao(KaiPiao_YiBanZhuanYongFaPiao kaiPiao_YiBanZhuanYongFaPiao);
+
+	public Boolean updateKaiPiao_YiBanZhuanYongFaPiao(KaiPiao_YiBanZhuanYongFaPiao kaiPiao_YiBanZhuanYongFaPiao);
+
 }
