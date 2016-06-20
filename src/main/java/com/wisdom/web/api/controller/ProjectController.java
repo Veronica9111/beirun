@@ -1516,9 +1516,9 @@ public class ProjectController {
 		return retMap;
 	}
 	
-	@RequestMapping("/project/updateXiangMuTaiZhang")
+	@RequestMapping("/project/updateXiangMuTaiZhangWithFile")
 	@ResponseBody
-	public Map<String, String> updateXiangMuTaiZhang(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+	public Map<String, String> updateXiangMuTaiZhangWithFile(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
 		Map<String, String> retMap = new HashMap<>();
 		String filePath = "/home/beirun/invoice";
 		String fileName = "";
@@ -1533,6 +1533,7 @@ public class ProjectController {
 			}
 		}
 		Integer id = Integer.valueOf(request.getParameter("id"));
+		Integer company_id = Integer.valueOf(request.getParameter("company_id"));
 		Map<String, String[]> params = request.getParameterMap();
 		params.put("hetongwenjian", new String[]{fileName});
 		Method m = projectService.getClass().getMethod("getXiangMuTaiZhangById", Long.class);
@@ -1540,6 +1541,26 @@ public class ProjectController {
 		instance = setModel(instance, params, "full");
 		Method m2 = projectService.getClass().getMethod("updateXiangMuTaiZhang", instance.getClass());
 		m2.invoke(projectService, instance);
+		
+		projectService.updateCompanyName(request.getParameter("xiangmumingcheng"), company_id);
+		retMap.put("status", "ok");
+		return retMap;
+	}
+	
+	@RequestMapping("/project/updateXiangMuTaiZhangWithoutFile")
+	@ResponseBody
+	public Map<String, String> updateXiangMuTaiZhangWithoutFile(HttpServletRequest request) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+		Map<String, String> retMap = new HashMap<>();
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		Integer company_id = Integer.valueOf(request.getParameter("company_id"));
+		Map<String, String[]> params = request.getParameterMap();
+		String className = params.get("class_name")[0];
+		Method m = projectService.getClass().getMethod("get" + className + "ById", Long.class);
+		Object instance = m.invoke(projectService, Long.valueOf(id));
+		instance = setModel(instance, params, "full");
+		Method m2 = projectService.getClass().getMethod("update" + className, instance.getClass());
+		m2.invoke(projectService, instance);		
+		projectService.updateCompanyName(request.getParameter("xiangmumingcheng"), company_id);
 		retMap.put("status", "ok");
 		return retMap;
 	}

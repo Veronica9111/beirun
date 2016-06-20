@@ -1152,9 +1152,9 @@ public class ProjectServiceImpl implements IProjectService {
 	    }
 
 		@Override
-		public Integer addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd) {
+		public Long addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd) {
 			kaiPiaoShenQingDanMapper.addKaiPiaoShenQingDan(kpsqd);
-			return 0;
+			return kpsqd.getId();
 		}
 		public KaiPiaoShenQingDan getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id(Long kaipiaoqingkuangbiao_xiangmu_id) {
 			// TODO Auto-generated method stub
@@ -1367,9 +1367,9 @@ public class ProjectServiceImpl implements IProjectService {
 		    }
 
 		    @Override
-		    public Boolean addKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao){
+		    public Long addKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao){
 		        kaiPiao_PuTongFaPiaoMapper.addKaiPiao_PuTongFaPiao(kaiPiao_PuTongFaPiao);
-		        return true;
+		        return kaiPiao_PuTongFaPiao.getId();
 		    }
 
 		    @Override
@@ -1400,5 +1400,9 @@ public class ProjectServiceImpl implements IProjectService {
 			public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id) {
 				// TODO Auto-generated method stub
 				return kaiPiao_PuTongFaPiaoMapper.getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+			}
+			
+			public void updateCompanyName(String companyName, Integer id) {
+				companyMapper.updateCompanyName(companyName, id);
 			}
 }

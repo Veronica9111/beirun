@@ -1074,8 +1074,9 @@ $("#update_project_info").on("click", function(){
 			}
 		});
 		$.ajaxSetup({async : false});
-		$.post('/project/modifyModel', dataSet, function(data){});
+		$.post('/project/updateXiangMuTaiZhangWithoutFile', dataSet, function(data){});
 		bload.hide();
+		 location.reload(true); 
 	} else {
 		var xhr = new XMLHttpRequest();
 		var fd = new FormData();
@@ -1093,9 +1094,10 @@ $("#update_project_info").on("click", function(){
 				color: '#000',
 			}
 		});
-		xhr.open("post","/project/updateXiangMuTaiZhang", false);
+		xhr.open("post","/project/updateXiangMuTaiZhangWithFile", false);
 		xhr.send(fd);
 		bload.hide();
+		location.reload(true);
 	}
 });
 var query = {query_key: 'company_id', query_value:company_id, class_name:'XiangMuTaiZhang'};

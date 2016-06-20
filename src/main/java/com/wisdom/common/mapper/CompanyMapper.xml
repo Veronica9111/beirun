@@ -44,4 +44,10 @@ SELECT id, name, parent_id, level, create_time FROM company where id in (select 
 insert into company (name, parent_id, level, create_time)
 values(#{name},#{parent_id},#{level},#{create_time})
 </insert>
+
+<insert id="updateCompanyName" parameterType="String">
+update company set name=#{companyName}
+where id=#{id}
+</insert>
+
 </mapper>

@@ -37,7 +37,7 @@ update kaipiao_putongfapiao set hejijine=#{hejijine},kaipiaoneirong=#{kaipiaonei
 where id=#{id}
 </update>
 
-<insert id="addKaiPiao_PuTongFaPiao">
+<insert id="addKaiPiao_PuTongFaPiao"  useGeneratedKeys="true" keyProperty="id" keyColumn="id">
 insert into kaipiao_putongfapiao (hejijine,kaipiaoneirong,shuilv,field2,field3,field1,shenqingriqi,shuie,xiaoshoue,field4,xiaoji,id,kaipiaoshenqingdan_id)
 values (#{hejijine},#{kaipiaoneirong},#{shuilv},#{field2},#{field3},#{field1},#{shenqingriqi},#{shuie},#{xiaoshoue},#{field4},#{xiaoji},#{id},#{kaipiaoshenqingdan_id})
 </insert>

@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.JinXiangFaPiaoMingXi_FaPiao;
 import com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng;
@@ -108,7 +110,7 @@ public interface IProjectService {
 	
 	public Boolean updateKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
 	
-	public Integer addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
+	public Long addKaiPiaoShenQingDan(KaiPiaoShenQingDan kpsqd);
 	
 	public Boolean updateJianYiJiShuiFangFaPuPiaoJiShui(JianYiJiShuiFangFaPuPiaoJiShui jyjsffppjs);
 	
@@ -286,7 +288,7 @@ public interface IProjectService {
 	
 	public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
 
-	public Boolean addKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
+	public Long addKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
 
 	public Boolean updateKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
 
@@ -295,6 +297,8 @@ public interface IProjectService {
 	public Boolean addKaiPiao_YiBanZhuanYongFaPiao(KaiPiao_YiBanZhuanYongFaPiao kaiPiao_YiBanZhuanYongFaPiao);
 
 	public Boolean updateKaiPiao_YiBanZhuanYongFaPiao(KaiPiao_YiBanZhuanYongFaPiao kaiPiao_YiBanZhuanYongFaPiao);
+	
+	public void updateCompanyName(String companyName, Integer id);
 
 	
 }
