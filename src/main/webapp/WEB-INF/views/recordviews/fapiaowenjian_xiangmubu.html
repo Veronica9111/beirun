@@ -1314,6 +1314,10 @@ $.post("/project/getModel", query, function(data){
 	for(var i = 0; i < dataSet.length; i++){
 		if(i == 0){
 			for(var key in dataSet[0]){
+				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);
+				$('#xiangmubu').val(dataSet[0]['xiangmubu']);
+				//console.log(key);
+				//console.log(dataSet[0][key]);
 				beizhu_init = dataSet[0]["beizhu"];
 				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	
 				$('#xiangmubu').val(dataSet[0]['xiangmubu']);

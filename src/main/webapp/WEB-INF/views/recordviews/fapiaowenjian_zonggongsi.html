@@ -961,8 +961,6 @@ td
 </br>
 <div><label>审核备注：</label><textarea id="beizhu" disabled style="margin-top: 2em;"></textarea></div>
 <table id="invoice_info" width="656" border="0" cellpadding="0" cellspacing="0" style='margin-top:30px;width:328.00pt;border-collapse:collapse;table-layout:fixed;'>
-
-   
    <tr height="28" style='height:14.00pt;'>
     <td class="xl66" height="28" style='height:14.00pt;' x:str>发票日期</td>
     <td class="xl66" x:str>发票号码</td>
@@ -972,7 +970,6 @@ td
   </table>
   
   <table width="6446.90" border="0" cellpadding="0" cellspacing="0" style='width:3223.45pt;border-collapse:collapse;table-layout:fixed;'>
-   
    <tr height="40.20" class="xl65" style='height:20.10pt;mso-height-source:userset;mso-height-alt:402;'>
     <td class="xl66" height="40.20" width="5590.10" colspan="59" style='height:20.10pt;width:2795.05pt;border-right:none;border-bottom:none;' x:str>进项发票明细（发票）</td>
     <td class="xl66" width="93.50" style='width:46.75pt;'></td>
@@ -1322,6 +1319,10 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 	for(var i = 0; i < dataSet.length; i++){
 		if(i == 0){
 			for(var key in dataSet[0]){
+				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);
+				$('#xiangmubu').val(dataSet[0]['xiangmubu']);
+				//console.log(key);
+				//console.log(dataSet[0][key]);
 				$('#fengongsimingcheng').val(dataSet[0]['fengongsimingcheng']);	
 				$('#xiangmubu').val(dataSet[0]['xiangmubu']);
 				$("#" + key).val(dataSet[0][key]);
@@ -1341,14 +1342,12 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 		}
 	}
 	$("#xiaoji td input").each(function(){
-
 		var oldId =  $(this).attr("id");
 		if(oldId == "xiaoji_jine" || oldId == "xiaoji_jinxiangshuie"){
 			var id = oldId.replace("xiaoji_", "");
 			var count = 0;
 			var inputs = $("." + id).each(function(){
 				count += parseFloat($(this).val());
-				
 			});
 			if(!isNaN(count)){
 				$("#"+oldId).val(count);
@@ -1356,8 +1355,6 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 		}
 		
 		else if(oldId.indexOf("xiaoji_") != -1){
-	
-		
 			var id = oldId.replace("xiaoji_", "fp_");
 			var count = 0;
 			var inputs = $("." + id).each(function(){
@@ -1385,8 +1382,6 @@ $.post("/project/getJinXiangAuditList", null, function(data){
 			}
 		}
 		else if(id.indexOf("fp_") != -1){
-			
-			
 				var xiaoJiId = id.replace("fp_", "xiaoji_");
 				var count = 0;
 				if(dataSet.length == 0){

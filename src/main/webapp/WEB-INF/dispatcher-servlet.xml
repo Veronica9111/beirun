@@ -190,19 +190,19 @@
 			value="com.wisdom.common.mapper.JinXiangFaPiaoMingXi_RenZhengMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	
+
 	<bean id="JinXiangShuieZhuanChuMingXi_FenGongSiMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface"
 			value="com.wisdom.common.mapper.JinXiangShuieZhuanChuMingXi_FenGongSiMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	
+
 	<bean id="JinXiangShuieZhuanChuMingXi_XiangMuBuMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface"
 			value="com.wisdom.common.mapper.JinXiangShuieZhuanChuMingXi_XiangMuBuMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	
+
 	<bean id="PiaoJuWenJianMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.wisdom.common.mapper.PiaoJuWenJianMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
@@ -387,7 +387,10 @@
 		<property name="recordMapper" ref="recordMapper" />
 		<property name="artifactMapper" ref="artifactMapper" />
 	</bean>
-
+	<bean id="KaiPiao_YiBanZhuanYongFaPiaoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.wisdom.common.mapper.KaiPiao_YiBanZhuanYongFaPiaoMapper" />
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	<bean id="roleServiceImpl" class="com.wisdom.role.service.impl.RoleServiceImpl">
 		<property name="roleMapper" ref="roleMapper" />
 	</bean>
@@ -400,6 +403,11 @@
 	<bean id="JianYiJiShuiFangFaPuPiaoJiShuiMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface"
 			value="com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="KaiPiao_PuTongFaPiaoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.wisdom.common.mapper.KaiPiao_PuTongFaPiaoMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	<bean id="PuTongFaPiaoKaiJuMingXiMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
@@ -443,7 +451,8 @@
 			ref="JinXiangShuieZhuanChuMingXi_FenGongSiMapper" />
 		<property name="JinXiangShuieZhuanChuMingXi_XiangMuBuMapper"
 			ref="JinXiangShuieZhuanChuMingXi_XiangMuBuMapper" />
-
+		<property name="KaiPiao_PuTongFaPiaoMapper" ref="KaiPiao_PuTongFaPiaoMapper" />
+		<property name="KaiPiao_YiBanZhuanYongFaPiaoMapper" ref="KaiPiao_YiBanZhuanYongFaPiaoMapper" />
 		<property name="JinXiangFaPiaoMingXi_RenZhengMapper" ref="JinXiangFaPiaoMingXi_RenZhengMapper" />
 		<property name="User_CompanyMapper" ref="User_CompanyMapper" />
 	</bean>

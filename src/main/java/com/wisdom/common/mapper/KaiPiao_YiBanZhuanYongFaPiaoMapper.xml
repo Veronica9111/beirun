@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.wisdom.common.mapper.KaiPiao_YiBanZhuanYongFaPiaoMapper">
+<cache />
+
+<resultMap type="com.wisdom.common.model.KaiPiao_YiBanZhuanYongFaPiao" id="KaiPiao_YiBanZhuanYongFaPiao">
+<result property="hejijine" column="hejijine"/>
+<result property="kaipiaoneirong" column="kaipiaoneirong"/>
+<result property="shuilv" column="shuilv"/>
+<result property="field2" column="field2"/>
+<result property="field3" column="field3"/>
+<result property="field1" column="field1"/>
+<result property="shenqingriqi" column="shenqingriqi"/>
+<result property="shuie" column="shuie"/>
+<result property="xiaoshoue" column="xiaoshoue"/>
+<result property="field4" column="field4"/>
+<result property="xiaoji" column="xiaoji"/>
+<result property="id" column="id"/>
+<result property="kaipiaoshenqingdan_id" column="kaipiaoshenqingdan_id"/>
+</resultMap>
+
+<select id="getKaiPiao_YiBanZhuanYongFaPiaoById" resultType="KaiPiao_YiBanZhuanYongFaPiao">
+select hejijine,kaipiaoneirong,shuilv,field2,field3,field1,shenqingriqi,shuie,xiaoshoue,field4,xiaoji,id,kaipiaoshenqingdan_id
+from kaipiao_yibanzhuanyongfapiao
+where id=#{id}
+</select>
+
+<update id="updateKaiPiao_YiBanZhuanYongFaPiao">
+update kaipiao_yibanzhuanyongfapiao set hejijine=#{hejijine},kaipiaoneirong=#{kaipiaoneirong},shuilv=#{shuilv},field2=#{field2},field3=#{field3},field1=#{field1},shenqingriqi=#{shenqingriqi},shuie=#{shuie},xiaoshoue=#{xiaoshoue},field4=#{field4},xiaoji=#{xiaoji},id=#{id},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+where id=#{id}
+</update>
+
+<insert id="addKaiPiao_YiBanZhuanYongFaPiao">
+insert into kaipiao_yibanzhuanyongfapiao (hejijine,kaipiaoneirong,shuilv,field2,field3,field1,shenqingriqi,shuie,xiaoshoue,field4,xiaoji,id,kaipiaoshenqingdan_id)
+values (#{hejijine},#{kaipiaoneirong},#{shuilv},#{field2},#{field3},#{field1},#{shenqingriqi},#{shuie},#{xiaoshoue},#{field4},#{xiaoji},#{id},#{kaipiaoshenqingdan_id})
+</insert>
+
+</mapper>

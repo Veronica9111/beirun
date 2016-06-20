@@ -67,6 +67,8 @@
 			type="com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng" />
 		<typeAlias alias="PiaoJuWenJian" type="com.wisdom.common.model.PiaoJuWenJian" />
 		<typeAlias alias="User_Company" type="com.wisdom.common.model.User_Company" />
+		<typeAlias alias="KaiPiao_PuTongFaPiao" type="com.wisdom.common.model.KaiPiao_PuTongFaPiao" />
+		<typeAlias alias="KaiPiao_YiBanZhuanYongFaPiao" type="com.wisdom.common.model.KaiPiao_YiBanZhuanYongFaPiao" />
 	</typeAliases>
 	
 	<mappers>
@@ -164,6 +166,8 @@
 		<mapper resource="com/wisdom/common/mapper/BuDongChanFenQiDiKouBiaoMapper.xml"/>
 		<mapper
 			resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMuMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/KaiPiao_PuTongFaPiaoMapper.xml"/>
 		<mapper resource="com/wisdom/common/mapper/User_CompanyMapper.xml" />
+		<mapper resource="com/wisdom/common/mapper/KaiPiao_YiBanZhuanYongFaPiaoMapper.xml"/>
 	</mappers>
 </configuration>
