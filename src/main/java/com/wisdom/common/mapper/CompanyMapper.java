@@ -20,5 +20,7 @@ public interface CompanyMapper {
 	List<Company> getChildCompanyById(Integer id);
 	
 	Integer addXiangMuCompany(Company company);
+	
+	void updateCompanyName(@Param("companyName")String companyName, @Param("id")Integer id);
 }
 

@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.wisdom.common.model.JianYiJiShuiFangFaZhuanPiaoJiShui;
 import com.wisdom.common.model.JinXiangFaPiaoMingXi_FaPiao;
 import com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng;
@@ -293,5 +295,7 @@ public interface IProjectService {
 	public Boolean addKaiPiao_YiBanZhuanYongFaPiao(KaiPiao_YiBanZhuanYongFaPiao kaiPiao_YiBanZhuanYongFaPiao);
 
 	public Boolean updateKaiPiao_YiBanZhuanYongFaPiao(KaiPiao_YiBanZhuanYongFaPiao kaiPiao_YiBanZhuanYongFaPiao);
+	
+	public void updateCompanyName(String companyName, Integer id);
 
 }

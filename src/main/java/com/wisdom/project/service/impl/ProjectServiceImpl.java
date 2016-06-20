@@ -1395,4 +1395,9 @@ public class ProjectServiceImpl implements IProjectService {
 		        kaiPiao_YiBanZhuanYongFaPiaoMapper.updateKaiPiao_YiBanZhuanYongFaPiao(kaiPiao_YiBanZhuanYongFaPiao);
 		        return true;
 		    }
+
+			@Override
+			public void updateCompanyName(String companyName, Integer id) {
+				companyMapper.updateCompanyName(companyName, id);
+			}
 }
