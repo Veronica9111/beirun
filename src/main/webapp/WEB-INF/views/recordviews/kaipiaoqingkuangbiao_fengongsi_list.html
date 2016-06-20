@@ -1139,6 +1139,7 @@ $("#create_new_project").on("click", function() {
 	window.location.href = "/project/redirectView?view=create_new_project.html&company_id=" + kaipiaoqingkuangbiao_fengongsi_IdParam + "&node_id="+currentSelectedNodeId;
 });
 function nodeClick(node){
+	console.log(node);
 	if(currentSelectedNodeId == node.nodeId) return;
 	if(node.level == 0) { //一级节点
 		var zonggongsi_company_id = node.company_id; //获取company_id
