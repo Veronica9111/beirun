@@ -1331,7 +1331,12 @@ public class ProjectController {
 					m = model.getClass().getMethod(methodName, Timestamp.class);
 					if (!arg.isEmpty()) {
 						arg += " 00:00:00";
-						Timestamp argT = Timestamp.valueOf(arg);
+						Timestamp argT = new Timestamp(System.currentTimeMillis());
+						try {
+							argT = Timestamp.valueOf(arg);
+						} catch(IllegalArgumentException iae) {
+							logger.debug(iae.toString());
+						}
 						// Timestamp argT = new
 						// java.sql.Timestamp(parsedDate.getTime());
 						Object ret = m.invoke(model, argT);
