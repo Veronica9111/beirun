@@ -69,6 +69,9 @@
 		<typeAlias alias="User_Company" type="com.wisdom.common.model.User_Company" />
 		<typeAlias alias="KaiPiao_PuTongFaPiao" type="com.wisdom.common.model.KaiPiao_PuTongFaPiao" />
 		<typeAlias alias="KaiPiao_YiBanZhuanYongFaPiao" type="com.wisdom.common.model.KaiPiao_YiBanZhuanYongFaPiao" />
+		<typeAlias alias="KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian" type="com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian" />
+		<typeAlias alias="KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian" type="com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian" />
+		<typeAlias alias="KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian" type="com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian" />
 	</typeAliases>
 	
 	<mappers>
@@ -169,5 +172,8 @@
 		<mapper resource="com/wisdom/common/mapper/KaiPiao_PuTongFaPiaoMapper.xml"/>
 		<mapper resource="com/wisdom/common/mapper/User_CompanyMapper.xml" />
 		<mapper resource="com/wisdom/common/mapper/KaiPiao_YiBanZhuanYongFaPiaoMapper.xml"/>
+		<mapper resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJianMapper.xml"/>
+		<mapper resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJianMapper.xml"/>
+		<mapper resource="com/wisdom/common/mapper/KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianMapper.xml"/>
 	</mappers>
 </configuration>

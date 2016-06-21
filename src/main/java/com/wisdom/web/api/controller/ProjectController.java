@@ -38,6 +38,7 @@ import com.wisdom.common.model.JinXiangFaPiaoMingXi_FaPiao;
 import com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
 import com.wisdom.common.model.Permission;
@@ -109,7 +110,7 @@ public class ProjectController {
 		Map<String, String[]> params = request.getParameterMap();
 		String className = params.get("class_name")[0];
 		String longClassName = "com.wisdom.common.model." + className;
-		Class c = Class.forName(longClassName);
+		Class<?> c = Class.forName(longClassName);
 		Object instance = c.newInstance();
 		instance = setModel(instance, params, "partial");
 		System.out.println(className);
@@ -607,10 +608,10 @@ public class ProjectController {
 		Map<String, String> retMap = new HashMap<>();
 		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
 		List<Company> companies = projectService.getXiangmuCompaniesByUid(uid);
-		List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = new ArrayList<>();
+		List<KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian> KaiPiaoQingKuangBiaos = new ArrayList<>();
 		for(Company com : companies) {
-			List<KaiPiaoQingKuangBiao_XiangMu> li = projectService
-					.getKaiPiaoQingKuangBiao_XiangMuByCompanyId(com.getId());
+			List<KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian> li = projectService
+					.getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianByCompanyId(com.getId());
 			KaiPiaoQingKuangBiaos.addAll(li);
 		}
 		/*Long companyId = Long.valueOf(request.getParameter("company_id"));
@@ -618,10 +619,11 @@ public class ProjectController {
 				.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);*/
 		List<List<Object>> retList = new ArrayList<>();
 		Integer count = 0;
-		for (KaiPiaoQingKuangBiao_XiangMu elem : KaiPiaoQingKuangBiaos) {
+		for (KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian elem : KaiPiaoQingKuangBiaos) {
 			List<Object> tmp = new ArrayList<>();
 			tmp.add(elem.getId().toString());
 			tmp.add(elem.getShengqingkaipiaoshijian());
+			tmp.add(elem.getBeizhu());
 			tmp.add(elem.getBuhanshuijine() == null? "": elem.getBuhanshuijine().toString());
 			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
 			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
@@ -631,6 +633,9 @@ public class ProjectController {
 			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
 			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
+			tmp.add(elem.getHetongzongjine() == null ? "" : elem.getHetongzongjine().toString());
+			Double weikaipiaojine = elem.getHetongzongjine()-elem.getYikaipiaojine();
+			tmp.add(weikaipiaojine.toString());
 			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
@@ -650,6 +655,8 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
+			String download_file = "<a type='button' class='btn btn-info che' href='/files/image/"+elem.getHetongwenjian()+"'>合同下载</a>";
+			tmp.add(download_file);
 			String checkButton = "<input type='button' class='btn btn-success check'value='查看' >";
 			tmp.add(checkButton);
 			retList.add(tmp);
@@ -671,10 +678,10 @@ public class ProjectController {
 		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
 		Integer companyId = Integer.valueOf(request.getParameter("company_id"));
 		List<Company> companies = projectService.getXiaoXiangFengGongsiCompaniesByUid(uid, companyId);
-		List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = new ArrayList<>();
+		List<KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian> KaiPiaoQingKuangBiaos = new ArrayList<>();
 		for(Company com : companies) {
-			List<KaiPiaoQingKuangBiao_XiangMu> li = projectService
-					.getKaiPiaoQingKuangBiao_XiangMuByCompanyId(com.getId());
+			List<KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian> li = projectService
+					.getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianByCompanyId(com.getId());
 			KaiPiaoQingKuangBiaos.addAll(li);
 		}
 		/*Long companyId = Long.valueOf(request.getParameter("company_id"));
@@ -682,10 +689,11 @@ public class ProjectController {
 				.getAllKaiPiaoQingKuangBiao_ZongGongSiByCompanyId(companyId);*/
 		List<List<Object>> retList = new ArrayList<>();
 		Integer count = 0;
-		for (KaiPiaoQingKuangBiao_XiangMu elem : KaiPiaoQingKuangBiaos) {
+		for (KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian elem : KaiPiaoQingKuangBiaos) {
 			List<Object> tmp = new ArrayList<>();
 			tmp.add(elem.getId().toString());
 			tmp.add(elem.getShengqingkaipiaoshijian());
+			tmp.add(elem.getBeizhu());
 			tmp.add(elem.getBuhanshuijine() == null? "": elem.getBuhanshuijine().toString());
 			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
 			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
@@ -695,6 +703,9 @@ public class ProjectController {
 			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
 			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
+			tmp.add(elem.getHetongzongjine() == null ? "" : elem.getHetongzongjine().toString());
+			Double weikaipiaojine = elem.getHetongzongjine()-elem.getYikaipiaojine();
+			tmp.add(weikaipiaojine.toString());
 			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
@@ -714,7 +725,9 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
-			String checkButton = "<input type='button' class='btn btn-success check'value='查看' >";
+			String download_file = "<a type='button' class='btn btn-info check' href='/files/image/"+elem.getHetongwenjian()+"'>合同下载</a>";
+			tmp.add(download_file);
+			String checkButton = "<input type='button' class='btn btn-success check' value='查看' >";
 			tmp.add(checkButton);
 			retList.add(tmp);
 			if (elem.getErji_shenhe_status() == 0 || elem.getYiji_shenhe_status() == 0) {
@@ -785,16 +798,17 @@ public class ProjectController {
 	@RequestMapping("/project/getAllKaiPiaoQingKuangBiao_XiangMu")
 	@ResponseBody
 	public Map<String, String> getAllKaiPiaoQingKuangBiao_XiangMu(HttpServletRequest request) {
-		Long companyId = Long.valueOf(request.getParameter("company_id")); 
+		Integer companyId = Integer.valueOf(request.getParameter("company_id")); 
 		Map<String, String> retMap = new HashMap<>();
-		List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = projectService
-				.getAllKaiPiaoQingKuangBiao_XiangMu(companyId);
+		List<KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian> KaiPiaoQingKuangBiaos = projectService
+				.getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianByCompanyId(companyId);
 		List<List<Object>> retList = new ArrayList<>();
 		Integer count = 0;
-		for (KaiPiaoQingKuangBiao_XiangMu elem : KaiPiaoQingKuangBiaos) {
+		for (KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian elem : KaiPiaoQingKuangBiaos) {
 			List<Object> tmp = new ArrayList<>();
 			tmp.add(elem.getId().toString());
 			tmp.add(elem.getShengqingkaipiaoshijian());
+			tmp.add(elem.getBeizhu());
 			tmp.add(elem.getBuhanshuijine() == null? "": elem.getBuhanshuijine().toString());
 			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
 			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
@@ -804,6 +818,9 @@ public class ProjectController {
 			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
 			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
+			tmp.add(elem.getHetongzongjine() == null ? "" : elem.getHetongzongjine().toString());
+			Double weikaipiaojine = elem.getHetongzongjine() - elem.getYikaipiaojine();
+			tmp.add(weikaipiaojine);
 			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
@@ -823,6 +840,8 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
+			String download_file = "<a type='button' class='btn btn-info check' href='/files/image/"+elem.getHetongwenjian()+"'>合同下载</a>";
+			tmp.add(download_file);
 			String checkButton = "<input type='button' class='btn btn-success check'value='查看' >";
 			tmp.add(checkButton);
 			retList.add(tmp);

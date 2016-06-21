@@ -1,0 +1,13 @@
+package com.wisdom.common.mapper;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian;
+
+
+public interface KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJianMapper {
+
+    KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian getKaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJianById(Long id);
+
+    Integer addKaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian(KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian kaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian);
+
+    Integer updateKaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian(KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian kaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian);
+
+}

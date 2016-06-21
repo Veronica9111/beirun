@@ -400,10 +400,22 @@
 		<property name="symbolMapper" ref="symbolMapper" />
 		<property name="candidateMapper" ref="candidateMapper" />
 	</bean>
+	<bean id="KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJianMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.wisdom.common.mapper.KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJianMapper" />
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.wisdom.common.mapper.KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianMapper" />
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	<bean id="JianYiJiShuiFangFaPuPiaoJiShuiMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface"
 			value="com.wisdom.common.mapper.JianYiJiShuiFangFaPuPiaoJiShuiMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJianMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="mapperInterface" value="com.wisdom.common.mapper.KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJianMapper" />
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	<bean id="KaiPiao_PuTongFaPiaoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface"
@@ -455,6 +467,9 @@
 		<property name="KaiPiao_YiBanZhuanYongFaPiaoMapper" ref="KaiPiao_YiBanZhuanYongFaPiaoMapper" />
 		<property name="JinXiangFaPiaoMingXi_RenZhengMapper" ref="JinXiangFaPiaoMingXi_RenZhengMapper" />
 		<property name="User_CompanyMapper" ref="User_CompanyMapper" />
+		<property name="KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJianMapper" ref="KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJianMapper" />
+		<property name="KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJianMapper" ref="KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJianMapper" />
+		<property name="KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianMapper" ref="KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianMapper" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="mapper" />
