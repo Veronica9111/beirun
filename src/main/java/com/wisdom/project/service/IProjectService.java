@@ -287,6 +287,8 @@ public interface IProjectService {
 	public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoById(Long id);
 	
 	public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoqingkuangbiao_xiangmu_id(Long kaipiaoqingkuangbiao_xiangmu_id);
+	
+	public 	KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
 
 	public Long addKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
 

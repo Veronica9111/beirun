@@ -30,6 +30,11 @@ where id=#{id}
 select * from kaipiao_putongfapiao WHERE kaipiaoshenqingdan_id = (select id from kaipiaoshenqingdan WHERE kaipiaoqingkuangbiao_xiangmu_id = #{kaipiaoshenqingdan_id})
 </select>
 
+<select id="getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id" resultType="KaiPiao_PuTongFaPiao">
+select * from kaipiao_putongfapiao WHERE 
+kaipiaoshenqingdan_id = #{kaipiaoshenqingdan_id}
+</select>
+
 <update id="updateKaiPiao_PuTongFaPiao">
 update kaipiao_putongfapiao set hejijine=#{hejijine},kaipiaoneirong=#{kaipiaoneirong},shuilv=#{shuilv},field2=#{field2},field3=#{field3},field1=#{field1},shenqingriqi=#{shenqingriqi},shuie=#{shuie},xiaoshoue=#{xiaoshoue},field4=#{field4},xiaoji=#{xiaoji},id=#{id},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
 where id=#{id}

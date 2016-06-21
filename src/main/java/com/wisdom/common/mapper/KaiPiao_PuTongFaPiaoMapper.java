@@ -11,5 +11,7 @@ public interface KaiPiao_PuTongFaPiaoMapper {
     Integer updateKaiPiao_PuTongFaPiao(KaiPiao_PuTongFaPiao kaiPiao_PuTongFaPiao);
 
 	KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoqingkuangbiao_xiangmu_id(Long kaipiaoqingkuangbiao_xiangmu_id);
+	
+	KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id);
 
 }

@@ -1405,4 +1405,10 @@ public class ProjectServiceImpl implements IProjectService {
 			public void updateCompanyName(String companyName, Integer id) {
 				companyMapper.updateCompanyName(companyName, id);
 			}
+
+			@Override
+			public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id) {
+				// TODO Auto-generated method stub
+				return kaiPiao_PuTongFaPiaoMapper.getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+			}
 }
