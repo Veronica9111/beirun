@@ -634,7 +634,7 @@ public class ProjectController {
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
 			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			tmp.add(elem.getHetongzongjine() == null ? "" : elem.getHetongzongjine().toString());
-			Double weikaipiaojine = elem.getHetongzongjine()-elem.getYikaipiaojine();
+			Double weikaipiaojine = (elem.getHetongzongjine()==null ? 0.00 : elem.getHetongzongjine()) -(elem.getYikaipiaojine() == null ? 0.00 : elem.getYikaipiaojine());
 			tmp.add(weikaipiaojine.toString());
 			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
@@ -704,7 +704,7 @@ public class ProjectController {
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
 			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			tmp.add(elem.getHetongzongjine() == null ? "" : elem.getHetongzongjine().toString());
-			Double weikaipiaojine = elem.getHetongzongjine()-elem.getYikaipiaojine();
+			Double weikaipiaojine = (elem.getHetongzongjine()==null ? 0.00 : elem.getHetongzongjine()) -(elem.getYikaipiaojine() == null ? 0.00 : elem.getYikaipiaojine());
 			tmp.add(weikaipiaojine.toString());
 			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
@@ -819,7 +819,7 @@ public class ProjectController {
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
 			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			tmp.add(elem.getHetongzongjine() == null ? "" : elem.getHetongzongjine().toString());
-			Double weikaipiaojine = elem.getHetongzongjine() - elem.getYikaipiaojine();
+			Double weikaipiaojine = (elem.getHetongzongjine()==null ? 0.00 : elem.getHetongzongjine()) -(elem.getYikaipiaojine() == null ? 0.00 : elem.getYikaipiaojine());
 			tmp.add(weikaipiaojine);
 			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
@@ -867,9 +867,9 @@ public class ProjectController {
 		/*List<Company> companies = projectService.getCompaniesByUid(uid);*/
 		List<Company> companies = projectService.getXiangmuCompaniesByUid(uid);
 		List<Integer> companyIds = new ArrayList<>();
-		List<KaiPiaoQingKuangBiao_XiangMu> KaiPiaoQingKuangBiaos = new ArrayList<>();
+		List<KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian> KaiPiaoQingKuangBiaos = new ArrayList<>();
 		for (Company company : companies) {
-			KaiPiaoQingKuangBiaos.addAll(projectService.getKaiPiaoQingKuangBiao_XiangMuByCompanyId(company.getId()));
+			KaiPiaoQingKuangBiaos.addAll(projectService.getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianByCompanyId(company.getId()));
 
 		}
 		Integer approvalLevel = 0;
@@ -884,10 +884,11 @@ public class ProjectController {
 
 		List<List<Object>> retList = new ArrayList<>();
 		Integer count = 0;
-		for (KaiPiaoQingKuangBiao_XiangMu elem : KaiPiaoQingKuangBiaos) {
+		for (KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian elem : KaiPiaoQingKuangBiaos) {
 			List<Object> tmp = new ArrayList<>();
 			tmp.add(elem.getId() == null? "":elem.getId().toString());
 			tmp.add(elem.getShengqingkaipiaoshijian());
+			tmp.add(elem.getBeizhu());
 			tmp.add(elem.getBuhanshuijine() == null? "":elem.getBuhanshuijine().toString());
 			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
 			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
@@ -896,8 +897,10 @@ public class ProjectController {
 			tmp.add(elem.getWangongjindu());
 			tmp.add(elem.getQita() == null?"":elem.getQita().toString());
 			tmp.add(elem.getYikaipiaojine() == null? "": elem.getYikaipiaojine().toString());
+			tmp.add(elem.getHetongzongjine() == null ? "" : elem.getHetongzongjine().toString());
+			Double weikaipiaojine = (elem.getHetongzongjine()==null ? 0.00 : elem.getHetongzongjine()) -(elem.getYikaipiaojine() == null ? 0.00 : elem.getYikaipiaojine());
+			tmp.add(weikaipiaojine.toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
-			tmp.add(elem.getBeizhu());
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
 			if (elem.getYiji_shenhe_status() == 1) {
@@ -917,6 +920,8 @@ public class ProjectController {
 			}
 			tmp.add(approveStatus2);
 			tmp.add(elem.getErji_shenhe_beizhu());
+			String download_file = "<a type='button' class='btn btn-info check' href='/files/image/"+elem.getHetongwenjian()+"'>合同下载</a>";
+			tmp.add(download_file);
 			String approveButton = "<input type='button' class='btn btn-success approve'value='通过' >";
 			String rejectButton = "<input type='button' class='btn btn-danger reject' value='拒绝' >";
 			String checkButton = "<input type='button' class='btn btn-primary check' value='查看' >";
