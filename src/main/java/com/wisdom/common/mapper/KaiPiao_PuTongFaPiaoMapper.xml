@@ -27,9 +27,7 @@ where id=#{id}
 </select>
 
 <select id="getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id" resultType="KaiPiao_PuTongFaPiao">
-select hejijine,kaipiaoneirong,shuilv,field2,field3,field1,shenqingriqi,shuie,xiaoshoue,field4,xiaoji,id,kaipiaoshenqingdan_id
-from kaipiao_putongfapiao
-where kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+select * from kaipiao_putongfapiao WHERE kaipiaoshenqingdan_id = (select id from kaipiaoshenqingdan WHERE kaipiaoqingkuangbiao_xiangmu_id = #{kaipiaoshenqingdan_id})
 </select>
 
 <update id="updateKaiPiao_PuTongFaPiao">
