@@ -629,8 +629,8 @@ public class ProjectController {
 			tmp.add(elem.getShouqikuanxiang() == null ? "" : elem.getShouqikuanxiang().toString());
 			tmp.add(elem.getWangongjindu());
 			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
-			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
+			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
@@ -693,8 +693,8 @@ public class ProjectController {
 			tmp.add(elem.getShouqikuanxiang() == null ? "" : elem.getShouqikuanxiang().toString());
 			tmp.add(elem.getWangongjindu());
 			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
-			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
+			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
@@ -802,8 +802,8 @@ public class ProjectController {
 			tmp.add(elem.getShouqikuanxiang() == null ? "" : elem.getShouqikuanxiang().toString());
 			tmp.add(elem.getWangongjindu());
 			tmp.add(elem.getQita() == null ? "" :elem.getQita().toString());
-			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			tmp.add(elem.getFenbaofapiao() == null ? "" : elem.getFenbaofapiao().toString());
+			tmp.add(elem.getYikaipiaojine() == null ? "" :elem.getYikaipiaojine().toString());
 			/*tmp.add(elem.getBeizhu());*/
 			tmp.add(elem.getYijishenheren());
 			String approveStatus = "未审核";
