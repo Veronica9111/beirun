@@ -1113,8 +1113,15 @@ td
 <div class="mask"></div>
 <div id="dialog">
 <div style="display:inline;">
+	发票类型：
 	<input id="pupiao" class="radio" type="radio" name="type" value="pupiao" checked="checked"  style="display:inline;"/>普票 
 	<input id="zhuanpiao" class="radio" type="radio" name="type" value="zhuanpiao"  style="display:inline;"/>专票 
+</div>
+<br />
+<div style="display:inline;">
+	获取方式：
+	<input id="shangmen" class="radio2" type="radio" name="deliver" value="shangmen" checked="checked"  style="display:inline;"/>上门 
+	<input id="youji" class="radio2" type="radio" name="deliver" value="youji"  style="display:inline;"/>邮寄
 </div>
 <div id="table">
  <table width="919.50" border="0" cellpadding="0" cellspacing="0" style='width:459.75pt;border-collapse:collapse;table-layout:fixed;'>
@@ -1394,6 +1401,7 @@ dialog = $( "#dialog" ).dialog({
     	  dialogDataSet["field1"] = dialogId;
 
     	  var type = $('input[name="type"]:checked').val();
+    	  var deliver = $('input[name="deliver"]:checked').val();
     	  //dialogDataSet["shenqingriqi"] = new Date().Format("yyyy-MM-DD");
 		  dialogDataSet["class_name"] = "KaiPiao_PuTongFaPiao";
     	  //console.log(type);
@@ -1401,6 +1409,11 @@ dialog = $( "#dialog" ).dialog({
         	  dialogDataSet["field2"] = "pupiao";
     	  }else if(type == "zhuanpiao"){
         	  dialogDataSet["field2"] = "zhuanpiao"
+    	  }
+    	  if(deliver == "shangmen"){
+    		  dialogDataSet["field3"] = "上门";
+    	  }else if(deliver == "youji"){
+    		  dialogDataSet["field3"] = "邮寄";
     	  }
     	  dialogDataSet["id"] = kaipiaoId;
     	  $.post("/project/modifyModel", dialogDataSet, function(data){
@@ -1455,11 +1468,18 @@ $(".dialog").on("click",function(){
 				$(selector).val(value);
 			}
 			var type = data["field2"];
+			var deliver = data["field3"];
 
 			if(type == "pupiao"){
 				$("#pupiao").prop("checked", true);
 			}else if(type == "zhuanpiao"){
 				$("#zhuanpiao").prop("checked", true);
+			}
+			
+			if(deliver == "邮寄"){
+				$("#youji").prop("checked", true);
+			}else if(deliver == "上门"){
+				$("#shangmen").prop("checked", true);
 			}
 		}
 	});
