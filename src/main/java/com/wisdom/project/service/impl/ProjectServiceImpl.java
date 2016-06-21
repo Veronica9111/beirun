@@ -1397,9 +1397,9 @@ public class ProjectServiceImpl implements IProjectService {
 		    }
 
 			@Override
-			public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id) {
+			public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoqingkuangbiao_xiangmu_id(Long kaipiaoqingkuangbiao_xiangmu_id) {
 				// TODO Auto-generated method stub
-				return kaiPiao_PuTongFaPiaoMapper.getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+				return kaiPiao_PuTongFaPiaoMapper.getKaiPiao_PuTongFaPiaoByKaipiaoqingkuangbiao_xiangmu_id(kaipiaoqingkuangbiao_xiangmu_id);
 			}
 			
 			public void updateCompanyName(String companyName, Integer id) {

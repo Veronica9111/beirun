@@ -26,7 +26,7 @@ from kaipiao_putongfapiao
 where id=#{id}
 </select>
 
-<select id="getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id" resultType="KaiPiao_PuTongFaPiao">
+<select id="getKaiPiao_PuTongFaPiaoByKaipiaoqingkuangbiao_xiangmu_id" resultType="KaiPiao_PuTongFaPiao">
 select * from kaipiao_putongfapiao WHERE kaipiaoshenqingdan_id = (select id from kaipiaoshenqingdan WHERE kaipiaoqingkuangbiao_xiangmu_id = #{kaipiaoshenqingdan_id})
 </select>
 
