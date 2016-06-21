@@ -1348,6 +1348,7 @@ function startPageJS(){
 		bload.hide();
 		alert("修改成功");
 		//window.location.href="/project/redirectView?view=kaipiaoqingkuangbiao_fengongsi_list.html&company_id=" + fengongsiComapnyID + "&node_id="+parentNodeId;
+		self.location=document.referrer;
 	}
 	$("#create_invoice").on("click", function(){
 		saveData();
