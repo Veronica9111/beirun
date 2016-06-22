@@ -301,6 +301,12 @@ public interface IProjectService {
 	public Boolean updateKaiPiao_YiBanZhuanYongFaPiao(KaiPiao_YiBanZhuanYongFaPiao kaiPiao_YiBanZhuanYongFaPiao);
 	
 	public void updateCompanyName(String companyName, Integer id);
+	
+	public List<User> getUsersByCompanyId(Long companyId);
+	
+	public User getUserByRoleName(List<User> users, String roleName);
+	
+	public Company getParentCompany(Long companyId);
 
 	
 }

@@ -40,6 +40,7 @@ import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
+import com.wisdom.common.model.KaiPiao_PuTongFaPiao;
 import com.wisdom.common.model.Permission;
 import com.wisdom.common.model.PiaoJuWenJian;
 import com.wisdom.common.model.PuTongFaPiaoKaiJuMingXi;
@@ -52,6 +53,7 @@ import com.wisdom.common.model.User;
 import com.wisdom.common.model.User_Company;
 import com.wisdom.common.model.XiangMuTaiZhang;
 import com.wisdom.common.model.ZhuanYongFaPiaoKaiJuMingXi;
+import com.wisdom.common.utils.JavaMailService;
 import com.wisdom.permission.service.IPermissionService;
 import com.wisdom.project.service.IProjectService;
 import com.wisdom.user.service.IUserService;
@@ -72,6 +74,7 @@ public class ProjectController {
 
 	@Autowired
 	IUserService userService;
+
 
 	private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
@@ -1276,10 +1279,29 @@ public class ProjectController {
 			kaiPiaoQingKuangBiao_ZongGongSi.setErji_shenhe_beizhu(comment);
 			kaiPiaoQingKuangBiao_ZongGongSi.setErji_shenhe_status(status);
 			kaiPiaoQingKuangBiao_ZongGongSi.setErjishenheren(userName);*/
+			if(status == 1){
+				//Send Mail
+				Long companyId = kaiPiaoQingKuangBiao_XiangMu.getCompany_id();
+				List<XiangMuTaiZhang> xmtz = projectService.getXiangMuTaiZhangByCompany_id(companyId);
+				KaiPiaoShenQingDan kpsqd = projectService.getKaiPiaoShenQingDanByKaipiaoqingkuangbiao_xiangmu_id(id);
+				KaiPiao_PuTongFaPiao kp_ptfp = projectService.getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(kpsqd.getId());
+				
+				Company pc = projectService.getParentCompany(companyId);
+				List<User> users = projectService.getUsersByCompanyId(pc.getId().longValue());
+				User u = projectService.getUserByRoleName(users, "实际开票人");
+				String mail = u.getMail();
+				String xmtzStr = JSONArray.fromObject(xmtz).toString();
+				String kp_ptfpStr = JSONArray.fromObject(kp_ptfp).toString();
+				JavaMailService jms = new JavaMailService();
+				jms.sendMailOut(mail, "通知", xmtzStr+kp_ptfpStr, "bbz@bangbangzhang.com");
+			}
 		}
 		projectService.updateKaiPiaoQingKuangBiao_XiangMu(kaiPiaoQingKuangBiao_XiangMu);
 		/*projectService.updateKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
 		projectService.updateKaiPiaoQingKuangBiao_ZongGongSi(kaiPiaoQingKuangBiao_ZongGongSi);*/
+		
+
+		
 		return retMap;
 	}
 

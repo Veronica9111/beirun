@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -1410,5 +1412,34 @@ public class ProjectServiceImpl implements IProjectService {
 			public KaiPiao_PuTongFaPiao getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id) {
 				// TODO Auto-generated method stub
 				return kaiPiao_PuTongFaPiaoMapper.getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
+			}
+
+			@Override
+			public List<User> getUsersByCompanyId(Long company_id) {
+				// TODO Auto-generated method stub
+				return userMapper.getUsersByCompanyId(company_id);
+			}
+
+			@Override
+			public User getUserByRoleName(List<User> users, String roleName) {
+				// TODO Auto-generated method stub
+				List<User> userList = new ArrayList<>();
+				for(User user: users){
+					List<Role> roles = roleMapper.getUserRoles(user.getId());
+					for(Role role: roles){
+						if(role.getName().equals(roleName)){
+							userList.add(user);
+						}
+					}
+				}
+				
+				int idx = new Random().nextInt(userList.size());
+				return userList.get(idx);
+			}
+
+			@Override
+			public Company getParentCompany(Long companyId) {
+				// TODO Auto-generated method stub
+				return companyMapper.getParentCompanyById(companyId.intValue());
 			}
 }
