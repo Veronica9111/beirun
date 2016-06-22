@@ -1954,7 +1954,7 @@ td
     <td class="xl73"><input class="dialog-text" style='width:100%' id='danwei'></td>
     <td class="xl73"><input class="dialog-text" style='width:100%' id='shuliang'></td>
     <td class="xl73"><input class="dialog-text" style='width:100%' id='danjia'></td>
-    <td class="xl73"><input class="dialog-text" style='width:100%' id='xiaoshoue'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='xiaoshoue' disabled=true;></td>
     <td class="xl74" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input class="dialog-text" style='width:100%' id='shuie' disabled=true;></td>
     <td class="xl73"><input class="dialog-text" style='width:100%' id='xiaoji' disabled=true;></td>
     <td class="xl73"><input class="dialog-text" style='width:100%' id='shuilv'></td>
@@ -2297,39 +2297,90 @@ $(".dialog").on("click",function(){
 			}else if(deliver == "上门"){
 				$("#shangmen").prop("checked", true);
 			}
-			$("#xiaoshoue").on("keyup",function(){
-				var sale = $("#xiaoshoue").val();
+			$(".text").each(function(){
+				if($(this).attr("id") == "shenqingriqi"){
+					shenqingriqi = $(this).val();
+				}
+				if($(this).attr("id") == "kaipiaoneirong"){
+					kaipiaoneirong = $(this).val();
+				}
+			});
+
+			$(".dialog-text").each(function(){
+				if($(this).attr("id") == "shenqingriqi"){
+					 $(this).val(shenqingriqi);
+				}
+				if($(this).attr("id") == "kaipiaoneirong"){
+					$(this).val(kaipiaoneirong);
+				}
+			});
+			$("#shuliang").on("keyup",function(){
+				var count = $("#shuliang").val();
+				var price = $("#danjia").val();
+				
 				var taxRate = $("#shuilv").val();
 				taxRate = taxRate.replace("%", "");
 				var tax = 0;
+				var sale = 0;
 				var total = 0;
-				if(!isNaN(parseFloat(sale)) && !isNaN(parseFloat(taxRate))){
+				if(!isNaN(parseFloat(count)) && !isNaN(parseFloat(price)) && !isNaN(parseFloat(taxRate))){
+					sale = parseFloat(count) * parseFloat(price);
 					tax = parseFloat(sale) * parseFloat(taxRate)*0.01;
 					total = parseFloat(sale) + tax;
 				}else{
 					tax = "";
 					total = "";
+					sale = "";
 				}
 				$("#shuie").val(tax);
 				$("#xiaoji").val(total);
+				$("#xiaoshoue").val(sale);
 				
 			});
-			
-			$("#shuilv").on("keyup",function(){
-				var sale = $("#xiaoshoue").val();
+			$("#danjia").on("keyup",function(){
+				var count = $("#shuliang").val();
+				var price = $("#danjia").val();
+				
 				var taxRate = $("#shuilv").val();
 				taxRate = taxRate.replace("%", "");
 				var tax = 0;
+				var sale = 0;
 				var total = 0;
-				if(!isNaN(parseFloat(sale)) && !isNaN(parseFloat(taxRate))){
+				if(!isNaN(parseFloat(count)) && !isNaN(parseFloat(price)) && !isNaN(parseFloat(taxRate))){
+					sale = parseFloat(count) * parseFloat(price);
 					tax = parseFloat(sale) * parseFloat(taxRate)*0.01;
 					total = parseFloat(sale) + tax;
 				}else{
 					tax = "";
 					total = "";
+					sale = "";
 				}
 				$("#shuie").val(tax);
 				$("#xiaoji").val(total);
+				$("#xiaoshoue").val(sale);
+				
+			});
+			$("#shuilv").on("keyup",function(){
+				var count = $("#shuliang").val();
+				var price = $("#danjia").val();
+				
+				var taxRate = $("#shuilv").val();
+				taxRate = taxRate.replace("%", "");
+				var tax = 0;
+				var sale = 0;
+				var total = 0;
+				if(!isNaN(parseFloat(count)) && !isNaN(parseFloat(price)) && !isNaN(parseFloat(taxRate))){
+					sale = parseFloat(count) * parseFloat(price);
+					tax = parseFloat(sale) * parseFloat(taxRate)*0.01;
+					total = parseFloat(sale) + tax;
+				}else{
+					tax = "";
+					total = "";
+					sale = "";
+				}
+				$("#shuie").val(tax);
+				$("#xiaoji").val(total);
+				$("#xiaoshoue").val(sale);
 				
 			});
 		}
