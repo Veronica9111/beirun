@@ -36,7 +36,7 @@ where id=#{id}
 </select>
 
 <select id="getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianByCompanyId" resultType="KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian">
-select k.*,x.hejijine as hello,x.hetongwenjian,z.field2 as fapiaoleixing from kaipiaoqingkuangbiao_xiangmu k,xiangmutaizhang x,kaipiaoshenqingdan b LEFT JOIN kaipiao_putongfapiao z on z.kaipiaoshenqingdan_id=b.id  where k.company_id=x.company_id and k.id=b.kaipiaoqingkuangbiao_xiangmu_id and k.company_id=#{company_id}  
+select k.*,x.hejijine as hetongzongjine,x.hetongwenjian,z.field2 as fapiaoleixing from kaipiaoqingkuangbiao_xiangmu k,xiangmutaizhang x,kaipiaoshenqingdan b LEFT JOIN kaipiao_putongfapiao z on z.kaipiaoshenqingdan_id=b.id  where k.company_id=x.company_id and k.id=b.kaipiaoqingkuangbiao_xiangmu_id and k.company_id=#{company_id}  
 </select>
 
 <update id="updateKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian">

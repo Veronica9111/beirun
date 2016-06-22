@@ -1,6 +1,8 @@
 package com.wisdom.common.mapper;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
 import com.wisdom.common.model.XiangMuTaiZhang;
@@ -23,6 +25,6 @@ public interface KaiPiaoQingKuangBiao_XiangMuMapper {
     
     Integer updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE(Long id);
     
-    Integer updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinEAtAdd(Long id);
+    Integer updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinEAtAdd(@Param("id")Long id);
 
 }

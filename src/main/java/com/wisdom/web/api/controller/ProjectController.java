@@ -1325,7 +1325,7 @@ public class ProjectController {
 			}
 			if(status == 1){
 				
-				projectService.updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE(id);
+				
 				//Send Mail
 				Long companyId = kaiPiaoQingKuangBiao_XiangMu.getCompany_id();
 				List<XiangMuTaiZhang> xmtz = projectService.getXiangMuTaiZhangByCompany_id(companyId);
@@ -1344,6 +1344,9 @@ public class ProjectController {
 			}
 		}
 		projectService.updateKaiPiaoQingKuangBiao_XiangMu(kaiPiaoQingKuangBiao_XiangMu);
+		if(type.equals("second") && status == 1) {
+			projectService.updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE(id);
+		}
 		return retMap;
 	}
 
@@ -1723,6 +1726,7 @@ public class ProjectController {
 		params.put("sms_erjishenherenxingming", new String[]{Users.get("fenguansuozhang")==null?"":Users.get("fenguansuozhang").getName()});
 		params.put("yijishenheren", new String[]{Users.get("yewuzhuren")==null?"":Users.get("yewuzhuren").getName()});
 		params.put("erjishenheren", new String[]{Users.get("fenguansuozhang")==null?"":Users.get("fenguansuozhang").getName()});
+		params.put("yikaipiaojine", new String[]{"0"});
 		
 		String longClassName = "com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu";
 		Class<?> c = Class.forName(longClassName);

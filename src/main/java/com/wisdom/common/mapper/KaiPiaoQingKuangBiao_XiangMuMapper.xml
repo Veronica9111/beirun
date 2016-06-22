@@ -45,7 +45,7 @@ where id=#{id}
 </update>
 
 <update id="updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE">
-update kaipiaoqingkuangbiao_xiangmu SET yikaipiaojine = kaipiaoqingkuangbiao_xiangmu.hejijine + ( SELECT sum(hejijine) AS yikaipiaojine FROM ( SELECT  * FROM  kaipiaoqingkuangbiao_xiangmu ) AS temp WHERE company_id IN ( SELECT  company_id FROM  (  SELECT  *  FROM  kaipiaoqingkuangbiao_xiangmu  ) AS kpq WHERE  kpq.id = #{id} ) and temp.yiji_shenhe_status=1 and temp.erji_shenhe_status=1 ) where kaipiaoqingkuangbiao_xiangmu.id=#{id}
+update kaipiaoqingkuangbiao_xiangmu SET yikaipiaojine = ( SELECT sum(hejijine) AS yikaipiaojine FROM ( SELECT  * FROM  kaipiaoqingkuangbiao_xiangmu ) AS temp WHERE company_id IN ( SELECT  company_id FROM  (  SELECT  *  FROM  kaipiaoqingkuangbiao_xiangmu  ) AS kpq WHERE  kpq.id = #{id} ) and temp.yiji_shenhe_status=1 and temp.erji_shenhe_status=1 ) where kaipiaoqingkuangbiao_xiangmu.id=#{id}
 </update>
 
 <update id="updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinEAtAdd">
