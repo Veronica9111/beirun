@@ -572,13 +572,7 @@ public class ProjectServiceImpl implements IProjectService {
 			companies = this.getCompaniesByUid(uid);
 		}
 		
-		int index = 0;
 		for (Company company : companies) {
-			index++;
-			System.out.println(index);
-			if(index==51){
-				System.out.println(index);
-			}
 			if (company.getLevel() == 0) {
 				List<Company> subCompanies = getSubCompanyByParent(companies, company.getId());
 				List<Object> tmpSubList = new ArrayList<>();
