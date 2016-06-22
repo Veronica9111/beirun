@@ -624,6 +624,11 @@ public class ProjectController {
 			tmp.add(elem.getId().toString());
 			tmp.add(elem.getShengqingkaipiaoshijian());
 			tmp.add(elem.getBeizhu());
+			if(("zhuanpiao".equals(elem.getFapiaoleixing()))){
+				tmp.add("专用发票");
+			}else{
+				tmp.add("普通发票");
+			}
 			tmp.add(elem.getBuhanshuijine() == null? "": elem.getBuhanshuijine().toString());
 			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
 			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
@@ -694,6 +699,11 @@ public class ProjectController {
 			tmp.add(elem.getId().toString());
 			tmp.add(elem.getShengqingkaipiaoshijian());
 			tmp.add(elem.getBeizhu());
+			if(("zhuanpiao".equals(elem.getFapiaoleixing()))){
+				tmp.add("专用发票");
+			}else{
+				tmp.add("普通发票");
+			}
 			tmp.add(elem.getBuhanshuijine() == null? "": elem.getBuhanshuijine().toString());
 			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
 			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
@@ -809,6 +819,11 @@ public class ProjectController {
 			tmp.add(elem.getId().toString());
 			tmp.add(elem.getShengqingkaipiaoshijian());
 			tmp.add(elem.getBeizhu());
+			if(("zhuanpiao".equals(elem.getFapiaoleixing()))){
+				tmp.add("专用发票");
+			}else{
+				tmp.add("普通发票");
+			}
 			tmp.add(elem.getBuhanshuijine() == null? "": elem.getBuhanshuijine().toString());
 			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
 			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
@@ -889,6 +904,11 @@ public class ProjectController {
 			tmp.add(elem.getId() == null? "":elem.getId().toString());
 			tmp.add(elem.getShengqingkaipiaoshijian());
 			tmp.add(elem.getBeizhu());
+			if(("zhuanpiao".equals(elem.getFapiaoleixing()))){
+				tmp.add("专用发票");
+			}else{
+				tmp.add("普通发票");
+			}
 			tmp.add(elem.getBuhanshuijine() == null? "":elem.getBuhanshuijine().toString());
 			tmp.add(elem.getShuie() == null ? "":elem.getShuie().toString());
 			tmp.add(elem.getHejijine() == null ? "":elem.getHejijine().toString());
