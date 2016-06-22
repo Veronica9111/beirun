@@ -1335,7 +1335,7 @@ public class ProjectServiceImpl implements IProjectService {
 			if(isFirst == false || isSecond == false){
 				Company secondCompany = companyMapper.getParentCompanyById(companyId.intValue());
 				secondCompanyId = secondCompany.getId();
-				List<User> users2 = userMapper.getUsersByCompanyId(companyId);
+				List<User> users2 = userMapper.getUsersByCompanyId(secondCompanyId.longValue());
 				for(User user: users2){
 					Integer userId = user.getId();
 					List<Role> roles = roleMapper.getUserRoles(userId);
@@ -1358,7 +1358,7 @@ public class ProjectServiceImpl implements IProjectService {
 			if(isFirst == false || isSecond == false){
 				Company firstCompany = companyMapper.getParentCompanyById(secondCompanyId);
 				Integer firstCompanyId = firstCompany.getId();
-				List<User> users2 = userMapper.getUsersByCompanyId(companyId);
+				List<User> users2 = userMapper.getUsersByCompanyId(firstCompanyId.longValue());
 				for(User user: users2){
 					Integer userId = user.getId();
 					List<Role> roles = roleMapper.getUserRoles(userId);
