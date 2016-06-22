@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -1339,7 +1341,7 @@ public class ProjectServiceImpl implements IProjectService {
 			if(isFirst == false || isSecond == false){
 				Company secondCompany = companyMapper.getParentCompanyById(companyId.intValue());
 				secondCompanyId = secondCompany.getId();
-				List<User> users2 = userMapper.getUsersByCompanyId(companyId);
+				List<User> users2 = userMapper.getUsersByCompanyId(secondCompanyId.longValue());
 				for(User user: users2){
 					Integer userId = user.getId();
 					List<Role> roles = roleMapper.getUserRoles(userId);
@@ -1362,7 +1364,7 @@ public class ProjectServiceImpl implements IProjectService {
 			if(isFirst == false || isSecond == false){
 				Company firstCompany = companyMapper.getParentCompanyById(secondCompanyId);
 				Integer firstCompanyId = firstCompany.getId();
-				List<User> users2 = userMapper.getUsersByCompanyId(companyId);
+				List<User> users2 = userMapper.getUsersByCompanyId(firstCompanyId.longValue());
 				for(User user: users2){
 					Integer userId = user.getId();
 					List<Role> roles = roleMapper.getUserRoles(userId);
@@ -1450,6 +1452,35 @@ public class ProjectServiceImpl implements IProjectService {
 				// TODO Auto-generated method stub
 				return kaiPiao_PuTongFaPiaoMapper.getKaiPiao_PuTongFaPiaoByKaipiaoshenqingdan_id(kaipiaoshenqingdan_id);
 			}
+
+			@Override
+			public List<User> getUsersByCompanyId(Long company_id) {
+				// TODO Auto-generated method stub
+				return userMapper.getUsersByCompanyId(company_id);
+			}
+
+			@Override
+			public User getUserByRoleName(List<User> users, String roleName) {
+				// TODO Auto-generated method stub
+				List<User> userList = new ArrayList<>();
+				for(User user: users){
+					List<Role> roles = roleMapper.getUserRoles(user.getId());
+					for(Role role: roles){
+						if(role.getName().equals(roleName)){
+							userList.add(user);
+						}
+					}
+				}
+				
+				int idx = new Random().nextInt(userList.size());
+				return userList.get(idx);
+			}
+
+			@Override
+			public Company getParentCompany(Long companyId) {
+				// TODO Auto-generated method stub
+				return companyMapper.getParentCompanyById(companyId.intValue());
+			}
 			
 			@Override
 		    public KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian getKaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJianById(Long id){
@@ -1507,6 +1538,76 @@ public class ProjectServiceImpl implements IProjectService {
 					Integer company_id) {
 				// TODO Auto-generated method stub
 				return kaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianMapper.getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianByCompanyId(company_id);
+			}
+			
+			public String generateTR(String column1, String column2){
+				return "<tr><td>" + column1 + "</td><td>" + column2 + "</td></tr>";
+			}
+
+			@Override
+			public String generateXiangMuTaiZhangHTML(XiangMuTaiZhang xmtz) {
+				// TODO Auto-generated method stub
+				String html = "<h1> 项目台账</h1><table>";
+				html += generateTR("单位名称",xmtz.getDanweimingcheng());
+				html += generateTR("纳税人识别号", xmtz.getNashuirenshibiehao());
+				html += generateTR("开户银行、银行账号", xmtz.getKaihuyinhang_yinhangzhanghao());
+				html += generateTR("单位地址、联系电话", xmtz.getDanweidizhi_lianxidianhua());
+				html += generateTR("项目名称", xmtz.getXiangmumingcheng());
+				String method = "";
+				if(xmtz.getNashuileixing().equals("yibannashuiren")){
+					method = "一般纳税人";
+				}else if(xmtz.getNashuileixing().equals("jianyijishui")){
+					method = "简易计税";
+				}
+				html += generateTR("计税方式", method);
+				html += generateTR("税率", xmtz.getShuilv());
+				String pay = "";
+				if(xmtz.getHetongfukuanfangshi().equals("yicixingfukuan")){
+					pay = "一次性付款";
+				}else if(xmtz.getHetongfukuanfangshi().equals("qita")){
+					pay = "其他";
+				}else if(xmtz.getHetongfukuanfangshi().equals("wangongjindu")){
+					pay = "完工进度";
+				}
+				html += generateTR("合同付款方式", pay);
+				html += "</table>";
+				return html;
+			}
+
+			@Override
+			public String generateFaPiaoMingXiHTML(KaiPiao_PuTongFaPiao kp) {
+				// TODO Auto-generated method stub
+				String html = "<h1> 开票明细</h1><table>";
+				html += generateTR("申请日期", kp.getShenqingriqi() == null? "":kp.getShenqingriqi());
+				html += generateTR("开票内容", kp.getKaipiaoneirong() == null ? "":kp.getKaipiaoneirong());
+				html += generateTR("销售额", kp.getXiaoshoue() == null ? "":kp.getXiaoshoue().toString());
+				html += generateTR("税额", kp.getShuie() == null ? "":kp.getShuie().toString());
+				Double heji = kp.getXiaoshoue() + kp.getShuie();
+				html += generateTR("合计金额", heji.toString());
+				html += generateTR("小计", kp.getXiaoji() == null ? "":kp.getXiaoji().toString());
+				String method = "";
+				if(kp.getField1().equals("kaijufapiao")){
+					method = "开具发票";
+				}else if(kp.getField1().equals("shouqikuanxiang")){
+					method = "收讫款项";
+				}else if(kp.getField1().equals("wangongjindu")){
+					method = "完工进度";
+				}else if(kp.getField1().equals("qita")){
+					method = "其他";
+				}else if(kp.getField1().equals("fenbaoxiangmu")){
+					method = "分包项目";
+				}
+				html += generateTR("收入确认方式", method);
+				String type = "";
+				if(kp.getField2().equals("pupiao")){
+					type = "普票";
+				}else if(kp.getField2().equals("zhuanpiao")){
+					type = "专票";
+				}
+				html += generateTR("发票类型", type);
+
+				html += generateTR("发票获取方式", kp.getField3());
+				return html;
 			}
 		    
 }
