@@ -21,7 +21,7 @@
 </resultMap>
 
 <select id="getKaiPiao_PuTongFaPiaoById" resultType="KaiPiao_PuTongFaPiao">
-select hejijine,kaipiaoneirong,shuilv,field2,field3,field1,shenqingriqi,shuie,xiaoshoue,field4,xiaoji,id,kaipiaoshenqingdan_id
+select hejijine,kaipiaoneirong,shuilv,field2,field3,field1,shenqingriqi,shuie,xiaoshoue,field4,xiaoji,id,kaipiaoshenqingdan_id,guigexinghao,danwei,shuliang,danjia
 from kaipiao_putongfapiao
 where id=#{id}
 </select>
@@ -36,13 +36,13 @@ kaipiaoshenqingdan_id = #{kaipiaoshenqingdan_id}
 </select>
 
 <update id="updateKaiPiao_PuTongFaPiao">
-update kaipiao_putongfapiao set hejijine=#{hejijine},kaipiaoneirong=#{kaipiaoneirong},shuilv=#{shuilv},field2=#{field2},field3=#{field3},field1=#{field1},shenqingriqi=#{shenqingriqi},shuie=#{shuie},xiaoshoue=#{xiaoshoue},field4=#{field4},xiaoji=#{xiaoji},id=#{id},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}
+update kaipiao_putongfapiao set hejijine=#{hejijine},kaipiaoneirong=#{kaipiaoneirong},shuilv=#{shuilv},field2=#{field2},field3=#{field3},field1=#{field1},shenqingriqi=#{shenqingriqi},shuie=#{shuie},xiaoshoue=#{xiaoshoue},field4=#{field4},xiaoji=#{xiaoji},id=#{id},kaipiaoshenqingdan_id=#{kaipiaoshenqingdan_id}, guigexinghao=#{guigexinghao},danwei=#{danwei},shuliang=#{shuliang},danjia=#{danjia}
 where id=#{id}
 </update>
 
 <insert id="addKaiPiao_PuTongFaPiao"  useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-insert into kaipiao_putongfapiao (hejijine,kaipiaoneirong,shuilv,field2,field3,field1,shenqingriqi,shuie,xiaoshoue,field4,xiaoji,id,kaipiaoshenqingdan_id)
-values (#{hejijine},#{kaipiaoneirong},#{shuilv},#{field2},#{field3},#{field1},#{shenqingriqi},#{shuie},#{xiaoshoue},#{field4},#{xiaoji},#{id},#{kaipiaoshenqingdan_id})
+insert into kaipiao_putongfapiao (hejijine,kaipiaoneirong,shuilv,field2,field3,field1,shenqingriqi,shuie,xiaoshoue,field4,xiaoji,id,kaipiaoshenqingdan_id, guigexinghao,danwei,shuliang,danjia)
+values (#{hejijine},#{kaipiaoneirong},#{shuilv},#{field2},#{field3},#{field1},#{shenqingriqi},#{shuie},#{xiaoshoue},#{field4},#{xiaoji},#{id},#{kaipiaoshenqingdan_id}, #{guigexinghao},#{danwei},#{shuliang},#{danjia})
 </insert>
 
 </mapper>

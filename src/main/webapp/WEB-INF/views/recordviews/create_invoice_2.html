@@ -1923,8 +1923,12 @@ td
    <tr height="28" style='height:14.00pt;'/>
    <tr height="28" style='height:14.00pt;'/>
    <tr height="28" style='height:14.00pt;'>
-    <td class="xl67" height="56" rowspan="2" style='height:28.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>日期</td>
+    <td class="xl67" height="56" rowspan="2" style='height:28.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>申请日期</td>
     <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>开票内容</td>
+    <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>规格型号</td>
+    <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>单位</td>
+    <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>数量</td>
+    <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>单价</td> 
     <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>销售额</td>
     <td class="xl68" colspan="2" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>销项（应纳）税额</td>
     <td class="xl67" rowspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>小计</td>
@@ -1932,17 +1936,25 @@ td
    </tr>
    <tr height="28" style='height:14.00pt;'/>
    <tr height="28" style='height:14.00pt;'>
-    <td class="xl73" height="28" style='height:14.00pt;'><input class="dialog-text" style='width:100%' id='shenqingriqi'></td>
-    <td class="xl73"><input class="dialog-text" style='width:100%' id='kaipiaoneirong'></td>
-    <td class="xl73"><input class="dialog-text" style='width:100%' id='xiaoshoue'></td>
-    <td class="xl74" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input class="dialog-text" style='width:100%' id='shuie'></td>
-    <td class="xl73"><input class="dialog-text" style='width:100%' id='xiaoji'></td>
+    <td class="xl73" height="28" style='height:14.00pt;'><input class="dialog-text" style='width:100%' id='shenqingriqi' disabled=ture></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='kaipiaoneirong' disabled=true></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='guigexinghao'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='danwei'></td> 
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='shuliang'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='danjia'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='xiaoshoue' disabled=true;></td>
+    <td class="xl74" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input class="dialog-text" style='width:100%' id='shuie' disabled=true></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='xiaoji' disabled=true;></td>
     <td class="xl73"><input class="dialog-text" style='width:100%' id='shuilv'></td>
    </tr>
    <tr height="28" style='height:14.00pt;'>
     <td class="xl73" height="28" style='height:14.00pt;text-align:center' x:str>合计</td>
     <td class="xl73"></td>
     <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_xiaoshoue'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_guigexinghao'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_danwei'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_shuliang'></td>
+    <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_danjia'></td>
     <td class="xl74" colspan="2" style='border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;'><input class="dialog-text" style='width:100%' id='heji_shuie'></td>
     <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_xiaoji'></td>
     <td class="xl73"><input class="dialog-text" style='width:100%' id='heji_shuilv'></td>
@@ -2056,27 +2068,27 @@ function startPageJS(){
 		var fenbaofapiao = $("#fenbaoxiangmu").val();
 		var hejijine = 0;
 		if(kaijufapiao != "") {
-			hejijine += parseInt(kaijufapiao);
+			hejijine += parseFloat(kaijufapiao);
 		} else {
 			kaijufapiao = 0;
 		}
 		if(shouqikuanxiang != "") {
-			hejijine += parseInt(shouqikuanxiang);
+			hejijine += parseFloat(shouqikuanxiang);
 		} else {
 			shouqikuanxiang = 0;
 		}
 		if(wangongjindu != "") {
-			hejijine += parseInt(wangongjindu);
+			hejijine += parseFloat(wangongjindu);
 		} else {
 			wangongjindu = 0;
 		}
 		if(qita != "") {
-			hejijine += parseInt(qita);
+			hejijine += parseFloat(qita);
 		} else {
 			qita = 0;
 		}
 		if(fenbaofapiao != "") {
-			hejijine += parseInt(fenbaofapiao);
+			hejijine += parseFloat(fenbaofapiao);
 		} else {
 			fenbaofapiao = 0;
 		}
@@ -2249,12 +2261,112 @@ dialog = $( "#dialog" ).dialog({
 
 
 $(".dialog").on("click",function(){
-	console.log("click");
-	dialogId = $(this).attr("id");
-	$(".dialog-text").each(function(){
-		$(this).val("");
+	isFilled = true;
+	$(".text").each(function(){
+		if($(this).attr("id") == "kaipiaoneirong"){
+			if($(this).val() == "" || $(this).val() == null){
+				kaipiaoneirong = $(this);
+				isFilled = false;
+			}
+		}
 	});
-	dialog.dialog("open");
+	if(isFilled == false){
+		kaipiaoneirong.focus();
+	}else{
+		console.log("click");
+		dialogId = $(this).attr("id");
+		$(".dialog-text").each(function(){
+			$(this).val("");
+		});
+		dialog.dialog("open");
+		$(".text").each(function(){
+			if($(this).attr("id") == "shenqingriqi"){
+				shenqingriqi = $(this).val();
+			}
+			if($(this).attr("id") == "kaipiaoneirong"){
+				kaipiaoneirong = $(this).val();
+			}
+		});
+
+		$(".dialog-text").each(function(){
+			if($(this).attr("id") == "shenqingriqi"){
+				 $(this).val(shenqingriqi);
+			}
+			if($(this).attr("id") == "kaipiaoneirong"){
+				$(this).val(kaipiaoneirong);
+			}
+		});
+		
+		$("#shuliang").on("keyup",function(){
+			var count = $("#shuliang").val();
+			var price = $("#danjia").val();
+			
+			var taxRate = $("#shuilv").val();
+			taxRate = taxRate.replace("%", "");
+			var tax = 0;
+			var sale = 0;
+			var total = 0;
+			if(!isNaN(parseFloat(count)) && !isNaN(parseFloat(price)) && !isNaN(parseFloat(taxRate))){
+				sale = parseFloat(count) * parseFloat(price);
+				tax = parseFloat(sale) * parseFloat(taxRate)*0.01;
+				total = parseFloat(sale) + tax;
+			}else{
+				tax = "";
+				total = "";
+				sale = "";
+			}
+			$("#shuie").val(tax);
+			$("#xiaoji").val(total);
+			$("#xiaoshoue").val(sale);
+			
+		});
+		$("#danjia").on("keyup",function(){
+			var count = $("#shuliang").val();
+			var price = $("#danjia").val();
+			
+			var taxRate = $("#shuilv").val();
+			taxRate = taxRate.replace("%", "");
+			var tax = 0;
+			var sale = 0;
+			var total = 0;
+			if(!isNaN(parseFloat(count)) && !isNaN(parseFloat(price)) && !isNaN(parseFloat(taxRate))){
+				sale = parseFloat(count) * parseFloat(price);
+				tax = parseFloat(sale) * parseFloat(taxRate)*0.01;
+				total = parseFloat(sale) + tax;
+			}else{
+				tax = "";
+				total = "";
+				sale = "";
+			}
+			$("#shuie").val(tax);
+			$("#xiaoji").val(total);
+			$("#xiaoshoue").val(sale);
+			
+		});
+		$("#shuilv").on("keyup",function(){
+			var count = $("#shuliang").val();
+			var price = $("#danjia").val();
+			
+			var taxRate = $("#shuilv").val();
+			taxRate = taxRate.replace("%", "");
+			var tax = 0;
+			var sale = 0;
+			var total = 0;
+			if(!isNaN(parseFloat(count)) && !isNaN(parseFloat(price)) && !isNaN(parseFloat(taxRate))){
+				sale = parseFloat(count) * parseFloat(price);
+				tax = parseFloat(sale) * parseFloat(taxRate)*0.01;
+				total = parseFloat(sale) + tax;
+			}else{
+				tax = "";
+				total = "";
+				sale = "";
+			}
+			$("#shuie").val(tax);
+			$("#xiaoji").val(total);
+			$("#xiaoshoue").val(sale);
+			
+		});
+	}
 
 	console.log("end");
 });
