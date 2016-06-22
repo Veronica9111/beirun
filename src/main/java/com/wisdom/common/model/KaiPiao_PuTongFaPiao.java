@@ -18,11 +18,17 @@ private String field4;
 private Double xiaoji;
 private Long id;
 private Long kaipiaoshenqingdan_id;
+private Integer shuliang;
+private String guigexinghao;
+private String danwei;
+private Double danjia;
+
+
     public KaiPiao_PuTongFaPiao() {
         super();
     }
 
-    public KaiPiao_PuTongFaPiao(Double hejijine, String kaipiaoneirong, Integer shuilv, String field2, String field3, String field1, Timestamp shenqingriqi, Double shuie, Double xiaoshoue, String field4, Double xiaoji, Long id, Long kaipiaoshenqingdan_id){
+    public KaiPiao_PuTongFaPiao(Double hejijine, String kaipiaoneirong, Integer shuilv, String field2, String field3, String field1, Timestamp shenqingriqi, Double shuie, Double xiaoshoue, String field4, Double xiaoji, Long id, Long kaipiaoshenqingdan_id, Integer shuliang, String guigexinghao, String danwei,Double danjia){
         this.hejijine = hejijine;
         this.kaipiaoneirong = kaipiaoneirong;
         this.shuilv = shuilv;
@@ -36,6 +42,12 @@ private Long kaipiaoshenqingdan_id;
         this.xiaoji = xiaoji;
         this.id = id;
         this.kaipiaoshenqingdan_id = kaipiaoshenqingdan_id;
+        this.shuliang = shuliang;
+        this.guigexinghao = guigexinghao;
+        this.danwei = danwei;
+        this.danjia = danjia;
+
+
     }
 
     public Double getHejijine() {
@@ -146,5 +158,39 @@ private Long kaipiaoshenqingdan_id;
     public void setKaipiaoshenqingdan_id(Long kaipiaoshenqingdan_id){
         this.kaipiaoshenqingdan_id = kaipiaoshenqingdan_id;
     }
+
+	public Integer getShuliang() {
+		return shuliang;
+	}
+
+	public void setShuliang(Integer shuliang) {
+		this.shuliang = shuliang;
+	}
+
+	public String getGuigexinghao() {
+		return guigexinghao;
+	}
+
+	public void setGuigexinghao(String guigexinghao) {
+		this.guigexinghao = guigexinghao;
+	}
+
+	public String getDanwei() {
+		return danwei;
+	}
+
+	public void setDanwei(String danwei) {
+		this.danwei = danwei;
+	}
+
+	public Double getDanjia() {
+		return danjia;
+	}
+
+	public void setDanjia(Double danjia) {
+		this.danjia = danjia;
+	}
+    
+    
 
 }
