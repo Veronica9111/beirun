@@ -596,7 +596,6 @@ public class ProjectServiceImpl implements IProjectService {
 					tmpMapSub.put("nodes", tmpList);
 					tmpMapSub.put("company_id", subCompany.getId());
 					tmpSubList.add(tmpMapSub);
-
 				}
 				Map<String, Object> tmpMapAll = new HashMap<>();
 				tmpMapAll.put("text", company.getName());
