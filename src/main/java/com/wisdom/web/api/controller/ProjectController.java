@@ -1317,7 +1317,7 @@ public class ProjectController {
 				String xmtzStr = JSONArray.fromObject(xmtz).toString();
 				String kp_ptfpStr = JSONArray.fromObject(kp_ptfp).toString();
 				JavaMailService jms = new JavaMailService();
-				jms.sendMailOut(mail, "通知", xmtzStr+kp_ptfpStr, "bbz@bangbangzhang.com");
+				jms.sendMailOut(mail, "发票审核完成", projectService.generateXiangMuTaiZhangHTML(xmtz.get(0))+projectService.generateFaPiaoMingXiHTML(kp_ptfp), "bbz@bangbangzhang.com");
 			}
 		}
 		projectService.updateKaiPiaoQingKuangBiao_XiangMu(kaiPiaoQingKuangBiao_XiangMu);

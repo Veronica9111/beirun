@@ -1533,5 +1533,75 @@ public class ProjectServiceImpl implements IProjectService {
 				// TODO Auto-generated method stub
 				return kaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianMapper.getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianByCompanyId(company_id);
 			}
+			
+			public String generateTR(String column1, String column2){
+				return "<tr><td>" + column1 + "</td><td>" + column2 + "</td></tr>";
+			}
+
+			@Override
+			public String generateXiangMuTaiZhangHTML(XiangMuTaiZhang xmtz) {
+				// TODO Auto-generated method stub
+				String html = "<h1> 项目台账</h1><table>";
+				html += generateTR("单位名称",xmtz.getDanweimingcheng());
+				html += generateTR("纳税人识别号", xmtz.getNashuirenshibiehao());
+				html += generateTR("开户银行、银行账号", xmtz.getKaihuyinhang_yinhangzhanghao());
+				html += generateTR("单位地址、联系电话", xmtz.getDanweidizhi_lianxidianhua());
+				html += generateTR("项目名称", xmtz.getXiangmumingcheng());
+				String method = "";
+				if(xmtz.getNashuileixing().equals("yibannashuiren")){
+					method = "一般纳税人";
+				}else if(xmtz.getNashuileixing().equals("jianyijishui")){
+					method = "简易计税";
+				}
+				html += generateTR("计税方式", method);
+				html += generateTR("税率", xmtz.getShuilv());
+				String pay = "";
+				if(xmtz.getHetongfukuanfangshi().equals("yicixingfukuan")){
+					pay = "一次性付款";
+				}else if(xmtz.getHetongfukuanfangshi().equals("qita")){
+					pay = "其他";
+				}else if(xmtz.getHetongfukuanfangshi().equals("wangongjindu")){
+					pay = "完工进度";
+				}
+				html += generateTR("合同付款方式", pay);
+				html += "</table>";
+				return html;
+			}
+
+			@Override
+			public String generateFaPiaoMingXiHTML(KaiPiao_PuTongFaPiao kp) {
+				// TODO Auto-generated method stub
+				String html = "<h1> 开票明细</h1><table>";
+				html += generateTR("申请日期", kp.getShenqingriqi() == null? "":kp.getShenqingriqi());
+				html += generateTR("开票内容", kp.getKaipiaoneirong() == null ? "":kp.getKaipiaoneirong());
+				html += generateTR("销售额", kp.getXiaoshoue() == null ? "":kp.getXiaoshoue().toString());
+				html += generateTR("税额", kp.getShuie() == null ? "":kp.getShuie().toString());
+				Double heji = kp.getXiaoshoue() + kp.getShuie();
+				html += generateTR("合计金额", heji.toString());
+				html += generateTR("小计", kp.getXiaoji() == null ? "":kp.getXiaoji().toString());
+				String method = "";
+				if(kp.getField1().equals("kaijufapiao")){
+					method = "开具发票";
+				}else if(kp.getField1().equals("shouqikuanxiang")){
+					method = "收讫款项";
+				}else if(kp.getField1().equals("wangongjindu")){
+					method = "完工进度";
+				}else if(kp.getField1().equals("qita")){
+					method = "其他";
+				}else if(kp.getField1().equals("fenbaoxiangmu")){
+					method = "分包项目";
+				}
+				html += generateTR("收入确认方式", method);
+				String type = "";
+				if(kp.getField2().equals("pupiao")){
+					type = "普票";
+				}else if(kp.getField2().equals("zhuanpiao")){
+					type = "专票";
+				}
+				html += generateTR("发票类型", type);
+
+				html += generateTR("发票获取方式", kp.getField3());
+				return html;
+			}
 		    
 }

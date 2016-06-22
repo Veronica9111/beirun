@@ -330,4 +330,8 @@ public interface IProjectService {
 	public Boolean updateKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian(KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian kaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian);
 
 	public List<KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian> getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianByCompanyId(Integer company_id);
+
+	public String generateXiangMuTaiZhangHTML(XiangMuTaiZhang xmtz);
+	
+	public String generateFaPiaoMingXiHTML(KaiPiao_PuTongFaPiao kp);
 }
