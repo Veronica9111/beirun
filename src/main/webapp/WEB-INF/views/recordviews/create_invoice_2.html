@@ -2233,7 +2233,7 @@ dialog = $( "#dialog" ).dialog({
     	  }else{
     		  dialogDataSet["field3"] = "邮寄";
     	  }
-    	  
+    	  dialogDataSet["shuilv"] = dialogDataSet["shuilv"].replace("%","");
     	  $.post("/project/addModel", dialogDataSet, function(data){
     		 // console.log(data);
     		  kaipiaoId = data.primary_id;
