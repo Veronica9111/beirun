@@ -14,10 +14,13 @@ import com.wisdom.common.model.JinXiangFaPiaoMingXi_RenZheng;
 import com.wisdom.common.model.JinXiangShuieZhuanChuMingXi_FenGongSi;
 import com.wisdom.common.model.JinXiangShuieZhuanChuMingXi_XiangMuBu;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian;
 import com.wisdom.common.model.BuDongChanFenQiDiKouBiao;
 import com.wisdom.common.model.Company;
 import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi;
+import com.wisdom.common.model.KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian;
 import com.wisdom.common.model.FenBaoXiangMuMingXi;
 import com.wisdom.common.model.JianYiJiShuiFangFaPuPiaoJiShui;
 import com.wisdom.common.model.KaiPiaoShenQingDan;
@@ -308,5 +311,23 @@ public interface IProjectService {
 	
 	public Company getParentCompany(Long companyId);
 
-	
+	public KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian getKaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJianById(Long id);
+
+	public Boolean addKaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian(KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian kaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian);
+
+	public Boolean updateKaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian(KaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian kaiPiaoQingKuangBiao_FenGongSi_ZongJinE_WenJian);
+
+	public KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian getKaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJianById(Long id);
+
+	public Boolean addKaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian(KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian kaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian);
+
+	public Boolean updateKaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian(KaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian kaiPiaoQingKuangBiao_ZongGongSi_ZongJinE_WenJian);
+
+	public KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianById(Long id);
+
+	public Boolean addKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian(KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian kaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian);
+
+	public Boolean updateKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian(KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian kaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian);
+
+	public List<KaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJian> getKaiPiaoQingKuangBiao_XiangMu_ZongJinE_WenJianByCompanyId(Integer company_id);
 }

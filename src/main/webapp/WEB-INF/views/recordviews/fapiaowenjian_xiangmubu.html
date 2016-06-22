@@ -1305,7 +1305,7 @@ $.post("/project/getModel", query, function(data){
 			var dataSet = $.parseJSON(data.data);
 			for(var index=0;index<dataSet.length;index++){
 				var tr = $('<tr height="28" style="height:14.00pt;"><td class="xl66" height="28" style="height:14.00pt;" x:str>'+dataSet[index].fapiaoriqi+'</td>'
-			    		  +'<td class="xl66" x:str>'+dataSet[index].fapiaohaoma+'</td><td class="xl66" x:str><a href="/home/beirun/invoice/'+dataSet[index].field3+'">点击查看发票</td>'
+			    		  +'<td class="xl66" x:str>'+dataSet[index].fapiaohaoma+'</td><td class="xl66" x:str><a href="/files/image/'+dataSet[index].field3+'">点击查看发票</td>'
 			    		  +'<td class="xl66" x:str>'+dataSet[index].zhanbi+'%</td></tr>');
 				$('#invoice_info').append(tr);
 			}
