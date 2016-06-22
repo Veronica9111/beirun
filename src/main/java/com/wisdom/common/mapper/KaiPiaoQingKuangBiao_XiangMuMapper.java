@@ -20,5 +20,9 @@ public interface KaiPiaoQingKuangBiao_XiangMuMapper {
     List<KaiPiaoQingKuangBiao_XiangMu> getKaiPiaoQingKuangBiao_XiangMuByCompanyId(Integer company_id);
     
     List<KaiPiaoQingKuangBiao_XiangMu> getAllKaiPiaoQingKuangBiao_XiangMu(Long company_id);
+    
+    Integer updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE(Long id);
+    
+    Integer updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinEAtAdd(Long id);
 
 }

@@ -2109,12 +2109,12 @@ function startPageJS(){
 		$.post('/project/addKaiPiaoQingKuangBiao_XiangMu', dataSet, function(data){
 			kaipiaoqingkuangbiao_xiangmu_id = data.primary_id;
 		});
-		dataSet["class_name"] = "KaiPiaoQingKuangBiao_FenGongSi";
+		/* dataSet["class_name"] = "KaiPiaoQingKuangBiao_FenGongSi";
 		dataSet["company_id"] = fengongsiComapnyID;
 		$.ajaxSetup({async : false});
 		$.post('/project/addModel', dataSet, function(data){});
 		dataSet["class_name"] = "KaiPiaoQingKuangBiao_ZongGongSi";
-		dataSet["company_id"] = zonggongsiComapnyID;
+		dataSet["company_id"] = zonggongsiComapnyID; */
 		$.ajaxSetup({async : false});
 		$.post('/project/addModel', dataSet, function(data){});
 		

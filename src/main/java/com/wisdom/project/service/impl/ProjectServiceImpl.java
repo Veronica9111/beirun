@@ -1602,5 +1602,14 @@ public class ProjectServiceImpl implements IProjectService {
 				html += generateTR("发票获取方式", kp.getField3());
 				return html;
 			}
-		    
+
+			@Override
+			public Integer updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE(Long id) {
+				return kaiPiaoQingKuangBiao_XiangMuMapper.updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE(id);
+			}
+			
+			@Override
+			public Integer updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinEAtAdd(Long id) {
+				return kaiPiaoQingKuangBiao_XiangMuMapper.updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinEAtAdd(id);
+			}
 }

@@ -44,6 +44,14 @@ update kaipiaoqingkuangbiao_xiangmu set beizhu=#{beizhu},hejijine=#{hejijine},yi
 where id=#{id}
 </update>
 
+<update id="updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE">
+update kaipiaoqingkuangbiao_xiangmu SET yikaipiaojine = kaipiaoqingkuangbiao_xiangmu.hejijine + ( SELECT sum(hejijine) AS yikaipiaojine FROM ( SELECT  * FROM  kaipiaoqingkuangbiao_xiangmu ) AS temp WHERE company_id IN ( SELECT  company_id FROM  (  SELECT  *  FROM  kaipiaoqingkuangbiao_xiangmu  ) AS kpq WHERE  kpq.id = #{id} ) and temp.yiji_shenhe_status=1 and temp.erji_shenhe_status=1 ) where kaipiaoqingkuangbiao_xiangmu.id=#{id}
+</update>
+
+<update id="updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinEAtAdd">
+update kaipiaoqingkuangbiao_xiangmu SET yikaipiaojine = ( SELECT max(yikaipiaojine) AS yikaipiaojine FROM ( SELECT  * FROM  kaipiaoqingkuangbiao_xiangmu ) AS temp WHERE company_id IN ( SELECT  company_id FROM  (  SELECT  *  FROM  kaipiaoqingkuangbiao_xiangmu  ) AS kpq WHERE  kpq.id = #{id} ) ) where kaipiaoqingkuangbiao_xiangmu.id=#{id}
+</update>
+
 <insert id="addKaiPiaoQingKuangBiao_XiangMu" useGeneratedKeys="true"  keyProperty="id" keyColumn="id">
 insert into kaipiaoqingkuangbiao_xiangmu (beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id,sms_kaipiaorenxingming,sms_kaipiaorendianhua,sms_yijishenherenxingming,sms_yijishenherendianhua,sms_erjishenherenxingming,sms_erjishenherendianhua)
 values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{company_id},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{fenbaofapiao},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id},#{xiangmutaizhang_id},#{sms_kaipiaorenxingming},#{sms_kaipiaorendianhua},#{sms_yijishenherenxingming},#{sms_yijishenherendianhua},#{sms_erjishenherenxingming},#{sms_erjishenherendianhua})

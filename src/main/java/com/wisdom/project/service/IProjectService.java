@@ -334,4 +334,8 @@ public interface IProjectService {
 	public String generateXiangMuTaiZhangHTML(XiangMuTaiZhang xmtz);
 	
 	public String generateFaPiaoMingXiHTML(KaiPiao_PuTongFaPiao kp);
+	
+	public Integer updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE(Long id);
+	
+	public Integer updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinEAtAdd(Long id);
 }

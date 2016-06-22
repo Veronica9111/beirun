@@ -13,16 +13,16 @@ public class SMSSender {
 	
 	static {
 		
-		restAPI.init("sandboxapp.cloopen.com", "8883");
+		restAPI.init("app.cloopen.com", "8883");
 		
 		restAPI.setAccount("aaf98f8950121989015016e236f10353", "a004b220277e4c7fafe751ff17ee57cf");
 
-		restAPI.setAppId("8a48b55150121695015016e5c6b90b60");
+		restAPI.setAppId("8a216da8555d110e015575e7fd4e2247");
 	}
 	
-	public static void sendTemplateSMS(String telephone) {
+	public static void sendTemplateSMS(String telephone, String templateId, String[] infos) {
 		
-		result = restAPI.sendTemplateSMS(telephone,"1" ,new String[]{"6532","6"});
+		result = restAPI.sendTemplateSMS(telephone, templateId, infos);
 		
 		System.out.println("SDKTestGetSubAccounts result=" + result);
 		
@@ -46,14 +46,14 @@ public class SMSSender {
 		//初始化SDK
 		CCPRestSmsSDK restAPI = new CCPRestSmsSDK();
 
-		restAPI.init("sandboxapp.cloopen.com", "8883");
+		restAPI.init("app.cloopen.com", "8883");
 		
 		restAPI.setAccount("aaf98f8950121989015016e236f10353", "a004b220277e4c7fafe751ff17ee57cf");
 
-		restAPI.setAppId("8a48b55150121695015016e5c6b90b60");
+		restAPI.setAppId("8a216da8555d110e015575e7fd4e2247");
 		
 		
-		result = restAPI.sendTemplateSMS("18601615517","1" ,new String[]{"6532","6"});
+		result = restAPI.sendTemplateSMS("18601615517", "94984", new String[]{"测试"});
 		
 		System.out.println("SDKTestGetSubAccounts result=" + result);
 		if("000000".equals(result.get("statusCode"))){

@@ -1289,41 +1289,43 @@ public class ProjectController {
 		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
 		User user = projectService.getUserById(uid);
 		String userName = user.getName();
-		/*if(("蒋中值").equals(userName)) {
-			SMSSender.sendTemplateSMS("18601615517");
-		} else if(("柴快长").equals(userName)) {
-			SMSSender.sendTemplateSMS("18601615517");
-		} else if(("小施").equals(userName)) {
-			SMSSender.sendTemplateSMS("18201897828");
-		}*/
 		KaiPiaoQingKuangBiao_XiangMu kaiPiaoQingKuangBiao_XiangMu = projectService
 				.getKaiPiaoQingKuangBiao_XiangMuById(id);
-		KaiPiaoQingKuangBiao_FenGongSi kaiPiaoQingKuangBiao_FenGongSi = projectService
-				.getKaiPiaoQingKuangBiao_FenGongSiById(id);
-		KaiPiaoQingKuangBiao_ZongGongSi kaiPiaoQingKuangBiao_ZongGongSi = projectService
-				.getKaiPiaoQingKuangBiao_ZongGongSiById(id);
-
 		if (type.equals("first")) {
 			kaiPiaoQingKuangBiao_XiangMu.setYiji_shenhe_beizhu(comment);
 			kaiPiaoQingKuangBiao_XiangMu.setYiji_shenhe_status(status);
 			kaiPiaoQingKuangBiao_XiangMu.setYijishenheren(userName);
-			/*kaiPiaoQingKuangBiao_FenGongSi.setYiji_shenhe_beizhu(comment);
-			kaiPiaoQingKuangBiao_FenGongSi.setYiji_shenhe_status(status);
-			kaiPiaoQingKuangBiao_FenGongSi.setYijishenheren(userName);
-			kaiPiaoQingKuangBiao_ZongGongSi.setYiji_shenhe_beizhu(comment);
-			kaiPiaoQingKuangBiao_ZongGongSi.setYiji_shenhe_status(status);
-			kaiPiaoQingKuangBiao_ZongGongSi.setYijishenheren(userName);*/
+			String shenhebeizhu = kaiPiaoQingKuangBiao_XiangMu.getYiji_shenhe_beizhu();
+			String yijishenheren = kaiPiaoQingKuangBiao_XiangMu.getSms_yijishenherenxingming();
+			if(yijishenheren == null) yijishenheren = "";
+			if(shenhebeizhu == null || shenhebeizhu.isEmpty()) shenhebeizhu = "无";
+			if(status == 1) {
+				String smsInfo = yijishenheren + "审核通过";
+				SMSSender.sendTemplateSMS(kaiPiaoQingKuangBiao_XiangMu.getSms_erjishenherendianhua(), "94983", new String[]{smsInfo});
+			} else if(status == 2) {
+				String smsInfo1 = yijishenheren + "审核拒绝";
+				String smsInfo2 = shenhebeizhu;
+				String smsInfo3 = "无";
+				SMSSender.sendTemplateSMS(kaiPiaoQingKuangBiao_XiangMu.getSms_kaipiaorendianhua(), "94982", new String[]{smsInfo1, smsInfo2, smsInfo3});
+			}
 		} else if (type.equals("second")) {
 			kaiPiaoQingKuangBiao_XiangMu.setErji_shenhe_beizhu(comment);
 			kaiPiaoQingKuangBiao_XiangMu.setErji_shenhe_status(status);
 			kaiPiaoQingKuangBiao_XiangMu.setErjishenheren(userName);
-			/*kaiPiaoQingKuangBiao_FenGongSi.setErji_shenhe_beizhu(comment);
-			kaiPiaoQingKuangBiao_FenGongSi.setErji_shenhe_status(status);
-			kaiPiaoQingKuangBiao_FenGongSi.setErjishenheren(userName);
-			kaiPiaoQingKuangBiao_ZongGongSi.setErji_shenhe_beizhu(comment);
-			kaiPiaoQingKuangBiao_ZongGongSi.setErji_shenhe_status(status);
-			kaiPiaoQingKuangBiao_ZongGongSi.setErjishenheren(userName);*/
+			
+			String shenhebeizhu = kaiPiaoQingKuangBiao_XiangMu.getErji_shenhe_beizhu();
+			String erjishenheren = kaiPiaoQingKuangBiao_XiangMu.getSms_erjishenherenxingming();
+			if(erjishenheren == null) erjishenheren = "";
+			if(shenhebeizhu == null || shenhebeizhu.isEmpty()) shenhebeizhu = "无";
+			if(status == 2) {
+				String smsInfo1 = erjishenheren + "审核拒绝";
+				String smsInfo2 = shenhebeizhu;
+				String smsInfo3 = "无";
+				SMSSender.sendTemplateSMS(kaiPiaoQingKuangBiao_XiangMu.getSms_kaipiaorendianhua(), "94982", new String[]{smsInfo1, smsInfo2, smsInfo3});
+			}
 			if(status == 1){
+				
+				projectService.updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinE(id);
 				//Send Mail
 				Long companyId = kaiPiaoQingKuangBiao_XiangMu.getCompany_id();
 				List<XiangMuTaiZhang> xmtz = projectService.getXiangMuTaiZhangByCompany_id(companyId);
@@ -1333,6 +1335,7 @@ public class ProjectController {
 				Company pc = projectService.getParentCompany(companyId);
 				List<User> users = projectService.getUsersByCompanyId(pc.getId().longValue());
 				User u = projectService.getUserByRoleName(users, "实际开票人");
+				SMSSender.sendTemplateSMS(u.getCompany(), "94984", new String[]{"无"});
 				String mail = u.getMail();
 				String xmtzStr = JSONArray.fromObject(xmtz).toString();
 				String kp_ptfpStr = JSONArray.fromObject(kp_ptfp).toString();
@@ -1341,11 +1344,6 @@ public class ProjectController {
 			}
 		}
 		projectService.updateKaiPiaoQingKuangBiao_XiangMu(kaiPiaoQingKuangBiao_XiangMu);
-		/*projectService.updateKaiPiaoQingKuangBiao_FenGongSi(kaiPiaoQingKuangBiao_FenGongSi);
-		projectService.updateKaiPiaoQingKuangBiao_ZongGongSi(kaiPiaoQingKuangBiao_ZongGongSi);*/
-		
-
-		
 		return retMap;
 	}
 
@@ -1732,8 +1730,12 @@ public class ProjectController {
 		instance = setModel(instance, params, "partial");
 		Method m = projectService.getClass().getMethod("addKaiPiaoQingKuangBiao_XiangMu", instance.getClass());
 		Object ret = m.invoke(projectService, instance);
+		if(String.valueOf(ret) != null && !String.valueOf(ret).isEmpty()) {
+			SMSSender.sendTemplateSMS(Users.get("yewuzhuren")==null?"":Users.get("yewuzhuren").getCompany(), "94983", new String[]{"提交人-" + Users.get("kaipiaoren")==null?"":Users.get("kaipiaoren").getName()});
+		}
 		retMap.put("status", "ok");
 		retMap.put("primary_id", String.valueOf(ret));
+		projectService.updateKaiPiaoQingKuangBiao_XiangMuYiKaiPiaoJinEAtAdd((Long)ret);
 		return retMap;
 	}
 }
