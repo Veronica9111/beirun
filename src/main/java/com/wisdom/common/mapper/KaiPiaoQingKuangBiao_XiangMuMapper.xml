@@ -25,26 +25,32 @@
 <result property="kaijufapiao" column="kaijufapiao"/>
 <result property="id" column="id"/>
 <result property="xiangmutaizhang_id" column="xiangmutaizhang_id"/>
+<result property="sms_kaipiaorenxingming" column="sms_kaipiaorenxingming"/>
+<result property="sms_kaipiaorendianhua" column="sms_kaipiaorendianhua"/>
+<result property="sms_yijishenherenxingming" column="sms_yijishenherenxingming"/>
+<result property="sms_yijishenherendianhua" column="sms_yijishenherendianhua"/>
+<result property="sms_erjishenherenxingming" column="sms_erjishenherenxingming"/>
+<result property="sms_erjishenherendianhua" column="sms_erjishenherendianhua"/>
 </resultMap>
 
 <select id="getKaiPiaoQingKuangBiao_XiangMuById" resultType="KaiPiaoQingKuangBiao_XiangMu">
-select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+select sms_kaipiaorenxingming,sms_kaipiaorendianhua,sms_yijishenherenxingming,sms_yijishenherendianhua,sms_erjishenherenxingming,sms_erjishenherendianhua,beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
 from kaipiaoqingkuangbiao_xiangmu
 where id=#{id}
 </select>
 
 <update id="updateKaiPiaoQingKuangBiao_XiangMu">
-update kaipiaoqingkuangbiao_xiangmu set beizhu=#{beizhu},hejijine=#{hejijine},yikaipiaojine=#{yikaipiaojine},wangongjindu=#{wangongjindu},erji_shenhe_status=#{erji_shenhe_status},yijishenheren=#{yijishenheren},qita=#{qita},company_id=#{company_id},shengqingkaipiaoshijian=#{shengqingkaipiaoshijian},yiji_shenhe_status=#{yiji_shenhe_status},shuie=#{shuie},buhanshuijine=#{buhanshuijine},erjishenheren=#{erjishenheren},fenbaofapiao=#{fenbaofapiao},erji_shenhe_beizhu=#{erji_shenhe_beizhu},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu},shouqikuanxiang=#{shouqikuanxiang},kaijufapiao=#{kaijufapiao},id=#{id},xiangmutaizhang_id=#{xiangmutaizhang_id}
+update kaipiaoqingkuangbiao_xiangmu set beizhu=#{beizhu},hejijine=#{hejijine},yikaipiaojine=#{yikaipiaojine},wangongjindu=#{wangongjindu},erji_shenhe_status=#{erji_shenhe_status},yijishenheren=#{yijishenheren},qita=#{qita},company_id=#{company_id},shengqingkaipiaoshijian=#{shengqingkaipiaoshijian},yiji_shenhe_status=#{yiji_shenhe_status},shuie=#{shuie},buhanshuijine=#{buhanshuijine},erjishenheren=#{erjishenheren},fenbaofapiao=#{fenbaofapiao},erji_shenhe_beizhu=#{erji_shenhe_beizhu},yiji_shenhe_beizhu=#{yiji_shenhe_beizhu},shouqikuanxiang=#{shouqikuanxiang},kaijufapiao=#{kaijufapiao},id=#{id},xiangmutaizhang_id=#{xiangmutaizhang_id},sms_kaipiaorenxingming=#{sms_kaipiaorenxingming},sms_kaipiaorendianhua=#{sms_kaipiaorendianhua},sms_yijishenherenxingming=#{sms_yijishenherenxingming},sms_yijishenherendianhua=#{sms_yijishenherendianhua},sms_erjishenherenxingming=#{sms_erjishenherenxingming},sms_erjishenherendianhua=#{sms_erjishenherendianhua}
 where id=#{id}
 </update>
 
 <insert id="addKaiPiaoQingKuangBiao_XiangMu" useGeneratedKeys="true"  keyProperty="id" keyColumn="id">
-insert into kaipiaoqingkuangbiao_xiangmu (beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id)
-values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{company_id},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{fenbaofapiao},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id},#{xiangmutaizhang_id})
+insert into kaipiaoqingkuangbiao_xiangmu (beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id,sms_kaipiaorenxingming,sms_kaipiaorendianhua,sms_yijishenherenxingming,sms_yijishenherendianhua,sms_erjishenherenxingming,sms_erjishenherendianhua)
+values (#{beizhu},#{hejijine},#{yikaipiaojine},#{wangongjindu},#{erji_shenhe_status},#{yijishenheren},#{qita},#{company_id},#{shengqingkaipiaoshijian},#{yiji_shenhe_status},#{shuie},#{buhanshuijine},#{erjishenheren},#{fenbaofapiao},#{erji_shenhe_beizhu},#{yiji_shenhe_beizhu},#{shouqikuanxiang},#{kaijufapiao},#{id},#{xiangmutaizhang_id},#{sms_kaipiaorenxingming},#{sms_kaipiaorendianhua},#{sms_yijishenherenxingming},#{sms_yijishenherendianhua},#{sms_erjishenherenxingming},#{sms_erjishenherendianhua})
 </insert>
 
 <select id="getKaiPiaoQingKuangBiao_XiangMuByCompanyId" resultType="KaiPiaoQingKuangBiao_XiangMu">
-select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id
+select beizhu,hejijine,yikaipiaojine,wangongjindu,erji_shenhe_status,yijishenheren,qita,company_id,shengqingkaipiaoshijian,yiji_shenhe_status,shuie,buhanshuijine,erjishenheren,fenbaofapiao,erji_shenhe_beizhu,yiji_shenhe_beizhu,shouqikuanxiang,kaijufapiao,id,xiangmutaizhang_id,sms_kaipiaorenxingming,sms_kaipiaorendianhua,sms_yijishenherenxingming,sms_yijishenherendianhua,sms_erjishenherenxingming,sms_erjishenherendianhua
 from kaipiaoqingkuangbiao_xiangmu
 where company_id=#{company_id}
 </select>

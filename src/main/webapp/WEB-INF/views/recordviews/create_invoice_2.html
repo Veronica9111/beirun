@@ -2094,7 +2094,7 @@ function startPageJS(){
 		dataSet["yiji_shenhe_status"] = "0";
 		dataSet["company_id"] = xiangmuComapnyID;
 		$.ajaxSetup({async : false});
-		$.post('/project/addModel', dataSet, function(data){
+		$.post('/project/addKaiPiaoQingKuangBiao_XiangMu', dataSet, function(data){
 			kaipiaoqingkuangbiao_xiangmu_id = data.primary_id;
 		});
 		dataSet["class_name"] = "KaiPiaoQingKuangBiao_FenGongSi";

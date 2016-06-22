@@ -1661,7 +1661,37 @@ public class ProjectController {
 		
 	}
 	
-	
+	@RequestMapping("/project/addKaiPiaoQingKuangBiao_XiangMu")
+	@ResponseBody
+	public Map<String, String> addKaiPiaoQingKuangBiao_XiangMu(HttpServletRequest request,
+			HttpSession httpSession)
+			throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException,
+			InvocationTargetException, NoSuchMethodException, ClassNotFoundException, InstantiationException {
+		Map<String, String> retMap = new HashMap<>();
+		Map<String, String[]> params = request.getParameterMap();
+		
+		Integer uid = (Integer) httpSession.getAttribute(SessionConstant.SESSION_USER_ID);
+		Long companyId = Long.valueOf(request.getParameter("company_id"));
+		Map<String, User> Users = projectService.getUsers(companyId, uid);
+		params.put("sms_kaipiaorendianhua", new String[]{Users.get("kaipiaoren")==null?"":Users.get("kaipiaoren").getCompany()});		
+		params.put("sms_yijishenherendianhua", new String[]{Users.get("yewuzhuren")==null?"":Users.get("yewuzhuren").getCompany()});
+		params.put("sms_erjishenherendianhua", new String[]{Users.get("fenguansuozhang")==null?"":Users.get("fenguansuozhang").getCompany()});
+		params.put("sms_kaipiaorenxingming", new String[]{Users.get("kaipiaoren")==null?"":Users.get("kaipiaoren").getName()});
+		params.put("sms_yijishenherenxingming", new String[]{Users.get("yewuzhuren")==null?"":Users.get("yewuzhuren").getName()});
+		params.put("sms_erjishenherenxingming", new String[]{Users.get("fenguansuozhang")==null?"":Users.get("fenguansuozhang").getName()});
+		params.put("yijishenheren", new String[]{Users.get("yewuzhuren")==null?"":Users.get("yewuzhuren").getName()});
+		params.put("erjishenheren", new String[]{Users.get("fenguansuozhang")==null?"":Users.get("fenguansuozhang").getName()});
+		
+		String longClassName = "com.wisdom.common.model.KaiPiaoQingKuangBiao_XiangMu";
+		Class<?> c = Class.forName(longClassName);
+		Object instance = c.newInstance();
+		instance = setModel(instance, params, "partial");
+		Method m = projectService.getClass().getMethod("addKaiPiaoQingKuangBiao_XiangMu", instance.getClass());
+		Object ret = m.invoke(projectService, instance);
+		retMap.put("status", "ok");
+		retMap.put("primary_id", String.valueOf(ret));
+		return retMap;
+	}
 }
 
 

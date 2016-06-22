@@ -25,7 +25,62 @@ private Double shouqikuanxiang;
 private Double kaijufapiao;
 private Long id;
 private Long xiangmutaizhang_id;
-    public KaiPiaoQingKuangBiao_XiangMu() {
+private String sms_kaipiaorenxingming;
+private String sms_kaipiaorendianhua;
+private String sms_yijishenherenxingming;
+private String sms_yijishenherendianhua;
+private String sms_erjishenherenxingming;
+private String sms_erjishenherendianhua;
+
+    public String getSms_kaipiaorenxingming() {
+	return sms_kaipiaorenxingming;
+}
+
+public void setSms_kaipiaorenxingming(String sms_kaipiaorenxingming) {
+	this.sms_kaipiaorenxingming = sms_kaipiaorenxingming;
+}
+
+public String getSms_kaipiaorendianhua() {
+	return sms_kaipiaorendianhua;
+}
+
+public void setSms_kaipiaorendianhua(String sms_kaipiaorendianhua) {
+	this.sms_kaipiaorendianhua = sms_kaipiaorendianhua;
+}
+
+public String getSms_yijishenherenxingming() {
+	return sms_yijishenherenxingming;
+}
+
+public void setSms_yijishenherenxingming(String sms_yijishenherenxingming) {
+	this.sms_yijishenherenxingming = sms_yijishenherenxingming;
+}
+
+public String getSms_yijishenherendianhua() {
+	return sms_yijishenherendianhua;
+}
+
+public void setSms_yijishenherendianhua(String sms_yijishenherendianhua) {
+	this.sms_yijishenherendianhua = sms_yijishenherendianhua;
+}
+
+public String getSms_erjishenherenxingming() {
+	return sms_erjishenherenxingming;
+}
+
+public void setSms_erjishenherenxingming(String sms_erjishenherenxingming) {
+	this.sms_erjishenherenxingming = sms_erjishenherenxingming;
+}
+
+public String getSms_erjishenherendianhua() {
+	return sms_erjishenherendianhua;
+}
+
+public void setSms_erjishenherendianhua(String sms_erjishenherendianhua) {
+	this.sms_erjishenherendianhua = sms_erjishenherendianhua;
+}
+
+	public KaiPiaoQingKuangBiao_XiangMu() {
         super();
     }
 
